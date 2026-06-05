@@ -151,7 +151,7 @@ Call $\varphi$ **exact** if some function $G$ satisfies $\varepsilon^\ast(\Pi)=G
 $$
 p_1 G(u_1)+p_2 G(u_2)=p_1 R(\boldsymbol\eta_1)+p_2 R(\boldsymbol\eta_2)=\varepsilon^\ast=G(\bar\varphi)=G(p_1 u_1+p_2 u_2).
 $$
-Because $\varphi$ is continuous on the connected simplex and ranges from $0$ (vertices) to $\varphi_{\max}=\varphi(\mathbf u)$, by the intermediate value theorem every value in $[0,\varphi_{\max}]$ is attained, so on the atomless space $u_1,u_2$ range independently over $[0,\varphi_{\max}]$ and $p_1\in[0,1]$ is free. Hence
+Because $\varphi$ is continuous on the compact connected simplex, $\varphi_{\max}:=\max_{\boldsymbol\eta\in\Delta^{k-1}}\varphi(\boldsymbol\eta)$ is attained (Weierstrass), and by the intermediate value theorem $\varphi$ ranges over the full interval $[0,\varphi_{\max}]$ — so on the atomless space $u_1,u_2$ range independently over $[0,\varphi_{\max}]$ and $p_1\in[0,1]$ is free. Hence
 $$
 p_1 G(u_1)+p_2 G(u_2)=G(p_1 u_1+p_2 u_2)\qquad\text{for all }u_1,u_2\in[0,\varphi_{\max}],\ p_1+p_2=1.
 $$
