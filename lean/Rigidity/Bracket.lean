@@ -313,6 +313,31 @@ theorem cellRate_mem_Icc {α : Type*} [MeasurableSpace α] (μ : Measure α)
     cellRate μ f P c ∈ Set.Icc (0:ℝ) 1 :=
   ⟨cellRate_nonneg μ f P c, cellRate_le_one μ f P c⟩
 
+/-- **Inversion**: `cellRate · cellMass = (μ ({x | f x = true} ∩ c)).toReal` for
+    any finite-measure cell. The edge case `μ c = 0` collapses both sides
+    (cellRate = 0/0 = 0 by `div_zero`; the intersection has measure ≤ μ c = 0).
+
+    Useful for converting between the abstract `cellRate` view and the
+    concrete `μ`-measure view; needed by `theorem1`'s hard direction. -/
+@[rigidity_proved, rigidity_AMS_28]
+theorem cellRate_mul_cellMass {α : Type*} [MeasurableSpace α] (μ : Measure α)
+    (f : α → Bool) (P : FinitePartition α) {c : Set α} (hc_finite : μ c ≠ ⊤) :
+    cellRate μ f P c * (cellMass μ P c).toReal =
+      (μ ({x | f x = true} ∩ c)).toReal := by
+  unfold cellRate cellMass
+  by_cases h_zero : (μ c).toReal = 0
+  · -- (μ c).toReal = 0 ⇒ μ c = 0 (finite, so not ⊤) ⇒ both sides 0.
+    have h_μc : μ c = 0 := by
+      rcases (ENNReal.toReal_eq_zero_iff (μ c)).mp h_zero with h | h
+      · exact h
+      · exact absurd h hc_finite
+    have h_num : μ ({x | f x = true} ∩ c) = 0 :=
+      measure_mono_null Set.inter_subset_right h_μc
+    rw [h_num, h_zero]
+    simp
+  · -- (μ c).toReal ≠ 0 ⇒ ratio simplifies.
+    field_simp
+
 /-- `min η (1 - η) ∈ [0, 1/2]` whenever `η ∈ [0, 1]`. Pure ℝ arithmetic. -/
 @[rigidity_proved]
 theorem min_self_one_sub_mem_Icc_zero_half {η : ℝ} (hη : η ∈ Set.Icc (0:ℝ) 1) :

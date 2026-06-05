@@ -21,6 +21,7 @@ Expected: every theorem uses only `propext`, `Classical.choice`, `Quot.sound`
 #print axioms Rigidity.cellRate_le_one
 #print axioms Rigidity.cellMass_toReal
 #print axioms Rigidity.cellRate_mem_Icc
+#print axioms Rigidity.cellRate_mul_cellMass
 #print axioms Rigidity.min_self_one_sub_mem_Icc_zero_half
 #print axioms Rigidity.phi_eq_phi_min_symm
 #print axioms Rigidity.concave_on_Icc_zero_half
