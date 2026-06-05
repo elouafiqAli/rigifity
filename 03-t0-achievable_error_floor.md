@@ -85,7 +85,7 @@ This is Blackwell's ordering [Blackwell 1953] on the refinement lattice together
 
 For a normalized score, Theorem 1 yields the bracket of §1; call it **exact** if its endpoints coincide for every partition.
 
-**Theorem 2.** *A normalized score $\varphi$ has an exact bracket if and only if $\varphi=T$.* 
+**Theorem 2.** *Let $(\mathcal X,\mathcal F,\mathbb P)$ be atomless (so that single-cell partitions of arbitrary rate $\eta\in[0,1]$ are realizable). A normalized score $\varphi$ has an exact bracket if and only if $\varphi=T$. On a general (possibly atomic) space the equivalence continues to hold by density of realizable rates and continuity of $\varphi$.*
 
 **Proof.** For $T$: $\varphi^{-1}(t)=t/2$, $c_T=\tfrac12$, and both endpoints equal $\tfrac12\bar T(\Pi)=\varepsilon^\ast(\Pi)$. Conversely, exactness means the two bracket endpoints coincide on every partition. Apply this to the single-cell partition of rate $\eta\in[0,\tfrac12]$: $\bar\varphi(\Pi)=\varphi(\eta)$ and $\varepsilon^\ast(\Pi)=\eta$, so $\varphi^{-1}(\varphi(\eta))=c_\varphi\,\varphi(\eta)$, i.e.
 $$
