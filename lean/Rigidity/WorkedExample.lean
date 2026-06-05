@@ -1,3 +1,5 @@
+import Mathlib
+
 /-!
 # WorkedExample — numerical verification of the §4.3 worked example (k = 3)
 
@@ -31,8 +33,6 @@ with `R = 2/5 = 0.4 < 0.5 = ε*`, confirming a genuinely two-sided bracket.
   by `verify/numerics.py` for redundancy.
 -/
 
-import Mathlib
-
 namespace Rigidity.WorkedExample
 
 /-- Gini impurity for `k = 3` over rationals. -/
@@ -52,30 +52,30 @@ def ηmin : Fin 3 → ℚ := ![3/5, 1/5, 1/5]
 
 /-! ### W43.1 — Same Bayes risk -/
 
-example : R3 η₁ = 1/2 := by decide
-example : R3 η₂ = 1/2 := by decide
+example : R3 η₁ = 1/2 := by native_decide
+example : R3 η₂ = 1/2 := by native_decide
 
 /-! ### W43.2 — Gini distinguishes -/
 
-example : gini η₁ = 31/50 := by decide
-example : gini η₂ = 1/2   := by decide
+example : gini η₁ = 31/50 := by native_decide
+example : gini η₂ = 1/2   := by native_decide
 
 /-! ### W43.3 — Lower bracket witness -/
 
-example : gini ηmin = 56/100 := by decide
-example : R3 ηmin  = 2/5    := by decide
+example : gini ηmin = 56/100 := by native_decide
+example : R3 ηmin  = 2/5    := by native_decide
 
 /-! ### W43.4 — Two-cell partition aggregate -/
 
-example : ((gini η₁ + gini η₂) / 2 : ℚ) = 56/100 := by decide
-example : ((R3 η₁ + R3 η₂) / 2 : ℚ) = 1/2 := by decide
+example : ((gini η₁ + gini η₂) / 2 : ℚ) = 56/100 := by native_decide
+example : ((R3 η₁ + R3 η₂) / 2 : ℚ) = 1/2 := by native_decide
 
 /-! ### W43.5 — Slack is positive -/
 
-example : ((gini η₁ + gini η₂) / 2 : ℚ) - ((R3 η₁ + R3 η₂) / 2) = 6/100 := by decide
+example : ((gini η₁ + gini η₂) / 2 : ℚ) - ((R3 η₁ + R3 η₂) / 2) = 6/100 := by native_decide
 
 /-! ### W43.6 — `R(η_min) < ε*` confirms genuinely two-sided bracket -/
 
-example : R3 ηmin < ((R3 η₁ + R3 η₂) / 2 : ℚ) := by decide
+example : R3 ηmin < ((R3 η₁ + R3 η₂) / 2 : ℚ) := by native_decide
 
 end Rigidity.WorkedExample

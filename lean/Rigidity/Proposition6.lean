@@ -1,3 +1,6 @@
+import Mathlib
+import Rigidity.Bracket
+
 /-!
 # Proposition 6 — two-query identity + variance bracket
 
@@ -27,9 +30,6 @@ Phase A scaffold: statement present; proof `sorry`. Phase C2 will land:
   gives the lower endpoint.
 -/
 
-import Mathlib
-import Rigidity.Bracket
-
 namespace Rigidity
 
 open MeasureTheory Real
@@ -38,24 +38,24 @@ variable {α : Type*} [MeasurableSpace α] (μ : Measure α)
 
 /-- Probability that two independent draws from the same cell disagree on `f`.
     -/
-noncomputable def pDisagree (f : α → Bool) (Π : FinitePartition α) : ℝ :=
-  ∑ c ∈ Π.cells,
-    (cellMass μ Π c).toReal *
-      (2 * cellRate μ f Π c * (1 - cellRate μ f Π c))
+noncomputable def pDisagree (f : α → Bool) (P : FinitePartition α) : ℝ :=
+  ∑ c ∈ P.cells,
+    (cellMass μ P c).toReal *
+      (2 * cellRate μ f P c * (1 - cellRate μ f P c))
 
 /-- **Proposition 6** (two-query identity). -/
-theorem two_query_identity (f : α → Bool) (Π : FinitePartition α) :
-    pDisagree μ f Π =
-      2 * ∑ c ∈ Π.cells,
-        (cellMass μ Π c).toReal *
-          (cellRate μ f Π c * (1 - cellRate μ f Π c)) := by
+theorem two_query_identity (f : α → Bool) (P : FinitePartition α) :
+    pDisagree μ f P =
+      2 * ∑ c ∈ P.cells,
+        (cellMass μ P c).toReal *
+          (cellRate μ f P c * (1 - cellRate μ f P c)) := by
   sorry
 
 /-- **Variance bracket** (Proposition 6 corollary): the achievable floor is
     bracketed by a closed-form function of the single observable `p_dis`. -/
-theorem variance_bracket (f : α → Bool) (Π : FinitePartition α) :
-    (1 - Real.sqrt (1 - 2 * pDisagree μ f Π)) / 2 ≤ epsilonStar μ f Π ∧
-    epsilonStar μ f Π ≤ pDisagree μ f Π := by
+theorem variance_bracket (f : α → Bool) (P : FinitePartition α) :
+    (1 - Real.sqrt (1 - 2 * pDisagree μ f P)) / 2 ≤ epsilonStar μ f P ∧
+    epsilonStar μ f P ≤ pDisagree μ f P := by
   sorry
 
 end Rigidity

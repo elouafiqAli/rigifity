@@ -1,3 +1,6 @@
+import Mathlib
+import Rigidity.Bracket
+
 /-!
 # Theorem 1 — refinement-monotonicity ⟺ concavity
 
@@ -22,9 +25,6 @@ is `sorry`. Phase B2 will fill in via the tower-property + Jensen argument
 (direction (ii)⇒(iii)).
 -/
 
-import Mathlib
-import Rigidity.Bracket
-
 namespace Rigidity
 
 open MeasureTheory Set
@@ -38,8 +38,8 @@ open MeasureTheory Set
     of realizable splits and continuity of `φ`. -/
 theorem theorem1 {α : Type*} [MeasurableSpace α] {μ : Measure α} [NoAtoms μ]
     (φ : ℝ → ℝ) (_hc : ContinuousOn φ (Set.Icc (0:ℝ) 1)) :
-    (∀ (f : α → Bool) (Π Π' : FinitePartition α),
-        Π' ⪰ Π → barPhi μ φ f Π' ≤ barPhi μ φ f Π) ↔
+    (∀ (f : α → Bool) (P P' : FinitePartition α),
+        P' ⪰ P → barPhi μ φ f P' ≤ barPhi μ φ f P) ↔
     ConcaveOn ℝ (Set.Icc (0:ℝ) 1) φ := by
   sorry
 

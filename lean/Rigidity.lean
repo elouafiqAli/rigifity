@@ -1,3 +1,10 @@
+import Rigidity.Bracket
+import Rigidity.Theorem1
+import Rigidity.Theorem2
+import Rigidity.Theorem2Prime
+import Rigidity.Proposition6
+import Rigidity.WorkedExample
+
 /-!
 # Rigidity — top-level library
 
@@ -16,10 +23,3 @@ Re-exports every kernel module. Use this as the public entry point.
 See `14-harness_and_reproduction.md` for the brick-DAG and the provenance map
 from each Lean target back to manuscript paragraphs and defining commits.
 -/
-
-import Rigidity.Bracket
-import Rigidity.Theorem1
-import Rigidity.Theorem2
-import Rigidity.Theorem2Prime
-import Rigidity.Proposition6
-import Rigidity.WorkedExample

@@ -1,3 +1,6 @@
+import Mathlib
+import Rigidity.Bracket
+
 /-!
 # Theorem 2′ — Simplex Rigidity (multiclass extension of Theorem 2)
 
@@ -34,9 +37,6 @@ concave and permutation-symmetric.
 Phase A scaffold: statements present with type-checked hypotheses;
 proofs `sorry`. Phase D2 will land the full three-step proof.
 -/
-
-import Mathlib
-import Rigidity.Bracket
 
 namespace Rigidity.Simplex
 

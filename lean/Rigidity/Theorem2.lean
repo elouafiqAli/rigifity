@@ -1,3 +1,6 @@
+import Mathlib
+import Rigidity.Bracket
+
 /-!
 # Theorem 2 — binary rigidity (T is the unique exact score)
 
@@ -23,9 +26,6 @@ normalization gives `c_φ = 1/2`, hence `φ = 2η` on [0, 1/2]; symmetry of
 `NormalizedScore` extends to [0, 1].
 -/
 
-import Mathlib
-import Rigidity.Bracket
-
 namespace Rigidity
 
 open MeasureTheory Set
@@ -34,10 +34,10 @@ open MeasureTheory Set
     On an atomless probability space, a normalized score `φ` has an exact
     bracket iff `φ = T` (the normalized 0-1 Bayes risk). -/
 theorem theorem2 {α : Type*} [MeasurableSpace α] {μ : Measure α} [NoAtoms μ]
-    (φ : ℝ → ℝ) (h : NormalizedScore φ) :
-    (∀ (f : α → Bool) (Π : FinitePartition α),
-        barPhi μ φ f Π = φ (epsilonStar μ f Π) ∧
-        epsilonStar μ f Π = cPhi φ * barPhi μ φ f Π) ↔
+    (φ : ℝ → ℝ) (_h : NormalizedScore φ) :
+    (∀ (f : α → Bool) (P : FinitePartition α),
+        barPhi μ φ f P = φ (epsilonStar μ f P) ∧
+        epsilonStar μ f P = cPhi φ * barPhi μ φ f P) ↔
     φ = tent := by
   sorry
 
