@@ -34,6 +34,9 @@ Expected: every theorem uses only `propext`, `Classical.choice`, `Quot.sound`
 
 -- Theorem2.lean
 #print axioms Rigidity.theorem2_forward
+#print axioms Rigidity.cellRate_trivial_boolIndicator
+#print axioms Rigidity.barPhi_trivial_boolIndicator
+#print axioms Rigidity.epsilonStar_trivial_boolIndicator
 
 -- Theorem2Prime.lean
 -- (theorem1Prime removed 2026-06-05 — was vacuous `True ↔ True`, see audit notes.)
