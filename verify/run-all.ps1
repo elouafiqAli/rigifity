@@ -64,11 +64,25 @@ $useWsl = (-not $NoWsl) -and (Test-WslAvailable -Distro $WslDistro)
 
 if ($useWsl) {
     Write-Host "Using WSL $WslDistro for Lean (lake found at WSL-side elan toolchain)."
-    # Cold sequence: lake update + lake exe cache get + lake build.
-    # Cache get pulls oleans from ~/.cache/mathlib (~408 MB local, fast).
-    $bashCmd = @"
+    # Native build directory on ext4 (avoids NTFS-via-9P perf cliff for the
+    # ~8000 mathlib oleans). Source files in /mnt/c/.../lean/ are symlinked
+    # in, so editing on Windows is reflected immediately. .lake/ lives in
+    # ext4 where it belongs.
+    $bashScript = @'
 set -e
-cd $wslLeanDir
+RIGIDITY_BUILD=$HOME/rigidity-build
+WIN_LEAN="WIN_LEAN_PLACEHOLDER"
+if [ ! -L "$RIGIDITY_BUILD/lakefile.lean" ]; then
+  echo 'Setting up WSL-native build directory with symlinks to Windows source...'
+  mkdir -p "$RIGIDITY_BUILD"
+  cd "$RIGIDITY_BUILD"
+  rm -f lakefile.lean lean-toolchain Rigidity.lean Rigidity
+  ln -s "$WIN_LEAN/lakefile.lean" .
+  ln -s "$WIN_LEAN/lean-toolchain" .
+  ln -s "$WIN_LEAN/Rigidity.lean" .
+  ln -s "$WIN_LEAN/Rigidity" Rigidity
+fi
+cd "$RIGIDITY_BUILD"
 if [ ! -f lake-manifest.json ]; then
   echo 'lake-manifest.json missing; running lake update (one-time)...'
   lake update
@@ -76,13 +90,21 @@ fi
 echo 'Pulling precompiled mathlib oleans (lake exe cache get)...'
 lake exe cache get || echo '[WARN] cache get failed; build will compile mathlib from source.'
 lake build
-"@
-    & wsl -d $WslDistro -- bash -lc $bashCmd
-    if ($LASTEXITCODE -ne 0) {
+'@
+    $bashScript = $bashScript.Replace('WIN_LEAN_PLACEHOLDER', $wslLeanDir)
+    $tmpScript = [System.IO.Path]::GetTempFileName() + '.sh'
+    # Write with LF line endings (bash chokes on CRLF -> "set: -\r: invalid option").
+    [System.IO.File]::WriteAllText($tmpScript, ($bashScript -replace "`r`n", "`n"), [System.Text.Encoding]::ASCII)
+    # Convert Windows tempfile path to WSL path
+    $wslTmpScript = ConvertTo-WslPath $tmpScript
+    & wsl -d $WslDistro -- bash -l $wslTmpScript
+    $leanExit = $LASTEXITCODE
+    Remove-Item $tmpScript -ErrorAction SilentlyContinue
+    if ($leanExit -ne 0) {
         Write-Host "[FAIL] Step 1: Lean kernel build (WSL)" -ForegroundColor Red
         exit 1
     }
-    Write-Host "[PASS] Step 1: Lean kernel build (via WSL $WslDistro)" -ForegroundColor Green
+    Write-Host "[PASS] Step 1: Lean kernel build (via WSL $WslDistro, ext4 build dir)" -ForegroundColor Green
     $leanResult = 'PASS'
 } else {
     Push-Location (Join-Path $repoRoot 'lean')
