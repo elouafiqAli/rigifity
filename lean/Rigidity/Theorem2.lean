@@ -110,31 +110,8 @@ class SingleCellRealizable {α : Type*} [MeasurableSpace α] (μ : Measure α) :
     ∀ η ∈ Set.Icc (0:ℝ) (1/2),
       ∃ s : Set α, MeasurableSet s ∧ (μ s).toReal = η
 
-/-- The single-cell trivial partition `{univ}`. The cellRate on this partition
-    over a `Bool`-valued `f` is exactly `(μ {x | f x = true}).toReal /
-    (μ univ).toReal = (μ {x | f x = true}).toReal` (under
-    `[IsProbabilityMeasure μ]`). Used by the realizability argument. -/
-noncomputable def trivialPartition {α : Type*} [MeasurableSpace α] :
-    FinitePartition α where
-  cells := {Set.univ}
-  measurable := by
-    intro c hc
-    rw [Finset.mem_singleton] at hc
-    rw [hc]
-    exact MeasurableSet.univ
-  disjoint := by
-    intro c₁ hc₁ c₂ hc₂ hne
-    simp only [Finset.coe_singleton, Set.mem_singleton_iff] at hc₁ hc₂
-    exact absurd (hc₁.trans hc₂.symm) hne
-  covers := by
-    simp only [Finset.coe_singleton, Set.sUnion_singleton]
-
-/-- The indicator-of-measurable-set function as `α → Bool`.
-    `Set.indicator` is mathlib's name for the ℝ-valued indicator; here we want
-    the `Bool` version. Uses classical decidability for membership in arbitrary
-    measurable sets. -/
-noncomputable def boolIndicator {α : Type*} (s : Set α) : α → Bool :=
-  fun x => by classical exact if x ∈ s then true else false
+-- Note: `trivialPartition` and `boolIndicator` were moved to `Rigidity.Bracket`
+-- 2026-06-05 so `Rigidity.Theorem1` can also use them.
 
 /-! ## Phase B3b skeletons
 

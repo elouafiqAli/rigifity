@@ -260,6 +260,42 @@ theorem cPhi_eq_half_of_normalized (φ : ℝ → ℝ) (h : NormalizedScore φ) :
 
 /-! ## Bracket helpers (Phase B1 foundations) -/
 
+/-- The single-cell trivial partition `{univ}`. Used by Theorem 1 and Theorem 2
+    realizability arguments. Moved here from `Rigidity.Theorem2` 2026-06-05 so
+    `Rigidity.Theorem1` can also use it. -/
+noncomputable def trivialPartition {α : Type*} [MeasurableSpace α] :
+    FinitePartition α where
+  cells := {Set.univ}
+  measurable := by
+    intro c hc
+    rw [Finset.mem_singleton] at hc
+    rw [hc]
+    exact MeasurableSet.univ
+  disjoint := by
+    intro c₁ hc₁ c₂ hc₂ hne
+    simp only [Finset.coe_singleton, Set.mem_singleton_iff] at hc₁ hc₂
+    exact absurd (hc₁.trans hc₂.symm) hne
+  covers := by
+    simp only [Finset.coe_singleton, Set.sUnion_singleton]
+
+/-- The indicator-of-measurable-set function as `α → Bool`.
+    `Set.indicator` is mathlib's name for the ℝ-valued indicator; here we want
+    the `Bool` version. Uses classical decidability for membership in arbitrary
+    measurable sets. Moved here from `Rigidity.Theorem2` 2026-06-05. -/
+noncomputable def boolIndicator {α : Type*} (s : Set α) : α → Bool :=
+  fun x => by classical exact if x ∈ s then true else false
+
+/-- Every partition refines the trivial single-cell partition `{univ}`.
+    Pure unfolding: each cell `c'` of `P` is `⊆ univ`. -/
+@[rigidity_proved, rigidity_AMS_28]
+theorem refines_trivialPartition {α : Type*} [MeasurableSpace α]
+    (P : FinitePartition α) : P ⪰ trivialPartition := by
+  intro c' _
+  refine ⟨Set.univ, ?_, Set.subset_univ _⟩
+  show Set.univ ∈ (trivialPartition : FinitePartition α).cells
+  unfold trivialPartition
+  exact Finset.mem_singleton.mpr rfl
+
 /-- Cell rate is always non-negative. Proof: ratio of two `ENNReal.toReal`s
     is non-negative. -/
 @[rigidity_proved, rigidity_AMS_28]
