@@ -124,7 +124,7 @@ A(1·S) ──► B(2·S) ──► C(3·M) ──► D(4·L) ──► E(5·M) 
 | 9 | `a67513d` | `03` | Abstract item (iii) = multiclass; §1.1 contribution list updated to four items; §8 opener updated to "(§3–§4)" and "tasks with hard cell assignments, binary or multiclass". |
 | 10 | `50afa14` | `03` | Header bumped Draft 0.1 → Draft 0.2; closing draft note rewritten to enumerate all 07 audit items closed + reaffirm 05 closures + list what remains open. |
 | 11 | `bda09a5` | `04` | `04` replaced with redirect (118 lines removed, 9 added); full pre-consolidation text preserved at commit `027ba89`. Closes m-5 structurally. |
-| 12 | `<this commit>` | `08` | Sequence table SHAs backfilled; plan-vs-execution delta documented; post-mortem table populated. |
+| 12 | `9b696f9` | `08` | Sequence table SHAs backfilled; plan-vs-execution delta documented; post-mortem table populated. |
 
 ---
 
