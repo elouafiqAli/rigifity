@@ -1,0 +1,179 @@
+# The Achievable-Error Floor of Graph Neural Networks
+### Calibration at the Resolution Level
+*Draft 0.*
+
+**Abstract.** Weisfeiler–Leman (WL) expressivity theory returns a binary verdict — an architecture can or cannot distinguish two graphs. We study its calibrated *gap* version: the partition-restricted Bayes risk $\varepsilon^\ast(\Pi)$ of the partition $\Pi$ a graph neural network induces, the smallest error any classifier respecting that resolution can achieve, together with a two-sided bracket on it from a concave score. We are explicit that this is an *achievable floor* — a population, optimal-classifier quantity — and **not** the error of a trained network, which optimization, finite data, and inductive bias additionally govern; the gap between floor and achieved error is outside our scope, and we flag where this matters. Our theoretical observations are the *resolution-level transposition* of classical results: the monotonicity of the floor under refinement is the concavity-of-Bayes-risk / Blackwell ordering on the refinement lattice, and the fact that the bracket is exact only for the $0$-$1$ loss is the partition-bracket form of the surrogate-calibration phenomenon (the Bartlett–Jordan–McAuliffe $\psi$-transform is the identity only for the $0$-$1$ loss), so smoothness forces a quantified slack. We do not claim these as new decision theory. What is new is (i) moving calibration from the *optimization* axis (excess risk of a learned predictor) to the *resolution* axis (the achievable floor as a function of the partition a GNN induces); (ii) the consequences for graph neural networks — a calibrated gap-test for WL feasibility, the GIN aggregator hierarchy as a one-line refinement-chain corollary, and a characterization of when the floor is monotone in network depth (it is, exactly for *refining* architectures such as GIN and join-type residual networks, and provably not for contractive ones such as GCN, where over-smoothing raises the floor); and (iii) a two-query local test whose label complexity is independent of graph size. Two extensions are stated as open problems: the rigidity on the probability simplex, which would reach multiclass and the soft/attention architectures, and gap amplification. Experiments are deferred to a companion empirical paper.
+
+---
+
+## 1. Introduction
+
+Expressivity theory for message-passing graph neural networks rests on one fact: a GNN run for $L$ rounds is no more discriminating than $L$ rounds of WL colour refinement, with equality when neighborhood aggregation is injective [Xu et al.; Morris et al.]. This is an all-or-nothing statement — two graphs are WL-distinguishable or not — and it is silent on the middle ground: among feasible tasks, which are nearly impossible across a bottleneck, and by how much does a weaker aggregator's information loss cost. We study the calibrated gap version of the verdict, and we are careful about exactly which quantity we measure.
+
+**The quantity, and what it is not.** A GNN induces a partition $\Pi$ of the inputs (by colour or quantized embedding). Its **partition-restricted Bayes risk** $\varepsilon^\ast(\Pi)$ is the smallest error of any classifier constant on the cells of $\Pi$. This is the *achievable floor* at that resolution: a population quantity, attained by the Bayes-optimal cell-wise rule. It is **not** the error of a trained GNN. A trained network's error is additionally shaped by optimization dynamics, finite-sample estimation, and inductive bias, none of which this paper addresses. The floor is a lower bound on the error any classifier at that resolution can reach, and (via the bracket below) we also bound it from above; but trained accuracy can sit far above the floor, and — a point we return to in §5 — the *floor* ordering across aggregators need not match the *trained-accuracy* ordering. We measure what is representable at a given resolution, not what a given optimizer learns.
+
+**The bracket.** For a concave score functional $\varphi$, the scalar average score $\bar\varphi(\Pi)=\sum_i p_i\varphi(\eta_i)$ (cell masses $p_i$, label rates $\eta_i$) bounds $\varepsilon^\ast(\Pi)$ from both sides:
+$$
+\varphi^{-1}\big(\bar\varphi(\Pi)\big)\;\le\;\varepsilon^\ast(\Pi)\;\le\;c_\varphi\,\bar\varphi(\Pi),\qquad c_\varphi=\sup_{\eta\in(0,1/2]}\frac{\eta}{\varphi(\eta)}.
+$$
+The interval is the *calibrated gap measure*: a certified range for the achievable floor, computable from the induced partition before any classifier is trained.
+
+**The conceptual frame.** WL feasibility is the *decision* problem; the bracket is its *gap* version, and (§7) it is locally checkable. This is, in spirit, the relationship a PCP bears to satisfiability [Arora–Safra; Arora et al.; Dinur], with the caveat (§8) that we have the locally-checkable half but not yet a gap-amplification theorem, so we use the PCP framing as an analogy and not a claim.
+
+### 1.1 What is new, and what is not
+
+We separate borrowed foundations from contributions deliberately, because the foundations are classical and over-claiming them would be wrong.
+
+*Not new (recalled and reformulated in §3, credited in §1.2).* The correspondence between a concave generalized entropy and the Bayes risk [Savage; DeGroot; Grünwald–Dawid]; the monotonicity of the Bayes risk under more informative experiments [Blackwell; Le Cam]; and the surrogate-calibration phenomenon that the $0$-$1$ loss is uniquely self-calibrated while smooth surrogates incur a transform gap [Bartlett–Jordan–McAuliffe; Zhang; Reid–Williamson]. Our Theorem 1 (refinement-monotone $\Leftrightarrow$ concave) is the refinement-lattice form of the first two; our Theorem 2 (the Bayes risk is the unique exact-bracket score) and Corollary 3 (smoothness forces slack) are the partition-bracket form of the third.
+
+*New (the contributions of this paper).*
+1. **The transposition of calibration from the optimization axis to the resolution axis.** Surrogate-calibration theory controls the *excess risk of a learned predictor*; we use the same machinery to control the *achievable floor as a function of the resolution* — the partition (σ-algebra) the model can access — over the refinement lattice. This expressivity reading, and the lattice structure, are not in the surrogate-loss literature.
+2. **The graph-neural-network consequences:** the calibrated gap-test for WL feasibility (§5); the GIN aggregator hierarchy sum $\succ$ mean $\succ$ max as a one-line refinement-chain corollary (Corollary 4); and the cross-architecture characterization of depth-monotonicity (Theorem 5), with over-smoothing identified as the floor increase of contractive architectures and residual networks explained as monotone-by-construction.
+3. **A two-query local test** for the floor (Proposition 6, Corollary 7) whose *label* complexity is independent of graph size.
+
+### 1.2 Relation to prior work (the audit)
+
+The objects we use are classical, and we state the relationship precisely so the contribution is not mistaken.
+
+*Generalized entropy and Bayes risk.* For a proper loss, the conditional Bayes risk $H(\eta)=\inf_a\mathbb E_{Y\sim\mathrm{Bern}(\eta)}\,\ell(Y,a)$ is concave, and the Bayes risk of a partition is $\sum_i p_i H(\eta_i)$ [Savage 1971; DeGroot 1962; Grünwald–Dawid 2004]. Our "score functional" $\varphi$ *is* such an $H$, and our "partition functional" $\bar\varphi(\Pi)$ *is* the partition-restricted Bayes risk for the matched loss. These are not new objects.
+
+*Comparison of experiments.* That a more informative experiment (a refinement) cannot increase the Bayes risk, for every loss, is Blackwell's theorem [Blackwell 1953; Le Cam]. Theorem 1's monotonicity direction is this fact on the refinement lattice; its converse (monotone $\Rightarrow$ concave) is an elementary consequence of the definition of concavity via binary splits.
+
+*Surrogate calibration.* For a surrogate margin loss, Bartlett, Jordan, and McAuliffe [2006] (and Zhang [2004]) relate excess $0$-$1$ risk to excess surrogate risk through the $\psi$-transform, $\psi(R-R^\ast)\le R_\varphi-R_\varphi^\ast$, where $\psi$ is the convexification of $H^-(\eta)-H(\eta)$; the $0$-$1$ loss gives the identity $\psi$, and smooth surrogates give a strictly convex $\psi$. Our Theorem 2 — the bracket is exact only for the tent (the $0$-$1$ Bayes risk) — is the partition-bracket counterpart of "$\psi$ is the identity only for the $0$-$1$ loss," and Corollary 3 is the counterpart of "smooth surrogates have $\psi\ne\mathrm{id}$." Two formal differences are worth noting: BJM bound *excess* risk of a *predictor* (the optimization axis), whereas we bound the *absolute* Bayes risk of a *partition* (the resolution axis); and our bound is two-sided (calibration via $c_\varphi$ and its converse via $\varphi^{-1}$) where the $\psi$-transform is one-sided. We do not claim Theorem 2 as a new decision-theoretic fact; we claim the resolution-level transposition and the GNN consequences.
+
+*Reid–Williamson [2011]* unify scoring rules, divergences, and binary-experiment risk and are the closest source of the analytic machinery; we build on their viewpoint.
+
+---
+
+## 2. Preliminaries
+
+Let $(\mathcal X,\mathcal F,\mathbb P)$ be a probability space and $f:\mathcal X\to\{0,1\}$ measurable. A **partition** $\Pi=\{S_1,\dots,S_m\}$ is finite and measurable, with masses $p_i=\mathbb P(S_i)$ and rates $\eta_i=\mathbb P(f=1\mid S_i)$. $\Pi'$ **refines** $\Pi$ ($\Pi'\succeq\Pi$) if each cell of $\Pi'$ lies in a cell of $\Pi$. The **partition-restricted Bayes risk** is $\varepsilon^\ast(\Pi)=\sum_i p_i\min(\eta_i,1-\eta_i)$, and for $\varphi:[0,1]\to\mathbb R$ the **partition functional** is $\bar\varphi(\Pi)=\sum_i p_i\varphi(\eta_i)$.
+
+A **normalized score** is concave, continuous, symmetric ($\varphi(\eta)=\varphi(1-\eta)$), vanishing at $\{0,1\}$, normalized by $\varphi(\tfrac12)=1$, and strictly increasing on $[0,\tfrac12]$ (so $\varphi^{-1}:[0,1]\to[0,\tfrac12]$ exists). Running members: Shannon entropy and the rescaled variance $4\eta(1-\eta)$. The **tent** $T(\eta)=2\min(\eta,1-\eta)$ is the normalized $0$-$1$ Bayes risk.
+
+**The induced partition (operational definition).** WL refinement produces *discrete* colours, so the WL-colour partition $\Pi_{\mathrm{WL}}$ is exact and needs no quantization. A trained GNN produces *continuous* embeddings $h:V\to\mathbb R^d$, which do not induce a finite partition directly; we therefore fix a nested dyadic family of grids of side $\varepsilon>0$ and define the **$\varepsilon$-resolution partition** $\Pi_\varepsilon$ by assigning each node to its grid cell (equivalently, to the nearest point of a fixed $\varepsilon$-net), with cells the preimages. Then $\Pi_\varepsilon$ is a genuine partition, it is monotone — coarser as $\varepsilon$ grows — and $\Pi_{\mathrm{WL}}$ is the $\varepsilon\to0$ limit on discrete colours. The bracket is reported as a function of $\varepsilon$; by Theorem 1 the floor is non-decreasing in $\varepsilon$, so qualitative conclusions are independent of the particular grid. All depth statements (§5–§6) fix $\varepsilon$ and vary depth.
+
+The role of the graph neural network is solely that it *produces* the partition (via $\Pi_{\mathrm{WL}}$ or $\Pi_\varepsilon$); §3 is about partitions and is indifferent to their origin.
+
+---
+
+## 3. Calibration on the refinement lattice
+
+We recall the two facts we need in the partition-lattice form, with proofs for self-containedness, and credit them as in §1.2.
+
+### 3.1 Refinement-monotonicity is concavity
+
+**Theorem 1.** *For continuous $\varphi:[0,1]\to\mathbb R$, the following are equivalent: (i) $\bar\varphi$ is monotone, $\Pi'\succeq\Pi\Rightarrow\bar\varphi(\Pi')\le\bar\varphi(\Pi)$, over all finite measurable partitions and labels; (ii) $\bar\varphi$ is non-increasing under every binary split of a cell; (iii) $\varphi$ is concave.*
+
+**Proof.** $(i)\Rightarrow(ii)$ is immediate. $(iii)\Rightarrow(i)$: refining $S_i$ into subcells with conditional weights $w_{ik}=p_{ik}/p_i$ and rates $\eta_{ik}$ gives $\eta_i=\sum_k w_{ik}\eta_{ik}$ (tower property), and concavity gives $\varphi(\eta_i)\ge\sum_k w_{ik}\varphi(\eta_{ik})$; multiply by $p_i$ and sum. $(ii)\Rightarrow(iii)$: for $a,b\in[0,1],\lambda\in[0,1]$ set $\eta=\lambda a+(1-\lambda)b$; on an atomless space, realize a cell of rate $\eta$ split into subcells of weights $\lambda,1-\lambda$ and rates $a,b$ (place conditional $f{=}1$ mass $\lambda a$ and $f{=}0$ mass $\lambda(1-a)$ in the first), and binary monotonicity reads $\varphi(\lambda a+(1-\lambda)b)\ge\lambda\varphi(a)+(1-\lambda)\varphi(b)$, i.e. concavity; on a general space the realizable splits give a dense set of weights and continuity completes it. $\qquad\blacksquare$
+
+This is Blackwell's ordering [Blackwell 1953] on the refinement lattice together with its elementary converse; we use it to fix the class (concave scores) within which calibration operates.
+
+### 3.2 The $0$-$1$ Bayes risk is the unique exact score
+
+For a normalized score, Theorem 1 yields the bracket of §1; call it **exact** if its endpoints coincide for every partition.
+
+**Theorem 2.** *A normalized score $\varphi$ has an exact bracket if and only if $\varphi=T$.* 
+
+**Proof.** For $T$: $\varphi^{-1}(t)=t/2$, $c_T=\tfrac12$, and both endpoints equal $\tfrac12\bar T(\Pi)=\varepsilon^\ast(\Pi)$. Conversely, exactness forces $\varepsilon^\ast(\Pi)=G(\bar\varphi(\Pi))$ for some $G$; single-cell partitions give $G=\varphi^{-1}$; two-cell partitions give, with $u=\varphi(\eta_1),v=\varphi(\eta_2)$,
+$$
+p_1\varphi^{-1}(u)+p_2\varphi^{-1}(v)=\varphi^{-1}(p_1u+p_2v)\quad\text{for all }u,v,\ p_1+p_2=1,
+$$
+so $\varphi^{-1}$ is affine; with $\varphi^{-1}(0)=0$ this gives $\varphi^{-1}(t)=t/2$, i.e. $\varphi=T$. $\qquad\blacksquare$
+
+**Remark (relation to the $\psi$-transform).** Exactness of the bracket is the resolution-level counterpart of the $\psi$-transform being the identity, which [BJM 2006] holds for the $0$-$1$ loss. The tent is concave but not strictly so and has a corner at $\eta=\tfrac12$ — the locus where the Bayes rule flips its vote — and that corner is the source of the gap below.
+
+**Corollary 3 (smoothness forces slack).** *If a normalized score is strictly concave on a subinterval of $(0,\tfrac12)$ — in particular any differentiable score with $\varphi''<0$, e.g. Shannon entropy or rescaled variance — then the bracket is strict on some partition; no differentiable concave score is exact.* (By Theorem 2 only $T$, nowhere strictly concave, is exact; a two-cell partition with rates in the strict region makes Jensen strict.)
+
+The reading: one uses a *smooth* surrogate because applications need differentiability (a trainable objective, a well-defined inverse, curvature away from the corner); the moment smoothness is demanded, exactness is lost, by the same phenomenon that makes the $\psi$-transform nontrivial for smooth surrogates. The bracket gap is the resolution-level image of that transform gap, and the variance member gives a tighter upper bound than entropy by the pointwise domination $4\eta(1-\eta)\le H(\eta)$.
+
+---
+
+## 4. (merged into §1.2)
+
+---
+
+## 5. Expressivity as a calibrated gap test
+
+WL feasibility — the decision verdict — is the *boundary* of the measure: $\varepsilon^\ast(\Pi)$ is bounded away from the trivial rate exactly when the WL partition fails to separate a label-distinguishing pair. The bracket is the *interior*, and §7 makes it locally checkable. This is the calibrated, locally checkable gap version of the WL test.
+
+The aggregator hierarchy of [Xu et al.] is then a corollary of Theorem 1. Sum is injective and induces the finest $\Pi_{\mathrm{sum}}$; mean induces the same-distribution coarsening $\Pi_{\mathrm{mean}}$; max the same-support coarsening $\Pi_{\mathrm{max}}$, forming a refinement chain.
+
+**Corollary 4 (aggregator floor ladder).** *For every concave score and task, $\varepsilon^\ast(\Pi_{\mathrm{sum}})\le\varepsilon^\ast(\Pi_{\mathrm{mean}})\le\varepsilon^\ast(\Pi_{\mathrm{max}})$.*
+
+**Caveat (floor, not achieved — applies here especially).** Corollary 4 orders *achievable floors*. It does **not** predict trained-accuracy ordering, and the two can diverge sharply: on homophilous node tasks mean/GCN frequently *outperforms* sum despite the higher floor, because mean is a better inductive bias and optimizes more stably. The ladder says sum *can* in principle reach a lower error at this resolution, not that a trained sum-GNN *will*. We make this distinction loudly because the naive reading "Corollary 4 predicts sum-GNNs are most accurate" is false and is not what the theorem says.
+
+---
+
+## 6. Depth and architecture
+
+Theorem 1's monotonicity is over the refinement *lattice* and is unconditional. Monotonicity in network *depth* is a separate, dynamical question and is not universal. Fix a resolution $\varepsilon$; let $\Pi_\varepsilon^{(L)}$ be the $\varepsilon$-resolution partition of depth-$L$ embeddings.
+
+**Theorem 5 (depth-monotonicity).** *The realized floor $\varepsilon^\ast(\Pi_\varepsilon^{(L)})$ is non-increasing in $L$ if and only if $(\Pi_\varepsilon^{(L)})_L$ is a refinement chain.* (Theorem 1 along the depth sequence.)
+
+The criterion sorts the architectures. **Injective** aggregation (GIN) never merges and the WL step splits, so $\Pi^{(L+1)}\succeq\Pi^{(L)}$ until WL-stability and the floor falls. **Contractive** aggregation (GCN, mean, symmetric-normalized) acts by an operator whose non-constant spectrum has norm below $1$; the informative component contracts at rate $\lambda_2^{\,L}$ ($\lambda_2$ the second eigenvalue magnitude, $1-\lambda_2$ the spectral gap), so at fixed resolution $\varepsilon$ distinct embeddings fall into the same grid cell past a critical depth — $\Pi_\varepsilon^{(L)}$ coarsens and the floor *rises*. This is over-smoothing, identified as the failure of depth-monotonicity, with the spectral gap setting its onset; we state the qualitative coarsening here and flag the quantitative rate (the dependence of the number of $\varepsilon$-distinguishable cells on $\lambda_2^L$) as an open problem (§8). **Join-type residual** architectures (jumping-knowledge, GCNII) carry forward earlier representations, so two nodes are separated iff some layer separated them and $\Pi_\varepsilon^{(L)}=\bigvee_{\ell\le L}\Pi_\varepsilon^{(\ell)}$ is monotone by construction — explaining why the standard remedy for over-smoothing works. **Attention** (GAT) refines if attention sharpens and contracts if it uniformizes; its regime is data-dependent and measurable by the bracket.
+
+The honest framing separates the **WL ceiling** (always refines monotonically; the in-principle floor is depth-monotone for every architecture) from the **realized floor** (architecture-dependent), with their difference the over-smoothing penalty. This yields a three-axis classification — lattice position, depth dynamics, hard/soft assignment — under which GIN, GCN, GraphSAGE, GAT, residual networks, and graph transformers are distinct coordinate choices measured by the same machinery.
+
+---
+
+## 7. The measure is operational
+
+The variance member is locally testable because its score is a pairwise disagreement probability.
+
+**Proposition 6 (two-query identity).** *Let $X$ be uniform on the nodes and $X'$ uniform on the cell $\Pi(X)$. Then $p_{\mathrm{dis}}:=\mathbb P[f(X)\ne f(X')]=2\,\mathbb E[\mathrm{Var}(f\mid\Pi)]$, and the variance bracket reads in this one observable:*
+$$
+\tfrac12\big(1-\sqrt{1-2p_{\mathrm{dis}}}\big)\;\le\;\varepsilon^\ast(\Pi)\;\le\;p_{\mathrm{dis}}.
+$$
+
+**Proof.** Conditioned on cell $i$, two independent draws disagree with probability $2\eta_i(1-\eta_i)$; average over $i$, and substitute into the variance bracket whose upper endpoint is $2\bar\varphi_{\mathrm{var}}=p_{\mathrm{dis}}$. $\qquad\blacksquare$
+
+The probability that two co-cell nodes disagree on the label is *exactly* an upper bound on the achievable floor, and one measured number fixes the whole bracket.
+
+**Corollary 7 (label complexity).** *$p_{\mathrm{dis}}$ is estimable to $\pm\varepsilon$ at confidence $1-\delta$ from $m=\lceil\ln(2/\delta)/2\varepsilon^2\rceil$ same-cell pairs (Hoeffding), independent of the number of nodes.*
+
+**Honest cost accounting.** The win is in *label* complexity, and we state the total cost precisely. Computing the WL colouring of the graph is $O(L|E|)$ (one unavoidable linear pass — it is just running WL); bucketing nodes by colour to enable same-cell sampling is a one-time $O(n)$ step; thereafter each of the $m=O(\varepsilon^{-2})$ pairs costs $O(1)$ label queries. So the test queries $O(\varepsilon^{-2})$ *labels* — independent of $n$, the relevant saving when labels are the expensive resource (the global plug-in queries all $n$) — but it is *not* sublinear in total work once the linear WL pass and bucketing are counted. We claim only the label-complexity saving, and the local-test reading (a property test for "$\varepsilon^\ast\le\alpha$", complete because low floor gives low disagreement, sound because $p_{\mathrm{dis}}$ upper-bounds the floor) holds with that accounting.
+
+**The computational picture (corrected).** For a *given* partition the bracket is $O(n)$, and since the WL colouring is polynomial, the deterministic bracket is **polynomial-time**. Hardness arises only for the *lossy/soft-kernel* variant, in which independent message-survival makes the partition random and the expected bracket a sum over exponentially many outcomes: this contains, as a special case, the two-terminal network-reliability probability, which is $\#$P-complete [Provan–Ball 1983; Valiant], so exact computation of the lossy bracket is $\#$P-hard. On **bounded-treewidth** graphs the lossy bracket is computable exactly in $O(n\,k^{w+1})$ by the junction-tree algorithm [Lauritzen–Spiegelhalter 1988; Pearl 1988; Arnborg–Lagergren–Seese for the bounded-treewidth case], with Provan–Ball's series-parallel ($w\le2$) reliability result the special instance; this covers the low-treewidth molecular graphs on which GNNs are routinely benchmarked. On **expander** graphs the deterministic floor's stability is governed by the spectral gap rather than the maximum degree (so the over-smoothing onset is $\lambda_2^L$), and the local test runs in $O(\varepsilon^{-2})$ labels; we note that fast mixing *suggests* a randomized approximation scheme for the lossy variant via a Glauber-type chain on the survival coins but do **not** claim one, as we have not exhibited the chain or proved its mixing.
+
+---
+
+## 8. Discussion, scope, and open problems
+
+We have studied the achievable-error floor of GNN-induced partitions as a calibrated gap measure, transposing classical calibration from the optimization axis to the resolution axis (§3), deriving the aggregator ladder and a cross-architecture depth characterization (§5–§6), and giving a local test (§7). We are explicit about what this is: a population, optimal-classifier floor for *binary* tasks, not a theory of trained-GNN performance.
+
+**Scope and honest limitations.** The measure is the achievable floor, not achieved error; the gap between them (optimization, finite data, inductive bias) is outside our scope, and the aggregator floor ladder accordingly need not match trained-accuracy ordering (§5). The setting is binary; the multiclass and soft-architecture reach depends on an open problem below. Experiments — the empirical tests of Corollary 4, of the over-smoothing floor-rise (Theorem 5), and of the local test (Proposition 6), on standard node, graph, and heterophilous benchmarks — are deferred to a companion empirical paper and are necessary before any graph-ML claim is final.
+
+**Open problem 1 (the simplex rigidity — the route to soft architectures).** The hard-partition theory is the injective, $\{0,1\}$-vertex corner. Soft and attention-based architectures (GCN at the distribution, GAT, differentiable pooling, graph transformers) produce *simplex-valued* assignments. Theorem 1 transfers to the simplex unchanged; whether Theorem 2 does is open — we conjecture the multiclass Bayes risk $1-\max_c\eta_c$ is the unique exact functional there, with the affine-equality argument redone on simplex-valued arguments. Establishing it would extend the entire development to multiclass tasks and to the architectures the field now uses.
+
+**Open problem 2 (quantitative over-smoothing).** Make §6 precise: prove the dependence of the number of $\varepsilon$-distinguishable cells of $\Pi_\varepsilon^{(L)}$ — hence the floor increase — on the spectral gap $\lambda_2^L$, turning the qualitative coarsening statement into a theorem.
+
+**Open problem 3 (gap amplification).** Monotonicity orders the aggregator floors (Corollary 4) but not the size of the gap $\Delta(G)=\varepsilon^\ast(\Pi_{\mathrm{mean}})-\varepsilon^\ast(\Pi_{\mathrm{sum}})$. Is there a graph operation under which a small positive gap is driven to a constant while $\varepsilon^\ast(\Pi_{\mathrm{sum}})$ is preserved? An affirmative answer would be a hardness-of-approximation statement for expressivity and would earn the PCP framing, which until then we use only as an analogy. We caution that the standard amplification primitive (the zig-zag/replacement product) is defined for regular graphs and may not act on the labeled, irregular aggregator-gap quantity as-is; identifying the correct operation is part of the problem. The tractable companion question — how $\Delta$ evolves with depth under the spectral gap (compounding for refining architectures, collapsing at $\lambda_2^L$ for contractive ones) — is the immediate next target.
+
+---
+
+## References
+
+Arnborg, S., Lagergren, J., and Seese, D. *Easy problems for tree-decomposable graphs.* J. Algorithms, 1991.
+Arora, S., and Safra, S. *Probabilistic checking of proofs.* J. ACM, 1998.
+Arora, S., Lund, C., Motwani, R., Sudan, M., and Szegedy, M. *Proof verification and the hardness of approximation problems.* J. ACM, 1998.
+Bartlett, P., Jordan, M., and McAuliffe, J. *Convexity, classification, and risk bounds.* JASA, 2006.
+Blackwell, D. *Equivalent comparisons of experiments.* Ann. Math. Statist., 1953.
+DeGroot, M. *Uncertainty, information, and sequential experiments.* Ann. Math. Statist., 1962.
+Dinur, I. *The PCP theorem by gap amplification.* J. ACM, 2007.
+Grünwald, P., and Dawid, A. P. *Game theory, maximum entropy, minimum discrepancy, and robust Bayesian decision theory.* Ann. Statist., 2004.
+Hoeffding, W. *Probability inequalities for sums of bounded random variables.* JASA, 1963.
+Lauritzen, S., and Spiegelhalter, D. *Local computations with probabilities on graphical structures.* J. R. Stat. Soc. B, 1988.
+Le Cam, L. *Asymptotic Methods in Statistical Decision Theory.* Springer, 1986.
+Morris, C., et al. *Weisfeiler and Leman go neural.* AAAI, 2019.
+Pearl, J. *Probabilistic Reasoning in Intelligent Systems.* Morgan Kaufmann, 1988.
+Provan, J. S., and Ball, M. O. *The complexity of counting cuts and of computing the probability that a graph is connected.* SIAM J. Comput., 1983.
+Reid, M., and Williamson, R. *Information, divergence and risk for binary experiments.* JMLR, 2011.
+Savage, L. J. *Elicitation of personal probabilities and expectations.* JASA, 1971.
+Valiant, L. *The complexity of enumeration and reliability problems.* SIAM J. Comput., 1979.
+Xu, K., Hu, W., Leskovec, J., and Jegelka, S. *How powerful are graph neural networks?* ICLR, 2019.
+Zhang, T. *Statistical behavior and consistency of classification methods based on convex risk minimization.* Ann. Statist., 2004.
+
+---
+
+*Draft 0. Tier-0 review tasks are addressed: the novelty is audited against surrogate-loss and comparison-of-experiments theory and the framing repositioned onto the resolution-level transposition and the GNN consequences (T0.1–T0.2); the induced partition has an operational $\varepsilon$-resolution definition (T0.3); the floor-versus-achieved distinction is stated in the abstract, §1, and §5 (T0.4); and the complexity claims and local-test cost are corrected and honestly accounted (T0.5). The simplex rigidity, the quantitative over-smoothing rate, gap amplification, and all experiments remain open and are marked as such.*
