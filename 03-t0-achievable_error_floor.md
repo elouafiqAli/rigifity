@@ -130,6 +130,34 @@ The convexification is the same device as the Bartlett–Jordan–McAuliffe $\ps
 
 **Remark (implicit lower endpoint).** Unlike $\varphi^{-1}$ in the binary case, $\ell_\varphi$ is a constrained minimization of the Bayes risk over a score-level-set — computable but generally not closed-form. Characterizing $\ell_\varphi$ in closed form for entropy and Gini (the minimizer is, by symmetry, a most-concentrated distribution on the level set) is a minor technical thread; it does not affect the rigidity below.
 
+### 4.2 The rigidity theorem
+
+Call $\varphi$ **exact** if some function $G$ satisfies $\varepsilon^\ast(\Pi)=G(\bar\varphi(\Pi))$ for every finite partition. Exactness is equivalent to the bracket collapsing, $\ell_\varphi^{\ast\ast}(\bar\varphi)=c_\varphi\bar\varphi$ for all $\Pi$.
+
+**Theorem 4 (Simplex Rigidity).** *Let $(\mathcal X,\mathcal F,\mathbb P)$ be an atomless probability space (so that finite partitions of arbitrary cell mass and arbitrary conditional class distribution are realizable), and let $\varphi:\Delta^{k-1}\to\mathbb R_{\ge 0}$ be continuous and vanish at the vertices. Then $\varphi$ is exact if and only if $\varphi=\lambda R$ for some $\lambda>0$, where $R(\boldsymbol\eta)=1-\max_c\eta_c$. Moreover every exact $\varphi$ is automatically concave and permutation-symmetric. On a general (possibly non-atomless) space the conclusion holds for $\varphi$ continuous, by density of realizable splits.*
+
+**Proof.**
+
+*(If.)* If $\varphi=\lambda R$ then $\bar\varphi(\Pi)=\lambda\sum_i p_i R(\boldsymbol\eta_i)=\lambda\,\varepsilon^\ast(\Pi)$, so $\varepsilon^\ast=G(\bar\varphi)$ with $G(v)=v/\lambda$. Exact. And $\lambda R$ inherits concavity and symmetry from $R$.
+
+*(Only if.)* Suppose $\varphi$ exact, with $\varepsilon^\ast(\Pi)=G(\bar\varphi(\Pi))$.
+
+*Step 1 — single cells force $\varphi$'s level sets to refine $R$'s.* For the one-cell partition with distribution $\boldsymbol\eta$, $\varepsilon^\ast=R(\boldsymbol\eta)$ and $\bar\varphi=\varphi(\boldsymbol\eta)$, so $R(\boldsymbol\eta)=G(\varphi(\boldsymbol\eta))$ for all $\boldsymbol\eta$. **This is the operative structural constraint:** an exact $\varphi$ must be constant on $R$-level sets — $\varphi(\boldsymbol\eta)=\varphi(\boldsymbol\eta')$ implies $R(\boldsymbol\eta)=R(\boldsymbol\eta')$. Equivalently, $\varphi$'s level sets refine $R$'s, and $G$ is determined on the range of $\varphi$. The Gini and entropy counterexamples of §4.3 below are violations of this very constraint: they distinguish distributions $R$ identifies.
+
+*Step 2 — two cells force $G$ affine.* For a two-cell partition with masses $p_1,p_2$ and distributions $\boldsymbol\eta_1,\boldsymbol\eta_2$, write $u_j=\varphi(\boldsymbol\eta_j)$. Exactness and Step 1 give
+$$
+p_1 G(u_1)+p_2 G(u_2)=p_1 R(\boldsymbol\eta_1)+p_2 R(\boldsymbol\eta_2)=\varepsilon^\ast=G(\bar\varphi)=G(p_1 u_1+p_2 u_2).
+$$
+Because $\varphi$ is continuous on the connected simplex and ranges from $0$ (vertices) to $\varphi_{\max}=\varphi(\mathbf u)$, by the intermediate value theorem every value in $[0,\varphi_{\max}]$ is attained, so on the atomless space $u_1,u_2$ range independently over $[0,\varphi_{\max}]$ and $p_1\in[0,1]$ is free. Hence
+$$
+p_1 G(u_1)+p_2 G(u_2)=G(p_1 u_1+p_2 u_2)\qquad\text{for all }u_1,u_2\in[0,\varphi_{\max}],\ p_1+p_2=1.
+$$
+$G$ is bounded on $[0,\varphi_{\max}]$ (image lies in $[0,1-1/k]$, since it equals $R$ of *some* simplex point by Step 1), so this Jensen-equality identity forces $G$ affine — no measurable pathology in the Hamel-basis sense. Hence $G(v)=av+b$.
+
+*Step 3 — vertices pin the constants.* At a vertex, $\varphi(\mathbf e_c)=0$ and $R(\mathbf e_c)=0$, so $G(0)=0\Rightarrow b=0$. Then $R(\boldsymbol\eta)=a\,\varphi(\boldsymbol\eta)$ for all $\boldsymbol\eta$, i.e. $\varphi=\lambda R$ with $\lambda=1/a>0$ ($a>0$ since $R,\varphi$ are positive on the interior). Concavity and symmetry of $\varphi$ follow because $\varphi$ is a positive multiple of $R$. $\qquad\blacksquare$
+
+Two remarks worth stating. First, the *only-if* direction uses only continuity, vertex-vanishing, and realizability — **not** concavity or symmetry; those are *conclusions* about exact functionals, not hypotheses. The Bayes risk is singled out among all continuous vertex-vanishing scores, not merely among concave symmetric ones. Second, the argument is verbatim the binary proof of Theorem 2 (single cell pins $G$ on the range, two cells force affine, vertices fix the constant) transported to the simplex; the new ingredient is Step 1's level-set-refinement framing, which the binary case concealed (binary symmetry makes $\varphi$ a function of $R$ trivially, so the constraint reads as a tautology). The IVT runs over a higher-dimensional connected domain without trouble.
+
 ---
 
 ## 5. Expressivity as a calibrated gap test
