@@ -149,10 +149,21 @@ Add a one-sentence remark that on a fixed task only (a) is operative; (b) gives 
 
 ## Post-mortem fields (filled after each commit)
 
-| # | SHA | Lines changed | Verification notes |
+| # | SHA | Files | Verification notes |
 |---|---|---|---|
-| 1 | _to be filled_ | _to be filled_ | _to be filled_ |
-| … | | | |
+| 1 | `c8ea4c7` | `05`, `06` | Two new files under VCS; subsequent commits cite them by name and tag. |
+| 2 | `f556246` | `03` | Single-cell argument gives $\varphi=T$ on $[0,\tfrac12]$ + symmetry; identical conclusion to old proof. |
+| 3 | `779d533` | `03` | Chord-above-graph for normalized concave $\varphi$ forces $c_\varphi=\tfrac12$ universally; entropy / variance / tent all consistent. |
+| 4 | `e0a17f1` | `03` | Sentence parses cleanly; finite-partition restriction of §2 unaffected. |
+| 5 | `6a86ffd` | `03` | Voronoi-of-ε-net primary; coarsening-in-$\varepsilon$ stated; WL-faithful $\Pi_\varepsilon=\Pi_{\mathrm{WL}}$ below minimum separating distance. |
+| 6 | `f65b838` | `03` | Cor 4 carries "idealized aggregator" qualifier; PCP analogy re-attached to OP3 caveat. |
+| 7 | `d21be23` | `03` | Two-part iff with explicit "for every labeling" quantifier on (b); fixed-task reading restricted to (a). |
+| 8 | `a7ce551` | `03` | Three-partition treatment ($\Pi_{\mathrm{WL}}$ / $\Pi_{\mathcal A}$ / $\Pi_\varepsilon$); GIN, JK, GCN, attention each sorted by WL-faithfulness and quantization regime; over-smoothing localized at the $\Pi_{\mathcal A}\to\Pi_\varepsilon$ gap for contractive architectures. |
+| 9 | `b02a214` | `03` | Lossy paragraph removed; deterministic claim retained as polynomial-time; randomized variants deferred to companion with three references kept as pointers. |
+| 10 | `15729f6` | `03` | Normalized variance $\varphi_{\mathrm{var}}=4\eta(1-\eta)$ throughout, $c_\varphi=\tfrac12$ (per #3); upper $=p_{\mathrm{dis}}$ identical to old. |
+| 11 | `d0f175b` | `03` | OP1 split into 1a (cite `04`) and 1b (soft cells, open); scope sentence in §8 updated; OP2 now references $L^\ast(\varepsilon)$ from §6. |
+| 12 | `027ba89` | `04` | Three locations rephrased (abstract, §6 soft-arch paragraph, §7 summary); no remaining "T9"; soft-kernel claim downgraded and cross-referenced to `03` OP1b. |
+| 13 | `<this commit>` | `03`, `06` | Draft note bumped to 0.1 with full audit-closure enumeration; orphan refs (Pearl, Valiant) pruned; commitology post-mortem table populated. |
 
 ---
 
