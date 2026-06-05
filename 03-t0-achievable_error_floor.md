@@ -156,7 +156,7 @@ $$
 \tfrac12\big(1-\sqrt{1-2p_{\mathrm{dis}}}\big)\;\le\;\varepsilon^\ast(\Pi)\;\le\;p_{\mathrm{dis}}.
 $$
 
-**Proof.** Conditioned on cell $i$, two independent draws disagree with probability $2\eta_i(1-\eta_i)$; average over $i$, and substitute into the variance bracket whose upper endpoint is $2\bar\varphi_{\mathrm{var}}=p_{\mathrm{dis}}$. $\qquad\blacksquare$
+**Proof.** Conditioned on cell $i$, two independent draws disagree with probability $2\eta_i(1-\eta_i)$; averaging over cells, $p_{\mathrm{dis}}=\sum_i p_i\cdot 2\eta_i(1-\eta_i)=2\,\mathbb E[\mathrm{Var}(f\mid\Pi)]$. With the normalized variance $\varphi_{\mathrm{var}}(\eta)=4\eta(1-\eta)$ from §2, $\bar\varphi_{\mathrm{var}}=\mathbb E[4\eta(1-\eta)]=2p_{\mathrm{dis}}$. The bracket of §1 with $c_\varphi=\tfrac12$ (universal for normalized scores) reads $\varphi_{\mathrm{var}}^{-1}(2p_{\mathrm{dis}})\le\varepsilon^\ast(\Pi)\le\tfrac12\cdot 2p_{\mathrm{dis}}=p_{\mathrm{dis}}$; solving $4\eta(1-\eta)=2p_{\mathrm{dis}}$ on $[0,\tfrac12]$ gives the lower endpoint $\tfrac12(1-\sqrt{1-2p_{\mathrm{dis}}})$. $\qquad\blacksquare$
 
 The probability that two co-cell nodes disagree on the label is *exactly* an upper bound on the achievable floor, and one measured number fixes the whole bracket.
 
