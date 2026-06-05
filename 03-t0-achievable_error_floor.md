@@ -102,11 +102,11 @@ The reading: one uses a *smooth* surrogate because applications need differentia
 
 ## 5. Expressivity as a calibrated gap test
 
-WL feasibility — the decision verdict — is the *boundary* of the measure: $\varepsilon^\ast(\Pi)$ is bounded away from the trivial rate exactly when the WL partition fails to separate a label-distinguishing pair. The bracket is the *interior*, and §7 makes it locally checkable. This is the calibrated, locally checkable gap version of the WL test.
+WL feasibility — the decision verdict — is the *boundary* of the measure: $\varepsilon^\ast(\Pi)$ is bounded away from the trivial rate exactly when the WL partition fails to separate a label-distinguishing pair. The bracket is the *interior*, and §7 makes it locally checkable. This is the calibrated, locally checkable gap version of the WL test — the locally-checkable half of the PCP framing flagged in §1; gap amplification (the other half) remains the analogy and Open Problem 3 of §8.
 
 The aggregator hierarchy of [Xu et al.] is then a corollary of Theorem 1. Sum is injective and induces the finest $\Pi_{\mathrm{sum}}$; mean induces the same-distribution coarsening $\Pi_{\mathrm{mean}}$; max the same-support coarsening $\Pi_{\mathrm{max}}$, forming a refinement chain.
 
-**Corollary 4 (aggregator floor ladder).** *For every concave score and task, $\varepsilon^\ast(\Pi_{\mathrm{sum}})\le\varepsilon^\ast(\Pi_{\mathrm{mean}})\le\varepsilon^\ast(\Pi_{\mathrm{max}})$.*
+**Corollary 4 (aggregator floor ladder).** *For every concave score and task, $\varepsilon^\ast(\Pi_{\mathrm{sum}})\le\varepsilon^\ast(\Pi_{\mathrm{mean}})\le\varepsilon^\ast(\Pi_{\mathrm{max}})$, where $\Pi_{\mathrm{sum}}$, $\Pi_{\mathrm{mean}}$, $\Pi_{\mathrm{max}}$ denote the finest partitions induced by an injective-update GNN with the respective aggregator class — the information-theoretic ceiling for that class; a specific trained GNN with the same aggregator induces a partition at most as fine (and the corresponding floor bound is correspondingly looser).*
 
 **Caveat (floor, not achieved — applies here especially).** Corollary 4 orders *achievable floors*. It does **not** predict trained-accuracy ordering, and the two can diverge sharply: on homophilous node tasks mean/GCN frequently *outperforms* sum despite the higher floor, because mean is a better inductive bias and optimizes more stably. The ladder says sum *can* in principle reach a lower error at this resolution, not that a trained sum-GNN *will*. We make this distinction loudly because the naive reading "Corollary 4 predicts sum-GNNs are most accurate" is false and is not what the theorem says.
 
