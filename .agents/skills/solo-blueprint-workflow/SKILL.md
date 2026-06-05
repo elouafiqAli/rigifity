@@ -17,6 +17,37 @@ collaboration**. Solo projects need only a subset.
 
 ## Tier 1 — apply early (high ROI, low cost)
 
+### `.research/` catalog (this repo)
+
+**MANDATORY** before any research-heavy task: catalogue all external research
+under `.research/` in the repo root. This is tracked in git (unlike
+`.samples/`), because the findings shape future commits and audit decisions.
+
+Structure:
+- `.research/MANIFEST.md` — index + conventions.
+- `.research/YYYY-MM-DD-topic.md` — one file per research thread, append-only.
+- `.research/opportunities.md` — aggregator of mathlib-PR opportunities and
+  future work items.
+
+Each topic file follows a template with: **The question**, **Sources
+consulted** (MathOverflow, Lean Zulip, mathlib docs, sample-repo
+cross-references), **Findings**, **Strategic decision** (cross-referencing the
+commit/SKILL that landed it), **Open follow-ups** (`[opportunity]`-tagged for
+the aggregator).
+
+Why this matters for solo work:
+- External research informs decisions invisible to anyone reading the code
+  later (including future-you). Without a catalog, the rationale is lost.
+- The audit pass needs to verify "claim X is honest because we *checked* and
+  mathlib doesn't have Y" — that check needs to be cite-able.
+- Some research surfaces upstream PR opportunities that should be tracked
+  separately from the formalization critical path.
+
+Example: [`.research/2026-06-05-sierpinski-atomless-realizability.md`](../../../.research/2026-06-05-sierpinski-atomless-realizability.md)
+documents that mathlib4 lacks Sierpiński's theorem and we use Rémy Degenne's
+typeclass-as-hypothesis pattern instead. Without that record, a future audit
+might re-derive the same wheel.
+
 ### `Sorry/` subdirectory pattern (Rémy Degenne)
 
 Every held-back lemma lives in `<Project>/Sorry/<Topic>.lean`. The
