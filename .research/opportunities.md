@@ -102,6 +102,26 @@ the full conditional-expectation machinery. This is what `barPhi_refinement_le`'
 Phase C2 implementation will do — ~100 LoC of partition-specific Jensen
 instead of waiting for the full mathlib lemma.
 
+### 5. `FinitePartition.nonempty` field (in-repo, MEDIUM value)
+
+**Source**: [`2026-06-05-phase-c2-refinement-tower.md`](./2026-06-05-phase-c2-refinement-tower.md)
+**Why**: The current `FinitePartition` structure permits empty cells. This
+breaks the pairwise-disjointness argument that Phase C2's
+`refines_partition_biUnion` helper requires (an empty cell of `P'` would lie
+inside every cell of `P` simultaneously). Adding `nonempty : ∀ c ∈ cells, c.Nonempty`
+restricts to the mathematically standard notion of a partition.
+
+**Estimated cost**: ~15 LoC. Update `trivialPartition` to use
+`Set.univ_nonempty` (which needs `[Nonempty α]` — supplied automatically
+by `[IsProbabilityMeasure μ]` since `μ univ = 1 ≠ 0` forces `Nonempty α`).
+
+**Where it goes**: `Rigidity/Bracket.lean`, `FinitePartition` struct definition.
+
+**Decision**: defer until Phase C2 implementation begins (when the helper
+that needs it is actually being written). The change is small but propagates
+through every existing `FinitePartition.mk` use (currently only
+`trivialPartition`), so coordinate it with C2.
+
 ## Our-codebase future work
 
 ### A. Wire `SingleCellRealizable` typeclass
