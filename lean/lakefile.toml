@@ -1,0 +1,38 @@
+# Rigidity — Lean 4 + mathlib kernel for the achievable-error-floor paper.
+#
+# Phase A scaffold + Phase B1 partial. See:
+#   - ../14-harness_and_reproduction.md for the brick-DAG and phased plan
+#   - ../15-scaffold-improvements.md for the Tavily-MCP research that produced
+#     this lakefile.toml (adopted from DeepMind formal-conjectures conventions)
+#   - ../.agents/skills/wsl-lean-bridge/SKILL.md for WSL-side build invariants
+#
+# Build via WSL Debian (NTFS is too slow):
+#   wsl -d Debian -- bash -lc 'cd ~/rigidity-build && lake build'
+#
+# Toolchain pin (lean-toolchain) and mathlib pin (below) must match the
+# pre-populated mathlib cache at ~/.cache/mathlib/ — currently v4.29.1.
+
+name = "Rigidity"
+defaultTargets = ["Rigidity"]
+
+[leanOptions]
+# Pretty-prints `fun a ↦ b` instead of `fun a => b`.
+pp.unicode.fun = true
+# Treat undeclared variables as errors instead of silently introducing them.
+# Catches typos that would otherwise compile and produce confusing errors later.
+autoImplicit = false
+relaxedAutoImplicit = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.29.1"
+
+[[lean_lib]]
+name = "Rigidity"
+
+[lean_lib.leanOptions]
+# Sorry is a warning, not an error: lets `lake build` succeed while the kernel
+# targets (T1, T2, T2', P6) are still scaffolded with `sorry`. Phase E (kernel
+# done) flips this back to the default.
+warn.sorry = false
