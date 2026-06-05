@@ -74,10 +74,11 @@ noncomputable def cellMass {α : Type*} [MeasurableSpace α] (μ : Measure α)
 
 /-- Conditional rate of `f = true` given cell `c`, with the convention `0` when
     the cell has measure zero. Brick: cellRate (used by `D-eps*`, `D-bphi`).
-    Phase B target: `(μ ({x | f x = true} ∩ c)).toReal / (μ c).toReal`. -/
-noncomputable def cellRate {α : Type*} [MeasurableSpace α] (_μ : Measure α)
-    (_f : α → Bool) (_P : FinitePartition α) (_c : Set α) : ℝ := by
-  exact sorry
+    Computed as `(μ ({x | f x = true} ∩ c)).toReal / (μ c).toReal`, which
+    yields `0` when `μ c = 0` thanks to `div_zero`. -/
+noncomputable def cellRate {α : Type*} [MeasurableSpace α] (μ : Measure α)
+    (f : α → Bool) (_P : FinitePartition α) (c : Set α) : ℝ :=
+  (μ ({x | f x = true} ∩ c)).toReal / (μ c).toReal
 
 /-- Partition-restricted Bayes risk: `ε*(P) = Σᵢ pᵢ · min(ηᵢ, 1 - ηᵢ)`.
     Brick: `D-eps*`. Manuscript: §2 ¶1. -/
@@ -254,12 +255,63 @@ theorem cPhi_eq_half_of_normalized (φ : ℝ → ℝ) (h : NormalizedScore φ) :
       _ ≤ sSup ((fun η : ℝ => η / φ η) '' Set.Ioc (0:ℝ) (1/2)) :=
             le_csSup h_bdd ⟨(1/2 : ℝ), h_half_mem, rfl⟩
 
+/-! ## Bracket helpers (Phase B1 foundations) -/
+
+/-- Cell rate is always non-negative. Proof: ratio of two `ENNReal.toReal`s
+    is non-negative. -/
+@[rigidity_proved, rigidity_AMS_28]
+theorem cellRate_nonneg {α : Type*} [MeasurableSpace α] (μ : Measure α)
+    (f : α → Bool) (P : FinitePartition α) (c : Set α) :
+    0 ≤ cellRate μ f P c := by
+  unfold cellRate
+  exact div_nonneg ENNReal.toReal_nonneg ENNReal.toReal_nonneg
+
+/-- Cell rate is at most one. Proof: numerator measure is `≤ μ c` (intersection
+    is a subset), and `(μ ({x | f x = true} ∩ c)).toReal ≤ (μ c).toReal` holds
+    whenever `μ c < ∞` (`ENNReal.toReal_mono`); the edge cases `μ c = 0` and
+    `μ c = ∞` both yield `cellRate = 0 ≤ 1` via `div_zero` (since
+    `(∞).toReal = 0` by convention). -/
+@[rigidity_proved, rigidity_AMS_28]
+theorem cellRate_le_one {α : Type*} [MeasurableSpace α] (μ : Measure α)
+    (f : α → Bool) (P : FinitePartition α) (c : Set α) :
+    cellRate μ f P c ≤ 1 := by
+  unfold cellRate
+  -- Case split on whether (μ c).toReal is zero.
+  by_cases h_zero : (μ c).toReal = 0
+  · -- Denominator is zero ⇒ cellRate = 0 ≤ 1.
+    simp [h_zero]
+  · -- Denominator positive: numerator ≤ denominator gives cellRate ≤ 1.
+    have h_μc_pos : (0 : ℝ) < (μ c).toReal :=
+      lt_of_le_of_ne ENNReal.toReal_nonneg (Ne.symm h_zero)
+    rw [div_le_one h_μc_pos]
+    -- (μ c).toReal ≠ 0 ⇒ μ c ≠ ∞ (and ≠ 0).
+    have h_μc_finite : μ c ≠ ⊤ := by
+      intro h
+      apply h_zero
+      simp [h]
+    -- Apply ENNReal.toReal_mono.
+    exact ENNReal.toReal_mono h_μc_finite (measure_mono Set.inter_subset_right)
+
 /-- **Binary bracket — lower endpoint** (inverse-free form).
     For a normalized concave `φ`, with cell rates `ηᵢ` and `qᵢ := min(ηᵢ, 1-ηᵢ)`,
     symmetry gives `φ(ηᵢ) = φ(qᵢ)` and Jensen for concave `φ` on `[0, 1/2]`
     gives `Σ pᵢ φ(qᵢ) ≤ φ(Σ pᵢ qᵢ)`, i.e. `bar φ(P) ≤ φ(ε*(P))`.
     Applying `φ⁻¹` (which exists by `StrictMonoOn`) recovers `φ⁻¹(bar φ) ≤ ε*`.
-    Brick: `T-bracket` (lower half). -/
+    Brick: `T-bracket` (lower half).
+
+    Proof structure (Tao step 2a skeleton):
+    1. `cellRate ∈ [0, 1]` from `cellRate_nonneg` + `cellRate_le_one`.
+    2. `qᵢ := min(ηᵢ, 1-ηᵢ) ∈ [0, 1/2]` purely from (1).
+    3. `φ(ηᵢ) = φ(qᵢ)` via symmetry of normalized score (case-split ηᵢ ≤ 1/2).
+    4. Hence `barPhi = Σ pᵢ φ(qᵢ)`.
+    5. Apply `ConcaveOn.le_map_sum` (concavity of φ on [0, 1/2], weights pᵢ,
+       points qᵢ ∈ [0, 1/2], `Σ pᵢ = 1` via `IsProbabilityMeasure μ` +
+       `P.covers` + `P.disjoint`).
+    6. Yields `Σ pᵢ φ(qᵢ) ≤ φ(Σ pᵢ qᵢ) = φ(epsilonStar)`.
+
+    Requires `[IsProbabilityMeasure μ]` (not yet added to signature — will be
+    added when Phase B2 begins, alongside `Finset.sum` / `Measure` plumbing
+    for proving `Σ cellMass = 1`). -/
 @[rigidity_scaffold, rigidity_AMS_60, rigidity_AMS_62]
 theorem bracket_lower {α : Type*} [MeasurableSpace α] (μ : Measure α)
     (φ : ℝ → ℝ) (_h : NormalizedScore φ)
@@ -268,7 +320,15 @@ theorem bracket_lower {α : Type*} [MeasurableSpace α] (μ : Measure α)
 
 /-- **Binary bracket — upper endpoint** `ε*(P) ≤ c_φ · bar φ(P)`.
     Via the pointwise inequality `η ≤ c_φ · φ(η)` on `(0, 1/2]`, aggregated.
-    Brick: `T-bracket` (upper half). -/
+    Brick: `T-bracket` (upper half).
+
+    Proof structure (Tao step 2a skeleton):
+    1. Each qᵢ := min(ηᵢ, 1-ηᵢ) ∈ [0, 1/2] from `cellRate ∈ [0, 1]`.
+    2. Pointwise: `qᵢ ≤ cPhi φ * φ(qᵢ)` from `cPhi φ = 1/2` (proved) and
+       the chord lemma `2qᵢ ≤ φ(qᵢ)`, giving `qᵢ / φ(qᵢ) ≤ 1/2`.
+    3. Multiply by `pᵢ ≥ 0` and sum over cells:
+       `Σ pᵢ qᵢ ≤ Σ pᵢ * cPhi φ * φ(qᵢ) = cPhi φ * Σ pᵢ * φ(qᵢ) = cPhi φ * barPhi`.
+    4. LHS is `epsilonStar`; symmetry of φ converts `φ(ηᵢ)` to `φ(qᵢ)` in barPhi. -/
 @[rigidity_scaffold, rigidity_AMS_60, rigidity_AMS_62]
 theorem bracket_upper {α : Type*} [MeasurableSpace α] (μ : Measure α)
     (φ : ℝ → ℝ) (_h : NormalizedScore φ)

@@ -271,3 +271,5 @@ have h_id : ConcaveOn ℝ (Set.Icc (0:ℝ) 1) (fun η : ℝ => η) :=
 | `tent_normalized` | `Rigidity/Bracket.lean` | `T(η) = 2 min(η, 1-η)` is a `NormalizedScore` |
 | `two_eta_le_of_normalized` | `Rigidity/Bracket.lean` | Chord lemma: `2η ≤ φ(η)` on `[0, 1/2]` for any normalized `φ` |
 | `cPhi_eq_half_of_normalized` | `Rigidity/Bracket.lean` | Universal `c_φ = 1/2` for normalized scores (uses `sSup ∘ image` form) |
+| `cellRate_nonneg` | `Rigidity/Bracket.lean` | `0 ≤ cellRate μ f P c` — ratio of `ENNReal.toReal`s |
+| `cellRate_le_one` | `Rigidity/Bracket.lean` | `cellRate μ f P c ≤ 1` — handles `μ c = ∞` edge case via `toReal_mono` |
