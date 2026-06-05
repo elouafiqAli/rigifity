@@ -174,6 +174,14 @@ Make the slack explicit on a partition. With $p_1=p_2=\tfrac12$ over these two c
 
 **The level-set characterization.** Theorem 2′ says: $R$ is the *unique* (up to scalar) continuous vertex-vanishing functional whose level sets coincide with the Bayes-risk level sets; every smooth score has strictly finer level sets, and the surplus is the slack. The framing carries operational guidance for surrogate choice: among smooth scores, the one whose pointwise ratio to $R$ is smallest gives the tighter upper instrument. Gini is the natural multiclass workhorse — $c_{\varphi_G}=1$ and the clean pointwise domination $R\le\varphi_G$.
 
+### 4.4 Binary consistency and refinement-monotonicity transfer
+
+For $k=2$, $R(\eta_1,\eta_2)=1-\max(\eta,1-\eta)=\min(\eta,1-\eta)$, so the normalized tent $T=2\min(\eta,1-\eta)=2R$ is the exact functional with $\lambda=2$ (fixing $\varphi(\tfrac12)=1$), recovering Theorem 2 exactly. The level-set floor $\ell_\varphi$ collapses to $\varphi^{-1}$ (binary symmetry makes $\varphi$ a function of $R$, so each level set is a single $R$-value), its convex envelope is itself, and the lower endpoint is $\varphi^{-1}(\bar\varphi)$ — the binary bracket. The simplex result contains the binary one as the $k=2$ face.
+
+**Theorem 1′ (refinement-monotonicity transfer).** *Theorem 1 holds verbatim on the simplex: for continuous $\varphi:\Delta^{k-1}\to\mathbb R$, $\bar\varphi$ is monotone under partition refinement ($\Pi'\succeq\Pi\Rightarrow\bar\varphi(\Pi')\le\bar\varphi(\Pi)$) over all finite partitions and labels if and only if $\varphi$ is concave on $\Delta^{k-1}$, and equivalently if and only if $\bar\varphi$ is non-increasing under every binary split of a cell. The proof is the same tower-property + Jensen argument of Theorem 1; the simplex playing the role of $[0,1]$ does not change the structure, since concavity and the tower property are dimension-agnostic for the cell-conditional class distribution $\boldsymbol\eta_i$.* $\qquad\blacksquare$
+
+This closes the structural loop: the multiclass bracket of §4.1 and the rigidity of §4.2 sit on the same monotonicity scaffolding as the binary development, with $R$ singled out among continuous vertex-vanishing scores by Theorem 2′ and the slack-of-smoothness governed by Corollary 3′.
+
 ---
 
 ## 5. Expressivity as a calibrated gap test
