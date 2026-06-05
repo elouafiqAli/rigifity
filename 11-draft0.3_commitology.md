@@ -23,19 +23,18 @@ Then bump and finalize.
 
 | # | Subject | Closes | Files | State | SHA |
 |---|---|---|---|---|---|
-| 1 | `chore(plan): track Draft 0.3 commitology as 11` | — | `11` | — | — |
-| 2 | `fix(§6): re-install Theorem 5 statement and proof; restore C-2 closure` | C-1 | `03` | — | — |
-| 3 | `fix(§4.2): correct "verbatim" framing of simplex proof structure` | M-1 | `03` | — | — |
-| 4 | `fix(§6): cite over-smoothing literature for δ^L bound` | M-2 | `03` | — | — |
-| 5 | `fix(notation): disambiguate δ scope; rename Cor 7 ε → α` | m-1, m-2 | `03` | — | — |
-| 6 | `fix(§6): drop "Lipschitz/quantization bridge" jargon` | m-3 | `03` | — | — |
-| 7 | `fix(refs): move Pires into alphabetical position` | m-4 | `03` | — | — |
-| 8 | `fix(§1.1): note Theorem 5 + 1′ multiclass scope` | m-5 | `03` | — | — |
-| 9 | `fix(§6): disambiguate A^JK vs A^base in join expression` | m-6 | `03` | — | — |
-| 10 | `docs: bump 03 → Draft 0.3; enumerate closed audit items` | — | `03` | — | — |
-| 11 | `chore(plan): finalize 11 commitology with SHAs` | — | `11` | — | — |
+| 1 | `chore(plan): track Draft 0.3 commitology as 11` | — | `11` | done | `feeb4e3` |
+| 2 | `fix(§6): re-install Theorem 5 statement and proof; restore C-2 closure` | **C-1**, m-3, m-5 (§6 part) | `03` | done | `5df2299` |
+| 3 | `fix(§4.2): correct "verbatim" framing of simplex proof structure` | **M-1** | `03` | done | `c2ed38f` |
+| 4 | `fix(§6+refs): cite over-smoothing literature for δ^L bound` | **M-2** | `03` | done | `9f93828` |
+| 5 | `fix(notation): disambiguate δ_WL vs δ^L; rename Cor 7 ε → α` | m-1, m-2 | `03` | done | `c5ad2d1` |
+| 6 | `fix(refs): move Pires into alphabetical position` | m-4 | `03` | done | `612a287` |
+| 7 | `fix(§1.1): note Theorem 5 + 1′ multiclass scope in item 2` | m-5 (§1.1 residual) | `03` | done | `361383c` |
+| 8 | `fix(§6): disambiguate A^JK vs A^base in join-residual partition expression` | m-6 | `03` | done | `370f09e` |
+| 9 | `docs: bump 03 from Draft 0.2 to Draft 0.3 with full audit-closure enumeration` | — | `03` | done | `c6dafd8` |
+| 10 | `chore(plan): finalize 11 commitology with SHAs` | — | `11` | this commit | — |
 
-(SHA column backfilled by commit 11.)
+**Plan-vs-execution delta.** The plan called for 11 commits; execution required 10. Two consolidations against the plan: (i) the C-1 commit (Theorem 5 re-install) naturally swept the §6 opener and so absorbed m-3 (Lipschitz/quantization bridge jargon) and the §6-side of m-5 (multiclass scope remark), eliminating the planned standalone m-3 commit; (ii) m-5's §1.1 residual fix happened to fall between m-4 (Pires) and m-6 (JK disambiguation), and is preserved as its own small commit. Net: 10 commits versus 11 planned. The primed-extension convention established in Draft 0.2 was used unchanged. No commits needed self-audit corrections this round.
 
 ---
 
@@ -76,8 +75,16 @@ A(1·S) ──► B(2·M) ──┬──► C(3·S) ──► D(4·S) ──►
 
 | # | SHA | Files | Verification notes |
 |---|---|---|---|
-| 1 | _to be filled_ | `11` | Plan under VCS; subsequent commits cite by SHA. |
-| … | | | |
+| 1 | `feeb4e3` | `11` | Plan under VCS; cited by subsequent commits. |
+| 2 | `5df2299` | `03` | Theorem 5 two-direction iff (with for-every-labeling quantifier on (b)) re-installed at top of §6 from `d21be23` archaeology; operational-reading remark added with multiclass-via-Theorem 1′ note; §6 opener Voronoi comparison replaces the 'Lipschitz/quantization bridge' jargon. Closes C-1 and incidentally m-3 + §6 side of m-5. |
+| 3 | `c2ed38f` | `03` | §4.2 closing remark now explicitly says proof is *not* verbatim: binary collapses to Step 1 via symmetry, simplex genuinely uses all three steps because φ is no longer a function of R. Resolves the contradiction with §3.2's earlier remark. |
+| 4 | `9f93828` | `03` | §6 GCN paragraph now cites Oono–Suzuki 2020 and Cai–Wang 2020 for the spectral contraction, frames δ^L ≤ Cλ₂^L as the standard analysis with explicit constants deferred to OP2. Three references added to bibliography in alphabetical order (Cai–Wang, Oono–Suzuki, Rusch–Bronstein–Mishra). |
+| 5 | `c5ad2d1` | `03` | §2's δ renamed to δ_WL with cross-reference forward to §6's δ^L; Cor 7 ε → α throughout (statement + Hoeffding m + Honest-cost-accounting paragraph). The property-test threshold was already named α, so internal consistency preserved. |
+| 6 | `612a287` | `03` | Pires moved between Oono and Provan in references. |
+| 7 | `361383c` | `03` | §1.1 item 2 now reads 'Theorem 5, lifted to multiclass via Theorem 1′ of §4.4' matching the §6 Theorem 5 block. |
+| 8 | `370f09e` | `03` | JK case now distinguishes 𝒜^base (underlying message-passing) and 𝒜^JK (join variant); join expression Π^L_𝒜^JK = ⋁ Π^l_𝒜^base reads as intended. |
+| 9 | `c6dafd8` | `03` | Header bumped to Draft 0.3; closing draft note rewritten to enumerate all 10 audit items closed plus reaffirm 05/07 closures plus open-problem list. |
+| 10 | `<this commit>` | `11` | Sequence table SHAs backfilled; plan-vs-execution delta documented (10 commits vs 11 planned, due to m-3 being absorbed into the C-1 commit §6-opener edit). |
 
 ---
 
