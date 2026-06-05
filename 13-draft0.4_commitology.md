@@ -99,7 +99,7 @@ After the full series (before commit 12 docs bump):
 | 8 | `475d8ea` | `03` | §8 OP1b now cites "Theorem 2$'$" directly instead of pointing back to 1a (which is itself the OP entry). |
 | 9 | `c03a4cf` | `03` | §2 tube-measure clause adds "with constant depending on the embedding dimension and on the local density near the boundary". |
 | 10 | `3d9990a` | `03` | Header Draft 0.3 → Draft 0.4; closing draft note rewritten to enumerate every closed item of `12` plus the prior `05`/`07`/`10` closures; final inspection caught a stale "ladder" reference in the §8 opener and folded its correction into this bump commit. |
-| 11 | `<this commit>` | `13` | Sequence table SHAs backfilled; plan-vs-execution delta documented (11 commits vs 13 planned; M-3, m-3, m-4 absorbed into C-1; m-3 of plan was the inspection-sweep §8 "ladder" catch folded into the bump). |
+| 11 | `cd48c76` | `13` | Sequence table SHAs backfilled; plan-vs-execution delta documented (11 commits vs 13 planned; M-3, m-3, m-4 absorbed into C-1; m-3 of plan was the inspection-sweep §8 "ladder" catch folded into the bump). |
 
 ---
 
