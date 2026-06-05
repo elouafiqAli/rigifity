@@ -20,6 +20,8 @@ For any *normalized* concave score (concave on $[0,1]$ with $\varphi(0)=\varphi(
 
 **The conceptual frame.** WL feasibility is the *decision* problem; the bracket is its *gap* version, and (§7) it is locally checkable. This is, in spirit, the relationship a PCP bears to satisfiability [Arora–Safra; Arora et al.; Dinur], with the caveat (§8) that we have the locally-checkable half but not yet a gap-amplification theorem, so we use the PCP framing as an analogy and not a claim.
 
+**Notation and scope.** §§1–3 and §§5–7 work with binary tasks: $\eta\in[0,1]$ denotes a scalar conditional label rate. §4 extends the development to multiclass tasks via the simplex generalization $\boldsymbol\eta\in\Delta^{k-1}$ (boldface), with the binary case recovered at $k=2$ by $\eta:=\eta_1$. Symbols $R$, $\varphi$, $c_\varphi$ are type-overloaded between the two settings — their universal definitions (Bayes risk, concave score, upper bracket constant) carry over, with the binary normalization $c_\varphi=\tfrac12$ replaced in the multiclass case by an explicit finiteness hypothesis stated in §4.1.
+
 ### 1.1 What is new, and what is not
 
 We separate borrowed foundations from contributions deliberately, because the foundations are classical and over-claiming them would be wrong.
