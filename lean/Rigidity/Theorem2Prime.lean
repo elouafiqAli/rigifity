@@ -87,7 +87,12 @@ structure SimplexScore [NeZero k] (φ : (Fin k → ℝ) → ℝ) : Prop where
 
     Theorem 2′ requires `c_φ < ∞` (M-2 of audit 07); equivalently `φ` vanishes
     at most linearly at every vertex. Entropy and Gini satisfy this; quadratic
-    vanishing (`‖η - e_c‖²`) does not. -/
+    vanishing (`‖η - e_c‖²`) does not.
+
+    **SCAFFOLD.** Body is `sorry`; Phase D1 will replace with
+    `sSup ((R / φ) '' (simplex k \ vertices))` analogous to the binary `cPhi`.
+    No downstream caller (verified by 2026-06-05 audit), so the scaffold body
+    is non-load-bearing. -/
 noncomputable def cPhiSimplex [NeZero k] (φ : (Fin k → ℝ) → ℝ) : ℝ :=
   sorry  -- Phase D1: sup over `η ∈ simplex k \ {vertex c | c : Fin k}` of `R η / φ η`
 
@@ -116,17 +121,23 @@ theorem simplex_rigidity {α : Type*} [MeasurableSpace α] {μ : Measure α} [No
     ∃ lam : ℝ, 0 < lam ∧ ∀ η ∈ simplex k, φ η = lam * R η := by
   sorry
 
-/-! ## T1′ (refinement-monotonicity transfer, scaffold) -/
+/-! ## T1′ (refinement-monotonicity transfer, deferred)
 
-/-- **Theorem 1′** (refinement-monotonicity transfer to the simplex).
-    Theorem 1 holds verbatim with `Δ^{k-1}` in place of `[0, 1]`; the
-    tower-property + Jensen argument is dimension-agnostic.
+    **Phase A scaffold note.** Theorem 1′ — the simplex analogue of Theorem 1
+    (refinement-monotone ⟺ concave) — is intentionally NOT declared in this
+    file yet. Stating it honestly requires the simplex-valued partition
+    functional `barPhiSimplex : Measure α → ((Fin k → ℝ) → ℝ) → (α → Fin k) →
+    FinitePartition α → ℝ`, analogous to `barPhi` but ranging over `Fin k → ℝ`
+    rather than `Bool`-conditioned rates. That definition lands in Phase D1
+    alongside the multiclass `epsilonStarSimplex`. Once both exist, T1′ reads:
+
+        ∀ f P P', P' ⪰ P → barPhiSimplex μ φ f P' ≤ barPhiSimplex μ φ f P
+          ↔ ConcaveOn ℝ (simplex k) φ.
+
+    Until then there is no theorem to state without resorting to vacuous
+    content (e.g. `True ↔ True`), which an earlier draft did under a
+    `@[rigidity_proved]` tag — flagged and removed by the 2026-06-05 audit.
+
     Brick: `T1′`. Defining commits: `29fc667`, `e3376fc` (M-1 atomless hyp). -/
-@[rigidity_proved, rigidity_AMS_60]
-theorem theorem1Prime {α : Type*} [MeasurableSpace α] {μ : Measure α} [NoAtoms μ]
-    [NeZero k] (φ : (Fin k → ℝ) → ℝ) (_hc : ContinuousOn φ (simplex k)) :
-    -- Phase D1 will state this with the simplex-valued partition functional.
-    True ↔ True := by
-  trivial
 
 end Rigidity.Simplex

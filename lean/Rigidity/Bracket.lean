@@ -140,7 +140,9 @@ theorem tent_normalized : NormalizedScore tent := by
     exact h_min_concave.smul h2
   · -- continuous
     unfold tent
-    exact ((continuous_const.mul (continuous_id.min (continuous_const.sub continuous_id))).continuousOn)
+    have h_cont : Continuous (fun η : ℝ => 2 * min η (1 - η)) :=
+      continuous_const.mul (continuous_id.min (continuous_const.sub continuous_id))
+    exact h_cont.continuousOn
   · -- symmetric: tent η = tent (1 - η)
     intro η _
     unfold tent
