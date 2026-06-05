@@ -40,5 +40,11 @@ Expected: every theorem uses only `propext`, `Classical.choice`, `Quot.sound`
 #print axioms Rigidity.theorem2_reverse
 #print axioms Rigidity.theorem2
 
+-- Proposition6.lean
+#print axioms Rigidity.two_query_identity
+#print axioms Rigidity.phiVar_normalized
+#print axioms Rigidity.barPhi_phiVar_eq_two_pDisagree
+#print axioms Rigidity.variance_bracket
+
 -- Theorem2Prime.lean
 -- (theorem1Prime removed 2026-06-05 — was vacuous `True ↔ True`, see audit notes.)

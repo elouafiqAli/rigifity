@@ -52,6 +52,24 @@ would clean up the `tent_normalized` proof and any future similar use.
 **Estimated cost**: ~10 LoC
 **Where it goes**: `Mathlib/Analysis/Convex/Function.lean`
 
+### 3. `NormalizedScore.mk_polynomial` helper (in-repo, LOW value)
+
+**Source**: [`2026-06-05-phase-b4-proposition6.md`](./2026-06-05-phase-b4-proposition6.md)
+**Why**: `tent_normalized`, `phiVar_normalized`, and any future polynomial-form score
+(e.g., entropy-style) repeat the same 7-field structure with `nlinarith` + `norm_num`
+on the per-cell arithmetic. A constructor
+
+```lean
+def NormalizedScore.mk_polynomial (φ : ℝ → ℝ) (h_poly : ∃ ...) :
+    NormalizedScore φ := ...
+```
+
+could factor the proof obligations down to "show the symbolic polynomial form".
+
+**Estimated cost**: ~50 LoC for the constructor + ~25 LoC saved per future score.
+**Where it goes**: `Rigidity/Bracket.lean` (right after `NormalizedScore` definition).
+**Decision**: defer until we have 3+ uses (currently 2: tent, phiVar).
+
 ## Our-codebase future work
 
 ### A. Wire `SingleCellRealizable` typeclass

@@ -56,3 +56,4 @@ in `opportunities.md`.
 |---|---|---|---|
 | [`2026-06-05-sierpinski-atomless-realizability.md`](./2026-06-05-sierpinski-atomless-realizability.md) | B3b | decided | Sierpiński's theorem on atomless measures — not in mathlib, use typeclass-as-hypothesis pattern |
 | [`2026-06-05-phase-b3c-execution-plan.md`](./2026-06-05-phase-b3c-execution-plan.md) | B3c | **closed** | Execution plan + proof skeleton for `theorem2_reverse` (now proved) |
+| [`2026-06-05-phase-b4-proposition6.md`](./2026-06-05-phase-b4-proposition6.md) | B4 | **closed** | Proposition 6: `two_query_identity` + `variance_bracket` (now proved, 27/27 audit) |
