@@ -225,10 +225,11 @@ Theorem 5 applies *to whichever depth sequence of partitions one cares about*; t
 
 *Join-type residual (jumping-knowledge, GCNII) is monotone by construction.* These architectures concatenate or carry forward earlier representations, so two nodes are $\mathcal A$-equivalent at depth $L$ iff they were equivalent at *every* earlier layer; $\Pi^{(L)}_{\mathcal A}=\bigvee_{\ell\le L}\Pi^{(\ell)}_{\mathcal A}$, monotone-refining by construction, and Theorem 5(a) applies. The operational $\Pi^{(L)}_\varepsilon$ inherits the chain whenever $\varepsilon$ is below the per-layer minimum separating distance. This is the partition-level reason the join remedy fixes over-smoothing — it never discards resolution an earlier layer achieved.
 
-*Contractive aggregation (GCN, mean, symmetric-normalized) is not WL-faithful; the WL ceiling refines but the operational partition collapses.* The aggregation is a linear operator whose non-constant spectrum has norm below $1$ (eigenvalues $1=\mu_1>|\mu_2|\ge\cdots$); the informative component of the signal contracts at rate $\lambda_2^L:=|\mu_2|^L$, and the minimum separating embedding distance $\delta^{(L)}$ shrinks geometrically:
+*Contractive aggregation (GCN, mean, symmetric-normalized) is not WL-faithful; the WL ceiling refines but the operational partition collapses.* The aggregation is a linear operator whose non-constant spectrum has norm below $1$ (eigenvalues $1=\mu_1>|\mu_2|\ge\cdots$); the informative component of the signal contracts at rate $\lambda_2^L:=|\mu_2|^L$ [Oono–Suzuki 2020; Cai–Wang 2020]. Under the standard analyses of those works (Lipschitz feature maps plus the spectral contraction), the minimum separating embedding distance $\delta^{(L)}$ inherits the same geometric decay:
 $$
-\delta^{(L)}\;\le\;C\,\lambda_2^L\qquad\text{for some architecture-dependent }C>0.
+\delta^{(L)}\;\le\;C\,\lambda_2^L\qquad\text{for some architecture-dependent }C>0,
 $$
+which we use here as a working assumption matching the over-smoothing literature [Rusch–Bronstein–Mishra 2023 surveys the field]; a self-contained statement with explicit constants (and the verification that the worst-separated pair remains worst-separated through depth) is Open Problem 2 below.
 The WL ceiling still refines (it is a combinatorial object), so Theorem 5(a) applies at the WL level — the *in-principle* floor is depth-monotone. But at any **fixed** $\varepsilon$, once $\delta^{(L)}<\varepsilon$ — i.e., once $L>L^\ast(\varepsilon)\approx\log(C/\varepsilon)/\log(1/\lambda_2)$ — distinct WL classes collapse into common $\varepsilon$-cells, $\Pi^{(L)}_\varepsilon$ coarsens, and the operationally observed floor *rises*. **This is over-smoothing, identified as the operational gap between the (monotone-refining) WL ceiling and the (coarsening past $L^\ast(\varepsilon)$) operational partition**, with the spectral gap $1-|\mu_2|$ setting its onset. The qualitative statement is robust; turning the constant $C$ and the cell-count rate into a quantitative theorem is Open Problem 2 (§8).
 
 *Attention (GAT) is not statically classified by Theorem 5.* Attention sharpness can refine (sharper-than-uniform attention may, in principle, split a WL cell by exploiting continuous attention weights) or contract (uniform attention reduces to mean). Which regime obtains depends on the data and training, and Theorem 5 yields no static prediction. The bracket of §1, §3 is the diagnostic — it measures the realized regime per task and depth.
@@ -286,6 +287,7 @@ Arora, S., and Safra, S. *Probabilistic checking of proofs.* J. ACM, 1998.
 Arora, S., Lund, C., Motwani, R., Sudan, M., and Szegedy, M. *Proof verification and the hardness of approximation problems.* J. ACM, 1998.
 Bartlett, P., Jordan, M., and McAuliffe, J. *Convexity, classification, and risk bounds.* JASA, 2006.
 Blackwell, D. *Equivalent comparisons of experiments.* Ann. Math. Statist., 1953.
+Cai, C., and Wang, Y. *A note on over-smoothing for graph neural networks.* (arXiv) 2020.
 DeGroot, M. *Uncertainty, information, and sequential experiments.* Ann. Math. Statist., 1962.
 Dinur, I. *The PCP theorem by gap amplification.* J. ACM, 2007.
 Grünwald, P., and Dawid, A. P. *Game theory, maximum entropy, minimum discrepancy, and robust Bayesian decision theory.* Ann. Statist., 2004.
@@ -293,10 +295,12 @@ Hoeffding, W. *Probability inequalities for sums of bounded random variables.* J
 Lauritzen, S., and Spiegelhalter, D. *Local computations with probabilities on graphical structures.* J. R. Stat. Soc. B, 1988.
 Le Cam, L. *Asymptotic Methods in Statistical Decision Theory.* Springer, 1986.
 Morris, C., et al. *Weisfeiler and Leman go neural.* AAAI, 2019.
+Oono, K., and Suzuki, T. *Graph neural networks exponentially lose expressive power for node classification.* ICLR, 2020.
 Provan, J. S., and Ball, M. O. *The complexity of counting cuts and of computing the probability that a graph is connected.* SIAM J. Comput., 1983.
 Pires, B. Á., and Szepesvári, C. *Multiclass classification calibration functions.* (arXiv) 2016.
 Ramaswamy, H. G., and Agarwal, S. *Classification calibration dimension for general multiclass losses.* NeurIPS, 2012.
 Reid, M., and Williamson, R. *Information, divergence and risk for binary experiments.* JMLR, 2011.
+Rusch, T. K., Bronstein, M., and Mishra, S. *A survey on oversmoothing in graph neural networks.* (arXiv) 2023.
 Savage, L. J. *Elicitation of personal probabilities and expectations.* JASA, 1971.
 Tewari, A., and Bartlett, P. *On the consistency of multiclass classification methods.* JMLR, 2007.
 Xu, K., Hu, W., Leskovec, J., and Jegelka, S. *How powerful are graph neural networks?* ICLR, 2019.
