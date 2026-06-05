@@ -43,6 +43,8 @@ The objects we use are classical, and we state the relationship precisely so the
 
 *Surrogate calibration.* For a surrogate margin loss, Bartlett, Jordan, and McAuliffe [2006] (and Zhang [2004]) relate excess $0$-$1$ risk to excess surrogate risk through the $\psi$-transform, $\psi(R-R^\ast)\le R_\varphi-R_\varphi^\ast$, where $\psi$ is the convexification of $H^-(\eta)-H(\eta)$; the $0$-$1$ loss gives the identity $\psi$, and smooth surrogates give a strictly convex $\psi$. Our Theorem 2 — the bracket is exact only for the tent (the $0$-$1$ Bayes risk) — is the partition-bracket counterpart of "$\psi$ is the identity only for the $0$-$1$ loss," and Corollary 3 is the counterpart of "smooth surrogates have $\psi\ne\mathrm{id}$." Two formal differences are worth noting: BJM bound *excess* risk of a *predictor* (the optimization axis), whereas we bound the *absolute* Bayes risk of a *partition* (the resolution axis); and our bound is two-sided (calibration via $c_\varphi$ and its converse via $\varphi^{-1}$) where the $\psi$-transform is one-sided. We do not claim Theorem 2 as a new decision-theoretic fact; we claim the resolution-level transposition and the GNN consequences.
 
+*Multiclass surrogate calibration.* The multiclass case is genuinely more delicate than the binary case — many natural multiclass surrogates fail to be calibrated [Tewari–Bartlett 2007; Ramaswamy–Agarwal 2012; Pires–Szepesvári 2016]. Section 4's Theorem 2$'$ (the simplex rigidity) is the resolution-level companion of that body of work: among continuous vertex-vanishing simplex scores, the multiclass Bayes risk $R=1-\max_c\eta_c$ is the unique exact one, and smooth multiclass surrogates (entropy, Gini) incur a strictly positive bracket slack via a convex-envelope lower endpoint. To our knowledge the resolution-level multiclass uniqueness is not stated in this form in the calibration literature, though it is in the spirit of that work.
+
 *Reid–Williamson [2011]* unify scoring rules, divergences, and binary-experiment risk and are the closest source of the analytic machinery; we build on their viewpoint.
 
 ---
@@ -283,8 +285,11 @@ Lauritzen, S., and Spiegelhalter, D. *Local computations with probabilities on g
 Le Cam, L. *Asymptotic Methods in Statistical Decision Theory.* Springer, 1986.
 Morris, C., et al. *Weisfeiler and Leman go neural.* AAAI, 2019.
 Provan, J. S., and Ball, M. O. *The complexity of counting cuts and of computing the probability that a graph is connected.* SIAM J. Comput., 1983.
+Pires, B. Á., and Szepesvári, C. *Multiclass classification calibration functions.* (arXiv) 2016.
+Ramaswamy, H. G., and Agarwal, S. *Classification calibration dimension for general multiclass losses.* NeurIPS, 2012.
 Reid, M., and Williamson, R. *Information, divergence and risk for binary experiments.* JMLR, 2011.
 Savage, L. J. *Elicitation of personal probabilities and expectations.* JASA, 1971.
+Tewari, A., and Bartlett, P. *On the consistency of multiclass classification methods.* JMLR, 2007.
 Xu, K., Hu, W., Leskovec, J., and Jegelka, S. *How powerful are graph neural networks?* ICLR, 2019.
 Zhang, T. *Statistical behavior and consistency of classification methods based on convex risk minimization.* Ann. Statist., 2004.
 
