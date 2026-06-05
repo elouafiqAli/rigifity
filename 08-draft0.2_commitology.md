@@ -55,20 +55,22 @@
 
 | # | Subject | Closes | Files | State | SHA |
 |---|---|---|---|---|---|
-| 1 | `chore(plan): track Draft 0.2 commitology as 08` | — | `08` | — | — |
-| 2 | `fix(notation): declare bold-η simplex convention in §1` | preamble for §4 | `03` | — | — |
-| 3 | `feat(§4.1): import 04 setup + multiclass bracket` | M-2 | `03` | — | — |
-| 4 | `feat(§4.2): import 04 rigidity theorem with hypothesis hygiene` | M-1, m-3, m-4 | `03` | — | — |
-| 5 | `feat(§4.3): import 04 smoothness–slack + worked example` | m-1, m-2 | `03` | — | — |
-| 6 | `feat(§4.4–5): binary consistency + refinement-monotonicity transfer` | m-6 | `03` | — | — |
-| 7 | `feat(§4 narrative): consolidate "what this buys" + merge references` | m-5 (resolved by consolidation) | `03` | — | — |
-| 8 | `fix(§8): collapse OP1a → §4 reference; keep OP1b–3` | — | `03` | — | — |
-| 9 | `fix(abstract+§1): note multiclass reach via §4` | — | `03` | — | — |
-| 10 | `docs: bump 03 draft note → 0.2; enumerate closed audit items` | — | `03` | — | — |
-| 11 | `chore(repo): retire 04 to one-line redirect` | — | `04` | — | — |
-| 12 | `chore(plan): finalize 08 commitology with SHAs` | — | `08` | — | — |
+| 1 | `chore(plan): track Draft 0.2 commitology as 08` | — | `08` | done | `0ac07ed` |
+| 2 | `fix(notation): declare bold-η simplex convention in §1` | preamble for §4 | `03` | done | `403cdef` |
+| 3 | `feat(§4.1): import 04 setup + multiclass bracket` | M-2 | `03` | done | `5ba935f` |
+| 4 | `feat(§4.2): import 04 rigidity theorem with hypothesis hygiene` | M-1, m-3, m-4 | `03` | done | `c8ef3e6` |
+| 4b | `fix(§4.2): rename Theorem 4 → Theorem 2′` (collision with Cor 4) | (numbering) | `03` | done | `c6a5bc0` |
+| 5 | `feat(§4.3): import 04 smoothness–slack + worked example` | m-1, m-2 | `03` | done | `77b7c93` |
+| 5b | `fix(§4.3): rename Corollary 5 → Corollary 3′` (collision with Thm 5) | (numbering) | `03` | done | `6fd346e` |
+| 6 | `feat(§4.4): binary consistency + Theorem 1′ refinement-monotonicity transfer` | m-6 | `03` | done | `29fc667` |
+| 7 | `feat(§1.2+refs): merge multiclass-calibration credits and refs from 04` | (m-5 part 1) | `03` | done | `83946fa` |
+| 8 | `fix(§8): collapse OP1a companion reference into in-paper §4 cross-reference` | — | `03` | done | `9efde5e` |
+| 9 | `fix(abstract+§1.1+§8 opener): note multiclass reach via §4` | — | `03` | done | `a67513d` |
+| 10 | `docs: bump 03 from Draft 0.1 to Draft 0.2 with full audit-closure enumeration` | — | `03` | done | `50afa14` |
+| 11 | `chore(repo): retire 04 to redirect; content consolidated into 03 §4` | (m-5 part 2) | `04` | done | `bda09a5` |
+| 12 | `chore(plan): finalize 08 commitology with SHAs` | — | `08` | this commit | — |
 
-(SHA column backfilled by commit 12.)
+**Plan-vs-execution delta.** The plan called for 12 commits; execution required 14 due to two numbering self-audits (4b, 5b) caught immediately after the rigidity import and the smoothness–slack import. The primed-extension convention (Theorem 2′, Corollary 3′, Theorem 1′) was established by 4b and applied retrospectively in 6 and 9 — a small unplanned coordination cost that prevented renumbering Corollary 4 / Theorem 5 / Proposition 6 / Corollary 7 downstream, which would have been a much larger churn. The plan's commit 7 (m-5) was structurally split: commit 7 = substantive content (§1.2 credit + references merge); commit 11 = the file-level retirement that closes m-5 itself. Net cost: 2 extra small commits, zero invalidated work.
 
 ---
 
@@ -109,8 +111,20 @@ A(1·S) ──► B(2·S) ──► C(3·M) ──► D(4·L) ──► E(5·M) 
 
 | # | SHA | Files | Verification notes |
 |---|---|---|---|
-| 1 | _to be filled_ | `08` | This file under VCS; subsequent commits cite it. |
-| … | | | |
+| 1 | `0ac07ed` | `08` | Plan under VCS; subsequent commits cite it by SHA. |
+| 2 | `403cdef` | `03` | "Notation and scope" paragraph at end of §1 declares binary/multiclass scope before any multiclass content. |
+| 3 | `5ba935f` | `03` | §4 opener + §4.1 land with M-2 hypothesis ($c_\varphi<\infty$, ≥linear vertex vanishing); entropy and Gini explicitly verified. |
+| 4 | `c8ef3e6` | `03` | Theorem 2′ with atomless hypothesis (M-1) + Step 1 level-set highlight (m-3) + Step 2 bounded-Jensen footnote (m-4); long-pole D node landed. |
+| 4b | `c6a5bc0` | `03` | Numbering self-audit: Theorem 4 → Theorem 2′ to avoid collision with §5 Corollary 4. Primed-extension convention established. |
+| 5 | `77b7c93` | `03` | §4.3 smoothness–slack with worked example numerically re-verified; level-set characterization (m-1) and kink-locus-widening framing (m-2) replace prior loose statements. |
+| 5b | `6fd346e` | `03` | Numbering self-audit: Corollary 5 → Corollary 3′ to avoid collision with §6 Theorem 5. Convention applied. |
+| 6 | `29fc667` | `03` | §4.4 binary consistency + new Theorem 1′ (refinement monotonicity transfer) closing m-6; §4 now structurally complete (4.1, 4.2, 4.3, 4.4). |
+| 7 | `83946fa` | `03` | §1.2 multiclass-calibration credit paragraph added (Tewari–Bartlett, Ramaswamy–Agarwal, Pires–Szepesvári); three references added alphabetically. |
+| 8 | `9efde5e` | `03` | §8 OP1a redirects to §4 with Theorem 2′ / Corollary 3′ citations; OP1b, OP2, OP3 unchanged. |
+| 9 | `a67513d` | `03` | Abstract item (iii) = multiclass; §1.1 contribution list updated to four items; §8 opener updated to "(§3–§4)" and "tasks with hard cell assignments, binary or multiclass". |
+| 10 | `50afa14` | `03` | Header bumped Draft 0.1 → Draft 0.2; closing draft note rewritten to enumerate all 07 audit items closed + reaffirm 05 closures + list what remains open. |
+| 11 | `bda09a5` | `04` | `04` replaced with redirect (118 lines removed, 9 added); full pre-consolidation text preserved at commit `027ba89`. Closes m-5 structurally. |
+| 12 | `<this commit>` | `08` | Sequence table SHAs backfilled; plan-vs-execution delta documented; post-mortem table populated. |
 
 ---
 
