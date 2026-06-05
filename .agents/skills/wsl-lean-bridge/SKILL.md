@@ -273,3 +273,11 @@ have h_id : ConcaveOn ℝ (Set.Icc (0:ℝ) 1) (fun η : ℝ => η) :=
 | `cPhi_eq_half_of_normalized` | `Rigidity/Bracket.lean` | Universal `c_φ = 1/2` for normalized scores (uses `sSup ∘ image` form) |
 | `cellRate_nonneg` | `Rigidity/Bracket.lean` | `0 ≤ cellRate μ f P c` — ratio of `ENNReal.toReal`s |
 | `cellRate_le_one` | `Rigidity/Bracket.lean` | `cellRate μ f P c ≤ 1` — handles `μ c = ∞` edge case via `toReal_mono` |
+| `cellMass_toReal` | `Rigidity/Bracket.lean` | Definitional unfolding `(cellMass μ P c).toReal = (μ c).toReal` |
+| `cellRate_mem_Icc` | `Rigidity/Bracket.lean` | Bundle `cellRate ∈ Set.Icc 0 1` |
+| `min_self_one_sub_mem_Icc_zero_half` | `Rigidity/Bracket.lean` | `min η (1-η) ∈ [0, 1/2]` for `η ∈ [0, 1]` |
+| `phi_eq_phi_min_symm` | `Rigidity/Bracket.lean` | `φ η = φ (min η (1-η))` for normalized φ via symmetry |
+| `concave_on_Icc_zero_half` | `Rigidity/Bracket.lean` | Restrict concavity of normalized φ to `[0, 1/2]` |
+| `sum_cellMass_eq_one` | `Rigidity/Bracket.lean` | `Σ_c (μ c).toReal = 1` for probability measure + finite partition |
+| `bracket_lower` | `Rigidity/Bracket.lean` | `barPhi ≤ φ(epsilonStar)` — Jensen on `[0, 1/2]` |
+| `bracket_upper` | `Rigidity/Bracket.lean` | `epsilonStar ≤ cPhi φ * barPhi` — chord-bound aggregation |

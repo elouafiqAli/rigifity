@@ -393,20 +393,115 @@ theorem sum_cellMass_eq_one {α : Type*} [MeasurableSpace α] (μ : Measure α)
     symmetry gives `φ(ηᵢ) = φ(qᵢ)` and Jensen for concave `φ` on `[0, 1/2]`
     gives `Σ pᵢ φ(qᵢ) ≤ φ(Σ pᵢ qᵢ)`, i.e. `bar φ(P) ≤ φ(ε*(P))`.
     Applying `φ⁻¹` (which exists by `StrictMonoOn`) recovers `φ⁻¹(bar φ) ≤ ε*`.
-    Brick: `T-bracket` (lower half). -/
-@[rigidity_scaffold, rigidity_AMS_60, rigidity_AMS_62]
+    Brick: `T-bracket` (lower half).
+
+    Proof composition: Tao step 2a skeleton fully filled.
+    1. `barPhi = Σ pᵢ φ(min ηᵢ (1-ηᵢ))` via `phi_eq_phi_min_symm` on each cell.
+    2. Apply `ConcaveOn.le_map_sum` with weights `pᵢ := (μ cᵢ).toReal`, points
+       `qᵢ := min ηᵢ (1-ηᵢ)`, concavity from `concave_on_Icc_zero_half`,
+       `Σ pᵢ = 1` from `sum_cellMass_eq_one`, `pᵢ ≥ 0` from
+       `ENNReal.toReal_nonneg`, `qᵢ ∈ [0, 1/2]` from
+       `min_self_one_sub_mem_Icc_zero_half` applied to `cellRate_mem_Icc`.
+    3. Yields `Σ pᵢ φ(qᵢ) ≤ φ(Σ pᵢ qᵢ) = φ(epsilonStar)`.
+    4. `smul_eq_mul` to reconcile the `•` from Jensen with our `*` definitions. -/
+@[rigidity_proved, rigidity_AMS_60, rigidity_AMS_62]
 theorem bracket_lower {α : Type*} [MeasurableSpace α] (μ : Measure α)
-    [IsProbabilityMeasure μ] (φ : ℝ → ℝ) (_h : NormalizedScore φ)
+    [IsProbabilityMeasure μ] (φ : ℝ → ℝ) (h : NormalizedScore φ)
     (f : α → Bool) (P : FinitePartition α) :
-    barPhi μ φ f P ≤ φ (epsilonStar μ f P) := by sorry
+    barPhi μ φ f P ≤ φ (epsilonStar μ f P) := by
+  -- Abbreviations.
+  set p : Set α → ℝ := fun c => (cellMass μ P c).toReal with hp_def
+  set η : Set α → ℝ := fun c => cellRate μ f P c with hη_def
+  set q : Set α → ℝ := fun c => min (η c) (1 - η c) with hq_def
+  -- Weights are nonneg.
+  have hp_nonneg : ∀ c ∈ P.cells, 0 ≤ p c :=
+    fun c _ => ENNReal.toReal_nonneg
+  -- Weights sum to 1.
+  have hp_sum : ∑ c ∈ P.cells, p c = 1 := sum_cellMass_eq_one μ P
+  -- Points lie in [0, 1/2].
+  have hq_mem : ∀ c ∈ P.cells, q c ∈ Set.Icc (0:ℝ) (1/2) := by
+    intro c _
+    -- η c ∈ [0, 1] by cellRate_mem_Icc.
+    have hη_mem : η c ∈ Set.Icc (0:ℝ) 1 := cellRate_mem_Icc μ f P c
+    exact min_self_one_sub_mem_Icc_zero_half hη_mem
+  -- Concavity on [0, 1/2].
+  have h_concave : ConcaveOn ℝ (Set.Icc (0:ℝ) (1/2)) φ :=
+    concave_on_Icc_zero_half h
+  -- Apply Jensen: Σ pᵢ • φ(qᵢ) ≤ φ(Σ pᵢ • qᵢ).
+  have h_jensen :
+      (∑ c ∈ P.cells, p c • φ (q c)) ≤ φ (∑ c ∈ P.cells, p c • q c) :=
+    h_concave.le_map_sum hp_nonneg hp_sum hq_mem
+  -- Rewrite the goal to match Jensen's conclusion.
+  -- barPhi = Σ p c * φ(η c) = Σ p c * φ(q c) by phi_eq_phi_min_symm.
+  have h_barPhi_eq : barPhi μ φ f P = ∑ c ∈ P.cells, p c * φ (q c) := by
+    unfold barPhi
+    apply Finset.sum_congr rfl
+    intro c _
+    -- η c ∈ [0, 1] needed for phi_eq_phi_min_symm.
+    have hη_mem : η c ∈ Set.Icc (0:ℝ) 1 := cellRate_mem_Icc μ f P c
+    rw [phi_eq_phi_min_symm h hη_mem]
+  -- epsilonStar = Σ p c * q c (definitional).
+  have h_epsilonStar_eq : epsilonStar μ f P = ∑ c ∈ P.cells, p c * q c := rfl
+  -- Combine: barPhi = Σ p * φ(q) ≤ φ(Σ p * q) = φ(epsilonStar).
+  rw [h_barPhi_eq, h_epsilonStar_eq]
+  -- Replace • with * (smul_eq_mul on ℝ).
+  simpa only [smul_eq_mul] using h_jensen
 
 /-- **Binary bracket — upper endpoint** `ε*(P) ≤ c_φ · bar φ(P)`.
     Via the pointwise inequality `η ≤ c_φ · φ(η)` on `(0, 1/2]`, aggregated.
-    Brick: `T-bracket` (upper half). -/
-@[rigidity_scaffold, rigidity_AMS_60, rigidity_AMS_62]
+    Brick: `T-bracket` (upper half).
+
+    Proof composition:
+    1. `cPhi φ = 1/2` from `cPhi_eq_half_of_normalized`.
+    2. Pointwise: for `q := min η (1-η) ∈ [0, 1/2]`, the chord lemma
+       `2q ≤ φ(q)` (proved via `two_eta_le_of_normalized` on `[0, 1/2]`)
+       gives `q ≤ (1/2) * φ(q) = cPhi φ * φ(q)`.
+       Edge case `φ(q) = 0`: by `NormalizedScore.vanishes_at_zero` only when
+       `q = 0`, then both sides are 0.
+    3. Multiply by `p c ≥ 0` and sum: `Σ p c * q c ≤ (1/2) * Σ p c * φ(q c)`.
+    4. LHS = `epsilonStar`; RHS uses `barPhi = Σ p c * φ(η c) = Σ p c * φ(q c)`
+       via `phi_eq_phi_min_symm`. -/
+@[rigidity_proved, rigidity_AMS_60, rigidity_AMS_62]
 theorem bracket_upper {α : Type*} [MeasurableSpace α] (μ : Measure α)
-    [IsProbabilityMeasure μ] (φ : ℝ → ℝ) (_h : NormalizedScore φ)
+    [IsProbabilityMeasure μ] (φ : ℝ → ℝ) (h : NormalizedScore φ)
     (f : α → Bool) (P : FinitePartition α) :
-    epsilonStar μ f P ≤ cPhi φ * barPhi μ φ f P := by sorry
+    epsilonStar μ f P ≤ cPhi φ * barPhi μ φ f P := by
+  -- Abbreviations.
+  set p : Set α → ℝ := fun c => (cellMass μ P c).toReal with hp_def
+  set η : Set α → ℝ := fun c => cellRate μ f P c with hη_def
+  set q : Set α → ℝ := fun c => min (η c) (1 - η c) with hq_def
+  -- Constants.
+  have h_cPhi : cPhi φ = 1/2 := cPhi_eq_half_of_normalized φ h
+  rw [h_cPhi]
+  -- Goal: epsilonStar μ f P ≤ (1/2) * barPhi μ φ f P
+  -- Pointwise bound on each cell: q c ≤ (1/2) * φ(q c).
+  -- This is the chord lemma applied at q c ∈ [0, 1/2].
+  have h_pointwise : ∀ c ∈ P.cells, q c ≤ (1/2) * φ (q c) := by
+    intro c _
+    have hη_mem : η c ∈ Set.Icc (0:ℝ) 1 := cellRate_mem_Icc μ f P c
+    have hq_mem : q c ∈ Set.Icc (0:ℝ) (1/2) :=
+      min_self_one_sub_mem_Icc_zero_half hη_mem
+    -- Chord lemma: 2 * q c ≤ φ (q c). Divide by 2.
+    have h_chord : 2 * q c ≤ φ (q c) := two_eta_le_of_normalized φ h hq_mem
+    linarith
+  -- Weighted sum.
+  have hp_nonneg : ∀ c ∈ P.cells, 0 ≤ p c :=
+    fun c _ => ENNReal.toReal_nonneg
+  -- epsilonStar = Σ p c * q c, barPhi-as-q = Σ p c * φ (q c) (via symmetry).
+  have h_epsilonStar_eq : epsilonStar μ f P = ∑ c ∈ P.cells, p c * q c := rfl
+  have h_barPhi_eq : barPhi μ φ f P = ∑ c ∈ P.cells, p c * φ (q c) := by
+    unfold barPhi
+    apply Finset.sum_congr rfl
+    intro c _
+    have hη_mem : η c ∈ Set.Icc (0:ℝ) 1 := cellRate_mem_Icc μ f P c
+    rw [phi_eq_phi_min_symm h hη_mem]
+  rw [h_epsilonStar_eq, h_barPhi_eq, Finset.mul_sum]
+  -- Goal: Σ p c * q c ≤ Σ (1/2) * (p c * φ (q c))
+  apply Finset.sum_le_sum
+  intro c hc
+  -- (p c * q c) ≤ (1/2) * (p c * φ (q c)) given p c ≥ 0 and q c ≤ (1/2) * φ (q c).
+  have hpc := hp_nonneg c hc
+  have hpw := h_pointwise c hc
+  nlinarith [hpc, hpw]
 
 end Rigidity
