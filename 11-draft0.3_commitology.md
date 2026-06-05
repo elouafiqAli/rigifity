@@ -84,7 +84,7 @@ A(1·S) ──► B(2·M) ──┬──► C(3·S) ──► D(4·S) ──►
 | 7 | `361383c` | `03` | §1.1 item 2 now reads 'Theorem 5, lifted to multiclass via Theorem 1′ of §4.4' matching the §6 Theorem 5 block. |
 | 8 | `370f09e` | `03` | JK case now distinguishes 𝒜^base (underlying message-passing) and 𝒜^JK (join variant); join expression Π^L_𝒜^JK = ⋁ Π^l_𝒜^base reads as intended. |
 | 9 | `c6dafd8` | `03` | Header bumped to Draft 0.3; closing draft note rewritten to enumerate all 10 audit items closed plus reaffirm 05/07 closures plus open-problem list. |
-| 10 | `<this commit>` | `11` | Sequence table SHAs backfilled; plan-vs-execution delta documented (10 commits vs 11 planned, due to m-3 being absorbed into the C-1 commit §6-opener edit). |
+| 10 | `a9e6e65` | `11` | Sequence table SHAs backfilled; plan-vs-execution delta documented (10 commits vs 11 planned, due to m-3 being absorbed into the C-1 commit §6-opener edit). |
 
 ---
 
