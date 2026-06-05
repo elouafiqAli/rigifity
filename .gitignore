@@ -1,0 +1,9 @@
+# Local-only directories
+.samples/
+.vscode/
+
+# Editor / OS noise
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
