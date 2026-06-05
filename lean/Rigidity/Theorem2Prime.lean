@@ -83,18 +83,18 @@ structure SimplexScore [NeZero k] (φ : (Fin k → ℝ) → ℝ) : Prop where
 
 /-- Upper bracket constant on the simplex:
     `c_φ := sup_{η ∈ Δ^{k-1} \ vertices} R(η) / φ(η)`.
-    Brick: `D-cphi` (simplex case).
+    Brick: `D-cphi` (simplex case). Analogous to the binary `cPhi` which uses
+    `sSup ∘ image` rather than nested `iSup` (cf.
+    `.research/2026-06-05-phase-c-theorem1-strategy.md` and the binary
+    `Bracket.cPhi` lesson).
 
     Theorem 2′ requires `c_φ < ∞` (M-2 of audit 07); equivalently `φ` vanishes
     at most linearly at every vertex. Entropy and Gini satisfy this; quadratic
-    vanishing (`‖η - e_c‖²`) does not.
-
-    **SCAFFOLD.** Body is `sorry`; Phase D1 will replace with
-    `sSup ((R / φ) '' (simplex k \ vertices))` analogous to the binary `cPhi`.
-    No downstream caller (verified by 2026-06-05 audit), so the scaffold body
-    is non-load-bearing. -/
+    vanishing (`‖η - e_c‖²`) does not. The "vertices" are characterized as
+    points `η ∈ simplex k` with `R η = 0` (i.e. `max η = 1`), which by the
+    constraint `Σ η = 1` and `η ≥ 0` forces `η = vertex c` for some `c`. -/
 noncomputable def cPhiSimplex [NeZero k] (φ : (Fin k → ℝ) → ℝ) : ℝ :=
-  sorry  -- Phase D1: sup over `η ∈ simplex k \ {vertex c | c : Fin k}` of `R η / φ η`
+  sSup ((fun η : Fin k → ℝ => R η / φ η) '' {η ∈ simplex k | R η ≠ 0})
 
 /-! ## T2′ -/
 

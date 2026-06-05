@@ -70,6 +70,38 @@ could factor the proof obligations down to "show the symbolic polynomial form".
 **Where it goes**: `Rigidity/Bracket.lean` (right after `NormalizedScore` definition).
 **Decision**: defer until we have 3+ uses (currently 2: tent, phiVar).
 
+### 4. Conditional Jensen for `ConcaveOn`/`ConvexOn` (HIGH value)
+
+**Source**: Phase C2 (`barPhi_refinement_le`) discovery, 2026-06-05.
+**Phase that needs it**: Phase C2 — refinement-monotonicity of `barPhi`.
+**Estimated cost**: ~150 LoC (Rémy Degenne has `sorry` body in `testing-lower-bounds/Sorry/Jensen.lean`).
+**Why high value**: Conditional Jensen is the universal tool for inequalities
+involving conditional expectations. **Mathlib does not have it.** Rémy
+Degenne's `testing-lower-bounds` formalization left it as a `sorry` placeholder
+(`TestingLowerBounds/Sorry/Jensen.lean:23` — `ConvexOn.apply_condexp_le`),
+which means even a probability-theory-heavy mathlib-adjacent project blocks on it.
+
+The statement (concave form):
+
+```lean
+lemma ConcaveOn.condexp_apply_le {m mα : MeasurableSpace α} (hm : m ≤ mα)
+    {μ : Measure α} (hf : StronglyMeasurable f)
+    (hf_cvx : ConcaveOn ℝ (Ici 0) f) (hf_cont : ContinuousOn f (Ici 0))
+    {g : α → ℝ} (hg : Measurable g) (hg_pos : 0 ≤ g)
+    (h_int1 : Integrable g μ) (h_int2 : Integrable (fun x ↦ f (g x)) μ) :
+    (fun x ↦ μ[f ∘ g | m]) ≤ᵐ[μ.trim hm] fun x ↦ f ((μ[g | m]) x)
+```
+
+**Where it goes**: `Mathlib/MeasureTheory/Function/ConditionalExpectation/Jensen.lean`
+(new file) or extend existing `ConditionalExpectation` files.
+
+**Workaround for now**: Specialize to **finite partitions** (which is what
+we actually need for `barPhi_refinement_le`). The finite-partition case
+reduces to discrete Jensen on the per-cell weighted average, avoiding
+the full conditional-expectation machinery. This is what `barPhi_refinement_le`'s
+Phase C2 implementation will do — ~100 LoC of partition-specific Jensen
+instead of waiting for the full mathlib lemma.
+
 ## Our-codebase future work
 
 ### A. Wire `SingleCellRealizable` typeclass
