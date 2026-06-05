@@ -16,7 +16,7 @@ Expressivity theory for message-passing graph neural networks rests on one fact:
 $$
 \varphi^{-1}\big(\bar\varphi(\Pi)\big)\;\le\;\varepsilon^\ast(\Pi)\;\le\;c_\varphi\,\bar\varphi(\Pi),\qquad c_\varphi=\sup_{\eta\in(0,1/2]}\frac{\eta}{\varphi(\eta)}.
 $$
-The interval is the *calibrated gap measure*: a certified range for the achievable floor, computable from the induced partition before any classifier is trained.
+For any *normalized* concave score (concave on $[0,1]$ with $\varphi(0)=\varphi(1)=0$ and $\varphi(\tfrac12)=1$), concavity above the chord through $(0,0)$ and $(\tfrac12,1)$ gives $\varphi(\eta)\ge 2\eta$ on $[0,\tfrac12]$, so $c_\varphi=\tfrac12$ *uniformly*, attained at $\eta=\tfrac12$. The upper endpoint is therefore $\bar\varphi(\Pi)/2$ for every member of the class; the score-dependence of the upper instrument lives entirely in $\bar\varphi$, not in $c_\varphi$. The interval is the *calibrated gap measure*: a certified range for the achievable floor, computable from the induced partition before any classifier is trained.
 
 **The conceptual frame.** WL feasibility is the *decision* problem; the bracket is its *gap* version, and (§7) it is locally checkable. This is, in spirit, the relationship a PCP bears to satisfiability [Arora–Safra; Arora et al.; Dinur], with the caveat (§8) that we have the locally-checkable half but not yet a gap-amplification theorem, so we use the PCP framing as an analogy and not a claim.
 
@@ -85,7 +85,7 @@ Hence $\varphi(\eta)=\eta/c_\varphi$ on $[0,\tfrac12]$; normalization $\varphi(\
 
 **Corollary 3 (smoothness forces slack).** *If a normalized score is strictly concave on a subinterval of $(0,\tfrac12)$ — in particular any differentiable score with $\varphi''<0$, e.g. Shannon entropy or rescaled variance — then the bracket is strict on some partition; no differentiable concave score is exact.* (By Theorem 2 only $T$, nowhere strictly concave, is exact; a two-cell partition with rates in the strict region makes Jensen strict.)
 
-The reading: one uses a *smooth* surrogate because applications need differentiability (a trainable objective, a well-defined inverse, curvature away from the corner); the moment smoothness is demanded, exactness is lost, by the same phenomenon that makes the $\psi$-transform nontrivial for smooth surrogates. The bracket gap is the resolution-level image of that transform gap, and the variance member gives a tighter upper bound than entropy by the pointwise domination $4\eta(1-\eta)\le H(\eta)$.
+The reading: one uses a *smooth* surrogate because applications need differentiability (a trainable objective, a well-defined inverse, curvature away from the corner); the moment smoothness is demanded, exactness is lost, by the same phenomenon that makes the $\psi$-transform nontrivial for smooth surrogates. The bracket gap is the resolution-level image of that transform gap. The upper endpoint is $\bar\varphi(\Pi)/2$ for every normalized score (by the universal $c_\varphi=\tfrac12$ noted in §1), so the comparison between surrogates is a comparison of $\bar\varphi$ values; the pointwise domination $4\eta(1-\eta)\le H(\eta)$ gives $\bar\varphi_{\mathrm{var}}\le\bar\varphi_H$ on every partition, so the variance member yields the tighter upper instrument.
 
 ---
 
