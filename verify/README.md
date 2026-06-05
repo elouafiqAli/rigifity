@@ -49,32 +49,48 @@ All three exit 0 on PASS, 1 on any assertion failure.
 
 ### Prerequisites
 
-- **Lean toolchain** managed by [`elan`](https://github.com/leanprover/elan).
-  After installing elan, `cd` into `lean/` and elan will auto-install the
-  toolchain pinned in `lean/lean-toolchain` (currently `v4.18.0`).
-- **Python 3.9+** (standard library only — `fractions`, `math`, `sys`).
+- **WSL Debian (recommended)** with `elan` already installed:
+  - Lean toolchain `v4.29.1` (auto-resolved from `lean/lean-toolchain`).
+  - Mathlib cache pre-populated at `~/.cache/mathlib/` (~408 MB of `.ltar`).
+  - The driver `run-all.ps1` detects WSL Debian automatically and routes
+    `lake build` through it.
+- **OR Windows-native `elan`** if you prefer. Pass `-NoWsl` to the driver
+  to force this path; expect the first `lake exe cache get` to take 5–10
+  minutes (cache pulled from network rather than local).
+- **Python 3.9+** on Windows (standard library only — `fractions`, `math`,
+  `sys`).
 
 ### One-command harness
 
 From the repo root:
 
 ```powershell
-./verify/run-all.ps1
+./verify/run-all.ps1                    # uses WSL Debian if available
+./verify/run-all.ps1 -WslDistro Alpine  # override distro
+./verify/run-all.ps1 -NoWsl             # force Windows-native lake
 ```
 
-If `lake` is not yet installed the script prints a clear skip notice and runs
-the Python numerics anyway.
+If neither WSL Debian nor Windows-native `lake` is available the script
+prints a clear skip notice and runs the Python numerics anyway.
 
-### Step by step
+### Step by step (WSL Debian)
 
 ```powershell
-# Step 1: Lean kernel
+wsl -d Debian -- bash -lc 'cd /mnt/c/Users/aelouafiq/workdir/rigidity/lean && lake update && lake exe cache get && lake build'
+python verify/numerics.py
+```
+
+(The `lean/` Windows path translates to `/mnt/c/Users/aelouafiq/workdir/rigidity/lean`
+in WSL. Adjust if your workspace lives elsewhere on Windows.)
+
+### Step by step (Windows-native)
+
+```powershell
 cd lean
 lake update          # one-time only, generates lake-manifest.json
 lake exe cache get   # one-time only, downloads precompiled mathlib oleans (saves hours)
 lake build           # mechanically verifies every kernel theorem
 
-# Step 2: numerics
 cd ../verify
 python numerics.py
 ```
