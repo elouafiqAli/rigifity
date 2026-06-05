@@ -451,6 +451,119 @@ theorem sum_cellMass_eq_one {α : Type*} [MeasurableSpace α] (μ : Measure α)
     _ = (1 : ENNReal).toReal := by rw [h_sum_ennreal]
     _ = 1 := ENNReal.toReal_one
 
+/-- **Partition-additivity of the `f = true` measure**: for a probability
+    measure and a finite measurable partition, summing `μ ({f = true} ∩ c)`
+    over `c ∈ P.cells` recovers `μ ({f = true})`. Same `measure_biUnion_finset`
+    pattern as `sum_cellMass_eq_one`, applied to the trace `{f = true} ∩ c`
+    of `{f = true}` over the partition.
+
+    Used by `theorem1`'s hard direction (Phase C4) to identify
+    `cellRate trivialPartition univ = (μ {f=true}).toReal` with a weighted
+    sum of `cellRate P c · (μ c).toReal` via `cellRate_mul_cellMass`. -/
+@[rigidity_proved, rigidity_AMS_28, rigidity_AMS_60]
+theorem sum_measure_inter_eq {α : Type*} [MeasurableSpace α] (μ : Measure α)
+    [IsProbabilityMeasure μ] (f : α → Bool) (P : FinitePartition α)
+    (hf : MeasurableSet {x | f x = true}) :
+    ∑ c ∈ P.cells, (μ ({x | f x = true} ∩ c)).toReal =
+      (μ {x | f x = true}).toReal := by
+  -- Step 1: finite additivity on (disjoint, measurable) traces.
+  have h_meas : ∀ c ∈ P.cells, MeasurableSet ({x | f x = true} ∩ c) := by
+    intro c hc
+    exact hf.inter (P.measurable c hc)
+  have h_disj : (P.cells : Set (Set α)).PairwiseDisjoint
+      (fun c => {x | f x = true} ∩ c) := by
+    intro c₁ hc₁ c₂ hc₂ hne
+    exact (P.disjoint hc₁ hc₂ hne).mono Set.inter_subset_right Set.inter_subset_right
+  have h_add : μ (⋃ c ∈ P.cells, {x | f x = true} ∩ c) =
+      ∑ c ∈ P.cells, μ ({x | f x = true} ∩ c) :=
+    measure_biUnion_finset h_disj h_meas
+  -- Step 2: ⋃ c ∈ P.cells, {f=true} ∩ c = {f=true} ∩ ⋃ c, c = {f=true} ∩ univ = {f=true}.
+  have h_union : ⋃ c ∈ P.cells, {x | f x = true} ∩ c = {x | f x = true} := by
+    rw [← Set.inter_iUnion₂]
+    have h_cover : ⋃ c ∈ P.cells, c = Set.univ := by
+      have h := P.covers
+      rw [Set.sUnion_eq_biUnion] at h
+      exact h
+    rw [h_cover, Set.inter_univ]
+  -- Step 3: combine.
+  have h_sum_ennreal : ∑ c ∈ P.cells, μ ({x | f x = true} ∩ c) =
+      μ {x | f x = true} := by
+    rw [← h_add, h_union]
+  -- Step 4: push toReal through (each term ≤ μ univ = 1 < ∞).
+  have h_finite : ∀ c ∈ P.cells, μ ({x | f x = true} ∩ c) ≠ ⊤ := by
+    intro c _
+    refine ne_of_lt ?_
+    refine lt_of_le_of_lt (measure_mono (Set.subset_univ _)) ?_
+    rw [measure_univ]
+    exact ENNReal.one_lt_top
+  calc ∑ c ∈ P.cells, (μ ({x | f x = true} ∩ c)).toReal
+      = (∑ c ∈ P.cells, μ ({x | f x = true} ∩ c)).toReal :=
+            (ENNReal.toReal_sum h_finite).symm
+    _ = (μ {x | f x = true}).toReal := by rw [h_sum_ennreal]
+
+/-- **Cell-rate tower over a partition**: for a probability measure and a
+    finite measurable partition, the cell-rate on the trivial single-cell
+    partition equals the weighted sum of cell-rates over `P.cells` with
+    weights `(μ c).toReal`. This is the conditional-expectation tower
+    property specialized to two nested partitions where the outer is
+    `{univ}`.
+
+    Proof: combine `cellRate_mul_cellMass` (per cell) with
+    `sum_measure_inter_eq` (sum-of-traces equals trace-of-union) and
+    `cellRate_trivial_boolIndicator` (only when `f` is `boolIndicator`).
+    Here we state the more general fact for arbitrary `f : α → Bool`.
+
+    Used by `theorem1_hard` step 6. -/
+@[rigidity_proved, rigidity_AMS_28, rigidity_AMS_60]
+theorem cellRate_trivial_eq_sum {α : Type*} [MeasurableSpace α] (μ : Measure α)
+    [IsProbabilityMeasure μ] (f : α → Bool) (P : FinitePartition α)
+    (hf : MeasurableSet {x | f x = true}) :
+    (μ {x | f x = true}).toReal =
+      ∑ c ∈ P.cells, cellRate μ f P c * (cellMass μ P c).toReal := by
+  -- LHS = Σ (μ ({f=true} ∩ c)).toReal by sum_measure_inter_eq.
+  rw [← sum_measure_inter_eq μ f P hf]
+  -- RHS terms: each cellRate · cellMass = (μ ({f=true} ∩ c)).toReal
+  -- via cellRate_mul_cellMass, which needs μ c ≠ ⊤.
+  apply Finset.sum_congr rfl
+  intro c _
+  -- μ c is finite (≤ μ univ = 1 < ∞).
+  have h_finite : μ c ≠ ⊤ := by
+    refine ne_of_lt ?_
+    refine lt_of_le_of_lt (measure_mono (Set.subset_univ c)) ?_
+    rw [measure_univ]
+    exact ENNReal.one_lt_top
+  exact (cellRate_mul_cellMass μ f P h_finite).symm
+
+/-- **Cell-rate on the trivial partition** for arbitrary `f`: equals
+    `(μ {f=true}).toReal`. Generalizes `cellRate_trivial_boolIndicator`
+    (which assumed `f = boolIndicator s`) to any `α → Bool`. -/
+@[rigidity_proved, rigidity_AMS_28]
+theorem cellRate_trivial {α : Type*} [MeasurableSpace α] (μ : Measure α)
+    [IsProbabilityMeasure μ] (f : α → Bool) :
+    cellRate μ f trivialPartition Set.univ = (μ {x | f x = true}).toReal := by
+  unfold cellRate
+  rw [Set.inter_univ, measure_univ]
+  simp
+
+/-- **barPhi on the trivial partition** for arbitrary `f`: equals
+    `φ ((μ {f=true}).toReal)`. Generalizes `barPhi_trivial_boolIndicator`. -/
+@[rigidity_proved, rigidity_AMS_60]
+theorem barPhi_trivial {α : Type*} [MeasurableSpace α] (μ : Measure α)
+    [IsProbabilityMeasure μ] (φ : ℝ → ℝ) (f : α → Bool) :
+    barPhi μ φ f trivialPartition = φ ((μ {x | f x = true}).toReal) := by
+  show ∑ c ∈ trivialPartition.cells, (cellMass μ trivialPartition c).toReal *
+       φ (cellRate μ f trivialPartition c) = _
+  show ∑ c ∈ ({Set.univ} : Finset (Set α)),
+        (cellMass μ trivialPartition c).toReal *
+        φ (cellRate μ f trivialPartition c) = _
+  rw [Finset.sum_singleton]
+  show (cellMass μ trivialPartition Set.univ).toReal *
+        φ (cellRate μ f trivialPartition Set.univ) = _
+  rw [cellRate_trivial μ f]
+  unfold cellMass
+  rw [measure_univ]
+  simp
+
 /-- **Binary bracket — lower endpoint** (inverse-free form).
     For a normalized concave `φ`, with cell rates `ηᵢ` and `qᵢ := min(ηᵢ, 1-ηᵢ)`,
     symmetry gives `φ(ηᵢ) = φ(qᵢ)` and Jensen for concave `φ` on `[0, 1/2]`

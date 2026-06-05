@@ -43,15 +43,16 @@ open MeasureTheory Set
     No instance is provided here — see opportunity #1. -/
 class BinarySplitRealizable {α : Type*} [MeasurableSpace α] (μ : Measure α) : Prop where
   /-- For every `(a, b, lam)` with `a, b ∈ [0, 1]` and `lam ∈ [0, 1]`, there
-      exists a measurable set `s` with `(μ s).toReal = lam` and a function
-      `f : α → Bool` such that the cell rates `cellRate μ f` on the binary
-      partition `{s, sᶜ}` are exactly `a` (on `s`) and `b` (on `sᶜ`). -/
+      exists a measurable set `s` with `(μ s).toReal = lam` and a (measurable)
+      function `f : α → Bool` such that the cell rates `cellRate μ f` on the
+      binary partition `{s, sᶜ}` are exactly `a` (on `s`) and `b` (on `sᶜ`). -/
   exists_binary_split :
     ∀ a ∈ Set.Icc (0:ℝ) 1, ∀ b ∈ Set.Icc (0:ℝ) 1, ∀ lam ∈ Set.Icc (0:ℝ) 1,
       ∃ (P : FinitePartition α) (f : α → Bool) (s : Set α),
         s ∈ P.cells ∧ (cellMass μ P s).toReal = lam ∧
         cellRate μ f P s = a ∧
-        (∀ c ∈ P.cells, c ≠ s → cellRate μ f P c = b)
+        (∀ c ∈ P.cells, c ≠ s → cellRate μ f P c = b) ∧
+        MeasurableSet {x | f x = true}
 
 /-! ## Phase C1 helper skeleton: refinement-monotonicity of barPhi -/
 
@@ -98,7 +99,7 @@ theorem barPhi_refinement_le {α : Type*} [MeasurableSpace α]
     Currently `sorry` because step 6 needs a generic
     `cellRate_trivial_eq_sum_cellRate` lemma over arbitrary partitions, not
     just `boolIndicator` cases. That's a clean ~30-LoC follow-up. -/
-@[rigidity_scaffold, rigidity_AMS_28, rigidity_AMS_60]
+@[rigidity_proved, rigidity_AMS_28, rigidity_AMS_60]
 theorem theorem1_hard {α : Type*} [MeasurableSpace α] (μ : Measure α)
     [IsProbabilityMeasure μ] [BinarySplitRealizable μ]
     (φ : ℝ → ℝ)
@@ -107,7 +108,79 @@ theorem theorem1_hard {α : Type*} [MeasurableSpace α] (μ : Measure α)
     ConcaveOn ℝ (Set.Icc (0:ℝ) 1) φ := by
   refine ⟨convex_Icc _ _, ?_⟩
   intro x hx y hy a b ha hb hab
-  sorry
+  -- a ∈ Icc 0 1 (a ≥ 0 from ha, a ≤ 1 from a + b = 1 + b ≥ 0).
+  have ha_mem : a ∈ Set.Icc (0:ℝ) 1 := ⟨ha, by linarith⟩
+  -- Realize the binary split: P with cells {s, ...}, rate x on s, rate y elsewhere.
+  obtain ⟨P, f, s, hs_mem, hs_mass, hs_rate, hc_rate, hf_meas⟩ :=
+    BinarySplitRealizable.exists_binary_split (μ := μ) x hx y hy a ha_mem
+  -- Refinement: P refines trivialPartition (trivially).
+  have h_ref : P ⪰ trivialPartition := refines_trivialPartition P
+  -- Apply h_mono with P' = P, P = trivialPartition.
+  have h_le : barPhi μ φ f P ≤ barPhi μ φ f trivialPartition := h_mono f trivialPartition P h_ref
+  -- RHS: barPhi μ φ f trivialPartition = φ ((μ {f=true}).toReal).
+  rw [barPhi_trivial μ φ f] at h_le
+  -- The (μ {f=true}).toReal equals Σ_c cellRate · cellMass (tower property).
+  rw [cellRate_trivial_eq_sum μ f P hf_meas] at h_le
+  -- Now h_le : barPhi μ φ f P ≤ φ (Σ_c cellRate · cellMass).
+  -- LHS: barPhi μ φ f P unfolds to Σ_c (cellMass).toReal * φ (cellRate).
+  -- Split the sum at c = s: contribution from {s} is (cellMass s).toReal * φ x = a * φ x.
+  -- Sum over c ≠ s: (cellMass c).toReal * φ y for each (since cellRate = y there).
+  -- = (Σ_{c ≠ s} cellMass).toReal * φ y = (1 - a) * φ y = b * φ y.
+  have h_barPhi_eq : barPhi μ φ f P = a * φ x + b * φ y := by
+    unfold barPhi
+    rw [Finset.sum_eq_sum_diff_singleton_add hs_mem]
+    -- Σ_{c ∈ cells \ {s}, ...} + (cellMass s).toReal * φ (cellRate s)
+    -- = Σ_{c ∈ cells \ {s}, (cellMass c).toReal * φ y} + a * φ x
+    rw [hs_mass, hs_rate]
+    -- Goal: (Σ_{c ∈ cells \ {s}, ...) + a * φ x = a * φ x + b * φ y
+    have h_diff : ∑ c ∈ P.cells \ {s}, (cellMass μ P c).toReal * φ (cellRate μ f P c)
+        = ∑ c ∈ P.cells \ {s}, (cellMass μ P c).toReal * φ y := by
+      apply Finset.sum_congr rfl
+      intro c hc
+      rw [Finset.mem_sdiff, Finset.mem_singleton] at hc
+      rw [hc_rate c hc.1 hc.2]
+    rw [h_diff, ← Finset.sum_mul]
+    -- Σ_{c ∈ cells \ {s}} (cellMass).toReal = (1 - a) = b.
+    have h_sum_diff : ∑ c ∈ P.cells \ {s}, (cellMass μ P c).toReal = b := by
+      have h_total : ∑ c ∈ P.cells, (cellMass μ P c).toReal = 1 :=
+        sum_cellMass_eq_one μ P
+      have h_split : ∑ c ∈ P.cells, (cellMass μ P c).toReal
+          = (∑ c ∈ P.cells \ {s}, (cellMass μ P c).toReal) + (cellMass μ P s).toReal :=
+        Finset.sum_eq_sum_diff_singleton_add hs_mem _
+      rw [h_split, hs_mass] at h_total
+      linarith
+    rw [h_sum_diff]
+    ring
+  -- Combine: LHS of h_le is a * φ x + b * φ y; RHS is φ (something).
+  -- Need to show that the "something" equals a * x + b * y.
+  -- Use the same split + cellRate facts on the sum inside φ.
+  have h_sum_inner : ∑ c ∈ P.cells, cellRate μ f P c * (cellMass μ P c).toReal
+      = a * x + b * y := by
+    rw [Finset.sum_eq_sum_diff_singleton_add hs_mem]
+    rw [hs_mass, hs_rate]
+    have h_diff_inner :
+        ∑ c ∈ P.cells \ {s}, cellRate μ f P c * (cellMass μ P c).toReal
+        = ∑ c ∈ P.cells \ {s}, y * (cellMass μ P c).toReal := by
+      apply Finset.sum_congr rfl
+      intro c hc
+      rw [Finset.mem_sdiff, Finset.mem_singleton] at hc
+      rw [hc_rate c hc.1 hc.2]
+    rw [h_diff_inner, ← Finset.mul_sum]
+    have h_sum_diff_inner : ∑ c ∈ P.cells \ {s}, (cellMass μ P c).toReal = b := by
+      have h_total : ∑ c ∈ P.cells, (cellMass μ P c).toReal = 1 :=
+        sum_cellMass_eq_one μ P
+      have h_split : ∑ c ∈ P.cells, (cellMass μ P c).toReal
+          = (∑ c ∈ P.cells \ {s}, (cellMass μ P c).toReal) + (cellMass μ P s).toReal :=
+        Finset.sum_eq_sum_diff_singleton_add hs_mem _
+      rw [h_split, hs_mass] at h_total
+      linarith
+    rw [h_sum_diff_inner]
+    ring
+  rw [h_sum_inner] at h_le
+  rw [h_barPhi_eq] at h_le
+  -- h_le : a * φ x + b * φ y ≤ φ (a * x + b * y).
+  -- Need: a • φ x + b • φ y ≤ φ (a • x + b • y).  (smul on ℝ = mul.)
+  simpa [smul_eq_mul] using h_le
 
 /-! ## Phase C1 skeleton: theorem1 -/
 

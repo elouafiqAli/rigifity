@@ -23,6 +23,10 @@ Expected: every theorem uses only `propext`, `Classical.choice`, `Quot.sound`
 #print axioms Rigidity.cellRate_mem_Icc
 #print axioms Rigidity.cellRate_mul_cellMass
 #print axioms Rigidity.refines_trivialPartition
+#print axioms Rigidity.sum_measure_inter_eq
+#print axioms Rigidity.cellRate_trivial_eq_sum
+#print axioms Rigidity.cellRate_trivial
+#print axioms Rigidity.barPhi_trivial
 #print axioms Rigidity.min_self_one_sub_mem_Icc_zero_half
 #print axioms Rigidity.phi_eq_phi_min_symm
 #print axioms Rigidity.concave_on_Icc_zero_half
@@ -47,6 +51,9 @@ Expected: every theorem uses only `propext`, `Classical.choice`, `Quot.sound`
 #print axioms Rigidity.phiVar_normalized
 #print axioms Rigidity.barPhi_phiVar_eq_two_pDisagree
 #print axioms Rigidity.variance_bracket
+
+-- Theorem1.lean
+#print axioms Rigidity.theorem1_hard
 
 -- Theorem2Prime.lean
 -- (theorem1Prime removed 2026-06-05 — was vacuous `True ↔ True`, see audit notes.)
