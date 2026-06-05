@@ -296,8 +296,8 @@ Lauritzen, S., and Spiegelhalter, D. *Local computations with probabilities on g
 Le Cam, L. *Asymptotic Methods in Statistical Decision Theory.* Springer, 1986.
 Morris, C., et al. *Weisfeiler and Leman go neural.* AAAI, 2019.
 Oono, K., and Suzuki, T. *Graph neural networks exponentially lose expressive power for node classification.* ICLR, 2020.
-Provan, J. S., and Ball, M. O. *The complexity of counting cuts and of computing the probability that a graph is connected.* SIAM J. Comput., 1983.
 Pires, B. Á., and Szepesvári, C. *Multiclass classification calibration functions.* (arXiv) 2016.
+Provan, J. S., and Ball, M. O. *The complexity of counting cuts and of computing the probability that a graph is connected.* SIAM J. Comput., 1983.
 Ramaswamy, H. G., and Agarwal, S. *Classification calibration dimension for general multiclass losses.* NeurIPS, 2012.
 Reid, M., and Williamson, R. *Information, divergence and risk for binary experiments.* JMLR, 2011.
 Rusch, T. K., Bronstein, M., and Mishra, S. *A survey on oversmoothing in graph neural networks.* (arXiv) 2023.
