@@ -160,7 +160,7 @@ Two remarks worth stating. First, the *only-if* direction uses only continuity, 
 
 ### 4.3 Smoothness forces slack — and the mechanism the simplex reveals
 
-**Corollary 5 (smoothness–slack, multiclass).** *Any simplex score that is not a scalar multiple of $R$ — in particular any smooth score, since $R$ is piecewise-linear with corners — is inexact, so its bracket is strict on some partition. Multiclass entropy and Gini are smooth, hence inexact, hence carry strictly positive slack.*
+**Corollary 3′ (smoothness–slack, multiclass).** *Any simplex score that is not a scalar multiple of $R$ — in particular any smooth score, since $R$ is piecewise-linear with corners — is inexact, so its bracket is strict on some partition. Multiclass entropy and Gini are smooth, hence inexact, hence carry strictly positive slack.*
 
 The binary Corollary 3 attributed the slack to the single kink of the tent at $\eta=\tfrac12$. The multiclass case exposes the deeper mechanism: the kink locus widens from a point to a $(k-2)$-dimensional skeleton — the set $\{\boldsymbol\eta:\eta_c=\eta_{c'}=\max\text{ for some }c\ne c'\}$ where the optimal vote switches — but the mechanism (smooth scores cannot reproduce kinks of $R$) is identical to the binary case.
 
