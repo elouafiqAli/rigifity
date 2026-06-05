@@ -41,6 +41,14 @@ try {
                 exit 1
             }
         }
+        # Pull precompiled mathlib oleans (saves hours vs building from source).
+        # The cache binary lives under .lake/packages/mathlib/scripts/cache.
+        Write-Host "Pulling precompiled mathlib oleans (lake exe cache get)..."
+        lake exe cache get
+        if ($LASTEXITCODE -ne 0) {
+            Write-Host "[WARN] 'lake exe cache get' failed; build will compile mathlib from source (hours)." -ForegroundColor Yellow
+            Write-Host "       Continuing with 'lake build' anyway." -ForegroundColor Yellow
+        }
         lake build
         if ($LASTEXITCODE -ne 0) {
             Write-Host "[FAIL] Step 1: Lean kernel build" -ForegroundColor Red

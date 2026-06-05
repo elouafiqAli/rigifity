@@ -70,15 +70,17 @@ the Python numerics anyway.
 ```powershell
 # Step 1: Lean kernel
 cd lean
-lake update     # one-time only, generates lake-manifest.json
-lake build      # mechanically verifies every kernel theorem
+lake update          # one-time only, generates lake-manifest.json
+lake exe cache get   # one-time only, downloads precompiled mathlib oleans (saves hours)
+lake build           # mechanically verifies every kernel theorem
 
 # Step 2: numerics
 cd ../verify
 python numerics.py
 ```
 
-Both should exit 0.
+Both should exit 0. The first `lake update` + `lake exe cache get` is the slow
+step (~5–10 minutes on a typical connection); subsequent `lake build` is fast.
 
 ---
 
