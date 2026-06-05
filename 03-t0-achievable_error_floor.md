@@ -75,13 +75,13 @@ For a normalized score, Theorem 1 yields the bracket of §1; call it **exact** i
 
 **Theorem 2.** *A normalized score $\varphi$ has an exact bracket if and only if $\varphi=T$.* 
 
-**Proof.** For $T$: $\varphi^{-1}(t)=t/2$, $c_T=\tfrac12$, and both endpoints equal $\tfrac12\bar T(\Pi)=\varepsilon^\ast(\Pi)$. Conversely, exactness forces $\varepsilon^\ast(\Pi)=G(\bar\varphi(\Pi))$ for some $G$; single-cell partitions give $G=\varphi^{-1}$; two-cell partitions give, with $u=\varphi(\eta_1),v=\varphi(\eta_2)$,
+**Proof.** For $T$: $\varphi^{-1}(t)=t/2$, $c_T=\tfrac12$, and both endpoints equal $\tfrac12\bar T(\Pi)=\varepsilon^\ast(\Pi)$. Conversely, exactness means the two bracket endpoints coincide on every partition. Apply this to the single-cell partition of rate $\eta\in[0,\tfrac12]$: $\bar\varphi(\Pi)=\varphi(\eta)$ and $\varepsilon^\ast(\Pi)=\eta$, so $\varphi^{-1}(\varphi(\eta))=c_\varphi\,\varphi(\eta)$, i.e.
 $$
-p_1\varphi^{-1}(u)+p_2\varphi^{-1}(v)=\varphi^{-1}(p_1u+p_2v)\quad\text{for all }u,v,\ p_1+p_2=1,
+\eta\;=\;c_\varphi\,\varphi(\eta)\qquad\text{for every }\eta\in[0,\tfrac12].
 $$
-so $\varphi^{-1}$ is affine; with $\varphi^{-1}(0)=0$ this gives $\varphi^{-1}(t)=t/2$, i.e. $\varphi=T$. $\qquad\blacksquare$
+Hence $\varphi(\eta)=\eta/c_\varphi$ on $[0,\tfrac12]$; normalization $\varphi(\tfrac12)=1$ pins $c_\varphi=\tfrac12$, so $\varphi(\eta)=2\eta$ on $[0,\tfrac12]$, and symmetry gives $\varphi=T$. $\qquad\blacksquare$
 
-**Remark (relation to the $\psi$-transform).** Exactness of the bracket is the resolution-level counterpart of the $\psi$-transform being the identity, which [BJM 2006] holds for the $0$-$1$ loss. The tent is concave but not strictly so and has a corner at $\eta=\tfrac12$ — the locus where the Bayes rule flips its vote — and that corner is the source of the gap below.
+**Remark (relation to the $\psi$-transform).** Exactness of the bracket is the resolution-level counterpart of the $\psi$-transform being the identity, which [BJM 2006] holds for the $0$-$1$ loss. The tent is concave but not strictly so and has a corner at $\eta=\tfrac12$ — the locus where the Bayes rule flips its vote — and that corner is the source of the gap below. (The two-cell affine-equality argument familiar from the simplex extension is unnecessary here: single-cell partitions already pin $\varphi$ pointwise, because in the binary case $\varphi$ is a function of the scalar $\eta$. The two-cell argument earns its keep only when $\varphi$ is not a function of $\varepsilon^\ast$ — i.e., on the multiclass simplex.)
 
 **Corollary 3 (smoothness forces slack).** *If a normalized score is strictly concave on a subinterval of $(0,\tfrac12)$ — in particular any differentiable score with $\varphi''<0$, e.g. Shannon entropy or rescaled variance — then the bracket is strict on some partition; no differentiable concave score is exact.* (By Theorem 2 only $T$, nowhere strictly concave, is exact; a two-cell partition with rates in the strict region makes Jensen strict.)
 
