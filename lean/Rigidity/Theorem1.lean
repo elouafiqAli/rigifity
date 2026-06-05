@@ -70,6 +70,45 @@ theorem barPhi_refinement_le {α : Type*} [MeasurableSpace α]
     barPhi μ φ f P' ≤ barPhi μ φ f P := by
   sorry
 
+/-! ## Phase C3 — Theorem 1 hard direction (refinement-mono ⟹ concave) -/
+
+/-- **Theorem 1 — hard direction**: refinement-monotonicity of `barPhi`
+    forces `φ` to be concave on `[0, 1]`.
+
+    Proof structure:
+    1. To show `ConcaveOn ℝ (Icc 0 1) φ`, give `Convex (Icc 0 1)` (`convex_Icc`)
+       and the inequality: for `x, y ∈ Icc 0 1` and `a, b ≥ 0` with `a + b = 1`,
+       `a • φ x + b • φ y ≤ φ (a • x + b • y)`.
+    2. Use `BinarySplitRealizable` to find `P` (2-cell), `f`, `s ∈ P.cells`
+       with `(μ s).toReal = a`, `cellRate μ f P s = x`,
+       `cellRate μ f P c = y` for `c ≠ s ∈ P.cells`.
+    3. Apply `h_mono f trivialPartition P (refines_trivialPartition P)`:
+       `barPhi μ φ f P ≤ barPhi μ φ f trivialPartition`.
+    4. LHS = `Σ_c (μ c).toReal · φ (cellRate μ f P c)`. The cells split into
+       `{s}` (contributing `a · φ x`) and `P.cells \ {s}` (each contributing
+       `(μ c).toReal · φ y`). The latter sums to `(1 - a) · φ y = b · φ y`
+       via `sum_cellMass_eq_one`.
+    5. RHS = `barPhi μ φ f trivialPartition = φ (cellRate μ f trivialPartition univ)`.
+       The trivial cellRate = `(μ {f=true}).toReal` (via `cellRate_trivial_boolIndicator`
+       — but here `f` is arbitrary, not necessarily `boolIndicator`).
+    6. Need: `(μ {f=true}).toReal = a · x + b · y` via partition-additivity
+       of `μ` over `{s, P.cells \ {s}}` and `cellRate_mul_cellMass` per cell.
+    7. Combine via `linarith` to get `a • φ x + b • φ y ≤ φ (a • x + b • y)`.
+
+    Currently `sorry` because step 6 needs a generic
+    `cellRate_trivial_eq_sum_cellRate` lemma over arbitrary partitions, not
+    just `boolIndicator` cases. That's a clean ~30-LoC follow-up. -/
+@[rigidity_scaffold, rigidity_AMS_28, rigidity_AMS_60]
+theorem theorem1_hard {α : Type*} [MeasurableSpace α] (μ : Measure α)
+    [IsProbabilityMeasure μ] [BinarySplitRealizable μ]
+    (φ : ℝ → ℝ)
+    (h_mono : ∀ (f : α → Bool) (P P' : FinitePartition α),
+        P' ⪰ P → barPhi μ φ f P' ≤ barPhi μ φ f P) :
+    ConcaveOn ℝ (Set.Icc (0:ℝ) 1) φ := by
+  refine ⟨convex_Icc _ _, ?_⟩
+  intro x hx y hy a b ha hb hab
+  sorry
+
 /-! ## Phase C1 skeleton: theorem1 -/
 
 /-- **Theorem 1** (refinement-monotone ⟺ concave).
@@ -88,6 +127,11 @@ theorem theorem1 {α : Type*} [MeasurableSpace α] (μ : Measure α)
     (∀ (f : α → Bool) (P P' : FinitePartition α),
         P' ⪰ P → barPhi μ φ f P' ≤ barPhi μ φ f P) ↔
     ConcaveOn ℝ (Set.Icc (0:ℝ) 1) φ := by
-  sorry
+  refine ⟨?_, ?_⟩
+  · -- HARD direction: refinement-mono ⟹ concave.
+    exact theorem1_hard μ φ
+  · -- EASY direction: concave ⟹ refinement-mono.
+    intro h_cvx f P P' h_ref
+    exact barPhi_refinement_le μ φ h_cvx f P P' h_ref
 
 end Rigidity
