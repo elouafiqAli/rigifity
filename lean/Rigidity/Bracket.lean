@@ -1,4 +1,5 @@
 import Mathlib.MeasureTheory.Measure.MeasureSpace
+import Mathlib.MeasureTheory.Measure.Typeclasses.Probability
 import Mathlib.Analysis.Convex.Basic
 import Mathlib.Analysis.Convex.Function
 import Mathlib.Analysis.Convex.Jensen
@@ -292,46 +293,119 @@ theorem cellRate_le_one {α : Type*} [MeasurableSpace α] (μ : Measure α)
     -- Apply ENNReal.toReal_mono.
     exact ENNReal.toReal_mono h_μc_finite (measure_mono Set.inter_subset_right)
 
+/-! ## Phase B2 measure-theoretic helpers
+
+    Six helpers that compose into `bracket_lower` and `bracket_upper`,
+    skeletonized Tao-step-2a-style before any are filled. -/
+
+/-- Unfold `(cellMass μ P c).toReal = (μ c).toReal`. Trivial by definition. -/
+@[rigidity_proved, rigidity_AMS_28]
+theorem cellMass_toReal {α : Type*} [MeasurableSpace α] (μ : Measure α)
+    (P : FinitePartition α) (c : Set α) :
+    (cellMass μ P c).toReal = (μ c).toReal := rfl
+
+/-- `cellRate ∈ [0, 1]` bundle. -/
+@[rigidity_proved, rigidity_AMS_28]
+theorem cellRate_mem_Icc {α : Type*} [MeasurableSpace α] (μ : Measure α)
+    (f : α → Bool) (P : FinitePartition α) (c : Set α) :
+    cellRate μ f P c ∈ Set.Icc (0:ℝ) 1 :=
+  ⟨cellRate_nonneg μ f P c, cellRate_le_one μ f P c⟩
+
+/-- `min η (1 - η) ∈ [0, 1/2]` whenever `η ∈ [0, 1]`. Pure ℝ arithmetic. -/
+@[rigidity_proved]
+theorem min_self_one_sub_mem_Icc_zero_half {η : ℝ} (hη : η ∈ Set.Icc (0:ℝ) 1) :
+    min η (1 - η) ∈ Set.Icc (0:ℝ) (1/2) := by
+  obtain ⟨h0, h1⟩ := hη
+  refine ⟨le_min h0 (by linarith), ?_⟩
+  -- min η (1-η) ≤ 1/2: if η ≤ 1/2 use η ≤ 1/2 directly, else 1-η ≤ 1/2.
+  rcases le_or_gt η (1/2) with h | h
+  · exact (min_le_left _ _).trans h
+  · exact (min_le_right _ _).trans (by linarith)
+
+/-- For a normalized score, `φ η = φ (min η (1-η))` on `[0, 1]`. Case-split
+    on `η ≤ 1/2`: if so, `min = η`; else use `symmetric` to flip to `1 - η`
+    which is `≤ 1/2`. -/
+@[rigidity_proved, rigidity_AMS_60]
+theorem phi_eq_phi_min_symm {φ : ℝ → ℝ} (h : NormalizedScore φ)
+    {η : ℝ} (hη : η ∈ Set.Icc (0:ℝ) 1) :
+    φ η = φ (min η (1 - η)) := by
+  obtain ⟨h0, h1⟩ := hη
+  rcases le_or_gt η (1/2) with hle | hgt
+  · -- η ≤ 1/2 ⇒ η ≤ 1-η ⇒ min η (1-η) = η.
+    have h_min : min η (1 - η) = η := min_eq_left (by linarith)
+    rw [h_min]
+  · -- η > 1/2 ⇒ 1-η < η ⇒ min η (1-η) = 1-η. Use symmetry to flip.
+    have h_min : min η (1 - η) = 1 - η := min_eq_right (by linarith)
+    rw [h_min]
+    exact h.symmetric η ⟨h0, h1⟩
+
+/-- Restrict concavity from `[0, 1]` to `[0, 1/2]`. -/
+@[rigidity_proved, rigidity_AMS_60]
+theorem concave_on_Icc_zero_half {φ : ℝ → ℝ} (h : NormalizedScore φ) :
+    ConcaveOn ℝ (Set.Icc (0:ℝ) (1/2)) φ :=
+  h.concave_on.subset
+    (Set.Icc_subset_Icc le_rfl (by norm_num))
+    (convex_Icc _ _)
+
+/-- **Measure-theoretic core.** For a probability measure and a finite
+    measurable partition, the masses sum to one (as ℝ). Uses
+    `P.measurable`, `P.disjoint`, `P.covers`, and `μ univ = 1`.
+
+    Proof structure (Tao step 2a skeleton):
+    1. Finite additivity: `μ (⋃ c ∈ cells, c) = Σ c, μ c` via `measure_biUnion_finset`
+       with `f = id`.
+    2. Bridge: `⋃ c ∈ cells, c = ⋃₀ cells = univ` via `P.covers`.
+    3. `μ univ = 1` via `IsProbabilityMeasure.measure_univ`.
+    4. Push `.toReal` through the sum (every cell has finite measure since
+       `μ ≤ μ univ = 1 < ∞`) via `ENNReal.toReal_sum`. -/
+@[rigidity_proved, rigidity_AMS_28, rigidity_AMS_60]
+theorem sum_cellMass_eq_one {α : Type*} [MeasurableSpace α] (μ : Measure α)
+    [IsProbabilityMeasure μ] (P : FinitePartition α) :
+    ∑ c ∈ P.cells, (cellMass μ P c).toReal = 1 := by
+  -- Step 1: finite additivity on disjoint measurable cells indexed by themselves.
+  have h_add : μ (⋃ c ∈ P.cells, c) = ∑ c ∈ P.cells, μ c :=
+    measure_biUnion_finset P.disjoint P.measurable
+  -- Step 2: ⋃ c ∈ P.cells, c = univ via P.covers (after bridging Finset → Set).
+  have h_univ : ⋃ c ∈ P.cells, c = Set.univ := by
+    have h := P.covers
+    rw [Set.sUnion_eq_biUnion] at h
+    exact h
+  -- Step 3: combine to get Σ_c μ c = 1 (as ENNReal).
+  have h_sum_ennreal : ∑ c ∈ P.cells, μ c = 1 := by
+    rw [← h_add, h_univ, measure_univ]
+  -- Step 4: each μ c is finite (≤ μ univ = 1 < ∞), so toReal pushes through.
+  have h_finite : ∀ c ∈ P.cells, μ c ≠ ⊤ := by
+    intro c _
+    refine ne_of_lt ?_
+    refine lt_of_le_of_lt (measure_mono (Set.subset_univ c)) ?_
+    rw [measure_univ]
+    exact ENNReal.one_lt_top
+  -- Push toReal through: (Σ μ c).toReal = Σ (μ c).toReal = (1 : ℝ).
+  calc ∑ c ∈ P.cells, (cellMass μ P c).toReal
+      = ∑ c ∈ P.cells, (μ c).toReal := by
+            simp only [cellMass_toReal]
+    _ = (∑ c ∈ P.cells, μ c).toReal := (ENNReal.toReal_sum h_finite).symm
+    _ = (1 : ENNReal).toReal := by rw [h_sum_ennreal]
+    _ = 1 := ENNReal.toReal_one
+
 /-- **Binary bracket — lower endpoint** (inverse-free form).
     For a normalized concave `φ`, with cell rates `ηᵢ` and `qᵢ := min(ηᵢ, 1-ηᵢ)`,
     symmetry gives `φ(ηᵢ) = φ(qᵢ)` and Jensen for concave `φ` on `[0, 1/2]`
     gives `Σ pᵢ φ(qᵢ) ≤ φ(Σ pᵢ qᵢ)`, i.e. `bar φ(P) ≤ φ(ε*(P))`.
     Applying `φ⁻¹` (which exists by `StrictMonoOn`) recovers `φ⁻¹(bar φ) ≤ ε*`.
-    Brick: `T-bracket` (lower half).
-
-    Proof structure (Tao step 2a skeleton):
-    1. `cellRate ∈ [0, 1]` from `cellRate_nonneg` + `cellRate_le_one`.
-    2. `qᵢ := min(ηᵢ, 1-ηᵢ) ∈ [0, 1/2]` purely from (1).
-    3. `φ(ηᵢ) = φ(qᵢ)` via symmetry of normalized score (case-split ηᵢ ≤ 1/2).
-    4. Hence `barPhi = Σ pᵢ φ(qᵢ)`.
-    5. Apply `ConcaveOn.le_map_sum` (concavity of φ on [0, 1/2], weights pᵢ,
-       points qᵢ ∈ [0, 1/2], `Σ pᵢ = 1` via `IsProbabilityMeasure μ` +
-       `P.covers` + `P.disjoint`).
-    6. Yields `Σ pᵢ φ(qᵢ) ≤ φ(Σ pᵢ qᵢ) = φ(epsilonStar)`.
-
-    Requires `[IsProbabilityMeasure μ]` (not yet added to signature — will be
-    added when Phase B2 begins, alongside `Finset.sum` / `Measure` plumbing
-    for proving `Σ cellMass = 1`). -/
+    Brick: `T-bracket` (lower half). -/
 @[rigidity_scaffold, rigidity_AMS_60, rigidity_AMS_62]
 theorem bracket_lower {α : Type*} [MeasurableSpace α] (μ : Measure α)
-    (φ : ℝ → ℝ) (_h : NormalizedScore φ)
+    [IsProbabilityMeasure μ] (φ : ℝ → ℝ) (_h : NormalizedScore φ)
     (f : α → Bool) (P : FinitePartition α) :
     barPhi μ φ f P ≤ φ (epsilonStar μ f P) := by sorry
 
 /-- **Binary bracket — upper endpoint** `ε*(P) ≤ c_φ · bar φ(P)`.
     Via the pointwise inequality `η ≤ c_φ · φ(η)` on `(0, 1/2]`, aggregated.
-    Brick: `T-bracket` (upper half).
-
-    Proof structure (Tao step 2a skeleton):
-    1. Each qᵢ := min(ηᵢ, 1-ηᵢ) ∈ [0, 1/2] from `cellRate ∈ [0, 1]`.
-    2. Pointwise: `qᵢ ≤ cPhi φ * φ(qᵢ)` from `cPhi φ = 1/2` (proved) and
-       the chord lemma `2qᵢ ≤ φ(qᵢ)`, giving `qᵢ / φ(qᵢ) ≤ 1/2`.
-    3. Multiply by `pᵢ ≥ 0` and sum over cells:
-       `Σ pᵢ qᵢ ≤ Σ pᵢ * cPhi φ * φ(qᵢ) = cPhi φ * Σ pᵢ * φ(qᵢ) = cPhi φ * barPhi`.
-    4. LHS is `epsilonStar`; symmetry of φ converts `φ(ηᵢ)` to `φ(qᵢ)` in barPhi. -/
+    Brick: `T-bracket` (upper half). -/
 @[rigidity_scaffold, rigidity_AMS_60, rigidity_AMS_62]
 theorem bracket_upper {α : Type*} [MeasurableSpace α] (μ : Measure α)
-    (φ : ℝ → ℝ) (_h : NormalizedScore φ)
+    [IsProbabilityMeasure μ] (φ : ℝ → ℝ) (_h : NormalizedScore φ)
     (f : α → Bool) (P : FinitePartition α) :
     epsilonStar μ f P ≤ cPhi φ * barPhi μ φ f P := by sorry
 
