@@ -158,6 +158,22 @@ $G$ is bounded on $[0,\varphi_{\max}]$ (image lies in $[0,1-1/k]$, since it equa
 
 Two remarks worth stating. First, the *only-if* direction uses only continuity, vertex-vanishing, and realizability — **not** concavity or symmetry; those are *conclusions* about exact functionals, not hypotheses. The Bayes risk is singled out among all continuous vertex-vanishing scores, not merely among concave symmetric ones. Second, the argument is verbatim the binary proof of Theorem 2 (single cell pins $G$ on the range, two cells force affine, vertices fix the constant) transported to the simplex; the new ingredient is Step 1's level-set-refinement framing, which the binary case concealed (binary symmetry makes $\varphi$ a function of $R$ trivially, so the constraint reads as a tautology). The IVT runs over a higher-dimensional connected domain without trouble.
 
+### 4.3 Smoothness forces slack — and the mechanism the simplex reveals
+
+**Corollary 5 (smoothness–slack, multiclass).** *Any simplex score that is not a scalar multiple of $R$ — in particular any smooth score, since $R$ is piecewise-linear with corners — is inexact, so its bracket is strict on some partition. Multiclass entropy and Gini are smooth, hence inexact, hence carry strictly positive slack.*
+
+The binary Corollary 3 attributed the slack to the single kink of the tent at $\eta=\tfrac12$. The multiclass case exposes the deeper mechanism: the kink locus widens from a point to a $(k-2)$-dimensional skeleton — the set $\{\boldsymbol\eta:\eta_c=\eta_{c'}=\max\text{ for some }c\ne c'\}$ where the optimal vote switches — but the mechanism (smooth scores cannot reproduce kinks of $R$) is identical to the binary case.
+
+**Worked example ($k=3$).** Take two cells with the *same* Bayes risk:
+$$
+\boldsymbol\eta=(0.5,\,0.3,\,0.2),\qquad \boldsymbol\eta'=(0.5,\,0.5,\,0),\qquad R(\boldsymbol\eta)=R(\boldsymbol\eta')=0.5.
+$$
+Their smooth scores differ: $\varphi_G(\boldsymbol\eta)=1-(0.25+0.09+0.04)=0.62$ while $\varphi_G(\boldsymbol\eta')=1-(0.25+0.25)=0.50$; and $\varphi_H(\boldsymbol\eta)=1.485$ bits while $\varphi_H(\boldsymbol\eta')=1.000$ bit. So Gini and entropy **distinguish two distributions that the Bayes risk identifies**. This violates Step 1 of the rigidity proof directly — exact $\varphi$ must be constant on $R$-level sets, and these scores are not. The rigidity rules them out at that step. Their surplus — the resolution with which they see *inside* an $R$-level set — is precisely what opens the bracket.
+
+Make the slack explicit on a partition. With $p_1=p_2=\tfrac12$ over these two cells, $\varepsilon^\ast=\tfrac12(0.5)+\tfrac12(0.5)=0.5$, while $\bar\varphi_G=\tfrac12(0.62)+\tfrac12(0.50)=0.56$. The Gini upper bound ($c_{\varphi_G}=1$) is $0.56\ge 0.5$, a slack of $0.06$; the lower bracket is strictly below $0.5$ as well (minimizing $R$ over $\{\varphi_G=0.56\}$ gives $\boldsymbol\eta=(0.6,0.2,0.2)$ with $R=0.4$), so the bracket is genuinely two-sided. By contrast $\varphi=R$ gives $\bar\varphi=0.5=\varepsilon^\ast$ exactly.
+
+**The level-set characterization.** Theorem 2′ says: $R$ is the *unique* (up to scalar) continuous vertex-vanishing functional whose level sets coincide with the Bayes-risk level sets; every smooth score has strictly finer level sets, and the surplus is the slack. The framing carries operational guidance for surrogate choice: among smooth scores, the one whose pointwise ratio to $R$ is smallest gives the tighter upper instrument. Gini is the natural multiclass workhorse — $c_{\varphi_G}=1$ and the clean pointwise domination $R\le\varphi_G$.
+
 ---
 
 ## 5. Expressivity as a calibrated gap test
