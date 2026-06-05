@@ -27,6 +27,13 @@ Expected: every theorem uses only `propext`, `Classical.choice`, `Quot.sound`
 #print axioms Rigidity.sum_cellMass_eq_one
 #print axioms Rigidity.bracket_lower
 #print axioms Rigidity.bracket_upper
+#print axioms Rigidity.epsilonStar_nonneg
+#print axioms Rigidity.epsilonStar_le_half
+#print axioms Rigidity.barPhi_tent_eq_two_epsilonStar
+#print axioms Rigidity.tent_epsilonStar_eq_two_epsilonStar
+
+-- Theorem2.lean
+#print axioms Rigidity.theorem2_forward
 
 -- Theorem2Prime.lean
 -- (theorem1Prime removed 2026-06-05 — was vacuous `True ↔ True`, see audit notes.)

@@ -281,3 +281,8 @@ have h_id : ConcaveOn ℝ (Set.Icc (0:ℝ) 1) (fun η : ℝ => η) :=
 | `sum_cellMass_eq_one` | `Rigidity/Bracket.lean` | `Σ_c (μ c).toReal = 1` for probability measure + finite partition |
 | `bracket_lower` | `Rigidity/Bracket.lean` | `barPhi ≤ φ(epsilonStar)` — Jensen on `[0, 1/2]` |
 | `bracket_upper` | `Rigidity/Bracket.lean` | `epsilonStar ≤ cPhi φ * barPhi` — chord-bound aggregation |
+| `epsilonStar_nonneg` | `Rigidity/Bracket.lean` | `0 ≤ epsilonStar μ f P` |
+| `epsilonStar_le_half` | `Rigidity/Bracket.lean` | `epsilonStar ≤ 1/2` for probability measure |
+| `barPhi_tent_eq_two_epsilonStar` | `Rigidity/Bracket.lean` | `barPhi μ tent = 2 · epsilonStar` |
+| `tent_epsilonStar_eq_two_epsilonStar` | `Rigidity/Bracket.lean` | `tent(ε*) = 2 · ε*` since `ε* ≤ 1/2` |
+| `theorem2_forward` | `Rigidity/Theorem2.lean` | `EqOn φ tent (Icc 0 1) ⟹ bracket exact` (easy half of T2) |

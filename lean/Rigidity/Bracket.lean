@@ -506,4 +506,74 @@ theorem bracket_upper {α : Type*} [MeasurableSpace α] (μ : Measure α)
   have hpw := h_pointwise c hc
   nlinarith [hpc, hpw]
 
+/-! ## Tent-specific helpers (Phase B3a)
+
+    Four foundational facts used by `theorem2` (binary rigidity).
+    Skeletonized Tao-style before any are filled. -/
+
+/-- `epsilonStar ≥ 0`: the partition Bayes risk is a sum of non-negative terms. -/
+@[rigidity_proved, rigidity_AMS_28, rigidity_AMS_60]
+theorem epsilonStar_nonneg {α : Type*} [MeasurableSpace α] (μ : Measure α)
+    (f : α → Bool) (P : FinitePartition α) :
+    0 ≤ epsilonStar μ f P := by
+  unfold epsilonStar
+  apply Finset.sum_nonneg
+  intro c _
+  apply mul_nonneg ENNReal.toReal_nonneg
+  -- min(η, 1-η) ≥ 0 since η ∈ [0, 1].
+  have hη_mem : cellRate μ f P c ∈ Set.Icc (0:ℝ) 1 := cellRate_mem_Icc μ f P c
+  obtain ⟨h0, h1⟩ := hη_mem
+  exact le_min h0 (by linarith)
+
+/-- `epsilonStar ≤ 1/2`: each term is `pᵢ · min(ηᵢ, 1-ηᵢ) ≤ pᵢ · (1/2)`,
+    and `Σ pᵢ = 1`. -/
+@[rigidity_proved, rigidity_AMS_28, rigidity_AMS_60]
+theorem epsilonStar_le_half {α : Type*} [MeasurableSpace α] (μ : Measure α)
+    [IsProbabilityMeasure μ] (f : α → Bool) (P : FinitePartition α) :
+    epsilonStar μ f P ≤ 1/2 := by
+  unfold epsilonStar
+  -- Bound each summand by p c * (1/2), then collect: Σ p c * (1/2) = (1/2) * Σ p c = 1/2.
+  calc ∑ c ∈ P.cells,
+        (cellMass μ P c).toReal * min (cellRate μ f P c) (1 - cellRate μ f P c)
+      ≤ ∑ c ∈ P.cells, (cellMass μ P c).toReal * (1/2 : ℝ) := by
+            apply Finset.sum_le_sum
+            intro c _
+            have hp_nonneg : (0:ℝ) ≤ (cellMass μ P c).toReal := ENNReal.toReal_nonneg
+            have hη_mem : cellRate μ f P c ∈ Set.Icc (0:ℝ) 1 :=
+              cellRate_mem_Icc μ f P c
+            have hq_mem : min (cellRate μ f P c) (1 - cellRate μ f P c) ∈
+                Set.Icc (0:ℝ) (1/2) :=
+              min_self_one_sub_mem_Icc_zero_half hη_mem
+            exact mul_le_mul_of_nonneg_left hq_mem.2 hp_nonneg
+    _ = (∑ c ∈ P.cells, (cellMass μ P c).toReal) * (1/2 : ℝ) := by
+            rw [← Finset.sum_mul]
+    _ = 1 * (1/2 : ℝ) := by rw [sum_cellMass_eq_one]
+    _ = 1/2 := one_mul _
+
+/-- Specialization of `barPhi` at `φ = tent`: each `tent(η) = 2 min(η, 1-η)`,
+    so the sum is exactly `2 · epsilonStar`. -/
+@[rigidity_proved, rigidity_AMS_60]
+theorem barPhi_tent_eq_two_epsilonStar {α : Type*} [MeasurableSpace α]
+    (μ : Measure α) (f : α → Bool) (P : FinitePartition α) :
+    barPhi μ tent f P = 2 * epsilonStar μ f P := by
+  unfold barPhi epsilonStar tent
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro c _
+  ring
+
+/-- Evaluating tent at the cell-Bayes risk: `tent(ε*) = 2 · ε*` since
+    `ε* ≤ 1/2` (which collapses the min). -/
+@[rigidity_proved, rigidity_AMS_60]
+theorem tent_epsilonStar_eq_two_epsilonStar {α : Type*} [MeasurableSpace α]
+    (μ : Measure α) [IsProbabilityMeasure μ] (f : α → Bool)
+    (P : FinitePartition α) :
+    tent (epsilonStar μ f P) = 2 * epsilonStar μ f P := by
+  unfold tent
+  -- Since ε* ≤ 1/2, ε* ≤ 1 - ε*, hence min collapses to ε*.
+  have h_le : epsilonStar μ f P ≤ 1/2 := epsilonStar_le_half μ f P
+  have h_min : min (epsilonStar μ f P) (1 - epsilonStar μ f P) = epsilonStar μ f P :=
+    min_eq_left (by linarith)
+  rw [h_min]
+
 end Rigidity
