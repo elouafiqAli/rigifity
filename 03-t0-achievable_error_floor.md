@@ -201,7 +201,15 @@ The aggregator hierarchy of [Xu et al.] is then a corollary of Theorem 1. Sum is
 
 ## 6. Depth and architecture
 
-Theorem 1's monotonicity is over the refinement *lattice* and is unconditional. Monotonicity in network *depth* is a separate, dynamical question and is not universal. The architecture-sorting story works cleanly at the **WL/exact-equivalence level**; we state it there and then transfer to the operational $\varepsilon$-partition $\Pi_\varepsilon^{(L)}$ from §2 via a Lipschitz/quantization bridge.
+Theorem 1's monotonicity is over the refinement *lattice* and is unconditional. Monotonicity in network *depth* is a separate, dynamical question and is not universal. The architecture-sorting story works cleanly at the **WL/exact-equivalence level**; we state it there and then transfer to the operational $\varepsilon$-partition $\Pi_\varepsilon^{(L)}$ from §2 via the elementary comparison $\Pi^{(L)}_\varepsilon = \Pi^{(L)}_{\mathcal A}$ for $\varepsilon < \delta^{(L)}$ (the Voronoi observation of §2).
+
+**Theorem 5 (depth-monotonicity, two directions).** *Let $(\Pi^{(L)})_L$ be a sequence of finite partitions of $\mathcal X$.*
+*(a) If $(\Pi^{(L)})_L$ is a refinement chain ($\Pi^{(L+1)}\succeq\Pi^{(L)}$ for every $L$), then for every concave score and **every** labeling $f$, the floor $\varepsilon^\ast(\Pi^{(L)})$ is non-increasing in $L$.*
+*(b) Conversely, if for **every** labeling $f$ the floor is non-increasing in $L$, then $(\Pi^{(L)})_L$ is a refinement chain.*
+
+**Proof.** *(a)* Theorem 1 along the depth sequence. *(b)* Contrapositive: if at some $L$ the chain property fails, there are two cells $A,B$ of $\Pi^{(L)}$ that are merged in $\Pi^{(L+1)}$ (more precisely, $\Pi^{(L+1)}$ contains a cell straddling $A$ and $B$). Choose the labeling that is $0$ on $A$, $1$ on $B$, and constant on the rest; the floor on this labeling is $0$ at depth $L$ (each cell is pure) and positive at depth $L+1$ (the straddling cell has both labels). $\qquad\blacksquare$
+
+**Remark (the operational reading).** On a *fixed* task only direction (a) is operative: a refinement chain at the partition level certifies a non-increasing floor at the task level. Direction (b) is the diagnostic in the other direction — observing a depth-induced floor *rise* on **some** task certifies that the depth sequence is not a refinement chain. A floor that is constant or non-increasing on a fixed task is consistent with a non-chain (the fixed task may happen to be insensitive to the merge), so direction (b) cannot be invoked task-by-task. The simplex analogue (Theorem 1$'$) lifts (a) verbatim to multiclass labels; (b) extends with the obvious modification (the discriminating labeling becomes simplex-valued).
 
 **Three partitions at each depth.** For an architecture $\mathcal A$ producing embeddings $h^{(L)}:V\to\mathbb R^d$, we distinguish:
 
