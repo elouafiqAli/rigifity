@@ -134,7 +134,7 @@ The convexification is the same device as the Bartlett–Jordan–McAuliffe $\ps
 
 Call $\varphi$ **exact** if some function $G$ satisfies $\varepsilon^\ast(\Pi)=G(\bar\varphi(\Pi))$ for every finite partition. Exactness is equivalent to the bracket collapsing, $\ell_\varphi^{\ast\ast}(\bar\varphi)=c_\varphi\bar\varphi$ for all $\Pi$.
 
-**Theorem 4 (Simplex Rigidity).** *Let $(\mathcal X,\mathcal F,\mathbb P)$ be an atomless probability space (so that finite partitions of arbitrary cell mass and arbitrary conditional class distribution are realizable), and let $\varphi:\Delta^{k-1}\to\mathbb R_{\ge 0}$ be continuous and vanish at the vertices. Then $\varphi$ is exact if and only if $\varphi=\lambda R$ for some $\lambda>0$, where $R(\boldsymbol\eta)=1-\max_c\eta_c$. Moreover every exact $\varphi$ is automatically concave and permutation-symmetric. On a general (possibly non-atomless) space the conclusion holds for $\varphi$ continuous, by density of realizable splits.*
+**Theorem 2′ (Simplex Rigidity — multiclass extension of Theorem 2).** *Let $(\mathcal X,\mathcal F,\mathbb P)$ be an atomless probability space (so that finite partitions of arbitrary cell mass and arbitrary conditional class distribution are realizable), and let $\varphi:\Delta^{k-1}\to\mathbb R_{\ge 0}$ be continuous and vanish at the vertices. Then $\varphi$ is exact if and only if $\varphi=\lambda R$ for some $\lambda>0$, where $R(\boldsymbol\eta)=1-\max_c\eta_c$. Moreover every exact $\varphi$ is automatically concave and permutation-symmetric. On a general (possibly non-atomless) space the conclusion holds for $\varphi$ continuous, by density of realizable splits.*
 
 **Proof.**
 
