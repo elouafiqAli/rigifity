@@ -207,30 +207,56 @@ theorem barPhi_trivial_boolIndicator {α : Type*} [MeasurableSpace α]
   rw [measure_univ]
   simp
 
+/-- **Pinning lemma**: for a normalized `φ` on a probability space with
+    realizable single-cell rates, the bracket-exact hypothesis forces
+    `φ η = 2 η` on the half-interval `(0, 1/2]`.
+
+    Proof:
+    1. Realize η as `(μ s).toReal` for some measurable `s` via the
+       `SingleCellRealizable μ` typeclass.
+    2. Apply the bracket equation `epsilonStar = cPhi φ * barPhi` at
+       `f = boolIndicator s`, `P = trivialPartition`.
+    3. The trivial-partition helpers give
+       `epsilonStar = min η (1-η)` and `barPhi = φ η`.
+    4. `η ≤ 1/2 ⟹ min η (1-η) = η` (since `η ≤ 1-η`).
+    5. `cPhi_eq_half_of_normalized` gives `cPhi φ = 1/2`.
+    6. Substituting: `η = (1/2) · φ η`, hence `φ η = 2η`. -/
+private lemma phi_eq_two_eta_on_Ioc_zero_half {α : Type*} [MeasurableSpace α]
+    (μ : Measure α) [IsProbabilityMeasure μ] [SingleCellRealizable μ]
+    (φ : ℝ → ℝ) (h : NormalizedScore φ)
+    (h_exact : ∀ (f : α → Bool) (P : FinitePartition α),
+        barPhi μ φ f P = φ (epsilonStar μ f P) ∧
+        epsilonStar μ f P = cPhi φ * barPhi μ φ f P)
+    {η : ℝ} (hη_pos : 0 < η) (hη_le : η ≤ 1/2) :
+    φ η = 2 * η := by
+  -- Step 1: realize η.
+  obtain ⟨s, hs_meas, hs_eq⟩ :=
+    SingleCellRealizable.exists_set_of_measure_eq (μ := μ) η
+      ⟨le_of_lt hη_pos, hη_le⟩
+  -- Step 2: bracket equation 2 at (boolIndicator s, trivialPartition).
+  obtain ⟨_, h2⟩ := h_exact (boolIndicator s) trivialPartition
+  -- Step 3: substitute the trivial-partition computations.
+  rw [barPhi_trivial_boolIndicator μ φ hs_meas,
+      epsilonStar_trivial_boolIndicator μ hs_meas, hs_eq] at h2
+  -- Step 4: η ≤ 1/2 ⟹ η ≤ 1 - η ⟹ min η (1-η) = η.
+  rw [min_eq_left (by linarith : η ≤ 1 - η)] at h2
+  -- Step 5: cPhi φ = 1/2 (the chord lemma from B1).
+  rw [cPhi_eq_half_of_normalized φ h] at h2
+  -- Step 6: h2 : η = (1/2) * φ η.  Solve for φ η.
+  linarith
+
 /-- **Theorem 2 — reverse direction.** Bracket exactness on a probability
-    measure satisfying `SingleCellRealizable` forces `φ = tent` on `[0, 1/2]`,
-    and symmetry of `NormalizedScore` extends to `[0, 1]`.
+    measure satisfying `SingleCellRealizable` forces `φ = tent` on `[0, 1]`.
 
-    Proof structure (Tao step 2a skeleton with 3 sub-sorries; full chain
-    documented):
-
-    Per `η ∈ (0, 1/2]`, realize η = (μ s).toReal via `SingleCellRealizable`.
-    Apply bracket eqn 2 at f = boolIndicator s, P = trivialPartition:
-        `epsilonStar = cPhi φ * barPhi`
-        ⟹ `min(η, 1-η) = cPhi φ * φ(η)` (via epsilonStar_trivial + barPhi_trivial)
-        ⟹ `η = cPhi φ * φ(η)` (since η ≤ 1/2 ⟹ min = η)
-        ⟹ `η / φ(η) = cPhi φ` (when φ(η) ≠ 0; sub-sorry #1: positivity)
-    Now at η = 1/2: `cPhi φ * φ(1/2) = 1/2`, and `φ(1/2) = 1`
-    (from `NormalizedScore.unit_at_half`), so `cPhi φ = 1/2`.
-    Hence `φ(η) = 2η = tent(η)` for all realizable η ∈ (0, 1/2].
-    Extend to η = 0 by `NormalizedScore.vanishes_at_zero` matching
-    `tent 0 = 0`. (Sub-sorry #2.)
-    Extend to η ∈ (1/2, 1] by symmetry: φ(η) = φ(1 - η) = tent(1 - η) =
-    tent(η). (Sub-sorry #3.)
-
-    The full proof is ~60 lines of pinning algebra; left for the next
-    commit. -/
-@[rigidity_scaffold, rigidity_AMS_60, rigidity_AMS_62]
+    Proof: case split on `η`:
+    - `η = 0`: `φ 0 = 0 = tent 0` directly from `NormalizedScore.vanishes_at_zero`.
+    - `η ∈ (0, 1/2]`: apply `phi_eq_two_eta_on_Ioc_zero_half`; note
+      `tent η = 2 * min η (1 - η) = 2η` when `η ≤ 1/2`.
+    - `η ∈ (1/2, 1]`: use `NormalizedScore.symmetric` to flip
+      `φ η = φ (1 - η)`; `1 - η ∈ [0, 1/2)` so the prior case gives
+      `φ (1 - η) = 2(1 - η)`; `tent η = tent (1 - η) = 2(1 - η)` by the
+      same min collapse. -/
+@[rigidity_proved, rigidity_AMS_60, rigidity_AMS_62]
 theorem theorem2_reverse {α : Type*} [MeasurableSpace α] (μ : Measure α)
     [IsProbabilityMeasure μ] [SingleCellRealizable μ]
     (φ : ℝ → ℝ) (h : NormalizedScore φ)
@@ -239,19 +265,34 @@ theorem theorem2_reverse {α : Type*} [MeasurableSpace α] (μ : Measure α)
         epsilonStar μ f P = cPhi φ * barPhi μ φ f P) :
     Set.EqOn φ tent (Set.Icc (0:ℝ) 1) := by
   intro η hη
-  -- Case split: η = 0, η ∈ (0, 1/2], or η ∈ (1/2, 1].
-  rcases eq_or_lt_of_le hη.1 with hη_zero | hη_pos
-  · -- η = 0: φ(0) = 0 = tent(0).
+  obtain ⟨hη_nonneg, hη_le_one⟩ := hη
+  -- Case split: η = 0, η = 1, η ∈ (0, 1/2], or η ∈ (1/2, 1).
+  rcases eq_or_lt_of_le hη_nonneg with hη_zero | hη_pos
+  · -- η = 0.
     rw [← hη_zero, h.vanishes_at_zero]
     unfold tent
     simp
-  · rcases le_or_gt η (1/2) with hη_half | hη_half
-    · -- η ∈ (0, 1/2]: realize, apply bracket eqn 2, derive φ(η) = 2η.
-      -- Sub-sorry #1: requires pinning via bracket equation + cPhi = 1/2.
-      sorry
-    · -- η ∈ (1/2, 1]: use symmetry φ(η) = φ(1 - η) and the previous case.
-      -- Sub-sorry #3: symmetry case.
-      sorry
+  · rcases eq_or_lt_of_le hη_le_one with hη_one | hη_lt_one
+    · -- η = 1: φ(1) = 0 = tent(1).
+      rw [hη_one, h.vanishes_at_one]
+      unfold tent
+      norm_num
+    · rcases le_or_gt η (1/2) with hη_le_half | hη_gt_half
+      · -- η ∈ (0, 1/2]: φ η = 2η = tent η.
+        have h_phi : φ η = 2 * η :=
+          phi_eq_two_eta_on_Ioc_zero_half μ φ h h_exact hη_pos hη_le_half
+        unfold tent
+        rw [h_phi, min_eq_left (by linarith : η ≤ 1 - η)]
+      · -- η ∈ (1/2, 1): φ η = φ (1 - η) by symmetry; reduce.
+        have h_one_minus_pos : 0 < 1 - η := by linarith
+        have h_one_minus_le : 1 - η ≤ 1/2 := by linarith
+        have h_phi_eta : φ η = φ (1 - η) := h.symmetric η ⟨hη_nonneg, hη_le_one⟩
+        have h_phi_aux : φ (1 - η) = 2 * (1 - η) :=
+          phi_eq_two_eta_on_Ioc_zero_half μ φ h h_exact h_one_minus_pos h_one_minus_le
+        rw [h_phi_eta, h_phi_aux]
+        -- tent η = 2 * min η (1-η) = 2 * (1-η) since 1-η ≤ η.
+        unfold tent
+        rw [min_eq_right (by linarith : 1 - η ≤ η)]
 
 /-- **Theorem 2** (binary rigidity).
     On a probability space with `SingleCellRealizable μ` (provable for
@@ -260,13 +301,8 @@ theorem theorem2_reverse {α : Type*} [MeasurableSpace α] (μ : Measure α)
     with `tent` on `[0, 1]`.
 
     The `Set.EqOn` formulation (vs the manuscript's `φ = T`) is the honest
-    one: `NormalizedScore φ` doesn't constrain φ outside `[0, 1]`.
-
-    Currently `@[rigidity_scaffold]` because `theorem2_reverse` still has
-    `sorry` sub-goals — even though the glue here is trivial, transitive
-    `sorryAx` would make this tag dishonest. Re-tag to `@[rigidity_proved]`
-    once `theorem2_reverse` is sorry-free. -/
-@[rigidity_scaffold, rigidity_AMS_60, rigidity_AMS_62]
+    one: `NormalizedScore φ` doesn't constrain φ outside `[0, 1]`. -/
+@[rigidity_proved, rigidity_AMS_60, rigidity_AMS_62]
 theorem theorem2 {α : Type*} [MeasurableSpace α] {μ : Measure α}
     [IsProbabilityMeasure μ] [SingleCellRealizable μ]
     (φ : ℝ → ℝ) (h : NormalizedScore φ) :
