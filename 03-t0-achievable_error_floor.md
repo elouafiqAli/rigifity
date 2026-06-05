@@ -98,7 +98,37 @@ The reading: one uses a *smooth* surrogate because applications need differentia
 
 ---
 
-## 4. (merged into §1.2)
+## 4. Multiclass extension on the simplex
+
+The binary development of §3 generalizes to $k$-class tasks by replacing the scalar rate $\eta\in[0,1]$ with a simplex-valued conditional class distribution $\boldsymbol\eta\in\Delta^{k-1}$. The rigidity, the bracket, and the smoothness–slack corollary all transfer; the proof of the rigidity is the binary argument transported to the simplex, and the multiclass setting *reveals the mechanism* the binary case concealed — smooth scores resolve distinctions the Bayes risk identifies, and the surplus is the slack.
+
+### 4.1 Simplex setup and bracket
+
+Fix $k\ge 2$ classes. A cell's conditional class distribution is a point $\boldsymbol\eta=(\eta_1,\dots,\eta_k)$ in the simplex $\Delta^{k-1}=\{\boldsymbol\eta\ge 0:\sum_c\eta_c=1\}$; vertices $\mathbf e_c$ are the pure (deterministic) cells, the center $\mathbf u=(1/k,\dots,1/k)$ the maximally uncertain one. A partition $\Pi$ has cells of mass $p_i$ and conditional distributions $\boldsymbol\eta_i\in\Delta^{k-1}$.
+
+The Bayes-optimal cell-wise predictor guesses $\arg\max_c\eta_{i,c}$ and errs with probability $1-\max_c\eta_{i,c}$, so the **partition-restricted Bayes risk** is
+$$
+\varepsilon^\ast(\Pi)\;=\;\sum_i p_i\,R(\boldsymbol\eta_i),\qquad R(\boldsymbol\eta):=1-\max_c\eta_c .
+$$
+$R$ is the multiclass analogue of the tent: concave on $\Delta^{k-1}$ (since $\max_c\eta_c$ is convex as a maximum of linear forms), continuous, permutation-symmetric, vanishes at the vertices, maximal at $\mathbf u$ with $R(\mathbf u)=1-1/k$. It is piecewise-linear, with corners on the loci $\{\eta_c=\eta_{c'}=\max\}$ where the optimal vote switches.
+
+A **simplex score** is a continuous $\varphi:\Delta^{k-1}\to\mathbb R_{\ge 0}$ with $\varphi(\mathbf e_c)=0$ at the vertices and $\varphi>0$ on the interior; when needed we add concavity and permutation-symmetry. The **partition functional** is $\bar\varphi(\Pi)=\sum_i p_i\varphi(\boldsymbol\eta_i)$. Running members: multiclass entropy $\varphi_H(\boldsymbol\eta)=-\sum_c\eta_c\log\eta_c$ and Gini impurity $\varphi_G(\boldsymbol\eta)=1-\sum_c\eta_c^2$.
+
+The binary bracket had a closed-form lower endpoint $\varphi^{-1}(\bar\varphi)$ because, on $[0,1]$, symmetry made $\varphi$ a function of the scalar $R$. On the simplex this fails — $\varphi$ lives on a $(k-1)$-dimensional set and is generally *not* a function of $R$ — so the lower endpoint is necessarily implicit. We give both bounds, under one explicit regularity hypothesis on the upper instrument.
+
+**Upper bound (under $c_\varphi<\infty$).** Set $c_\varphi:=\sup_{\boldsymbol\eta\ne\text{vertex}}R(\boldsymbol\eta)/\varphi(\boldsymbol\eta)$. *We assume $c_\varphi<\infty$, equivalently that $\varphi$ vanishes at most linearly at every vertex* (scores vanishing faster — e.g. $\|\boldsymbol\eta-\mathbf e_c\|^2$ — give $c_\varphi=\infty$ and a vacuous upper bound; entropy vanishes like $s\log(1/s)$ and Gini like $2s$ at a vertex, both at least linear, so both satisfy the hypothesis). Under this hypothesis the pointwise inequality $R(\boldsymbol\eta)\le c_\varphi\varphi(\boldsymbol\eta)$ aggregates to $\varepsilon^\ast(\Pi)\le c_\varphi\,\bar\varphi(\Pi)$. For Gini the constant is clean: $\sum_c\eta_c^2\le(\max_c\eta_c)\sum_c\eta_c=\max_c\eta_c$, so $R\le\varphi_G$ pointwise, $c_{\varphi_G}=1$, and $\varepsilon^\ast\le\bar\varphi_G$ — the average Gini upper-bounds the multiclass Bayes risk. For entropy $c_{\varphi_H}$ is attained in the interior.
+
+**Lower bound.** Define the *level-set floor* $\ell_\varphi(v)=\inf\{R(\boldsymbol\eta):\varphi(\boldsymbol\eta)=v\}$ — the least Bayes risk consistent with score $v$ — so that $R(\boldsymbol\eta)\ge\ell_\varphi(\varphi(\boldsymbol\eta))$ pointwise. Let $\ell_\varphi^{\ast\ast}$ be its lower convex envelope (Fenchel biconjugate). Then, since $\ell_\varphi\ge\ell_\varphi^{\ast\ast}$ and $\ell_\varphi^{\ast\ast}$ is convex,
+$$
+\varepsilon^\ast(\Pi)=\sum_i p_i R(\boldsymbol\eta_i)\;\ge\;\sum_i p_i\,\ell_\varphi^{\ast\ast}\!\big(\varphi(\boldsymbol\eta_i)\big)\;\ge\;\ell_\varphi^{\ast\ast}\!\big(\bar\varphi(\Pi)\big),
+$$
+the last step by Jensen for the convex $\ell_\varphi^{\ast\ast}$. So
+$$
+\boxed{\;\ell_\varphi^{\ast\ast}\big(\bar\varphi(\Pi)\big)\;\le\;\varepsilon^\ast(\Pi)\;\le\;c_\varphi\,\bar\varphi(\Pi).\;}
+$$
+The convexification is the same device as the Bartlett–Jordan–McAuliffe $\psi$-transform, which is itself the biconjugate of a level-set gap; this is the resolution-level analogue, and it makes the binary case a corollary (there $\ell_\varphi=\varphi^{-1}$ is already convex, so $\ell_\varphi^{\ast\ast}=\varphi^{-1}$ and the lower endpoint is $\varphi^{-1}(\bar\varphi)$).
+
+**Remark (implicit lower endpoint).** Unlike $\varphi^{-1}$ in the binary case, $\ell_\varphi$ is a constrained minimization of the Bayes risk over a score-level-set — computable but generally not closed-form. Characterizing $\ell_\varphi$ in closed form for entropy and Gini (the minimizer is, by symmetry, a most-concentrated distribution on the level set) is a minor technical thread; it does not affect the rigidity below.
 
 ---
 
