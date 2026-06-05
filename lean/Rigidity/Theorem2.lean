@@ -1,4 +1,4 @@
-import Mathlib
+import Mathlib.MeasureTheory.Measure.Typeclasses.NoAtoms
 import Rigidity.Bracket
 
 /-!

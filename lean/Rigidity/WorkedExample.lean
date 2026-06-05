@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.Data.Rat.Defs
+import Mathlib.Data.Fin.VecNotation
+import Mathlib.Tactic.NormNum
 
 /-!
 # WorkedExample — numerical verification of the §4.3 worked example (k = 3)

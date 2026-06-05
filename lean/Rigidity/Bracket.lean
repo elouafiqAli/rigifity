@@ -1,4 +1,12 @@
-import Mathlib
+import Mathlib.MeasureTheory.Measure.MeasureSpace
+import Mathlib.Analysis.Convex.Basic
+import Mathlib.Analysis.Convex.Function
+import Mathlib.Analysis.Convex.Jensen
+import Mathlib.Topology.Order.Lattice
+import Mathlib.Order.ConditionallyCompleteLattice.Basic
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.NormNum
+import Mathlib.Tactic.Ring
 
 /-!
 # Bracket — definitions and the binary bracket

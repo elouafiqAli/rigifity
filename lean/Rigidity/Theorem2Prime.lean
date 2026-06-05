@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.MeasureTheory.Measure.Typeclasses.NoAtoms
+import Mathlib.Algebra.BigOperators.Fin
+import Mathlib.Data.Fintype.BigOperators
+import Mathlib.Order.Lattice
 import Rigidity.Bracket
 
 /-!
