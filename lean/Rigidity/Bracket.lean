@@ -7,6 +7,7 @@ import Mathlib.Order.ConditionallyCompleteLattice.Basic
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Ring
+import Rigidity.Util.Attributes
 
 /-!
 # Bracket — definitions and the binary bracket
@@ -110,6 +111,7 @@ structure NormalizedScore (φ : ℝ → ℝ) : Prop where
 def tent : ℝ → ℝ := fun η => 2 * min η (1 - η)
 
 /-- The tent satisfies the normalized-score conditions. -/
+@[rigidity_proved, rigidity_AMS_60]
 theorem tent_normalized : NormalizedScore tent := by
   refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
   · -- concave_on: 2 * min η (1-η) is concave (inf of two affine, scaled by 2 > 0)
@@ -172,6 +174,7 @@ noncomputable def cPhi (φ : ℝ → ℝ) : ℝ := ⨆ η ∈ Set.Ioc (0:ℝ) (1
     Proof: by concavity, the graph of `φ` on `[0, 1/2]` lies above the chord
     through `(0, φ(0)) = (0, 0)` and `(1/2, φ(1/2)) = (1/2, 1)`. The chord
     equation is `y = 2η`, so `φ(η) ≥ 2η`. -/
+@[rigidity_proved, rigidity_AMS_60]
 theorem two_eta_le_of_normalized (φ : ℝ → ℝ) (h : NormalizedScore φ)
     {η : ℝ} (hη : η ∈ Set.Icc (0:ℝ) (1/2)) :
     2 * η ≤ φ η := by
@@ -201,6 +204,7 @@ theorem two_eta_le_of_normalized (φ : ℝ → ℝ) (h : NormalizedScore φ)
     Phase B1 status: the chord lemma is proved (`two_eta_le_of_normalized`);
     bundling it into the `iSup`-eq-`1/2` requires conditional-sup machinery
     (`ciSup_le`, `le_ciSup` with `BddAbove`) that is left as a follow-up. -/
+@[rigidity_scaffold, rigidity_AMS_60]
 theorem cPhi_eq_half_of_normalized (φ : ℝ → ℝ) (_h : NormalizedScore φ) :
     cPhi φ = 1/2 := by sorry
 
@@ -210,6 +214,7 @@ theorem cPhi_eq_half_of_normalized (φ : ℝ → ℝ) (_h : NormalizedScore φ) 
     gives `Σ pᵢ φ(qᵢ) ≤ φ(Σ pᵢ qᵢ)`, i.e. `bar φ(P) ≤ φ(ε*(P))`.
     Applying `φ⁻¹` (which exists by `StrictMonoOn`) recovers `φ⁻¹(bar φ) ≤ ε*`.
     Brick: `T-bracket` (lower half). -/
+@[rigidity_scaffold, rigidity_AMS_60, rigidity_AMS_62]
 theorem bracket_lower {α : Type*} [MeasurableSpace α] (μ : Measure α)
     (φ : ℝ → ℝ) (_h : NormalizedScore φ)
     (f : α → Bool) (P : FinitePartition α) :
@@ -218,6 +223,7 @@ theorem bracket_lower {α : Type*} [MeasurableSpace α] (μ : Measure α)
 /-- **Binary bracket — upper endpoint** `ε*(P) ≤ c_φ · bar φ(P)`.
     Via the pointwise inequality `η ≤ c_φ · φ(η)` on `(0, 1/2]`, aggregated.
     Brick: `T-bracket` (upper half). -/
+@[rigidity_scaffold, rigidity_AMS_60, rigidity_AMS_62]
 theorem bracket_upper {α : Type*} [MeasurableSpace α] (μ : Measure α)
     (φ : ℝ → ℝ) (_h : NormalizedScore φ)
     (f : α → Bool) (P : FinitePartition α) :

@@ -1,5 +1,6 @@
 import Mathlib.MeasureTheory.Measure.Typeclasses.NoAtoms
 import Rigidity.Bracket
+import Rigidity.Util.Attributes
 
 /-!
 # Theorem 1 — refinement-monotonicity ⟺ concavity
@@ -36,6 +37,7 @@ open MeasureTheory Set
 
     On a general (possibly atomic) space the equivalence holds by density
     of realizable splits and continuity of `φ`. -/
+@[rigidity_scaffold, rigidity_AMS_28, rigidity_AMS_60]
 theorem theorem1 {α : Type*} [MeasurableSpace α] {μ : Measure α} [NoAtoms μ]
     (φ : ℝ → ℝ) (_hc : ContinuousOn φ (Set.Icc (0:ℝ) 1)) :
     (∀ (f : α → Bool) (P P' : FinitePartition α),

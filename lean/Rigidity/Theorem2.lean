@@ -1,5 +1,6 @@
 import Mathlib.MeasureTheory.Measure.Typeclasses.NoAtoms
 import Rigidity.Bracket
+import Rigidity.Util.Attributes
 
 /-!
 # Theorem 2 — binary rigidity (T is the unique exact score)
@@ -33,6 +34,7 @@ open MeasureTheory Set
 /-- **Theorem 2** (binary rigidity).
     On an atomless probability space, a normalized score `φ` has an exact
     bracket iff `φ = T` (the normalized 0-1 Bayes risk). -/
+@[rigidity_scaffold, rigidity_AMS_60, rigidity_AMS_62]
 theorem theorem2 {α : Type*} [MeasurableSpace α] {μ : Measure α} [NoAtoms μ]
     (φ : ℝ → ℝ) (_h : NormalizedScore φ) :
     (∀ (f : α → Bool) (P : FinitePartition α),

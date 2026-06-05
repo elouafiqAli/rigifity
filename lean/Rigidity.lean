@@ -1,3 +1,4 @@
+import Rigidity.Util.Attributes
 import Rigidity.Bracket
 import Rigidity.Theorem1
 import Rigidity.Theorem2
@@ -12,6 +13,8 @@ Re-exports every kernel module. Use this as the public entry point.
 
 ## Modules
 
+- `Rigidity.Util.Attributes` — `@[rigidity_proved]`, `@[rigidity_scaffold]`,
+                                `@[rigidity_AMS_N]` provenance tags.
 - `Rigidity.Bracket`       — definitions + binary bracket (T-bracket, plus
                               D-prob, D-part, D-eps*, D-bphi, D-norm, D-tent, D-cphi).
 - `Rigidity.Theorem1`      — refinement-monotone ⟺ concave (T1).

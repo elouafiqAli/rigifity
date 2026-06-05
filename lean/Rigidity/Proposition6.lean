@@ -1,6 +1,7 @@
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 import Mathlib.Analysis.SpecialFunctions.Sqrt
 import Rigidity.Bracket
+import Rigidity.Util.Attributes
 
 /-!
 # Proposition 6 — two-query identity + variance bracket
@@ -45,6 +46,7 @@ noncomputable def pDisagree (f : α → Bool) (P : FinitePartition α) : ℝ :=
       (2 * cellRate μ f P c * (1 - cellRate μ f P c))
 
 /-- **Proposition 6** (two-query identity). -/
+@[rigidity_scaffold, rigidity_AMS_60]
 theorem two_query_identity (f : α → Bool) (P : FinitePartition α) :
     pDisagree μ f P =
       2 * ∑ c ∈ P.cells,
@@ -54,6 +56,7 @@ theorem two_query_identity (f : α → Bool) (P : FinitePartition α) :
 
 /-- **Variance bracket** (Proposition 6 corollary): the achievable floor is
     bracketed by a closed-form function of the single observable `p_dis`. -/
+@[rigidity_scaffold, rigidity_AMS_60, rigidity_AMS_62]
 theorem variance_bracket (f : α → Bool) (P : FinitePartition α) :
     (1 - Real.sqrt (1 - 2 * pDisagree μ f P)) / 2 ≤ epsilonStar μ f P ∧
     epsilonStar μ f P ≤ pDisagree μ f P := by

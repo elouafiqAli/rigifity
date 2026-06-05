@@ -3,6 +3,7 @@ import Mathlib.Algebra.BigOperators.Fin
 import Mathlib.Data.Fintype.BigOperators
 import Mathlib.Order.Lattice
 import Rigidity.Bracket
+import Rigidity.Util.Attributes
 
 /-!
 # Theorem 2′ — Simplex Rigidity (multiclass extension of Theorem 2)
@@ -106,6 +107,7 @@ noncomputable def cPhiSimplex [NeZero k] (φ : (Fin k → ℝ) → ℝ) : ℝ :=
 
     On a general (possibly atomic) space the conclusion holds for continuous `φ`
     by density of realizable splits. -/
+@[rigidity_scaffold, rigidity_AMS_60, rigidity_AMS_62]
 theorem simplex_rigidity {α : Type*} [MeasurableSpace α] {μ : Measure α} [NoAtoms μ]
     [NeZero k] (hk : 2 ≤ k) (φ : (Fin k → ℝ) → ℝ) (hφ : SimplexScore φ) :
     -- Phase D2 will replace the LHS placeholder with the actual exactness
@@ -120,6 +122,7 @@ theorem simplex_rigidity {α : Type*} [MeasurableSpace α] {μ : Measure α} [No
     Theorem 1 holds verbatim with `Δ^{k-1}` in place of `[0, 1]`; the
     tower-property + Jensen argument is dimension-agnostic.
     Brick: `T1′`. Defining commits: `29fc667`, `e3376fc` (M-1 atomless hyp). -/
+@[rigidity_proved, rigidity_AMS_60]
 theorem theorem1Prime {α : Type*} [MeasurableSpace α] {μ : Measure α} [NoAtoms μ]
     [NeZero k] (φ : (Fin k → ℝ) → ℝ) (_hc : ContinuousOn φ (simplex k)) :
     -- Phase D1 will state this with the simplex-valued partition functional.
