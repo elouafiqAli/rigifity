@@ -166,8 +166,15 @@ theorem tent_normalized : NormalizedScore tent := by
 /-! ## D-cphi and T-bracket -/
 
 /-- Upper bracket constant `c_φ = sup_{η ∈ (0, 1/2]} η / φ(η)`. Brick: `D-cphi`.
-    Manuscript: §1 bracket display. -/
-noncomputable def cPhi (φ : ℝ → ℝ) : ℝ := ⨆ η ∈ Set.Ioc (0:ℝ) (1/2), η / φ η
+    Manuscript: §1 bracket display.
+
+    Stated as `sSup ∘ image` rather than `⨆ η ∈ s, η/φ η` so that the
+    conditional-supremum lemmas (`csSup_le`, `le_csSup`,
+    `csSup_eq_of_forall_le_of_forall_lt_exists_gt`) apply directly without
+    needing to unwind the nested `iSup` over a `Prop`. The two forms are
+    semantically identical for ℝ. -/
+noncomputable def cPhi (φ : ℝ → ℝ) : ℝ :=
+  sSup ((fun η : ℝ => η / φ η) '' Set.Ioc (0:ℝ) (1/2))
 
 /-- **Chord lemma.** For a normalized score `φ`, `φ(η) ≥ 2η` on `[0, 1/2]`.
 
@@ -201,12 +208,51 @@ theorem two_eta_le_of_normalized (φ : ℝ → ℝ) (h : NormalizedScore φ)
     Hence `sup_{η ∈ (0, 1/2]} η / φ(η) = 1/2`.
     Defining commit: `779d533`.
 
-    Phase B1 status: the chord lemma is proved (`two_eta_le_of_normalized`);
-    bundling it into the `iSup`-eq-`1/2` requires conditional-sup machinery
-    (`ciSup_le`, `le_ciSup` with `BddAbove`) that is left as a follow-up. -/
-@[rigidity_scaffold, rigidity_AMS_60]
-theorem cPhi_eq_half_of_normalized (φ : ℝ → ℝ) (_h : NormalizedScore φ) :
-    cPhi φ = 1/2 := by sorry
+    Proof structure (Tao step 2a skeleton):
+    1. Pointwise `η / φ η ≤ 1/2` on `Ioc 0 (1/2)` via chord lemma + `η > 0`.
+    2. At `η = 1/2`: `φ(1/2) = 1`, so value attained is exactly `1/2`.
+    3. `BddAbove` on the indexed family for `ciSup_le` / `le_ciSup`.
+    4. `le_antisymm` combines bounds. -/
+@[rigidity_proved, rigidity_AMS_60]
+theorem cPhi_eq_half_of_normalized (φ : ℝ → ℝ) (h : NormalizedScore φ) :
+    cPhi φ = 1/2 := by
+  -- Membership witness: 1/2 ∈ Ioc 0 (1/2).
+  have h_half_mem : (1/2 : ℝ) ∈ Set.Ioc (0:ℝ) (1/2) := ⟨by norm_num, le_refl _⟩
+  -- Pointwise upper bound: η / φ η ≤ 1/2 on Ioc 0 (1/2).
+  have h_each_le : ∀ η ∈ Set.Ioc (0:ℝ) (1/2), η / φ η ≤ 1/2 := by
+    intro η hη
+    obtain ⟨hη_pos, hη_le⟩ := hη
+    -- Chord lemma: 2η ≤ φ η on [0, 1/2].
+    have h_chord : 2 * η ≤ φ η :=
+      two_eta_le_of_normalized φ h ⟨le_of_lt hη_pos, hη_le⟩
+    -- 0 < 2η ≤ φ η, so φ η > 0.
+    have h_φ_pos : 0 < φ η := lt_of_lt_of_le (by linarith) h_chord
+    -- η/φη ≤ 1/2  ↔  η ≤ (1/2)·φη, which follows from 2η ≤ φη.
+    rw [div_le_iff₀ h_φ_pos]
+    linarith
+  -- Value at witness 1/2 equals 1/2.
+  have h_witness : (1/2 : ℝ) / φ (1/2) = 1/2 := by
+    rw [h.unit_at_half]; norm_num
+  -- The image set is bounded above by 1/2.
+  have h_bdd : BddAbove ((fun η : ℝ => η / φ η) '' Set.Ioc (0:ℝ) (1/2)) := by
+    refine ⟨1/2, ?_⟩
+    rintro x ⟨η, hη, rfl⟩
+    exact h_each_le η hη
+  -- The image set is nonempty (witness η = 1/2).
+  have h_nonempty : ((fun η : ℝ => η / φ η) '' Set.Ioc (0:ℝ) (1/2)).Nonempty :=
+    ⟨_, Set.mem_image_of_mem _ h_half_mem⟩
+  -- Combine via le_antisymm: csSup ≤ 1/2 and 1/2 ≤ csSup.
+  unfold cPhi
+  apply le_antisymm
+  · -- Upper: csSup ≤ 1/2
+    apply csSup_le h_nonempty
+    rintro x ⟨η, hη, rfl⟩
+    exact h_each_le η hη
+  · -- Lower: 1/2 ≤ csSup, via le_csSup at the witness (1/2)/φ(1/2) = 1/2.
+    calc (1/2 : ℝ)
+        = (1/2 : ℝ) / φ (1/2) := h_witness.symm
+      _ ≤ sSup ((fun η : ℝ => η / φ η) '' Set.Ioc (0:ℝ) (1/2)) :=
+            le_csSup h_bdd ⟨(1/2 : ℝ), h_half_mem, rfl⟩
 
 /-- **Binary bracket — lower endpoint** (inverse-free form).
     For a normalized concave `φ`, with cell rates `ηᵢ` and `qᵢ := min(ηᵢ, 1-ηᵢ)`,

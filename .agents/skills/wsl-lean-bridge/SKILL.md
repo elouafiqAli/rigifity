@@ -199,6 +199,39 @@ ciSup_le  -- for ⊢ ⨆ i, f i ≤ a
 le_ciSup  -- for ⊢ a ≤ ⨆ i, f i  (needs BddAbove hypothesis)
 ```
 
+**Even better: avoid `⨆ x ∈ s, f x` for ℝ entirely.** Define using
+`sSup ∘ image` instead — far cleaner proofs via `csSup_le`,
+`csSup_eq_of_forall_le_of_forall_lt_exists_gt`, `le_csSup`, etc:
+
+```lean
+-- BAD: nested iSup over (η ∈ s) is a Prop; conditional-sup lemmas
+-- for ℝ have BddAbove or ConditionallyCompleteLinearOrderBot side
+-- conditions that don't apply.
+noncomputable def cPhi (φ : ℝ → ℝ) : ℝ := ⨆ η ∈ Set.Ioc (0:ℝ) (1/2), η / φ η
+
+-- GOOD: csSup_le / le_csSup work directly on the image set.
+noncomputable def cPhi (φ : ℝ → ℝ) : ℝ :=
+  sSup ((fun η : ℝ => η / φ η) '' Set.Ioc (0:ℝ) (1/2))
+```
+
+### `div_le_iff` is now `div_le_iff₀` in v4.29.1
+
+The old name `div_le_iff` was deprecated; use `div_le_iff₀` (with the
+zero subscript) for the `0 < b → (a / b ≤ c ↔ a ≤ c * b)` form. Same
+goes for `lt_div_iff` → `lt_div_iff₀`, `div_le_one` → `div_le_one₀`, etc.
+
+### `Set.Nonempty (f '' s)` constructor
+
+`Set.Nonempty s = ∃ x, x ∈ s`. For image:
+
+```lean
+-- BAD: anonymous-constructor over-flattens
+have : (f '' s).Nonempty := ⟨_, hx_in_s, rfl⟩  -- type error
+
+-- GOOD: use Set.mem_image_of_mem to construct the membership proof
+have : (f '' s).Nonempty := ⟨_, Set.mem_image_of_mem _ hx_in_s⟩
+```
+
 ### `ConcaveOn.inf` not `ConcaveOn.min`
 
 ```lean
@@ -237,3 +270,4 @@ have h_id : ConcaveOn ℝ (Set.Icc (0:ℝ) 1) (fun η : ℝ => η) :=
 |---|---|---|
 | `tent_normalized` | `Rigidity/Bracket.lean` | `T(η) = 2 min(η, 1-η)` is a `NormalizedScore` |
 | `two_eta_le_of_normalized` | `Rigidity/Bracket.lean` | Chord lemma: `2η ≤ φ(η)` on `[0, 1/2]` for any normalized `φ` |
+| `cPhi_eq_half_of_normalized` | `Rigidity/Bracket.lean` | Universal `c_φ = 1/2` for normalized scores (uses `sSup ∘ image` form) |
