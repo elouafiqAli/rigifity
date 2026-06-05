@@ -163,7 +163,7 @@ Add a one-sentence remark that on a fixed task only (a) is operative; (b) gives 
 | 10 | `15729f6` | `03` | Normalized variance $\varphi_{\mathrm{var}}=4\eta(1-\eta)$ throughout, $c_\varphi=\tfrac12$ (per #3); upper $=p_{\mathrm{dis}}$ identical to old. |
 | 11 | `d0f175b` | `03` | OP1 split into 1a (cite `04`) and 1b (soft cells, open); scope sentence in §8 updated; OP2 now references $L^\ast(\varepsilon)$ from §6. |
 | 12 | `027ba89` | `04` | Three locations rephrased (abstract, §6 soft-arch paragraph, §7 summary); no remaining "T9"; soft-kernel claim downgraded and cross-referenced to `03` OP1b. |
-| 13 | `<this commit>` | `03`, `06` | Draft note bumped to 0.1 with full audit-closure enumeration; orphan refs (Pearl, Valiant) pruned; commitology post-mortem table populated. |
+| 13 | `8ecc9b6` | `03`, `06` | Draft note bumped to 0.1 with full audit-closure enumeration; orphan refs (Pearl, Valiant) pruned; commitology post-mortem table populated. |
 
 ---
 
