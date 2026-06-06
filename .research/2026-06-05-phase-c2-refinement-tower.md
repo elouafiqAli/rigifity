@@ -1,9 +1,10 @@
 # Phase C2 — `barPhi_refinement_le` proof strategy
 
 **Phase**: C2
-**Status**: open — strategy decided, blocked on FinitePartition nonempty modeling decision
+**Status**: **CLOSED 2026-06-06** — `barPhi_refinement_le`, `theorem1_easy`,
+and `theorem1` all `@[rigidity_proved]` and axiom-clean.
 **First raised**: 2026-06-05
-**Last updated**: 2026-06-05 (added nonempty-cell discovery)
+**Last updated**: 2026-06-06 (closure + nonempty-cell modeling resolved)
 
 ## The question
 
@@ -125,3 +126,53 @@ finishing C2.
   become one-step applications.
 - `Finset.sum_biUnion` is the right reindexing tool (not `Finset.sum_partition`
   which uses Setoid).
+
+## Closure notes (2026-06-06)
+
+**Resolution of the nonempty-cell modeling gate.** Took **Option 2**
+(local filter on `Set.Nonempty`), not Option 1 (`nonempty` field on
+`FinitePartition`). Reason: Option 1 would propagate `[Nonempty α]` to
+~15 sites that already use `trivialPartition`. Option 2 confines the
+nonempty discipline to the Phase C2 helpers via `refining` =
+`P'.cells.filter (·.Nonempty ∧ · ⊆ c)`. Decidability is supplied by
+`section PhaseC2 open Classical`.
+
+**Manuscript-Lean reconciliation.** The proof of `barPhi_refinement_le`
+needs `MeasurableSet {x | f x = true}` (for the partition-additivity
+step `sum_measure_refining_inter_eq`). This was added as an explicit
+hypothesis to `barPhi_refinement_le`, `theorem1_easy`, and `theorem1`'s
+iff. The hard direction's `BinarySplitRealizable` already supplies
+this measurability witness, so the iff binds correctly.
+
+**Final shape (8 new declarations in `Bracket.lean`, 1 new in `Theorem1.lean`):**
+
+| Declaration | LoC | Role |
+|---|---|---|
+| `refining` (def) | 4 | nonempty refining family |
+| `mem_refining_iff` | 3 | unfolding lemma |
+| `refining_pairwiseDisjoint` | 12 | Piece 1 disjointness |
+| `biUnion_refining_eq` | 14 | Piece 1 biUnion identity |
+| `barPhi_eq_filter_nonempty` | 13 | drop empty cells |
+| `sum_cellMass_refining_eq` | 70 | mass conservation |
+| `sum_measure_refining_inter_eq` | 70 | trace mass conservation |
+| `cellRate_mul_cellMass_refining_sum` | 25 | tower property (Piece 2) |
+| `barPhi_refinement_le` | 90 | Piece 3 (Jensen + tower glue) |
+| `theorem1_easy` | 5 | iff packager |
+| **Total** | **~310 LoC** | (vs ~190 estimated; the partition-additivity helpers ran longer than expected because of the nonempty case-split) |
+
+**Mathlib opportunity unblocked**: opportunity #4 (conditional Jensen for
+`ConcaveOn`/`ConvexOn`) is now demonstrated — our finite-partition
+specialization works concretely. The full mathlib lemma would supersede
+~190 LoC of partition-additivity bookkeeping.
+
+**Mathlib opportunity opened**: `Finset.sum_div` lives in
+`Mathlib.Algebra.BigOperators.Field` and was not transitively imported
+through `MeasureTheory`. Discovered the hard way; documented for future
+modules.
+
+**Phase D next**: `simplex_rigidity` (Theorem 2′) needs the same
+tower-property abstraction generalized from `cellRate : Bool` to
+`cellRate : Fin k → ℝ`. Rendering `barPhiSimplex_refinement_le` as a
+straightforward port of `barPhi_refinement_le` should be possible —
+the conditional-Jensen step is dimension-agnostic, and the
+partition-additivity proofs reuse verbatim.

@@ -1,5 +1,6 @@
 import Mathlib.MeasureTheory.Measure.Typeclasses.NoAtoms
 import Mathlib.MeasureTheory.Measure.Typeclasses.Probability
+import Mathlib.Algebra.BigOperators.Field
 import Rigidity.Bracket
 import Rigidity.Util.Attributes
 
@@ -54,22 +55,141 @@ class BinarySplitRealizable {α : Type*} [MeasurableSpace α] (μ : Measure α) 
         (∀ c ∈ P.cells, c ≠ s → cellRate μ f P c = b) ∧
         MeasurableSet {x | f x = true}
 
-/-! ## Phase C1 helper skeleton: refinement-monotonicity of barPhi -/
+/-! ## Phase C2 — refinement-monotonicity of barPhi -/
 
 /-- **Workhorse** (Phase C2): for concave `φ` on `[0, 1]`, `barPhi` is
-    monotone under refinement. The proof uses the per-cell tower property
-    (`cellRate μ f P c` is a weighted average of the `cellRate` on the
-    refining sub-cells) plus `ConcaveOn.le_map_sum` (the abstract Jensen).
+    monotone under refinement.
 
-    Phase C2 will fill this; meanwhile a `sorry` skeleton with
-    `@[rigidity_scaffold]` so the audit harness flags it correctly. -/
-@[rigidity_scaffold, rigidity_AMS_28, rigidity_AMS_60]
+    Proof structure (Tao step 2a, fully skeletonized):
+    1. Drop empty cells from `P'.cells` via `barPhi_eq_filter_nonempty` —
+       they contribute zero to both sides.
+    2. Reindex the resulting sum over `P.cells.biUnion (refining P')` via
+       `biUnion_refining_eq` (which equals the filtered nonempty cells).
+    3. Apply `Finset.sum_biUnion` using `refining_pairwiseDisjoint` to obtain
+       a double sum: `Σ c ∈ P.cells, Σ c' ∈ refining P' c, ...`.
+    4. For each `c ∈ P.cells`, apply per-cell Jensen via
+       `ConcaveOn.le_map_sum` with weights `pᵢ' := (μ c'ᵢ).toReal / (μ c).toReal`
+       and points `ηᵢ' := cellRate μ f P' c'ᵢ`. The tower
+       `cellRate_mul_cellMass_refining_sum` identifies the weighted average
+       with `cellRate μ f P c`, so Jensen yields
+       `Σ pᵢ' · φ(ηᵢ') ≤ φ(cellRate μ f P c)`. Multiplying by `(μ c).toReal`:
+       `Σ (μ c'ᵢ).toReal · φ(ηᵢ') ≤ (μ c).toReal · φ(cellRate μ f P c)`.
+    5. Sum over `c ∈ P.cells` to get the full inequality. -/
+@[rigidity_proved, rigidity_AMS_28, rigidity_AMS_60]
 theorem barPhi_refinement_le {α : Type*} [MeasurableSpace α]
     (μ : Measure α) [IsProbabilityMeasure μ]
-    (φ : ℝ → ℝ) (_h_cvx : ConcaveOn ℝ (Set.Icc (0:ℝ) 1) φ)
-    (f : α → Bool) (P P' : FinitePartition α) (_h_ref : P' ⪰ P) :
+    (φ : ℝ → ℝ) (h_cvx : ConcaveOn ℝ (Set.Icc (0:ℝ) 1) φ)
+    (f : α → Bool) (hf : MeasurableSet {x | f x = true})
+    (P P' : FinitePartition α) (h_ref : P' ⪰ P) :
     barPhi μ φ f P' ≤ barPhi μ φ f P := by
-  sorry
+  classical
+  -- Step 1: barPhi μ φ f P' = Σ over nonempty cells of P'.
+  rw [barPhi_eq_filter_nonempty μ φ f P']
+  -- Step 2: rewrite the index set as P.cells.biUnion (refining P').
+  rw [← biUnion_refining_eq P P' h_ref]
+  -- Step 3: split the biUnion into a double sum.
+  rw [Finset.sum_biUnion (refining_pairwiseDisjoint P P')]
+  -- Step 4: per-cell inequality.
+  -- Goal: ∑ c ∈ P.cells, ∑ c' ∈ refining P' c, (cellMass μ P' c').toReal * φ (cellRate μ f P' c')
+  --       ≤ barPhi μ φ f P
+  -- Unfold barPhi on the RHS to expose the matching sum.
+  show ∑ c ∈ P.cells, ∑ c' ∈ refining P' c,
+        (cellMass μ P' c').toReal * φ (cellRate μ f P' c') ≤
+      ∑ c ∈ P.cells, (cellMass μ P c).toReal * φ (cellRate μ f P c)
+  refine Finset.sum_le_sum (fun c hc => ?_)
+  -- Sub-goal: per-cell. Case-split on (cellMass μ P c).toReal = 0.
+  by_cases h_zero : (cellMass μ P c).toReal = 0
+  · -- Degenerate: μ c = 0 ⟹ μ c' = 0 for all c' ⊆ c ⟹ both sides 0.
+    rw [h_zero, zero_mul]
+    have h_finite_c : μ c ≠ ⊤ := by
+      refine ne_of_lt ?_
+      refine lt_of_le_of_lt (measure_mono (Set.subset_univ c)) ?_
+      rw [measure_univ]
+      exact ENNReal.one_lt_top
+    have h_μc_zero : μ c = 0 := by
+      rcases (ENNReal.toReal_eq_zero_iff (μ c)).mp h_zero with h | h
+      · exact h
+      · exact absurd h h_finite_c
+    -- Each term in the sum is 0.
+    apply le_of_eq
+    apply Finset.sum_eq_zero
+    intro c' hc'
+    rw [mem_refining_iff] at hc'
+    obtain ⟨_, _, h_sub⟩ := hc'
+    have h_μc'_zero : μ c' = 0 := measure_mono_null h_sub h_μc_zero
+    show (cellMass μ P' c').toReal * φ (cellRate μ f P' c') = 0
+    show (μ c').toReal * φ (cellRate μ f P' c') = 0
+    rw [h_μc'_zero]
+    simp
+  · -- Non-degenerate: (μ c).toReal > 0. Apply Jensen.
+    set p_c := (cellMass μ P c).toReal with hp_c_def
+    have hp_c_pos : 0 < p_c :=
+      lt_of_le_of_ne ENNReal.toReal_nonneg (Ne.symm h_zero)
+    -- Factor LHS as p_c · (Σ (μ c'/p_c) · φ(cellRate μ f P' c')).
+    have h_LHS_factor :
+        ∑ c' ∈ refining P' c,
+          (cellMass μ P' c').toReal * φ (cellRate μ f P' c') =
+        p_c * ∑ c' ∈ refining P' c,
+          ((cellMass μ P' c').toReal / p_c) * φ (cellRate μ f P' c') := by
+      rw [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro c' _
+      field_simp
+    rw [h_LHS_factor]
+    -- Goal: p_c * (Σ ...) ≤ p_c * φ (cellRate μ f P c). Reduce to Jensen.
+    apply mul_le_mul_of_nonneg_left _ (le_of_lt hp_c_pos)
+    -- Goal: ∑ c' ∈ refining P' c, ((cellMass μ P' c').toReal / p_c) * φ (cellRate μ f P' c')
+    --       ≤ φ (cellRate μ f P c).
+    -- Jensen hypotheses.
+    have hw_nonneg : ∀ c' ∈ refining P' c,
+        0 ≤ (cellMass μ P' c').toReal / p_c :=
+      fun c' _ => div_nonneg ENNReal.toReal_nonneg (le_of_lt hp_c_pos)
+    have hw_sum_one : ∑ c' ∈ refining P' c,
+        (cellMass μ P' c').toReal / p_c = 1 := by
+      rw [← Finset.sum_div _ _ _]
+      rw [sum_cellMass_refining_eq μ P P' h_ref hc]
+      exact div_self (ne_of_gt hp_c_pos)
+    have hη_mem : ∀ c' ∈ refining P' c,
+        cellRate μ f P' c' ∈ Set.Icc (0:ℝ) 1 :=
+      fun c' _ => cellRate_mem_Icc μ f P' c'
+    -- Apply Jensen.
+    have h_jensen := h_cvx.le_map_sum hw_nonneg hw_sum_one hη_mem
+    -- h_jensen : ∑ c' ∈ refining P' c, w c' • φ (cellRate ...) ≤
+    --            φ (∑ c' ∈ refining P' c, w c' • cellRate ...)
+    -- The weighted average inside φ equals cellRate μ f P c via the tower.
+    have h_avg : ∑ c' ∈ refining P' c,
+        ((cellMass μ P' c').toReal / p_c) • cellRate μ f P' c' =
+        cellRate μ f P c := by
+      simp only [smul_eq_mul]
+      calc ∑ c' ∈ refining P' c,
+              (cellMass μ P' c').toReal / p_c * cellRate μ f P' c'
+          = ∑ c' ∈ refining P' c,
+              cellRate μ f P' c' * (cellMass μ P' c').toReal / p_c := by
+                apply Finset.sum_congr rfl
+                intro c' _
+                ring
+        _ = (∑ c' ∈ refining P' c,
+              cellRate μ f P' c' * (cellMass μ P' c').toReal) / p_c :=
+                (Finset.sum_div _ _ _).symm
+        _ = (cellRate μ f P c * p_c) / p_c := by
+                rw [← cellRate_mul_cellMass_refining_sum μ f P P' h_ref hf hc]
+        _ = cellRate μ f P c := by
+                rw [mul_div_assoc, div_self (ne_of_gt hp_c_pos), mul_one]
+    rw [h_avg] at h_jensen
+    -- h_jensen : ∑ c' ∈ refining P' c, w c' • φ (cellRate ...) ≤ φ (cellRate μ f P c)
+    simpa only [smul_eq_mul] using h_jensen
+
+/-- Bridge: `barPhi_refinement_le` packaged as a hypothesis form for use
+    in `theorem1`'s easy direction (which needs the unconditional `∀ f P P'`
+    over measurable `f`). -/
+@[rigidity_proved, rigidity_AMS_28, rigidity_AMS_60]
+theorem theorem1_easy {α : Type*} [MeasurableSpace α] (μ : Measure α)
+    [IsProbabilityMeasure μ] (φ : ℝ → ℝ) (h_cvx : ConcaveOn ℝ (Set.Icc (0:ℝ) 1) φ) :
+    ∀ (f : α → Bool) (_hf : MeasurableSet {x | f x = true})
+      (P P' : FinitePartition α),
+      P' ⪰ P → barPhi μ φ f P' ≤ barPhi μ φ f P := by
+  intro f hf P P' h_ref
+  exact barPhi_refinement_le μ φ h_cvx f hf P P' h_ref
 
 /-! ## Phase C3 — Theorem 1 hard direction (refinement-mono ⟹ concave) -/
 
@@ -96,14 +216,19 @@ theorem barPhi_refinement_le {α : Type*} [MeasurableSpace α]
        of `μ` over `{s, P.cells \ {s}}` and `cellRate_mul_cellMass` per cell.
     7. Combine via `linarith` to get `a • φ x + b • φ y ≤ φ (a • x + b • y)`.
 
-    Currently `sorry` because step 6 needs a generic
-    `cellRate_trivial_eq_sum_cellRate` lemma over arbitrary partitions, not
-    just `boolIndicator` cases. That's a clean ~30-LoC follow-up. -/
+    Phase C4 closure (2026-06-05): step 6 discharged via the generic
+    `cellRate_trivial_eq_sum` lemma over arbitrary `f : α → Bool` (added in
+    `Bracket.lean` alongside `sum_measure_inter_eq` and `cellRate_trivial`).
+
+    Note (Phase C2 reconciliation, 2026-06-06): `h_mono` now takes
+    `MeasurableSet {x | f x = true}` to match `theorem1`'s iff statement.
+    The hypothesis is satisfied by `BinarySplitRealizable`'s `hf_meas` field. -/
 @[rigidity_proved, rigidity_AMS_28, rigidity_AMS_60]
 theorem theorem1_hard {α : Type*} [MeasurableSpace α] (μ : Measure α)
     [IsProbabilityMeasure μ] [BinarySplitRealizable μ]
     (φ : ℝ → ℝ)
-    (h_mono : ∀ (f : α → Bool) (P P' : FinitePartition α),
+    (h_mono : ∀ (f : α → Bool) (_hf : MeasurableSet {x | f x = true})
+        (P P' : FinitePartition α),
         P' ⪰ P → barPhi μ φ f P' ≤ barPhi μ φ f P) :
     ConcaveOn ℝ (Set.Icc (0:ℝ) 1) φ := by
   refine ⟨convex_Icc _ _, ?_⟩
@@ -116,7 +241,8 @@ theorem theorem1_hard {α : Type*} [MeasurableSpace α] (μ : Measure α)
   -- Refinement: P refines trivialPartition (trivially).
   have h_ref : P ⪰ trivialPartition := refines_trivialPartition P
   -- Apply h_mono with P' = P, P = trivialPartition.
-  have h_le : barPhi μ φ f P ≤ barPhi μ φ f trivialPartition := h_mono f trivialPartition P h_ref
+  have h_le : barPhi μ φ f P ≤ barPhi μ φ f trivialPartition :=
+    h_mono f hf_meas trivialPartition P h_ref
   -- RHS: barPhi μ φ f trivialPartition = φ ((μ {f=true}).toReal).
   rw [barPhi_trivial μ φ f] at h_le
   -- The (μ {f=true}).toReal equals Σ_c cellRate · cellMass (tower property).
@@ -186,25 +312,32 @@ theorem theorem1_hard {α : Type*} [MeasurableSpace α] (μ : Measure α)
 
 /-- **Theorem 1** (refinement-monotone ⟺ concave).
     On a probability space with `BinarySplitRealizable μ`, the partition
-    functional `bar φ` is monotone under refinement iff `φ` is concave on
-    `[0, 1]`.
+    functional `bar φ` is monotone under refinement (over **measurable** `f`)
+    iff `φ` is concave on `[0, 1]`.
+
+    Note (Phase C2 reconciliation): the measurability of `{x | f x = true}`
+    is required by the easy direction's tower-property (partition-additivity
+    of `μ ({f=true} ∩ ·)`). The hard direction uses `BinarySplitRealizable`
+    which provides a measurable witness, so this hypothesis is satisfied by
+    construction in `theorem1_hard`.
 
     Easy direction (←): apply `barPhi_refinement_le` (Phase C2 target).
     Hard direction (→): use `BinarySplitRealizable` to realize the convex
     combination `a · lam + b · (1 - lam)` as a 2-cell refinement, where
     refinement monotonicity collapses to the concavity inequality. -/
-@[rigidity_scaffold, rigidity_AMS_28, rigidity_AMS_60]
+@[rigidity_proved, rigidity_AMS_28, rigidity_AMS_60]
 theorem theorem1 {α : Type*} [MeasurableSpace α] (μ : Measure α)
     [IsProbabilityMeasure μ] [BinarySplitRealizable μ]
     (φ : ℝ → ℝ) (_hc : ContinuousOn φ (Set.Icc (0:ℝ) 1)) :
-    (∀ (f : α → Bool) (P P' : FinitePartition α),
+    (∀ (f : α → Bool) (_hf : MeasurableSet {x | f x = true})
+        (P P' : FinitePartition α),
         P' ⪰ P → barPhi μ φ f P' ≤ barPhi μ φ f P) ↔
     ConcaveOn ℝ (Set.Icc (0:ℝ) 1) φ := by
   refine ⟨?_, ?_⟩
   · -- HARD direction: refinement-mono ⟹ concave.
     exact theorem1_hard μ φ
   · -- EASY direction: concave ⟹ refinement-mono.
-    intro h_cvx f P P' h_ref
-    exact barPhi_refinement_le μ φ h_cvx f P P' h_ref
+    intro h_cvx
+    exact theorem1_easy μ φ h_cvx
 
 end Rigidity

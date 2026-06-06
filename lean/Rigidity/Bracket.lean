@@ -564,6 +564,343 @@ theorem barPhi_trivial {α : Type*} [MeasurableSpace α] (μ : Measure α)
   rw [measure_univ]
   simp
 
+/-! ## Phase C2 — refinement-monotonicity infrastructure
+
+    These helpers support `barPhi_refinement_le` (Theorem 1, easy direction).
+    Modeling decision (`.research/2026-06-05-phase-c2-refinement-tower.md`):
+    `FinitePartition` permits empty cells, so we work with the
+    *nonempty* refining family `refining P' c`. Empty cells contribute
+    zero to every measure and to `barPhi`, so filtering them out is a no-op
+    for the actual claim while restoring the pairwise-disjointness needed
+    by `Finset.sum_biUnion`.
+
+    `Set.Nonempty` and `Set.Subset` are not propositionally decidable, so
+    we open `Classical` for the section to supply `DecidablePred` instances
+    to `Finset.filter`. -/
+
+section PhaseC2
+open Classical
+
+/-- **Refining family**: cells of `P'` that are *nonempty subsets* of `c`.
+    Brick: Phase C2 Piece 1. The nonempty-restriction is essential — empty
+    cells of `P'` would otherwise lie in every refining family, breaking
+    pairwise disjointness. -/
+noncomputable def refining {α : Type*} [MeasurableSpace α]
+    (P' : FinitePartition α) (c : Set α) : Finset (Set α) :=
+  P'.cells.filter (fun c' => c'.Nonempty ∧ c' ⊆ c)
+
+/-- Membership in `refining` unfolds to nonempty-and-subset of `c`. -/
+@[rigidity_proved, rigidity_AMS_28]
+theorem mem_refining_iff {α : Type*} [MeasurableSpace α]
+    (P' : FinitePartition α) (c c' : Set α) :
+    c' ∈ refining P' c ↔ c' ∈ P'.cells ∧ c'.Nonempty ∧ c' ⊆ c := by
+  unfold refining
+  exact Finset.mem_filter
+
+/-- **Refining families are pairwise disjoint over `P.cells`.**
+
+    For distinct cells `c₁ ≠ c₂` of `P`, no nonempty cell of `P'` lies in
+    both: if `c' ⊆ c₁` and `c' ⊆ c₂`, then `c' ⊆ c₁ ∩ c₂ = ∅` (by
+    `P.disjoint`), contradicting `c'.Nonempty`. -/
+@[rigidity_proved, rigidity_AMS_28]
+theorem refining_pairwiseDisjoint {α : Type*} [MeasurableSpace α]
+    (P P' : FinitePartition α) :
+    (P.cells : Set (Set α)).PairwiseDisjoint (refining P') := by
+  intro c₁ hc₁ c₂ hc₂ hne
+  -- Goal: Disjoint (refining P' c₁) (refining P' c₂) (as Finsets).
+  rw [Function.onFun, Finset.disjoint_left]
+  intro c' hc'₁ hc'₂
+  rw [mem_refining_iff] at hc'₁ hc'₂
+  obtain ⟨_, ⟨x, hx⟩, h_sub₁⟩ := hc'₁
+  obtain ⟨_, _, h_sub₂⟩ := hc'₂
+  -- c' ⊆ c₁ ∩ c₂ = ∅ by P.disjoint c₁ c₂.
+  have h_disj : Disjoint c₁ c₂ := P.disjoint hc₁ hc₂ hne
+  exact Set.disjoint_left.mp h_disj (h_sub₁ hx) (h_sub₂ hx)
+
+/-- **biUnion identity** for refinement: when `P' ⪰ P`, the disjoint union
+    of refining families over `P.cells` recovers all nonempty cells of `P'`.
+
+    `⊆`: every cell in some `refining P' c` is in `P'.cells.filter (·.Nonempty)`
+    by definition.
+    `⊇`: every nonempty `c' ∈ P'.cells` lies in some `c ∈ P.cells` by `h_ref`,
+    and `c'` is then in `refining P' c`. -/
+@[rigidity_proved, rigidity_AMS_28]
+theorem biUnion_refining_eq {α : Type*} [MeasurableSpace α]
+    (P P' : FinitePartition α) (h_ref : P' ⪰ P) :
+    P.cells.biUnion (refining P') = P'.cells.filter (fun c' => c'.Nonempty) := by
+  ext c'
+  simp only [Finset.mem_biUnion, mem_refining_iff, Finset.mem_filter]
+  constructor
+  · -- ⊆: ∃ c ∈ P.cells, c' ∈ refining P' c → c' ∈ P'.cells ∧ c'.Nonempty.
+    rintro ⟨_, _, hc'_in, hc'_ne, _⟩
+    exact ⟨hc'_in, hc'_ne⟩
+  · -- ⊇: c' ∈ P'.cells, c'.Nonempty → ∃ c ∈ P.cells, c' ⊆ c (via h_ref).
+    rintro ⟨hc'_in, hc'_ne⟩
+    obtain ⟨c, hc_in, hc'_sub⟩ := h_ref c' hc'_in
+    exact ⟨c, hc_in, hc'_in, hc'_ne, hc'_sub⟩
+
+/-- **`barPhi` ignores empty cells**: filtering empty cells out of `P'.cells`
+    does not change `barPhi`, since each empty cell contributes
+    `(μ ∅).toReal · φ(cellRate μ f P' ∅) = 0`. -/
+@[rigidity_proved, rigidity_AMS_60]
+theorem barPhi_eq_filter_nonempty {α : Type*} [MeasurableSpace α]
+    (μ : Measure α) (φ : ℝ → ℝ) (f : α → Bool) (P : FinitePartition α) :
+    barPhi μ φ f P =
+      ∑ c ∈ P.cells.filter (fun c' => c'.Nonempty),
+        (cellMass μ P c).toReal * φ (cellRate μ f P c) := by
+  -- The complement (empty cells) contribute zero: c = ∅ ⟹ μ c = 0 ⟹ cellMass = 0.
+  unfold barPhi
+  refine (Finset.sum_filter_of_ne ?_).symm
+  intro c _ h_term
+  -- h_term : (cellMass μ P c).toReal * φ (cellRate μ f P c) ≠ 0
+  -- ⟹ cellMass ≠ 0 ⟹ μ c ≠ 0 ⟹ c ≠ ∅ ⟹ c.Nonempty.
+  by_contra h_empty
+  rw [Set.not_nonempty_iff_eq_empty] at h_empty
+  apply h_term
+  unfold cellMass
+  rw [h_empty, measure_empty]
+  simp
+
+/-- **Mass conservation under refinement**: for `P' ⪰ P` and `c ∈ P.cells`,
+    the measure of `c` equals the sum of measures of its (nonempty) refining
+    sub-cells.
+
+    Proof: `c` is the disjoint union of `c ∩ c'` over `c' ∈ P'.cells`
+    (partition-additivity via `P'.covers + P'.disjoint`), and for `c' ∈ refining P' c`
+    we have `c ∩ c' = c'`. Empty refining cells contribute zero. -/
+@[rigidity_proved, rigidity_AMS_28]
+theorem sum_cellMass_refining_eq {α : Type*} [MeasurableSpace α]
+    (μ : Measure α) [IsProbabilityMeasure μ]
+    (P P' : FinitePartition α) (h_ref : P' ⪰ P)
+    {c : Set α} (hc : c ∈ P.cells) :
+    ∑ c' ∈ refining P' c, (cellMass μ P' c').toReal = (cellMass μ P c).toReal := by
+  -- Step 1: Σ_{c' ∈ P'.cells} (μ (c ∩ c')) = μ c (partition-additivity over P').
+  have h_meas_inter : ∀ c' ∈ P'.cells, MeasurableSet (c ∩ c') := by
+    intro c' hc'
+    exact (P.measurable c hc).inter (P'.measurable c' hc')
+  have h_disj_inter : (P'.cells : Set (Set α)).PairwiseDisjoint
+      (fun c' => c ∩ c') := by
+    intro a ha b hb hne
+    exact (P'.disjoint ha hb hne).mono Set.inter_subset_right Set.inter_subset_right
+  have h_add : μ (⋃ c' ∈ P'.cells, c ∩ c') =
+      ∑ c' ∈ P'.cells, μ (c ∩ c') :=
+    measure_biUnion_finset h_disj_inter h_meas_inter
+  -- ⋃ c' ∈ P'.cells, c ∩ c' = c ∩ univ = c (using P'.covers).
+  have h_union : ⋃ c' ∈ P'.cells, c ∩ c' = c := by
+    rw [← Set.inter_iUnion₂]
+    have h_cover : ⋃ c' ∈ P'.cells, c' = Set.univ := by
+      have h := P'.covers
+      rw [Set.sUnion_eq_biUnion] at h
+      exact h
+    rw [h_cover, Set.inter_univ]
+  have h_sum_inter : ∑ c' ∈ P'.cells, μ (c ∩ c') = μ c := by
+    rw [← h_add, h_union]
+  -- Step 2: split P'.cells into (refining P' c) and the rest.
+  -- For c' ∈ refining P' c: c ∩ c' = c' (since c' ⊆ c).
+  -- For c' ∈ P'.cells \ refining P' c: either c' = ∅ (then c ∩ c' = ∅) or
+  -- c' ∩ c = ∅ (since the unique containing P-cell ≠ c by P.disjoint).
+  have h_filter_inter : ∀ c' ∈ P'.cells,
+      μ (c ∩ c') = if c' ∈ refining P' c then μ c' else 0 := by
+    intro c' hc'
+    by_cases h_in : c' ∈ refining P' c
+    · rw [if_pos h_in]
+      rw [mem_refining_iff] at h_in
+      obtain ⟨_, _, h_sub⟩ := h_in
+      congr 1
+      exact Set.inter_eq_right.mpr h_sub
+    · rw [if_neg h_in]
+      -- c' ∉ refining P' c ⟺ ¬(c'.Nonempty ∧ c' ⊆ c).
+      rw [mem_refining_iff] at h_in
+      simp only [hc', true_and, not_and] at h_in
+      -- h_in : c'.Nonempty → ¬c' ⊆ c
+      by_cases h_ne : c'.Nonempty
+      · -- c'.Nonempty ⟹ ¬c' ⊆ c. There is some c_alt ∈ P.cells with c' ⊆ c_alt
+        -- (h_ref), and c_alt ≠ c. By P.disjoint, c ∩ c_alt = ∅, hence c ∩ c' = ∅.
+        obtain ⟨c_alt, hc_alt, hc'_sub⟩ := h_ref c' hc'
+        have h_alt_ne : c_alt ≠ c := by
+          intro h_eq
+          rw [h_eq] at hc'_sub
+          exact h_in h_ne hc'_sub
+        have h_disj : Disjoint c c_alt := P.disjoint hc hc_alt (Ne.symm h_alt_ne)
+        rw [show (c ∩ c' : Set α) = ∅ from ?_]
+        · exact measure_empty
+        ext x
+        simp only [Set.mem_inter_iff, Set.mem_empty_iff_false, iff_false, not_and]
+        intro hxc hxc'
+        exact (Set.disjoint_left.mp h_disj) hxc (hc'_sub hxc')
+      · -- ¬c'.Nonempty ⟹ c' = ∅ ⟹ c ∩ c' = ∅.
+        rw [Set.not_nonempty_iff_eq_empty] at h_ne
+        rw [h_ne, Set.inter_empty]
+        exact measure_empty
+  -- Step 3: assemble.
+  have h_sum_split : ∑ c' ∈ P'.cells, μ (c ∩ c') =
+      ∑ c' ∈ P'.cells.filter (· ∈ refining P' c), μ c' := by
+    calc ∑ c' ∈ P'.cells, μ (c ∩ c')
+        = ∑ c' ∈ P'.cells, if c' ∈ refining P' c then μ c' else 0 :=
+              Finset.sum_congr rfl h_filter_inter
+      _ = ∑ c' ∈ P'.cells.filter (· ∈ refining P' c), μ c' :=
+              (Finset.sum_filter _ _).symm
+  -- The filter on P'.cells of "is in refining P' c" equals refining P' c itself
+  -- (since refining P' c ⊆ P'.cells).
+  have h_filter_eq : P'.cells.filter (· ∈ refining P' c) = refining P' c := by
+    ext c'
+    simp only [Finset.mem_filter, mem_refining_iff]
+    constructor
+    · rintro ⟨_, hc'_in, hc'_ne, hc'_sub⟩
+      exact ⟨hc'_in, hc'_ne, hc'_sub⟩
+    · rintro ⟨hc'_in, hc'_ne, hc'_sub⟩
+      exact ⟨hc'_in, hc'_in, hc'_ne, hc'_sub⟩
+  rw [h_filter_eq] at h_sum_split
+  -- h_sum_split : ∑ c' ∈ P'.cells, μ (c ∩ c') = ∑ c' ∈ refining P' c, μ c'
+  have h_ennreal : ∑ c' ∈ refining P' c, μ c' = μ c :=
+    h_sum_split.symm.trans h_sum_inter
+  -- Push through toReal.
+  have h_finite : ∀ c' ∈ refining P' c, μ c' ≠ ⊤ := by
+    intro c' _
+    refine ne_of_lt ?_
+    refine lt_of_le_of_lt (measure_mono (Set.subset_univ _)) ?_
+    rw [measure_univ]
+    exact ENNReal.one_lt_top
+  calc ∑ c' ∈ refining P' c, (cellMass μ P' c').toReal
+      = ∑ c' ∈ refining P' c, (μ c').toReal := by simp only [cellMass_toReal]
+    _ = (∑ c' ∈ refining P' c, μ c').toReal := (ENNReal.toReal_sum h_finite).symm
+    _ = (μ c).toReal := by rw [h_ennreal]
+    _ = (cellMass μ P c).toReal := rfl
+
+/-- **Trace mass conservation under refinement**: same as `sum_cellMass_refining_eq`
+    for the trace `{f=true} ∩ ·`. -/
+@[rigidity_proved, rigidity_AMS_28]
+theorem sum_measure_refining_inter_eq {α : Type*} [MeasurableSpace α]
+    (μ : Measure α) [IsProbabilityMeasure μ] (f : α → Bool)
+    (P P' : FinitePartition α) (h_ref : P' ⪰ P)
+    (hf : MeasurableSet {x | f x = true})
+    {c : Set α} (hc : c ∈ P.cells) :
+    ∑ c' ∈ refining P' c, (μ ({x | f x = true} ∩ c')).toReal =
+      (μ ({x | f x = true} ∩ c)).toReal := by
+  -- Same partition-additivity strategy as sum_cellMass_refining_eq.
+  -- Step 1: split μ ({f=true} ∩ c) = Σ_{c' ∈ P'.cells} μ ({f=true} ∩ c ∩ c').
+  have h_meas_inter : ∀ c' ∈ P'.cells,
+      MeasurableSet ({x | f x = true} ∩ c ∩ c') := by
+    intro c' hc'
+    exact (hf.inter (P.measurable c hc)).inter (P'.measurable c' hc')
+  have h_disj_inter : (P'.cells : Set (Set α)).PairwiseDisjoint
+      (fun c' => {x | f x = true} ∩ c ∩ c') := by
+    intro a ha b hb hne
+    exact (P'.disjoint ha hb hne).mono Set.inter_subset_right Set.inter_subset_right
+  have h_add : μ (⋃ c' ∈ P'.cells, {x | f x = true} ∩ c ∩ c') =
+      ∑ c' ∈ P'.cells, μ ({x | f x = true} ∩ c ∩ c') :=
+    measure_biUnion_finset h_disj_inter h_meas_inter
+  -- ⋃ c' ∈ P'.cells, ({f=true} ∩ c) ∩ c' = ({f=true} ∩ c) ∩ univ = {f=true} ∩ c.
+  have h_union : ⋃ c' ∈ P'.cells, {x | f x = true} ∩ c ∩ c' = {x | f x = true} ∩ c := by
+    rw [← Set.inter_iUnion₂]
+    have h_cover : ⋃ c' ∈ P'.cells, c' = Set.univ := by
+      have h := P'.covers
+      rw [Set.sUnion_eq_biUnion] at h
+      exact h
+    rw [h_cover, Set.inter_univ]
+  have h_sum_inter : ∑ c' ∈ P'.cells, μ ({x | f x = true} ∩ c ∩ c') =
+      μ ({x | f x = true} ∩ c) := by
+    rw [← h_add, h_union]
+  -- Step 2: per-cell case split (same as sum_cellMass_refining_eq).
+  have h_filter_inter : ∀ c' ∈ P'.cells,
+      μ ({x | f x = true} ∩ c ∩ c') =
+        if c' ∈ refining P' c then μ ({x | f x = true} ∩ c') else 0 := by
+    intro c' hc'
+    by_cases h_in : c' ∈ refining P' c
+    · rw [if_pos h_in]
+      rw [mem_refining_iff] at h_in
+      obtain ⟨_, _, h_sub⟩ := h_in
+      congr 1
+      rw [Set.inter_assoc, Set.inter_eq_right.mpr h_sub]
+    · rw [if_neg h_in]
+      rw [mem_refining_iff] at h_in
+      simp only [hc', true_and, not_and] at h_in
+      by_cases h_ne : c'.Nonempty
+      · obtain ⟨c_alt, hc_alt, hc'_sub⟩ := h_ref c' hc'
+        have h_alt_ne : c_alt ≠ c := by
+          intro h_eq
+          rw [h_eq] at hc'_sub
+          exact h_in h_ne hc'_sub
+        have h_disj : Disjoint c c_alt := P.disjoint hc hc_alt (Ne.symm h_alt_ne)
+        rw [show ({x | f x = true} ∩ c ∩ c' : Set α) = ∅ from ?_]
+        · exact measure_empty
+        ext x
+        simp only [Set.mem_inter_iff, Set.mem_empty_iff_false, iff_false, not_and]
+        intro h1 h2
+        -- h1 : x ∈ {x | f x = true} ∧ x ∈ c, h2 : x ∈ c'
+        exact (Set.disjoint_left.mp h_disj) h1.2 (hc'_sub h2)
+      · rw [Set.not_nonempty_iff_eq_empty] at h_ne
+        rw [h_ne, Set.inter_empty]
+        exact measure_empty
+  -- Step 3: assemble (same template).
+  have h_sum_split : ∑ c' ∈ P'.cells, μ ({x | f x = true} ∩ c ∩ c') =
+      ∑ c' ∈ P'.cells.filter (· ∈ refining P' c), μ ({x | f x = true} ∩ c') := by
+    calc ∑ c' ∈ P'.cells, μ ({x | f x = true} ∩ c ∩ c')
+        = ∑ c' ∈ P'.cells, if c' ∈ refining P' c
+                            then μ ({x | f x = true} ∩ c') else 0 :=
+              Finset.sum_congr rfl h_filter_inter
+      _ = ∑ c' ∈ P'.cells.filter (· ∈ refining P' c), μ ({x | f x = true} ∩ c') :=
+              (Finset.sum_filter _ _).symm
+  have h_filter_eq : P'.cells.filter (· ∈ refining P' c) = refining P' c := by
+    ext c'
+    simp only [Finset.mem_filter, mem_refining_iff]
+    constructor
+    · rintro ⟨_, hc'_in, hc'_ne, hc'_sub⟩
+      exact ⟨hc'_in, hc'_ne, hc'_sub⟩
+    · rintro ⟨hc'_in, hc'_ne, hc'_sub⟩
+      exact ⟨hc'_in, hc'_in, hc'_ne, hc'_sub⟩
+  rw [h_filter_eq] at h_sum_split
+  have h_ennreal : ∑ c' ∈ refining P' c, μ ({x | f x = true} ∩ c') =
+      μ ({x | f x = true} ∩ c) :=
+    h_sum_split.symm.trans h_sum_inter
+  have h_finite : ∀ c' ∈ refining P' c, μ ({x | f x = true} ∩ c') ≠ ⊤ := by
+    intro c' _
+    refine ne_of_lt ?_
+    refine lt_of_le_of_lt (measure_mono (Set.subset_univ _)) ?_
+    rw [measure_univ]
+    exact ENNReal.one_lt_top
+  rw [← h_ennreal, ENNReal.toReal_sum h_finite]
+
+/-- **Tower property** (Phase C2 Piece 2): for `P' ⪰ P` and `c ∈ P.cells`,
+    `cellRate μ f P c · μ c = Σ_{c' refining c} cellRate μ f P' c' · μ c'`.
+
+    Both sides equal `(μ ({f=true} ∩ c)).toReal`: LHS by `cellRate_mul_cellMass`,
+    RHS by `sum_measure_refining_inter_eq` plus `cellRate_mul_cellMass` per cell. -/
+@[rigidity_proved, rigidity_AMS_28, rigidity_AMS_60]
+theorem cellRate_mul_cellMass_refining_sum {α : Type*} [MeasurableSpace α]
+    (μ : Measure α) [IsProbabilityMeasure μ] (f : α → Bool)
+    (P P' : FinitePartition α) (h_ref : P' ⪰ P)
+    (hf : MeasurableSet {x | f x = true})
+    {c : Set α} (hc : c ∈ P.cells) :
+    cellRate μ f P c * (cellMass μ P c).toReal =
+      ∑ c' ∈ refining P' c,
+        cellRate μ f P' c' * (cellMass μ P' c').toReal := by
+  -- LHS: cellRate · cellMass = (μ ({f=true} ∩ c)).toReal via cellRate_mul_cellMass.
+  -- (Need μ c ≠ ⊤; finite since μ c ≤ μ univ = 1.)
+  have h_finite_c : μ c ≠ ⊤ := by
+    refine ne_of_lt ?_
+    refine lt_of_le_of_lt (measure_mono (Set.subset_univ c)) ?_
+    rw [measure_univ]
+    exact ENNReal.one_lt_top
+  rw [cellRate_mul_cellMass μ f P h_finite_c]
+  -- RHS: each term is (μ ({f=true} ∩ c')).toReal, then sum equals (μ ({f=true} ∩ c)).toReal
+  -- via sum_measure_refining_inter_eq.
+  rw [show ∑ c' ∈ refining P' c,
+        cellRate μ f P' c' * (cellMass μ P' c').toReal =
+        ∑ c' ∈ refining P' c, (μ ({x | f x = true} ∩ c')).toReal from ?_]
+  · exact (sum_measure_refining_inter_eq μ f P P' h_ref hf hc).symm
+  apply Finset.sum_congr rfl
+  intro c' _
+  -- For each c' ∈ refining P' c: μ c' ≠ ⊤ (finite), so cellRate · cellMass = (μ ({f=true} ∩ c')).toReal.
+  have h_finite_c' : μ c' ≠ ⊤ := by
+    refine ne_of_lt ?_
+    refine lt_of_le_of_lt (measure_mono (Set.subset_univ c')) ?_
+    rw [measure_univ]
+    exact ENNReal.one_lt_top
+  exact cellRate_mul_cellMass μ f P' h_finite_c'
+
+end PhaseC2
+
 /-- **Binary bracket — lower endpoint** (inverse-free form).
     For a normalized concave `φ`, with cell rates `ηᵢ` and `qᵢ := min(ηᵢ, 1-ηᵢ)`,
     symmetry gives `φ(ηᵢ) = φ(qᵢ)` and Jensen for concave `φ` on `[0, 1/2]`
