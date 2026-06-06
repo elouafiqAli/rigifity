@@ -35,6 +35,19 @@ new file `Mathlib/MeasureTheory/Measure/Sierpinski.lean`.
 `theorem2_reverse`. Defer until our paper is closer to publication so we can
 cite the mathlib PR.
 
+**Status (round-8 closure, 2026-06-06)**: Library-grade PR draft assembled at
+[`./sierpinski-pr/`](./sierpinski-pr/). Contains:
+[`README.md`](./sierpinski-pr/README.md),
+[`PR_PROPOSAL.md`](./sierpinski-pr/PR_PROPOSAL.md) (mathlib PR description),
+[`Sierpinski.lean`](./sierpinski-pr/Sierpinski.lean) (statement + IVT skeleton via
+Gouëzel's `MeasuredSets`; one `sorry` remaining for the doubling lemma),
+[`Tutorial.md`](./sierpinski-pr/Tutorial.md) (5-section proof walkthrough),
+[`DownstreamUsage.lean`](./sierpinski-pr/DownstreamUsage.lean) (four
+`instance` derivations that retire the rigidity-local realizability typeclasses).
+Final upstream submission still deferred to align with journal acceptance —
+see [`19-panel_verdict.md`](../19-panel_verdict.md) §5 and
+[`20-judge_f_harness_log.md`](../20-judge_f_harness_log.md) closure summary.
+
 ### 2. `ConcaveOn.one_sub` Pi-form helper (LOW value)
 
 **Source**: `Rigidity.Bracket.tent_normalized` proof — we used a `convert` +
