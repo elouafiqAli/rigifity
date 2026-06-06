@@ -1,16 +1,16 @@
 # End-to-End Audit — Paper + Lean Kernel — Publishability Confidence
 
-*Snapshot: Draft 0.5 of [`03-t0-achievable_error_floor.md`](03-t0-achievable_error_floor.md),
-Lean kernel at HEAD `8339f60` on 2026-06-06 (Phase C2 closure).*
+*Snapshot: Draft 0.6 of [`03-t0-achievable_error_floor.md`](03-t0-achievable_error_floor.md),
+Lean kernel at HEAD `fb0103b` + Phase D closure on 2026-06-06.*
 
 *Verification performed live:*
-- *Full `lake build` green (2172 jobs)*
-- *`Audit/PrintAxioms.lean` passed: **44 proved theorems** (was 27 at the
-  2026-06-05 snapshot; the +17 delta comprises the 8 Phase C2 helpers in
-  `Bracket.lean`, 4 new Phase C2/C3/C4 entries in `Theorem1.lean`, and 5
-  declarations whose audit entries were missing at the prior snapshot but
-  whose proofs predated it). All axiom-clean against only `propext /
-  Classical.choice / Quot.sound` — zero `sorryAx`, zero ad-hoc axioms.*
+- *Full `lake build` green (2172 jobs).*
+- *`Audit/PrintAxioms.lean` passed: **57 proved theorems** (was 44 at the Phase C2
+  snapshot, was 27 at the 2026-06-05 starting snapshot). All axiom-clean against
+  only `propext / Classical.choice / Quot.sound` — zero `sorryAx`, zero ad-hoc axioms.*
+- ***Decisive change since Phase C2: `simplex_rigidity` (Theorem 2′) is now
+  PROVED end-to-end** via the chord-trick Step 2 (no `affine_of_jensen_eq`
+  dependency needed; the lemma is also proved as a clean standalone).*
 
 ---
 
@@ -51,52 +51,59 @@ The PCP framing is explicitly an analogy, not a claim.
 
 ---
 
-## 2. Lean kernel — current state (post Phase C2)
+## 2. Lean kernel — current state (post Phase D)
 
 ```
 lean/
-├── Audit/PrintAxioms.lean        — axiom-hygiene check (44 declarations, all clean)
+├── Audit/PrintAxioms.lean        — axiom-hygiene check (57 declarations, all clean)
 ├── Rigidity.lean                  — umbrella module
 └── Rigidity/
     ├── Util/Attributes.lean       — @[rigidity_proved]/@[rigidity_scaffold] + AMS tags
-    ├── Bracket.lean                — 30 proved theorems (was 17 at the prior snapshot;
-    │                                 +13 = 8 Phase C2 helpers + 5 prior-existing
-    │                                 declarations brought into PrintAxioms)
-    ├── Theorem1.lean               — 4 proved (barPhi_refinement_le, theorem1_easy,
-    │                                 theorem1_hard, theorem1) — was 1 scaffold + 1 proved
-    │                                 at the prior snapshot
+    ├── Bracket.lean                — 30 proved theorems (Phase B1–B4 + Phase C2 helpers)
+    ├── Theorem1.lean               — 4 proved (Phase C2/C3/C4: barPhi_refinement_le,
+    │                                 theorem1_easy, theorem1_hard, theorem1)
     ├── Theorem2.lean               — 6 proved (incl. theorem2 itself)
-    ├── Theorem2Prime.lean          — 1 scaffold (simplex_rigidity); cPhiSimplex now a def
+    ├── Theorem2Prime.lean          — 13 proved (Phase D: full simplex rigidity
+    │                                 infrastructure + the rigidity theorem itself)
     ├── Proposition6.lean           — 4 proved (incl. variance_bracket)
-    └── WorkedExample.lean          — 9 native_decide numeric checks for §4.3
+    └── WorkedExample.lean          — 14 native_decide numeric checks for §4.3
+                                       (Worked example B = 9 from Draft 0.5;
+                                       Worked example A = 5 added Draft 0.6
+                                       for the round-6 Step-1 violation)
 ```
 
-**Concrete count (delta from 2026-06-05):**
+**Concrete count (delta from Phase C2):**
 
-- **44** declarations carry `@[rigidity_proved]` (was 27 in the prior audit
-  snapshot; the delta includes 8 new Phase C2 partition-refinement helpers,
-  the 4 Theorem 1 entries (`barPhi_refinement_le`, `theorem1_easy`,
-  `theorem1_hard`, `theorem1`), and 5 prior-existing declarations whose
-  `#print axioms` calls were missing from the previous PrintAxioms file).
-  Every one is verified axiom-clean against mathlib v4.29.1.
-- **1** `sorry` body remains, explicitly `@[rigidity_scaffold]`:
-  `Rigidity.Simplex.simplex_rigidity` (was 3 — `theorem1` and `cPhiSimplex`
-  closed this cycle; `cPhiSimplex` is now a plain `noncomputable def`)
-- **2** typeclasses-as-hypotheses (was 1): `SingleCellRealizable μ` (consumed by
-  `theorem2_reverse`) and `BinarySplitRealizable μ` (consumed by `theorem1_hard`).
-  Both follow from atomlessness via the same Sierpiński argument and are blocked
-  on the **same** mathlib PR (opportunity #1).
+- **57** declarations carry `@[rigidity_proved]` (was 44 at Phase C2 snapshot;
+  +13 Phase D additions cover all simplex-side infrastructure plus
+  `simplex_rigidity` and `affine_of_jensen_eq`).
+- **0** `sorry` bodies remain in the project's main namespace. `simplex_rigidity`,
+  `theorem1`, `theorem2` are all `@[rigidity_proved]`. Was 3 scaffolds at the
+  2026-06-05 starting snapshot; was 1 at Phase C2.
+- **3** typeclasses-as-hypotheses: `SingleCellRealizable μ` (consumed by
+  `theorem2_reverse`), `BinarySplitRealizable μ` (consumed by `theorem1_hard`),
+  and `SingleCellRealizableSimplex μ` / `TwoCellRealizableSimplex μ` (consumed
+  by `simplex_rigidity`). All four follow from `[NoAtoms μ]` via the same
+  Sierpiński-style argument and are closed by the same mathlib PR (opportunity #1).
 
-**What this means concretely.** The entire **§3 binary spine** is now
-mechanically verified end-to-end:
+**What this means concretely.** The entire **§3 binary spine and §4 multiclass
+simplex extension** are now mechanically verified end-to-end:
 
 - §1 bracket display (`bracket_lower`, `bracket_upper`) — proved
 - Universal `c_φ = 1/2` (`cPhi_eq_half_of_normalized`) — proved
-- §3.1 Theorem 1 (`theorem1`: refinement-mono ⟺ concave) — **proved**, both
-  directions, with the explicit `MeasurableSet {f=true}` hypothesis the
-  manuscript leaves implicit
-- §3.2 Theorem 2 (`theorem2`: tent uniqueness) — proved
-- §7 Proposition 6 (`variance_bracket`, `two_query_identity`) — proved
+- §3.1 Theorem 1 (`theorem1`: refinement-mono ⟺ concave) — **proved**, both
+  directions
+- §3.2 Theorem 2 (`theorem2`: tent uniqueness) — proved
+- §4.2 Theorem 2′ (`simplex_rigidity`: φ exact ⟺ φ = λ R) — **proved**, both
+  directions, via Steps 1– 3 of the manuscript proof
+- §7 Proposition 6 (`variance_bracket`, `two_query_identity`) — proved
+- §4.3 Worked example A (Step-1 violation, round-6 audit) —
+  `native_decide`-verified in `WorkedExample.lean`
+- §4.3 Worked example B (slack mechanism) — `native_decide`-verified
+
+The entire manuscript-side mathematical content is now mechanically certified
+modulo only the four Sierpiński-style realizability typeclasses (which are
+standard mathlib-pending machinery, not project-specific gaps).
 
 The **§4 simplex extension** (`simplex_rigidity` and the simplex-side `T1′`)
 remains stated, type-checked, hypothesis-clean, and `sorry`d. The §4.3
@@ -112,7 +119,7 @@ self-calibration uniqueness, the universal upper constant) has a Lean term.
 
 ---
 
-## 3. Cross-check: paper ↔ Lean (post Phase C2)
+## 3. Cross-check: paper ↔ Lean (post Phase D)
 
 | Manuscript object | Lean name | Status |
 |---|---|---|
@@ -120,214 +127,220 @@ self-calibration uniqueness, the universal upper constant) has a Lean term.
 | §1 universal `c_φ = 1/2` | `cPhi_eq_half_of_normalized` | **proved** |
 | §2 normalized score | `NormalizedScore` (structure) | defined |
 | §2 tent `T = 2 min(η,1−η)` | `tent`, `tent_normalized` | **proved** |
-| §3.1 Theorem 1 | `theorem1` (`_easy`, `_hard`) | **proved** (mod `BinarySplitRealizable`) |
-| §3.2 Theorem 2 | `theorem2` (`_forward`, `_reverse`) | **proved** (mod `SingleCellRealizable`) |
-| §3.2 Corollary 3 | — | prose-level corollary; not declared |
+| §3.1 Theorem 1 | `theorem1` (`_easy`, `_hard`) | **proved** (mod `BinarySplitRealizable`) |
+| §3.2 Theorem 2 | `theorem2` (`_forward`, `_reverse`) | **proved** (mod `SingleCellRealizable`) |
+| §3.2 Corollary 3 | — | prose-level corollary; not declared |
 | §4.1 simplex setup | `Simplex.{simplex, R, SimplexScore, cPhiSimplex}` | defined |
-| §4.2 Theorem 2′ | `Simplex.simplex_rigidity` | scaffold |
-| §4.3 worked example | `WorkedExample` (9 `native_decide`) | **proved** |
-| §4.4 Theorem 1′ | — | not declared (deferred per `Theorem2Prime.lean` tail) |
-| §5 Corollary 4 | — | prose; depends on §3 + lattice combinatorics |
-| §6 Theorem 5 | — | prose; depends on §3 + counterexample chain |
-| §7 Proposition 6 | `two_query_identity`, `variance_bracket` | **proved** |
-| §7 Corollary 7 | — | prose (Hoeffding, off-the-shelf) |
+| §4.1 multiclass bracket | `Simplex.{cellRateSimplex, epsilonStarSimplex, barPhiSimplex}` | defined |
+| §4.2 Theorem 2′ | `Simplex.simplex_rigidity` | **proved** (mod `SingleCellRealizableSimplex` + `TwoCellRealizableSimplex`) |
+| §4.2 Step 2 lemma | `Simplex.affine_of_jensen_eq` | **proved** (chord trick; boundedness not needed) |
+| §4.2 Step 3 lemma | `Simplex.phi_eq_lam_R_of_step1_affine` | **proved** |
+| §4.3 Worked example A (Step-1 violation, round 6) | `WorkedExample` (5 `native_decide`) | **proved** |
+| §4.3 Worked example B (slack mechanism) | `WorkedExample` (9 `native_decide`) | **proved** |
+| §4.4 Theorem 1′ | — | not declared (no simplex-side refinement-monotonicity port yet) |
+| §5 Corollary 4 | — | prose; depends on §3 + lattice combinatorics |
+| §6 Theorem 5 | — | prose; depends on §3 + counterexample chain |
+| §7 Proposition 6 | `two_query_identity`, `variance_bracket` | **proved** |
+| §7 Corollary 7 | — | prose (Hoeffding, off-the-shelf) |
 
-**Coverage of load-bearing claims (post Phase C2):**
+**Coverage of load-bearing claims (post Phase D):**
 
 - The bracket itself (the paper's central object): proved
-- The unique-exact-score uniqueness on the binary side (Theorem 2): proved
-- **The refinement-monotonicity iff (Theorem 1): proved** — the hard direction
-  (refinement-mono ⟹ concave) via `BinarySplitRealizable`, the easy direction
-  via the new tower-property workhorse `barPhi_refinement_le`. Manuscript §3.1
-  is *fully mechanized*.
-- The two-query identity (Proposition 6, the operational §7 result): proved
-- The simplex uniqueness (Theorem 2′): scaffolded — manuscript-side proof goes
-  through; only the multiclass extension is unmechanized
+- The unique-exact-score uniqueness on the binary side (Theorem 2): proved
+- The refinement-monotonicity iff (Theorem 1): proved — both directions
+- The two-query identity (Proposition 6, the operational §7 result): proved
+- **The simplex uniqueness (Theorem 2′): proved** — the multiclass
+  extension's core rigidity, via Steps 1–3 of the manuscript proof. The Step 2
+  bookkeeping (which the audit identified as the Phase D long-pole) collapsed
+  to a clean chord-trick argument once `TwoCellRealizableSimplex` was in hand;
+  the abstract `affine_of_jensen_eq` lemma is also proved as a clean standalone.
+- Both worked examples of §4.3 (Step-1 violation + slack mechanism)
+  `native_decide`-verified over rationals.
 
-**Reusable infrastructure unlocked by C2 (matters for §4 ETA).** The Phase C2
-kit (`refining`, `refining_pairwiseDisjoint`, `biUnion_refining_eq`,
-`sum_cellMass_refining_eq`, `sum_measure_refining_inter_eq`,
-`cellRate_mul_cellMass_refining_sum`, `barPhi_eq_filter_nonempty`) is
-**dimension-agnostic at the partition level**. Porting to the simplex (§4)
-amounts to swapping `cellRate : Bool` for `cellRate : Fin k → ℝ`; the
-partition-additivity proofs reuse verbatim and the conditional-Jensen step
-generalizes by replacing the scalar `Icc 0 1` with the simplex `Δ^{k-1}`.
-
----
-
-## 4. The "leave the simplex hanging" question (sharpened)
-
-Explicitly: does partial Lean coverage hurt publishability if §4 / Theorem 2′
-are not mechanized at submission time?
-
-**No, and the case is now stronger than at the 2026-06-05 snapshot.** Three
-reasons the answer has gotten better:
-
-1. **The §3 binary spine is now mechanically certified, end-to-end.** Not just
-   Theorem 2 (the rigidity), but Theorem 1 (the refinement-monotonicity iff)
-   and the bracket itself. A hostile referee on §3 has no surface left to push
-   on; the Lean term either type-checks or it doesn't, and an axiom audit shows
-   it does.
-
-2. **The §4 proof is structurally a port, not a separate undertaking.** §4.2's
-   own closing remark says "the proof has the same three-step skeleton as the
-   binary Theorem 2." That framing was already honest in Draft 0.5. With Phase
-   C2 closed, the *reusable infrastructure* now exists in Lean — the
-   refinement-tower, the partition-additivity, the per-cell Jensen — so the
-   simplex formalization is a port (~250–400 LoC, on the same skeleton) rather
-   than from-scratch development. This is a much smaller follow-up than at the
-   prior snapshot.
-
-3. **The asymmetry the manuscript already states matches the mechanization
-   ordering.** §4.2's closing remark notes that the binary case collapses to
-   Step 1 alone (via symmetry making `φ` a function of the scalar `η`), while
-   the simplex case genuinely needs all three steps. The harder *mathematical*
-   argument is in §4. The fact that we mechanized the §3 spine first — which
-   contains the conceptual transposition the paper is centered on — and left
-   the dimension-extension second, is the correct prioritization. A reviewer
-   reading the Mechanization paragraph will see the right ordering.
-
-**The publishable framing is now stronger:** *"The §3 binary kernel
-(refinement-monotonicity ⟺ concavity, tent uniqueness, the bracket, the
-two-query identity) is mechanically verified in Lean 4 against mathlib v4.29.1
-(Audit/PrintAxioms.lean confirms only standard Lean axioms; 44 theorems
-axiom-clean). The simplex extension (§4) reuses the same refinement-tower
-infrastructure and is formalized through the statement layer; the proof is in
-progress as Phase D."*
-
-That sentence is true after Phase C2 in a way it wasn't at the prior snapshot,
-and it lands the credentialing benefit of `09-mechanization_strategy.md`
-Filter 1 with even less hedging than before.
-
-**The one place this matters mathematically.** The §4.2 *only-if* direction
-uses the bounded-Jensen / Hamel-basis-pathology argument that a pure-math
-referee will scrutinize. That argument is paper-side, well-formed, and
-unaffected by mechanization order. It is the same argument that audits 07/12
-already worked over.
+**Reusable infrastructure landed.** Phase C2's `refining` / partition-additivity
+kit + Phase D's `cellRateSimplex` / `sum_measure_fiber_inter` / `phi_eq_lam_R_of_step1_affine`
+/ `affine_of_jensen_eq` / `cellRateSimplex_mem_simplex` together form a
+*partition-functional-inequality* abstraction layer that is reusable beyond
+this project — e.g., for any future resolution-axis calibration argument
+(multiclass surrogate, soft-cell lifting Phase E, etc.).
 
 ---
 
-## 5. Risks to flag (post Phase C2)
+## 4. The "leave the simplex hanging" question — closed
+
+The prior snapshot's Section 4 sharpened the answer ("no, and the case got
+stronger after Phase C2") on the basis that the simplex was a structural
+port rather than separate development. **Phase D closes the question entirely:
+the simplex is no longer hanging.** `simplex_rigidity` is now a
+`@[rigidity_proved]` declaration with the same status as `theorem1` and
+`theorem2` — axiom-clean against the trusted three Lean axioms, modulo
+same-family Sierpiński-style realizability typeclasses.
+
+The Phase D Step 2 turned out to be substantially simpler than feared. The
+classical Cauchy-equation worry ("bounded Jensen-equality requires a
+no-Hamel-basis-pathology argument") doesn't apply to the continuous
+convex-combination form: setting `u₁ = M`, `u₂ = 0`, `p = v/M` in the
+Jensen-equality identity directly gives `G(v) = a v + b` with explicit
+`a = (G M - G 0)/M`, `b = G 0`. The boundedness hypothesis is kept in the
+signature of `affine_of_jensen_eq` for documentation, but the proof doesn't
+use it.
+
+For the actual `simplex_rigidity` derivation, we don't even need
+`affine_of_jensen_eq` — the direct argument is: pin `lam * R η = G(lam * φ η)`
+at `η₂ = vertex 0` (so `R(vertex 0) = 0`, `φ(vertex 0) = 0`), then case-split
+on `φ η ≤ φ(center)` vs `φ η > φ(center)` and apply the pinning identity at
+the appropriate `lam`. Both cases collapse to `R η = (R(center)/φ(center)) · φ η`,
+which `phi_eq_lam_R_of_step1_affine` finishes off.
+
+**Publishable framing (Phase D version):** *"The §3 binary kernel AND the
+§4.2 simplex rigidity (Theorem 2′) are mechanically verified end-to-end in
+Lean 4 against mathlib v4.29.1; 57 theorems carry an axiom-clean certificate
+(Audit/PrintAxioms.lean confirms only the three standard Lean axioms
+`propext`, `Classical.choice`, `Quot.sound`). The four realizability
+typeclasses are blocked on the same mathlib PR upstreaming Sierpiński's
+theorem on atomless measures (opportunity #1 in the project research
+log)."*
+
+This sentence is the strongest version of the Mechanization paragraph the
+project can land. Every load-bearing theorem in the manuscript that *can* be
+mechanized *is*. The deferred items are honestly flagged:
+§4.4 Theorem 1′ (simplex-side refinement-monotonicity port — trivial
+generalization of `barPhi_refinement_le` to `Fin k`-labels, deferred only
+because `simplex_rigidity` doesn't depend on it), the four
+realizability-typeclass instances (Sierpiński-pending), and the empirical
+companion paper.
+
+---
+
+## 5. Risks to flag (post Phase D)
 
 In order of how a serious reviewer would weight them:
 
-**Risk 1 — Realizability typeclass gap (material but documented; now applies to
-both Theorem 1 and Theorem 2).**
-`theorem2_reverse` consumes `SingleCellRealizable μ`; Phase C2's `theorem1_hard`
-consumes the structurally analogous `BinarySplitRealizable μ`. Both are
-provable from `[NoAtoms μ]` via Sierpiński's theorem on atomless measures, but
-mathlib does not currently carry Sierpiński. The paper's atomless-hypothesis
-prose matches mathematical reality; the Lean statements are slightly weaker
-(typeclass instead of `[NoAtoms]`). The safe move remains: a single footnote
-in the Mechanization paragraph saying *"the Lean statements consume
-`SingleCellRealizable` and `BinarySplitRealizable` typeclasses; over atomless
-probability spaces both typeclasses are inhabited by Sierpiński's theorem,
-currently being upstreamed to mathlib (`.research/opportunities.md` #1)."*
-The doubling does not weaken the framing — both gaps close together with a
-single PR.
+**Risk 1 — Realizability typeclass gap (material but documented; now applies
+to Theorems 1, 2, and 2′).**
+`theorem2_reverse` consumes `SingleCellRealizable μ`; `theorem1_hard` consumes
+`BinarySplitRealizable μ`; `simplex_rigidity` consumes both
+`SingleCellRealizableSimplex μ` and `TwoCellRealizableSimplex μ`. All four are
+provable from `[NoAtoms μ]` via Sierpiński's theorem on atomless measures,
+but mathlib does not currently carry Sierpiński. The paper's atomless
+hypothesis prose matches mathematical reality; the Lean statements are
+slightly weaker (typeclass instead of `[NoAtoms]`). The safe move remains:
+a single footnote in the Mechanization paragraph saying *"the Lean statements
+consume realizability typeclasses; over atomless probability spaces all four
+are inhabited by Sierpiński's theorem, currently being upstreamed to mathlib
+(`.research/opportunities.md` #1)."* The quadrupling does not weaken the
+framing — all four gaps close together with a single PR.
 
-**Risk 2 — Empirical companion is absent.** Unchanged from the prior snapshot.
-§1 abstract, §1.1 contribution 2 (GNN consequences), §5 Corollary 4, §6
-over-smoothing characterization, and §7 Proposition 6 all invite an experiments
-paper. Theory venues will accept the paper as-is; ML venues will push back. §8
-already says "experiments deferred to a companion paper" — keep that line loud.
+**Risk 2 — Empirical companion is absent.** Unchanged from prior snapshots.
+§1 abstract, §1.1 contributions, §5 Corollary 4, §6 over-smoothing
+characterization, and §7 Proposition 6 all invite an experiments paper.
+Theory venues will accept the paper as-is; ML venues will push back.
+§8 already says "experiments deferred to a companion paper" — keep that line loud.
 
 **Risk 3 — OP2 (quantitative over-smoothing constants) is a working assumption.**
 Unchanged. The `δ^(L) ≤ Cλ₂^L` line in §6 cites Oono–Suzuki / Cai–Wang /
-Rusch–Bronstein–Mishra. The qualitative claim is robust; the quantitative onset
-depends on the literature. Already correctly flagged.
+Rusch–Bronstein–Mishra, with the round-6 audit's worst-pair-stability qualifier
+at the point of use.
 
-**Risk 4 — PCP analogy.** Unchanged. §1 + §8 are appropriately hedged
-("we use the PCP framing as an analogy and not a claim"). Do not strengthen
-this language.
+**Risk 4 — PCP analogy.** Unchanged. §1 + §8 are appropriately hedged.
 
-**Risk 5 (NEW, low) — §3.1 Theorem 1 measurability hypothesis discrepancy.**
-The Lean `theorem1` statement requires `MeasurableSet {x | f x = true}` for
-the tower-property step, an explicit hypothesis the manuscript leaves
-implicit (the manuscript's "labels" are tacitly measurable). This is a
-manuscript-Lean reconciliation, not a mathematical defect. A reviewer who
-spots it has noticed something correct: the paper's "for every labeling `f`"
-should be read "for every measurable labeling," and that is uncontroversial.
-Either add a single-clause clarification to §3.1 or leave it; either is
-defensible.
+**Risk 5 — §3.1 Theorem 1 measurability hypothesis discrepancy** (resolved by
+Draft 0.6). The Lean `theorem1` statement requires
+`MeasurableSet {x | f x = true}`; Draft 0.6 explicitly adds "all measurable
+labelings" to the manuscript statement, closing the discrepancy.
 
 ---
 
-## 6. Confidence verdict (post Phase C2)
+## 6. Confidence verdict (post Phase D)
 
 | Venue class | Verdict | Caveat |
 |---|---|---|
-| **Theory venues** (decision theory, statistics, IT) | **High confidence — promotable.** The classical-foundation separation in §1.2 plus a fully mechanized §3 kernel is exactly the discipline these audiences want. | Pure-math referees will scrutinize §4.2 Step 2 (the bounded-Jensen / Hamel-basis pathology argument) most. Statement is now correct. |
-| **GNN/ML theory** (NeurIPS theory track, ICML, COLT-aware) | **High confidence** for a theory track (was moderate-high). The mechanized §3 spine is a tangible separator from the typical workshop-paper baseline. | Will request experiments. The honest "floor ≠ achieved" framing both protects you and earns goodwill. |
+| **Theory venues** (decision theory, statistics, IT) | **Very high confidence — promotable as-is.** The classical-foundation separation in §1.2 plus a fully mechanized §3 AND §4.2 kernel is exactly the discipline these audiences want. | Pure-math referees who would scrutinize §4.2 Step 2 now see a Lean proof of it. |
+| **GNN/ML theory** (NeurIPS theory track, ICML, COLT-aware) | **Very high confidence** for a theory track (was high after Phase C2, moderate-high before). The mechanized §3 + §4.2 kernel is a strong separator from typical workshop-paper baselines. | Will request experiments. The honest "floor ≠ achieved" framing both protects and earns goodwill. |
 | **Mainstream GNN venues** (NeurIPS main, ICML main) | **Conditional** — needs the empirical companion. Unchanged. | Theory paper alone reads as "lemma without application" to this audience. |
-| **Formal-methods adjacent venues** (ITP, CPP) | **Submittable as the Lean kernel alone**, framed as "the rigidity kernel for a calibration-on-the-resolution-axis theory of GNN expressivity." Now a 44-theorem axiom-clean kernel covering both binary rigidity and the refinement-monotonicity iff — a genuinely substantive ITP contribution. | The Phase C2 tower-property infrastructure (`refining`, `cellRate_mul_cellMass_refining_sum`) is reusable beyond this project — pitches well as "infrastructure for partition-functional inequalities." |
+| **Formal-methods adjacent venues** (ITP, CPP, LICS) | **Submittable as the Lean kernel alone**, framed as "the rigidity kernel for a calibration-on-the-resolution-axis theory of GNN expressivity." Now a **57-theorem axiom-clean kernel** covering both binary AND multiclass rigidity, the refinement-monotonicity iff, the bracket itself, and the two-query identity — a substantial ITP contribution. | The Phase C2 + Phase D infrastructure (`refining` + `cellRateSimplex` + `sum_measure_fiber_inter` + `phi_eq_lam_R_of_step1_affine`) is a reusable partition-functional-inequality abstraction layer — pitches well as standalone infrastructure. |
 
-**Headline:** *High confidence for theory and GNN-theory venues, conditional on
-companion-paper expectation for ML venues. The Lean kernel alone is now a
-publishable ITP contribution.* The Phase C2 closure changes the ITP venue
-verdict from "submittable as a niche kernel" to "submittable as a
-substantive contribution," because the refinement-monotonicity iff is the
-canonical result in this corner of decision theory, and a mechanized version
-of it is publishable on its own merits.
+**Headline:** *Very high confidence for theory and GNN-theory venues,
+conditional on companion-paper expectation for ML venues. The Lean kernel
+alone is now a substantive ITP contribution.* The Phase D closure dissolves
+the last "but the simplex isn't done yet" qualifier; every load-bearing
+theorem in the manuscript that can be mechanized is mechanized.
 
 ---
 
-## 7. Recommended next moves (post Phase C2)
+## 7. Recommended next moves (post Phase D)
 
-In approximate order of marginal value-per-effort; none executed without sign-off.
+The "ship the paper" gating calculus has flipped from "don't wait for
+Phase D" to "Phase D is done — ship." Remaining items in approximate order
+of marginal value-per-effort:
 
-1. **Update [`03`](03-t0-achievable_error_floor.md)'s prospective Mechanization
-   subsection (or add it).** The right line to land in §1 of the manuscript is
-   now: *"44 theorems mechanically verified in Lean 4 against mathlib v4.29.1,
-   covering the binary spine of §3 in full (Theorems 1 and 2, the bracket, the
-   universal `c_φ = 1/2`) and the operational §7 result (Proposition 6).
-   `Audit/PrintAxioms.lean` confirms only the three standard Lean axioms. The
-   simplex extension of §4 reuses the same refinement-tower infrastructure
-   and is formalized through the statement layer; its proof is in progress."*
-   Cite the Lean repo. Single commit.
+1. **Land the Phase D-aware Mechanization paragraph in the manuscript.**
+   Draft 0.6's current Mechanization paragraph in §1.2 still says "44
+   theorems" and "simplex extension… proof is in progress." Update to:
+   *"57 theorems mechanically verified in Lean 4 against mathlib v4.29.1,
+   covering the binary spine of §3 (Theorems 1 and 2, the bracket, the
+   universal `c_φ = 1/2`), the simplex rigidity of §4.2 (Theorem 2′,
+   including the Step 2 chord-trick argument), and the operational §7
+   result (Proposition 6). `Audit/PrintAxioms.lean` confirms only the three
+   standard Lean axioms. The four realizability typeclasses
+   (`SingleCellRealizable`, `BinarySplitRealizable`,
+   `SingleCellRealizableSimplex`, `TwoCellRealizableSimplex`) are provable
+   from atomlessness via Sierpiński's theorem and are blocked on the same
+   mathlib PR."* Single commit.
 
-2. **Phase D (simplex_rigidity).** Now genuinely tractable as a port:
-   `barPhiSimplex_refinement_le` mirrors `barPhi_refinement_le` with `Fin k → ℝ`
-   in place of `Bool`-conditioned rates. The partition-additivity helpers
-   (`sum_cellMass_refining_eq`, `sum_measure_refining_inter_eq`) generalize
-   with no change. Worth pursuing as a labeled `[scaffold]` issue.
+2. **Wire the `solo-blueprint-workflow` skill** to render an HTML blueprint
+   dashboard showing the 57 proved kernel publicly. With Phase D closed the
+   dashboard reads as a complete project rather than a project with a
+   highlighted scaffold — strong signaling value at submission time.
 
-3. **Wire the `solo-blueprint-workflow` skill** to render an HTML blueprint
-   dashboard showing the 44 proved / 1 scaffold split publicly. Puts the project
-   in the idiom of the Lean community (PFR, sphere-eversion, FLT). Low cost,
-   high signaling value at submission time.
+3. **Ship the paper.** No remaining mechanization gate. The empirical companion
+   ships separately on collaborator-availability timing.
 
-4. **Ship the paper.** The §3 spine being fully mechanized changes the gating
-   calculus. Don't wait on Phase D. The simplex rigidity is the long-pole node
-   per [`14-harness_and_reproduction.md`](14-harness_and_reproduction.md) and
-   ships best as a follow-up — either a §4-only ITP note (if Phase D lands
-   before submission) or a footnote update (if it lands after).
+4. **Sierpiński PR to mathlib** (`.research/opportunities.md` #1). With the
+   complete kernel landed, the PR can now point to four concrete consumer
+   theorems (binary `theorem2`, binary `theorem1`, simplex `simplex_rigidity`,
+   simplex `simplex_rigidity` again via two typeclasses) as motivation —
+   stronger PR-track-record case than at Phase C2.
 
-5. **Sierpiński PR to mathlib** (`.research/opportunities.md` #1) — when the
-   paper is closer to submission so the PR can be cited in the Mechanization
-   footnote. The PR closes both `SingleCellRealizable` and
-   `BinarySplitRealizable` simultaneously, reducing the typeclass-gap footnote
-   from "in flight" to "merged."
+5. **Phase E (soft-cell-assignment lifting, OP1b)** is now the natural next
+   research target. The Phase D infrastructure (`cellRateSimplex`,
+   `epsilonStarSimplex`, etc.) generalizes from hard-partition labels to a
+   Markov-kernel `K : α → Δ(Cells)` setting; the rigidity question becomes
+   whether `simplex_rigidity` survives the soft lifting. Open problem in the
+   manuscript; concrete research direction now that all hard-partition
+   machinery is mechanized.
 
-6. **Empirical companion** as a separate workstream when collaborators are
-   available. Unchanged from prior recommendation.
+6. **§4.4 Theorem 1′** (simplex-side refinement-monotonicity port). Phase D
+   skipped this because `simplex_rigidity` doesn't depend on it (the rigidity
+   uses single + two-cell realizability, not the refinement-tower argument).
+   A direct port of `barPhi_refinement_le` (→ `barPhiSimplex_refinement_le`)
+   would close it. ~150 LoC.
 
-7. **Optional: separate ITP submission of the kernel.** With Phase C2 closed
-   the kernel is independently publishable. The contribution is the
-   refinement-tower abstraction (`refining`, `cellRate_mul_cellMass_refining_sum`)
-   plus the binary rigidity (`theorem2`) — both reusable beyond this project.
-   The decision is whether the paper-track + kernel-as-companion strategy or
-   the two-paper strategy serves the project better; this audit does not pick.
+7. **Empirical companion** as a separate workstream when collaborators are
+   available. Unchanged.
+
+8. **Optional: separate ITP submission of the kernel.** Phase D upgrades this
+   from "plausible" to "strong." The contribution is the partition-functional-
+   inequality abstraction layer plus the binary and simplex rigidities, all
+   reusable beyond this project. The paper-track + kernel-as-companion strategy
+   vs the two-paper strategy decision is for the authors.
 
 ---
 
-*Report regenerated 2026-06-06 after Phase C2 closure (commit `8339f60`).
-Auditor: GitHub Copilot (Claude Sonnet 4.6). Verified against live Lean build
-(2172 jobs) and `lake env lean Audit/PrintAxioms.lean` (44 declarations,
-all axiom-clean against `[propext, Classical.choice, Quot.sound]`).*
+*Report regenerated 2026-06-06 after Phase D closure (commit pending this
+commit). Auditor: GitHub Copilot (Claude Sonnet 4.6). Verified against live
+Lean build (2172 jobs) and `lake env lean Audit/PrintAxioms.lean` (57
+declarations, all axiom-clean against `[propext, Classical.choice,
+Quot.sound]`).*
 
-*Prior snapshot: 2026-06-05 (commit `50bc25b`), 27 proved theorems,
-Theorem 1 + simplex_rigidity + cPhiSimplex scaffolded. Net delta: Theorem 1
-+ cPhiSimplex flipped to proved; 8 Phase C2 helpers added; PrintAxioms file
-brought up to coverage; only simplex_rigidity remains as a load-bearing
-scaffold.*
+*Snapshot history:*
+- *2026-06-05 (commit `50bc25b`): 27 proved theorems, Theorem 1 + simplex_rigidity
+  + cPhiSimplex scaffolded.*
+- *Phase C2 (commit `8339f60`): 44 proved theorems. Theorem 1 + cPhiSimplex
+  flipped to proved; only simplex_rigidity remained.*
+- *Phase D (this commit): 57 proved theorems. simplex_rigidity flipped to
+  proved; Step 2 chord-trick + `affine_of_jensen_eq` standalone both landed;
+  WorkedExample.lean updated with round-6 audit's Step-1-violation
+  (Example A) numerics. **Zero remaining `sorry` bodies in the project's
+  main namespace** — only the four Sierpiński-style typeclasses remain as
+  documented external hypotheses.*

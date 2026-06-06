@@ -56,9 +56,15 @@ Phase D status (post Phase C2 closure, commit `8339f60`):
   same Sierpiński argument as `SingleCellRealizable` / `BinarySplitRealizable`
   (opportunity #1 in `.research/opportunities.md`).
 * Step 1 (single cells → R = G ∘ φ): **proved**.
-* Step 2 (two cells → G affine): scaffolded; reduces to the Cauchy-equation
-  lemma `affine_of_jensen_eq` (one sub-`sorry`).
-* Step 3 (vertices → φ = λ R): **proved** modulo Step 2's affine conclusion.
+* Step 2 (two cells → R = a · φ + b): **proved** via TwoCellRealizableSimplex
+  + the chord trick (pinning at vertex 0; no need for `affine_of_jensen_eq`).
+* Step 3 (vertices → φ = λ R): **proved** via `phi_eq_lam_R_of_step1_affine`.
+* `affine_of_jensen_eq` (the Cauchy-equation lemma): **proved** via the same
+  chord trick (boundedness hypothesis not actually needed for the continuous
+  case; kept in signature for documentation).
+* **`simplex_rigidity` itself: PROVED end-to-end.** Manuscript §4.2 Theorem 2′
+  is mechanically certified modulo the two Sierpiński-style realizability
+  typeclasses (same status as `theorem2` and `theorem1`).
 -/
 
 namespace Rigidity.Simplex
@@ -296,26 +302,46 @@ class TwoCellRealizableSimplex {α : Type*} [MeasurableSpace α] [NeZero k]
 
 /-! ## Step 2 lemma: bounded Jensen-equality forces affine -/
 
-/-- **Bounded Jensen-equality forces affine** (Cauchy's equation, bounded form).
+/-- **Jensen-equality forces affine** (chord trick).
 
-    For `G : ℝ → ℝ` bounded on `[0, M]` and satisfying
+    For `G : ℝ → ℝ` satisfying
     `p · G(u₁) + (1-p) · G(u₂) = G(p · u₁ + (1-p) · u₂)`
     for all `u₁, u₂ ∈ [0, M]` and `p ∈ [0, 1]`, `G` is affine on `[0, M]`
     (i.e. `G(v) = a v + b` for some `a, b ∈ ℝ`).
 
-    This is the classical no-Hamel-basis-pathology result for Jensen's equation.
-    The convex-combination-equation variant we need follows from the standard
-    midpoint-affine + boundedness argument. Filling this is a clean follow-up —
-    it is the *one* genuinely deep step of `simplex_rigidity` and is the Phase D
-    long-pole node. -/
-@[rigidity_scaffold, rigidity_AMS_60]
-theorem affine_of_jensen_eq {M : ℝ} (_hM : 0 < M) (G : ℝ → ℝ)
+    **Surprise (Phase D filling)**: the boundedness hypothesis is *not* actually
+    needed for the **continuous** convex-combination Jensen-equation. The
+    classical "no-Hamel-basis-pathology" caveat applies when the Jensen-equation
+    is only assumed on a dense set of `p`; here we have it for *all* `p ∈ [0,1]`,
+    and the chord trick (set `u₁ = M`, `u₂ = 0`, `p = v/M`) directly yields
+    `G(v) = a v + b` with `a = (G M - G 0)/M`, `b = G 0`. Boundedness is kept
+    in the signature for documentation but marked unused. -/
+@[rigidity_proved, rigidity_AMS_60]
+theorem affine_of_jensen_eq {M : ℝ} (hM : 0 < M) (G : ℝ → ℝ)
     (_h_bdd : ∃ B, ∀ v ∈ Set.Icc (0:ℝ) M, |G v| ≤ B)
-    (_h_jensen : ∀ u₁ ∈ Set.Icc (0:ℝ) M, ∀ u₂ ∈ Set.Icc (0:ℝ) M,
+    (h_jensen : ∀ u₁ ∈ Set.Icc (0:ℝ) M, ∀ u₂ ∈ Set.Icc (0:ℝ) M,
         ∀ p ∈ Set.Icc (0:ℝ) 1,
         p * G u₁ + (1 - p) * G u₂ = G (p * u₁ + (1 - p) * u₂)) :
     ∃ a b : ℝ, ∀ v ∈ Set.Icc (0:ℝ) M, G v = a * v + b := by
-  sorry
+  refine ⟨(G M - G 0) / M, G 0, ?_⟩
+  intro v hv
+  obtain ⟨h0v, hvM⟩ := hv
+  have hM_ne : M ≠ 0 := ne_of_gt hM
+  have hM_mem : M ∈ Set.Icc (0:ℝ) M := ⟨le_of_lt hM, le_refl M⟩
+  have h0_mem : (0:ℝ) ∈ Set.Icc (0:ℝ) M := ⟨le_refl 0, le_of_lt hM⟩
+  have hpM : v / M ∈ Set.Icc (0:ℝ) 1 := by
+    refine ⟨div_nonneg h0v (le_of_lt hM), ?_⟩
+    rw [div_le_one hM]; exact hvM
+  have h_combo : (v / M) * M + (1 - v / M) * 0 = v := by
+    rw [mul_zero, add_zero, div_mul_cancel₀]
+    exact hM_ne
+  have h_eq := h_jensen M hM_mem 0 h0_mem (v / M) hpM
+  rw [h_combo] at h_eq
+  -- h_eq : v/M * G M + (1 - v/M) * G 0 = G v
+  -- Goal: G v = (G M - G 0)/M * v + G 0
+  rw [← h_eq]
+  field_simp
+  ring
 
 /-! ## Step 3 (vertex pinning, standalone) -/
 
@@ -468,9 +494,10 @@ theorem cellRateSimplex_mem_simplex {α : Type*} [MeasurableSpace α]
     `ε*(Π) = G (bar_φ(Π))` for every measurable-labeling partition) iff
     `φ = λ · R` on the simplex for some `λ > 0`.
 
-    Phase D status: Steps 1 and 3 of the §4.2 proof are filled below; Step 2
-    is reduced to `affine_of_jensen_eq` (the one isolated sub-`sorry`). -/
-@[rigidity_scaffold, rigidity_AMS_60, rigidity_AMS_62]
+    Phase D status: **PROVED end-to-end.** Step 1 via `SingleCellRealizableSimplex`,
+    Step 2 via `TwoCellRealizableSimplex` + the chord trick (pinning at vertex 0),
+    Step 3 via `phi_eq_lam_R_of_step1_affine`. -/
+@[rigidity_proved, rigidity_AMS_60, rigidity_AMS_62]
 theorem simplex_rigidity {α : Type*} [MeasurableSpace α] (μ : Measure α)
     [IsProbabilityMeasure μ] [NeZero k] [SingleCellRealizableSimplex (k := k) μ]
     [TwoCellRealizableSimplex (k := k) μ]
@@ -495,19 +522,156 @@ theorem simplex_rigidity {α : Type*} [MeasurableSpace α] (μ : Measure α)
         exact hf_dist i
       rw [h_cellRate] at h_eq
       exact h_eq
-    -- Step 2: G is affine on the φ-range. Two-cell partitions + Step 1 give
-    -- p · G(φ(η₁)) + (1-p) · G(φ(η₂)) = G(p · φ(η₁) + (1-p) · φ(η₂)) for all
-    -- η₁, η₂ ∈ simplex k and p ∈ [0,1] (via TwoCellRealizableSimplex). By
-    -- continuity of φ on the compact connected simplex + IVT, the φ-range is
-    -- an interval [0, φ_max]. `affine_of_jensen_eq` then gives G(v) = a v + b
-    -- on [0, φ_max], hence R η = G(φ η) = a · φ η + b on simplex k.
-    --
-    -- This is Phase D's long-pole node — substantial bookkeeping. The proof
-    -- structure is captured here as a single `have` that postulates Step 2's
-    -- conclusion. Once `affine_of_jensen_eq` is filled, this `have` becomes
-    -- a derivation rather than a postulate.
+    -- Step 2: derive `R η = a * φ η + b` on the simplex via TwoCellRealizableSimplex
+    -- plus the chord trick (pinning at η₂ = vertex 0). This avoids the heavier
+    -- continuity-of-φ-on-compact-connected-simplex + IVT route.
     have h_step2 : ∃ a b : ℝ, ∀ η ∈ simplex k, R η = a * φ η + b := by
-      sorry
+      -- Sub-step (a): Jensen-equality on G via TwoCellRealizableSimplex.
+      -- For any (η₁, η₂, lam) ∈ simplex × simplex × [0,1], the two-cell
+      -- partition realizes
+      --   epsilonStarSimplex = lam * R η₁ + (1 - lam) * R η₂
+      --   barPhiSimplex      = lam * φ η₁ + (1 - lam) * φ η₂
+      -- so h_exact gives the Jensen-equality on G.
+      have h_jensen : ∀ η₁ ∈ simplex k, ∀ η₂ ∈ simplex k, ∀ lam ∈ Set.Icc (0:ℝ) 1,
+          lam * R η₁ + (1 - lam) * R η₂ =
+            G (lam * φ η₁ + (1 - lam) * φ η₂) := by
+        intro η₁ hη₁ η₂ hη₂ lam hlam
+        obtain ⟨P, f, s, hs_mem, hs_mass, hs_rate, hc_rate, hf_meas⟩ :=
+          TwoCellRealizableSimplex.exists_two_cell (μ := μ) η₁ hη₁ η₂ hη₂ lam hlam
+        have h_eq := h_exact f P hf_meas
+        -- Expand epsilonStarSimplex on the two-cell partition.
+        have h_cellRate_s : cellRateSimplex μ f P s = η₁ := funext hs_rate
+        have h_R_other : ∀ c ∈ P.cells \ {s},
+            R (cellRateSimplex μ f P c) = R η₂ := by
+          intro c hc
+          rw [Finset.mem_sdiff, Finset.mem_singleton] at hc
+          have : cellRateSimplex μ f P c = η₂ := funext (hc_rate c hc.1 hc.2)
+          rw [this]
+        have h_phi_other : ∀ c ∈ P.cells \ {s},
+            φ (cellRateSimplex μ f P c) = φ η₂ := by
+          intro c hc
+          rw [Finset.mem_sdiff, Finset.mem_singleton] at hc
+          have : cellRateSimplex μ f P c = η₂ := funext (hc_rate c hc.1 hc.2)
+          rw [this]
+        -- (Σ_{c ∈ cells \ {s}} (cellMass).toReal) = 1 - lam (from sum_cellMass_eq_one).
+        have h_sum_diff : ∑ c ∈ P.cells \ {s}, (cellMass μ P c).toReal = 1 - lam := by
+          have h_total : ∑ c ∈ P.cells, (cellMass μ P c).toReal = 1 :=
+            sum_cellMass_eq_one μ P
+          have h_split : ∑ c ∈ P.cells, (cellMass μ P c).toReal
+              = (∑ c ∈ P.cells \ {s}, (cellMass μ P c).toReal) +
+                (cellMass μ P s).toReal :=
+            Finset.sum_eq_sum_diff_singleton_add hs_mem _
+          rw [h_split, hs_mass] at h_total
+          linarith
+        -- epsilonStarSimplex evaluation.
+        have h_eps_eq : epsilonStarSimplex μ f P =
+            lam * R η₁ + (1 - lam) * R η₂ := by
+          unfold epsilonStarSimplex
+          rw [Finset.sum_eq_sum_diff_singleton_add hs_mem, hs_mass, h_cellRate_s]
+          have h_inner :
+              ∑ c ∈ P.cells \ {s},
+                (cellMass μ P c).toReal * R (cellRateSimplex μ f P c) =
+              ∑ c ∈ P.cells \ {s}, (cellMass μ P c).toReal * R η₂ :=
+            Finset.sum_congr rfl (fun c hc => by rw [h_R_other c hc])
+          rw [h_inner, ← Finset.sum_mul, h_sum_diff]
+          ring
+        -- barPhiSimplex evaluation.
+        have h_bar_eq : barPhiSimplex μ φ f P =
+            lam * φ η₁ + (1 - lam) * φ η₂ := by
+          unfold barPhiSimplex
+          rw [Finset.sum_eq_sum_diff_singleton_add hs_mem, hs_mass, h_cellRate_s]
+          have h_inner :
+              ∑ c ∈ P.cells \ {s},
+                (cellMass μ P c).toReal * φ (cellRateSimplex μ f P c) =
+              ∑ c ∈ P.cells \ {s}, (cellMass μ P c).toReal * φ η₂ :=
+            Finset.sum_congr rfl (fun c hc => by rw [h_phi_other c hc])
+          rw [h_inner, ← Finset.sum_mul, h_sum_diff]
+          ring
+        rw [h_eps_eq, h_bar_eq] at h_eq
+        exact h_eq
+      -- Sub-step (b): pinning at η₂ = vertex 0.
+      have h_pin_vertex : ∀ η ∈ simplex k, ∀ lam ∈ Set.Icc (0:ℝ) 1,
+          lam * R η = G (lam * φ η) := by
+        intro η hη lam hlam
+        have h_v_R : R (vertex (0 : Fin k)) = 0 := R_vertex_eq_zero 0
+        have h_v_phi : φ (vertex (0 : Fin k)) = 0 := hφ.vertex_vanishing 0
+        have h_j := h_jensen η hη (vertex 0) (vertex_mem_simplex 0) lam hlam
+        rw [h_v_R, h_v_phi] at h_j
+        -- h_j : lam * R η + (1 - lam) * 0 = G (lam * φ η + (1 - lam) * 0)
+        have h_lhs : lam * R η + (1 - lam) * 0 = lam * R η := by ring
+        have h_rhs_arg : lam * φ η + (1 - lam) * 0 = lam * φ η := by ring
+        rw [h_lhs, h_rhs_arg] at h_j
+        exact h_j
+      -- Sub-step (c): G(0) = 0 (from pinning at lam = 0).
+      have h_G0 : G 0 = 0 := by
+        have h := h_pin_vertex (center k) center_mem_simplex 0
+          ⟨le_refl 0, by norm_num⟩
+        -- h : 0 * R(center) = G(0 * φ(center))
+        have : (0 : ℝ) * R (center k) = G ((0 : ℝ) * φ (center k)) := h
+        simp at this
+        exact this.symm
+      -- Sub-step (d): φ(center) > 0 (forced by R(center) > 0 + Step 1 + G(0) = 0).
+      have h_phi_center_pos : 0 < φ (center k) := by
+        have h_step1_ctr := h_step1 (center k) center_mem_simplex
+        have h_R_ctr_pos := R_center_pos hk
+        have h_phi_ctr_nonneg := hφ.nonneg_on _ center_mem_simplex
+        by_contra h_le
+        have h_le : φ (center k) ≤ 0 := not_lt.mp h_le
+        have h_phi_ctr_zero : φ (center k) = 0 := le_antisymm h_le h_phi_ctr_nonneg
+        rw [h_phi_ctr_zero, h_G0] at h_step1_ctr
+        rw [h_step1_ctr] at h_R_ctr_pos
+        exact lt_irrefl 0 h_R_ctr_pos
+      -- Sub-step (e): derive R η = (R(center)/φ(center)) * φ η + 0 on simplex.
+      -- This uses the per-cell argument: case split on φ η ≤ φ(center) or
+      -- φ η > φ(center), and in each case apply the appropriate pinning identity.
+      refine ⟨R (center k) / φ (center k), 0, ?_⟩
+      intro η hη
+      have h_phi_η_nonneg := hφ.nonneg_on η hη
+      by_cases h_phi_η_zero : φ η = 0
+      · -- φ η = 0 ⟹ R η = G(0) = 0 ⟹ formula holds (both sides 0).
+        have h_step1_η := h_step1 η hη
+        rw [h_phi_η_zero, h_G0] at h_step1_η
+        rw [h_step1_η, h_phi_η_zero]; ring
+      · -- φ η > 0. Case-split on φ η vs φ(center).
+        have h_phi_η_pos : 0 < φ η :=
+          lt_of_le_of_ne h_phi_η_nonneg (Ne.symm h_phi_η_zero)
+        by_cases h_cmp : φ η ≤ φ (center k)
+        · -- Case φ η ≤ φ(center). Use pinning at center with lam = φ η / φ(center).
+          have hlam_mem : φ η / φ (center k) ∈ Set.Icc (0:ℝ) 1 := by
+            refine ⟨div_nonneg h_phi_η_nonneg (le_of_lt h_phi_center_pos), ?_⟩
+            rw [div_le_one h_phi_center_pos]; exact h_cmp
+          have h_pin_ctr := h_pin_vertex (center k) center_mem_simplex
+            (φ η / φ (center k)) hlam_mem
+          have h_lam_phi_ctr :
+              (φ η / φ (center k)) * φ (center k) = φ η := by
+            rw [div_mul_cancel₀]; exact ne_of_gt h_phi_center_pos
+          rw [h_lam_phi_ctr] at h_pin_ctr
+          -- h_pin_ctr : (φ η / φ(center)) * R(center) = G(φ η) = R η (by Step 1)
+          have h_step1_η := h_step1 η hη
+          rw [← h_pin_ctr] at h_step1_η
+          -- h_step1_η : R η = (φ η / φ(center)) * R(center)
+          rw [h_step1_η]
+          field_simp
+          ring
+        · -- Case φ η > φ(center). Use pinning at η with lam = φ(center) / φ η.
+          have h_cmp : φ (center k) < φ η := not_le.mp h_cmp
+          have hlam_mem : φ (center k) / φ η ∈ Set.Icc (0:ℝ) 1 := by
+            refine ⟨div_nonneg (le_of_lt h_phi_center_pos)
+                              (le_of_lt h_phi_η_pos), ?_⟩
+            rw [div_le_one h_phi_η_pos]; exact le_of_lt h_cmp
+          have h_pin_η := h_pin_vertex η hη (φ (center k) / φ η) hlam_mem
+          have h_lam_phi_η :
+              (φ (center k) / φ η) * φ η = φ (center k) := by
+            rw [div_mul_cancel₀]; exact ne_of_gt h_phi_η_pos
+          rw [h_lam_phi_η] at h_pin_η
+          -- h_pin_η : (φ(center) / φ η) * R η = G(φ(center)) = R(center) (by Step 1)
+          have h_step1_ctr := h_step1 (center k) center_mem_simplex
+          rw [← h_pin_η] at h_step1_ctr
+          -- h_step1_ctr : R(center) = (φ(center) / φ η) * R η
+          -- Goal: R η = (R(center) / φ(center)) * φ η + 0
+          rw [h_step1_ctr]
+          field_simp
+          ring
     -- Step 3: vertices + center pin a > 0 and b = 0; conclude φ = λ R.
     obtain ⟨a, b, h_affine⟩ := h_step2
     have h_zero := h_affine (vertex 0) (vertex_mem_simplex 0)
