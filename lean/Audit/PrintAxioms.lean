@@ -67,5 +67,16 @@ Expected: every theorem uses only `propext`, `Classical.choice`, `Quot.sound`
 #print axioms Rigidity.theorem1_hard
 #print axioms Rigidity.theorem1
 
--- Theorem2Prime.lean
+-- Theorem2Prime.lean (Phase D — simplex rigidity infrastructure + Steps 1/3)
+#print axioms Rigidity.Simplex.R_vertex_eq_zero
+#print axioms Rigidity.Simplex.R_center
+#print axioms Rigidity.Simplex.R_center_pos
+#print axioms Rigidity.Simplex.center_mem_simplex
+#print axioms Rigidity.Simplex.vertex_mem_simplex
+#print axioms Rigidity.Simplex.cellRateSimplex_trivial
+#print axioms Rigidity.Simplex.epsilonStarSimplex_trivial
+#print axioms Rigidity.Simplex.barPhiSimplex_trivial
+#print axioms Rigidity.Simplex.sum_measure_fiber_inter
+#print axioms Rigidity.Simplex.cellRateSimplex_mem_simplex
+#print axioms Rigidity.Simplex.phi_eq_lam_R_of_step1_affine
 -- (theorem1Prime removed 2026-06-05 — was vacuous `True ↔ True`, see audit notes.)
