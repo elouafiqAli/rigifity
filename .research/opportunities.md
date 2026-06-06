@@ -48,6 +48,18 @@ Final upstream submission still deferred to align with journal acceptance —
 see [`19-panel_verdict.md`](../19-panel_verdict.md) §5 and
 [`20-judge_f_harness_log.md`](../20-judge_f_harness_log.md) closure summary.
 
+**Status (post-scaffold, 2026-06-06)**: The PR work has graduated from the
+in-repo `./sierpinski-pr/` folder to a **dedicated sibling repository** at
+`../mathlib-sierpinski-pr/` (committed `996f45b`, tag `v0.1.0`). This split
+gives the mathlib PR a clean dependency surface (vanilla mathlib only, no
+rigidity imports) and proper release engineering (CI, semver, issue + PR
+templates, contributor docs). The `.research/sierpinski-pr/` folder remains
+in this tree as the archival record of the round-8 staging step; updates
+now happen in the sibling repo. The migration roadmap is at
+`../mathlib-sierpinski-pr/docs/ROADMAP.md` — Phase 1 (halving lemma) and
+Phase 2 (σ-finite reduction) are the two open `sorry`s; Phase 4 opens the
+mathlib PR.
+
 ### 2. `ConcaveOn.one_sub` Pi-form helper (LOW value)
 
 **Source**: `Rigidity.Bracket.tent_normalized` proof — we used a `convert` +

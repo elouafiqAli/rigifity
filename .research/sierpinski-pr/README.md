@@ -1,5 +1,24 @@
 # Sierpiński's theorem on atomless measures — mathlib PR draft
 
+> **⚠ Superseded — 2026-06-06.** Active development has moved to a dedicated
+> sibling repository at `../../../mathlib-sierpinski-pr/` (committed
+> `996f45b`, tag `v0.1.0`). This folder remains as the archival record of
+> the round-8 staging step. **Do not edit files here**; update the sibling
+> repo instead. The sibling has:
+>
+> - A proper Lake project (`lake build` against vanilla mathlib v4.29.1).
+> - Library split into `Sierpinski/{Core,Halving,SigmaFinite,Companion}.lean`
+>   so each `sorry` is isolated to its own file.
+> - Regression test bundle, GitHub Actions CI, issue + PR templates, dependabot.
+> - Documentation suite of ~10 pages under `docs/` (ROADMAP, ProofStrategy,
+>   API, DesignNotes, References, ReviewerGuide, Tutorial, Building, PR_PROPOSAL).
+> - Helper scripts: `verify.{sh,ps1}` (CI mirror), `prepare-pr.sh`
+>   (consolidates the diff for the eventual mathlib PR).
+>
+> The PR-completion workflow is in `../../../mathlib-sierpinski-pr/docs/ROADMAP.md`.
+
+---
+
 *A `.research/`-scoped artifact, not built/tested against a live mathlib worktree. Library-grade style; proof strategy fully laid out; the 300-LoC measure-theory development is described in detail in [`Tutorial.md`](Tutorial.md) and the `MeasuredSets`-based skeleton in [`Sierpinski.lean`](Sierpinski.lean). Round-8 panel verdict ([`../../19-panel_verdict.md`](../../19-panel_verdict.md) §5) recommended this PR be readied in parallel with the COLT/JMLR submission so it can be cited in the manuscript's mechanization paragraph.*
 
 ## What this folder contains
