@@ -1,0 +1,595 @@
+% =============================================================================
+% Fichier  : chord-substitution-fr.tex
+% Titre    : La substitution par corde clôt l'équation de Jensen à coefficient continu
+% Sous-titre : Une note pédagogique sur trois hypothèses de régularité vestigiales
+% Auteur   : [AUTEUR]
+% Revue    : Comptes Rendus Mathématique (Académie des sciences)
+% Source   : satellites/o3-chord-substitution/13-draft0.4-fr-manuscrit.md
+% Date     : 2026-06-06
+%
+% Compilation :
+%   pdflatex chord-substitution-fr
+%   bibtex   chord-substitution-fr
+%   pdflatex chord-substitution-fr
+%   pdflatex chord-substitution-fr
+%
+% Classe   : La classe Centre Mersenne `crmath` est le modèle officiel
+%            (télécharger pack_author-crmath.zip depuis
+%            centre-mersenne.org/pack_author/).
+%            Une configuration de repli amsart est fournie ci-dessous pour
+%            les utilisateurs qui n'ont pas la classe crmath installée :
+%            commenter \documentclass{crmath} et décommenter le bloc amsart.
+% =============================================================================
+
+% --- CLASSE CRAS OFFICIELLE (préférée) ---
+% \documentclass{crmath}
+
+% --- CONFIGURATION DE REPLI AMSART (active par défaut) ---
+\documentclass[11pt,a4paper]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english,french]{babel} % `french` actif par défaut, espace insécable automatique avant :;?!
+\usepackage{csquotes}
+\usepackage{lineno}
+\linenumbers
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\renewcommand{\baselinestretch}{1.5} % double interligne (exigence CRAS)
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0.25em}
+
+% Numérotation des sections en chiffres romains (convention CRAS Mathématique)
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\Roman{section}.\arabic{subsection}}
+
+% Environnements de théorème (en français)
+\newtheorem{theorem}{Théorème}
+\newtheorem{corollary}[theorem]{Corollaire}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{remark}[theorem]{Remarque}
+
+% Renommage français des étiquettes auto-générées
+\renewcommand{\proofname}{Démonstration}
+\renewcommand{\abstractname}{Résumé}
+\renewcommand{\refname}{Références bibliographiques}
+
+% Commandes personnalisées
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\mathbb N}
+\newcommand{\E}{\mathbb E}
+\newcommand{\PR}{\mathbb P}
+% --- FIN DU REPLI ---
+
+\begin{document}
+
+\title[La substitution par corde clôt l'équation de Jensen à coefficient continu]%
+{La substitution par corde clôt l'équation de Jensen à coefficient continu\\
+\normalsize\textit{Une note pédagogique sur trois hypothèses de régularité vestigiales}}
+
+\author{[AUTEUR]\thanks{Auteur correspondant. Affiliation :
+[INSTITUTION, PAYS]. Courriel : [auteur@institution.pays].}}
+
+\date{\today}
+
+\subjclass[2020]{39B22, 39B05}
+\keywords{équation de Jensen, équation de Cauchy, base de Hamel, équation
+fonctionnelle, fonction affine, substitution par corde}
+
+\begin{abstract}
+La forme à coefficient continu de l'équation fonctionnelle de Jensen sur
+un intervalle réel --- celle où le coefficient parcourt tout le
+continuum~$[0,1]$ plutôt qu'une valeur unique telle que $\tfrac12$ ---
+ne partage aucune pathologie de type base de Hamel avec son analogue à
+coefficient discret, et se résout en forme close par une substitution par
+corde tenant en une ligne.
+
+Plus précisément~: pour $G\colon[0,M]\to\R$ satisfaisant
+$p\,G(u_1) + (1-p)\,G(u_2) = G(p\,u_1 + (1-p)\,u_2)$ pour tous
+$u_1,u_2\in[0,M]$ et tout $p\in[0,1]$, la fonction $G$ est affine
+sur~$[0,M]$ --- c.-à-d. de la forme $G(v) = av + b$ avec $a,b\in\R$
+--- sans qu'aucune hypothèse de mesurabilité, de bornitude ou de
+continuité ne soit requise.
+
+Nous en donnons la démonstration, exhibons la formule affine explicite,
+articulons le dictionnaire des trois hypothèses de régularité
+classiquement requises qui deviennent vestigiales sous la forme à
+coefficient continu, et documentons une occurrence du piège dans la
+littérature sur la calibration par perte de substitution, ainsi que la
+raison structurelle pour laquelle il est appelé à se répéter dans toute
+dérivation qui pousse l'inégalité de Jensen à saturation sur une classe
+assez large de distributions bipoints.
+\end{abstract}
+
+% Métadonnées bilingues : version anglaise du titre, du résumé et des
+% mots-clés. Le manuscrit anglais détaillé est dans chord-substitution-en.tex
+% (fichier séparé).
+\renewcommand{\abstractname}{Abstract}
+\begin{abstract}
+\selectlanguage{english}
+The continuous-coefficient form of the Jensen functional equation on a
+real interval --- the form in which the coefficient varies over the full
+continuum $[0,1]$ rather than over a single value such as $\tfrac12$
+--- shares no Hamel-basis pathology with its discrete-coefficient sibling,
+and is solved in closed form by a one-line chord substitution. Concretely:
+for $G\colon[0,M]\to\R$ satisfying $pG(u_1)+(1-p)G(u_2)=G(pu_1+(1-p)u_2)$
+for all $u_1,u_2\in[0,M]$ and all $p\in[0,1]$, $G$ is affine on $[0,M]$
+--- meaning $G(v)=av+b$ for some $a,b\in\R$ --- with no measurability,
+boundedness, or continuity hypothesis on $G$. We give the proof, exhibit
+the explicit affine formula, articulate the dictionary of three classically
+required regularity hypotheses that become vestigial under the
+continuous-coefficient form, and document one recurrence of the trap in the
+surrogate-calibration literature.
+
+\textbf{Keywords:} Jensen equation; Cauchy equation; Hamel basis;
+functional equation; affine function; chord substitution.
+\selectlanguage{french}
+\end{abstract}
+\renewcommand{\abstractname}{Résumé}
+
+\maketitle
+
+% =============================================================================
+\section{Introduction}
+\label{sec:introduction}
+
+L'équation
+\begin{equation}
+p\,G(u_1) + (1-p)\,G(u_2) \;=\; G\bigl(p\,u_1 + (1-p)\,u_2\bigr)
+\qquad (u_1,u_2\in I,\ p\in[0,1])
+\tag{$\star$}\label{eq:star}
+\end{equation}
+sur un intervalle réel~$I$ --- où $G\colon I\to\R$ est l'inconnue et
+$u_1,u_2,p$ sont les arguments et le coefficient --- a au moins trois
+visages en analyse classique, et ces visages ont été confondus sans relâche
+depuis plus d'un siècle.
+
+L'\textbf{équation de Jensen à coefficient discret},
+\begin{equation}
+G\!\left(\tfrac{u_1 + u_2}{2}\right) \;=\;
+\tfrac{G(u_1) + G(u_2)}{2},
+\tag{$J_2$}\label{eq:J2}
+\end{equation}
+est la spécialisation de~\eqref{eq:star} au cas $p = \tfrac12$. En posant
+$f(x) := G(x) - G(0)$, l'équation~\eqref{eq:J2} équivaut, sur un translaté
+de~$I$, à l'équation additive de Cauchy $f(x + y) = f(x) + f(y)$
+(cf.~\cite{Aczel1966} ou~\cite{Kuczma2009}). L'additivité de Cauchy hérite
+alors d'un appareil complet de solutions pathologiques~: en l'absence de
+mesurabilité, de monotonie, de bornitude sur un ensemble de mesure positive
+ou de toute autre hypothèse de régularité, l'équation admet des solutions
+non affines construites au moyen d'une \textbf{base de Hamel} --- c.-à-d.
+d'une base de~$\R$ en tant que $\Q$-espace vectoriel, dont l'existence
+requiert l'axiome du choix --- voir~\cite{Hamel1905}. Les théorèmes
+classiques de Cauchy~\cite{Cauchy1821}, Darboux~\cite{Darboux1875},
+Hamel~\cite{Hamel1905}, Ostrowski~\cite{Ostrowski1929},
+Sierpiński~\cite{Sierpinski1920} et Steinhaus~\cite{Steinhaus1920}
+délimitent ensemble les hypothèses de régularité suffisantes pour récupérer
+l'affinité --- \emph{une} hypothèse au moins est véritablement nécessaire,
+faute de quoi l'affinité échoue.
+
+L'\textbf{équation de Jensen à coefficient rationnel},
+\begin{equation}
+p\,G(u_1) + (1-p)\,G(u_2) \;=\; G(p\,u_1 + (1-p)\,u_2)
+\qquad (u_1,u_2\in I,\ p\in[0,1]\cap\Q),
+\tag{$J_{\Q}$}\label{eq:JQ}
+\end{equation}
+raffine~\eqref{eq:J2} sans pour autant échapper à sa pathologie~:
+l'additivité de Cauchy entraîne la $\Q$-homogénéité $f(qx) = q\,f(x)$ par
+les arguments standard ($G(nx) = nG(x)$ par récurrence, $G(x/n) = G(x)/n$
+par substitution, $G(qx) = qG(x)$ pour $q\in\Q$ par combinaison), et la
+$\Q$-homogénéité restitue~\eqref{eq:JQ} pour~$f$, donc pour~$G$. Ainsi
+\eqref{eq:JQ}, \eqref{eq:J2} et l'équation de Cauchy partagent la même
+classe de solutions à une constante près, et toutes trois héritent de la
+pathologie de Hamel.
+
+La \textbf{forme à coefficient continu}~\eqref{eq:star}, en revanche, est
+fondamentalement différente. C'est l'objet de cette note.
+
+\paragraph{Résultat.}
+Supposons que $G\colon[0,M]\to\R$ vérifie~\eqref{eq:star} pour tous
+$u_1,u_2\in[0,M]$ et tout $p\in[0,1]$. Alors $G$ est affine sur~$[0,M]$
+--- c.-à-d. de la forme $G(v) = av + b$ avec $a,b\in\R$ --- et plus
+précisément
+\[
+G(v) \;=\; a\,v + b,
+\qquad a = \frac{G(M) - G(0)}{M},\quad b = G(0).
+\]
+La démonstration consiste en une unique substitution~: poser $u_1 = M$,
+$u_2 = 0$, $p = v/M$ dans~\eqref{eq:star}. Aucune hypothèse de régularité
+sur~$G$ n'est consommée.
+
+Il s'agit là d'un résultat folklorique --- \cite{Aczel1966}
+et~\cite{Kuczma2009} articulent au moins l'observation sous-jacente, et le
+résultat est standard dans la communauté des équations fonctionnelles. Une
+confusion durable persiste cependant dans les travaux appliqués qui
+rencontrent~\eqref{eq:star} en dehors de la littérature dédiée~: les
+auteurs invoquent par réflexe la machinerie de régularité de l'équation de
+Cauchy --- continuité, bornitude, mesurabilité --- alors qu'aucune de ces
+hypothèses n'intervient effectivement dans la démonstration de l'affinité.
+La présente note est une note pédagogique et de citation~: nous exhibons
+la démonstration ainsi que le dictionnaire des hypothèses vestigiales
+pour~\eqref{eq:star}, et fournissons un point de citation court permettant
+aux auteurs qui rencontrent l'équation dans leurs propres travaux de
+retirer la préoccupation Hamel sans avoir à la redériver.
+
+La suite est organisée comme suit. La Section~\ref{sec:result} énonce le
+théorème et sa démonstration. La Section~\ref{sec:dictionary} est le
+dictionnaire des trois hypothèses de régularité qui \emph{ne sont pas}
+requises, chacune accompagnée de la pathologie correspondante
+pour~\eqref{eq:J2} qui échoue à se manifester pour~\eqref{eq:star}. La
+Section~\ref{sec:variants} collecte les variantes --- l'hypothèse minimale
+que la démonstration consomme effectivement~; la remarque dimensionnelle~;
+le contraste avec~\eqref{eq:JQ}. La Section~\ref{sec:recurrence} documente
+une occurrence du piège dans la littérature sur la calibration par perte
+de substitution, et énonce la raison structurelle qui rend le piège appelé
+à se répéter dans toute dérivation qui pousse l'inégalité de Jensen à
+saturation.
+
+% =============================================================================
+\section{Le résultat}
+\label{sec:result}
+
+\begin{theorem}
+\label{thm:main}
+Soient $M > 0$ et $G\colon[0,M]\to\R$ vérifiant~\eqref{eq:star} pour tous
+$u_1,u_2\in[0,M]$ et tout $p\in[0,1]$. Alors $G$ est affine sur~$[0,M]$~:
+\[
+G(v) \;=\; \frac{G(M) - G(0)}{M}\,v \;+\; G(0)
+\qquad \text{pour tout } v \in [0, M].
+\]
+Aucune hypothèse de mesurabilité, de bornitude ou de continuité sur~$G$
+n'est requise.
+\end{theorem}
+
+\begin{proof}
+Fixons $v \in [0, M]$. En posant $u_1 = M$, $u_2 = 0$ et $p = v/M \in [0, 1]$
+dans~\eqref{eq:star},
+\[
+\frac{v}{M}\,G(M) + \left(1 - \frac{v}{M}\right) G(0) \;=\;
+G\!\left(\frac{v}{M} \cdot M + \left(1 - \frac{v}{M}\right) \cdot 0\right)
+\;=\; G(v).
+\]
+En réarrangeant, $G(v) = G(0) + \dfrac{G(M) - G(0)}{M}\,v$.
+\end{proof}
+
+\begin{corollary}
+\label{cor:regularity}
+Sous les hypothèses du Théorème~\ref{thm:main}, $G$ est en particulier
+continue, monotone, localement lipschitzienne, absolument continue et
+mesurable sur~$[0, M]$.
+\end{corollary}
+
+\begin{proof}
+Les fonctions affines vérifient toutes ces propriétés.
+\end{proof}
+
+L'ordre d'inférence importe et mérite d'être souligné~: la \emph{conclusion}
+du Théorème~\ref{thm:main} est que $G$ possède toutes les propriétés de
+régularité que l'on aurait pu vouloir \emph{supposer}. Chacune de ces
+propriétés est donc vestigiale en tant qu'hypothèse --- voir la
+Section~\ref{sec:dictionary}.
+
+% =============================================================================
+\section{Le dictionnaire}
+\label{sec:dictionary}
+
+Plaçons côte à côte l'équation à coefficient discret~\eqref{eq:J2} et
+l'équation à coefficient continu~\eqref{eq:star}. La première colonne du
+Tableau~\ref{tab:dictionary} nomme une hypothèse de régularité
+classiquement invoquée pour~\eqref{eq:J2} et en donne une définition en
+une phrase~; la deuxième colonne indique si l'hypothèse est requise pour
+forcer l'affinité dans le cas~\eqref{eq:J2}, avec l'attribution standard~;
+la troisième colonne indique ce qu'il advient de l'hypothèse
+sous~\eqref{eq:star}.
+
+\begin{table}[ht]
+\renewcommand{\arraystretch}{1.4}
+\begin{tabularx}{\textwidth}{@{} X | X | X @{}}
+\toprule
+\textbf{Hypothèse sur $G$ (définition)} & \textbf{Requise pour
+\eqref{eq:J2}$\Rightarrow$ affine~?} & \textbf{Requise pour
+\eqref{eq:star}$\Rightarrow$ affine~?}\\
+\midrule
+\textbf{Continuité sur~$I$} ($G$ est continue en tout $v\in I$).
+& Oui, suffisante (Cauchy~\cite{Cauchy1821}).
+& \textbf{Non} --- l'affinité est la \emph{conclusion}, non l'hypothèse.\\
+\midrule
+\textbf{Mesurabilité sur~$I$} ($G$ est mesurable au sens de Lebesgue ou
+de Borel).
+& Oui, suffisante (Sierpiński~\cite{Sierpinski1920}).
+& \textbf{Non} --- idem.\\
+\midrule
+\textbf{Monotonie sur~$I$} ($G$ est croissante ou décroissante au sens
+large).
+& Oui, suffisante (Darboux~\cite{Darboux1875}).
+& \textbf{Non} --- idem.\\
+\midrule
+\textbf{Bornitude sur un ensemble de mesure positive} (il existe un
+borélien $E\subseteq I$ avec $|E|>0$ sur lequel $G$ est bornée).
+& Oui, suffisante (Steinhaus~\cite{Steinhaus1920}~;
+cf.~Sierpiński~\cite{Sierpinski1920}).
+& \textbf{Non} --- idem.\\
+\midrule
+\textbf{Bornitude sur~$I$} ($G$ est bornée sur l'intervalle~$I$ entier).
+& Oui, suffisante (cas particulier de Steinhaus~\cite{Steinhaus1920}~;
+Ostrowski~\cite{Ostrowski1929}).
+& \textbf{Non} --- idem.\\
+\midrule
+\textbf{Aucune} (pas d'hypothèse de régularité du tout).
+& \textbf{Insuffisante} --- pathologie de la base de Hamel
+(Hamel~\cite{Hamel1905}).
+& \textbf{Suffisante} --- Théorème~\ref{thm:main}.\\
+\bottomrule
+\end{tabularx}
+\caption{Hypothèses de régularité sur~$G$. La colonne~2 indique quelles
+hypothèses sont classiquement requises pour forcer l'affinité dans le cas
+de l'équation à coefficient discret~\eqref{eq:J2}. La colonne~3 indique ce
+qu'il en advient sous l'équation à coefficient continu~\eqref{eq:star}.}
+\label{tab:dictionary}
+\end{table}
+
+Le point essentiel du tableau est sa dernière ligne. \textbf{Aucune
+hypothèse de régularité} ne suffit pour l'équation à coefficient discret~:
+une fonction additive sur~$\R$, non affine, non mesurable et non bornée
+--- la pathologie classique de la base de Hamel de~\cite{Hamel1905} ---
+fournit une solution non affine de~\eqref{eq:J2}. Inversement,
+\textbf{aucune hypothèse de régularité} n'est \emph{requise} pour
+l'équation à coefficient continu~: la substitution par corde du
+Théorème~\ref{thm:main} clôt la démonstration au niveau de l'équation
+fonctionnelle nue.
+
+Le mécanisme est direct. Une solution pathologique de type base de
+Hamel~$G$ de l'équation de Cauchy sur~$\R$ est $\Q$-linéaire~: $G(0) = 0$
+et $G(qx) = q\,G(x)$ pour tout $q \in \Q$ et tout $x \in \R$. Par
+construction, elle n'est \emph{pas} $\R$-linéaire --- $G(rx) \neq r\,G(x)$
+pour un certain irrationnel~$r$ et un certain $x \in \R$.
+
+L'identité de corde à la configuration $u_1 = M$, $u_2 = 0$ s'écrit
+\begin{equation}
+p\,G(M) + (1 - p)\,G(0) \;=\; G(p\,M).
+\tag{$\star_0$}\label{eq:star0}
+\end{equation}
+Pour~$G$ une fonction additive Hamel-pathologique ($G(0) = 0$),
+\eqref{eq:star0} équivaut à l'assertion $p\,G(M) = G(p\,M)$ --- vraie en
+$p \in \Q$ (par $\Q$-linéarité) mais fausse aux irrationnels~$p$ où la
+$\R$-linéarité est rompue. Ainsi $G$ vérifie~\eqref{eq:JQ} sur $[0, M]$
+mais viole~\eqref{eq:star} en \emph{tout} irrationnel $p \in (0, 1)$ où le
+défaut de $\R$-linéarité apparaît. L'équation à coefficient
+continu~\eqref{eq:star} écarte la pathologie précisément aux points
+$p \in [0, 1] \setminus \Q$ sur lesquels les versions à coefficient discret
+et rationnel restent muettes. \textbf{La pathologie de Hamel vit aux
+irrationnels~$p$ --- précisément là où le coefficient continu
+de~\eqref{eq:star} referme la porte.}
+
+% =============================================================================
+\section{Variantes et limites}
+\label{sec:variants}
+
+\subsection{L'hypothèse minimale que la démonstration consomme}
+\label{ssec:weak}
+
+La démonstration du Théorème~\ref{thm:main} consomme~\eqref{eq:star} en une
+unique configuration~: $u_1 = M$, $u_2 = 0$, avec $p \in [0, 1]$ libre. La
+pleine force de~\eqref{eq:star} --- pour \emph{tout} couple $(u_1, u_2)$
+--- n'est pas mobilisée. Nous enregistrons donc le minimum strict.
+
+\begin{theorem}[Théorème~\ref{thm:main}$'$]
+\label{thm:main-prime}
+Soient $M > 0$ et $G\colon[0, M] \to \R$ vérifiant
+\[
+p\,G(M) + (1 - p)\,G(0) \;=\; G(p\,M)
+\qquad \text{pour tout } p \in [0, 1].
+\]
+Alors $G(v) = G(0) + \bigl(G(M) - G(0)\bigr)\,v/M$ sur~$[0, M]$.
+\end{theorem}
+
+La démonstration est mot pour mot celle du Théorème~\ref{thm:main}~: poser
+$p = v/M$. Le Théorème~\ref{thm:main-prime} est en principe plus faible que
+le Théorème~\ref{thm:main} --- l'hypothèse n'entraîne pas a
+priori~\eqref{eq:star} dans sa totalité~; sous la conclusion (affinité),
+les deux sont vérifiées. En pratique, un auteur qui
+\emph{dérive}~\eqref{eq:star} d'un dispositif plus riche (par~ex.~d'une
+identité d'égalité dans Jensen pour un calcul de risque bayésien, voir
+Section~\ref{sec:recurrence}) dispose typiquement de~\eqref{eq:star} pour
+tous les triplets $(u_1, u_2, p)$. Le Théorème~\ref{thm:main-prime}, plus
+restreint, est la bonne référence pour un auteur qui souhaite mesurer la
+part exacte de l'équation que la démonstration mobilise.
+
+\subsection{Domaines convexes en dimensions supérieures}
+\label{ssec:higher}
+
+La substitution par corde s'étend mot pour mot à tout sous-ensemble
+convexe~$C$ d'un espace vectoriel réel~$V$~: en appliquant le
+Théorème~\ref{thm:main} le long de chaque corde, on montre que la
+restriction de~$G$ à chaque segment de~$C$ est affine en le paramètre du
+segment, et un argument inductif standard (cf.~\cite{AczelDhombres1989})
+relève l'affinité-corde-par-corde en linéarité par combinaisons convexes
+sur~$C$, donc en une forme affine $G(x) = a(x) + b$ pour une forme
+linéaire~$a$ sur $\mathrm{vect}(C - C)$ et une constante $b \in \R$.
+L'étape structurellement essentielle, en dimension~1, est le
+Théorème~\ref{thm:main}.
+
+\subsection{La version à coefficients rationnels $(J_{\Q})$ conserve,
+elle, la pathologie}
+\label{ssec:rational-pathology}
+
+Le contraste $\Q$ vs $\R$ mérite d'être marqué explicitement.
+
+\begin{proposition}[folklorique]
+\label{prop:JQ-pathology}
+Il existe $G\colon[0, 1] \to \R$ vérifiant~\eqref{eq:JQ} (et
+donc~\eqref{eq:J2}) sur~$[0, 1]$, sans être affine.
+\end{proposition}
+
+\begin{proof}[Construction]
+Choisissons une base de Hamel~$H$ de~$\R$ sur~$\Q$ contenant~$1$.
+Définissons une application $\Q$-linéaire $\ell\colon\R \to \R$ en posant
+$\ell(1) = 0$ et $\ell(h) = 1$ pour un certain élément de
+base~$h \in H \setminus \{1\}$, et arbitrairement sur les autres éléments
+de base. Par $\Q$-linéarité, $\ell(x + y) = \ell(x) + \ell(y)$ pour tous
+$x, y \in \R$ (donc $\ell$ vérifie l'équation de Cauchy) et
+$\ell(qx) = q\,\ell(x)$ pour tous $q \in \Q$ et $x \in \R$
+($\Q$-homogénéité). Mais $\ell$ n'est \emph{pas} $\R$-linéaire~:
+$\ell(1) = 0$ tandis que $\ell(h) = 1$, de sorte que les valeurs de~$\ell$
+sur l'enveloppe $\Q$-linéaire de~$\{1\}$ (à savoir~$\Q$, sur laquelle
+$\ell \equiv 0$) et sur l'enveloppe $\Q$-linéaire de~$\{h\}$ (où $\ell$
+est non nulle) sont incompatibles avec toute forme $\R$-linéaire. Posons
+$G := \ell|_{[0, 1]}$. Alors $G$ vérifie~\eqref{eq:JQ} sur~$[0, 1]$ ---
+car les combinaisons convexes à coefficients rationnels de points
+de~$[0, 1]$ restent dans~$[0, 1]$ et $\ell$ respecte les combinaisons
+$\Q$-linéaires sur~$\R$ entier.
+
+Témoin explicite de la non-affinité de~$G$~: choisissons
+$h \in H \setminus \{1\}$ avec $h \in (0, 1)$ --- un tel élément de base
+existe, l'extension de tout irrationnel de~$(0, 1)$ en une base de Hamel
+étant immédiate. Alors $G(h) = \ell(h) = 1 \neq 0$, tandis que
+$G(q) = \ell(q) = q\,\ell(1) = 0$ pour tout rationnel $q \in [0, 1]$.
+Toute application affine $A\colon[0, 1] \to \R$ coïncidant avec~$G$ sur
+$\Q \cap [0, 1]$ vérifierait $A(0) = 0$ et $A(q) = 0$ pour tout rationnel
+$q \in [0, 1]$, ce qui force $A \equiv 0$ --- en contradiction avec
+$G(h) = 1$. Donc $G$ n'est pas affine.
+\end{proof}
+
+La Proposition~\ref{prop:JQ-pathology} affine l'énoncé du
+Théorème~\ref{thm:main} --- \emph{« aucune hypothèse de régularité n'est
+requise »} --- en exhibant que le renforcement, du rationnel au continu
+dans~\eqref{eq:star}, accomplit un travail effectif. Sans ce renforcement
+(i.e., pour~\eqref{eq:JQ}), des hypothèses de régularité sont véritablement
+nécessaires~; avec lui, elles sont vestigiales.
+
+% =============================================================================
+\section{Où le piège ressurgit}
+\label{sec:recurrence}
+
+La substitution par corde est --- comme nous l'avons noté --- folklorique.
+Les hypothèses de régularité qu'elle rend vestigiales reparaissent
+néanmoins dans les travaux appliqués qui dérivent~\eqref{eq:star} en
+dehors de la communauté des équations fonctionnelles. Nous documentons
+\emph{une} telle occurrence ci-dessous --- dans nos propres travaux sur le
+seuil d'erreur atteignable des classifieurs fondés sur des partitions ---
+et articulons la \emph{source structurelle} sous laquelle l'occurrence est
+prévisible dans toute dérivation de calibration suffisamment riche. Nous
+invitons les lecteurs qui rencontrent~\eqref{eq:star} dans leurs propres
+travaux à compléter ce catalogue.
+
+\subsection{Une occurrence : calibration par perte de substitution sur
+l'axe de résolution}
+\label{ssec:recurrence}
+
+Dans un travail récent~\cite{El1,El2}, l'équation~\eqref{eq:star} surgit
+avec~$G$ la fonction qui exprime le \emph{risque bayésien partitionnel}
+d'un classifieur mesurable en fonction d'une fonctionnelle de score
+concave agrégée sur les cellules de la partition~: $u_1, u_2$ sont les
+valeurs du score par cellule et~$p$ est la masse de la cellule, qui
+parcourt librement~$[0, 1]$ sur un espace de probabilité sous-jacent non
+atomique~; ainsi~\eqref{eq:star} est vérifiée dans toute sa généralité.
+Dans la formalisation Lean~4 de~\cite{El2}, le lemme correspondant a
+d'abord été déclaré avec une hypothèse de bornitude dans sa signature, par
+déférence à la littérature de Cauchy/Hamel~; le corps de la démonstration
+a ensuite mis en évidence que cette hypothèse n'était pas mobilisée,
+précisément par la substitution par corde du Théorème~\ref{thm:main}. Les
+versions antérieures du texte principal invoquaient en conséquence la
+remarque d'excuse \emph{« $G$ est bornée, donc le théorème de
+Jensen-borné-implique-affine s'applique »} --- remarque que le
+Théorème~\ref{thm:main} de la présente note retire.
+
+\subsection{Source structurelle : pourquoi le piège est appelé à se
+répéter}
+\label{ssec:structural}
+
+L'occurrence est prévisible. Dès qu'un argument de théorie de la
+calibration aboutit à une identité de la forme
+\[
+\E[g(\xi)] \;=\; g\bigl(\E[\xi]\bigr)
+\qquad (\xi \text{ variable aléatoire à valeurs dans } I,\
+g\colon I \to \R),
+\]
+\emph{pour une classe de variables aléatoires~$\xi$ assez large pour que
+l'espérance marginale~$\E[\xi]$ puisse être en tout point de~$I$ et que
+le support de~$\xi$ puisse être tout sous-ensemble à deux points de~$I$
+avec n'importe quelle paire de masses $(p, 1-p)$ avec $p \in [0, 1]$},
+l'identité est~\eqref{eq:star} avec $g = G$ et~$\xi$ supportée
+par~$\{u_1, u_2\}$. Une telle identité apparaît dès que l'inégalité de
+Jensen est poussée à saturation. La littérature standard de la calibration
+par perte de substitution --- Bartlett--Jordan--McAuliffe~\cite{BJM2006},
+Tewari--Bartlett~\cite{TewariBartlett2007},
+Steinwart~\cite{Steinwart2007},
+Reid--Williamson~\cite{ReidWilliamson2010, ReidWilliamson2011} --- dérive
+ses résultats de calibration par voie d'analyse convexe (biconjuguées,
+dualité de Fenchel, hyperplans d'appui), qui maintient Jensen comme
+\emph{inégalité} avec un défaut explicitement contrôlé et, par conséquent,
+ne produit jamais~\eqref{eq:star} comme égalité~; la dérivation par axe
+de résolution de~\cite{El2} pousse Jensen jusqu'à l'égalité et produit
+ainsi~\eqref{eq:star} directement. La substitution par corde clôt
+l'équation résultante en une ligne. D'autres styles de dérivation qui
+saturent l'inégalité de Jensen sur une classe assez large de distributions
+bipoints devraient produire~\eqref{eq:star} de manière analogue ---
+moment où le Théorème~\ref{thm:main} retire instantanément la question des
+hypothèses de régularité.
+
+\subsection{Cadres adjacents}
+\label{ssec:adjacent}
+
+Deux cadres adjacents où des équations structurellement similaires
+surgissent et où la substitution par corde constitue la fermeture
+naturelle, sans pour autant que le \emph{piège} (l'invocation inutile de
+la régularité de Cauchy/Hamel) soit, à notre connaissance, récurrent dans
+la littérature publiée. Premièrement, les \textbf{théorèmes de
+représentation de l'utilité espérée} dans la tradition de
+von~Neumann--Morgenstern dérivent la linéarité-en-probabilité d'une
+fonctionnelle d'utilité $U(p\,L_1 + (1-p)\,L_2) = p\,U(L_1) + (1-p)\,U(L_2)$
+sur les loteries~; l'axiomatisation de Herstein--Milnor clôt cette
+équation par l'\emph{axiome d'Archimède} plutôt que par Cauchy/Hamel, mais
+la substitution par corde est l'alternative naturelle. Deuxièmement, la
+\textbf{caractérisation axiomatique de l'entropie de Shannon} (axiome de
+récursivité de Khinchin--Faddeev~; cf.~\cite{Aczel1966}
+et~\cite{AczelDhombres1989}) traite des équations fonctionnelles plus
+riches que~\eqref{eq:star}, mais plusieurs étapes intermédiaires se
+ramènent à des identités de type Jensen à coefficient continu pour
+lesquelles la substitution par corde fait partie de la boîte à outils
+standard. Nous signalons ces cadres comme adjacents plutôt que comme
+instances documentées du piège.
+
+\subsection{Une invitation à compléter}
+\label{ssec:invitation}
+
+Nous invitons les lecteurs ayant rencontré~\eqref{eq:star} dans leurs
+propres travaux et ayant invoqué une hypothèse de régularité vestigiale à
+compléter ce catalogue par une référence d'une ligne renvoyant à l'étape
+pertinente de leur article.
+
+% =============================================================================
+\section*{Déclaration d'intérêts}
+
+L'auteur ne travaille pas pour, ne conseille pas, ne possède pas de parts
+dans, et ne reçoit pas de financements d'une organisation qui pourrait
+bénéficier de cet article, et n'a déclaré aucune affiliation autre que son
+organisme de recherche.
+
+% =============================================================================
+\section*{Remerciements}
+
+L'observation par substitution par corde a émergé dans le volet de
+formalisation Lean~4 de~\cite{El2}, durant une phase du développement de
+la démonstration dont la discipline est consignée dans trois
+compétences-projet publiquement documentées au sein du dépôt-source
+associé à~\cite{El2}. L'auteur remercie le processus de relecture
+adversariale interne, décrit dans la même source, pour avoir mis en
+évidence l'hypothèse de bornitude sur-engagée dont le retrait a motivé la
+présente note.
+
+% =============================================================================
+% Bibliographie
+% =============================================================================
+
+\bibliographystyle{plain} % REPLI : remplacer par le style `crmath` quand
+                          % la classe officielle Centre Mersenne est installée
+\bibliography{refs}
+
+\end{document}

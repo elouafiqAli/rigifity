@@ -1,0 +1,71 @@
+# rigidity-indexer config
+
+# Where to read source from (relative to workspace root)
+roots:
+  - .samples
+  # Uncomment to also index workspace notes:
+  # - .research
+  # - .
+
+# File extensions to ingest (lowercase, with dot).
+extensions:
+  - .lean
+  - .tex
+  - .md
+  - .toml
+  - .yaml
+  - .yml
+  - .py
+  - .sh
+  - .sty
+  - .bib
+
+# Path-fragment excludes. Any file whose POSIX path contains one of these
+# strings is skipped. Case-sensitive.
+exclude_path_fragments:
+  - "/.lake/"
+  - "/.git/"
+  - "/node_modules/"
+  - "/_target/"
+  - "/build/"
+  - "/.venv/"
+  - "/__pycache__/"
+  - "/.idea/"
+  - "/.vscode/"   # individual workspace settings
+  - "/dist/"
+  - "/site-packages/"
+
+# Hard byte cap per file; bigger files are skipped (likely generated / lock).
+max_file_bytes: 524288  # 512 KiB
+
+# Chunking parameters per logical chunker.
+chunking:
+  # Character-based fallback chunker (used for files with no structural parser
+  # AND as a sub-divider for large structural chunks).
+  generic:
+    target_chars: 1600     # ≈ 400 tokens with overlap budget
+    overlap_chars: 200
+  # Max chars in a single embedded chunk after structural splitting. Bigger
+  # structural blocks (e.g. a 5k-line theorem proof) are re-split by the
+  # generic chunker.
+  max_chunk_chars: 4000
+  # Drop chunks smaller than this many non-whitespace chars.
+  min_chunk_chars: 40
+
+# Embedding model. BGE-small is a good CPU default (384-dim, fast, strong).
+# Alternatives:
+#   "BAAI/bge-base-en-v1.5"          (768-dim, ~3× slower, slightly better)
+#   "sentence-transformers/all-MiniLM-L6-v2"  (384-dim, fastest, slightly weaker)
+#   "jinaai/jina-embeddings-v2-base-code"     (768-dim, code-aware, downloads ~330 MB)
+embedding:
+  model: "BAAI/bge-small-en-v1.5"
+  batch_size: 64
+  # Optional query prefix injected for retrieval-time prompts (BGE convention).
+  query_prefix: "Represent this query for searching code and proofs: "
+
+# ChromaDB persistent storage.
+chroma:
+  path: ".indexer/chroma"
+  collection: "samples"
+  # Vector-space distance metric. "cosine" pairs with normalize_embeddings=true.
+  distance: "cosine"

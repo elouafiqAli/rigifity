@@ -1,0 +1,785 @@
+[00:16:02] workspace_root = C:\Users\aelouafiq\workdir\rigidity       cli.py:64
+           chroma_path    =                                           cli.py:65
+           C:\Users\aelouafiq\workdir\rigidity\.indexer\chroma                 
+           model          = BAAI/bge-small-en-v1.5                    cli.py:66
+[00:16:05] discovered 5500 files                                      cli.py:85
+[00:16:07]      25/5500  chunks=     0  skipped=   21  rate=698.49   cli.py:127
+           f/s  eta=7s                                                         
+           last=.samples/ABC-Exceptions/blueprint/src/content.tex              
+                50/5500  chunks=     0  skipped=   39  rate=1244.64  cli.py:127
+           f/s  eta=4s                                                         
+           last=.samples/ArkLib/.github/workflows/summary.yml                  
+                75/5500  chunks=     0  skipped=   62  rate=1551.60  cli.py:127
+           f/s  eta=3s                                                         
+           last=.samples/ArkLib/ArkLib/Data/CodingTheory/ListDecodab           
+           ility.lean                                                          
+               100/5500  chunks=     0  skipped=   86  rate=1789.35  cli.py:127
+           f/s  eta=3s                                                         
+           last=.samples/ArkLib/ArkLib/Data/CodingTheory/ProximityGa           
+           p/AHIV22Support.lean                                                
+               125/5500  chunks=     0  skipped=  110  rate=1924.66  cli.py:127
+           f/s  eta=2s                                                         
+           last=.samples/ArkLib/ArkLib/Data/Fin/Fold.lean                      
+               150/5500  chunks=     0  skipped=  135  rate=2103.78  cli.py:127
+           f/s  eta=2s                                                         
+           last=.samples/ArkLib/ArkLib/Data/Polynomial/Interface.lea           
+           n                                                                   
+               175/5500  chunks=     0  skipped=  157  rate=2238.31  cli.py:127
+           f/s  eta=2s                                                         
+           last=.samples/ArkLib/ArkLib/OracleReduction/FiatShamir/Du           
+           plexSponge/Security/Completeness.lean                               
+               200/5500  chunks=     0  skipped=  181  rate=2310.21  cli.py:127
+           f/s  eta=2s                                                         
+           last=.samples/ArkLib/ArkLib/ProofSystem/Binius/BinaryBase           
+           fold/QueryPhase.lean                                                
+               225/5500  chunks=     0  skipped=  205  rate=2337.89  cli.py:127
+           f/s  eta=2s                                                         
+           last=.samples/ArkLib/ArkLib/ProofSystem/Plonk/Basic.lean            
+               250/5500  chunks=     0  skipped=  229  rate=2427.10  cli.py:127
+           f/s  eta=2s                                                         
+           last=.samples/ArkLib/ArkLib/ToMathlib/Polynomial/NatDegre           
+           eOfSum.lean                                                         
+               275/5500  chunks=     0  skipped=  246  rate=2518.21  cli.py:127
+           f/s  eta=2s                                                         
+           last=.samples/ArkLib/blueprint/src/proof_systems/spartan.           
+           tex                                                                 
+               300/5500  chunks=     0  skipped=  271  rate=2606.04  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/ArkLib/docs/kb/papers/FRI1216.md                      
+               325/5500  chunks=     0  skipped=  296  rate=2713.80  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/ArkLib/docs/kb/sources/FRI1216/metadata.yml           
+               350/5500  chunks=     0  skipped=  321  rate=2812.90  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/ArkLib/scripts/check-imports.sh                       
+               375/5500  chunks=     0  skipped=  346  rate=2879.11  cli.py:127
+           f/s  eta=1s  last=.samples/BonnAnalysis/.gitpod.yml                 
+               400/5500  chunks=     0  skipped=  362  rate=2947.39  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/BonnAnalysis/BonnAnalysis/Plancherel.lean             
+               425/5500  chunks=     0  skipped=  386  rate=3026.57  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/brownian-motion/.github/workflows/blueprint           
+           .yml                                                                
+               450/5500  chunks=     0  skipped=  404  rate=3061.87  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/brownian-motion/BrownianMotion/Auxiliary/Al           
+           gebra.lean                                                          
+               475/5500  chunks=     0  skipped=  429  rate=3114.06  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/brownian-motion/BrownianMotion/Choquet/Comp           
+           actSystem.lean                                                      
+               500/5500  chunks=     0  skipped=  454  rate=3122.74  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/brownian-motion/BrownianMotion/StochasticIn           
+           tegral/Komlos.lean                                                  
+               525/5500  chunks=     0  skipped=  475  rate=3151.59  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/brownian-motion/verso/Manual/Pages/Continui           
+           ty.lean                                                             
+               550/5500  chunks=     0  skipped=  489  rate=3151.72  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/carleson/Carleson/Calculations.lean                   
+               575/5500  chunks=     0  skipped=  514  rate=3148.22  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/carleson/Carleson/Classical/ControlApproxim           
+           ationEffect.lean                                                    
+               600/5500  chunks=     0  skipped=  539  rate=3124.23  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/carleson/Carleson/ToMathlib/BoundedCompactS           
+           upport.lean                                                         
+               625/5500  chunks=     0  skipped=  564  rate=3131.70  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/carleson/Carleson/ToMathlib/MeasureTheory/F           
+           unction/LocallyIntegrable.lean                                      
+               650/5500  chunks=     0  skipped=  589  rate=3165.08  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/carleson/Carleson/ToMathlib/Order/Condition           
+           allyCompleteLattice/Indexed.lean                                    
+               675/5500  chunks=     0  skipped=  612  rate=3151.12  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/ChandraFurstLipton/.github/workflows/lean-r           
+           elease-tag.yml                                                      
+               700/5500  chunks=     0  skipped=  627  rate=3187.72  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/CLT/.github/workflows/blueprint.yml                   
+               725/5500  chunks=     0  skipped=  644  rate=3219.41  cli.py:127
+           f/s  eta=1s  last=.samples/con-nf/tasks.py                          
+               750/5500  chunks=     0  skipped=  663  rate=3225.97  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/con-nf/ConNF/Background/PermutativeExtensio           
+           n.lean                                                              
+               775/5500  chunks=     0  skipped=  688  rate=3243.78  cli.py:127
+           f/s  eta=1s  last=.samples/con-nf/ConNF/FOA/Coherent.lean           
+               800/5500  chunks=     0  skipped=  713  rate=3258.97  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/con-nf/ConNF/ModelData/PathEnumeration.lean           
+               825/5500  chunks=     0  skipped=  729  rate=3261.26  cli.py:127
+           f/s  eta=1s  last=.samples/con-nf/Old/ConNF/Fuzz.lean               
+               850/5500  chunks=     0  skipped=  751  rate=3290.35  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/con-nf/Old/ConNF/Counting/Recode.lean                 
+               875/5500  chunks=     0  skipped=  770  rate=3285.85  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/con-nf/Old/ConNF/FOA/Complete/HypAction.lea           
+           n                                                                   
+               900/5500  chunks=     0  skipped=  793  rate=3309.61  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/con-nf/Old/ConNF/Mathlib/Ordinal.lean                 
+               925/5500  chunks=     0  skipped=  818  rate=3315.21  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/.gitpod.yml                       
+               950/5500  chunks=     0  skipped=  836  rate=3342.57  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/blueprint/src/chapter/1           
+           516.tex                                                             
+               975/5500  chunks=     0  skipped=  857  rate=3366.42  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/blueprint/src/chapter/w           
+           eak_central_groupoids.tex                                           
+              1000/5500  chunks=     0  skipped=  858  rate=3389.39  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation1042           
+           .md                                                                 
+              1025/5500  chunks=     0  skipped=  863  rate=3413.46  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation1086           
+           .md                                                                 
+              1050/5500  chunks=     0  skipped=  867  rate=3443.99  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation1229           
+           .md                                                                 
+              1075/5500  chunks=     0  skipped=  869  rate=3476.27  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation1255           
+           .md                                                                 
+              1100/5500  chunks=     0  skipped=  872  rate=3490.74  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation1340           
+           .md                                                                 
+              1125/5500  chunks=     0  skipped=  875  rate=3518.16  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation1454           
+           .md                                                                 
+              1150/5500  chunks=     0  skipped=  880  rate=3546.43  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation1525           
+           .md                                                                 
+              1175/5500  chunks=     0  skipped=  883  rate=3542.11  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation1657           
+           .md                                                                 
+              1200/5500  chunks=     0  skipped=  891  rate=3557.51  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation1752           
+           2.md                                                                
+              1225/5500  chunks=     0  skipped=  903  rate=3570.22  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation325.           
+           md                                                                  
+              1250/5500  chunks=     0  skipped=  904  rate=3576.78  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation3277           
+           .md                                                                 
+              1275/5500  chunks=     0  skipped=  905  rate=3602.56  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation3319           
+           .md                                                                 
+              1300/5500  chunks=     0  skipped=  911  rate=3607.79  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation3398           
+           .md                                                                 
+              1325/5500  chunks=     0  skipped=  912  rate=3608.14  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation3477           
+           .md                                                                 
+              1350/5500  chunks=     0  skipped=  912  rate=3630.81  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation3519           
+           .md                                                                 
+              1375/5500  chunks=     0  skipped=  913  rate=3632.28  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation3588           
+           .md                                                                 
+              1400/5500  chunks=     0  skipped=  916  rate=3637.49  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation3679           
+           .md                                                                 
+              1425/5500  chunks=     0  skipped=  921  rate=3649.20  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation3751           
+           .md                                                                 
+              1450/5500  chunks=     0  skipped=  929  rate=3654.28  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation4271           
+           .md                                                                 
+              1475/5500  chunks=     0  skipped=  932  rate=3657.98  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation43.m           
+           d                                                                   
+              1500/5500  chunks=     0  skipped=  935  rate=3668.55  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation4380           
+           .md                                                                 
+              1525/5500  chunks=     0  skipped=  937  rate=3675.25  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation4406           
+           .md                                                                 
+              1550/5500  chunks=     0  skipped=  938  rate=3686.43  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation4444           
+           .md                                                                 
+              1575/5500  chunks=     0  skipped=  940  rate=3703.80  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation4515           
+           .md                                                                 
+              1600/5500  chunks=     0  skipped=  950  rate=3718.03  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation4961           
+           .md                                                                 
+              1625/5500  chunks=     0  skipped=  960  rate=3732.86  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation58.m           
+           d                                                                   
+              1650/5500  chunks=     0  skipped=  965  rate=3753.05  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation6460           
+           3.md                                                                
+              1675/5500  chunks=     0  skipped=  973  rate=3765.94  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation706.           
+           md                                                                  
+              1700/5500  chunks=     0  skipped=  977  rate=3777.62  cli.py:127
+           f/s  eta=1s                                                         
+           last=.samples/equational_theories/commentary/Equation829.           
+           md                                                                  
+              1725/5500  chunks=     0  skipped=  981  rate=3793.87  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/commentary/Equation879.           
+           md                                                                  
+[00:16:08]    1750/5500  chunks=     0  skipped=  996  rate=3792.80  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/data/dual_equations.md            
+              1775/5500  chunks=     0  skipped= 1018  rate=3797.45  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Fin           
+           iteModel.lean                                                       
+              1800/5500  chunks=     0  skipped= 1041  rate=3805.37  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/She           
+           fferAlgebra.lean                                                    
+              1825/5500  chunks=     0  skipped= 1057  rate=3781.40  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Equ           
+           ations/LawsComplete.lean                                            
+              1850/5500  chunks=     0  skipped= 1071  rate=3780.61  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation102.lean                              
+              1875/5500  chunks=     0  skipped= 1096  rate=3778.76  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation125.lean                              
+              1900/5500  chunks=     0  skipped= 1121  rate=3785.56  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation148.lean                              
+              1925/5500  chunks=     0  skipped= 1146  rate=3797.62  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation170.lean                              
+              1950/5500  chunks=     0  skipped= 1171  rate=3763.99  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation193.lean                              
+              1975/5500  chunks=     0  skipped= 1196  rate=3756.79  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation215.lean                              
+              2000/5500  chunks=     0  skipped= 1221  rate=3748.51  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation238.lean                              
+              2025/5500  chunks=     0  skipped= 1246  rate=3759.56  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation260.lean                              
+              2050/5500  chunks=     0  skipped= 1271  rate=3758.47  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation283.lean                              
+              2075/5500  chunks=     0  skipped= 1296  rate=3763.01  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation305.lean                              
+              2100/5500  chunks=     0  skipped= 1321  rate=3771.26  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation328.lean                              
+              2125/5500  chunks=     0  skipped= 1346  rate=3779.16  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation350.lean                              
+              2150/5500  chunks=     0  skipped= 1371  rate=3786.43  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation373.lean                              
+              2175/5500  chunks=     0  skipped= 1396  rate=3796.81  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation396.lean                              
+              2200/5500  chunks=     0  skipped= 1421  rate=3806.93  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation418.lean                              
+              2225/5500  chunks=     0  skipped= 1446  rate=3816.24  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation440.lean                              
+              2250/5500  chunks=     0  skipped= 1471  rate=3828.50  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation463.lean                              
+              2275/5500  chunks=     0  skipped= 1496  rate=3843.52  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation486.lean                              
+              2300/5500  chunks=     0  skipped= 1521  rate=3852.79  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation508.lean                              
+              2325/5500  chunks=     0  skipped= 1546  rate=3850.59  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation530.lean                              
+              2350/5500  chunks=     0  skipped= 1571  rate=3864.14  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation553.lean                              
+              2375/5500  chunks=     0  skipped= 1596  rate=3867.46  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation576.lean                              
+              2400/5500  chunks=     0  skipped= 1621  rate=3876.15  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation599.lean                              
+              2425/5500  chunks=     0  skipped= 1646  rate=3876.52  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation620.lean                              
+              2450/5500  chunks=     0  skipped= 1671  rate=3872.45  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation643.lean                              
+              2475/5500  chunks=     0  skipped= 1696  rate=3876.94  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation666.lean                              
+              2500/5500  chunks=     0  skipped= 1721  rate=3874.81  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation689.lean                              
+              2525/5500  chunks=     0  skipped= 1746  rate=3868.78  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation710.lean                              
+              2550/5500  chunks=     0  skipped= 1771  rate=3860.55  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation733.lean                              
+              2575/5500  chunks=     0  skipped= 1796  rate=3860.86  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation756.lean                              
+              2600/5500  chunks=     0  skipped= 1821  rate=3865.03  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation779.lean                              
+              2625/5500  chunks=     0  skipped= 1846  rate=3870.62  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation800.lean                              
+              2650/5500  chunks=     0  skipped= 1871  rate=3876.81  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation823.lean                              
+              2675/5500  chunks=     0  skipped= 1896  rate=3887.34  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation846.lean                              
+              2700/5500  chunks=     0  skipped= 1921  rate=3896.36  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation869.lean                              
+              2725/5500  chunks=     0  skipped= 1946  rate=3902.02  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation891.lean                              
+              2750/5500  chunks=     0  skipped= 1971  rate=3907.35  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation913.lean                              
+              2775/5500  chunks=     0  skipped= 1996  rate=3908.03  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/All4x4Tables/Refutation936.lean                              
+              2800/5500  chunks=     0  skipped= 2018  rate=3902.77  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/FiniteImplicationSearch/README.md                            
+              2825/5500  chunks=     0  skipped= 2043  rate=3908.48  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/FinitePoly/Refutation190.lean                                
+              2850/5500  chunks=     0  skipped= 2068  rate=3908.27  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/FinitePoly/Refutation270.lean                                
+              2875/5500  chunks=     0  skipped= 2093  rate=3912.58  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/FinitePoly/Refutation370.lean                                
+              2900/5500  chunks=     0  skipped= 2118  rate=3912.31  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/FinitePoly/Refutation474.lean                                
+              2925/5500  chunks=     0  skipped= 2143  rate=3911.93  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/FinitePoly/Refutation72.lean                                 
+              2950/5500  chunks=     0  skipped= 2168  rate=3912.38  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/Greedy/Eq1112.lean                                           
+              2975/5500  chunks=     0  skipped= 2193  rate=3879.90  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/MagmaEgg/README.md                                           
+              3000/5500  chunks=     0  skipped= 2216  rate=3876.00  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/SimpleRewrites/theorems/Rewrite_uw.lean                      
+              3025/5500  chunks=     0  skipped= 2241  rate=3877.77  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/SimpleRewrites/theorems/Rewrite_wx.lean                      
+              3050/5500  chunks=     0  skipped= 2265  rate=3842.33  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Gen           
+           erated/VampireProven/Proofs3.lean                                   
+              3075/5500  chunks=     0  skipped= 2289  rate=3806.70  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/equational_theories/Man           
+           uallyProved/Equation1648.lean                                       
+              3100/5500  chunks=     0  skipped= 2314  rate=3798.96  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/home_page/_config.yml             
+              3125/5500  chunks=     0  skipped= 2333  rate=3796.40  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/scripts/find_dual.py              
+              3150/5500  chunks=     0  skipped= 2357  rate=3797.52  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/equational_theories/scripts/lean4_checker/r           
+           un_lean4checker.sh                                                  
+              3175/5500  chunks=     0  skipped= 2377  rate=3802.06  cli.py:127
+           f/s  eta=0s  last=.samples/expdb/blueprint/src/web.tex              
+              3200/5500  chunks=     0  skipped= 2398  rate=3806.40  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/expdb/blueprint/src/macros/print.tex                  
+              3225/5500  chunks=     0  skipped= 2422  rate=3807.86  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/expdb/blueprint/src/python/helpers/region_h           
+           elper.py                                                            
+              3250/5500  chunks=     0  skipped= 2438  rate=3814.61  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/ExtremeValueProject/blueprint/src/macros/we           
+           b.tex                                                               
+              3275/5500  chunks=     0  skipped= 2463  rate=3817.05  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/ExtremeValueProject/home_page/index.md                
+              3300/5500  chunks=     0  skipped= 2484  rate=3818.15  cli.py:127
+           f/s  eta=0s  last=.samples/FLT/blueprint/src/content.tex            
+              3325/5500  chunks=     0  skipped= 2502  rate=3819.79  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/FLT/blueprint-verso/BLUEPRINT_VERSO_HINTS.m           
+           d                                                                   
+              3350/5500  chunks=     0  skipped= 2523  rate=3823.67  cli.py:127
+           f/s  eta=0s  last=.samples/FLT/FLT/Basic/Reductions.lean            
+              3375/5500  chunks=     0  skipped= 2548  rate=3814.87  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/FLT/FLT/Deformations/RepresentationTheory/E           
+           tale.lean                                                           
+              3400/5500  chunks=     0  skipped= 2572  rate=3810.12  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/FLT/FLT/HaarMeasure/HaarChar/RealComplex.le           
+           an                                                                  
+              3425/5500  chunks=     0  skipped= 2596  rate=3805.62  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/FLT/FLT/Mathlib/LinearAlgebra/TensorProduct           
+           /Algebra.lean                                                       
+              3450/5500  chunks=     0  skipped= 2620  rate=3812.26  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/FLT/FLT/Mathlib/RingTheory/DedekindDomain/F           
+           initeAdeleRing.lean                                                 
+              3475/5500  chunks=     0  skipped= 2645  rate=3815.14  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/FLT/FLT/Mathlib/Topology/Algebra/Module/Quo           
+           tient.lean                                                          
+              3500/5500  chunks=     0  skipped= 2670  rate=3813.57  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/FLT/FLT/Patching/Ultraproduct.lean                    
+              3525/5500  chunks=     0  skipped= 2691  rate=3820.90  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/flt-regular/.github/workflows/push.yml                
+              3550/5500  chunks=     0  skipped= 2711  rate=3819.69  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/flt-regular/FltRegular/NumberTheory/Cycloto           
+           mic/UnitLemmas.lean                                                 
+              3575/5500  chunks=     0  skipped= 2730  rate=3827.27  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/FLT3/blueprint/src/packages.tex                       
+              3600/5500  chunks=     0  skipped= 2749  rate=3827.33  cli.py:127
+           f/s  eta=0s  last=.samples/FLT3/scripts/mk_all.sh                   
+              3625/5500  chunks=     0  skipped= 2768  rate=3834.75  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/FormalBook/blueprint/src/chapter/chapter12.           
+           tex                                                                 
+              3650/5500  chunks=     0  skipped= 2793  rate=3836.29  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/FormalBook/blueprint/src/chapter/chapter37.           
+           tex                                                                 
+              3675/5500  chunks=     0  skipped= 2810  rate=3842.51  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/FormalBook/FormalBook/Chapter_14.lean                 
+              3700/5500  chunks=     0  skipped= 2817  rate=3843.87  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/FormalBook/FormalBook/Chapter_39.lean                 
+              3725/5500  chunks=     0  skipped= 2836  rate=3845.60  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/groupoid_model_in_lean4/.github/workflows/p           
+           ush.yml                                                             
+              3750/5500  chunks=     0  skipped= 2858  rate=3848.26  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/groupoid_model_in_lean4/attic/FibrationForM           
+           athlib/FibredCats/Fibration.lean                                    
+              3775/5500  chunks=     0  skipped= 2878  rate=3849.17  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/groupoid_model_in_lean4/blueprint/src/web.t           
+           ex                                                                  
+              3800/5500  chunks=     0  skipped= 2898  rate=3852.46  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/groupoid_model_in_lean4/HoTTLean/ForMathlib           
+           /CategoryTheory/Bicategory/Grothendieck.lean                        
+              3825/5500  chunks=     0  skipped= 2923  rate=3852.72  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/groupoid_model_in_lean4/HoTTLean/Model/Unst           
+           ructured/Hurewicz.lean                                              
+              3850/5500  chunks=     0  skipped= 2948  rate=3852.91  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/groupoid_model_in_lean4/HoTTLean/Typechecke           
+           r/ValueInversion.lean                                               
+              3875/5500  chunks=     0  skipped= 2964  rate=3857.40  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/infinity-cosmos/blueprint/src/macros/common           
+           .tex                                                                
+              3900/5500  chunks=     0  skipped= 2980  rate=3862.88  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/infinity-cosmos/InfinityCosmos/ForMathlib/C           
+           ategoryTheory/Enriched/Basic.lean                                   
+              3925/5500  chunks=     0  skipped= 2997  rate=3867.31  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-banach-tarski/blueprint/src/macros/web           
+           .tex                                                                
+              3950/5500  chunks=     0  skipped= 3017  rate=3874.93  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-bourgain/blueprint/src/chapters/stab.t           
+           ex                                                                  
+              3975/5500  chunks=     0  skipped= 3039  rate=3880.68  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-bourgain/Pseudorandom/Geometry/Project           
+           ive.lean                                                            
+              4000/5500  chunks=     0  skipped= 3056  rate=3881.85  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-iwasawa/Iwasawalib/Algebra/Module/Tors           
+           ion.lean                                                            
+              4025/5500  chunks=     0  skipped= 3081  rate=3877.25  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-iwasawa/Iwasawalib/RingTheory/Ideal/Kr           
+           ullsHeightTheorem.lean                                              
+              4050/5500  chunks=     0  skipped= 3105  rate=3876.00  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/scripts/get-cache.sh                      
+              4075/5500  chunks=     0  skipped= 3127  rate=3882.35  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/src/breen_deligne/eval_Pow_func           
+           tor_nat_trans_compatibility.lean                                    
+              4100/5500  chunks=     0  skipped= 3151  rate=3884.99  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/src/condensed/coproducts.lean             
+              4125/5500  chunks=     0  skipped= 3175  rate=3888.92  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/src/examples/pBanach.lean                 
+              4150/5500  chunks=     0  skipped= 3198  rate=3893.73  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/src/for_mathlib/commsq.lean               
+              4175/5500  chunks=     0  skipped= 3222  rate=3900.34  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/src/for_mathlib/free_abelian_ex           
+           act.lean                                                            
+              4200/5500  chunks=     0  skipped= 3247  rate=3907.03  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/src/for_mathlib/homotopy_catego           
+           ry_op.lean                                                          
+              4225/5500  chunks=     0  skipped= 3270  rate=3910.89  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/src/for_mathlib/nnreal.lean               
+              4250/5500  chunks=     0  skipped= 3295  rate=3913.78  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/src/for_mathlib/sheafification_           
+           equiv_compatibility.lean                                            
+              4275/5500  chunks=     0  skipped= 3320  rate=3917.60  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/src/for_mathlib/types.lean                
+              4300/5500  chunks=     0  skipped= 3345  rate=3917.91  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/src/for_mathlib/derived/derived           
+           _cat.lean                                                           
+              4325/5500  chunks=     0  skipped= 3370  rate=3918.70  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/src/for_mathlib/simplicial/iso.           
+           lean                                                                
+              4350/5500  chunks=     0  skipped= 3392  rate=3922.56  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/src/laurent_measures/ses.lean             
+              4375/5500  chunks=     0  skipped= 3417  rate=3926.24  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/src/Lbar/torsion_free_profinite           
+           .lean                                                               
+              4400/5500  chunks=     0  skipped= 3442  rate=3932.99  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/src/polyhedral_lattice/topology           
+           .lean                                                               
+              4425/5500  chunks=     0  skipped= 3466  rate=3934.15  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/src/pseudo_normed_group/categor           
+           y/default.lean                                                      
+              4450/5500  chunks=     0  skipped= 3490  rate=3934.91  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/lean-liquid/src/system_of_complexes/complet           
+           ion.lean                                                            
+              4475/5500  chunks=     0  skipped= 3514  rate=3936.60  cli.py:127
+           f/s  eta=0s  last=.samples/LeanAPAP/APAP/Integer.lean               
+              4500/5500  chunks=     0  skipped= 3534  rate=3942.98  cli.py:127
+           f/s  eta=0s  last=.samples/LeanAPAP/APAP/Prereqs/Mu.lean            
+              4525/5500  chunks=     0  skipped= 3557  rate=3944.23  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/LeanAPAP/blueprint/src/util.sty                       
+              4550/5500  chunks=     0  skipped= 3575  rate=3950.53  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/LeanCamCombi/blueprint/tasks.py                       
+              4575/5500  chunks=     0  skipped= 3593  rate=3955.00  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/LeanCamCombi/website/_config.yml                      
+              4600/5500  chunks=     0  skipped= 3609  rate=3957.31  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/LEANearized-RadiiPolynomial/blueprint/src/S           
+           ections.legacy/Ch2/2-1-ContractionMapping.tex                       
+              4625/5500  chunks=     0  skipped= 3634  rate=3953.89  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/LEANearized-RadiiPolynomial/Legacy/RadiiPol           
+           ynomial.lean                                                        
+              4650/5500  chunks=     0  skipped= 3658  rate=3947.10  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/LEANearized-RadiiPolynomial/RadiiPolynomial           
+           /Example77/Algebra.lean                                             
+              4675/5500  chunks=     0  skipped= 3681  rate=3944.65  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/LEANearized-RadiiPolynomial/RadiiPolynomial           
+           /Tactic/AutoPolyFDeriv.lean                                         
+              4700/5500  chunks=     0  skipped= 3701  rate=3949.36  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/pfr/blueprint/src/chapter/fibring.tex                 
+              4725/5500  chunks=     0  skipped= 3722  rate=3948.59  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/pfr/PFR/MultiTauFunctional.lean                       
+              4750/5500  chunks=     0  skipped= 3746  rate=3947.49  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/pfr/PFR/Mathlib/Algebra/Group/Action/Pointw           
+           ise/Set/Basic.lean                                                  
+              4775/5500  chunks=     0  skipped= 3767  rate=3954.55  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/pfr/PFR/Mathlib/Probability/UniformOn.lean            
+              4800/5500  chunks=     0  skipped= 3790  rate=3958.14  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/PrimeNumberTheoremAnd/blueprint/src/bluepri           
+           nt.tex                                                              
+              4825/5500  chunks=     0  skipped= 3810  rate=3952.70  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/PrimeNumberTheoremAnd/PrimeNumberTheoremAnd           
+           /StrongPNT.lean                                                     
+              4850/5500  chunks=     0  skipped= 3833  rate=3937.89  cli.py:127
+           f/s  eta=0s                                                         
+           last=.samples/PrimeNumberTheoremAnd/PrimeNumberTheoremAnd           
+           /IEANTN/PVIdentity.lean                                             
+
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
+Loading weights: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 199/199 [00:00<00:00, 6901.32it/s]
+[00:16:35]    4868/5500  chunks=   175  skipped= 3848  rate=176.58   cli.py:127
+           f/s  eta=3s                                                         
+           last=.samples/PrimeNumberTheoremAnd/PrimeNumberTheoremAnd           
+           /IEANTN/Ramanujan/Ramanujan.lean                                    
+[00:16:50]    4875/5500  chunks=   294  skipped= 3848  rate=112.47   cli.py:127
+           f/s  eta=5s                                                         
+           last=.samples/PrimeNumberTheoremAnd/PrimeNumberTheoremAnd           
+           /Mathlib/Analysis/Asymptotics/Asymptotics.lean                      
+[00:17:14]    4882/5500  chunks=   440  skipped= 3848  rate=73.33    cli.py:127
+           f/s  eta=8s                                                         
+           last=.samples/PrimeNumberTheoremAnd/PrimeNumberTheoremAnd           
+           /Mathlib/NumberTheory/Sieve/SelbergBounds.lean                      
+[00:17:37]    4885/5500  chunks=   587  skipped= 3848  rate=54.22    cli.py:127
+           f/s  eta=11s                                                        
+           last=.samples/PrimeNumberTheoremAnd/PrimeNumberTheoremAnd           
+           /Unused/Fejer_I_know_this_is_dirty_but_it_typechecks.lean           
+[00:17:54]    4900/5500  chunks=   709  skipped= 3848  rate=45.82    cli.py:127
+           f/s  eta=13s                                                        
+           last=.samples/SemicircleLaw/blueprint/src/print.tex                 
+[00:18:15]    4908/5500  chunks=   882  skipped= 3848  rate=38.43    cli.py:127
+           f/s  eta=15s                                                        
+           last=.samples/SemicircleLaw/blueprint/src/chapters/Semici           
+           rcleDistribution.tex                                                
+[00:18:37]    4920/5500  chunks=  1071  skipped= 3848  rate=32.88    cli.py:127
+           f/s  eta=17s                                                        
+           last=.samples/SemicircleLaw/SemicircleLaw/RandomMatrix/Wi           
+           gnerMatrix.lean                                                     
+[00:18:51]    4925/5500  chunks=  1209  skipped= 3848  rate=29.98    cli.py:127
+           f/s  eta=19s  last=.samples/seymour/lakefile.toml                   
+[00:19:05]    4950/5500  chunks=  1320  skipped= 3848  rate=27.79    cli.py:127
+           f/s  eta=19s                                                        
+           last=.samples/seymour/paper/bibliography.bib                        
+[00:19:07]    4975/5500  chunks=  1333  skipped= 3848  rate=27.63    cli.py:127
+           f/s  eta=19s  last=.samples/seymour/paper/src/99                    
+           acknowledgments.tex                                                 
+[00:19:32]    4993/5500  chunks=  1569  skipped= 3848  rate=24.35    cli.py:127
+           f/s  eta=20s                                                        
+           last=.samples/seymour/Seymour/Matrix/Pivoting.lean                  
+[00:19:38]    5000/5500  chunks=  1633  skipped= 3848  rate=23.66    cli.py:127
+           f/s  eta=21s                                                        
+           last=.samples/seymour/Seymour/Matroid/Duality.lean                  
+[00:20:00]    5007/5500  chunks=  1810  skipped= 3848  rate=21.54    cli.py:127
+           f/s  eta=22s                                                        
+           last=.samples/seymour/Seymour/Matroid/Sum2.lean                     
+[00:20:23]    5008/5500  chunks=  2044  skipped= 3848  rate=19.59    cli.py:127
+           f/s  eta=25s                                                        
+           last=.samples/seymour/Seymour/Matroid/Sum3.lean                     
+[00:20:29]    5025/5500  chunks=  2106  skipped= 3848  rate=19.20    cli.py:127
+           f/s  eta=24s                                                        
+           last=.samples/SpectralThm/.github/workflows/ci.yml                  
+[00:20:46]    5050/5500  chunks=  2295  skipped= 3848  rate=18.11    cli.py:127
+           f/s  eta=24s                                                        
+           last=.samples/SpectralThm/SpectralThm/WStarAlgebra/BorelF           
+           unctionalCalculus.lean                                              
+[00:21:00]    5075/5500  chunks=  2434  skipped= 3848  rate=17.34    cli.py:127
+           f/s  eta=24s                                                        
+           last=.samples/sphere-eversion/SphereEversion/InductiveCon           
+           structions.lean                                                     

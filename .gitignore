@@ -1,6 +1,13 @@
 # Local-only directories
 .samples/
 .vscode/
+.indexer/.venv/
+.indexer/chroma/
+.indexer/*.egg-info/
+.indexer/dist/
+.indexer/build/
+.indexer/__pycache__/
+.indexer/src/**/__pycache__/
 
 # Editor / OS noise
 *.swp

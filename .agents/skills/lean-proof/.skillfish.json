@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "lean-proof",
+  "owner": "leanprover",
+  "repo": "skills",
+  "path": "skills/lean-proof",
+  "branch": "main",
+  "sha": "174421224756c3ef0e993e553682cf792999a42b",
+  "source": "manual"
+}
