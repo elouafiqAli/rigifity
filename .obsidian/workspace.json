@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "satellites/o3-chord-substitution/11-draft0.3-fr-manuscrit.md",
+                "file": "monographs/o3-chord-substitution-monograph/02-monograph-part1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "11-draft0.3-fr-manuscrit"
+              "title": "02-monograph-part1"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "satellites/o3-chord-substitution/11-draft0.3-fr-manuscrit.md",
+                "file": "monographs/o3-chord-substitution-monograph/02-monograph-part1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 11-draft0.3-fr-manuscrit"
+              "title": "Backlinks for 02-monograph-part1"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "satellites/o3-chord-substitution/11-draft0.3-fr-manuscrit.md",
+                "file": "monographs/o3-chord-substitution-monograph/02-monograph-part1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 11-draft0.3-fr-manuscrit"
+              "title": "Outgoing links from 02-monograph-part1"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "satellites/o3-chord-substitution/11-draft0.3-fr-manuscrit.md",
+                "file": "monographs/o3-chord-substitution-monograph/02-monograph-part1.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 11-draft0.3-fr-manuscrit"
+              "title": "Outline of 02-monograph-part1"
             }
           }
         ]
@@ -185,6 +185,10 @@
   },
   "active": "edeaa967972df2f7",
   "lastOpenFiles": [
+    "monographs/o3-chord-substitution-monograph/05-monograph-appendices.md",
+    "monographs/o3-chord-substitution-monograph/04-monograph-part3.md",
+    "o2-methodology/04-manuscript-final.md",
+    "satellites/o3-chord-substitution/11-draft0.3-fr-manuscrit.md",
     "monographs/o3-chord-substitution-monograph/03-monograph-part2.md",
     "monographs/o3-chord-substitution-monograph/02-monograph-part1.md",
     "monographs/o3-chord-substitution-monograph/01-plan.md",
@@ -193,7 +197,6 @@
     "monographs",
     "satellites/o1-bracket-and-cphi/04-judge-s-prior-art-audit.md",
     "satellites/o3-chord-substitution/10-french-translation-spec.md",
-    "o2-methodology/04-manuscript-final.md",
     "satellites/o1-bracket-and-cphi/03-draft0.1-manuscript.md",
     "21-publication_plan.md",
     "satellites/o1-bracket-and-cphi/01-draft0.0-manuscript.md",
@@ -208,7 +211,6 @@
     "satellites/o3-chord-substitution/latex",
     "satellites/o3-chord-substitution/13-draft0.4-fr-manuscrit.md",
     "satellites/o3-chord-substitution/12-judge-fr-audit.md",
-    "satellites/o3-chord-substitution/11-draft0.3-fr-manuscrit.md",
     "satellites/o3-chord-substitution/09-draft0.3-manuscript.md",
     "satellites/o3-chord-substitution/08-judge-pi-rigor-audit.md",
     "satellites/o3-chord-substitution/07-cras-format-reconnaissance.md",
@@ -217,9 +219,7 @@
     "satellites/o1-bracket-and-cphi/00-extraction-and-context.md",
     "o2-methodology/05-submission-package.md",
     "satellites/o3-chord-substitution/04-judge-s-prior-art-audit.md",
-    "satellites/o1-bracket-and-cphi/README.md",
     "satellites/o1-bracket-and-cphi",
-    "satellites/o3-chord-substitution/03-draft0.1-manuscript.md",
     "satellites/o3-chord-substitution"
   ]
 }
