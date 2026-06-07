@@ -1,0 +1,747 @@
+%% =============================================================================
+%% manuscript.tex — Expositiones Mathematicae Short Research Note
+%% Title:    The continuous-coefficient Jensen equation
+%% Subtitle: A note on three vestigial regularity hypotheses
+%% Author:   [AUTHOR]
+%% Source:   satellites/o3-expositiones/01-manuscript.md
+%% Date:     2026-06-07
+%%
+%% Compilation:
+%%   pdflatex manuscript
+%%   bibtex   manuscript
+%%   pdflatex manuscript
+%%   pdflatex manuscript
+%%
+%% Class:    Elsevier's elsarticle class. Two modes:
+%%   * `review,12pt` for the SUBMISSION pdf (double-spaced, line-numbered, single-column)
+%%   * `preprint,12pt` for an author-preferred reading pdf (single-column, no line numbers)
+%%   * `1p,12pt`     for the typeset look (publisher-style single column)
+%%   * `5p,times`    for the typeset look (publisher-style 2-column)
+%% The current setting is `preprint` which produces a clean reading copy.
+%% For EES dispatch, switch to `review` (uncomment the corresponding line).
+%% =============================================================================
+
+% --- Submission mode (uncomment for the SUBMISSION pdf) ---
+\documentclass[review,12pt,a4paper]{elsarticle}
+
+% --- Reading mode (active by default) ---
+% \documentclass[preprint,12pt,a4paper]{elsarticle}
+
+% --- Final-typeset mode (uncomment for what the published article looks like) ---
+% \documentclass[1p,12pt,a4paper,times]{elsarticle}
+
+% ============= Packages =============
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}   % scalable Latin Modern fonts (required for microtype expansion)
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+
+% ============= Theorem environments =============
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% ============= Math shortcuts =============
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\mathbb N}
+\newcommand{\E}{\mathbb E}
+
+% ============= Front matter =============
+\journal{Expositiones Mathematicae}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{The continuous-coefficient Jensen equation:\\
+       A note on three vestigial regularity hypotheses}
+
+\author[inst1]{[AUTHOR]\corref{cor1}}
+\ead{[author@institution.country]}
+\cortext[cor1]{Corresponding author.}
+
+\affiliation[inst1]{organization={[INSTITUTION]},
+                    addressline={[ADDRESS LINE 1]},
+                    city={[CITY]},
+                    postcode={[POSTAL CODE]},
+                    country={[COUNTRY]}}
+
+\begin{abstract}
+The continuous-coefficient form of Jensen's functional equation on a real
+interval --- the equation $p\,G(u_1)+(1-p)\,G(u_2)=G(p\,u_1+(1-p)\,u_2)$
+imposed for every $u_1,u_2$ and every $p\in[0,1]$ --- has a one-line proof
+of affineness via a single substitution that pins $G$ along the chord
+through the endpoints, with no regularity hypothesis on $G$. This
+contrasts sharply with the classical theory of Cauchy's additive
+equation, where without a regularity hypothesis the Hamel-basis pathology
+supplies non-affine solutions: the Polish school of the 1920s
+(Sierpi\'nski, Steinhaus, Ostrowski) classifies the regularity hypotheses
+(continuity, measurability, boundedness on a positive-measure set) that
+recover affineness. We give the substitution explicitly, articulate
+the dictionary of three classically required regularity hypotheses that
+become vestigial under the continuous-coefficient form, and identify the
+structural mechanism: the Hamel pathology lives at irrational coefficients
+$p$, precisely where the continuous-coefficient equation forecloses on it.
+We close by isolating the recurrence pattern of the trap --- Jensen's
+inequality pushed to saturation --- and surveying three example application
+areas (expected-utility theory, Shannon entropy's axiomatic
+characterization, surrogate calibration) where the substitution is
+the natural closure of the equation.
+\end{abstract}
+
+\begin{highlights}
+\item The continuous Jensen equation $(\star)$ has a one-line proof: an endpoint substitution.
+\item Three regularity hypotheses on $G$ become vestigial under continuous coefficients.
+\item The Hamel-basis pathology of Cauchy's equation lives only at irrational $p$.
+\item Trap recurs when Jensen's inequality is saturated; absent in convex analysis.
+\item The same one-line trick proves affineness on convex sets in higher dimensions.
+\end{highlights}
+
+\begin{keyword}
+Jensen equation \sep Cauchy equation \sep Hamel basis \sep functional equation \sep affine function \sep regularity hypothesis
+\MSC[2020] 39B22 \sep 39B05
+\end{keyword}
+
+\end{frontmatter}
+
+% =============================================================================
+\section{Introduction}
+\label{sec:intro}
+
+The equation
+\begin{equation}
+p\,G(u_1)+(1-p)\,G(u_2) \;=\; G\bigl(p\,u_1+(1-p)\,u_2\bigr)
+\qquad (u_1,u_2\in I,\ p\in[0,1]),
+\tag{$\star$}\label{eq:star}
+\end{equation}
+imposed on a function $G\colon I\to\R$ defined on a real interval $I$, has
+at least three faces in classical analysis. The faces have been steadily
+conflated for over a century, and the conflation has consequences for both
+the foundational theory and for the modern applied literature where the
+equation surfaces.
+
+\subsection{Three faces of the equation}
+
+The \emph{discrete-coefficient} Jensen equation,
+\begin{equation}
+G\!\left(\tfrac{u_1+u_2}{2}\right) \;=\; \tfrac{G(u_1)+G(u_2)}{2},
+\tag{$J_2$}\label{eq:J2}
+\end{equation}
+is the $p=\tfrac12$ specialization of~\eqref{eq:star}. Setting
+$f(x):=G(x)-G(0)$, the equation~\eqref{eq:J2} is equivalent on a translate
+of $I$ to Cauchy's additive equation $f(x+y)=f(x)+f(y)$. Cauchy's equation
+inherits a full apparatus of pathological solutions: without measurability,
+monotonicity, boundedness on a set of positive Lebesgue measure, or
+another regularity hypothesis, the equation admits non-affine solutions
+constructed via a \emph{Hamel basis} --- that is, a basis of $\R$ as a
+$\Q$-vector space, whose existence requires the axiom of choice. The
+classical pathological-solution apparatus is the work of
+Hamel~\cite{Hamel1905}; the regularity hypotheses sufficient to recover
+affineness were catalogued by Cauchy~\cite{Cauchy1821},
+Darboux~\cite{Darboux1875}, Sierpi\'nski~\cite{Sierpinski1920},
+Steinhaus~\cite{Steinhaus1920}, and Ostrowski~\cite{Ostrowski1929}.
+
+The \emph{rational-coefficient} Jensen equation,
+\begin{equation}
+p\,G(u_1)+(1-p)\,G(u_2) \;=\; G\bigl(p\,u_1+(1-p)\,u_2\bigr)
+\qquad (u_1,u_2\in I,\ p\in[0,1]\cap\Q),
+\tag{$J_{\Q}$}\label{eq:JQ}
+\end{equation}
+strengthens~\eqref{eq:J2} but does not escape its pathology. Cauchy
+additivity entails $\Q$-homogeneity --- $f(qx)=qf(x)$ for every $q\in\Q$
+--- by an elementary induction on positive integers, sign reversal for
+negatives, and the inverse-of-multiplication argument for $1/n$. Combining
+additivity with $\Q$-homogeneity returns~\eqref{eq:JQ} for $f$, hence for
+$G$. So \eqref{eq:JQ}, \eqref{eq:J2}, and Cauchy's equation share the same
+solution class up to constants, and all three inherit the Hamel-basis
+pathology.
+
+The \emph{continuous-coefficient} form~\eqref{eq:star}, by contrast, is
+fundamentally different. The strengthening from $\Q$ to $\R$ in the range
+of $p$ is \emph{genuine}. As we will see, \eqref{eq:star} does not admit
+any Hamel pathology --- the pathology cannot survive at irrational $p$,
+and the continuous-coefficient equation tests $G$ at every irrational.
+This is the subject of the note.
+
+\subsection{The main result}
+
+\begin{theorem}\label{thm:main}
+Let $M>0$ and let $G\colon[0,M]\to\R$ satisfy~\eqref{eq:star} for every
+$u_1,u_2\in[0,M]$ and every $p\in[0,1]$. Then $G$ is affine on $[0,M]$ ---
+meaning $G(v)=av+b$ for some $a,b\in\R$ --- and explicitly
+\[
+G(v) \;=\; \frac{G(M)-G(0)}{M}\,v \;+\; G(0).
+\]
+No regularity hypothesis on $G$ --- continuity, measurability, monotonicity,
+boundedness --- is required.
+\end{theorem}
+
+The proof is one line: a substitution into~\eqref{eq:star} that pins
+$G(v)$ along the chord through the endpoints $(0,G(0))$ and $(M,G(M))$. We
+give it in Section~\ref{sec:proof} and use the remainder of the note to
+articulate what it means.
+
+\subsection{The historical detour and the structural moral}
+
+Theorem~\ref{thm:main} is folklore (cf.~\cite[\S2.1]{Aczel1966},
+\cite[Ch.~13]{Kuczma2009}). It is \emph{not} a new mathematical result.
+The contribution of the present note is in three parts: the explicit
+dictionary (Section~\ref{sec:dictionary}) of three regularity hypotheses
+on $G$ that are required to force affineness for~\eqref{eq:J2} but become
+\emph{vestigial} under~\eqref{eq:star}, together with the structural
+mechanism (the Hamel pathology lives at irrational $p$, exactly where
+\eqref{eq:star}'s continuous coefficient closes the door); the
+strict-minimum hypothesis (\S\ref{ssec:weak}) --- the equation
+\eqref{eq:star} at a single chord configuration already suffices; and the
+recurrence pattern (Section~\ref{sec:recurrence}) of the trap, with three
+example application areas (expected-utility theory, Shannon entropy
+axiomatic characterization, surrogate calibration on the resolution axis)
+where Jensen's inequality is saturated and the one-line substitution of
+Section~\ref{sec:proof} is the natural closure.
+
+The 80-year detour through Hamel and the Polish school answered a
+perfectly natural question --- \emph{what regularity hypothesis suffices
+for \eqref{eq:J2} $\Rightarrow$ affine?} --- but a \emph{different}
+question from the one that matters for many modern applications. The
+applied derivation does not produce \eqref{eq:J2} or \eqref{eq:JQ}; it
+produces \eqref{eq:star} as a saturated identity, and the one-line
+substitution of Section~\ref{sec:proof} is the right closure tool. The
+dictionary of Section~\ref{sec:dictionary} is the explicit articulation
+of which classical regularity hypotheses become vestigial in this
+transition.
+
+\paragraph{Terminology.} Throughout the note we refer to the substitution
+$u_1 = M$, $u_2 = 0$, $p = v/M$ in~\eqref{eq:star} --- by which $G$ is
+pinned along the chord through the endpoints $(0, G(0))$ and $(M, G(M))$
+--- as the \emph{chord substitution}. The substitution itself is standard
+folklore in the functional-equations literature
+(cf.~\cite[\S2.1]{Aczel1966}, \cite[Ch.~13]{Kuczma2009}); the descriptive
+label is our convenience, adopted for brevity in repeated reference rather
+than as a claim of established terminology.
+
+% =============================================================================
+\section{The result and its proof}
+\label{sec:proof}
+
+We treat Theorem~\ref{thm:main} in full.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Fix $v\in[0,M]$. Choose the substitution
+\[
+u_1 := M, \qquad u_2 := 0, \qquad p := \frac{v}{M}.
+\]
+The constraints of~\eqref{eq:star} are satisfied: $u_1=M\in[0,M]$,
+$u_2=0\in[0,M]$, and $p=v/M\in[0,1]$ since $v\in[0,M]$.
+
+Substituting into~\eqref{eq:star},
+\[
+\frac{v}{M}\,G(M) + \left(1-\frac{v}{M}\right)G(0)
+\;=\; G\!\left(\frac{v}{M}\cdot M + \left(1-\frac{v}{M}\right)\cdot 0\right)
+\;=\; G(v).
+\]
+Rearranging gives the explicit affine formula
+$G(v)=G(0)+(G(M)-G(0))\,v/M$.
+\end{proof}
+
+The chord substitution pins $G(v)$ along the straight chord from
+$(0,G(0))$ to $(M,G(M))$ for every $v\in[0,M]$. Since this determines
+$G(v)$ at every $v$, the function $G$ is fully determined by its values at
+the two endpoints --- it is exactly the affine function joining them.
+
+\begin{corollary}\label{cor:regularity}
+Under the hypotheses of Theorem~\ref{thm:main}, $G$ is in particular
+continuous, monotone, locally Lipschitz, absolutely continuous, and
+Lebesgue measurable on $[0,M]$.
+\end{corollary}
+
+\begin{proof}
+Affine functions on bounded intervals have all of these properties: an
+affine function $G(v)=av+b$ is differentiable with continuous derivative
+$G'(v)=a$, hence continuous; non-decreasing if $a\ge0$ and non-increasing
+if $a\le0$; Lipschitz with constant $|a|$; absolutely continuous; and
+Borel-measurable, hence Lebesgue-measurable.
+\end{proof}
+
+The order of inference matters and is worth stating explicitly. Under
+\eqref{eq:star}, the regularity properties of $G$ are the
+\emph{conclusion}, not the hypothesis. Each of the regularity hypotheses
+one might be tempted to assume --- continuity, monotonicity, boundedness,
+measurability --- is automatically satisfied by any solution
+of~\eqref{eq:star}. The continuous-coefficient equation supplies its own
+regularity from within; no external regularity hypothesis is needed.
+
+This is what makes the continuous-coefficient case structurally different
+from the discrete-coefficient case~\eqref{eq:J2}, where some regularity
+hypothesis \emph{is} required to rule out the Hamel pathology. We now
+examine the difference in detail.
+
+% =============================================================================
+\section{The dictionary of vestigial regularity hypotheses}
+\label{sec:dictionary}
+
+\subsection{Six hypotheses and their fates}
+
+We place side-by-side the discrete-coefficient equation~\eqref{eq:J2} and
+the continuous-coefficient equation~\eqref{eq:star}, and ask which
+regularity hypotheses on $G$ are \emph{required} to force affineness for
+each. The first column of Table~\ref{tab:dictionary} names the hypothesis
+and gives a one-sentence reminder; the second column records the
+requirement for~\eqref{eq:J2} with the standard historical attribution;
+the third column records what becomes of the requirement
+under~\eqref{eq:star}.
+
+\begin{table}[ht]
+\renewcommand{\arraystretch}{1.35}
+\centering
+\begin{tabularx}{\textwidth}{@{} X | X | X @{}}
+\toprule
+\textbf{Hypothesis on $G$ (definition)} &
+\textbf{Required for \eqref{eq:J2}$\Rightarrow$ affine?} &
+\textbf{Required for \eqref{eq:star}$\Rightarrow$ affine?}\\
+\midrule
+\textbf{Continuity on $I$}: $G$ is continuous at every $v\in I$.
+& Yes, suffices (Cauchy~\cite{Cauchy1821}).
+& \textbf{No} --- continuity is the \emph{conclusion} (Cor.~\ref{cor:regularity}).\\
+\midrule
+\textbf{Measurability on $I$}: $G$ is Lebesgue- or Borel-measurable.
+& Yes, suffices (Sierpi\'nski~\cite{Sierpinski1920}).
+& \textbf{No} --- same.\\
+\midrule
+\textbf{Monotonicity on $I$}: $G$ is non-decreasing or non-increasing.
+& Yes, suffices (Darboux~\cite{Darboux1875}).
+& \textbf{No} --- same.\\
+\midrule
+\textbf{Boundedness on a set of positive measure}: there exists
+Lebesgue-measurable $E\subseteq I$ with $|E|>0$ on which $G$ is bounded.
+& Yes, suffices (Steinhaus~\cite{Steinhaus1920}; cf.~Sierpi\'nski~\cite{Sierpinski1920}).
+& \textbf{No} --- same.\\
+\midrule
+\textbf{Boundedness on $I$}: $G$ is bounded on $I$.
+& Yes, suffices (Steinhaus~\cite{Steinhaus1920}; Ostrowski~\cite{Ostrowski1929}).
+& \textbf{No} --- same.\\
+\midrule
+\textbf{None}: no regularity hypothesis at all.
+& \textbf{Insufficient} --- Hamel-basis pathology (Hamel~\cite{Hamel1905}).
+& \textbf{Sufficient} --- Theorem~\ref{thm:main}.\\
+\bottomrule
+\end{tabularx}
+\caption{Regularity hypotheses on $G$. Column~2 records which hypotheses
+are classically required to force affineness for the discrete-coefficient
+equation~\eqref{eq:J2}. Column~3 records what they become under the
+continuous-coefficient equation~\eqref{eq:star}.}
+\label{tab:dictionary}
+\end{table}
+
+The bottom row is the point of the table. \textbf{No regularity hypothesis}
+is enough for the discrete-coefficient equation~\eqref{eq:J2}: there exists
+a non-affine, non-measurable, unbounded, additive function on $\R$ --- the
+classical Hamel-basis pathology of Hamel~\cite{Hamel1905} --- that
+supplies a non-affine solution of~\eqref{eq:J2}. Conversely, \textbf{no
+regularity hypothesis} is needed for the continuous-coefficient
+equation~\eqref{eq:star}: Theorem~\ref{thm:main}'s chord substitution
+closes the proof at the level of the bare functional equation.
+
+The five non-bottom rows tell a complementary story. For~\eqref{eq:J2},
+\emph{some} hypothesis from these five is required; otherwise the Hamel
+pathology survives. For~\eqref{eq:star}, \emph{none} of these is required
+--- and yet each is automatically satisfied by any solution
+(Cor.~\ref{cor:regularity}). The hypothesis is, in the dictionary's
+terminology, \emph{vestigial}: classically required for~\eqref{eq:J2},
+classically expected for~\eqref{eq:star}, but in fact unnecessary
+for~\eqref{eq:star}.
+
+\subsection{The structural mechanism}
+\label{ssec:mechanism}
+
+We now examine \emph{why} the Hamel pathology fails to apply
+to~\eqref{eq:star}. The mechanism is direct and illuminating.
+
+A Hamel-basis pathological solution $G$ of Cauchy's equation on $\R$ is
+\textbf{$\Q$-linear}: by construction (or by induction from additivity),
+$G(0)=0$ and $G(qx)=q\,G(x)$ for every $q\in\Q$ and every $x\in\R$. By
+design, $G$ is \emph{not} $\R$-linear --- there exists some irrational
+$r\in\R$ and some $x\in\R$ such that $G(rx)\ne r\,G(x)$.
+
+The chord identity in~\eqref{eq:star} at the configuration $u_1=M$,
+$u_2=0$ reads
+\begin{equation}
+p\,G(M) + (1-p)\,G(0) \;=\; G(p\,M).
+\tag{$\star_0$}\label{eq:star0}
+\end{equation}
+For a Hamel-pathological $G$ (so $G(0)=0$), \eqref{eq:star0} becomes the
+assertion
+\[
+p\,G(M) \;=\; G(p\,M).
+\]
+This is exactly the $\R$-linearity assertion for $G$ at the specific pair
+$(M,p)$. By $\Q$-linearity of $G$, the assertion holds for every $p\in\Q$.
+By the failure of $\R$-linearity, it \emph{fails} at some irrational $p$.
+So the Hamel-pathological $G$ satisfies~\eqref{eq:JQ} (every rational
+coefficient is OK) but violates~\eqref{eq:star} at every irrational $p$
+where the $\R$-linearity defect appears.
+
+The point is structural and worth stating in one sentence.
+
+\begin{quote}
+\textbf{The Hamel pathology lives at irrational $p$; the continuous-coefficient equation~\eqref{eq:star} forecloses on it there.}
+\end{quote}
+
+The 80-year detour through Hamel and the Polish school --- Cauchy 1821 to
+Ostrowski 1929 --- was an investigation of what regularity hypothesis can
+substitute for the \emph{unavailable} constraint at irrational $p$, when
+only the rational-coefficient version of the equation is in play. With the
+continuous-coefficient version, the irrational-coefficient constraint is
+\emph{available}, and the entire dictionary collapses.
+
+% =============================================================================
+\section{Variants and limits}
+\label{sec:variants}
+
+\subsection{The strict-minimum hypothesis}
+\label{ssec:weak}
+
+The proof of Theorem~\ref{thm:main} uses~\eqref{eq:star} at exactly one
+configuration: $u_1=M$, $u_2=0$, with $p\in[0,1]$ ranging freely. The full
+force of~\eqref{eq:star} --- for every pair $(u_1,u_2)$ --- is not
+consumed. We record the strict minimum:
+
+\begin{theorem}\label{thm:weak}
+Let $M>0$ and let $G\colon[0,M]\to\R$ satisfy
+\[
+p\,G(M) + (1-p)\,G(0) \;=\; G(p\,M) \qquad \text{for all } p\in[0,1].
+\]
+Then $G(v)=G(0)+(G(M)-G(0))\,v/M$ on $[0,M]$.
+\end{theorem}
+
+The proof is verbatim that of Theorem~\ref{thm:main}: set $p=v/M$.
+Theorem~\ref{thm:weak} is \emph{in principle} weaker than
+Theorem~\ref{thm:main} --- the hypothesis \eqref{eq:star0} does not a
+priori imply the full~\eqref{eq:star}, and as standalone constraints on
+$G$ they are inequivalent. Under the conclusion (affineness), both hold;
+in practice, an author who derives~\eqref{eq:star} from a richer setup
+(e.g., from a Jensen-equality identity in a Bayes-risk computation, see
+Section~\ref{sec:recurrence}) typically obtains~\eqref{eq:star} in full
+force. The narrower Theorem~\ref{thm:weak} is the right reference for an
+author who wants to know how much of the equation the proof actually
+consumes.
+
+\subsection{Convex domains in higher dimensions}
+\label{ssec:higher}
+
+The chord substitution extends to any convex subset of a real vector space.
+
+\begin{theorem}\label{thm:higher}
+Let $V$ be a real vector space, let $C\subseteq V$ be a convex set, and
+let $G\colon C\to\R$ satisfy
+\[
+p\,G(x_1)+(1-p)\,G(x_2) \;=\; G\bigl(p\,x_1+(1-p)\,x_2\bigr)
+\qquad (x_1,x_2\in C,\ p\in[0,1]).
+\]
+Then there is a linear functional $a\colon\mathrm{span}(C-C)\to\R$ and a
+constant $b\in\R$ such that $G(x)=a(x-x_0)+b$ on $C$ for any fixed
+$x_0\in C$. Equivalently, $G$ is affine on $C$.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Apply Theorem~\ref{thm:main} along every chord in $C$: for each direction
+$v$ with $x_0+v\in C$, the map $\lambda\mapsto G(x_0+\lambda v)$ is affine
+in the segment parameter $\lambda\in[0,1]$. Hence the increment
+$G(x_0+v)-G(x_0)$ depends linearly on $v$ in each direction; an inductive
+argument on the dimension of the affine span of the points involved
+promotes this directional linearity to a global linear functional $a$ on
+$\mathrm{span}(C-C)$. The bookkeeping is standard and is given
+in~\cite[Ch.~13]{AczelDhombres1989}.
+\end{proof}
+
+The structurally essential step is the one-dimensional chord substitution
+of Theorem~\ref{thm:main}. The higher-dimensional lifting is bookkeeping
+that transports the one-dimensional affineness into a multidimensional
+affineness on the convex set.
+
+\subsection{The rational-coefficient version $(J_{\Q})$ does retain the pathology}
+\label{ssec:JQ-pathology}
+
+To sharpen Theorem~\ref{thm:main}'s ``no regularity hypothesis needed'',
+we exhibit explicitly that the strengthening from rational to continuous
+coefficients in~\eqref{eq:star} is doing real work: the rational-coefficient
+version~\eqref{eq:JQ} retains the Hamel pathology.
+
+\begin{proposition}[Folklore]\label{prop:JQ-pathology}
+There exists $G\colon[0,1]\to\R$ satisfying~\eqref{eq:JQ}
+(hence~\eqref{eq:J2}) on $[0,1]$ that is not affine.
+\end{proposition}
+
+\begin{proof}[Construction]
+Choose a Hamel basis $H$ of $\R$ over $\Q$ containing $1$. Such a basis
+exists by Zorn's lemma applied to the partially ordered set of
+$\Q$-linearly independent subsets of $\R$. Define a $\Q$-linear map
+$\ell\colon\R\to\R$ by setting $\ell(1)=0$, picking an irrational $h\in
+H\cap(0,1)$ (which exists since $H$ has cardinality $\mathfrak c$ and the
+rationals plus $\{1\}$ are at most countable, so $H$ must contain
+irrationals throughout $\R$ --- in particular in $(0,1)$), setting
+$\ell(h)=1$, and extending arbitrarily on the remaining basis elements.
+
+By construction, $\ell$ is $\Q$-linear: $\ell(x+y)=\ell(x)+\ell(y)$ for
+all $x,y\in\R$ (so $\ell$ satisfies Cauchy's equation) and
+$\ell(qx)=q\ell(x)$ for all $q\in\Q$ and $x\in\R$ ($\Q$-homogeneity). But
+$\ell$ is \emph{not} $\R$-linear: $\ell(1)=0$ while $\ell(h)=1$, so the
+values of $\ell$ on the $\Q$-span of $\{1\}$ (namely $\Q$, on which $\ell$
+vanishes identically) and on the $\Q$-span of $\{h\}$ (where $\ell$ is
+nonzero) are incompatible with any $\R$-linear functional on $\R$.
+
+Set $G:=\ell|_{[0,1]}$. Then $G$ satisfies~\eqref{eq:JQ} on $[0,1]$
+because $\Q$-rational convex combinations of points of $[0,1]$ remain in
+$[0,1]$ and $\ell$ respects $\Q$-linear combinations on all of $\R$.
+
+Explicit witness that $G$ is not affine: $G(h)=\ell(h)=1\ne 0$, while
+$G(q)=\ell(q)=q\,\ell(1)=0$ for every rational $q\in[0,1]$. Any affine map
+$A\colon[0,1]\to\R$ agreeing with $G$ on $\Q\cap[0,1]$ would satisfy
+$A(0)=0$ and $A(q)=0$ for all rational $q$ --- forcing $A\equiv 0$,
+contradicting $G(h)=1$. So $G$ is not affine.
+\end{proof}
+
+Proposition~\ref{prop:JQ-pathology} affirms the dictionary: \eqref{eq:JQ}
+on $[0,1]$ admits non-affine solutions; only the strengthening to the
+\emph{continuous}-coefficient~\eqref{eq:star} retires the
+regularity-hypothesis requirement.
+
+% =============================================================================
+\section{Where the trap recurs: Jensen saturation as a structural pattern}
+\label{sec:recurrence}
+
+The chord substitution of Section~\ref{sec:proof} is, as noted, folkloric
+--- \cite[\S2.1]{Aczel1966} and \cite[Ch.~13]{Kuczma2009} articulate the
+underlying observation, and the result is standard in the
+functional-equations community. Why, then, does this note exist?
+
+Because the \emph{vestigial regularity hypotheses} --- continuity,
+measurability, boundedness --- keep reappearing in applied derivations
+of~\eqref{eq:star} outside the functional-equations community. The trap
+is not a one-off oversight; it has a structural source. This section
+identifies the source and surveys three example application areas where
+it surfaces.
+
+\subsection{The structural source: saturated Jensen}
+\label{ssec:saturated-jensen}
+
+The recurrence is predictable. Whenever a derivation in any field arrives
+at an identity of the form
+\begin{equation}
+\E[g(\xi)] \;=\; g\bigl(\E[\xi]\bigr)
+\qquad (\xi \text{ a random variable on } I,\ g\colon I\to\R),
+\tag{$\dagger$}\label{eq:dagger}
+\end{equation}
+\emph{for a class of random variables $\xi$ wide enough that the marginal
+$\E[\xi]$ can be any point of $I$ and the support of $\xi$ can be any
+two-point subset of $I$ with any pair of masses $(p,1-p)$ with $p\in[0,1]$},
+the identity is exactly~\eqref{eq:star} with $g=G$ and $\xi$ supported on
+$\{u_1,u_2\}$ with respective masses $\{p,1-p\}$. Such an identity arises
+whenever \textbf{Jensen's inequality is pushed to saturation} --- that is,
+whenever equality is required in $\E[g(\xi)]\le g(\E[\xi])$ for concave
+$g$ across the full two-point family.
+
+Jensen's inequality is the central tool in dozens of fields: convex
+analysis, information theory, statistical decision theory, mathematical
+economics, mathematical physics. In \emph{most} of these fields, Jensen is
+used as an inequality with slack --- the slack is explicitly tracked
+(in convex analysis via biconjugates and Fenchel duality; in calibration
+theory via the $\psi$-transform construction of Bartlett, Jordan, and
+McAuliffe~\cite{BJM2006}; in entropy via convexity arguments). Such
+derivations never produce~\eqref{eq:star} as a saturated identity.
+
+In \emph{some} fields, however, a derivation produces~\eqref{eq:dagger} as
+a saturated identity --- the slack is forced to zero by a structural
+property of the setup. At that moment~\eqref{eq:star} appears, and the
+chord substitution is the natural closure. An author unfamiliar with the
+chord substitution will reach for the classical Cauchy-Hamel toolkit and
+find that the regularity hypothesis is unnecessary only after the fact.
+
+\subsection{Application: expected-utility representation theorems}
+\label{ssec:utility}
+
+The first application area is \textbf{expected-utility theory} in the
+von Neumann--Morgenstern tradition~\cite{vNM1944}. The 1944 axiomatization
+of preferences over lotteries, sharpened by Herstein and Milnor in
+1953~\cite{HersteinMilnor1953}, derives a utility functional $U$ on a
+space of lotteries $\mathcal L$ that is \emph{linear in probability}:
+\[
+U\bigl(p\,L_1+(1-p)\,L_2\bigr) \;=\; p\,U(L_1)+(1-p)\,U(L_2)
+\qquad (L_1,L_2\in\mathcal L,\ p\in[0,1]).
+\]
+This is exactly~\eqref{eq:star} with the abstract lotteries $L_1,L_2$ as
+the points $u_1,u_2$ and $U$ as the function $G$. The classical closure of
+the linearity step in the Herstein--Milnor proof uses the
+\emph{Archimedean axiom}: for any three lotteries $L_1\succ L_2\succ L_3$,
+there exist $p,q\in(0,1)$ such that
+$pL_1+(1-p)L_3\succ L_2\succ qL_1+(1-q)L_3$. The Archimedean axiom forces
+the continuity-in-probability of preferences, which in turn forces
+continuity-in-probability of $U$.
+
+But the chord substitution of Theorem~\ref{thm:main} \emph{also} closes
+the linearity step, without requiring any continuity hypothesis. Both
+routes work; the chord substitution is the algebraic alternative to the
+Archimedean axiom. Even where the Archimedean axiom is invoked (and
+rightly so, as it carries other preference-theoretic content), the
+closure of the linearity equation itself does not require it.
+
+\subsection{Application: Shannon entropy's axiomatic characterization}
+\label{ssec:entropy}
+
+The second application area is the \textbf{axiomatic characterization of
+Shannon entropy} in the tradition of Khinchin~\cite{Khinchin1957} and
+Faddeev~\cite{Faddeev1957}. Shannon's 1948 paper introduced the entropy
+function $H(p_1,\ldots,p_n)=-\sum_i p_i\log p_i$; the question of which
+conditions on a continuous function on $\bigcup_n\Delta^{n-1}$ uniquely
+determine $H$ up to a multiplicative constant was answered by Khinchin and
+Faddeev. Their axioms are: continuity in the arguments; maximum at the
+uniform distribution; and a \emph{recursivity axiom} (Khinchin--Faddeev)
+that relates the entropy of a joint distribution to a marginal entropy
+plus a conditional.
+
+In the modern formalization (\cite[Ch.~5]{Aczel1966},
+\cite[\S22]{AczelDhombres1989}), the recursivity axiom reduces, in
+intermediate steps, to a system of functional equations on auxiliary
+functions $g,h$ on $[0,1]$. Several of these intermediate equations are
+of \eqref{eq:star}-form for the auxiliary functions, and the closure step
+in the modern axiomatic treatment uses continuity (the first Khinchin
+axiom). The chord substitution of Theorem~\ref{thm:main} is the
+alternative closure that does not require continuity-as-hypothesis.
+
+\subsection{Application: surrogate calibration on the resolution axis}
+\label{ssec:calibration}
+
+The third application area is \textbf{surrogate calibration} in modern
+statistical decision theory. The foundational tradition is Bartlett,
+Jordan, and McAuliffe~\cite{BJM2006} (binary classification) and its
+multiclass extensions: Tewari and Bartlett~\cite{TewariBartlett2007},
+Steinwart~\cite{Steinwart2007}, Reid and
+Williamson~\cite{ReidWilliamson2010,ReidWilliamson2011}. These works study
+the question of how minimizing a convex surrogate loss approximately
+minimizes the 0--1 loss in classification.
+
+The standard derivation route in the surrogate-calibration literature uses
+\emph{convex analysis} --- biconjugates, supporting hyperplanes, Fenchel
+duality, the $\psi$-transform of Bartlett--Jordan--McAuliffe --- and
+consequently tracks Jensen's inequality as an \emph{inequality} with
+explicit slack. The slack is the calibration function $\psi$, and the
+construction never produces~\eqref{eq:star} as a saturated identity.
+
+In a recent manuscript of the author~\cite{El2} on the achievable error
+floor of partition-based classifiers, the resolution-axis transposition
+framing of surrogate calibration produces~\eqref{eq:star} directly: a
+two-cell partition computation forces~\eqref{eq:star} on the function $G$
+that expresses the partition Bayes risk in terms of an aggregated concave
+score, with the cell mass $p$ ranging freely over $[0,1]$ on an atomless
+underlying probability space. In the Lean~4 formalization of~\cite{El2},
+the corresponding lemma was initially declared with a boundedness
+hypothesis on $G$ in deference to the Cauchy-Hamel literature; the proof
+body then exhibited that the hypothesis was unused, by the chord
+substitution of Theorem~\ref{thm:main}.
+
+The lesson generalizes beyond~\cite{El2}. Any derivation in any field that
+saturates Jensen across a wide class of two-point distributions should be
+expected to produce~\eqref{eq:star} similarly. At that moment,
+Theorem~\ref{thm:main} closes the regularity-hypothesis question on the
+spot.
+
+\subsection{An invitation}
+\label{ssec:invitation}
+
+The three application areas of \S\S\ref{ssec:utility}--\ref{ssec:calibration}
+are not exhaustive. We invite readers who have encountered~\eqref{eq:star}
+in their own work (in mathematical economics, in information theory, in
+statistical decision theory, in physics, or elsewhere) and who have
+invoked an unnecessary Cauchy-Hamel regularity hypothesis to extend the
+catalog. The structural pattern of saturated Jensen --- and the chord
+substitution as its natural closure --- is, we believe, recurrent enough
+to merit explicit articulation.
+
+% =============================================================================
+\section{Concluding remarks}
+\label{sec:conclusion}
+
+Theorem~\ref{thm:main} is, mathematically, one line. The dictionary of
+Section~\ref{sec:dictionary} is six rows of a table. The structural
+argument of \S\ref{ssec:mechanism} is one sentence: \emph{the Hamel
+pathology lives at irrational $p$; the continuous-coefficient
+equation~\eqref{eq:star} forecloses on it there.} Why does this material
+deserve a Short Research Note?
+
+Two reasons. First, the 80-year detour through Hamel and the Polish school
+is a \emph{foundational} result of classical analysis --- and the
+dictionary of Section~\ref{sec:dictionary} articulates a precise sense in
+which the detour answered an adjacent question: not ``what is the minimum
+hypothesis for~\eqref{eq:star} $\Rightarrow$ affine?''
+(Theorem~\ref{thm:main}'s answer: nothing), but ``what is the minimum
+hypothesis for~\eqref{eq:J2} $\Rightarrow$ affine?'' (Polish school's
+answer: any of a dictionary of tameness conditions). Both questions are
+interesting; their answers are different.
+
+Second, the recurrence pattern of Section~\ref{sec:recurrence} is, to our
+knowledge, not articulated explicitly elsewhere in the functional-equations
+literature. The pattern --- saturated Jensen produces~\eqref{eq:star},
+and the chord substitution closes it --- is recognizable in a number of
+modern application contexts (utility theory, entropy, calibration), and
+the explicit articulation may save other authors from carrying vestigial
+regularity hypotheses in their own work.
+
+The chord substitution itself is the kind of one-line proof that, once
+seen, is hard to unsee --- but that nonetheless takes some scaffolding to
+make visible. The present note is the scaffolding.
+
+% =============================================================================
+\section*{Funding}
+
+This research did not receive any specific grant from funding agencies in
+the public, commercial, or not-for-profit sectors.
+
+\section*{Acknowledgements}
+
+The chord-substitution observation surfaced in the Lean~4 formalization
+track of the author's main paper~\cite{El2}, during a development phase
+whose discipline is captured in three open project skills documented in
+the source code repository associated with~\cite{El2}. The author thanks
+the internal adversarial-review process described in the same source for
+surfacing the over-engineered boundedness hypothesis whose retirement
+motivated the present note.
+
+\section*{Declaration of competing interests}
+
+The author declares that they have no known competing financial interests
+or personal relationships that could have appeared to influence the work
+reported in this paper. The corresponding competing-interests declaration
+is provided in a separate file accompanying this submission.
+
+\section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
+
+During the preparation of this work the author used Anthropic's Claude
+Opus (accessed via GitHub Copilot) in two specific capacities:
+(i)~\emph{adversarial review} --- the multi-round audit cycle documented
+in the source repository accompanying this work, in which the model was
+prompted in hostile-referee mode to surface defects in the prose, the
+argument structure, and the prior-art positioning of each draft;
+(ii)~\emph{paper-formatting tasks} --- LaTeX mechanics (Elsevier
+\texttt{elsarticle} class configuration, theorem-environment setup, table
+layout), BibTeX entry construction, cross-reference checking, and
+Markdown-to-LaTeX conversion. The mathematical content --- including all
+theorems, proofs, examples, the structural argument of
+Section~\ref{sec:recurrence}, and the dictionary of regularity hypotheses
+in Section~\ref{sec:dictionary} --- was conceived, verified, and refined
+by the author. The author has reviewed and edited all content as needed
+and takes full responsibility for the published article.
+
+% =============================================================================
+% Bibliography (Elsevier numerical style, references in citation order)
+\bibliographystyle{elsarticle-num}
+\bibliography{refs}
+
+\end{document}

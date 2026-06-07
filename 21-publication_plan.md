@@ -176,11 +176,20 @@ Each opportunity is tagged with **tier** (1 = high-priority ontology, 2 = useful
 **Executor.** Executor T.  **Judge.** Judge π.
 **Forward-pointer.** "the chord substitution of [Author, CRAS 2026] closes the Jensen-equality in one line, replacing the Hamel-basis worry."
 
-**Status (2026-06-06).** Two-cycle audit + LaTeX harness package landed in [`satellites/o3-chord-substitution/`](satellites/o3-chord-substitution/):
-- *Initial cycle (Rounds 0–5):* extraction → Draft 0.0 → Judge π audit → Draft 0.1 → Judge S prior-art audit → Draft 0.2 Markdown manuscript.
-- *CRAS-targeting cycle (Phases A–J):* multi-phase strategy memo with commitology + IO-1/IO-2/IO-3 intermediate objectives → CRAS format reconnaissance (9 hard gates) → Judge π rigor + wide-mathematician audit → English Draft 0.3 → French translation spec → French Draft 0.3 → Judge fr linguistic audit → French Draft 0.4 → LaTeX harness (en + fr + BibTeX + Windows/POSIX build scripts + README, with `crmath` and amsart-fallback configurations) → submission checklist + cover-letter draft + arXiv-first plan + fallback plan.
+**Status (2026-06-07).** Two-lane preparation: O3 has both a CRAS submission and an Expositiones Mathematicae fallback fully prepared.
 
-Gates pending operational closure before OJS dispatch: G-1 (author institutional affiliation), G-6 (install Centre Mersenne `crmath` class or ship amsart fallback), `[AUTHOR]` / `[INSTITUTION]` placeholders. See [`satellites/o3-chord-substitution/README.md`](satellites/o3-chord-substitution/README.md) and [`satellites/o3-chord-substitution/99-submission-checklist.md`](satellites/o3-chord-substitution/99-submission-checklist.md) for the full chain and the operational pre-flight.
+- *CRAS lane* — [`satellites/o3-chord-substitution/`](satellites/o3-chord-substitution/) — two-cycle audit + LaTeX harness package:
+  - *Initial cycle (Rounds 0–5):* extraction → Draft 0.0 → Judge π audit → Draft 0.1 → Judge S prior-art audit → Draft 0.2 Markdown manuscript.
+  - *CRAS-targeting cycle (Phases A–J):* multi-phase strategy memo with commitology + IO-1/IO-2/IO-3 intermediate objectives → CRAS format reconnaissance (9 hard gates) → Judge π rigor + wide-mathematician audit → English Draft 0.3 → French translation spec → French Draft 0.3 → Judge fr linguistic audit → French Draft 0.4 → LaTeX harness (en + fr + BibTeX + Windows/POSIX build scripts + README, with `crmath` and amsart-fallback configurations) → submission checklist + cover-letter draft + arXiv-first plan + fallback plan.
+- *Expositiones lane* — [`satellites/o3-expositiones/`](satellites/o3-expositiones/) — parallel-prepared Elsevier Short Research Note (~9 typeset pages):
+  - Strategy memo with 11 Elsevier-specific hard gates (G-AI declaration mandatory, G-COI declaration as separate `.docx`, G-FUND, G-HIGHLIGHTS, G-INCLUSIVE, etc.).
+  - Reframed manuscript: §5 expanded from a single calibration-theory recurrence to a *structural pattern of saturated Jensen* with three example application areas treated symmetrically (utility theory, Shannon entropy axiomatic characterization, surrogate calibration); concluding remarks section added; bibliography re-ordered to Elsevier citation-order numerical style.
+  - LaTeX harness uses Elsevier's `elsarticle` class with three build modes (reading / review-line-numbered / final-typeset preview); page-count gate warns if exceeding the 10-page Short Research Note limit.
+  - Submission checklist + cover-letter draft + AI declaration draft + COI declaration template + fallback plan.
+
+Recommended dispatch order: CRAS first (faster median review, Diamond Open Access, no fees), Expositiones as fallback if CRAS declines. The two lanes are substantively different framings (5-page citation point vs. 9-page self-contained pedagogical note), not the same paper; both are fully prepared and ready to dispatch.
+
+Gates pending operational closure (common to both lanes): `[AUTHOR]` / `[INSTITUTION]` placeholders, arXiv-first deposit (optional). Lane-specific gates: CRAS — G-1 (affiliation), G-6 (`crmath` class install). Expositiones — G-AI declaration text decision, G-COI Word file creation, G-ETHICS-1 (no concurrent submission). See [`satellites/o3-chord-substitution/99-submission-checklist.md`](satellites/o3-chord-substitution/99-submission-checklist.md) (CRAS) and [`satellites/o3-expositiones/99-submission-checklist.md`](satellites/o3-expositiones/99-submission-checklist.md) (Expositiones) for the full pre-flight.
 
 #### O4 — *"Single-cell pinning: the surprisingly short proof of tent uniqueness"*  *(C3)*
 

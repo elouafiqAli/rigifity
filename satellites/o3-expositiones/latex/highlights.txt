@@ -1,0 +1,5 @@
+The continuous Jensen equation has a one-line proof: an endpoint substitution.
+Three regularity hypotheses on G become vestigial under continuous coefficients.
+The Hamel-basis pathology of Cauchy's equation lives only at irrational p.
+Trap recurs when Jensen's inequality is saturated; absent in convex analysis.
+The same one-line trick proves affineness on convex sets in higher dimensions.
