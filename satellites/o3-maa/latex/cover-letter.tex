@@ -1,6 +1,6 @@
 %% cover-letter.tex  —  The American Mathematical Monthly
 %% Submission portal: Taylor & Francis ScholarOne
-%% Fill in: [Author Name], [Institution], [City/Country], [email], [date], [MSC], [word count]
+%% Author: Ali Elouafiq, SQLI Digital Laboratory, Levallois-Perret, France.
 %% =============================================================================
 \documentclass[12pt]{article}
 \usepackage[margin=1in]{geometry}
@@ -11,16 +11,16 @@
 \begin{document}
 
 \noindent
-\mbox{[Author Name]}\\
-\mbox{[Title / Position]}\\
-\mbox{[Institution / Affiliation]}\\
-\mbox{[Address Line 1]}\\
-\mbox{[City, Country, Postal Code]}\\
-\href{mailto:author@institution.tld}{\mbox{[author@institution.tld]}}
+Ali Elouafiq\\
+Principal Research Engineer\\
+SQLI Digital Laboratory\\
+2--10 rue Thierry Le Luron\\
+92300 Levallois-Perret, France\\
+\href{mailto:ali@sqli.com}{ali@sqli.com}
 
 \bigskip
 \noindent
-\mbox{[Day Month Year]}
+9 June 2026
 
 \bigskip
 \noindent
@@ -37,8 +37,8 @@ Dear Editor,
 I submit for your consideration the manuscript:
 
 \begin{center}
-  \textbf{When Jensen's Equation Has a One-Line Proof:}\\
-  \textbf{Three Regularity Hypotheses That Become Unnecessary}
+  \textbf{The continuous-coefficient Jensen equation:}\\
+  \textbf{A note on vestigial regularity hypotheses}
 \end{center}
 
 \noindent
@@ -48,16 +48,18 @@ for publication in \textit{The American Mathematical Monthly} as an
 \bigskip
 \noindent\textbf{What the paper does.}
 The paper shows that the continuous-coefficient Jensen equation
-$G(pu_1+(1-p)u_2)=pG(u_1)+(1-p)G(u_2)$ for all $u_1,u_2\in[0,M]$ and all
-$p\in[0,1]$ forces $G$ to be affine with \emph{no regularity hypothesis}:
-one substitution ($u_1:=M$, $u_2:=0$, and noting that $p$ is already free)
-gives the explicit formula in two lines.  The paper accompanies this
-one-line observation with (i)~a six-row dictionary comparing it with the
-well-known case of the discrete-coefficient equation (where Hamel's
-pathology is real and regularity \emph{is} needed), (ii)~a structural
-explanation of why the two cases differ, and (iii)~a survey of
-application areas---utility theory, information-theoretic entropy, and
-surrogate-loss calibration---where the same vestigial hypotheses recur.
+$G(pu_1+(1-p)u_2)=pG(u_1)+(1-p)G(u_2)$ for all $u_1,u_2\in[0,M]$ and
+all $p\in[0,1]$ forces $G$ to be affine with \emph{no regularity
+hypothesis}: a one-line endpoint substitution ($u_1{:=}M$, $u_2{:=}0$,
+$p{:=}v/M$) reads $G(v)$ directly off the straight line through the
+endpoints. The paper accompanies this one-line observation with
+(i)~a dictionary comparing the result with the well-known case of the
+discrete-coefficient Jensen equation (where Hamel's pathology is real
+and regularity \emph{is} needed), (ii)~a structural explanation of
+why the two cases differ, and (iii)~three application areas\,---\,%
+expected-utility theory, the axiomatic characterization of Shannon
+entropy, and surrogate-loss calibration\,---\,where the same
+vestigial hypotheses recur in published work.
 
 \bigskip
 \noindent\textbf{Why the Monthly.}
@@ -73,33 +75,41 @@ work.
 
 \bigskip
 \noindent\textbf{Novelty and relationship to prior art.}
-The one-line closure itself is not new: it appears in compressed form in
-Acz\'{e}l (1966) and Kuczma (2009), and no claim to its discovery is made
-here.  The contribution is the \emph{explicit packaging}: the dictionary
-contrasting the two Jensen forms, the structural explanation of the
-Hamel-pathology mechanism, and the identification of the recurrence pattern
-across application domains.  The appendix describes how the observation
-surfaced through a proof-assistant formalization exercise, a provenance
-that the author believes adds interest for Monthly readers.
+The one-line closure itself is not new: it appears in compressed form
+in Acz\'{e}l (1966) and Kuczma (2009), and no claim to its discovery
+is made here. The contribution is the \emph{explicit packaging}: the
+dictionary contrasting the two Jensen forms, the structural
+explanation of the Hamel-pathology mechanism, and the identification
+of the recurrence pattern across application domains. The closing
+section records that the observation reached the author through a
+formalization project on a separate topic\,---\,a route that may
+interest readers curious about how mechanized proof can pressure-test
+classical heuristics.
 
 \bigskip
 \noindent\textbf{Submission details.}
 \begin{itemize}\setlength\itemsep{2pt}
   \item \textbf{Manuscript type:} Article (expository).
-  \item \textbf{Page count:} 10 pages (anonymous body; 11 pp with title page).
-  \item \textbf{Word count (approximate):} \mbox{[FILL: word count from \texttt{texcount}]}.
+  \item \textbf{Page count:} 9 pages anonymous body, 10 pages with title page.
+  \item \textbf{Word count (approximate):} 3{,}400 words (TeX-counted body).
   \item \textbf{MSC 2020 primary:} 39B22 (Functional equations for real functions).
-  \item \textbf{MSC 2020 secondary:} 26B25 (Convexity), 91B16 (Utility theory).
-  \item \textbf{Double-blind:} Yes.  The anonymous PDF contains no author-identifying
-        information.  Self-citations to a companion manuscript appear as
-        ``[citation removed for review]''.  A separate title page is attached.
-  \item \textbf{Preprint:} \mbox{[State whether a preprint has been deposited on arXiv or not;]}
-        \mbox{[if yes, give arXiv ID.]}
+  \item \textbf{MSC 2020 secondary:} 26B25 (Convexity), 91B16 (Utility theory),
+        94A17 (Measures of information; entropy).
+  \item \textbf{Double-blind:} Yes. The anonymous body
+        (\texttt{manuscript-anon.pdf}) contains no author-identifying
+        information; the file with author details
+        (\texttt{manuscript.pdf}) carries the title page on page~1.
+  \item \textbf{Preprint status:} The manuscript has not been deposited on
+        arXiv. It is not under consideration elsewhere.
   \item \textbf{Competing interests:} None.
-  \item \textbf{Funding:} This research received no specific grant from any funding
-        agency in the public, commercial, or not-for-profit sectors.
-  \item \textbf{Simultaneous submission:} The manuscript is not under consideration
-        elsewhere.
+  \item \textbf{Funding:} This research received no specific grant from any
+        funding agency in the public, commercial, or not-for-profit
+        sectors.
+  \item \textbf{Use of generative AI:} Disclosed in the manuscript's
+        Acknowledgments section. The AI assistant was used for
+        adversarial review of drafts and \LaTeX{} formatting; all
+        mathematical content was conceived, verified, and refined by
+        the author.
 \end{itemize}
 
 \bigskip
@@ -112,5 +122,5 @@ Sincerely,
 
 \vspace{28pt}
 \noindent
-\mbox{[Author Name]}
+Ali Elouafiq
 \end{document}

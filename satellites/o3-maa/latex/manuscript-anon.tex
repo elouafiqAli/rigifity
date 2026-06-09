@@ -1,10 +1,10 @@
 %% =============================================================================
 %% manuscript.tex — The American Mathematical Monthly
 %% Title:    The continuous-coefficient Jensen equation:
-%%           A note on three vestigial regularity hypotheses
+%%           A note on vestigial regularity hypotheses
 %% Author:   [AUTHOR]
 %% Source:   satellites/o3-maa/latex/manuscript.tex
-%% Date:     2026-06-08
+%% Date:     2026-06-09
 %%
 %% Compilation (WSL Debian, TeX Live 2024):
 %%   pdflatex manuscript
@@ -69,7 +69,7 @@
 % \begin{center}
 %
 % \textbf{\large The continuous-coefficient Jensen equation:} \\
-% \textbf{\large A note on three vestigial regularity hypotheses} \\
+% \textbf{\large A note on vestigial regularity hypotheses} \\
 %
 % \vspace{30px}
 %
@@ -88,12 +88,13 @@
 % \end{center}
 %
 % \pagebreak
+
 %% ---------------------------------------------------------------------------
 %% ANONYMOUS MANUSCRIPT BODY (double-blind: no author name below this line)
 %% ---------------------------------------------------------------------------
 
 \title{The continuous-coefficient Jensen equation:\\
-       A note on three vestigial regularity hypotheses}
+       A note on vestigial regularity hypotheses}
 
 %% Running head: abbreviated title, ≤50 characters.
 \markright{Continuous-coefficient Jensen equation}
@@ -117,9 +118,9 @@ $p\,G(u_1)+(1-p)\,G(u_2)=G(p\,u_1+(1-p)\,u_2)$ for all $u_1,u_2$ in
 the interval and all weights $p\in[0,1]$---must $G$ be affine?
 
 The answer is yes. The proof is one line: substitute $u_1=M$,
-$u_2=0$, $p=v/M$ to read $G(v)$ directly off the chord through the
-endpoints. No regularity hypothesis on~$G$---continuity, measurability,
-monotonicity, or boundedness---is needed.
+$u_2=0$, $p=v/M$ to read $G(v)$ directly off the straight line through
+the endpoints. No regularity hypothesis on~$G$\,---\,continuity, measurability,
+monotonicity, or boundedness\,---\,is needed.
 
 This contrasts with a celebrated 80-year story. The $p=\tfrac{1}{2}$
 specialization is equivalent to Cauchy's additive equation and admits
@@ -166,11 +167,11 @@ p\,G(u_1)+(1-p)\,G(u_2) \;=\; G\bigl(p\,u_1+(1-p)\,u_2\bigr)
 \tag{$\star$}\label{eq:star}
 \end{equation}
 imposed on a function $G\colon I\to\R$ on a real interval $I$, has
-at least three faces in classical analysis. Those faces have been steadily
+at least three forms in classical analysis. These forms have been steadily
 conflated for over a century, with consequences for both the foundational
 theory and the modern applied literature where the equation surfaces.
 
-\subsection{Three faces of the equation.}
+\subsection{Three forms of the equation.}
 
 The \emph{discrete-coefficient} Jensen equation,
 \begin{equation}
@@ -227,7 +228,8 @@ monotonicity, boundedness) is required.
 \end{theorem}
 
 The proof is one line: a substitution into~\eqref{eq:star} that pins
-$G(v)$ along the chord through the endpoints $(0,G(0))$ and $(M,G(M))$.
+$G(v)$ on the straight line through the endpoints $(0,G(0))$ and
+$(M,G(M))$.
 We give it in Section~\ref{sec:proof} and use the remainder of the paper
 to articulate what it means.
 
@@ -239,16 +241,17 @@ Theorem~\ref{thm:main} is folklore (cf.~\cite[\S2.1]{Aczel1966},
 The contribution of the present paper is in three parts:
 \begin{itemize}
 \item \emph{The explicit dictionary} (Section~\ref{sec:dictionary}) of
-  three regularity hypotheses on~$G$---continuity, measurability,
-  boundedness---that are required to force affineness
-  for~\eqref{eq:J2} but become \emph{vestigial}
+  classical regularity hypotheses on~$G$\,---\,continuity, measurability,
+  monotonicity, boundedness on a set of positive measure, and
+  boundedness on the interval\,---\,each of which is required to force
+  affineness for~\eqref{eq:J2} but becomes \emph{vestigial}
   under~\eqref{eq:star}, together with the structural mechanism (the
   Hamel pathology lives at irrational~$p$, exactly where
   \eqref{eq:star}'s continuous coefficient closes the door).
 
 \item \emph{The strict-minimum hypothesis}
   (Section~\ref{ssec:weak})---the
-  equation~\eqref{eq:star} at a single chord configuration already
+  equation~\eqref{eq:star} at a single endpoint configuration already
   suffices.
 
 \item \emph{The recurrence pattern}
@@ -271,9 +274,9 @@ regularity hypotheses become vestigial in this transition.
 
 \paragraph{Terminology.}
 Throughout the paper we refer to the substitution $u_1=M$, $u_2=0$,
-$p=v/M$ in~\eqref{eq:star}---by which $G$ is pinned along the chord
-through the endpoints $(0,G(0))$ and $(M,G(M))$---as the
-\emph{chord substitution}. The substitution is standard folklore in
+$p=v/M$ in~\eqref{eq:star}\,---\,by which $G(v)$ is read off the straight
+line through the endpoints $(0,G(0))$ and $(M,G(M))$\,---\,as the
+\emph{endpoint substitution}. The substitution is standard folklore in
 the functional-equations literature
 (cf.~\cite[\S2.1]{Aczel1966}, \cite[Ch.~13]{Kuczma2009}); the
 descriptive label is our convenience, adopted for brevity in repeated
@@ -300,10 +303,10 @@ G\!\left(\frac{v}{M}\cdot M+\left(1-\frac{v}{M}\right)\cdot 0\right)
 Rearranging yields $G(v)=G(0)+\bigl(G(M)-G(0)\bigr)\,v/M$.
 \end{proof}
 
-The chord substitution pins $G(v)$ along the straight chord from
+The endpoint substitution pins $G(v)$ on the straight line from
 $(0,G(0))$ to $(M,G(M))$ for every $v\in[0,M]$. Since this determines
 $G(v)$ at every~$v$, the function~$G$ is fully determined by its values
-at the two endpoints---it is exactly the affine function joining them.
+at the two endpoints\,---\,it is exactly the affine function joining them.
 
 \begin{corollary}\label{cor:regularity}
 Under the hypotheses of Theorem~\ref{thm:main}, $G$ is in particular
@@ -335,13 +338,14 @@ examine the difference in detail.
 \section{The dictionary of vestigial regularity hypotheses.}
 \label{sec:dictionary}
 
-\subsection{Six hypotheses and their fates.}
+\subsection{The dictionary.}
 \label{ssec:dict-table}
 
 We place side-by-side the discrete-coefficient equation~\eqref{eq:J2}
 and the continuous-coefficient equation~\eqref{eq:star}, and ask which
 regularity hypotheses on~$G$ are \emph{required} to force affineness
-for each. The first column of Table~\ref{tab:dictionary} names the
+for each. Table~\ref{tab:dictionary} pairs five classical hypotheses
+with the no-hypothesis row at the bottom: the first column names the
 hypothesis; the second records the requirement for~\eqref{eq:J2} with
 the standard historical attribution; the third records what becomes of
 the requirement under~\eqref{eq:star}.
@@ -395,7 +399,7 @@ hypothesis} suffices for~\eqref{eq:J2}: there exists a non-affine,
 non-measurable, unbounded, additive function on~$\R$---the classical
 Hamel-basis pathology~\cite{Hamel1905}---that supplies a non-affine
 solution of~\eqref{eq:J2}. Conversely, \textbf{no regularity hypothesis}
-is \emph{needed} for~\eqref{eq:star}: Theorem~\ref{thm:main}'s chord
+is \emph{needed} for~\eqref{eq:star}: Theorem~\ref{thm:main}'s endpoint
 substitution closes the proof at the level of the bare functional
 equation.
 
@@ -419,7 +423,7 @@ $\Q$-linear: $G(0)=0$ and $G(qx)=q\,G(x)$ for every $q\in\Q$ and
 $x\in\R$. By design, $G$ is \emph{not} $\R$-linear: there exists an
 irrational $r\in\R$ and an $x\in\R$ such that $G(rx)\ne r\,G(x)$.
 
-The chord identity in~\eqref{eq:star} at the configuration $u_1=M$,
+The straight-line identity in~\eqref{eq:star} at the configuration $u_1=M$,
 $u_2=0$ reads
 \begin{equation}
 p\,G(M)+(1-p)\,G(0) \;=\; G(p\,M).
@@ -476,7 +480,7 @@ so $G(v)=G(0)+p\bigl(G(M)-G(0)\bigr)=G(0)+\bigl(G(M)-G(0)\bigr)v/M$.
 \end{proof}
 
 Theorem~\ref{thm:weak} is \emph{in principle} weaker than
-Theorem~\ref{thm:main}: the one-chord hypothesis does not a priori imply
+Theorem~\ref{thm:main}: the one-configuration hypothesis does not a priori imply
 the full~\eqref{eq:star}. Under the conclusion (affineness) both hold;
 in practice an author who derives~\eqref{eq:star} from a richer setup
 (e.g., a Jensen-equality identity in a Bayes-risk computation;
@@ -488,7 +492,7 @@ actually consumes.
 \subsection{Convex domains in higher dimensions.}
 \label{ssec:higher}
 
-The chord substitution extends to any convex subset of a real vector
+The endpoint substitution extends to any convex subset of a real vector
 space.
 
 \begin{theorem}\label{thm:higher}
@@ -504,7 +508,7 @@ $x_0\in C$. Equivalently, $G$ is affine on~$C$.
 \end{theorem}
 
 \begin{proof}[Proof sketch]
-Apply Theorem~\ref{thm:main} along every chord in~$C$: for each
+Apply Theorem~\ref{thm:main} along every line segment in~$C$: for each
 direction $v$ with $x_0+v\in C$, the map
 $\lambda\mapsto G(x_0+\lambda v)$ is affine in $\lambda\in[0,1]$. Hence
 $G(x_0+v)-G(x_0)$ depends linearly on~$v$ in each direction; an
@@ -514,7 +518,7 @@ $\mathrm{span}(C-C)$. The bookkeeping is standard and is given
 in~\cite[Ch.~13]{AczelDhombres1989}.
 \end{proof}
 
-The structurally essential step is the one-dimensional chord substitution
+The structurally essential step is the one-dimensional endpoint substitution
 of Theorem~\ref{thm:main}. The higher-dimensional lifting is bookkeeping.
 
 \subsection{The rational-coefficient version retains the pathology.}
@@ -562,17 +566,17 @@ regularity-hypothesis requirement.
 \section{Where the trap recurs: Jensen saturation as a structural pattern.}
 \label{sec:recurrence}
 
-The chord substitution of Section~\ref{sec:proof} is folkloric---both
+The endpoint substitution of Section~\ref{sec:proof} is folkloric\,---\,both
 \cite[\S2.1]{Aczel1966} and \cite[Ch.~13]{Kuczma2009} articulate the
 underlying observation, and it is standard in the functional-equations
 community. Why, then, does this paper exist?
 
 Because the explicit packaging matters. The functional-equations
-community has internalized the chord substitution; the applied
+community has internalized the substitution; the applied
 communities that produce the continuous-coefficient equation as a
-byproduct of Jensen saturation have not. These vestigial regularity
-hypotheses---continuity, measurability,
-and boundedness---keep reappearing in applied derivations
+byproduct of Jensen saturation have not. The classical regularity
+hypotheses\,---\,continuity, measurability, and boundedness in
+particular\,---\,keep reappearing in applied derivations
 of~\eqref{eq:star} outside the functional-equations community. The trap
 is not a one-off oversight; it has a structural source. This section
 identifies the source and surveys three application areas where it
@@ -609,8 +613,8 @@ In \emph{some} fields, a derivation produces~\eqref{eq:dagger} as a
 saturated identity: the slack is forced to zero by a structural property
 of the setup (e.g., the class of~$\xi$ is rich enough to exhaust the
 inequality's freedom). At that moment~\eqref{eq:star} appears, and the
-chord substitution is the natural closure. An author unfamiliar with the
-chord substitution will reach for the classical Cauchy--Hamel toolkit and
+endpoint substitution is the natural closure. An author unfamiliar with
+the substitution will reach for the classical Cauchy--Hamel toolkit and
 find that the regularity hypothesis is unnecessary only after the fact.
 
 \subsection{Application: expected-utility representation theorems.}
@@ -634,8 +638,8 @@ $p\,L_1+(1-p)\,L_3\succ L_2\succ q\,L_1+(1-q)\,L_3$.
 The Archimedean axiom forces continuity-in-probability of preferences,
 which in turn forces continuity of~$U$.
 
-But the chord substitution of Theorem~\ref{thm:main} \emph{also}
-closes the linearity step, without any continuity hypothesis. The chord
+But the endpoint substitution of Theorem~\ref{thm:main} \emph{also}
+closes the linearity step, without any continuity hypothesis. The
 substitution is the algebraic alternative to the Archimedean axiom.
 Even where the Archimedean axiom is invoked (and rightly so, as it
 carries other preference-theoretic content), the closure of the
@@ -657,7 +661,7 @@ axiom reduces, in intermediate steps, to a system of functional
 equations on auxiliary functions $g,h$ on $[0,1]$. Several of these
 intermediate equations are of \eqref{eq:star}-form for the auxiliary
 functions, and the closure step uses continuity (the first Khinchin
-axiom). The chord substitution of Theorem~\ref{thm:main} is the
+axiom). The endpoint substitution of Theorem~\ref{thm:main} is the
 alternative closure that does not require continuity as a hypothesis;
 in Acz\'el--Dhombres~\cite{AczelDhombres1989} the substitution is part
 of the standard toolkit.
@@ -666,27 +670,27 @@ of the standard toolkit.
 \label{ssec:calibration}
 
 In \textbf{surrogate calibration} in statistical decision theory, the
-foundational tradition---Bartlett, Jordan, and
+foundational tradition\,---\,Bartlett, Jordan, and
 McAuliffe~\cite{BJM2006} and its extensions by Tewari and
 Bartlett~\cite{TewariBartlett2007}, Steinwart~\cite{Steinwart2007},
-and Reid and Williamson~\cite{ReidWilliamson2010,ReidWilliamson2011}---%
+and Reid and Williamson~\cite{ReidWilliamson2010,ReidWilliamson2011}\,---\,%
 derives its results via convex analysis (biconjugates, $\psi$-transforms,
 Fenchel duality) and consequently tracks Jensen as an \emph{inequality}
-with explicit slack. These derivations never produce~\eqref{eq:star}
-as a saturated identity.
+with explicit slack. Such derivations never produce~\eqref{eq:star} as
+a saturated identity.
 
-In a recent manuscript [citation removed for review] on the achievable
-error floor of partition-based classifiers, the resolution-axis
-transposition framing of surrogate calibration produces~\eqref{eq:star}
-directly: a two-cell partition computation forces~\eqref{eq:star} on
-the function~$G$ expressing the partition Bayes risk in terms of an
-aggregated concave score, with the cell mass~$p$ ranging freely
-over~$[0,1]$ on an atomless probability space. In the Lean~4
-formalization of that work, the corresponding lemma was initially
-declared with a boundedness hypothesis on~$G$ in deference to the
-Cauchy--Hamel literature; the proof body then found that hypothesis
-unused, by the chord substitution of Theorem~\ref{thm:main}. This
-episode is described in the Appendix.
+A different framing produces~\eqref{eq:star} directly. If one passes
+from the canonical loss-axis formulation to a \emph{resolution-axis}
+framing\,---\,parametrizing risk by the partition that aggregates the
+feature space rather than by the surrogate loss\,---\,a two-cell partition
+computation forces~\eqref{eq:star} on the function~$G$ that expresses
+the partition Bayes risk in terms of the cell mass $p\in[0,1]$ on an
+atomless probability space. The full continuous range of cell masses
+produces the equation in its continuous-coefficient form~\eqref{eq:star},
+and the endpoint substitution closes the linearity step without any
+regularity hypothesis on~$G$. As elsewhere, an author who has internalized
+the Cauchy--Hamel toolkit may add a defensive boundedness or measurability
+hypothesis here; under~\eqref{eq:star} that hypothesis is vestigial.
 
 The lesson generalizes. Any derivation that saturates Jensen across a
 wide class of two-point distributions should be expected to produce
@@ -701,7 +705,7 @@ who have encountered~\eqref{eq:star} in their own work---in mathematical
 economics, information theory, statistical decision theory, physics, or
 elsewhere---and who have invoked an unnecessary Cauchy--Hamel regularity
 hypothesis to extend the catalog. The structural pattern of saturated
-Jensen and the chord substitution as its natural closure is, we believe,
+Jensen and the endpoint substitution as its natural closure is, we believe,
 recurrent enough to merit explicit articulation.
 
 %% =============================================================================
@@ -709,7 +713,7 @@ recurrent enough to merit explicit articulation.
 \label{sec:conclusion}
 
 Theorem~\ref{thm:main} is, mathematically, one line. The dictionary of
-Section~\ref{sec:dictionary} is six rows of a table. The structural
+Section~\ref{sec:dictionary} is a table. The structural
 argument of Section~\ref{ssec:mechanism} is one sentence: \emph{the
 Hamel pathology lives at irrational~$p$; the continuous-coefficient
 equation~\eqref{eq:star} forecloses on it there.} Why does this material
@@ -727,120 +731,35 @@ answers are different.
 
 Second, the recurrence pattern of Section~\ref{sec:recurrence} is, to
 our knowledge, not articulated explicitly elsewhere in the
-functional-equations literature. The pattern---saturated Jensen
-produces~\eqref{eq:star}, and the chord substitution closes
-it---is recognizable in a number of modern application contexts (utility
+functional-equations literature. The pattern\,---\,saturated Jensen
+produces~\eqref{eq:star}, and the endpoint substitution closes
+it\,---\,is recognizable in a number of modern application contexts (utility
 theory, entropy, calibration), and the explicit articulation may save
 other authors from carrying vestigial regularity hypotheses in their own
 work.
 
-The chord substitution itself is the kind of one-line proof that, once
-seen, is hard to unsee---but that nonetheless takes some scaffolding to
+The endpoint substitution itself is the kind of one-line proof that, once
+seen, is hard to unsee\,---\,but that nonetheless takes some scaffolding to
 make visible. The present paper is the scaffolding.
 
-%% =============================================================================
-\appendix
-\section{How the observation came up: a note on provenance.}
-\label{sec:provenance}
+\subsection*{A note on provenance.}
 
-\emph{This appendix is non-mathematical and may be skipped by readers
-interested only in the mathematics. It describes the route by which the
-observation surfaced---through a proof-assistant exercise---and may
-interest readers unfamiliar with how mechanized proof can pressure-test
-classical heuristics. Readers interested only in the mathematics can
-stop at Section~\ref{sec:conclusion}.}
-
-\subsection{The starting position: a defensive hypothesis added on purpose.}
-\label{ssec:starting}
-
-The chord substitution surfaced during the formalization of a companion
-paper [citation removed for review] in the \textbf{Lean~4} proof
-assistant, paired with the \textbf{Mathlib} mathematical
-library. The relevant lemma expressed the step: \emph{if
-$G\colon[0,M]\to\R$ satisfies the continuous-coefficient Jensen
-equation~\eqref{eq:star}, then $G$ is affine.}
-
-When the lemma was first stated in informal mathematics, the author
-added a \textbf{boundedness hypothesis} on~$G$---the image $G([0,M])$
-is a bounded subset of~$\R$---for textbook reasons: an internal
-adversarial-review round had correctly flagged that, for the
-\emph{discrete-coefficient} equation~\eqref{eq:J2}, no affineness
-conclusion holds without some regularity (Hamel's pathology;
-cf.~Section~\ref{sec:dictionary}). Boundedness on~$I$ is a sufficient
-hypothesis by a classical theorem of Steinhaus and Ostrowski
-(Table~\ref{tab:dictionary}, row~5). The author expected boundedness
-to be load-bearing and declared the Lean lemma accordingly, binding
-the boundedness witness to a named variable.
-
-\subsection{The discovery.}
-\label{ssec:discovery}
-
-The proof body, when written, did the only natural thing: it set
-$u_1:=M$, $u_2:=0$, $p:=v/M$. The equation rearranged in two lines to
-the explicit affine formula, and the proof closed---with the boundedness
-witness untouched. The proof assistant raised no error (an unused
-hypothesis is legal), but the author noticed.
-
-Removing the boundedness witness from the lemma's signature and
-re-checking: still valid. The hypothesis the author had carried
-defensively was vestigial.
-
-The author's first reaction was suspicion: the literature on Cauchy's
-equation is unambiguous that \emph{some} regularity is needed
-(Table~\ref{tab:dictionary}). The working assumption had been that the
-same held here. The proof assistant said otherwise.
-
-\subsection{What the books say.}
-\label{ssec:books}
-
-The canonical references were then consulted:
-J.~Acz\'el, \emph{Lectures on Functional Equations and Their
-Applications}, \S2.1~\cite{Aczel1966}, and M.~Kuczma, \emph{An
-Introduction to the Theory of Functional Equations and Inequalities},
-Ch.~13~\cite{Kuczma2009}. Both books treat the continuous-coefficient
-Jensen equation~\eqref{eq:star} as a separable problem and
-observe---in compressed form, embedded in longer treatments of richer
-equations---that \eqref{eq:star} admits the chord-substitution closure
-with no regularity hypothesis. The observation is not a discovery of
-the present paper: it has been part of the functional-equations toolkit
-since at least Acz\'el's 1966 encyclopedia.
-
-What is \emph{not} standard is the \textbf{explicit packaging} of the
-observation as a separable lemma with an accompanying dictionary and a
-structural explanation of where the pathology lives. Acz\'el and Kuczma
-each devote no more than a paragraph to the observation; the dictionary
-of Section~\ref{sec:dictionary} and the recurrence pattern of
-Section~\ref{sec:recurrence} are, to the author's knowledge, the
-contribution of the present paper.
-
-The honest order of events is therefore: \textbf{proof assistant first,
-books second.} The author did not find the observation in Acz\'el or
-Kuczma and then formalize it; the author formalized the lemma
-defensively, the proof assistant showed the hypothesis was unused, and
-the literature then confirmed that the observation underlying the closure
-is known and properly attributed in the functional-equations community.
-This appendix is the record of that order.
-
-\subsection{Two modest morals.}
-\label{ssec:morals}
-
-\emph{A defensive hypothesis is not free.} In any application that
-needs the lemma, the user must verify the hypothesis. If the hypothesis
-is vestigial, that verification is wasted; worse, in a setting where the
-hypothesis is not naturally available, the user may abandon a correct
-proof route on the mistaken belief that a deeper closure tool is
-required. The dictionary of Section~\ref{sec:dictionary} is, in part, an
-inventory of regularity hypotheses that---under the continuous-coefficient
-form---are exactly such defensive additions.
-
-\emph{Mechanized proof complements mathematical intuition.} The proof
-assistant did not discover the chord substitution---Acz\'el and Kuczma
-had it long before---but it did force the author to notice that a
-hypothesis carried for textbook reasons was unused. That noticing
-prompted the literature search that produced the dictionary and the
-structural pattern. Without the mechanization, the author would in all
-likelihood have written up the lemma with the boundedness hypothesis
-attached and never asked the question.
+The present observation reached the author through an unconventional
+route: a \emph{formalization project} on a separate topic, in which the
+lemma\,``$G$ satisfies~\eqref{eq:star} on $[0,M]$ implies $G$ is
+affine'' was initially stated with a defensive boundedness hypothesis
+on~$G$, in deference to the Cauchy--Hamel literature. When the formal
+proof was written out, the boundedness hypothesis turned out to be
+unused: the endpoint substitution closed the proof on its own. A
+literature search then confirmed that the substitution is folklore in
+functional equations (cf.~\cite[\S2.1]{Aczel1966},
+\cite[Ch.~13]{Kuczma2009}), and the present paper grew out of
+the attempt to explain, to the author's own satisfaction, why the
+hypothesis had felt necessary in the first place. The lesson is
+general: a defensive regularity hypothesis is not free, and a
+formalization project occasionally surfaces such hypotheses precisely
+because the formal system requires every clause of the statement to be
+used.
 
 %% =============================================================================
 %% Backmatter: Acknowledgments, Disclosure, Funding
@@ -848,7 +767,15 @@ attached and never asked the question.
 %% =============================================================================
 \section*{Acknowledgments.}
 
-[Acknowledgments removed for double-blind review.]
+During the preparation of this paper the author used a generative AI
+assistant in two capacities: (\emph{i})~adversarial review of successive
+drafts, with the model prompted in critical-reader mode to surface
+defects in prose, argument structure, and prior-art positioning;
+and (\emph{ii})~formatting assistance with \LaTeX{} mechanics and
+bibliography construction. All mathematical content\,---\,statements,
+proofs, and the structural analysis of Sections~\ref{sec:dictionary}
+and~\ref{sec:recurrence}\,---\,was conceived, verified, and refined by
+the author, who takes full responsibility for the paper.
 
 \section*{Disclosure statement.}
 

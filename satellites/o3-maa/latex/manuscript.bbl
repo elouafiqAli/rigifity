@@ -98,10 +98,4 @@ Reid MD, Williamson RC.
 \newblock Information, divergence and risk for binary experiments.
 \newblock J Mach Learn Res. 2011;12:731-817.
 
-\bibitem{El2}
-[Author].
-\newblock The achievable-error floor of graph neural networks --- calibration
-  at the resolution level; 2026.
-\newblock Manuscript in preparation.
-
 \end{thebibliography}
