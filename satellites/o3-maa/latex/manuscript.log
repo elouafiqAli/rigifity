@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.6.9)  9 JUN 2026 13:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.6.9)  9 JUN 2026 13:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -376,7 +376,7 @@ dist/fonts/enc/dvips/base/8r.enc}
 ]
 
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 2
-04.
+06.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [2]
@@ -388,7 +388,7 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 [5]
 
 [6]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 562
+LaTeX Font Info:    Trying to load font information for U+euf on input line 573
 .
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
@@ -433,11 +433,11 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 6334 strings out of 475102
- 95643 string characters out of 5764878
- 520261 words of memory out of 5000000
+ 6340 strings out of 475102
+ 95688 string characters out of 5764878
+ 523604 words of memory out of 5000000
  28874 multiletter control sequences out of 15000+600000
- 631555 words of font info for 327 fonts, out of 8000000 for 9000
+ 631815 words of font info for 331 fonts, out of 8000000 for 9000
  77 hyphenation exceptions out of 8191
  72i,12n,79p,1003b,396s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/aelouafiq/.texlive2025/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095
@@ -459,7 +459,7 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmri8a.pfb>
-Output written on manuscript.pdf (11 pages, 242589 bytes).
+Output written on manuscript.pdf (11 pages, 243291 bytes).
 PDF statistics:
  150 PDF objects out of 1000 (max. 8388607)
  88 compressed objects within 1 object stream

@@ -115,15 +115,16 @@
 %%             highlight concepts, not mechanics.
 %% ---------------------------------------------------------------------------
 \begin{abstract}
-Jensen's inequality says that for a concave function~$G$ and a random
-variable~$\xi$ on an interval, $\E[G(\xi)]\le G(\E[\xi])$. A natural
-question: if equality holds for every two-point distribution---if
+Jensen's inequality is a workhorse of analysis: for every concave
+function~$G$ and random variable~$\xi$ on an interval,
+$\E[G(\xi)]\le G(\E[\xi])$. What if equality is forced for every
+two-point distribution\,---\,i.e.,
 $p\,G(u_1)+(1-p)\,G(u_2)=G(p\,u_1+(1-p)\,u_2)$ for all $u_1,u_2$ in
-the interval and all weights $p\in[0,1]$---must $G$ be affine?
+the interval and all weights $p\in[0,1]$? Must $G$ be affine?
 
-The answer is yes. The proof is one line: substitute $u_1=M$,
-$u_2=0$, $p=v/M$ to read $G(v)$ directly off the straight line through
-the endpoints. No regularity hypothesis on~$G$\,---\,continuity, measurability,
+Yes. The proof is one line: substitute $u_1=M$, $u_2=0$, $p=v/M$ and
+read $G(v)$ off the straight line through $(0,G(0))$ and $(M,G(M))$.
+No regularity hypothesis on~$G$\,---\,continuity, measurability,
 monotonicity, or boundedness\,---\,is needed.
 
 The result contrasts sharply with what happens when the weights~$p$
@@ -138,14 +139,15 @@ standard baggage in functional-equation arguments, carried reflexively
 even where the full continuous-coefficient equation is in play and no
 such baggage is needed.
 
-This note makes the asymmetry explicit. We catalog which classical
-regularity hypotheses become vestigial under the continuous-coefficient
-equation, explain structurally why (the Hamel pathology lives at
-irrational~$p$, exactly where the continuous-coefficient equation
-tests~$G$), and survey three application areas\,---\,expected-utility
+This expository note makes the asymmetry explicit. We catalog which
+classical regularity hypotheses become vestigial under the
+continuous-coefficient equation, explain structurally why (the Hamel
+pathology lives at irrational~$p$, exactly where the continuous-coefficient
+equation tests~$G$), and survey three application areas\,---\,expected-utility
 theory, the axiomatic characterization of Shannon entropy, and
 surrogate-loss calibration\,---\,where the same vestigial hypotheses
-recur.
+recur in derivations that produce the continuous-coefficient form as a
+saturated identity.
 \end{abstract}
 
 \vspace{8px}
@@ -275,6 +277,15 @@ contribution of the present paper is in three parts:
   class of two-point distributions. We survey three example application
   areas where this pattern arises.
 \end{itemize}
+
+Stylistically, this note follows the tradition of expository programs
+that concentrate on the part of Jensen-equation theory which does not
+require regularity assumptions on the function;
+Kuczma's~\cite{Kuczma2009} monograph is the canonical modern reference.
+The substitution that closes~\eqref{eq:star} is one of the simplest
+observations in that tradition; what justifies writing it down is the
+dictionary, the structural mechanism, and the survey of applied
+recurrences.
 
 The classical detour through Hamel and the Polish school answered a
 perfectly natural question---\emph{what regularity hypothesis suffices
