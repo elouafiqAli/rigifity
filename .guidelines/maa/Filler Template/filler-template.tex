@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{maa-monthly}
+
+\raggedbottom
+\allowdisplaybreaks
+
+\theoremstyle{plain}
+\newtheorem*{theorem}{Theorem}
+
+
+\begin{document}
+\begin{filler}
+[white]
+
+\noindent {\large \bf \textsf{Description and Illustration of Use:\\ A \LaTeX Template for Filler for\\ The American Mathematical Monthly}}\\
+
+
+\noindent 
+Text for the filler will go here.  Please note that this filler uses the \textsc{Monthly's} style file \texttt{maa.monthly.sty}. 
+The {\sc Monthly} style incorporates the following \LaTeX\ packages.  Therefore, these packages should \textit{not} be included in the document preamble.
+\begin{itemize}
+\item times
+\item pifont
+\item graphicx (this package is included in the {\sc Monthly} \TeX\ style file and might cause errors or conflicts when compiling your document.  If you remove it, it should compile just fine.)
+\item color
+\item AMS styles: amsmath, amsthm, amsfonts, amssymb
+\item url
+\end{itemize}
+{\sc Monthly} fillers are 1 page or less than 1 page.
+
+\subsection{References.}
+	Beginning in January 2024 the \textsc{Monthly} will use the NLM reference style. Bib\TeX\ users should use \texttt{(vancouver.bst)} to typeset their references.
+
+\noindent
+{\it The Code.}  To cite a reference in-text use
+\begin{verbatim}
+\cite{key}
+\end{verbatim}
+where \texttt{key} is the name of the reference used in your \texttt{.bib} file. In the place where you want to put your bibliography, type the following commands:
+
+\begin{verbatim}
+\bibliographystyle{vancouver}
+\bibliography{MonthlyReferences}
+\end{verbatim}
+where \texttt{vancouver} is the name of a \texttt{.bst} file and \texttt{MonthlyReferences} is the name of your \texttt{.bib} file.
+
+\noindent
+{\it Example with Citations.}  We will cite many authors in this paper whose work is notable, \cite{rose.huerbin.ea:regulation,vallancien.emberton.ea:sexual}.
+
+\bibliographystyle{vancouver}
+\bibliography{MonthlyReferences.bib}
+
+
+\rightline{---Submitted by Author Name}
+
+
+\bigskip
+\footnoterule
+\footnotesize{doi.org/10.XXXX/amer.math.monthly.122.XX.XXX}
+
+\footnotesize{MSC: Primary 00X00, Secondary 00X00; 00X00}
+
+\end{filler}
+
+\end{document}

@@ -1,0 +1,101 @@
+\begin{thebibliography}{10}
+
+\bibitem{Hamel1905}
+Hamel G.
+\newblock Eine Basis aller Zahlen und die unstetigen L{\"o}sungen der
+  Funktionalgleichung $f(x+y)=f(x)+f(y)$.
+\newblock Math Ann. 1905;60:459-62.
+
+\bibitem{Cauchy1821}
+Cauchy AL.
+\newblock Cours d'analyse de l'{\'E}cole royale polytechnique. Premi{\`e}re
+  partie: Analyse alg{\'e}brique.
+\newblock Paris: Imprimerie royale; 1821.
+
+\bibitem{Darboux1875}
+Darboux G.
+\newblock M{\'e}moire sur les fonctions discontinues.
+\newblock Ann Sci {\'E}cole Norm Sup (2). 1875;4:57-112.
+
+\bibitem{Sierpinski1920}
+Sierpi{\'n}ski W.
+\newblock Sur les fonctions convexes mesurables.
+\newblock Fund Math. 1920;1:125-9.
+
+\bibitem{Steinhaus1920}
+Steinhaus H.
+\newblock Sur les distances des points dans les ensembles de mesure positive.
+\newblock Fund Math. 1920;1:93-104.
+
+\bibitem{Ostrowski1929}
+Ostrowski AM.
+\newblock {\"U}ber die Funktionalgleichung der Exponentialfunktion und
+  verwandte Funktionalgleichungen.
+\newblock Jahresber Deutsch Math-Verein. 1929;38:54-62.
+
+\bibitem{Aczel1966}
+Acz{\'e}l J.
+\newblock Lectures on Functional Equations and Their Applications. vol.~19 of
+  Mathematics in Science and Engineering.
+\newblock New York: Academic Press; 1966.
+
+\bibitem{Kuczma2009}
+Kuczma M.
+\newblock An Introduction to the Theory of Functional Equations and
+  Inequalities. Cauchy's Equation and Jensen's Inequality.
+\newblock 2nd ed. Basel: Birkh{\"a}user; 2009.
+\newblock Second edition edited by A. Gil{\'a}nyi.
+
+\bibitem{AczelDhombres1989}
+Acz{\'e}l J, Dhombres J.
+\newblock Functional Equations in Several Variables. vol.~31 of Encyclopedia of
+  Mathematics and its Applications.
+\newblock Cambridge: Cambridge University Press; 1989.
+
+\bibitem{BJM2006}
+Bartlett PL, Jordan MI, McAuliffe JD.
+\newblock Convexity, classification, and risk bounds.
+\newblock J Amer Statist Assoc. 2006;101(473):138-56.
+
+\bibitem{vNM1944}
+von Neumann J, Morgenstern O.
+\newblock Theory of Games and Economic Behavior.
+\newblock Princeton: Princeton University Press; 1944.
+
+\bibitem{HersteinMilnor1953}
+Herstein IN, Milnor J.
+\newblock An axiomatic approach to measurable utility.
+\newblock Econometrica. 1953;21:291-7.
+
+\bibitem{Khinchin1957}
+Khinchin AI.
+\newblock Mathematical Foundations of Information Theory.
+\newblock New York: Dover; 1957.
+
+\bibitem{Faddeev1957}
+Faddeev DK.
+\newblock Zum Begriff der Entropie einer endlichen Wahrscheinlichkeitsschemas.
+\newblock In: Arbeiten zur Informationstheorie. vol.~1. Berlin: Deutscher
+  Verlag der Wissenschaften; 1957. p. 85-90.
+
+\bibitem{TewariBartlett2007}
+Tewari A, Bartlett PL.
+\newblock On the consistency of multiclass classification methods.
+\newblock J Mach Learn Res. 2007;8:1007-25.
+
+\bibitem{Steinwart2007}
+Steinwart I.
+\newblock How to compare different loss functions and their risks.
+\newblock Constr Approx. 2007;26(2):225-87.
+
+\bibitem{ReidWilliamson2010}
+Reid MD, Williamson RC.
+\newblock Composite binary losses.
+\newblock J Mach Learn Res. 2010;11:2387-422.
+
+\bibitem{ReidWilliamson2011}
+Reid MD, Williamson RC.
+\newblock Information, divergence and risk for binary experiments.
+\newblock J Mach Learn Res. 2011;12:731-817.
+
+\end{thebibliography}

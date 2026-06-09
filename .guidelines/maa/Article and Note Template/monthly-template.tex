@@ -1,0 +1,279 @@
+%Updated and Revised Monthly Template 5.7.2024 by Bonnie Ponce and Bev Ruedi copyright the Mathematical Association of America and all rights reserved.
+
+\documentclass{article}
+\usepackage{maa-monthly}
+
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\begin{document}
+%Instructions: A title page has been added to this template on 6.18.2025 for the purpose of matching meta data entered into the Editorial Manager System for The American Mathematical Monthly and the manuscript.  Please fill out this title form for both the manuscript with author details and the manuscript without author details. Compile one PDF that has the author details and then comment out author details to compile another PDF that is anonymous or without the author details.
+
+\begin{center}
+{\LARGE{Title Page for \textit{The American Mathematical Monthly}}}
+\end{center}
+
+
+
+\vspace{150px}
+\begin{center}
+
+\textbf{Manuscript Title} \\
+\vspace{25px}
+
+%Author 1 Name, University or Affiliation, City, Country, email address; this information should not appear in the manuscript without author details
+Author 1 Name
+University/Affiliation
+City, Country
+Email Address:
+
+\vspace{15px}
+
+%Author 2 Name, University or Affiliation, City, Country, email address; this information should not appear in the manuscript without author details
+Author 2 Name
+University/Affiliation
+City, Country
+Email Address:
+
+\vspace{15px}
+
+%Author 3 Name, University or Affiliation, City, Country, email address; this information should not appear in the manuscript without author details
+Author 3 Name
+University/Affiliation
+City, Country
+Email Address:
+
+%copy and past if more authors than 3.
+\end{center}
+\pagebreak
+
+\title{Description and Illustration of Use:\\ A \LaTeX\ Template for\\ The American Mathematical Monthly } %Put Manuscritp Title Here
+\markright{Abbreviated Article Title}
+\author{Double Blind No Name1 and Double Blind No Name2}  %DO NOT FILL IN AUTHOR'S NAMES UNTIL YOU RECEIVE YOUR PROVISIONAL ACCEPT LETTER. SUBMISSIONS TO THE MONTHLY ARE DOUBLE BLIND.
+
+\maketitle
+
+
+\begin{abstract}
+Abstracts for articles or notes should entice the prospective reader into exploring the subject of the paper and should make it clear to the reader why this paper is interesting and important. The abstract should highlight the concepts of the paper rather than summarize the mechanics. The abstract is the first impression of the paper, not a technical summary of the paper. Excessive use of notation is discouraged as it can limit the interest of the broad readership of the MAA, and can limit searchability of the article. Your abstract should be 250 words or less.
+\end{abstract}
+
+\vspace{10px}
+
+\noindent{\textbf{Keywords:}{Keyword1, Keyword2, keyword3}} 
+
+\vspace{10px}
+
+
+The \textsc{Monthly}'s readers expect a high standard of exposition; they look for articles that inform, stimulate, challenge, enlighten, and even entertain. \textsc{Monthly} articles are meant to be read, enjoyed, and discussed, rather than just archived. Articles may be expositions of old or new results, historical or biographical essays, speculations or definitive treatments, broad developments, or explorations of a single application. Novelty and generality are far less important than clarity of exposition and broad appeal. Appropriate figures, diagrams, and photographs are encouraged.
+
+\begin{itemize}
+\item \textsc{Monthly} articles are 6 to 20 pages.  
+\item \textsc{Monthly} notes are 2 to 5 pages.
+\end{itemize}
+
+\section{Manuscript preparation.}  \textit{American Mathematical Monthly} authors are expected to submit their manuscripts in \LaTeX. Using this template as a guide will save everyone time and allow your article to smoothly navigate through the submission process.
+
+The {\sc Monthly} style incorporates the following \LaTeX\ packages.  Therefore, these packages should \textit{not} be included in the document preamble.
+\begin{itemize}
+\item times
+\item pifont
+\item graphicx (this package is included in the {\sc Monthly} \TeX\ style file and might cause errors or conflicts when compiling your document.  If you remove it, it should compile just fine.)
+\item color
+\item AMS styles: amsmath, amsthm, amsfonts, amssymb
+\item url
+\end{itemize}
+Use of other \LaTeX\ packages should be minimized as much as possible. Math notation, like $c = \sqrt{a^2 +b^2}$, can be left in \TeX's default Computer Modern typefaces for manuscript preparation; or, if you have the appropriate fonts installed, the \texttt{mathtime} or \texttt{mtpro} packages may be used.
+
+Web links can be embedded using the \verb~\url{...}~ command, which will result in something like \url{http://www.maa.org}.  These links will be active and stylized in the online publication.
+
+\subsection{Headings.}
+\verb~\section{...}~ headings are all caps and are run-in to the text.  
+
+\verb~\subsection{...}~ headings are initial cap only and are also run-in to the text.  It is not necessary to add font commands to make the math within headings bold and sans serif; this change will occur automatically when the production style is applied.
+
+\subsection{Graphics.}
+
+Figures for the \textsc{Monthly} can be submitted as either color or black \& white graphics.  If color graphics are included with the submission, they will be used for the online publication only, and converted to black \& white images for the print journal.  If an author wishes to receive a quote to have color images printed, please let the Editorial Office know.
+
+Please follow these guidelines to ensure that your figures look their best online and in print.
+\begin{enumerate}
+\item Line weight should be no less than .5 pt and rarely thicker than 1 pt. This can be a problem in tikz where the default is less than .5 pt.
+\item  Use the appropriate fonts (Times New Roman, italic, bold, etc. to match the text) and font size for figures (9 pt labels and 8 pt for axes).
+\item The appropriate resolution for bitmaps is a minimum 300 dpi. High resolution bitmaps are acceptable as long as you use the correct fonts, font size, and line weight---bitmaps are not editable in the same way as EPS or SVG files so you must negate the need for them to be edited.
+\item  The paper size for the print journal is 5 inches wide and 8 inches long.  Figures cannot be greater than 5 inches wide.  
+\item {\textbf{Do not scale your figures in your \LaTeX\ document.}} Scaling your figures in your \LaTeX\ document  can result in your line weights becoming too thin and your fonts becoming too small.
+\item Line art will reproduce best if provided in vector form, preferably EPS or SVG.
+\item Please \textbf{EXPORT} figures from programs like Mathematica or Maple. Do not use ``save as.''   
+\item Creating a PDF does not affect whether the graphic is a bitmap or vector; saving a scanned piece of line art as PDF does not convert it to editable vector line art.
+\item If you generate graphics using a \TeX\ package, such as tikz, please be sure to provide a PDF of the manuscript with the \TeX\ file of the graphic.  In the production process, \TeX-generated graphics will eventually be converted to more conventional graphics so the \textsc{Monthly} can be delivered in e-reader formats.
+\end{enumerate}
+
+\subsection{Tables.}
+Tables in the \textsc{Monthly's} style appear with the caption above the table.
+
+\begin{table}[h!]
+\centering
+\caption{Here is a caption for this table.}
+\begin{tabular}{|c|c|c|c|}
+ \hline
+\textbf{ Monotonicity }& $m$ & $k_i$ & \textbf{Protocol?} \abrule \\
+ \hline
+ \hline
+Monotone & $\geq 3$ & Arbitrary & No \cite{american} \abrule \\
+ \hline
+Monotone & $2$ & Arbitrary & Yes \cite{lawrence} \abrule \\
+ \hline
+ Arbitrary & $2$ & $k_1=1$ or $k_2=1$ & Yes [Theorem~2]  \abrule\\
+ \hline
+Non-monotone & $2$ & $k_1, k_2\geq 2$& No [Theorem~3]  \abrule\\
+ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Theorems, definitions, proofs, and Etc.}
+
+Following the defaults of the \texttt{amsthm} package, styles are provided for \texttt{theorem}, \texttt{definition}, and \texttt{remark}, although the latter two use the same style.
+
+\begin{theorem}[MAA Theorem]
+Theorems, lemmas, axioms, and the like use italicized text. These environments (along with definitions, remarks, and notes) will be numbered in consecutive order.
+\end{theorem}
+
+\begin{proof}
+Proofs are set in roman (upright) text, and conclude with an ``end of proof'' (q.e.d.) symbol that is set automatically when you end the proof environment.  When the proof ends with an equation or other non-text element, you need to add \verb~\qedhere~ to the element to set the end of proof symbol; see the \texttt{amsthm} package documentation for more details.
+\end{proof}
+
+\begin{definition}[Monthly definitions]
+Definitions, remarks, and notation are stylized as roman text.  
+\end{definition}
+
+\begin{remark}
+Remarks stylize the same as definitions.
+\end{remark}
+
+The \textsc{Monthly's} equations are numbered with integers, beginning with (1), on the right side of the equation when using the equation enviroment. 
+\begin{equation}
+c = \sqrt{a^{2} + b^{2}}
+\end{equation}
+
+\subsection{References.}
+	Beginning in January 2024 the \textsc{Monthly} will use the NLM reference style. Bib\TeX\ users should use \texttt{vancouver.bst} to typeset their references.
+
+\smallskip
+
+{\it The Code.}  To cite a reference in-text use
+\begin{verbatim}
+\cite{key}
+\end{verbatim}
+where \texttt{key} is the name of the reference used in your \texttt{.bib} file. In the place where you want to put your bibliography, type the following commands:
+
+\begin{verbatim}
+\bibliographystyle{vancouver}
+\bibliography{VancouverExamples}
+\end{verbatim}
+where \texttt{vancouver} is the name of a \texttt{.bst} file and \texttt{VancouverExamples} is the name of your \texttt{.bib} file.
+
+\smallskip
+
+{\it Example with Citations.}   We cite many authors in this paper whose work is notable, such as \cite{american, proofs, graphs, Helmer, euler, lawrence, compendium}. The works by these authors are important to read, \cite{BNV07, CW11, CCZ21}.
+In addition, this work is important \cite{CCSW19}.
+
+
+\section{Manuscript Submission.}\label{submit}
+All authors must produce at least two documents as part of their formal manuscript submission, specifically a PDF of a manuscript with the author details and a PDF of a manuscript that is without the author details or an anonymized manuscript, and a cover letter. This template now includes a title page that preceeds the article.  This title page allows the Monthly's Editorial Office to check the meta data that the author enters into the manuscript submission system with the information provided in this submission. The author information on the title page should be commented out on the anonymized manuscript without author details. Manuscripts must be submitted through the \textsc{Monthly's} Editorial Manager system: \url{https://www2.cloud.editorialmanager.com/monthly/default2.aspx}.
+
+\subsection{Cover Letter.}
+The first document is a cover letter that must include the following.
+\begin{itemize}
+\item all author names, affiliations, and email addresses
+\item a statement of original research
+\item a statement about why your manuscript fits into the aims and scope of the \textsc{Monthly}.
+\item please disclose any conflicts of interest
+\item keywords
+\end{itemize}
+Please use the template {\textit{CoverLetterTemplate.tex}} to generate this cover letter. 
+
+IMPORTANT NOTE: If you do not upload a cover letter, Editorial Manager will give you an error message and not allow you to submit your manuscript.
+
+\subsection{Manuscript.}  Use this template and {\texttt maa-monthly.sty} to prepare your manuscript.
+
+\subsection{Review.}  The \textsc{Monthly} uses a double-blind review process.  
+\begin{itemize}
+\item This template should be used to prepare your manuscript for the \textsc{Monthly}.
+\item No revisions or updated manuscripts will be considered while a manuscript is under review.
+\end{itemize}
+
+\subsection{Manuscript data in Editorial Manager.}
+\begin{itemize}
+\item Authors’ affiliations are the affiliations where the research was conducted. If any of the named co-authors changes affiliation during the peer-review process, the new affiliation can be given as a footnote. Please note that no changes to affiliation can be made after your paper is accepted. 
+
+\item Funding Information.  {\bf If applicable,} please supply all details required by your funding and grant-awarding bodies as follows: %This information may be commented out in the manuscript without author details also referred to the anonymised manuscript.
+\begin{itemize}
+\item For single agency grants:
+This work was supported by the [Funding Agency] under Grant [number xxxx].
+\item For multiple agency grants:
+This work was supported by the [Funding Agency \#1] under Grant [number xxxx]; [Funding Agency \#2] under Grant [number xxxx]; and [Funding Agency \#3] under Grant [number xxxx].
+\end{itemize}
+\item Author Contribution Statement.\\   %Write your own author contribution statement here and comment out this information in the  manuscript without author details also referred to the anonymised manuscript or you may use the statement below if it is accurate to this manuscript.
+\begin{itemize}
+\item Provide a statement of author contributions if the above is inaccurate in this space.  %An example of author contribution statements in included with this file if it was downloaded from  https://maa.org/publication/the-american-mathematical-monthly/. More information about author contribution statements can also be found https://authorservices.taylorandfrancis.com/editorial-policies/credit-at-taylor-francis/
+\end{itemize}
+\item Conflict of Interest Statement. \\  %Please have each author listed with a conflict of interest statement. Comment out this information in the manuscript without author details also referred to the anonymised manuscript.
+\end{itemize}
+\subsection{Mathematics Subject Classification.}  Authors should provide the appropriate 2020 Mathematics Subject Classification terms for their paper.  
+\begin{itemize}
+\item The "Mathematical Subject Classification Index (MSC)," is available at \url{http://www.ams.org/msc/msc2020.html}, or in pdf form at \url{https://www.mathscinet.ams.org/msc/pdfs/classifications2020.pdf}. 
+\item When submitting your manuscript, please provide at least one and up to three 5-digit MSC classifications that best describe your paper.
+\end{itemize}
+
+
+
+\begin{acknowledgment}{Acknowledgments.}
+The authors wish to thank the Greek polymath Anonymous, whose prolific works are an endless source of inspiration.  If you have funding, please acknowledge the funding agency and reference the grant.
+\end{acknowledgment}
+
+
+\bibliographystyle{vancouver}
+\bibliography{VancouverExamples.bib}
+
+\noindent \textbf{Further Instructions for Preparing your manuscript:}
+When submitting your manuscript, you will compile this manuscript with all information included and name it ``manuscript with author details''.
+After compiling that PDF, you will Comment out the following information by putting a percentage sign in front of the item in order to create a PDF manuscritp without author details and save that PDF as ``manuscript without author details.''
+
+\noindent \textbf{Items to comment out are as follows:}
+\begin{itemize}
+\item Author information on the title page
+\item Funding Information
+\item Author Contribution Statement
+\item Conflict of Interest Statement
+\item Author Biographies 
+\end{itemize}
+
+Author Bios will be included in the author manuscript with author details but will be removed from the manuscript without author details also referred to as the anoymised manuscript. Authors can do this by adding a percentage sign before each item, which will comment out this text in the PDF.
+\begin{biog}
+\item[Author Name 1] Insert author bio here.
+\begin{affil}
+Department of Mathematics, University America, Washington DC 20036\\
+authorname@ua.edu
+\end{affil}
+\end{biog}
+
+\begin{biog}
+\item[Author Name 2] Insert author bio here.
+\begin{affil}
+%epartment of Mathematics, University America, Washington DC 20036\\
+authorname@ua.edu
+\end{affil}
+\end{biog}
+
+\vfill\eject
+
+\end{document}

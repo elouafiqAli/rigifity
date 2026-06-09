@@ -699,6 +699,208 @@ seen, is hard to unsee --- but that nonetheless takes some scaffolding to
 make visible. The present note is the scaffolding.
 
 % =============================================================================
+\appendix
+
+\section{How the observation came up --- a pedagogical note on provenance}
+\label{sec:provenance}
+
+\emph{This appendix is non-mathematical. It is included for two reasons:
+(a)~honest scholarship requires us to declare that the observation was
+not located in the literature first and then written up, and (b)~the
+route by which it surfaced --- through a proof-assistant exercise ---
+is itself instructive, and may interest readers who have not previously
+encountered the way mechanized proof can pressure-test classical
+heuristics. Readers interested only in the mathematics can stop at
+Section~\ref{sec:conclusion}.}
+
+\subsection{The starting position: a defensive hypothesis we added on purpose}
+
+The chord substitution surfaced during the formalization of a separate
+paper by the present author~\cite{El2} in the \textbf{Lean~4} proof
+assistant, paired with the \textbf{Mathlib} mathematical library. The
+relevant lemma in that paper expressed a step of the form
+
+\begin{quote}
+\emph{if $G : [0, M] \to \mathbb{R}$ satisfies the continuous-coefficient
+Jensen equation $(\star)$ on $[0, M]$, then $G$ is affine on $[0, M]$.}
+\end{quote}
+
+When the lemma was first written down in informal mathematics, the
+author followed standard practice in the applied literature and
+\textbf{added a boundedness hypothesis} on $G$ --- namely, that the image
+$G([0, M])$ is a bounded subset of $\mathbb{R}$. The reason for the
+hypothesis was textbook caution: an internal adversarial-review round of
+the paper had flagged that, in the \emph{discrete-coefficient} setting
+$(J_2)$, no such conclusion holds without some regularity assumption
+(Hamel's pathology, see Section~\ref{sec:intro} and
+Proposition~\ref{prop:JQ-pathology} above). Boundedness on $I$ is a sufficient
+such hypothesis by a classical theorem of Steinhaus and Ostrowski
+(Table~\ref{tab:dictionary}, row~5). The author \emph{expected} boundedness
+to be load-bearing in the proof, and declared the Lean lemma accordingly:
+
+\begin{quote}
+\emph{signature:} ``Given $G : [0, M] \to \mathbb{R}$, a boundedness
+witness for $G$ on $[0, M]$, and the hypothesis that $G$ satisfies the
+continuous-coefficient Jensen equation $(\star)$ for all
+$u_1, u_2 \in [0, M]$ and all $p \in [0, 1]$, there exist real numbers
+$a, b$ such that $G(v) = a v + b$ for all $v \in [0, M]$.''
+\end{quote}
+
+The boundedness witness was bound to a named variable --- call it
+\texttt{\_h\_bdd} --- and that variable was then carried, untouched,
+into the body of the proof, ready to be invoked.
+
+\subsection{What went wrong (and right) when we tried to write the proof}
+
+The proof body, when actually written, did the only natural thing: it
+instantiated the equation $(\star)$ at the simplest non-trivial
+substitution available. With $u_1 := M$, $u_2 := 0$, and $p := v / M$
+--- the chord substitution of Theorem~\ref{thm:main} --- the equation
+rearranges in two lines to $G(v) = G(0) + (G(M) - G(0))\, v / M$. The
+proof closed.
+
+On inspection of the proof script, the variable \texttt{\_h\_bdd} ---
+the boundedness witness --- had not been referenced anywhere in the
+proof body. The proof assistant did not complain (an unused hypothesis
+is legal); but the author noticed. The hypothesis the author had carried
+defensively was not load-bearing.
+
+At this point the natural question was: \emph{is the boundedness
+hypothesis genuinely vestigial, or is it doing some work that the proof
+assistant has hidden from me?} In a proof assistant, this question is
+decidable: one removes the hypothesis from the lemma's signature and
+asks the assistant to re-check. The assistant re-checked. The proof was
+valid without the boundedness witness --- i.e., Theorem~\ref{thm:main}
+as stated, with \textbf{no regularity hypothesis at all}, was provable
+from $(\star)$ alone, via the one-line chord substitution.
+
+The author's first reaction was suspicion. The literature on Cauchy's
+equation is unambiguous that \emph{some} regularity is needed
+(Table~\ref{tab:dictionary}, row~6 of
+Section~\ref{sec:dictionary}). The author's working assumption ---
+and the assumption of the internal adversarial-review round that had
+requested the hypothesis --- was that the same was true here. The proof
+assistant said otherwise.
+
+\subsection{Going back to the books --- and what we found}
+
+Faced with a proof that compiled without a hypothesis we expected to be
+necessary, the responsible response was to consult the
+functional-equations literature carefully. The author opened the two
+canonical references on the equation $(\star)$ and its variants:
+
+\begin{itemize}
+\item J.~Acz\'el, \emph{Lectures on Functional Equations and Their
+      Applications} (1966), Section~2.1~\cite{Aczel1966}.
+\item M.~Kuczma, \emph{An Introduction to the Theory of Functional
+      Equations and Inequalities} (2nd ed., 2009),
+      Chapter~13~\cite{Kuczma2009}.
+\end{itemize}
+
+Both books treat the continuous-coefficient Jensen equation $(\star)$
+explicitly, in passing, as a separable problem distinct from the
+discrete-coefficient $(J_2)$. Both books observe --- in compressed form,
+embedded in a longer treatment of richer equations --- that $(\star)$
+admits the chord-substitution closure with no regularity hypothesis.
+The observation is \textbf{not} a discovery of the present note: it is
+part of the standard toolkit of the functional-equations community and
+has been since at least Acz\'el's 1966 encyclopedia.
+
+What is \emph{not} standard, as far as the author has been able to
+determine, is the \textbf{explicit packaging} of the observation as a
+separable lemma worth citing in the applied literature, alongside the
+dictionary of vestigial regularity hypotheses of Section~\ref{sec:dictionary}
+that articulates the contrast with the discrete-coefficient case.
+Acz\'el and Kuczma each devote no more than a paragraph to the
+observation, embedded in much longer treatments of Cauchy's equation,
+Jensen's equation in its discrete forms, and their many variants; the
+dictionary and the structural pattern of Section~\ref{sec:recurrence}
+are, to the author's knowledge, the present note's contribution.
+
+The honest order of events is therefore: \textbf{the proof assistant
+first, the books second.} The author did not locate the observation in
+Acz\'el or Kuczma and then formalize it; the author formalized the lemma
+defensively (with what turned out to be a vestigial hypothesis),
+discovered via the proof assistant that the hypothesis was unused, and
+then went back to the canonical references and confirmed that the
+observation underlying the closure is known and properly attributed in
+the functional-equations community. This appendix is the author's record
+of that order.
+
+\subsection{Why this matters for prior-art positioning}
+
+Prior-art positioning is a question of scholarly honesty: a published
+note should make clear what is new, what is folkloric, and how the
+author came upon the folkloric piece. The mathematical content of
+Theorems~\ref{thm:main} and~\ref{thm:weak}, and of the substitution
+they use, is folkloric --- and the present note explicitly attributes it
+to Acz\'el~\cite[\S2.1]{Aczel1966} and
+Kuczma~\cite[Ch.~13]{Kuczma2009}, both in the introduction
+(Section~\ref{sec:intro}) and in the terminology disclosure that
+follows it. There is no claim of mathematical novelty in the substitution
+itself.
+
+What the present note contributes is the explicit packaging --- the
+dictionary of Section~\ref{sec:dictionary}, the structural pattern of
+Section~\ref{sec:recurrence}, and the recognition that the trap of
+carrying vestigial regularity hypotheses recurs in modern application
+contexts where the equation surfaces through Jensen-saturation
+derivations. The contribution is expository and structural, not novel
+mathematics.
+
+A separate, targeted prior-art audit was conducted by the author for the
+surrogate-calibration literature specifically (Bartlett--Jordan--McAuliffe~\cite{BJM2006},
+Tewari--Bartlett~\cite{TewariBartlett2007}, Steinwart~\cite{Steinwart2007},
+Reid--Williamson~\cite{ReidWilliamson2010,ReidWilliamson2011}), to check
+whether any of these papers had derived $(\star)$ in saturated-equation
+form and then invoked an unnecessary Cauchy--Hamel hypothesis. None of
+the surveyed papers had: they all use convex-analysis derivations
+(biconjugates, $\psi$-transforms, Fenchel duality) that track Jensen's
+inequality with explicit slack and never produce $(\star)$ as an
+equation. The structural prediction of Section~\ref{ssec:calibration}
+--- that derivations \emph{which do} saturate Jensen across a wide class
+of two-point distributions should be expected to produce $(\star)$ and
+benefit from the chord substitution as closure --- is therefore a
+prediction about a \emph{derivation style}, not a topic, and the trap is
+not (to the author's knowledge) recorded in the surveyed
+surrogate-calibration literature.
+
+\subsection{A modest moral}
+
+Two small lessons emerge from this episode that may be of pedagogical
+use to readers who have not encountered them in their own work:
+
+\emph{First, a defensive hypothesis is not free.} A regularity
+hypothesis added ``just in case'' carries an analytic cost: in any
+application that needs the lemma, the user must now verify the
+hypothesis. If the hypothesis turns out to be vestigial, the verification
+was wasted; worse, in a setting where the hypothesis is not naturally
+available, the user may abandon a perfectly good proof route on the
+mistaken belief that a deeper closure tool is required. The dictionary
+of Section~\ref{sec:dictionary} is, in part, an inventory of regularity
+hypotheses that --- under the continuous-coefficient form --- are
+exactly such defensive additions.
+
+\emph{Second, mechanized proof is a complement to mathematical
+intuition, not a replacement.} The proof assistant does not invent new
+mathematics in any meaningful sense; it does, however, force a precision
+about the \emph{role} of each hypothesis that informal mathematics does
+not require. In the present case, the proof assistant did not discover
+the chord substitution --- Acz\'el and Kuczma had it long before --- but
+it did force the author to notice that a hypothesis the author had
+carried for textbook reasons was not actually being used. That noticing
+was enough to prompt the literature search that produced the dictionary
+of Section~\ref{sec:dictionary} and the structural pattern of
+Section~\ref{sec:recurrence}. Without the mechanization, the author
+would in all likelihood have written up the lemma with the boundedness
+hypothesis attached and never asked the question.
+
+The present note is the record of an observation made by going through
+the canonical references with a question that a proof assistant had
+pressured the author to ask. The mathematical content is folkloric; the
+question, and the packaging that answers it, are the contribution.
+
+% =============================================================================
 \section*{Funding}
 
 This research did not receive any specific grant from funding agencies in

@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: monthly-template.aux
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+The style file: vancouver.bst
+Reallocating 'name_of_file' (item size: 1) to 22 items.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Database file #1: VancouverExamples.bib
+You've used 11 entries,
+            3403 wiz_defined-function locations,
+            749 strings with 6014 characters,
+and the built_in function-call counts, 11795 in all, are:
+= -- 1224
+> -- 127
+< -- 81
++ -- 56
+- -- 26
+* -- 818
+:= -- 1278
+add.period$ -- 37
+call.type$ -- 11
+change.case$ -- 2
+chr.to.int$ -- 176
+cite$ -- 11
+duplicate$ -- 1165
+empty$ -- 1196
+format.name$ -- 30
+if$ -- 2779
+int.to.chr$ -- 0
+int.to.str$ -- 11
+missing$ -- 88
+newline$ -- 57
+num.names$ -- 10
+pop$ -- 280
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 107
+stack$ -- 0
+substring$ -- 1740
+swap$ -- 244
+text.length$ -- 29
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 77
+width$ -- 13
+write$ -- 121
