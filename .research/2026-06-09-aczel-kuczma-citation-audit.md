@@ -1,11 +1,12 @@
 # Citation audit — Aczél (1966), Aczél–Dhombres (1989), Kuczma (2009)
 
 **Phase**: MAA satellite (`satellites/o3-maa/`)
-**Status**: partially verified — Kuczma §13.2 and §5.2 audited 2026-06-09
-against physical PDFs; Aczél 1966 Ch. 5 entropy claim disproven by author;
-remaining Aczél / Aczél–Dhombres pin-cites still need verification.
+**Status**: substantially verified — Kuczma §§5.2 and 13.2, Aczél §2.1
+(all subsections), and the Aczél–Dhombres 1989 table of contents audited
+2026-06-09 against PDF excerpts. Aczél 1966 Ch. 5 entropy claim and
+Aczél–Dhombres Ch. 13 higher-dim claim disproven.
 **First raised**: 2026-06-09
-**Last updated**: 2026-06-09 (Kuczma §5.2 verified; Aczél Ch. 5 entropy claim disproven)
+**Last updated**: 2026-06-09 (Aczél §2.1 and Aczél–Dhombres TOC verified)
 
 ## The question
 
@@ -143,6 +144,73 @@ citation.
 | §5.3, line 675 | `{AczelDhombres1989}` (no chapter) | Substitution is part of the standard entropy-functional-equations toolkit |
 | §6 *Provenance*, line 765–766 | `[\S2.1]{Aczel1966}` + `[Ch.~13]{Kuczma2009}` | Substitution is folklore |
 
+## Aczél 1966 §2.1 — verified content
+
+§2.1 *“Cauchy's Equations and Jensen's Equation”* has four subsections:
+
+| Subsection | Title (verified) | Content (summary) |
+|---|---|---|
+| §2.1.1 | Cauchy's basic equation $f(x+y)=f(x)+f(y)$ | Solution class with continuity / boundedness / measurability → affine; Hamel pathology without regularity. |
+| §2.1.2 | The three remaining Cauchy equations | Exponential, logarithmic, multiplicative — reducible to §2.1.1. |
+| §2.1.3 | Jensen's equation $f((x+y)/2) = (f(x)+f(y))/2$ on $\mathbb{R}$ | Reduces to Cauchy by setting $y=0$; closure requires regularity (continuity at a point, boundedness, etc.). Theorem 1 of §2.1.3 is the $J_2$ regularity story. |
+| §2.1.4 | Jensen's equation and Cauchy's equations for an interval and for higher ranks | Proves $f(x)=a+x(b-a)$ for **dyadic** $x \in [0,1]$ by dyadic induction starting from $f(0)=a$, $f(1)=b$; then continuity upgrades dyadic to all $x \in [0,1]$. |
+
+**Key finding for the manuscript**: §2.1.4 is the closest match to the
+manuscript's endpoint substitution. It contains the **dyadic precursor**:
+the same endpoint values $f(0)$, $f(1)$ pin $f$ along the line, but only
+on the dyadic rationals; closure requires continuity to extend to the
+full interval.
+
+What §2.1 (across all four subsections) does **NOT** contain:
+
+- The continuous-coefficient form $(\star)$ with $p \in [0,1]$ ranging
+  continuously over the reals.
+- The regularity-free closure: in §2.1.4 the dyadic substitution is
+  closed by a **continuity hypothesis** to upgrade dyadic to all $x$.
+- Any statement equivalent to the manuscript's Theorem~1
+  ($(\star)$ with continuous $p$ $\Rightarrow$ affine, with no regularity
+  hypothesis at all).
+
+**Conclusion for §2.1**: the manuscript's `[\S2.1]{Aczel1966}` cite was
+imprecise; the relevant subsection is **§2.1.4**. Even §2.1.4 is a
+**weaker** result (uses dyadic + continuity), so the manuscript's
+“Theorem 1 is folklore” attribution slightly overstates what is
+literally in Aczél. The manuscript's contribution, on this evidence,
+is to upgrade §2.1.4's dyadic-plus-continuity statement to the strict
+strengthening $(\star)$-on-$[0,1]$-implies-affine with no regularity.
+Whether the strengthening counts as “folklore” or “a genuine
+observation” depends on whether it has been stated elsewhere; for now
+the `Folklore; cf.~\cite[\S2.1.4]{Aczel1966}` hedge is conservative.
+
+## Aczél–Dhombres 1989 — verified table of contents
+
+TOC excerpt at [`satellites/refs/outline.pdf`](../satellites/refs/outline.pdf).
+Verified chapters relevant to the manuscript:
+
+| Ch. | Title | Relevant? |
+|---|---|---|
+| 2 | Cauchy's equation. Hamel basis | Yes — covers additive functions on vector spaces, Hamel-basis machinery. Most natural home for a multi-variable affine-extension result. |
+| 3 | Three further Cauchy equations. An application to information theory | Possibly relevant for the entropy application (§5.3). |
+| 4 | Generalizations of Cauchy's equations to several multiplace vector and matrix functions | Multi-variable Cauchy. |
+| 5 | Cauchy's equations for complex functions. Applications to harmonic analysis and to information measures. *Subsection 5.4: Recursive entropies.* | The recursive-entropy material is here, not in Aczél 1966 Ch. 5. |
+| 11 | Characterizations of inner product spaces | Orthogonal additivity. |
+| **13** | **Equations for trigonometric and similar functions** | ❌ **NOT** the higher-dim convex / affine chapter. |
+| 17 | Mean values, mediality and self-distributivity | Jensen-type equations on means — candidate home for a Jensen-form result. |
+| 18 | Generalized mediality. Connection to webs and nomograms | Mean-value equations. |
+
+**Conclusion**: the manuscript's `[Ch.~13]{AczelDhombres1989}` cite in
+§4.2 is **wrong**. Ch. 13 is about trigonometric equations. The right
+chapter for the higher-dim affine-extension claim is Ch. 2 (Cauchy on
+vector spaces) — but without a verified excerpt of Ch. 2, the safest
+fix is to drop the chapter pin and cite the book generically.
+
+**Bonus finding**: Aczél–Dhombres **§5.4 “Recursive entropies”** is the
+actual modern entropy chapter — the very content the manuscript's §5.3
+was trying to attribute to Aczél 1966 Ch. 5. If the manuscript needs a
+modern-treatment cite for Khinchin–Faddeev recursivity, this is the
+correct pin: `\cite[\S5.4]{AczelDhombres1989}`. (Not edited into the
+manuscript on this pass; recorded here as a follow-up option.)
+
 ## Per-citation audit
 
 For each citation, this section records:
@@ -152,26 +220,38 @@ For each citation, this section records:
 - **Expected source content**: what the citation should match in the book.
 - **Verification status**: whether the pin-cite has been confirmed.
 
-### Cite #1 — Aczél (1966) §2.1 — endpoint substitution is folklore
+### Cite #1 — Aczél (1966) §2.1.4 — dyadic precursor of the endpoint substitution
 
-**Used at**: §1.3 line 246; §1.4 line 288; §5 intro line 579; §6 line 765.
+**Used at**: §1.3, §1.4 *Terminology*, §5 intro, §6 *Provenance*.
 
 **Manuscript reasoning** (Theorem 1 proof, §2):
 > Fix $v \in [0,M]$. Set $u_1 := M$, $u_2 := 0$, $p := v/M \in [0,1]$.
-> Substitute into $(\star)$:
-> $\frac{v}{M} G(M) + (1 - \frac{v}{M}) G(0) = G(\frac{v}{M} \cdot M + (1 - \frac{v}{M}) \cdot 0) = G(v)$.
-> Rearranging yields $G(v) = G(0) + (G(M) - G(0)) \cdot v/M$.
+> Substitute into $(\star)$. Rearranging yields
+> $G(v) = G(0) + (G(M) - G(0)) \cdot v/M$.
 
-**Expected source content**: Aczél's §2.1 introduces Cauchy's equation $f(x+y) = f(x) + f(y)$ and the continuous-coefficient Jensen equation $pG(u_1) + (1-p)G(u_2) = G(pu_1 + (1-p)u_2)$. The endpoint substitution closure should appear as a brief remark — likely as a one-line observation that "if $G$ satisfies the equation for all $p \in [0,1]$, then setting $u_1, u_2$ to the endpoints gives the affine formula." The manuscript's own §6 says: "Aczél and Kuczma each devote no more than a paragraph to the observation."
+**Verified source content (§2.1.4)**: Aczél proves $f(x) = a + x(b-a)$
+on $[0,1]$, where $a := f(0)$ and $b := f(1)$, by:
 
-**Verification status**: ⚠️ **Unverified by author**. The author looked and could not pin down the exact paragraph.
+1. Showing $f(\tfrac{1}{2}) = \tfrac{a+b}{2}$ via the $J_2$ equation.
+2. Showing $f(\tfrac{1}{4}) = a + \tfrac{1}{4}(b-a)$ similarly.
+3. Inducting on dyadic rationals: if $f(x) = a + x(b-a)$ for all
+   dyadic $x$ with denominator $2^n$, then it holds for $2^{n+1}$.
+4. Using **continuity** to extend from dyadic-dense to all $x \in [0,1]$.
 
-**Recommended verification**:
+This is a **weaker** statement than the manuscript's Theorem~1, because
+it uses $J_2$ (discrete coefficient) plus a continuity hypothesis.
+The manuscript's $(\star)$ has continuous coefficients $p \in [0,1]$, so
+the substitution closes in one step without dyadic induction and
+without any continuity hypothesis.
 
-1. Open Aczél 1966, §2.1. Find the introductory statement of either Cauchy's equation or Jensen's equation.
-2. Look for the substitution $p G(M) + (1-p) G(0) = G(pM)$ (or equivalent) in the surrounding pages.
-3. If §2.1 does not contain it, scan §§2.1–2.3 (Cauchy's equation block) for the same substitution.
-4. If still not found, the citation should be changed to either `[\S2.2]{Aczel1966}`, `[Ch.~2]{Aczel1966}`, or removed in favor of `[\cite[Ch.~13]{Kuczma2009}]` alone.
+**Verification status**: ⚠️ **Partial**. §2.1.4 contains the dyadic
+precursor of the endpoint substitution; the manuscript's regularity-free
+continuous-coefficient closure is one strict step beyond.
+
+**Citation refined to**: `\cite[\S2.1.4]{Aczel1966}` (was `\cite[\S2.1]{Aczel1966}`).
+The “Folklore; cf.” hedge is appropriate — the underlying substitution
+technique is in Aczél; the regularity-free strengthening may be the
+manuscript's own observation.
 
 ### Cite #2 — Kuczma (2009) Ch. 13 — Jensen's equation $J_2$
 
@@ -207,7 +287,7 @@ closest to the chapter title (“Jensen equation”) does not.
   does: Aczél §2.1 for the substitution, Kuczma §13.2 for the contrasting
   $J_2$-regularity story.
 
-### Cite #3 — Aczél–Dhombres (1989) Ch. 13 — higher-dimensional lifting
+### Cite #3 — Aczél–Dhombres (1989) — higher-dimensional lifting
 
 **Used at**: §4.2 line 527.
 
@@ -219,15 +299,23 @@ closest to the chapter title (“Jensen equation”) does not.
 > dimension of the affine span promotes this to a global linear
 > functional $a$ on $\mathrm{span}(C - C)$.
 
-**Expected source content**: Aczél–Dhombres treat functional equations in several variables. Ch. 13 likely covers convex / additive functions on convex subsets of vector spaces, including the lift of the one-variable endpoint substitution to higher dimensions.
+**Verified TOC content**: Ch. 13 of Aczél–Dhombres 1989 is titled
+*“Equations for trigonometric and similar functions”* and is **not** the
+higher-dim convex / affine chapter. The chapter pin `[Ch.~13]{AczelDhombres1989}`
+was wrong.
 
-**Verification status**: ⚠️ **Unverified**.
+The right chapter for the higher-dim affine-extension result is most
+likely **Ch. 2 “Cauchy's equation. Hamel basis”**, which covers additive
+functions on vector spaces — but Ch. 2's content has not been verified
+in detail (no excerpt was provided). **Ch. 17 “Mean values, mediality
+and self-distributivity”** is also a candidate (Jensen-type equations
+on means).
 
-**Recommended verification**:
+**Verification status**: ❌ **Wrong chapter** — corrected.
 
-1. Open Aczél–Dhombres 1989, Ch. 13.
-2. Confirm the chapter title or topic is multi-variable affine / convex functional equations.
-3. Look for an analog of the manuscript's claim that "the bookkeeping is standard" — i.e., for a statement like "an affine function on every line segment in a convex set extends to a global affine map." If the chapter is on a different topic, search the book's table of contents for the right chapter.
+**Citation refined to**: `\cite{AczelDhombres1989}` (no chapter pin).
+Safer than guessing Ch. 2 or Ch. 17 without verification; "the
+bookkeeping is standard" reads honestly with a generic book reference.
 
 ### Cite #4 — Kuczma (2009) §§5.2 and~13.2 — Proposition 5 ($J_\mathbb{Q}$ pathology)
 
@@ -336,6 +424,30 @@ verified against the physical books. Before submission, the author should:
   (Ch. 5) and the Jensen-form pathology (Ch. 13).
 - This audit file created for the author to use as a verification checklist.
 
+## Action taken on 2026-06-09 (fourth pass, after Aczél §2.1 and Aczél–Dhombres TOC verification)
+
+Aczél 1966 §2.1 OCR'd from `satellites/refs/aczel69_2.1.pdf` (19 pages).
+Aczél–Dhombres 1989 TOC OCR'd from `satellites/refs/outline.pdf` (3 pages).
+
+Verified that:
+
+- Aczél §2.1.4 contains the **dyadic precursor** of the endpoint
+  substitution: $f(x) = a + x(b-a)$ on dyadic rationals in $[0,1]$,
+  then continuity to extend to all $x$. This is a weaker statement than
+  the manuscript's regularity-free Theorem~1.
+- Aczél–Dhombres 1989 Ch. 13 is *“Equations for trigonometric and
+  similar functions”*, **not** the higher-dim convex / affine chapter.
+- Aczél–Dhombres 1989 §5.4 *“Recursive entropies”* is the actual modern
+  entropy chapter — a candidate replacement for the dropped Aczél 1966
+  Ch. 5 cite in §5.3 (not yet applied; logged as follow-up).
+
+Manuscript edits applied as a result:
+
+- Refined four `\cite[\S2.1]{Aczel1966}` cites to `\cite[\S2.1.4]{Aczel1966}`
+  (in §1.3, §1.4 *Terminology*, §5 intro, §6 *Provenance*).
+- Dropped wrong `[Ch.~13]{AczelDhombres1989}` pin in §4.2; now
+  cites the book generically (`\cite{AczelDhombres1989}`).
+
 ## Action taken on 2026-06-09 (third pass, after §5.2 verification + Aczél Ch. 5 disproven)
 
 Kuczma §5.2 PDF added to `satellites/refs/kuczma_5.pdf`. Verified that:
@@ -359,20 +471,29 @@ Manuscript edits applied as a result:
 
 ## Open follow-ups
 
-- [x] **Verify Kuczma 2009 §13.2** is the Jensen-equation chapter — done
-  (it is, but covers only $J_2$, not $(\star)$).
-- [x] **Verify Kuczma 2009 §5.2** contains the Hamel extension — done
-  (Theorem 5.2.2 plus Theorem 5.2.1 for ℚ-homogeneity).
-- [x] **Verify Aczél 1966 Ch. 5** entropy claim — disproven (no entropy
-  content; manuscript citation removed).
-- [ ] **Verify Aczél 1966 §2.1** contains (or points to) the endpoint
-  substitution closure for the continuous-coefficient Jensen equation.
-  If §2.1 is purely Cauchy's equation, change to `[§2.2]` or similar.
-- [ ] **Verify Aczél–Dhombres 1989 Ch. 13** is the multi-variable
-  convex / affine chapter (used in §4.2 for the higher-dim lifting).
-- [ ] **Locate the Khinchin–Faddeev entropy chapter in Aczél 1966** if
-  one exists — might be Ch. 6 or 7. Otherwise the §5.3 reference list
-  is fine as-is (Khinchin 1957 + Faddeev 1957 + Aczél–Dhombres 1989).
-- [ ] **(Optional) consult the rest of Kuczma Ch. 13** (§13.1, §13.3+) to
-  see whether any of those sections discuss the continuous-coefficient
-  form $(\star)$.
+- [x] **Verify Kuczma 2009 §13.2** is the Jensen-equation chapter — done.
+- [x] **Verify Kuczma 2009 §5.2** contains the Hamel extension — done.
+- [x] **Verify Aczél 1966 Ch. 5** entropy claim — disproven; removed.
+- [x] **Verify Aczél 1966 §2.1** contains the endpoint substitution
+  — done. §2.1.4 contains the dyadic precursor; the strict
+  regularity-free version in continuous coefficients is one step
+  beyond.
+- [x] **Verify Aczél–Dhombres 1989 Ch. 13** — done. Ch. 13 is
+  trigonometric functions; pin was wrong and has been dropped.
+- [ ] **(Optional) verify Aczél–Dhombres 1989 Ch. 2** (or Ch. 17) as
+  the actual home for the higher-dim affine extension. If verified,
+  could replace the dropped chapter pin with the right one.
+- [ ] **(Optional) update §5.3 to cite Aczél–Dhombres §5.4** *“Recursive
+  entropies”* alongside Khinchin and Faddeev. This is the modern
+  textbook treatment of recursive entropies and is the natural
+  replacement for the dropped Aczél 1966 Ch. 5 cite.
+- [ ] **Verify Kuczma 2009 §4.3** (Hamel basis existence theorem,
+  Theorem 4.3.1) if maximal pinpoint precision is needed for
+  Proposition 5's construction. Current pin `[\S\S5.2 and 13.2]` is
+  honest.
+- [ ] **(Strategic) reconsider the “Folklore; cf.” framing in light of
+  Aczél §2.1.4's weaker statement.** The continuous-coefficient
+  regularity-free Theorem~1 may be a more original observation than
+  the manuscript currently claims. Options: (a) keep the hedge as
+  conservative (safer for refereeing); (b) strengthen the
+  contribution claim in the abstract / intro / conclusion.
