@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.6.9)  9 JUN 2026 13:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.6.9)  9 JUN 2026 16:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -376,7 +376,7 @@ dist/fonts/enc/dvips/base/8r.enc}
 ]
 
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 2
-06.
+08.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [2]
@@ -388,7 +388,7 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 [5]
 
 [6]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 573
+LaTeX Font Info:    Trying to load font information for U+euf on input line 578
 .
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
@@ -402,7 +402,11 @@ File: mt-euf.cfg 2006/07/03 v1.1 microtype config. file: AMS Euler Fraktur (RS)
 
 [8]
 
-[9] (./manuscript.bbl
+[9]
+
+[10]
+
+[11] (./manuscript.bbl
 LaTeX Font Info:    Calculating math sizes for size <8.2> on input line 6.
 
 
@@ -419,9 +423,9 @@ LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.09999> not available
 
 
 
-[10])
+[12])
 
-[11] (./manuscript.aux)
+[13] (./manuscript.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -433,13 +437,13 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 6340 strings out of 475102
- 95688 string characters out of 5764878
- 523604 words of memory out of 5000000
- 28874 multiletter control sequences out of 15000+600000
- 631815 words of font info for 331 fonts, out of 8000000 for 9000
+ 6409 strings out of 475102
+ 96371 string characters out of 5764878
+ 523394 words of memory out of 5000000
+ 28886 multiletter control sequences out of 15000+600000
+ 636697 words of font info for 371 fonts, out of 8000000 for 9000
  77 hyphenation exceptions out of 8191
- 72i,12n,79p,1003b,396s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,12n,79p,1003b,400s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/aelouafiq/.texlive2025/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095
 .600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
@@ -459,10 +463,10 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmri8a.pfb>
-Output written on manuscript.pdf (11 pages, 243291 bytes).
+Output written on manuscript.pdf (13 pages, 253848 bytes).
 PDF statistics:
- 150 PDF objects out of 1000 (max. 8388607)
- 88 compressed objects within 1 object stream
+ 157 PDF objects out of 1000 (max. 8388607)
+ 93 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 67073 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 69121 words of extra memory for PDF output out of 74296 (max. 10000000)
 

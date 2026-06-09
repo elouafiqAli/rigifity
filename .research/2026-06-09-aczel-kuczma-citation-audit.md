@@ -1,13 +1,12 @@
 # Citation audit — Aczél (1966), Aczél–Dhombres (1989), Kuczma (2009)
 
 **Phase**: MAA satellite (`satellites/o3-maa/`)
-**Status**: substantially verified — Kuczma §§5.2 and 13.2, Aczél §2.1
-(all subsections), and the Aczél–Dhombres 1989 table of contents audited
-2026-06-09 against PDF excerpts. Aczél 1966 Ch. 5 entropy claim and
-Aczél–Dhombres Ch. 13 higher-dim claim disproven. Strategic reframing
-applied 2026-06-09 (fifth pass).
+**Status**: substantially verified for original entries (Kuczma §§5.2 and 13.2,
+Aczél §2.1, Aczél–Dhombres TOC). Twelve new entries added 2026-06-09 during
+the Round 1 §6 reframing — these are LLM-assisted bibliographic recall and
+**must be verified against primary sources before submission**.
 **First raised**: 2026-06-09
-**Last updated**: 2026-06-09 (fifth pass — strategic reframing)
+**Last updated**: 2026-06-09 (sixth pass — §6 reframing + 12 new bib entries)
 
 ## The question
 
@@ -425,6 +424,64 @@ verified against the physical books. Before submission, the author should:
   (Ch. 5) and the Jensen-form pathology (Ch. 13).
 - This audit file created for the author to use as a verification checklist.
 
+## Action taken on 2026-06-09 (sixth pass — §6 reframing per Round 1 review)
+
+A Round 1 editorial review (`satellites/refs/round-review.md`) identified
+that two of the three application areas in the old §6 were misclassified:
+
+- **Expected utility (Source 1, not Source 4)**: the vNM/Herstein–Milnor
+  independence axiom delivers ordinal linearity only; the Archimedean
+  axiom is what produces a real-valued affine $U$. Lexicographic
+  preferences are the standard counterexample. The old draft's claim
+  that Theorem 1 is “the algebraic alternative to the Archimedean
+  axiom” was therefore wrong.
+- **Shannon entropy (Source 3, not Source 4)**: the recursivity axiom
+  reduces to the *fundamental equation of information* (a Cauchy
+  relative whose solution is the concave Shannon function), not
+  to~$(\star)$. Regularity hypotheses are load-bearing here, not
+  vestigial. The five hypotheses of Table 1 reappear, in the wild, as
+  the chain of Faddeev (continuity) → Tverberg (integrability) → Lee
+  (measurability) → Diderrich (boundedness on a positive-measure set)
+  → Kendall/Borges (monotonicity).
+- **Calibration (Source 4)**: the only genuinely correct example,
+  because an atomless probability space realizes every real cell mass
+  $p\in[0,1]$ (Lyapunov's convexity theorem).
+
+Fix applied: §6 fully rewritten as a four-source diagnostic (`ssec:diagnostic`)
+→ load-bearing examples (`ssec:load-bearing`: utility, entropy, opinion pools)
+→ vestigial examples (`ssec:vestigial`: calibration, atomless toy)
+→ mirrored dictionary (`ssec:mirror`: `tab:mirror`) → lesson (`ssec:lesson`).
+
+Forced ripple edits also applied: abstract final paragraph, intro
+bullet~(iii), concluding-remarks second reason, cover-letter “why the
+Monthly” paragraph and “what the paper does.” Fixed the “A A” doubled-word
+typo in the provenance note.
+
+### Twelve new bib entries — each needs verification
+
+Added to `refs.bib`. Verification means **opening the primary source and
+confirming the metadata**, not relying on a search snippet or another LLM:
+
+| Bib key | Citation | Verify |
+|---|---|---|
+| `Fishburn1970` | Fishburn, *Utility Theory for Decision Making* (Wiley, 1970) | book metadata |
+| `Kreps1988` | Kreps, *Notes on the Theory of Choice* (Westview, 1988) | book metadata |
+| `AczelDaroczy1975` | Aczél–Daróczy, *On Measures of Information* (Academic Press, 1975) | book metadata |
+| `BaezFritzLeinster2011` | *Entropy* 13:11 (2011) 1945–1957 | DOI 10.3390/e13111945 |
+| `Tverberg1958` | *Math. Scand.* 6 (1958) 297–298 | volume + pages |
+| `Lee1964` | *Ann. Math. Statist.* 35 (1964) 415–418 | volume + pages |
+| `Diderrich1975` | *Inform. and Control* 29 (1975) 149–161 | volume + pages |
+| `Kendall1964` | *Z. Wahrsch. Verw. Gebiete* 2 (1964) 225–229 | volume + pages |
+| `Borges1967` | *Math. Z.* 96 (1967) 282–287 | volume + pages |
+| `McConway1981` | *JASA* 76:374 (1981) 410–414 | volume + pages |
+| `AczelWagner1980` | *SIAM J. Alg. Disc. Methods* 1:3 (1980) 259–260 | **flagged**: title/venue uncertain; alternative anchor is Aczél–Ng–Wagner, *Aequationes Math.* 28 (1984) 117–129 |
+| `Lyapunov1940` | *Izv. Akad. Nauk SSSR Ser. Mat.* 4 (1940) 465–478 | volume + pages; alternative locator: Halmos, *BAMS* 54 (1948) 416–421 |
+
+The entries that carry the showpiece argument are the four
+entropy-weakening attributions (Tverberg, Lee, Diderrich, Kendall/Borges).
+These are the highest priority to confirm — if any is wrong, the
+load-bearing column of `tab:mirror` needs to be re-attributed.
+
 ## Action taken on 2026-06-09 (fifth pass — strategic reframing)
 
 After the Aczél §2.1.4 verification revealed that the standard reference
@@ -528,30 +585,71 @@ Manuscript edits applied as a result:
 
 ## Open follow-ups
 
+### From Round 1 review (high priority — before submission)
+
+- [ ] **Verify the four entropy-weakening attributions** (Tverberg 1958,
+  Lee 1964, Diderrich 1975, Kendall 1964, Borges 1967). These carry
+  `tab:mirror`'s load-bearing column.
+- [ ] **Verify the utility-theory book metadata** (Fishburn 1970, Kreps 1988).
+- [ ] **Verify the opinion-pool attributions** (McConway 1981, Aczél–Wagner 1980).
+  Aczél–Wagner 1980 is flagged — venue/title needs confirmation; alternative
+  anchor is Aczél–Ng–Wagner 1984.
+- [ ] **Verify Lyapunov 1940 metadata** or switch the locator to Halmos
+  1948 BAMS.
+- [ ] **Verify Aczél–Daróczy 1975 + Baez–Fritz–Leinster 2011** book + journal
+  metadata.
+- [ ] **Audit Table 1's Steinhaus 1920 / Ostrowski 1929 attributions.** Round 1
+  flagged that Steinhaus 1920 proves the *difference-set lemma* ($E-E$
+  contains an interval when $|E|>0$), not the bounded-on-positive-measure
+  $\Rightarrow$ affine statement, which is Ostrowski's theorem. Likely fix:
+  re-attribute row 4 to Ostrowski (citing Steinhaus as the lemma it uses),
+  and fold row 5 (bounded on $I$) in as an immediate corollary.
+- [ ] **Verify Cauchy 1821 / Darboux 1875 / Sierpiński 1920 / Hamel 1905**
+  page ranges and attribution scopes (Round 1, Phase 3 items 4–7).
+- [ ] **Cite Jensen 1906 explicitly** at the first mention of Jensen's
+  inequality, or remove the dead bib entry.
+- [ ] **Bibliography style check**: the manuscript uses `\bibliographystyle{vancouver}`
+  with a header comment claiming this is the Monthly's NLM Vancouver style.
+  Round 1 disputes this. Before submission, pull the actual MAA Monthly
+  LaTeX style file and confirm the bibliography style required. If wrong,
+  rerun bibtex with the correct `.bst`.
+- [ ] **Clean the `refs.bib` header**: it still says "Expositiones Mathematicae
+  submission" / "Style: `elsarticle-num`" / 2026-06-07. Update to Monthly +
+  current date.
+- [ ] **Reconcile MSC codes** between manuscript (line 158: `39B22, 39B05`)
+  and cover letter (39B22 primary; 26B25, 91B16, 94A17 secondary). The
+  cover letter's richer set is better; bring the manuscript into line.
+- [ ] **Fix the garbled sentence in §3.1** — "**No regularity hypothesis**
+  suffices for ($J_2$): there exists a non-affine…" reads as
+  "none of the regularity hypotheses suffice," contradicting Table 1.
+  Rewrite to "*Without any* regularity hypothesis, ($J_2$) does not force
+  affineness."
+- [ ] **Fix Proposition 5 nit**: "$H$ has cardinality $\mathfrak{c}$ and
+  $\mathbb{Q} \cup \{1\}$ is countable" — since $1 \in \mathbb{Q}$, the
+  set is just $\mathbb{Q}$. Drop the `$\cup\{1\}$`.
+- [ ] **Rewrite Theorem 4 proof sketch** to name the actual subtlety
+  (extending additivity off the domain $C-C$, not dimension induction).
+- [ ] **Add a terminology disclaimer** at first use of "continuous-coefficient
+  Jensen equation" — classically, *Jensen's equation* denotes the
+  midpoint form ($J_2$); we use "continuous-coefficient Jensen equation"
+  for $(\star)$ to mark the contrast.
+- [ ] **Confirm Monthly submission portal expectations**: anonymous body
+  + separate title page + cover letter as three distinct artifacts.
+
+### From earlier passes (lower priority)
+
 - [x] **Verify Kuczma 2009 §13.2** is the Jensen-equation chapter — done.
 - [x] **Verify Kuczma 2009 §5.2** contains the Hamel extension — done.
 - [x] **Verify Aczél 1966 Ch. 5** entropy claim — disproven; removed.
 - [x] **Verify Aczél 1966 §2.1** contains the endpoint substitution
-  — done. §2.1.4 contains the dyadic precursor; the strict
-  regularity-free version in continuous coefficients is one step
-  beyond.
-- [x] **Verify Aczél–Dhombres 1989 Ch. 13** — done. Ch. 13 is
-  trigonometric functions; pin was wrong and has been dropped.
+  precursor — done. §2.1.4 contains the dyadic precursor.
+- [x] **Verify Aczél–Dhombres 1989 Ch. 13** — done. Trigonometric
+  functions; pin was wrong and has been dropped.
 - [ ] **(Optional) verify Aczél–Dhombres 1989 Ch. 2** (or Ch. 17) as
-  the actual home for the higher-dim affine extension. If verified,
-  could replace the dropped chapter pin with the right one.
-- [ ] **(Optional) update §5.3 to cite Aczél–Dhombres §5.4** *“Recursive
-  entropies”* alongside Khinchin and Faddeev. This is the modern
-  textbook treatment of recursive entropies and is the natural
-  replacement for the dropped Aczél 1966 Ch. 5 cite.
-- [ ] **Verify Kuczma 2009 §4.3** (Hamel basis existence theorem,
-  Theorem 4.3.1) if maximal pinpoint precision is needed for
-  Proposition 5's construction. Current pin `[\S\S5.2 and 13.2]` is
-  honest.
-- [x] **(Strategic) reconsider the “Folklore; cf.” framing in light of
-  Aczél §2.1.4's weaker statement.** Done in the fifth pass. Decision:
-  keep the folklore hedge for the substitution **technique**;
-  acknowledge explicitly that the precise statement of Theorem~1 does
-  not appear in this exact form in the standard references the author
-  consulted; let the dictionary and recurrence pattern carry the
-  contribution claim.
+  the actual home for the higher-dim affine extension.
+- [ ] **(Optional) update §5.3 to cite Aczél–Dhombres §5.4** *"Recursive
+  entropies"* alongside Khinchin and Faddeev.
+- [ ] **Verify Kuczma 2009 §4.3** (Hamel basis existence) for maximal
+  precision in Proposition 5's pin.
+- [x] **(Strategic) reconsider the "Folklore; cf." framing** — done in
+  fifth pass.
