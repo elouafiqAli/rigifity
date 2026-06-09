@@ -4,9 +4,10 @@
 **Status**: substantially verified — Kuczma §§5.2 and 13.2, Aczél §2.1
 (all subsections), and the Aczél–Dhombres 1989 table of contents audited
 2026-06-09 against PDF excerpts. Aczél 1966 Ch. 5 entropy claim and
-Aczél–Dhombres Ch. 13 higher-dim claim disproven.
+Aczél–Dhombres Ch. 13 higher-dim claim disproven. Strategic reframing
+applied 2026-06-09 (fifth pass).
 **First raised**: 2026-06-09
-**Last updated**: 2026-06-09 (Aczél §2.1 and Aczél–Dhombres TOC verified)
+**Last updated**: 2026-06-09 (fifth pass — strategic reframing)
 
 ## The question
 
@@ -424,6 +425,62 @@ verified against the physical books. Before submission, the author should:
   (Ch. 5) and the Jensen-form pathology (Ch. 13).
 - This audit file created for the author to use as a verification checklist.
 
+## Action taken on 2026-06-09 (fifth pass — strategic reframing)
+
+After the Aczél §2.1.4 verification revealed that the standard reference
+contains only the **dyadic precursor** (with a continuity hypothesis)
+and not the precise continuous-coefficient regularity-free statement of
+Theorem~1, a strategic decision was needed on framing.
+
+Adversarial-reviewer analysis (4 scenarios):
+
+1. *Mild* — “the folklore attribution is imprecise; please pin
+   what Aczél actually proves.” Fixable with a footnote.
+2. *Moderate* — “Theorem 1 is not in the standard refs; either fix
+   the cite or reframe as a genuine (if elementary) observation.”
+3. *Severe* — “citation work looks careless; rejection.”
+4. *Counter-direction* — “the author overclaims a one-line consequence;
+   rejection.”
+
+**Decision**: keep the folklore hedge but make the literature-search
+audit visible. Distinguish in every framing location between:
+
+- The substitution **technique** (genuinely folklore; Aczél §2.1.4
+  has a dyadic precursor by the same substitution).
+- The precise **statement** of Theorem~1 (continuous coefficients,
+  no regularity hypothesis; does not appear in this exact form in
+  the standard references the author consulted).
+
+This defends against Scenarios 1, 2, and 4 simultaneously, and softens
+Scenario 3 considerably. The dictionary (§3) and recurrence pattern
+(§5) carry the contribution claim and are clearly the author's own.
+
+Manuscript edits applied (canonical + anonymous):
+
+- §1.3 *historical detour*: “Theorem~1 is elementary. The underlying
+  substitution technique is folklore in functional equations: Aczél
+  §2.1.4 contains a dyadic precursor proved (with a continuity
+  hypothesis) by the same kind of substitution. The precise
+  statement of Theorem~1…does not appear in this exact form in the
+  standard references the author consulted; it is recorded here
+  because the recurrence pattern of Section~5 needs it as a separable
+  lemma.”
+- §1.4 *Terminology*: “The substitution technique is standard folklore
+  in the functional-equations literature (Aczél §2.1.4 proves a
+  dyadic version)…”
+- §5 intro: “The substitution technique behind Theorem~1 is
+  folkloric — Aczél §2.1.4 contains the dyadic precursor — and the
+  continuous-coefficient regularity-free closure is then a short
+  step further.”
+- §6 *Provenance*: “A literature search then confirmed that the
+  substitution technique is folklore: Aczél §2.1.4 proves a dyadic
+  precursor under a continuity hypothesis. The precise
+  continuous-coefficient regularity-free statement of Theorem~1,
+  while elementary, does not appear in this exact form in the
+  standard references the author consulted; the present paper grew
+  out of the attempt to explain…why the boundedness hypothesis had
+  felt necessary…and to articulate the contrast…as a dictionary.”
+
 ## Action taken on 2026-06-09 (fourth pass, after Aczél §2.1 and Aczél–Dhombres TOC verification)
 
 Aczél 1966 §2.1 OCR'd from `satellites/refs/aczel69_2.1.pdf` (19 pages).
@@ -491,9 +548,10 @@ Manuscript edits applied as a result:
   Theorem 4.3.1) if maximal pinpoint precision is needed for
   Proposition 5's construction. Current pin `[\S\S5.2 and 13.2]` is
   honest.
-- [ ] **(Strategic) reconsider the “Folklore; cf.” framing in light of
-  Aczél §2.1.4's weaker statement.** The continuous-coefficient
-  regularity-free Theorem~1 may be a more original observation than
-  the manuscript currently claims. Options: (a) keep the hedge as
-  conservative (safer for refereeing); (b) strengthen the
-  contribution claim in the abstract / intro / conclusion.
+- [x] **(Strategic) reconsider the “Folklore; cf.” framing in light of
+  Aczél §2.1.4's weaker statement.** Done in the fifth pass. Decision:
+  keep the folklore hedge for the substitution **technique**;
+  acknowledge explicitly that the precise statement of Theorem~1 does
+  not appear in this exact form in the standard references the author
+  consulted; let the dictionary and recurrence pattern carry the
+  contribution claim.

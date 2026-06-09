@@ -243,9 +243,16 @@ to articulate what it means.
 \subsection{The historical detour and the structural moral.}
 \label{ssec:detour}
 
-Theorem~\ref{thm:main} is a folklore result; see, e.g.,
-Acz\'el's \cite[\S2.1.4]{Aczel1966}. It is \emph{not} a new mathematical
-result. The contribution of the present paper is in three parts:
+Theorem~\ref{thm:main} is elementary. The underlying substitution
+technique is folklore in functional equations: Acz\'el's
+\cite[\S2.1.4]{Aczel1966} contains a dyadic precursor proved (with a
+continuity hypothesis) by the same kind of substitution. The precise
+statement of Theorem~\ref{thm:main}\,---\,continuous coefficients
+$p\in[0,1]$, no regularity hypothesis on~$G$\,---\,does not appear in
+this exact form in the standard references the author consulted; it is
+recorded here because the recurrence pattern of
+Section~\ref{sec:recurrence} needs it as a separable lemma. The
+contribution of the present paper is in three parts:
 \begin{itemize}
 \item \emph{The explicit dictionary} (Section~\ref{sec:dictionary}) of
   classical regularity hypotheses on~$G$\,---\,continuity, measurability,
@@ -283,11 +290,11 @@ regularity hypotheses become vestigial in this transition.
 Throughout the paper we refer to the substitution $u_1=M$, $u_2=0$,
 $p=v/M$ in~\eqref{eq:star}\,---\,by which $G(v)$ is read off the straight
 line through the endpoints $(0,G(0))$ and $(M,G(M))$\,---\,as the
-\emph{endpoint substitution}. The substitution is standard folklore in
-the functional-equations literature
-(cf.~\cite[\S2.1.4]{Aczel1966}); the descriptive label is our convenience,
-adopted for brevity in repeated reference rather than as a claim of
-established terminology.
+\emph{endpoint substitution}. The substitution technique is standard
+folklore in the functional-equations literature (Acz\'el's
+\cite[\S2.1.4]{Aczel1966} proves a dyadic version); the descriptive
+label is our convenience, adopted for brevity in repeated reference
+rather than as a claim of established terminology.
 
 %% =============================================================================
 \section{The result and its proof.}
@@ -577,10 +584,10 @@ regularity-hypothesis requirement.
 \section{Where the trap recurs: Jensen saturation as a structural pattern.}
 \label{sec:recurrence}
 
-The endpoint substitution of Section~\ref{sec:proof} is
-folkloric\,---\,Acz\'el's \cite[\S2.1.4]{Aczel1966} articulates the
-underlying observation, and it is standard in the functional-equations
-community. Why, then, does this paper exist?
+The substitution technique behind Theorem~\ref{thm:main} is
+folkloric\,---\,Acz\'el's \cite[\S2.1.4]{Aczel1966} contains the dyadic
+precursor\,---\,and the continuous-coefficient regularity-free closure
+is then a short step further. Why, then, does this paper exist?
 
 Because the explicit packaging matters. The functional-equations
 community has internalized the substitution; the applied
@@ -763,11 +770,16 @@ affine'' was initially stated with a defensive boundedness hypothesis
 on~$G$, in deference to the Cauchy--Hamel literature. When the formal
 proof was written out, the boundedness hypothesis turned out to be
 unused: the endpoint substitution closed the proof on its own. A
-literature search then confirmed that the substitution is folklore in
-functional equations (cf.~\cite[\S2.1.4]{Aczel1966}), and the present
-paper grew out of
-the attempt to explain, to the author's own satisfaction, why the
-hypothesis had felt necessary in the first place. The lesson is
+A literature search then confirmed that the substitution technique is
+folklore: Acz\'el's \cite[\S2.1.4]{Aczel1966} proves a dyadic precursor
+under a continuity hypothesis. The precise continuous-coefficient
+regularity-free statement of Theorem~\ref{thm:main}, while elementary,
+does not appear in this exact form in the standard references the
+author consulted; the present paper grew out of the attempt to explain,
+to the author's own satisfaction, why the boundedness hypothesis had
+felt necessary in the first place, and to articulate the contrast
+between the discrete- and continuous-coefficient cases as a dictionary.
+The lesson is
 general: a defensive regularity hypothesis is not free, and a
 formalization project occasionally surfaces such hypotheses precisely
 because the formal system requires every clause of the statement to be
