@@ -58,3 +58,4 @@ in `opportunities.md`.
 | [`2026-06-05-phase-b3c-execution-plan.md`](./2026-06-05-phase-b3c-execution-plan.md) | B3c | **closed** | Execution plan + proof skeleton for `theorem2_reverse` (now proved) |
 | [`2026-06-05-phase-b4-proposition6.md`](./2026-06-05-phase-b4-proposition6.md) | B4 | **closed** | Proposition 6: `two_query_identity` + `variance_bracket` (now proved, 27/27 audit) |
 | [`2026-06-05-phase-c-theorem1-strategy.md`](./2026-06-05-phase-c-theorem1-strategy.md) | C | open (C1 scaffolded) | Theorem 1 strategy: `BinarySplitRealizable` typeclass + `barPhi_refinement_le` workhorse + 3-step rollout (C1/C2/C3) |
+| [`2026-06-09-aczel-kuczma-citation-audit.md`](./2026-06-09-aczel-kuczma-citation-audit.md) | MAA satellite | open | Per-citation audit of Aczél (1966), Aczél–Dhombres (1989), Kuczma (2009) pin-cites in the MAA manuscript — author verification checklist |

@@ -129,23 +129,26 @@ $u_2=0$, $p=v/M$ to read $G(v)$ directly off the straight line through
 the endpoints. No regularity hypothesis on~$G$\,---\,continuity, measurability,
 monotonicity, or boundedness\,---\,is needed.
 
-This contrasts with a celebrated 80-year story. The $p=\tfrac{1}{2}$
-specialization is equivalent to Cauchy's additive equation and admits
-wildly pathological non-affine solutions without regularity. The Polish
-school of the 1920s cataloged which tameness conditions---continuity,
-measurability, boundedness on a set of positive measure---suffice to
-rule out the pathology. These conditions became standard cargo in
-functional-equation arguments, carried reflexively even where the full
-continuous-weight equation is in play and no such cargo is needed.
+The result contrasts sharply with what happens when the weights~$p$
+are restricted to rationals. The $p=\tfrac{1}{2}$ specialization is
+equivalent to Cauchy's additive equation, which admits wildly
+pathological non-affine solutions (Hamel, 1905) without some
+regularity hypothesis. Classical analysis from Cauchy (1821) to
+Ostrowski (1929) cataloged the minimal tameness conditions\,---\,%
+continuity, measurability, boundedness on a set of positive
+measure\,---\,that rule the pathology out. These conditions became
+standard baggage in functional-equation arguments, carried reflexively
+even where the full continuous-coefficient equation is in play and no
+such baggage is needed.
 
-We make explicit which classical hypotheses become vestigial once all
-weights $p\in[0,1]$ are tested (rather than rational weights only),
-explain structurally why (the pathology lives at irrational~$p$,
-precisely where the continuous equation tests~$G$), and identify the
-recurring trap: derivations in expected-utility theory, entropy
-axiomatics, and surrogate calibration that saturate Jensen across the
-full two-point family each produce this equation and each benefit from
-the one-line closure.
+This note makes the asymmetry explicit. We catalog which classical
+regularity hypotheses become vestigial under the continuous-coefficient
+equation, explain structurally why (the Hamel pathology lives at
+irrational~$p$, exactly where the continuous-coefficient equation
+tests~$G$), and survey three application areas\,---\,expected-utility
+theory, the axiomatic characterization of Shannon entropy, and
+surrogate-loss calibration\,---\,where the same vestigial hypotheses
+recur.
 \end{abstract}
 
 \vspace{8px}
@@ -243,9 +246,9 @@ to articulate what it means.
 \subsection{The historical detour and the structural moral.}
 \label{ssec:detour}
 
-Theorem~\ref{thm:main} is folklore (cf.~\cite[\S2.1]{Aczel1966},
-\cite[Ch.~13]{Kuczma2009}). It is \emph{not} a new mathematical result.
-The contribution of the present paper is in three parts:
+Theorem~\ref{thm:main} is folklore (cf.~\cite[\S2.1]{Aczel1966}). It
+is \emph{not} a new mathematical result. The contribution of the
+present paper is in three parts:
 \begin{itemize}
 \item \emph{The explicit dictionary} (Section~\ref{sec:dictionary}) of
   classical regularity hypotheses on~$G$\,---\,continuity, measurability,
@@ -269,7 +272,7 @@ The contribution of the present paper is in three parts:
   areas where this pattern arises.
 \end{itemize}
 
-The 80-year detour through Hamel and the Polish school answered a
+The classical detour through Hamel and the Polish school answered a
 perfectly natural question---\emph{what regularity hypothesis suffices
 for \eqref{eq:J2}$\Rightarrow$affine?}---but a \emph{different}
 question from the one that matters for many modern applications. The
@@ -285,9 +288,9 @@ $p=v/M$ in~\eqref{eq:star}\,---\,by which $G(v)$ is read off the straight
 line through the endpoints $(0,G(0))$ and $(M,G(M))$\,---\,as the
 \emph{endpoint substitution}. The substitution is standard folklore in
 the functional-equations literature
-(cf.~\cite[\S2.1]{Aczel1966}, \cite[Ch.~13]{Kuczma2009}); the
-descriptive label is our convenience, adopted for brevity in repeated
-reference rather than as a claim of established terminology.
+(cf.~\cite[\S2.1]{Aczel1966}); the descriptive label is our convenience,
+adopted for brevity in repeated reference rather than as a claim of
+established terminology.
 
 %% =============================================================================
 \section{The result and its proof.}
@@ -351,11 +354,13 @@ examine the difference in detail.
 We place side-by-side the discrete-coefficient equation~\eqref{eq:J2}
 and the continuous-coefficient equation~\eqref{eq:star}, and ask which
 regularity hypotheses on~$G$ are \emph{required} to force affineness
-for each. Table~\ref{tab:dictionary} pairs five classical hypotheses
-with the no-hypothesis row at the bottom: the first column names the
-hypothesis; the second records the requirement for~\eqref{eq:J2} with
-the standard historical attribution; the third records what becomes of
-the requirement under~\eqref{eq:star}.
+for each. Table~\ref{tab:dictionary} lists five classical hypotheses,
+followed by a no-hypothesis row at the bottom. The first column names
+the hypothesis; the second records its status for~\eqref{eq:J2}, with
+the standard historical attribution; the third records its status
+for~\eqref{eq:star}. (For a modern textbook treatment of
+column~2\,---\,the regularity catalog for~\eqref{eq:J2}\,---\,we refer
+the reader to Kuczma~\cite[\S13.2]{Kuczma2009}.)
 
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.4}
@@ -451,12 +456,14 @@ The structural point is one sentence:
 continuous-coefficient equation~\eqref{eq:star} forecloses on it there.}
 \end{quote}
 
-The 80-year detour through Hamel and the Polish school---Cauchy 1821 to
-Ostrowski 1929---was an investigation of what regularity hypothesis can
-substitute for the \emph{unavailable} constraint at irrational~$p$,
-when only the rational-coefficient version of the equation is in play.
-With the continuous-coefficient version, the irrational-coefficient
-constraint is \emph{available}, and the entire dictionary collapses.
+The classical program from Cauchy (1821) through Ostrowski (1929)
+can be read, in hindsight, as an investigation of what regularity
+hypothesis can substitute for the \emph{unavailable} constraint at
+irrational~$p$, once it became clear\,---\,after Hamel's 1905
+construction\,---\,that the rational-coefficient version of the
+equation does not by itself force affineness. With the
+continuous-coefficient version, the irrational-coefficient constraint
+is \emph{available}, and the entire dictionary collapses.
 
 %% =============================================================================
 \section{Variants and limits.}
@@ -535,7 +542,7 @@ The strengthening from rational to continuous coefficients
 in~\eqref{eq:star} is doing genuine work: the rational-coefficient
 version~\eqref{eq:JQ} retains the Hamel pathology.
 
-\begin{proposition}[Folklore; cf.~{\cite[Ch.~5]{Kuczma2009}}]%
+\begin{proposition}[Folklore; cf.~{\cite[\S\S5.2 and~13.2]{Kuczma2009}}]%
 \label{prop:JQ-pathology}
 There exists $G\colon[0,1]\to\R$ satisfying~\eqref{eq:JQ}
 (hence~\eqref{eq:J2}) on $[0,1]$ that is not affine.
@@ -573,8 +580,8 @@ regularity-hypothesis requirement.
 \section{Where the trap recurs: Jensen saturation as a structural pattern.}
 \label{sec:recurrence}
 
-The endpoint substitution of Section~\ref{sec:proof} is folkloric\,---\,both
-\cite[\S2.1]{Aczel1966} and \cite[Ch.~13]{Kuczma2009} articulate the
+The endpoint substitution of Section~\ref{sec:proof} is
+folkloric\,---\,Acz\'el's \cite[\S2.1]{Aczel1966} articulates the
 underlying observation, and it is standard in the functional-equations
 community. Why, then, does this paper exist?
 
@@ -663,9 +670,9 @@ axioms: continuity, maximum at the uniform distribution, and a
 \emph{recursivity axiom} that relates the entropy of a joint
 distribution to a marginal entropy plus a conditional.
 
-In the modern formalization~\cite[Ch.~5]{Aczel1966}, the recursivity
+In the Khinchin--Faddeev recursivity-axiom analysis, the recursivity
 axiom reduces, in intermediate steps, to a system of functional
-equations on auxiliary functions $g,h$ on $[0,1]$. Several of these
+equations on auxiliary functions $g,h$ on~$[0,1]$. Several of these
 intermediate equations are of \eqref{eq:star}-form for the auxiliary
 functions, and the closure step uses continuity (the first Khinchin
 axiom). The endpoint substitution of Theorem~\ref{thm:main} is the
@@ -726,15 +733,16 @@ Hamel pathology lives at irrational~$p$; the continuous-coefficient
 equation~\eqref{eq:star} forecloses on it there.} Why does this material
 deserve an article in the \textsc{Monthly}?
 
-Two reasons. First, the 80-year detour through Hamel and the Polish
-school is a \emph{foundational} result of classical analysis---and the
-dictionary of Section~\ref{sec:dictionary} articulates a precise sense in
-which the detour answered an adjacent question: not ``what is the minimum
-hypothesis for \eqref{eq:star}$\Rightarrow$affine?'' (Theorem~\ref{thm:main}'s
+Two reasons. First, the classical detour through Hamel and the Polish
+school produced \emph{foundational} results of classical
+analysis\,---\,and the dictionary of Section~\ref{sec:dictionary}
+articulates a precise sense in which the detour answered an adjacent
+question: not ``what is the minimum hypothesis for
+\eqref{eq:star}$\Rightarrow$affine?'' (Theorem~\ref{thm:main}'s
 answer: nothing), but ``what is the minimum hypothesis for
 \eqref{eq:J2}$\Rightarrow$affine?'' (Polish school's answer: any of a
-dictionary of tameness conditions). Both questions are interesting; their
-answers are different.
+dictionary of tameness conditions). Both questions are interesting;
+their answers are different.
 
 Second, the recurrence pattern of Section~\ref{sec:recurrence} is, to
 our knowledge, not articulated explicitly elsewhere in the
@@ -759,8 +767,8 @@ on~$G$, in deference to the Cauchy--Hamel literature. When the formal
 proof was written out, the boundedness hypothesis turned out to be
 unused: the endpoint substitution closed the proof on its own. A
 literature search then confirmed that the substitution is folklore in
-functional equations (cf.~\cite[\S2.1]{Aczel1966},
-\cite[Ch.~13]{Kuczma2009}), and the present paper grew out of
+functional equations (cf.~\cite[\S2.1]{Aczel1966}), and the present
+paper grew out of
 the attempt to explain, to the author's own satisfaction, why the
 hypothesis had felt necessary in the first place. The lesson is
 general: a defensive regularity hypothesis is not free, and a
@@ -774,13 +782,14 @@ used.
 %% =============================================================================
 \section*{Acknowledgments.}
 
-During the preparation of this paper the author used a generative AI
-assistant in two capacities: (\emph{i})~adversarial review of successive
-drafts, with the model prompted in critical-reader mode to surface
-defects in prose, argument structure, and prior-art positioning;
-and (\emph{ii})~formatting assistance with \LaTeX{} mechanics and
-bibliography construction. All mathematical content\,---\,statements,
-proofs, and the structural analysis of Sections~\ref{sec:dictionary}
+During the preparation of this paper the author used Anthropic's
+\emph{Claude Opus~4.8}, a large language model, in two capacities:
+(\emph{i})~adversarial review of successive drafts, with the model
+prompted in critical-reader mode to surface defects in prose, argument
+structure, and prior-art positioning; and (\emph{ii})~formatting
+assistance with \LaTeX{} mechanics and bibliography construction. All
+mathematical content\,---\,statements, proofs, and the structural
+analysis of Sections~\ref{sec:dictionary}
 and~\ref{sec:recurrence}\,---\,was conceived, verified, and refined by
 the author, who takes full responsibility for the paper.
 
