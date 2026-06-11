@@ -469,4 +469,127 @@ Each trap states the **tempting** wrong move and the **kill**. These are exactly
 **X24 (★★★).** *Mock qualifier.* A referee writes: *"Proposition 8 secretly assumes $G$ is a Bayes risk, hence concave, so the affineness conclusion is trivial."* Write a complete rebuttal: (a) what $G$ is assumed to be in the statement; (b) why concavity is the classical input and is *not* assumed here; (c) what the genuine content is (the converse, with no regularity); (d) where the referee has confused source 3 (Cauchy relative) with source 4 (genuine continuum). Keep it to a paragraph you could say aloud.
 
 ---
-<!-- STAGE-C-END -->
+
+## Part S — Solutions
+
+**S1.** $\mathbb{E}[\eta]=\mathbb{E}[u_1\mathbf{1}_A+u_2\mathbf{1}_{A^c}]=u_1\mathbb{E}[\mathbf{1}_A]+u_2\mathbb{E}[\mathbf{1}_{A^c}]=u_1\mu(A)+u_2\mu(A^c)=p\,u_1+(1-p)\,u_2$, with $p=\mu(A)$. This is exactly the point $G$ is evaluated at on the **right** of $(\star)$; the **left** of $(\star)$ is $p\,G(u_1)+(1-p)\,G(u_2)=U_G(\sigma(A))$. So "$G$ commutes with this two-point expectation" *is* the saturated identity.
+
+**S2.** $\mathbb{E}[X\mid\mathcal{G}]=c_B\mathbf{1}_B+c_{B^c}\mathbf{1}_{B^c}$ with $c_B=\mathbb{E}[X\mathbf{1}_B]/\mu(B)$ and $c_{B^c}=\mathbb{E}[X\mathbf{1}_{B^c}]/\mu(B^c)$ (block averages). Then $\mathbb{E}[\mathbb{E}[X\mid\mathcal{G}]]=c_B\mu(B)+c_{B^c}\mu(B^c)=\mathbb{E}[X\mathbf{1}_B]+\mathbb{E}[X\mathbf{1}_{B^c}]=\mathbb{E}[X(\mathbf{1}_B+\mathbf{1}_{B^c})]=\mathbb{E}[X]$. $\square$
+
+**S3.** On $([0,1],\text{Leb})$ put $A=[0,t]$; then $\mu(A)=t$ for each $t\in[0,1]$, so every mass is realized — the space is atomless and Sierpiński is explicit. A single fair coin generates $\{\emptyset,H,T,\Omega\}$ with masses $\{0,\tfrac12,1\}$; $n$ independent tosses generate $2^n$ equiprobable atoms, so every event has mass $k/2^n$ for integer $k$ — only **dyadic** weights, and after closure under mixing only **rationals**. **Moral:** finite mixing (a coin) lives in source 1 ($(J_{\mathbb{Q}})$, pathology survives); an atomless space lives in source 4 ($(\star)$, regularity vestigial). The continuum of masses is the entire dividing line.
+
+**S4.** Strict convexity means $G(p u_1+(1-p)u_2)<p G(u_1)+(1-p)G(u_2)$ for $p\in(0,1)$ whenever $u_1\ne u_2$. So equality at some interior $p$ forces $u_1=u_2$ (contrapositive). If the *non-degenerate* identity holds for **all** $u_1\ne u_2$, then $G$ can be strictly convex on no subinterval; applying the same to $-G$, it is strictly concave nowhere either — $G$ has **no strict curvature**. This is the heuristic for "saturation $\Rightarrow$ affine"; Theorem 1 upgrades it to a proof that needs not even continuity, via the chord substitution.
+
+**S5.** Each $a$ contributes $u\,\ell(a,1)+(1-u)\,\ell(a,0)$, **affine in $u$**; the pointwise infimum of affine functions is **concave** (R.6). 
+(a) $0$–$1$ loss: action $1$ has conditional risk $1-u$, action $0$ has $u$, so $H(u)=\min(u,1-u)$ — the **tent**. 
+(b) Log loss, prediction $q$: $\mathbb{E}[-Y\log q-(1-Y)\log(1-q)\mid\eta=u]=-u\log q-(1-u)\log(1-q)$, minimized at $q=u$, giving $H(u)=-u\log u-(1-u)\log(1-u)$ — **Shannon entropy**. 
+(c) Brier loss $(q-Y)^2$: conditional risk $u(1-q)^2+(1-u)q^2$, minimized at $q=u$, giving $H(u)=u(1-u)^2+(1-u)u^2=u(1-u)$.
+
+**S6.** Action $1$: risk $u\cdot0+(1-u)\cdot1=1-u$. Action $0$: risk $u\cdot c+(1-u)\cdot0=cu$. So $H(u)=\min(1-u,\,cu)$, a **skew tent**. The optimal action switches where $1-u=cu$, i.e. $u^\ast=\dfrac{1}{1+c}$, and the apex height there is $cu^\ast=\dfrac{c}{1+c}$. For $c=1$ this is the symmetric tent with apex $(\tfrac12,\tfrac12)$.
+
+**S7.** *(Statement as in Part 6.)* **Proof.** (i) Atomlessness $\Rightarrow$ every $p=\mu(A)\in[0,1]$ is realized (Sierpiński). (ii) The values $u_1,u_2$ are prescribed *independently of $A$*, so as $A$ ranges over all masses and $u_1,u_2$ over $[0,1]$, the triple $(p,u_1,u_2)$ ranges over all of $[0,1]^3$; the hypothesis becomes $p\,G(u_1)+(1-p)\,G(u_2)=G(p u_1+(1-p)u_2)$ everywhere — $(\star)$ on its whole domain, $G$ only **evaluated**. (iii) Theorem 1 gives $G$ affine on $[0,1]$ (Theorem 6 with $C=\Delta_k$ for the simplex). The converse ($G$ affine $\Rightarrow$ resolution-blind) is tower property $+$ linearity. $\blacksquare$
+
+**S8.** The step "atomlessness realizes every mass $p$" fails on a fair coin, where only $p\in\{0,\tfrac12,1\}$ (and, with repeated tossing, dyadic $p$) occur. Then the hypothesis only asserts the identity at **dyadic/rational** weights — the equation $(J_{\mathbb{Q}})$, not $(\star)$. By **Proposition 7**, $(J_{\mathbb{Q}})$ has a non-affine solution: take a Hamel basis of $\mathbb{R}$ over $\mathbb{Q}$ and a $\mathbb{Q}$-linear-but-not-$\mathbb{R}$-linear additive $g$; suitably placed on $[0,1]$ it satisfies the rational-weight identity yet is wildly non-affine (everywhere discontinuous, unbounded on every interval). So resolution-blindness at dyadic weights does **not** force affineness — the conclusion is genuinely false off the continuum.
+
+**S9.** Let $G(u)=\alpha u+\beta$. Then $U_G(\mathcal{G})=\mathbb{E}[\alpha\eta_{\mathcal{G}}+\beta]=\alpha\,\mathbb{E}[\eta_{\mathcal{G}}]+\beta$. By the tower property $\mathbb{E}[\eta_{\mathcal{G}}]=\mathbb{E}[\mathbb{E}[\eta\mid\mathcal{G}]]=\mathbb{E}[\eta]$, so $U_G(\mathcal{G})=\alpha\,\mathbb{E}[\eta]+\beta=G(\mathbb{E}[\eta])$ for **every** $\mathcal{G}$ and $\eta$. Only linearity of expectation and the tower property are used — **no atomlessness, no regularity** — so the converse holds on **every** probability space (coin, die, atomless alike).
+
+**S10.** (a) **Source 2** (additivity into a bounded codomain $[0,1]$) — boundedness **load-bearing**. (b) **Source 3** (Cauchy relative, concave target) — regularity **load-bearing**. (c) **Source 4** (genuine continuum) — regularity **vestigial**. (d) **Source 1** (finite mixing, rational weights) — regularity **load-bearing** (Hamel survives by Prop 7).
+
+**S11.** Independence is a condition on the **preference relation**, not a cardinal equation for a real-valued $U$. Lexicographic order on $[0,1]^2$ — $(a_1,a_2)\succ(b_1,b_2)$ iff $a_1>b_1$, or $a_1=b_1$ and $a_2>b_2$ — is complete, transitive, and independent, yet admits **no** order-preserving real function: such a function would assign to each first-coordinate level $a_1$ a nondegenerate real interval (between the sup over $a_2$ of values at levels $<a_1$ and the inf at levels $>a_1$), giving uncountably many pairwise-disjoint intervals in $\mathbb{R}$ — impossible. Hence no $U$ exists, $(\star)$ is vacuous, and this is a **zeroth-gate** failure: Theorem 1 needs a real-valued solution as *input*, and the Archimedean axiom is precisely the hypothesis that *produces* one. So Theorem 1 cannot replace it.
+
+**S12.** *Verification.* With $\log=\log_2$,
+$$
+(1-x)f\!\Big(\tfrac{y}{1-x}\Big)=-y\log y-(1-x-y)\log(1-x-y)+(1-x)\log(1-x),
+$$
+(expand $-(1-x)\big[\tfrac{y}{1-x}\log\tfrac{y}{1-x}+\tfrac{1-x-y}{1-x}\log\tfrac{1-x-y}{1-x}\big]$ and collect the $\log(1-x)$ terms). Adding $f(x)=-x\log x-(1-x)\log(1-x)$ cancels the $(1-x)\log(1-x)$ pair and gives
+$$
+f(x)+(1-x)f\!\Big(\tfrac{y}{1-x}\Big)=-x\log x-y\log y-(1-x-y)\log(1-x-y),
+$$
+which is **symmetric in $x,y$**; swapping $x\leftrightarrow y$ produces the right-hand side, so the equation holds. *Why not $(\star)$:* $(\star)$ is linear in a *weight* $p$ with the unknown evaluated at a convex combination; the fundamental equation of information composes the unknown $f$ with a **ratio** $y/(1-x)$ and is a relative of Cauchy's equation whose physical solution is the **strictly concave** entropy — **not affine**. So Hamel-type solutions exist and a regularity hypothesis is **load-bearing** (source 3). In Proposition 8 the operative equation literally *is* $(\star)$, whose solutions are affine, so the same hypotheses are **vestigial** (source 4).
+
+**S13.** $\eta_{\mathcal{G}}=\mathbb{E}[\eta_{\mathcal{F}_0}\mid\mathcal{G}]$ for $\mathcal{G}\subseteq\mathcal{F}_0$. Concave $G$ and conditional Jensen: $G(\eta_{\mathcal{G}})=G(\mathbb{E}[\eta_{\mathcal{F}_0}\mid\mathcal{G}])\ge\mathbb{E}[G(\eta_{\mathcal{F}_0})\mid\mathcal{G}]$. Taking expectations, $U_G(\mathcal{G})=\mathbb{E}[G(\eta_{\mathcal{G}})]\ge\mathbb{E}[G(\eta_{\mathcal{F}_0})]=U_G(\mathcal{F}_0)$ — **refining (to $\mathcal{F}_0$) lowers** $U_G$. For **convex** $G$ the inequality reverses (refining raises $U_G$); for **affine** $G$ equality holds at every step, so $U_G$ is **constant** — exactly resolution-blindness, the hypothesis of Proposition 8.
+
+**S14.** $G(u)=u(1-u)=u-u^2$, so $\mathbb{E}[G(\eta)]=\mathbb{E}[\eta]-\mathbb{E}[\eta^2]$ and $G(\mathbb{E}[\eta])=\mathbb{E}[\eta]-(\mathbb{E}[\eta])^2$. The resolution drop (coarse minus fine, $\ge0$ since $G$ concave) is
+$$
+U_G(\text{trivial})-U_G(\sigma(A))=G(\mathbb{E}[\eta])-\mathbb{E}[G(\eta)]=\mathbb{E}[\eta^2]-(\mathbb{E}[\eta])^2=\operatorname{Var}(\eta)=p(1-p)(u_1-u_2)^2\ge0,
+$$
+with equality iff $u_1=u_2$ (or $p\in\{0,1\}$). **Interpretation:** the Brier resolution term is exactly the **variance of the posterior across cells** — the discrimination the partition buys. (And note we call this "expectation-exact when zero," not "mean-preserving," per Trap E15.)
+
+**S15.** From S5(a), $T_{1/2}(u)=\min(u,1-u)$ is the $0$–$1$ conditional Bayes risk. As a $\min$ of the two affine functions $u$ and $1-u$ it is **concave**; they cross only at $u=\tfrac12$, the unique **kink**. On $[0,\tfrac12]$ it equals $u$ (slope $+1$); on $[\tfrac12,1]$ it equals $1-u$ (slope $-1$). Different slopes $\Rightarrow$ **not globally affine**, but affine on each benchmark cell and continuous at $\tfrac12$ — the canonical witness that Corollary 5 yields *piecewise*, not global, affineness (Trap E10).
+
+**S16.** For fixed $u$, the inner $\min$ in $T_\theta(u)=2\min\big(u(1-\theta),(1-u)\theta\big)$ switches at $\theta=u$: for $\theta\le u$ it is $2(1-u)\theta$, for $\theta\ge u$ it is $2u(1-\theta)$. Hence
+$$
+\int_0^1 T_\theta(u)\,d\theta=\int_0^u 2(1-u)\theta\,d\theta+\int_u^1 2u(1-\theta)\,d\theta=(1-u)u^2+u(1-u)^2=u(1-u)\big[u+(1-u)\big]=u(1-u).
+$$
+So the uniform mixture of tents is the **Brier entropy** $u(1-u)$. $\square$
+
+**S17.** On $[0,\tfrac12]$ use the affine bijection $\phi(s)=s/2$ from $[0,1]$; $G\circ\phi$ satisfies $(\star)$ on $[0,1]$ (an affine reparametrization carries convex combinations to convex combinations), so by Theorem 1 it is affine, hence $G$ is affine on $[0,\tfrac12]$; likewise on $[\tfrac12,1]$. **Continuity at $\tfrac12$ is automatic:** $G(\tfrac12)$ is a single value, and each affine piece is the line through its cell's endpoints, so the left piece passes through $(\tfrac12,G(\tfrac12))$ and the right piece does too — they meet, with no hypothesis. The **tent** (S15) is an explicit $G$ whose two slopes ($+1,-1$) differ, so global affineness genuinely fails.
+
+**S18.** *Mixture (representation) direction.* A concave $G$ on $[0,1]$ with $G(0)=G(1)=0$ has $-G''=\rho$ a nonnegative measure on $(0,1)$. The Green's function for $-d^2/du^2$ with Dirichlet boundary conditions is $k(u,\theta)=\min\big(u(1-\theta),(1-u)\theta\big)=\tfrac12 T_\theta(u)$, so $G(u)=\int_0^1 k(u,\theta)\,\rho(d\theta)=\int_0^1 T_\theta(u)\,dH(\theta)$ with $dH=\tfrac12\rho$. *Indecomposability.* Each tent has $-T_\theta''=2\delta_\theta$, a single Dirac; a Dirac mass cannot be written as a nontrivial convex combination of distinct probability measures, so $T_\theta$ is not a nontrivial mixture of distinct uncertainty functions — it is an **extreme ray**. Hence the tents are exactly the extreme rays, and every uncertainty function is a mixture of them.
+
+**S19.** $\sigma(R)$ is the $\sigma$-algebra generated by the encoder $R$ (preimages under $R$ of measurable sets) — "what $R$ can distinguish." Then $\eta_{\sigma(R)}=\mathbb{E}[Y\mid R]$ and $U_{T_{1/2}}(\sigma(R))=\mathbb{E}[\min(\eta_{\sigma(R)},1-\eta_{\sigma(R)})]$ is the expected $0$–$1$ Bayes risk **given only $R$** — i.e. the smallest misclassification error any classifier reading only $R(X)$ can achieve, the **error floor**. By the converse of Proposition 8, an **affine** $G$ gives $U_G(\sigma(R))=G(\mathbb{E}[Y])$ **independent of $R$** — the same score for every encoder — so it can never certify that one encoder resolves more than another. Only a genuinely concave $G$ produces a strict drop that witnesses gained resolution.
+
+**S20.** Decompose a signal as $x=c\mathbf{1}+x_\perp$ (constant component along the dominant eigenvector $\mathbf{1}$, eigenvalue $\mu_1=1$, plus non-constant $x_\perp$). The aggregation $P$ fixes $\mathbf{1}$ and contracts the rest: $\|P x_\perp\|\le|\mu_2|\,\|x_\perp\|$, so after $L$ layers $\|P^L x_\perp\|\le|\mu_2|^L\|x_\perp\|\to0$ — geometric decay of the informative component at rate $|\mu_2|^L$. The minimum separating distance obeys $\delta^{(L)}\le C|\mu_2|^L$; once $\delta^{(L)}<\varepsilon$ — i.e. $L>L^\ast(\varepsilon)\approx\log(C/\varepsilon)/\log(1/|\mu_2|)$ — distinct classes fall into common $\varepsilon$-cells, the realized resolution $\sigma(R)$ **coarsens**, and the error floor $U_{T_{1/2}}(\sigma(R))$ **rises** (over-smoothing). The **spectral gap** $1-|\mu_2|$ sets the onset. **Orthogonality to Proposition 8:** this is a statement about the *rate* at which the resolution degrades, a property of the operator's spectrum; Proposition 8 is the static statement about *which* uncertainty functions register any degradation at all (only the non-affine ones). Different axes — dynamics of $\sigma(R)$ vs. the shape of $G$.
+
+**S21.** $\mathcal{S}_d$ is a convex subset of the real vector space of $d\times d$ Hermitian matrices. The hypothesis is exactly Theorem 6 on $C=\mathcal{S}_d$, so $v(\rho)=\ell(\rho)+b$ for a linear functional $\ell$. The trace form $\langle A,B\rangle=\operatorname{tr}(AB)$ is an inner product on Hermitians, so by Riesz $\ell(\rho)=\operatorname{tr}(A\rho)$ for a unique Hermitian $A$; hence $v(\rho)=\operatorname{tr}(A\rho)+b$. **Not used:** positivity of $A$, boundedness/continuity/measurability of $v$ — because statistical mixing realizes every real weight $p$ (source 4) and Theorem 6 needs only the real-weighted mixture identity.
+
+**S22.** A frame function is **additive over coarse-grainings**: grouping disjoint effects $E_1,E_2$ (with $E_1+E_2\le I$) gives $v(E_1+E_2)=v(E_1)+v(E_2)$ — Cauchy additivity. Additivity yields homogeneity over the **nonnegative rationals** only ($v(qE)=q\,v(E)$ for $q\in\mathbb{Q}_{\ge0}$), so we are in **source 1**. To pass from rational to real homogeneity (and to all effects) one must buy a regularity hypothesis: **nonnegativity** (Gleason, $d\ge3$; Busch's POVM version, $d\ge2$) or **positivity/continuity** (Caves–Fuchs–Manne–Renes). **Contrast:** state *preparation* tests $v(p\rho_1+(1-p)\rho_2)=p v(\rho_1)+(1-p)v(\rho_2)$ at **every real $p$** via a classical analog randomizer (**source 4**), so no hypothesis is needed there. The same physical theory spends a regularity hypothesis on the measurement route (rational) but not the preparation route (continuum) — precisely the dictionary's prediction.
+
+**S23.** $\psi=\operatorname{conv}(H^{-}-H)$, where $H$ is the conditional Bayes surrogate risk and $H^{-}$ is the best conditional surrogate risk *subject to predicting the wrong side*; $\psi$ is the convex envelope of their gap (R.6). The **comparison inequality** is $\psi(R-R^\ast)\le R_\varphi-R_\varphi^\ast$: excess $0$–$1$ risk is bounded by excess surrogate risk through $\psi$. For the $0$–$1$ loss the gap is already convex and $\psi=\mathrm{id}$ (the bound is tight). **Slogan.** "Exactness on a cell $=$ the $\psi$-gap is zero there": where the surrogate's floor meets the true floor (no excess) on a cell, the bracket is tight; and **Corollary 5** says the price of that zero gap (exact aggregation across the cell) is **affineness of $G$ on the cell**. This is the structural bridge from the loss axis (the object is the slack $\psi$) to the resolution axis (its vanishing forces affine structure).
+
+**S24.** *Rebuttal.* (a) Proposition 8 takes $G\colon[0,1]\to\mathbb{R}$ **arbitrary** — the statement says so explicitly; no concavity, measurability, monotonicity, or boundedness is assumed. (b) "Every Bayes envelope is concave" is a *separate* fact about *genuine* Bayes risks (an infimum of affine functions); Proposition 8 does not assume $G$ arises that way — and even if it did, concavity alone does **not** give affineness (the strictly concave Shannon entropy is a Bayes risk and is not affine). (c) The genuine content is the **converse**: from resolution-blindness — saturation at every two-cell law on an **atomless** space — conclude $G$ is **affine**, with **no** regularity. The surprise is that no Cauchy–Hamel hypothesis is needed, because the continuum of cell masses makes the equation the genuine $(\star)$. (d) The referee has imported the intuition of **source 3** (the entropy characterization, a Cauchy relative where concavity/regularity *is* needed and the target is non-affine) into **source 4** (the atomless calibration, genuine $(\star)$, regularity vestigial). The triviality charge is true of source 3 and false of source 4 — which is exactly the misclassification the section warns against.
+
+---
+
+## Part D — Routines, recitations, and drills (for oral-exam mastery)
+
+> Goal: be able to *say*, cold, why a saturated identity does or does not need a regularity hypothesis — and to produce Proposition 8 from Theorem 1 in under a minute. Cycle these until each is automatic.
+
+### D.1 The source-classification drill (recite in 60 seconds)
+
+For each scenario, say **source (1–4)**, **mechanism**, and **load-bearing / vestigial**:
+1. Compound lotteries by finite mixing → **1** (rational weights) → load-bearing (Hamel survives).
+2. Opinion pool commuting with marginalization → **2** (additivity + bounded codomain) → load-bearing.
+3. Khinchin–Faddeev entropy characterization → **3** (Cauchy relative, concave target) → load-bearing.
+4. Two-cell calibration exactness on an atomless space → **4** (continuum) → vestigial.
+5. Quantum **state preparation**, mixture-affine $v$ → **4** → vestigial ($v(\rho)=\operatorname{tr}(A\rho)+b$).
+6. Quantum **measurement** frame function (Gleason) → **1** (rational homogeneity) → load-bearing (nonnegativity/positivity).
+7. Expected-utility representation → **zeroth-gate failure** (no real-valued $U$; *not* in the four-source list).
+8. A single fair coin generating the mixtures → **1** (dyadic → rational) → load-bearing.
+
+### D.2 The chord-substitution reflex (30-second reconstruction)
+
+- **Theorem 1.** Fix $v$; set $u_1=M,\ u_2=0,\ p=v/M$ in $(\star)$; read off $G(v)=G(0)+\frac{G(M)-G(0)}{M}v$. Done.
+- **Proposition 8 (four lines).** Atomless $\Rightarrow$ all $p$ (Sierpiński); $u_1,u_2$ free of $A$ $\Rightarrow$ triple ranges fully $\Rightarrow$ hypothesis is $(\star)$; Theorem 1 $\Rightarrow$ affine; converse by tower property. Recite without notes.
+
+### D.3 Blank-page reconstruction ladder
+
+Rebuild Section 5 from nothing, one rung per sitting; each rung must be producible before climbing:
+1. A saturated identity is a **family indexed by $p$**; its content is *which weights are licensed* (Part 2).
+2. The **zeroth gate**: does a real-valued solution exist? (expected-utility failure).
+3. The **four sources** and the **ordered diagnostic** (Part 3).
+4. The three **load-bearing** cases: utility (gate), entropy (Cauchy relative + the five named struts), opinion pools (bounded codomain).
+5. The calibration **vocabulary**: atomless space, $\eta$, $H$, resolution $\mathcal{G}$, $U_G$, two-cell $=$ left of $(\star)$.
+6. **Proposition 8** + four-line proof + the list of what is *not* assumed.
+7. The **tent** via Corollary 5; tents as **extreme rays**; the **bracket** ($\psi$-transform) reading.
+8. The **coin** contrast; the **quantum** instance (Theorem 6, $\operatorname{tr}(A\rho)+b$); the mirrored dictionary and the lesson.
+
+### D.4 Mock oral (rapid-fire Q $\to$ one-sentence A)
+
+- *Why "on the real axis"?* — Because an atomless measure realizes **every real** weight $p\in[0,1]$, so the identity is asserted at a genuine continuum, making it $(\star)$.
+- *What does Proposition 8 assume about $G$?* — **Nothing** (arbitrary $G$); affineness is the conclusion.
+- *Where is atomlessness used?* — Only to get *all* real masses $p$; the converse half needs none.
+- *Why isn't concavity assumed?* — Concavity is the classical input on the loss axis; on the resolution axis saturation makes it a conclusion (affine $\subset$ concave).
+- *How is entropy different?* — It solves a Cauchy relative with a **concave** (non-affine) target — source 3 — so regularity is load-bearing.
+- *What pins the tent?* — Cellwise exactness on $\{[0,\tfrac12],[\tfrac12,1]\}$ + Corollary 5 $\Rightarrow$ affine on each cell, continuous at $\tfrac12$.
+- *What are the tents?* — The extreme rays of the uncertainty-function cone; every $G$ is a mixture $\int_0^1 T_\theta\,dH(\theta)$.
+- *Where does the SVD enter?* — Not in Proposition 8; only the quantum coda (trace functionals) and the over-smoothing reading (rate $|\mu_2|^L$).
+- *Coin vs atomless?* — Coin $\to$ dyadic weights $\to$ source 1 $\to$ pathology back; atomless $\to$ all reals $\to$ source 4 $\to$ vestigial.
+- *The one-sentence lesson?* — The **shape** of a saturated identity says nothing; the **source** decides whether a regularity hypothesis is needed.
+
+### D.5 Maintenance routine
+
+- **Daily (1 min):** recite D.2 (both reconstructions) cold.
+- **Every few days (3 min):** run D.1 (all 8) and D.4 (all 10) aloud.
+- **Weekly (15 min):** climb two rungs of D.3 on a blank page; re-derive one of X5, X14, X16 from scratch.
+- **Before any exam:** reproduce the mirrored-dictionary table (Part 9.3) and state, for each of the five struts, *why* it flips between load-bearing (entropy) and vestigial (calibration).
