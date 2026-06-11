@@ -1,0 +1,268 @@
+\begin{thebibliography}{37}
+
+\bibitem{Hamel1905}
+Hamel G.
+\newblock Eine Basis aller Zahlen und die unstetigen L{\"o}sungen der
+  Funktionalgleichung $f(x+y)=f(x)+f(y)$.
+\newblock Math Ann. 1905;60:459-62.
+
+\bibitem{Cauchy1821}
+Cauchy AL.
+\newblock Cours d'analyse de l'{\'E}cole royale polytechnique. Premi{\`e}re
+  partie: Analyse alg{\'e}brique.
+\newblock Paris: Imprimerie royale; 1821.
+
+\bibitem{Darboux1875}
+Darboux G.
+\newblock Sur la composition des forces en statique.
+\newblock Bull Sci Math Astron. 1875;9:281-8.
+
+\bibitem{Darboux1880}
+Darboux G.
+\newblock Sur le th{\'e}or{\`e}me fondamental de la g{\'e}om{\'e}trie
+  projective.
+\newblock Math Ann. 1880;17:55-61.
+
+\bibitem{Sierpinski1920}
+Sierpi{\'n}ski W.
+\newblock Sur les fonctions convexes mesurables.
+\newblock Fund Math. 1920;1:125-9.
+
+\bibitem{Kormes1926}
+Kormes M.
+\newblock On the functional equation $f(x+y)=f(x)+f(y)$.
+\newblock Bull Amer Math Soc. 1926;32:689-93.
+
+\bibitem{Ostrowski1929}
+Ostrowski AM.
+\newblock {\"U}ber die Funktionalgleichung der Exponentialfunktion und
+  verwandte Funktionalgleichungen.
+\newblock Jahresber Deutsch Math-Verein. 1929;38:54-62.
+
+\bibitem{Kestelman1947}
+Kestelman H.
+\newblock On the functional equation $f(x+y)=f(x)+f(y)$.
+\newblock Fund Math. 1947;34:144-7.
+
+\bibitem{Steinhaus1920}
+Steinhaus H.
+\newblock Sur les distances des points dans les ensembles de mesure positive.
+\newblock Fund Math. 1920;1:93-104.
+
+\bibitem{Reem2017}
+Reem D.
+\newblock Remarks on the {C}auchy functional equation and variations of it.
+\newblock Aequationes Math. 2017;91. doi:10.1007/s00010-016-0463-6.
+
+\bibitem{Aczel1966}
+Acz{\'e}l J.
+\newblock Lectures on Functional Equations and Their Applications. vol.~19 of
+  Mathematics in Science and Engineering.
+\newblock New York: Academic Press; 1966.
+
+\bibitem{Kuczma2009}
+Kuczma M.
+\newblock An Introduction to the Theory of Functional Equations and
+  Inequalities. Cauchy's Equation and Jensen's Inequality.
+\newblock 2nd ed. Basel: Birkh{\"a}user; 2009.
+\newblock Second edition edited by A. Gil{\'a}nyi.
+
+\bibitem{Aumann1964}
+Aumann RJ.
+\newblock Markets with a continuum of traders.
+\newblock Econometrica. 1964;32(1-2):39-50.
+
+\bibitem{AczelDhombres1989}
+Acz{\'e}l J, Dhombres J.
+\newblock Functional Equations in Several Variables. vol.~31 of Encyclopedia of
+  Mathematics and its Applications.
+\newblock Cambridge: Cambridge University Press; 1989.
+
+\bibitem{Sierpinski1922}
+Sierpi{\'n}ski W.
+\newblock Sur les fonctions d'ensemble additives et continues.
+\newblock Fund Math. 1922;3:240-6.
+
+\bibitem{Lyapunov1940}
+Lyapunov AA.
+\newblock Sur les fonctions-vecteurs compl{\`e}tement additives.
+\newblock Izv Akad Nauk SSSR Ser Mat. 1940;4:465-78.
+\newblock Accessible modern exposition: Halmos, P. R., ``The range of a vector
+  measure,'' \emph{Bull. Amer. Math. Soc.} 54 (1948) 416--421.
+
+\bibitem{vNM1944}
+von Neumann J, Morgenstern O.
+\newblock Theory of Games and Economic Behavior.
+\newblock Princeton: Princeton University Press; 1944.
+
+\bibitem{HersteinMilnor1953}
+Herstein IN, Milnor J.
+\newblock An axiomatic approach to measurable utility.
+\newblock Econometrica. 1953;21:291-7.
+
+\bibitem{Fishburn1970}
+Fishburn PC.
+\newblock Utility Theory for Decision Making.
+\newblock New York: Wiley; 1970.
+
+\bibitem{Kreps1988}
+Kreps DM.
+\newblock Notes on the Theory of Choice.
+\newblock Underground Classics in Economics. Boulder, CO: Westview Press; 1988.
+
+\bibitem{Khinchin1957}
+Khinchin AI.
+\newblock Mathematical Foundations of Information Theory.
+\newblock New York: Dover; 1957.
+
+\bibitem{Faddeev1957}
+Faddeev DK.
+\newblock Zum Begriff der Entropie einer endlichen Wahrscheinlichkeitsschemas.
+\newblock In: Arbeiten zur Informationstheorie. vol.~1. Berlin: Deutscher
+  Verlag der Wissenschaften; 1957. p. 85-90.
+
+\bibitem{AczelDaroczy1975}
+Acz{\'e}l J, Dar{\'o}czy Z.
+\newblock On Measures of Information and Their Characterizations. vol. 115 of
+  Mathematics in Science and Engineering.
+\newblock New York: Academic Press; 1975.
+
+\bibitem{BaezFritzLeinster2011}
+Baez JC, Fritz T, Leinster T.
+\newblock A characterization of entropy in terms of information loss.
+\newblock Entropy. 2011;13(11):1945-57.
+
+\bibitem{Tverberg1958}
+Tverberg H.
+\newblock A new derivation of the information function.
+\newblock Math Scand. 1958;6:297-8.
+
+\bibitem{Lee1964}
+Lee PM.
+\newblock On the axioms of information theory.
+\newblock Ann Math Statist. 1964;35:415-8.
+
+\bibitem{Diderrich1975}
+Diderrich GT.
+\newblock The role of boundedness in characterizing {S}hannon entropy.
+\newblock Inform and Control. 1975;29(2):149-61.
+
+\bibitem{Kendall1964}
+Kendall DG.
+\newblock Functional equations in information theory.
+\newblock Z Wahrsch Verw Gebiete. 1964;2:225-9.
+
+\bibitem{Borges1967}
+Borges R.
+\newblock Zur {H}erleitung der {S}hannonschen {I}nformation.
+\newblock Math Z. 1967;96:282-7.
+
+\bibitem{McConway1981}
+McConway KJ.
+\newblock Marginalization and linear opinion pools.
+\newblock J Amer Statist Assoc. 1981;76(374):410-4.
+
+\bibitem{AczelWagner1980}
+Acz{\'e}l J, Wagner C.
+\newblock A characterization of weighted arithmetic means.
+\newblock SIAM J Algebraic Discrete Methods. 1980;1(3):259-60.
+
+\bibitem{BJM2006}
+Bartlett PL, Jordan MI, McAuliffe JD.
+\newblock Convexity, classification, and risk bounds.
+\newblock J Amer Statist Assoc. 2006;101(473):138-56.
+
+\bibitem{Holevo1982}
+Holevo AS.
+\newblock Probabilistic and Statistical Aspects of Quantum Theory. vol.~1 of
+  North-Holland Series in Statistics and Probability.
+\newblock Amsterdam: North-Holland; 1982.
+
+\bibitem{Gleason1957}
+Gleason AM.
+\newblock Measures on the closed subspaces of a {H}ilbert space.
+\newblock J Math Mech. 1957;6:885-93.
+
+\bibitem{Busch2003}
+Busch P.
+\newblock Quantum states and generalized observables: a simple proof of
+  {G}leason's theorem.
+\newblock Phys Rev Lett. 2003;91:120403.
+
+\bibitem{CFMR2004}
+Caves CM, Fuchs CA, Manne KK, Renes JM.
+\newblock Gleason-type derivations of the quantum probability rule for
+  generalized measurements.
+\newblock Found Phys. 2004;34(2):193-209.
+
+\bibitem{WrightWeigert2019}
+Wright VJ, Weigert S.
+\newblock Gleason-type theorems from {C}auchy's functional equation.
+\newblock Found Phys. 2019;49. doi:10.1007/s10701-019-00275-x.
+
+\bibitem{Savage1971}
+Savage LJ.
+\newblock Elicitation of personal probabilities and expectations.
+\newblock J Amer Statist Assoc. 1971;66(336):783-801.
+
+\bibitem{DeGrootFienberg1983}
+DeGroot MH, Fienberg SE.
+\newblock The comparison and evaluation of forecasters.
+\newblock J Roy Statist Soc Ser D (The Statistician). 1983;32(1--2):12-22.
+
+\bibitem{GrunwaldDawid2004}
+Gr{\"u}nwald PD, Dawid AP.
+\newblock Game theory, maximum entropy, minimum discrepancy and robust {B}ayesian decision theory.
+\newblock Ann Statist. 2004;32(4):1367-433.
+
+\bibitem{GneitingRaftery2007}
+Gneiting T, Raftery AE.
+\newblock Strictly proper scoring rules, prediction, and estimation.
+\newblock J Amer Statist Assoc. 2007;102(477):359-78.
+
+\bibitem{Blackwell1953}
+Blackwell D.
+\newblock Equivalent comparisons of experiments.
+\newblock Ann Math Statist. 1953;24:265-72.
+
+\bibitem{Murphy1973}
+Murphy AH.
+\newblock A new vector partition of the probability score.
+\newblock J Appl Meteorol. 1973;12:595-600.
+
+\bibitem{Brocker2009}
+Br{\"o}cker J.
+\newblock Reliability, sufficiency, and the decomposition of proper scores.
+\newblock Q J R Meteorol Soc. 2009;135(643):1512-9.
+
+\bibitem{DGJ2021}
+Dimitriadis T, Gneiting T, Jordan AI.
+\newblock Stable reliability diagrams for probabilistic classifiers.
+\newblock Proc Natl Acad Sci USA. 2021;118(8):e2016191118.
+
+\bibitem{Schervish1989}
+Schervish MJ.
+\newblock A general method for comparing probability assessors.
+\newblock Ann Statist. 1989;17(4):1856-79.
+
+\bibitem{EGJK2016}
+Ehm W, Gneiting T, Jordan A, Kr{\"u}ger F.
+\newblock Of quantiles and expectiles: consistent scoring functions, {C}hoquet representations, and forecast rankings.
+\newblock J R Stat Soc Ser B. 2016;78(3):505-62.
+
+\bibitem{Steinwart2007}
+Steinwart I.
+\newblock How to compare different loss functions and their risks.
+\newblock Constr Approx. 2007;26(2):225-87.
+
+\bibitem{TewariBartlett2007}
+Tewari A, Bartlett PL.
+\newblock On the consistency of multiclass classification methods.
+\newblock J Mach Learn Res. 2007;8:1007-25.
+
+\bibitem{KollerFriedman2009}
+Koller D, Friedman N.
+\newblock Probabilistic Graphical Models: Principles and Techniques.
+\newblock Cambridge, MA: MIT Press; 2009.
+
+\end{thebibliography}
