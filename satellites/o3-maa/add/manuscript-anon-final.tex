@@ -754,15 +754,16 @@ The endpoint substitution extends to any convex subset of a real vector
 space.
 
 \begin{theorem}\label{thm:higher}
-Let $V$ be a real vector space, let $C\subseteq V$ be a convex set, and
-let $G\colon C\to\R$ satisfy
+Let $V$ be a real vector space (not restricted to finite dimensions), let
+$C\subseteq V$ be a convex set, and let $G\colon C\to\R$ satisfy
 \[
 p\,G(x_1)+(1-p)\,G(x_2) \;=\;
 G\bigl(p\,x_1+(1-p)\,x_2\bigr) \qquad (x_1,x_2\in C,\ p\in[0,1]).
 \]
-Then there is a linear functional $a\colon\mathrm{span}(C-C)\to\R$ and a
-constant $b\in\R$ such that $G(x)=a(x-x_0)+b$ on~$C$ for any fixed
-$x_0\in C$. Equivalently, $G$ is affine on~$C$.
+Then there is a linear functional $a\colon\mathrm{span}(C-C)\to\R$ on the
+parallel subspace $W := \mathrm{span}(C-C)$ (the subspace parallel to the
+affine hull of $C$) and a constant $b\in\R$ such that $G(x)=a(x-x_0)+b$
+on~$C$ for any fixed $x_0\in C$. Equivalently, $G$ is affine on~$C$.
 \end{theorem}
 
 \begin{proof}
@@ -783,8 +784,8 @@ into $\tfrac12 A(v+w)$, whence $A(v+w)=A(v)+A(w)$ whenever
 $v,w,v+w\in D$.
 
 \emph{(iii) Extension to a linear functional.} On the cone
-$D^{\ast}:=\bigcup_{\lambda>0}\lambda D$ define
-$\hat A(\lambda v):=\lambda\,A(v)$ for $v\in D$, $\lambda>0$. This is
+$D^{\ast}:=\bigcup_{\lambda>0}\lambda D$ (which is a convex cone generated
+by $D$) define $\hat A(\lambda v):=\lambda\,A(v)$ for $v\in D$, $\lambda>0$. This is
 well defined: if $\lambda v=\mu w$ with $v,w\in D$, scale by $t>0$
 small enough that $t\lambda,t\mu\le1$; then $t\lambda v=t\mu w\in D$
 (since $0\in D$ and $D$ is convex, $sD\subseteq D$ for $s\in[0,1]$),
