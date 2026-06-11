@@ -14,24 +14,45 @@ Cauchy AL.
 
 \bibitem{Darboux1875}
 Darboux G.
-\newblock M{\'e}moire sur les fonctions discontinues.
-\newblock Ann Sci {\'E}cole Norm Sup (2). 1875;4:57-112.
+\newblock Sur la composition des forces en statique.
+\newblock Bull Sci Math Astron. 1875;9:281-8.
+
+\bibitem{Darboux1880}
+Darboux G.
+\newblock Sur le th{\'e}or{\`e}me fondamental de la g{\'e}om{\'e}trie
+  projective.
+\newblock Math Ann. 1880;17:55-61.
 
 \bibitem{Sierpinski1920}
 Sierpi{\'n}ski W.
 \newblock Sur les fonctions convexes mesurables.
 \newblock Fund Math. 1920;1:125-9.
 
-\bibitem{Steinhaus1920}
-Steinhaus H.
-\newblock Sur les distances des points dans les ensembles de mesure positive.
-\newblock Fund Math. 1920;1:93-104.
+\bibitem{Kormes1926}
+Kormes M.
+\newblock On the functional equation $f(x+y)=f(x)+f(y)$.
+\newblock Bull Amer Math Soc. 1926;32:689-93.
 
 \bibitem{Ostrowski1929}
 Ostrowski AM.
 \newblock {\"U}ber die Funktionalgleichung der Exponentialfunktion und
   verwandte Funktionalgleichungen.
 \newblock Jahresber Deutsch Math-Verein. 1929;38:54-62.
+
+\bibitem{Kestelman1947}
+Kestelman H.
+\newblock On the functional equation $f(x+y)=f(x)+f(y)$.
+\newblock Fund Math. 1947;34:144-7.
+
+\bibitem{Steinhaus1920}
+Steinhaus H.
+\newblock Sur les distances des points dans les ensembles de mesure positive.
+\newblock Fund Math. 1920;1:93-104.
+
+\bibitem{Reem2017}
+Reem D.
+\newblock Remarks on the {C}auchy functional equation and variations of it.
+\newblock Aequationes Math. 2017;91.
 
 \bibitem{Aczel1966}
 Acz{\'e}l J.
@@ -46,11 +67,27 @@ Kuczma M.
 \newblock 2nd ed. Basel: Birkh{\"a}user; 2009.
 \newblock Second edition edited by A. Gil{\'a}nyi.
 
+\bibitem{Aumann1964}
+Aumann RJ.
+\newblock Markets with a continuum of traders.
+\newblock Econometrica. 1964;32(1--2):39-50.
+
 \bibitem{AczelDhombres1989}
 Acz{\'e}l J, Dhombres J.
 \newblock Functional Equations in Several Variables. vol.~31 of Encyclopedia of
   Mathematics and its Applications.
 \newblock Cambridge: Cambridge University Press; 1989.
+
+\bibitem{Solovay1970}
+Solovay RM.
+\newblock A model of set-theory in which every set of reals is {L}ebesgue
+  measurable.
+\newblock Ann of Math (2). 1970;92(1):1-56.
+
+\bibitem{Sierpinski1922}
+Sierpi{\'n}ski W.
+\newblock Sur les fonctions d'ensemble additives et continues.
+\newblock Fund Math. 1922;3:240-6.
 
 \bibitem{Lyapunov1940}
 Lyapunov AA.
@@ -135,12 +172,105 @@ McConway KJ.
 Acz{\'e}l J, Wagner C.
 \newblock A characterization of weighted arithmetic means.
 \newblock SIAM J Algebraic Discrete Methods. 1980;1(3):259-60.
-\newblock Title and venue verification pending; an alternative anchor is
-  Acz{\'e}l, Ng, and Wagner, \emph{Aequationes Math.} 28 (1984) 117--129.
+
+\bibitem{Savage1971}
+Savage LJ.
+\newblock Elicitation of personal probabilities and expectations.
+\newblock J Amer Statist Assoc. 1971;66(336):783-801.
+
+\bibitem{DeGrootFienberg1983}
+DeGroot MH, Fienberg SE.
+\newblock The comparison and evaluation of forecasters.
+\newblock J Roy Statist Soc Ser D (The Statistician). 1983;32(1--2):12-22.
+
+\bibitem{GrunwaldDawid2004}
+Gr{\"u}nwald PD, Dawid AP.
+\newblock Game theory, maximum entropy, minimum discrepancy and robust
+  {B}ayesian decision theory.
+\newblock Ann Statist. 2004;32(4):1367-433.
+
+\bibitem{GneitingRaftery2007}
+Gneiting T, Raftery AE.
+\newblock Strictly proper scoring rules, prediction, and estimation.
+\newblock J Amer Statist Assoc. 2007;102(477):359-78.
+
+\bibitem{Blackwell1953}
+Blackwell D.
+\newblock Equivalent comparisons of experiments.
+\newblock Ann Math Statist. 1953;24:265-72.
+
+\bibitem{Murphy1973}
+Murphy AH.
+\newblock A new vector partition of the probability score.
+\newblock J Appl Meteorol. 1973;12:595-600.
+
+\bibitem{Brocker2009}
+Br{\"o}cker J.
+\newblock Reliability, sufficiency, and the decomposition of proper scores.
+\newblock Q J R Meteorol Soc. 2009;135(643):1512-9.
+
+\bibitem{DGJ2021}
+Dimitriadis T, Gneiting T, Jordan AI.
+\newblock Stable reliability diagrams for probabilistic classifiers.
+\newblock Proc Natl Acad Sci USA. 2021;118(8):e2016191118.
+
+\bibitem{Schervish1989}
+Schervish MJ.
+\newblock A general method for comparing probability assessors.
+\newblock Ann Statist. 1989;17(4):1856-79.
+
+\bibitem{EGJK2016}
+Ehm W, Gneiting T, Jordan A, Kr{\"u}ger F.
+\newblock Of quantiles and expectiles: consistent scoring functions, {C}hoquet
+  representations, and forecast rankings.
+\newblock J R Stat Soc Ser B. 2016;78(3):505-62.
 
 \bibitem{BJM2006}
 Bartlett PL, Jordan MI, McAuliffe JD.
 \newblock Convexity, classification, and risk bounds.
 \newblock J Amer Statist Assoc. 2006;101(473):138-56.
+
+\bibitem{Steinwart2007}
+Steinwart I.
+\newblock How to compare different loss functions and their risks.
+\newblock Constr Approx. 2007;26(2):225-87.
+
+\bibitem{TewariBartlett2007}
+Tewari A, Bartlett PL.
+\newblock On the consistency of multiclass classification methods.
+\newblock J Mach Learn Res. 2007;8:1007-25.
+
+\bibitem{KollerFriedman2009}
+Koller D, Friedman N.
+\newblock Probabilistic Graphical Models: Principles and Techniques.
+\newblock Cambridge, MA: MIT Press; 2009.
+
+\bibitem{Holevo1982}
+Holevo AS.
+\newblock Probabilistic and Statistical Aspects of Quantum Theory. vol.~1 of
+  North-Holland Series in Statistics and Probability.
+\newblock Amsterdam: North-Holland; 1982.
+
+\bibitem{Gleason1957}
+Gleason AM.
+\newblock Measures on the closed subspaces of a {H}ilbert space.
+\newblock J Math Mech. 1957;6:885-93.
+
+\bibitem{Busch2003}
+Busch P.
+\newblock Quantum states and generalized observables: a simple proof of
+  {G}leason's theorem.
+\newblock Phys Rev Lett. 2003;91:120403.
+
+\bibitem{CFMR2004}
+Caves CM, Fuchs CA, Manne KK, Renes JM.
+\newblock Gleason-type derivations of the quantum probability rule for
+  generalized measurements.
+\newblock Found Phys. 2004;34(2):193-209.
+
+\bibitem{WrightWeigert2019}
+Wright VJ, Weigert S.
+\newblock Gleason-type theorems from {C}auchy's functional equation.
+\newblock Found Phys. 2019;49.
 
 \end{thebibliography}

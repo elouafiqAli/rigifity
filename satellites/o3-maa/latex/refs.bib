@@ -1,8 +1,8 @@
 %% =============================================================================
-%% refs.bib — Expositiones Mathematicae submission
-%% Style:  `elsarticle-num` orders by first-appearance in text.
+%% refs.bib — The American Mathematical Monthly submission
+%% Style:  vancouver.bst (NLM/Vancouver), numeric by first appearance.
 %%         The order in this file is irrelevant — BibTeX re-orders.
-%% Date:   2026-06-07
+%% Date:   2026-06-11
 %% =============================================================================
 
 % --- Functional-equations classical references ---
@@ -37,11 +37,56 @@
 
 @article{Darboux1875,
   author  = {Darboux, G.},
-  title   = {M{\'e}moire sur les fonctions discontinues},
-  journal = {Ann. Sci. {\'E}cole Norm. Sup. (2)},
-  volume  = {4},
+  title   = {Sur la composition des forces en statique},
+  journal = {Bull. Sci. Math. Astron.},
+  volume  = {9},
   year    = {1875},
-  pages   = {57--112},
+  pages   = {281--288},
+}
+
+@article{Darboux1880,
+  author  = {Darboux, G.},
+  title   = {Sur le th{\'e}or{\`e}me fondamental de la g{\'e}om{\'e}trie projective},
+  journal = {Math. Ann.},
+  volume  = {17},
+  year    = {1880},
+  pages   = {55--61},
+}
+
+@article{Kormes1926,
+  author  = {Kormes, M.},
+  title   = {On the functional equation $f(x+y)=f(x)+f(y)$},
+  journal = {Bull. Amer. Math. Soc.},
+  volume  = {32},
+  year    = {1926},
+  pages   = {689--693},
+}
+
+@article{Kestelman1947,
+  author  = {Kestelman, H.},
+  title   = {On the functional equation $f(x+y)=f(x)+f(y)$},
+  journal = {Fund. Math.},
+  volume  = {34},
+  year    = {1947},
+  pages   = {144--147},
+}
+
+@article{Sierpinski1922,
+  author  = {Sierpi{\'n}ski, W.},
+  title   = {Sur les fonctions d'ensemble additives et continues},
+  journal = {Fund. Math.},
+  volume  = {3},
+  year    = {1922},
+  pages   = {240--246},
+}
+
+@article{Reem2017,
+  author  = {Reem, D.},
+  title   = {Remarks on the {C}auchy functional equation and variations of it},
+  journal = {Aequationes Math.},
+  volume  = {91},
+  year    = {2017},
+  doi     = {10.1007/s00010-016-0463-6},
 }
 
 @article{Hamel1905,
@@ -193,10 +238,10 @@
 % --- (Self-citation entry intentionally removed for double-blind submission.) ---
 
 % =============================================================================
-% --- Section 6 reframing (2026-06-09): new entries.
-% --- VERIFICATION FLAG: these entries were added during the reframing pass.
-% --- Each needs to be confirmed against the primary source before submission
-% --- (see .research/2026-06-09-aczel-kuczma-citation-audit.md).
+% --- Section 6 reframing entries: verified against primary sources
+% --- 2026-06-11 (Kormes, Darboux x2, Kestelman, Aumann, McConway from
+% --- uploaded PDFs; Sierpinski 1922, Busch, CFMR, Wright--Weigert,
+% --- Aczel--Wagner from publisher records).
 % =============================================================================
 
 % --- Expected-utility theory (forced by reframing) ---
@@ -307,7 +352,6 @@
   number  = {3},
   year    = {1980},
   pages   = {259--260},
-  note    = {Title and venue verification pending; an alternative anchor is Acz{\'e}l, Ng, and Wagner, \emph{Aequationes Math.} 28 (1984) 117--129.},
 }
 
 % --- Lyapunov convexity theorem (atomless-measure scaffold) ---
@@ -320,4 +364,194 @@
   year    = {1940},
   pages   = {465--478},
   note    = {Accessible modern exposition: Halmos, P. R., ``The range of a vector measure,'' \emph{Bull. Amer. Math. Soc.} 54 (1948) 416--421.},
+}
+
+% --- Atomless-continuum lineage (Section 1) ---
+
+@article{Aumann1964,
+  author  = {Aumann, R. J.},
+  title   = {Markets with a continuum of traders},
+  journal = {Econometrica},
+  volume  = {32},
+  number  = {1--2},
+  year    = {1964},
+  pages   = {39--50},
+}
+
+% --- Gleason-type derivations (Section 5, quantum example) ---
+
+@article{Gleason1957,
+  author  = {Gleason, A. M.},
+  title   = {Measures on the closed subspaces of a {H}ilbert space},
+  journal = {J. Math. Mech.},
+  volume  = {6},
+  year    = {1957},
+  pages   = {885--893},
+}
+
+@book{Holevo1982,
+  author    = {Holevo, A. S.},
+  title     = {Probabilistic and Statistical Aspects of Quantum Theory},
+  series    = {North-Holland Series in Statistics and Probability},
+  volume    = {1},
+  publisher = {North-Holland},
+  address   = {Amsterdam},
+  year      = {1982},
+}
+
+@article{Busch2003,
+  author  = {Busch, P.},
+  title   = {Quantum states and generalized observables: a simple proof of {G}leason's theorem},
+  journal = {Phys. Rev. Lett.},
+  volume  = {91},
+  year    = {2003},
+  pages   = {120403},
+  doi     = {10.1103/PhysRevLett.91.120403},
+}
+
+@article{CFMR2004,
+  author  = {Caves, C. M. and Fuchs, C. A. and Manne, K. K. and Renes, J. M.},
+  title   = {Gleason-type derivations of the quantum probability rule for generalized measurements},
+  journal = {Found. Phys.},
+  volume  = {34},
+  number  = {2},
+  year    = {2004},
+  pages   = {193--209},
+  doi     = {10.1023/B:FOOP.0000019581.00318.a5},
+}
+
+@article{WrightWeigert2019,
+  author  = {Wright, V. J. and Weigert, S.},
+  title   = {Gleason-type theorems from {C}auchy's functional equation},
+  journal = {Found. Phys.},
+  volume  = {49},
+  year    = {2019},
+  doi     = {10.1007/s10701-019-00275-x},
+}
+
+% --- Section 5 expansion (2026-06-11): scoring rules, decompositions,
+% --- comparison of experiments, graphical models. Brocker, DGJ, Schervish,
+% --- DeGroot--Fienberg verified by search this session; Savage, Murphy,
+% --- Blackwell, Grunwald--Dawid, Gneiting--Raftery, Koller--Friedman are
+% --- canonical (EGJK pages flagged for proof-stage check). ---
+
+@article{Savage1971,
+  author  = {Savage, L. J.},
+  title   = {Elicitation of personal probabilities and expectations},
+  journal = {J. Amer. Statist. Assoc.},
+  volume  = {66},
+  number  = {336},
+  year    = {1971},
+  pages   = {783--801},
+}
+
+@article{Murphy1973,
+  author  = {Murphy, A. H.},
+  title   = {A new vector partition of the probability score},
+  journal = {J. Appl. Meteorol.},
+  volume  = {12},
+  year    = {1973},
+  pages   = {595--600},
+}
+
+@article{DeGrootFienberg1983,
+  author  = {DeGroot, M. H. and Fienberg, S. E.},
+  title   = {The comparison and evaluation of forecasters},
+  journal = {J. Roy. Statist. Soc. Ser. D (The Statistician)},
+  volume  = {32},
+  number  = {1--2},
+  year    = {1983},
+  pages   = {12--22},
+}
+
+@article{Blackwell1953,
+  author  = {Blackwell, D.},
+  title   = {Equivalent comparisons of experiments},
+  journal = {Ann. Math. Statist.},
+  volume  = {24},
+  year    = {1953},
+  pages   = {265--272},
+}
+
+@article{Schervish1989,
+  author  = {Schervish, M. J.},
+  title   = {A general method for comparing probability assessors},
+  journal = {Ann. Statist.},
+  volume  = {17},
+  number  = {4},
+  year    = {1989},
+  pages   = {1856--1879},
+  doi     = {10.1214/aos/1176347398},
+}
+
+@article{GrunwaldDawid2004,
+  author  = {Gr{\"u}nwald, P. D. and Dawid, A. P.},
+  title   = {Game theory, maximum entropy, minimum discrepancy and robust {B}ayesian decision theory},
+  journal = {Ann. Statist.},
+  volume  = {32},
+  number  = {4},
+  year    = {2004},
+  pages   = {1367--1433},
+}
+
+@article{GneitingRaftery2007,
+  author  = {Gneiting, T. and Raftery, A. E.},
+  title   = {Strictly proper scoring rules, prediction, and estimation},
+  journal = {J. Amer. Statist. Assoc.},
+  volume  = {102},
+  number  = {477},
+  year    = {2007},
+  pages   = {359--378},
+}
+
+@article{Brocker2009,
+  author  = {Br{\"o}cker, J.},
+  title   = {Reliability, sufficiency, and the decomposition of proper scores},
+  journal = {Q. J. R. Meteorol. Soc.},
+  volume  = {135},
+  number  = {643},
+  year    = {2009},
+  pages   = {1512--1519},
+  doi     = {10.1002/qj.456},
+}
+
+@article{EGJK2016,
+  author  = {Ehm, W. and Gneiting, T. and Jordan, A. and Kr{\"u}ger, F.},
+  title   = {Of quantiles and expectiles: consistent scoring functions, {C}hoquet representations, and forecast rankings},
+  journal = {J. R. Stat. Soc. Ser. B},
+  volume  = {78},
+  number  = {3},
+  year    = {2016},
+  pages   = {505--562},
+  doi     = {10.1111/rssb.12154},
+}
+
+@article{DGJ2021,
+  author  = {Dimitriadis, T. and Gneiting, T. and Jordan, A. I.},
+  title   = {Stable reliability diagrams for probabilistic classifiers},
+  journal = {Proc. Natl. Acad. Sci. USA},
+  volume  = {118},
+  number  = {8},
+  year    = {2021},
+  pages   = {e2016191118},
+  doi     = {10.1073/pnas.2016191118},
+}
+
+@book{KollerFriedman2009,
+  author    = {Koller, D. and Friedman, N.},
+  title     = {Probabilistic Graphical Models: Principles and Techniques},
+  publisher = {MIT Press},
+  address   = {Cambridge, MA},
+  year      = {2009},
+}
+
+@article{Solovay1970,
+  author  = {Solovay, R. M.},
+  title   = {A model of set-theory in which every set of reals is {L}ebesgue measurable},
+  journal = {Ann. of Math. (2)},
+  volume  = {92},
+  number  = {1},
+  year    = {1970},
+  pages   = {1--56},
+  doi     = {10.2307/1970696},
 }
