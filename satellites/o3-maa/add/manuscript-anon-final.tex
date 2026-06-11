@@ -822,20 +822,23 @@ There exists $G\colon[0,1]\to\R$ satisfying~\eqref{eq:JQ}
 
 \begin{proof}[Construction]
 Choose a Hamel basis $H_0$ of~$\R$ over~$\Q$ containing~$1$; such a
-basis exists by Zorn's lemma applied to the partially ordered set of
-$\Q$-linearly independent subsets of~$\R$ that contain~$\{1\}$. Pick
+basis exists by Zorn's lemma (which is equivalent to the Axiom of Choice;
+without it, as shown by Solovay~\cite{Solovay1970}, one cannot prove the
+existence of non-affine solutions to the Cauchy or Jensen equations).
+Pick
 any $h'\in H_0\setminus\{1\}$; since two distinct rationals are
 $\Q$-linearly dependent, $h'$ is irrational. Choose a rational $q>0$
 with $h:=qh'\in(0,1)$, and set $H:=(H_0\setminus\{h'\})\cup\{h\}$.
 Replacing a basis element by a nonzero rational multiple of itself
 preserves both $\Q$-linear independence and spanning, so $H$ is again
 a Hamel basis, and it contains~$1$ together with the irrational
-$h\in(0,1)$.\footnote{Cardinality alone does not place a basis element
-in $(0,1)$: rescaling every element of a Hamel basis into $[1,2]$, say,
-produces a basis that avoids $(0,1)$ entirely. The rational-rescaling
-device used here is standard; Reem~\cite[Remark~3.4]{Reem2017} uses
+$h\in(0,1)$.\footnote{Cardinality alone does not guarantee a basis element
+lies in $(0,1)$: rescaling every element of a Hamel basis into $[1,2]$, say,
+produces a basis that avoids $(0,1)$ entirely. Standard interval-domain
+constructions often overlook this domain trap; the rational-rescaling
+device used here is standard (Reem~\cite[Remark~3.4]{Reem2017} uses
 it, after an idea of Z.~Boros, to produce a Hamel basis dense
-in~$\R$.} Define a $\Q$-linear map $\ell\colon\R\to\R$ by setting
+in~$\R$) and guarantees $h \in (0,1)$ while keeping basis invariants.} Define a $\Q$-linear map $\ell\colon\R\to\R$ by setting
 $\ell(1)=0$, $\ell(h)=1$, and extending $\Q$-linearly on the remaining
 basis elements.
 
@@ -847,10 +850,13 @@ combinations of points of $[0,1]$ remain in $[0,1]$ and $\ell$
 respects $\Q$-linear combinations.
 
 Explicit witness that $G$ is not affine: $G(h)=\ell(h)=1\ne0$, while
-$G(q)=\ell(q)=q\,\ell(1)=0$ for every rational $q\in[0,1]$. Any
-affine map $A\colon[0,1]\to\R$ agreeing with $G$ on $\Q\cap[0,1]$
-would satisfy $A(0)=0$ and $A(q)=0$ for all rational $q$---forcing
-$A\equiv0$, contradicting $G(h)=1$.
+$G(q)=\ell(q)=q\,\ell(1)=0$ for every rational $q\in[0,1]$. Because
+$\Q\cap[0,1]$ is dense in $[0,1]$, this pathological $G$ oscillates
+wildly: its graph is a dense subset of $[0,1]\times\R$, violating every
+single regularity condition of Table~\ref{tab:dictionary} (or Figure~\ref{fig:dictionary})
+simultaneously. Any affine map $A\colon[0,1]\to\R$ agreeing with $G$ on
+$\Q\cap[0,1]$ would satisfy $A(0)=0$ and $A(q)=0$ for all rational
+$q$---forcing $A\equiv0$, contradicting $G(h)=1$.
 \end{proof}
 
 Proposition~\ref{prop:JQ-pathology} sharpens the dictionary:

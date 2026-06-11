@@ -265,4 +265,9 @@ Koller D, Friedman N.
 \newblock Probabilistic Graphical Models: Principles and Techniques.
 \newblock Cambridge, MA: MIT Press; 2009.
 
+\bibitem{Solovay1970}
+Solovay RM.
+\newblock A model of set-theory in which every set of reals is Lebesgue measurable.
+\newblock Ann of Math (2). 1970;92(1):1--56.
+
 \end{thebibliography}
