@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.6.9)  11 JUN 2026 19:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.6.9)  11 JUN 2026 20:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -655,134 +655,21 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-
-dist/fonts/enc/dvips/base/8r.enc}
-
-]
-
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 2
-09.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [2]
-
-[3]
-
-[4]
-Overfull \hbox (1.98051pt too wide) in paragraph at lines 447--468
- [][] 
- []
-
-
-
-[5]
-Overfull \hbox (24.8874pt too wide) in paragraph at lines 638--648
- [][] 
- []
-
-
-
-[6]
-
-[7]
-
-[8]
-LaTeX Font Info:    Calculating math sizes for size <8.2> on input line 840.
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.09999> not available
-(Font)              size <5> substituted on input line 840.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.09999> not available
-(Font)              size <5> substituted on input line 840.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.09999> not available
-(Font)              size <5> substituted on input line 840.
-
-
-
-[9]
-
-[10]
-
-[11]
-
-[12]
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <10.5> not available
-(Font)              size <10.95> substituted on input line 1120.
-
-
-
-[13]
-Overfull \hbox (25.87408pt too wide) in paragraph at lines 1228--1246
- [][] 
- []
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <4.09999> not available
-(Font)              size <5> substituted on input line 1275.
-
-
-
-[14]
-
-[15]
-
-[16] (./manuscript.bbl
-
-[17]
-
-[18])
-
-[19] (./manuscript.aux)
- ***********
-LaTeX2e <2024-11-01> patch level 2
-L3 programming layer <2025-01-18>
- ***********
-
-
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.90001pt have occurred.
-
- ) 
+! I can't write on file `manuscript.pdf'.
+(Press Enter to retry, or Control-D to exit; default file extension is `.pdf')
+Please type another file name for output
+! Emergency stop.
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.95 
+      
 Here is how much of TeX's memory you used:
- 17247 strings out of 475102
- 328582 string characters out of 5764878
- 750967 words of memory out of 5000000
- 39432 multiletter control sequences out of 15000+600000
- 648090 words of font info for 429 fonts, out of 8000000 for 9000
+ 16229 strings out of 475102
+ 313437 string characters out of 5764878
+ 704709 words of memory out of 5000000
+ 38913 multiletter control sequences out of 15000+600000
+ 577716 words of font info for 78 fonts, out of 8000000 for 9000
  77 hyphenation exceptions out of 8191
- 84i,12n,91p,1457b,698s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/aelouafiq/.texlive2025/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095
-.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/symbols/msbm7.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
-mr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on manuscript.pdf (19 pages, 360238 bytes).
-PDF statistics:
- 205 PDF objects out of 1000 (max. 8388607)
- 124 compressed objects within 2 object streams
- 0 named destinations out of 1000 (max. 500000)
- 82445 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 84i,7n,91p,1452b,258s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
+!  ==> Fatal error occurred, no output PDF file produced!
