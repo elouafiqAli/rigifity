@@ -1059,28 +1059,31 @@ real and Theorem~\ref{thm:main} does its work.
 \paragraph{Surrogate calibration on the resolution axis.}
 We first fix the vocabulary, because the central object here travels
 under many names. Let $(\Omega,\mathcal{F},\mu)$ be an atomless
-probability space, let $Y$ be a binary outcome, and let
-$\eta=\Pr(Y=1\mid\cdot)\in[0,1]$ be its posterior probability. For a
-loss~$\ell$, the \emph{conditional Bayes risk} at posterior value~$u$
-is $H(u):=\inf_{a}\E[\ell(a,Y)\mid \eta=u]$; the function $H$ is
+probability space, let $Y\in\{0,1\}$ be a binary outcome, and let
+$\mathcal{F}_0\subseteq\mathcal{F}$ be a sub-$\sigma$-algebra of features (or covariates).
+The posterior probability profile is the $\mathcal{F}_0$-measurable
+random variable $\eta:=\E[Y\mid\mathcal{F}_0]=\Pr(Y=1\mid\mathcal{F}_0)\in[0,1]$.
+For an action space~$\mathcal{A}$ and a loss function~$\ell\colon\mathcal{A}\times\{0,1\}\to\R$,
+the \emph{conditional Bayes risk} at posterior value~$u\in[0,1]$ is
+$H(u):=\inf_{a\in\mathcal{A}}\E[\ell(a,Y)\mid \eta=u]$; the function $H$ is
 variously called the Bayes envelope, the generalized entropy, or the
 uncertainty function of the associated
 score~\cite{Savage1971,DeGrootFienberg1983,GrunwaldDawid2004,GneitingRaftery2007}.
-For the $0$--$1$ loss it is the tent, $H(u)=\min(u,1-u)$. We write
+For the $0$--$1$ loss and binary actions $\mathcal{A}=\{0,1\}$, it is the symmetric tent function $H(u)=\min(u,1-u)$. We write
 $G\colon[0,1]\to\R$ for a candidate uncertainty function and, for now,
 let it be \emph{arbitrary}.
 
-A sub-$\sigma$-algebra $\mathcal{G}\subseteq\mathcal{F}$ is a
+A sub-$\sigma$-algebra $\mathcal{G}\subseteq\mathcal{F}_0$ is a
 \emph{resolution}: the coarser~$\mathcal{G}$, the less the forecast
 distinguishes states of the world. Writing
-$\eta_{\mathcal{G}}:=\E[\eta\mid\mathcal{G}]$, the risk attainable at
+$\eta_{\mathcal{G}}:=\E[\eta\mid\mathcal{G}] = \E[Y\mid\mathcal{G}]$, the risk attainable at
 resolution~$\mathcal{G}$ is
 \[
 U_G(\mathcal{G})\;:=\;\E\bigl[G(\eta_{\mathcal{G}})\bigr],
 \qquad\text{so that}\quad
 U_G\bigl(\sigma(A)\bigr)\;=\;\mu(A)\,G(u_1)+\mu(A^{c})\,G(u_2)
 \]
-when $\eta$ takes the value $u_1$ on an event~$A$ and $u_2$ off it.
+when $\eta$ takes the value $u_1$ on an event~$A\in\mathcal{F}_0$ and $u_2$ on its complement~$A^{c}$.
 The classical theory runs along this axis with concavity in hand.
 Every Bayes envelope is concave (an infimum of affine functions
 of~$u$), and for concave~$G$ the functional $U_G$ decreases under
@@ -1151,7 +1154,7 @@ $T_{1/2}(u)=\min(u,1-u)$ \emph{is} the $0$--$1$ conditional Bayes
 risk, and more is true: the elementary scores of
 Schervish~\cite{Schervish1989} and of Ehm, Gneiting, Jordan, and
 Kr\"uger~\cite{EGJK2016} have as their uncertainty functions
-precisely the tents $T_\theta$ with apex at~$\theta$, and the mixture
+precisely the tents $T_\theta(u) := 2 \min\big(u(1-\theta), \, (1-u)\theta\big)$ with apex at~$\theta\in(0,1)$, and the mixture
 representation $S=\int_0^1 S_\theta\,dH(\theta)$ of every proper
 score exhibits every admissible uncertainty function as a mixture of
 tents, $G=\int_0^1 T_\theta\,dH(\theta)$\,---\,for instance
