@@ -982,7 +982,7 @@ independence axiom is a condition on the \emph{preference relation};
 although it is stated for every real mixing weight, it does not by
 itself deliver a cardinal functional equation for a real-valued~$U$.
 What produces a real-valued affine~$U$ in the first place is the
-\textbf{Archimedean axiom}, and it is genuinely indispensable:
+\textbf{Archimedean axiom} (which acts mathematically as a topological mixture-continuity condition that embeds the quotient space of indifference classes into the real line), and it is genuinely indispensable:
 lexicographic preferences are complete, transitive, and independent,
 yet violate the Archimedean axiom and admit no real-valued
 representation whatsoever\,---\,so there is no~$U$, and the displayed
@@ -1003,13 +1003,13 @@ Faddeev~\cite{Faddeev1957}, the entropy
 $H(p_1,\ldots,p_n)=-\sum_i p_i\log p_i$ is singled out by symmetry, a
 normalization, and a recursivity (grouping) axiom. The recursivity
 axiom does not reduce to~\eqref{eq:star}. It reduces to the
-\textbf{fundamental equation of information},
+\textbf{fundamental equation of information}, evaluated on the domain $D = \{(x, y) \in [0, 1)^2 \mid x + y \le 1\}$,
 \[
 f(x)+(1-x)\,f\!\left(\tfrac{y}{1-x}\right)
 \;=\;f(y)+(1-y)\,f\!\left(\tfrac{x}{1-y}\right),
 \]
-for the information function $f(x)=H(x,1-x)$, and the intended
-solution is $f(x)=-x\log x-(1-x)\log(1-x)$, which is strictly
+for the information function $f(x)=H(x,1-x)$, and the unique physical
+solution is $f(x)=-x\log_2 x-(1-x)\log_2(1-x)$, normalized such that $f(0)=f(1)=0$, which is strictly
 \emph{concave}\,---\,emphatically not affine. The fundamental
 equation of information is a relative of Cauchy's equation, and like
 Cauchy's equation it admits Hamel-type non-measurable solutions
