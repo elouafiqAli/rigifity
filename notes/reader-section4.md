@@ -200,11 +200,11 @@ This is ordinary linear algebra over the field $\mathbb{Q}$: a linear map is det
 ### 6.4 The interval-domain trap, and the rational-rescaling fix
 We want the pathology to *show* on $[0,1]$, so we want a basis element lying in the open interval $(0,1)$. **Cardinality alone does not give this:** one could rescale every basis element into $[1,2]$ and obtain a perfectly good basis that avoids $(0,1)$ entirely. So we engineer one element into $(0,1)$.
 
-Start from any Hamel basis $H_0$ that contains $1$ (if a given basis does not contain $1$, replace one of its elements appropriately; concretely, expand $1$ in the basis and swap in $1$ for a basis element appearing with nonzero coefficient — a standard basis-exchange, Algebra I). Pick any $h'\in H_0\setminus\{1\}$. Then $h'$ is **irrational**: two distinct elements of a basis are $\mathbb{Q}$-linearly independent, and any rational would be $\mathbb{Q}$-dependent with $1$. Choose a positive rational $q$ with
+Start from any Hamel basis $H_0$ that contains $1$ (if a given basis does not contain $1$, replace one of its elements appropriately; concretely, expand $1$ in the basis and swap in $1$ for a basis element appearing with nonzero coefficient — a standard basis-exchange, Algebra I). Pick any $h'\in H_0\setminus\{1\}$. Then $h'$ is **irrational**: two distinct elements of a basis are $\mathbb{Q}$-linearly independent, and any rational would be $\mathbb{Q}$-dependent with $1$. Choose a nonzero rational $q$ with
 $$
 h:=q\,h'\in(0,1)
 $$
-(possible: $h'\ne0$, so a small enough positive rational multiple lands in $(0,1)$). Replace $h'$ by $h$:
+(possible since $h'\ne0$: take $q$ of the same sign as $h'$ with $|q|$ small enough that $q\,h'$ lands in $(0,1)$). Replace $h'$ by $h$:
 $$
 H:=(H_0\setminus\{h'\})\cup\{h\}.
 $$
@@ -415,7 +415,7 @@ Twenty-four exercises, ★ (warm-up) to ★★★ (oral-exam level), tagged by P
 
 **S19.** Each $x\in\mathbb{R}$ has a *unique* representation $x=\sum_i q_i h_i$ ($q_i\in\mathbb{Q}$, $h_i\in H$ distinct, finitely many). Defining $\ell(x)=\sum_i q_i\ell(h_i)$ is unambiguous by uniqueness. For $x=\sum q_ih_i$, $y=\sum r_ih_i$ (pad with zero coefficients to a common finite support), $x+y=\sum(q_i+r_i)h_i$, so $\ell(x+y)=\sum(q_i+r_i)\ell(h_i)=\ell(x)+\ell(y)$; and $qx=\sum(qq_i)h_i$ gives $\ell(qx)=q\ell(x)$ for $q\in\mathbb{Q}$. $\blacksquare$
 
-**S20.** Independence: a $\mathbb{Q}$-relation among $H=(H_0\setminus\{h'\})\cup\{h\}$ using $h=qh'$ rewrites as a $\mathbb{Q}$-relation among $H_0$ (replace $h$ by $qh'$); independence of $H_0$ forces all coefficients zero. Spanning: any $x$ is a $\mathbb{Q}$-combination over $H_0$; replace the $h'$-term $c\,h'$ by $(c/q)h$, giving a combination over $H$. So $H$ is a basis. Since $h'\ne0$, some positive rational $q$ has $qh'\in(0,1)$. $\blacksquare$
+**S20.** Independence: a $\mathbb{Q}$-relation among $H=(H_0\setminus\{h'\})\cup\{h\}$ using $h=qh'$ rewrites as a $\mathbb{Q}$-relation among $H_0$ (replace $h$ by $qh'$); independence of $H_0$ forces all coefficients zero. Spanning: any $x$ is a $\mathbb{Q}$-combination over $H_0$; replace the $h'$-term $c\,h'$ by $(c/q)h$, giving a combination over $H$. So $H$ is a basis. Since $h'\ne0$, a nonzero rational $q$ of the same sign as $h'$ and small enough in magnitude has $qh'\in(0,1)$. $\blacksquare$
 
 **S21.** *Solves $(J_\mathbb{Q})$:* for $u_1,u_2\in[0,1]$ and rational $p$, $pu_1+(1-p)u_2\in[0,1]$ and $\mathbb{Q}$-linearity gives $\ell(pu_1+(1-p)u_2)=p\ell(u_1)+(1-p)\ell(u_2)$, i.e. $G(pu_1+(1-p)u_2)=pG(u_1)+(1-p)G(u_2)$. *Non-affine:* for rational $q\in[0,1]$, $G(q)=\ell(q\cdot1)=q\ell(1)=0$; but $G(h)=\ell(h)=1$ with $h\in(0,1)$. Any affine $A=\alpha v+\beta$ agreeing with $G$ on $\mathbb{Q}\cap[0,1]$ forces $\beta=0,\alpha=0$, so $A\equiv0\ne G$ (as $G(h)=1$). $\blacksquare$
 

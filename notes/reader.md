@@ -224,7 +224,7 @@ This is well-defined (representations are unique) and additive (add two finite c
 
 The paper needs the pathology on the bounded interval $[0,1]$, not on all of $\mathbb{R}$, and here a subtle trap appears, which the paper flags explicitly. Restricting an additive $f\colon\mathbb{R}\to\mathbb{R}$ to $[0,1]$ gives a solution of $(J_\mathbb{Q})$ on $[0,1]$ (rational convex combinations of points of $[0,1]$ stay in $[0,1]$, and $f$ respects them). But to *exhibit* non-affineness inside $[0,1]$ you want a basis element to actually lie in $(0,1)$ — and **cardinality alone does not guarantee that**: one can rescale every basis element into $[1,2]$, producing a perfectly good Hamel basis that avoids $(0,1)$ entirely.
 
-The paper's device (after Reem, after an idea of Boros): start from any Hamel basis $H_0$ containing $1$; pick $h'\in H_0\setminus\{1\}$ (necessarily irrational, since two distinct rationals are $\mathbb{Q}$-dependent); choose a positive rational $q$ with $h:=qh'\in(0,1)$; and replace $h'$ by $h$. **Rescaling a basis element by a nonzero rational preserves both independence and spanning**, so $H:=(H_0\setminus\{h'\})\cup\{h\}$ is again a Hamel basis, now containing both $1$ and an irrational $h\in(0,1)$.
+The paper's device (after Reem, after an idea of Boros): start from any Hamel basis $H_0$ containing $1$; pick $h'\in H_0\setminus\{1\}$ (necessarily irrational, since two distinct rationals are $\mathbb{Q}$-dependent); choose a nonzero rational $q$ (of the same sign as $h'$, small in magnitude) with $h:=qh'\in(0,1)$; and replace $h'$ by $h$. **Rescaling a basis element by a nonzero rational preserves both independence and spanning**, so $H:=(H_0\setminus\{h'\})\cup\{h\}$ is again a Hamel basis, now containing both $1$ and an irrational $h\in(0,1)$.
 
 Define $\ell\colon\mathbb{R}\to\mathbb{R}$ by $\ell(1)=0$, $\ell(h)=1$, and $\ell=$ anything $\mathbb{Q}$-linear on the rest. Set $G:=\ell|_{[0,1]}$. Then:
 
@@ -398,11 +398,11 @@ The witness is the function $G=\ell|_{[0,1]}$ of Part 3.4, with $\ell(1)=0$, $\e
 
 The endpoint-substitution proof is so frugal that three sharpenings follow immediately. Each tells you *how little* of $(\star)$ the conclusion actually consumes. (We stop exactly where the paper's "Convex domains in higher dimensions" begins.)
 
-### 7.1 The strict-minimum hypothesis (Theorem 2)
+### 7.1 The strict-minimum hypothesis (Theorem 3)
 
 The proof of Theorem 1 used $(\star)$ at the **single** configuration $u_1=M,u_2=0$. Isolating that:
 
-> **Theorem 2 (`thm:weak`).** Let $M>0$ and let $G\colon[0,M]\to\mathbb{R}$ satisfy
+> **Theorem 3 (`thm:weak`).** Let $M>0$ and let $G\colon[0,M]\to\mathbb{R}$ satisfy
 > $$
 > p\,G(M)+(1-p)\,G(0)=G(pM)\qquad\text{for all }p\in[0,1].
 > $$
@@ -410,7 +410,7 @@ The proof of Theorem 1 used $(\star)$ at the **single** configuration $u_1=M,u_2
 
 *Proof.* Set $p:=v/M\in[0,1]$; the hypothesis gives $p\,G(M)+(1-p)G(0)=G(pM)=G(v)$, and rearranging gives the affine formula. $\qquad\blacksquare$
 
-This is *in principle* weaker than Theorem 1 — assuming the identity at one configuration does not, a priori, give the full $(\star)$ for all pairs $(u_1,u_2)$. (Once the conclusion holds, of course both are true, since affine functions satisfy full $(\star)$.) Theorem 2 is the right reference when you want to state **exactly** how much of the equation a derivation consumes. In practice an applied derivation usually produces full $(\star)$ anyway.
+This is *in principle* weaker than Theorem 1 — assuming the identity at one configuration does not, a priori, give the full $(\star)$ for all pairs $(u_1,u_2)$. (Once the conclusion holds, of course both are true, since affine functions satisfy full $(\star)$.) Theorem 3 is the right reference when you want to state **exactly** how much of the equation a derivation consumes. In practice an applied derivation usually produces full $(\star)$ anyway.
 
 ### 7.2 Irrational weights alone suffice (Remark)
 
@@ -471,11 +471,11 @@ The logical spine is short: **steps 2–4 reduce the discrete problem to Cauchy;
 4. Classically, **any one** regularity hypothesis (continuity, measurability, monotonicity, boundedness on an interval, or on a positive-measure set) excludes the monsters — all via "local boundedness $\Rightarrow$ defect $\equiv0$," powered by Steinhaus and Lusin.
 5. **Theorem 1:** the **real-weight** equation $(\star)$ forces affineness with **no** regularity hypothesis, by one substitution $u_1=M,u_2=0,p=v/M$ that pins each value onto the endpoint chord.
 6. **Why:** the monster's defect is exactly its failure of $\mathbb{R}$-linearity, which lives at **irrational** weights; $(J_\mathbb{Q})$ never tests there, but $(\star)$ does, and kills it. So every classical hypothesis is **vestigial** for $(\star)$ — it reappears as a *conclusion* (the Corollary), not an assumption.
-7. **Frugality:** one endpoint configuration suffices (Theorem 2); even irrational weights alone suffice (Remark); even cell-by-cell saturation suffices and yields piecewise-affine, automatically continuous solutions (Corollary) — the form the applications consume.
+7. **Frugality:** one endpoint configuration suffices (Theorem 3); even irrational weights alone suffice (Remark); even cell-by-cell saturation suffices and yields piecewise-affine, automatically continuous solutions (Corollary) — the form the applications consume.
 
 ---
 
-**Next:** `notes/utility.md` and `notes/shannon.md` apply this machinery to Section 5 (expected utility and Shannon entropy). The "Convex domains in higher dimensions" subsection (Theorem 11), deliberately omitted here, extends Theorem 1 from an interval to a convex subset of $\mathbb{R}^n$ and is the natural next reading.
+**Next:** `notes/utility.md` and `notes/shannon.md` apply this machinery to Section 5 (expected utility and Shannon entropy). The "Convex domains in higher dimensions" subsection (Theorem 6), deliberately omitted here, extends Theorem 1 from an interval to a convex subset of any real vector space and is the natural next reading.
 
 ---
 
@@ -489,7 +489,7 @@ These are the places a careful reader (or examiner) will try to make you stumble
 
 > **Trap E3 — "Additive $\Rightarrow$ linear."** Same content as E2, phrased for Cauchy's equation. *Kill:* additive gives only $\mathbb{Q}$-linearity; $\mathbb{R}$-linearity needs one extra regularity input. Never write "$f$ additive, so $f(x)=cx$" without invoking continuity/measurability/etc.
 
-> **Trap E4 — "$(\star)$ at the single weight $p=\tfrac12$, for all pairs, forces affine."** *Tempting because:* it looks like a lot of equations. *Kill:* that is *exactly* $(J_2)$, which the monster satisfies. You need the **continuum** of weights (or at least the irrational ones, Part 7.2), not one fixed weight across all pairs. Contrast with Theorem 2, which fixes the **pair** $(M,0)$ and varies the **weight** over all of $[0,1]$ — *that* works.
+> **Trap E4 — "$(\star)$ at the single weight $p=\tfrac12$, for all pairs, forces affine."** *Tempting because:* it looks like a lot of equations. *Kill:* that is *exactly* $(J_2)$, which the monster satisfies. You need the **continuum** of weights (or at least the irrational ones, Part 7.2), not one fixed weight across all pairs. Contrast with Theorem 3, which fixes the **pair** $(M,0)$ and varies the **weight** over all of $[0,1]$ — *that* works.
 
 > **Trap E5 — "Midpoint-convex $\Rightarrow$ convex."** *Tempting because:* it is true for continuous functions. *Kill:* false in general (the additive monster is midpoint-affine, hence midpoint-convex, but not convex). The classical rescue (a measurability/boundedness hypothesis) is the same dictionary as in Part 4.
 
@@ -548,7 +548,7 @@ Twenty-four exercises, graded ★ (warm-up) to ★★★ (oral-exam level), grou
 - **X20 (★, Part 5.2).** Reproduce the endpoint substitution from memory. State exactly which $(u_1,u_2,p)$ is used and verify admissibility.
 - **X21 (★, Part 5.3).** Prove Corollary 2: an affine $G$ on $[0,M]$ is continuous, monotone, Lipschitz, and measurable. Explain why this makes the five struts "vestigial."
 - **X22 (★★, Part 6).** Show $(\star_0)$ for an additive $f$ is exactly the assertion of $\mathbb{R}$-linearity. For the monster, exhibit a specific weight $p$ at which $(\star_0)$ fails.
-- **X23 (★★, Part 7.1).** Prove Theorem 2 (single configuration). Then explain the subtlety: why it is "formally weaker" than Theorem 1 yet the conclusions coincide. Can you exhibit a $G$ satisfying the single-configuration hypothesis but *not* full $(\star)$? Justify.
+- **X23 (★★, Part 7.1).** Prove Theorem 3 (single configuration). Then explain the subtlety: why it is "formally weaker" than Theorem 1 yet the conclusions coincide. Can you exhibit a $G$ satisfying the single-configuration hypothesis but *not* full $(\star)$? Justify.
 - **X24 (★★★, Part 7).** (a) Verify the tent $G(v)=\min(v,1-v)$ satisfies $(\star)$ cell-wise on $[0,\tfrac12],[\tfrac12,1]$ but not globally. (b) Reproduce the *rational-$v/M$* case of the irrational-weights-alone Remark (Part 7.2), checking that $u_1/M,u_2/M$ are irrational.
 
 ---
@@ -625,7 +625,7 @@ The goal is an **oral examiner cannot rattle you**. These are designed to be red
 - **Rung 4:** State and prove the killer lemma; derive all five struts from it (cite R.12 for the two measure ones).
 - **Rung 5:** Prove Theorem 1 and Corollary 2; articulate "regularity is a conclusion."
 - **Rung 6:** Prove the mechanism: $(\star_0)=\mathbb{R}$-linearity; monster passes $\mathbb{Q}$, fails at irrational $p$.
-- **Rung 7:** State and prove Theorem 2, the irrational-weights Remark, and piecewise saturation.
+- **Rung 7:** State and prove Theorem 3, the irrational-weights Remark, and piecewise saturation.
 Climb the whole ladder twice without notes and you can reconstruct the paper.
 
 ### D.3 Recitation script (mock oral exam — answer aloud, then check the Part)
