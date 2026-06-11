@@ -389,11 +389,12 @@ examine the difference in detail.
 We place side-by-side the discrete-coefficient equation~\eqref{eq:J2}
 and the continuous-coefficient equation~\eqref{eq:star}, and ask which
 regularity hypotheses on~$G$ are \emph{required} to force affineness
-for each. Figure~\ref{fig:dictionary} draws the comparison as a load
+for each. Table~\ref{tab:dictionary} lists these hypotheses side-by-side,
+and Figure~\ref{fig:dictionary} draws the comparison as a load
 diagram: five classical hypotheses, each individually strong enough
 to carry the conclusion for~\eqref{eq:J2}, and the same conclusion
 for~\eqref{eq:star} carried by the bare equation, every strut
-removed. The caption records the standard historical attribution of
+removed. The caption of Figure~\ref{fig:dictionary} records the standard historical attribution of
 each strut. (For a modern textbook treatment of the regularity
 catalog for~\eqref{eq:J2} we refer the reader to
 Kuczma~\cite[\S13.2]{Kuczma2009}.)
@@ -469,56 +470,55 @@ weight.}
 \label{fig:dictionary}
 \end{figure}
 
-% --- Former Table 1 (superseded by Figure~\ref{fig:dictionary}; kept for referee fallback) ---
-% \begin{table}[ht]
-% \renewcommand{\arraystretch}{1.4}
-% \centering
-% \begin{tabularx}{\linewidth}{@{} >{\raggedright\arraybackslash}X |
-%   >{\raggedright\arraybackslash}X |
-%   >{\raggedright\arraybackslash}X @{}}
-% \toprule
-% \textbf{Hypothesis on $G$} &
-% \textbf{For \eqref{eq:J2}$\Rightarrow$affine?} &
-% \textbf{For \eqref{eq:star}$\Rightarrow$affine?} \\
-% \midrule
-% \textbf{Continuity on $I$}: $G$ is continuous at every $v\in I$.
-%   & Yes, suffices (Cauchy~\cite{Cauchy1821}).
-%   & \textbf{No}---it is the \emph{conclusion} (Corollary~\ref{cor:regularity}). \\
-% \midrule
-% \textbf{Measurability on $I$}: $G$ is Lebesgue- or Borel-measurable on~$I$.
-%   & Yes, suffices (Sierpi\'nski~\cite{Sierpinski1920}).
-%   & \textbf{No}---same. \\
-% \midrule
-% \textbf{Monotonicity on $I$}: $G$ is non-decreasing or non-increasing on~$I$.
-%   & Yes, suffices (Darboux~\cite{Darboux1875}).
-%   & \textbf{No}---same. \\
-% \midrule
-% \textbf{Boundedness on a set of positive measure}: $G$ is bounded on some
-%   Lebesgue-measurable $E\subseteq I$ with $|E|>0$.
-%   & Yes, suffices (Kormes~\cite{Kormes1926}; bounded on one side
-%     suffices, Ostrowski~\cite{Ostrowski1929},
-%     Kestelman~\cite{Kestelman1947}).
-%   & \textbf{No}---same. \\
-% \midrule
-% \textbf{Boundedness on $I$}: $G$ is bounded on all of~$I$.
-%   & Yes, suffices (Darboux~\cite{Darboux1880}).
-%   & \textbf{No}---same. \\
-% \midrule
-% \textbf{None}: no regularity hypothesis at all.
-%   & \textbf{Insufficient}---Hamel-basis pathology~\cite{Hamel1905}.
-%   & \textbf{Sufficient}---Theorem~\ref{thm:main}. \\
-% \bottomrule
-% \end{tabularx}
-% \caption{Regularity hypotheses on $G$. Column~2 records which hypotheses
-% are classically required to force affineness for the
-% discrete-coefficient equation~\eqref{eq:J2}. Column~3 records their
-% status under the continuous-coefficient equation~\eqref{eq:star}.
-% Steinhaus's difference-set theorem~\cite{Steinhaus1920} powers the
-% modern proofs of the two measure-theoretic rows but is itself a tool
-% rather than a regularity result; for the historical catalog see
-% Reem~\cite{Reem2017} and Kuczma~\cite[\S13.2]{Kuczma2009}.}
-% \label{tab:dictionary}
-% \end{table}
+\begin{table}[ht]
+\renewcommand{\arraystretch}{1.4}
+\centering
+\begin{tabularx}{\linewidth}{@{} >{\raggedright\arraybackslash}X |
+  >{\raggedright\arraybackslash}X |
+  >{\raggedright\arraybackslash}X @{}}
+\toprule
+\textbf{Hypothesis on $G$} &
+\textbf{For \eqref{eq:J2}$\Rightarrow$affine?} &
+\textbf{For \eqref{eq:star}$\Rightarrow$affine?} \\
+\midrule
+\textbf{Continuity on $I$}: $G$ is continuous at every $v\in I$.
+  & Yes, suffices (Cauchy~\cite{Cauchy1821}).
+  & \textbf{No}---it is the \emph{conclusion} (Corollary~\ref{cor:regularity}). \\
+\midrule
+\textbf{Measurability on $I$}: $G$ is Lebesgue- or Borel-measurable on~$I$.
+  & Yes, suffices (Sierpi\'nski~\cite{Sierpinski1920}).
+  & \textbf{No}---same. \\
+\midrule
+\textbf{Monotonicity on $I$}: $G$ is non-decreasing or non-increasing on~$I$.
+  & Yes, suffices (Darboux~\cite{Darboux1875}).
+  & \textbf{No}---same. \\
+\midrule
+\textbf{Boundedness on a set of positive measure}: $G$ is bounded on some
+  Lebesgue-measurable $E\subseteq I$ with $|E|>0$.
+  & Yes, suffices (Kormes~\cite{Kormes1926}; bounded on one side
+    suffices, Ostrowski~\cite{Ostrowski1929},
+    Kestelman~\cite{Kestelman1947}).
+  & \textbf{No}---same. \\
+\midrule
+\textbf{Boundedness on $I$}: $G$ is bounded on all of~$I$.
+  & Yes, suffices (Darboux~\cite{Darboux1880}).
+  & \textbf{No}---same. \\
+\midrule
+\textbf{None}: no regularity hypothesis at all.
+  & \textbf{Insufficient}---Hamel-basis pathology~\cite{Hamel1905}.
+  & \textbf{Sufficient}---Theorem~\ref{thm:main}. \\
+\bottomrule
+\end{tabularx}
+\caption{Regularity hypotheses on $G$. Column~2 records which hypotheses
+are classically required to force affineness for the
+discrete-coefficient equation~\eqref{eq:J2}. Column~3 records their
+status under the continuous-coefficient equation~\eqref{eq:star}.
+Steinhaus's difference-set theorem~\cite{Steinhaus1920} powers the
+modern proofs of the two measure-theoretic rows but is itself a tool
+rather than a regularity result; for the historical catalog see
+Reem~\cite{Reem2017} and Kuczma~\cite[\S13.2]{Kuczma2009}.}
+\label{tab:dictionary}
+\end{table}
 % --- end former Table 1 ---
 
 The ground line is the point of the figure. With \textbf{no
