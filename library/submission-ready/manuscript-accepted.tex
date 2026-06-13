@@ -1,5 +1,5 @@
 %% =============================================================================
-%% manuscript.tex — The American Mathematical Monthly (with author details)
+%% manuscript-accepted.tex — The American Mathematical Monthly (with author details)
 %% Title:    The Continuous-Coefficient Jensen Equation:
 %%           How Real Mixing Weights Retire Regularity
 %% Author:   Ali Elouafiq (SQLI Digital Laboratory, Levallois-Perret, France)
@@ -34,11 +34,6 @@
 \usepackage{array}              % extended column specifiers in tables
 \usepackage{tabularx}           % X column type for proportional-width tables
 \usepackage{tikz}               % figures (load diagram, mechanism, resolution axis)
-\usepackage[normalem]{ulem}     % review markup: strike-through deletions
-
-%% --- Combined review markup: blue insertions, red struck deletions ---
-\newcommand{\ReviewAdd}[1]{\textcolor{blue}{#1}}
-\newcommand{\ReviewDel}[1]{\textcolor{red}{\sout{#1}}}
 
 %% --- Theorem environments (following the Monthly template exactly) ---
 \theoremstyle{plain}
@@ -117,14 +112,14 @@ grew out of a formalization project on the second of these topics.
 %%             highlight concepts, not mechanics.
 %% ---------------------------------------------------------------------------
 \begin{abstract}
-Jensen's inequality is \ReviewDel{a workhorse of analysis}\ReviewAdd{one of analysis's workhorse estimates}: for every concave
+Jensen's inequality is one of analysis's workhorse estimates: for every concave
 function~$G$ and random variable~$\xi$ on an interval,
-$\E[G(\xi)]\le G(\E[\xi])$. \ReviewDel{What if equality is forced}\ReviewAdd{Suppose equality is forced} for every
+$\E[G(\xi)]\le G(\E[\xi])$. Suppose equality is forced for every
 two-point distribution\,---\,that is,
 $p\,G(u_1)+(1-p)\,G(u_2)=G(p\,u_1+(1-p)\,u_2)$ for all $u_1,u_2$ in
-the interval and all weights $p\in[0,1]$? \ReviewDel{Must}\ReviewAdd{Does this force} $G$ \ReviewAdd{to} be affine?
+the interval and all weights $p\in[0,1]$? Does this force $G$ to be affine?
 
-\ReviewDel{Yes.}\ReviewAdd{Yes, and the proof is one line.} \ReviewDel{The proof is one line\,---\,substitute}\ReviewAdd{Substitute} $u_1=M$, $u_2=0$, $p=v/M$
+Yes, and the proof is one line. Substitute $u_1=M$, $u_2=0$, $p=v/M$
 and read $G(v)$ off the chord through $(0,G(0))$ and
 $(M,G(M))$\,---\,and it needs no regularity hypothesis on~$G$: no
 continuity, measurability, monotonicity, or boundedness.
@@ -132,20 +127,18 @@ continuity, measurability, monotonicity, or boundedness.
 The contrast with rational weights is sharp. The $p=\tfrac12$ case is
 equivalent to Cauchy's additive equation, which admits wildly
 pathological non-affine solutions (Hamel, 1905) unless a regularity
-hypothesis intervenes. \ReviewAdd{That historical reflex is useful in the rational setting but misleading here.} Classical analysis from Cauchy (1821) to
+hypothesis intervenes. That historical reflex is useful in the rational setting but misleading here. Classical analysis from Cauchy (1821) to
 Kestelman (1947) cataloged the minimal tameness conditions that rule
-the pathology out, and the conditions became \ReviewDel{standard baggage}\ReviewAdd{standard safeguards} in
-functional-equation arguments\,---\,\ReviewDel{carried even where the
-continuous-coefficient equation is in play and none of the baggage is
-needed}\ReviewAdd{sometimes carried into the continuous-coefficient setting, where the equation itself already excludes the pathology}.
+the pathology out, and the conditions became standard safeguards in
+functional-equation arguments\,---\,sometimes carried into the continuous-coefficient setting, where the equation itself already excludes the pathology.
 
-\ReviewDel{This expository article makes}\ReviewAdd{This article isolates} the asymmetry \ReviewAdd{and makes it explicit}. We catalog which
+This article isolates the asymmetry and makes it explicit. We catalog which
 classical regularity hypotheses become vestigial under the
 continuous-coefficient equation, explain why (the Hamel pathology
-\ReviewDel{lives at irrational weights, exactly where}\ReviewAdd{survives rational-weight tests and is exposed by the irrational weights that} the equation now
+survives rational-weight tests and is exposed by the irrational weights that the equation now
 tests~$G$), and give a diagnostic separating the saturated-Jensen
-settings \ReviewDel{where}\ReviewAdd{in which} the hypotheses are vestigial from the more common
-settings \ReviewDel{where}\ReviewAdd{in which} they remain load-bearing. The same five hypotheses
+settings in which the hypotheses are vestigial from the more common
+settings in which they remain load-bearing. The same five hypotheses
 appear on both sides of the line: indispensable in the axiomatic
 characterization of Shannon entropy, vestigial in a calibration
 computation on an atomless space.
@@ -168,7 +161,7 @@ functional equation, regularity hypothesis
 
 One of the most serviceable inequalities in mathematics---Jensen's
 inequality~\cite{Jensen1906}, $\E[G(\xi)]\le G(\E[\xi])$ for concave~$G$---raises an
-\ReviewDel{immediate follow-up}\ReviewAdd{natural equality question}: when does equality hold for \emph{every} two-point
+natural equality question: when does equality hold for \emph{every} two-point
 distribution supported on a given interval? The equation expressing
 universal two-point equality,
 \begin{equation}
@@ -177,10 +170,7 @@ p\,G(u_1)+(1-p)\,G(u_2) \;=\; G\bigl(p\,u_1+(1-p)\,u_2\bigr)
 \tag{$\star$}\label{eq:star}
 \end{equation}
 imposed on a function $G\colon I\to\R$ on a real interval $I$, has
-at least three forms in classical analysis. \ReviewDel{The three forms are easily
-conflated---and have been, on and off, for a century---with consequences
-for both the foundational theory and the modern applied literature where
-the equation surfaces.}\ReviewAdd{They are easy to conflate, and that conflation matters both for the foundational theory and for modern applied arguments in which the equation reappears.}
+at least three forms in classical analysis. They are easy to conflate, and that conflation matters both for the foundational theory and for modern applied arguments in which the equation reappears.
 
 \subsection{Three forms of the equation.}
 
@@ -228,7 +218,7 @@ fundamentally different. The strengthening from $\Q$ to $\R$ in the
 range of~$p$ is \emph{genuine}. As we will see, \eqref{eq:star} does not
 admit any Hamel pathology: the pathology cannot survive at irrational~$p$,
 and the continuous-coefficient equation tests~$G$ at every irrational.
-\ReviewDel{This is}\ReviewAdd{That distinction is} the subject of the paper.
+That distinction is the subject of the paper.
 
 \subsection{The main result.}
 
@@ -240,18 +230,18 @@ G(v) \;=\; \frac{G(M)-G(0)}{M}\,v + G(0), \quad v\in[0,M].
 \]
 \end{theorem}
 
-The hypothesis list deserves \ReviewDel{a second look}\ReviewAdd{attention}: no regularity of any
+The hypothesis list deserves attention: no regularity of any
 kind---continuity, measurability, monotonicity, or boundedness---is
-assumed of~$G$. The proof is one line: a substitution into~\eqref{eq:star} \ReviewDel{that pins}\ReviewAdd{pins}
+assumed of~$G$. The proof is one line: a substitution into~\eqref{eq:star} pins
 $G(v)$ on the straight line through the endpoints $(0,G(0))$ and
 $(M,G(M))$.
 We give it in Section~\ref{sec:proof} and use the remainder of the paper
-to \ReviewDel{articulate what it means}\ReviewAdd{explain why the distinction matters}.
+to explain why the distinction matters.
 
 \subsection{The historical detour and the structural moral.}
 \label{ssec:detour}
 
-Theorem~\ref{thm:main} is elementary. \ReviewDel{The underlying}\ReviewAdd{Its} substitution
+Theorem~\ref{thm:main} is elementary. Its substitution
 technique is folklore in functional equations: Acz\'el's
 \cite[\S2.1.4]{Aczel1966} contains a dyadic precursor proved (with a
 continuity hypothesis) by a dyadic-induction argument. The precise
@@ -259,16 +249,13 @@ statement of Theorem~\ref{thm:main}\,---\,continuous coefficients
 $p\in[0,1]$, no regularity hypothesis on~$G$\,---\,does not appear in
 this exact form in the standard references the author consulted; it is
 recorded here because the recurrence pattern of
-Section~\ref{sec:recurrence} needs it as a separable lemma. \ReviewDel{The
-contribution of the present paper is in three parts:}\ReviewAdd{The paper's contribution is threefold:}
+Section~\ref{sec:recurrence} needs it as a separable lemma. The paper's contribution is threefold:
 \begin{itemize}
 \item \emph{The explicit dictionary} (Section~\ref{sec:dictionary}) of
-  classical regularity hypotheses on~$G$\,---\,continuity, measurability,
-  monotonicity, boundedness on a set of positive measure, and
-  boundedness on the interval\,---\,each of which is \ReviewDel{required}\ReviewAdd{classically sufficient} to force
-  affineness for~\eqref{eq:J2}, though some tameness assumption is needed to exclude Hamel examples, but becomes \emph{vestigial}
-  under~\eqref{eq:star}, together with the structural mechanism (Hamel examples pass the rational tests but are exposed at irrational~$p$, exactly where
-  \eqref{eq:star} closes the door).
+  five classical tameness hypotheses on~$G$, each sufficient to force
+  affineness for~\eqref{eq:J2} but vestigial under~\eqref{eq:star},
+  together with the structural reason: Hamel examples survive the
+  rational tests and are exposed at irrational~$p$.
 
 \item \emph{The strict-minimum hypothesis}
   (Section~\ref{ssec:weak})---the
@@ -288,16 +275,15 @@ contribution of the present paper is in three parts:}\ReviewAdd{The paper's cont
   each.
 \end{itemize}
 
-\ReviewDel{Stylistically, this article foregrounds}\ReviewAdd{The article deliberately foregrounds} one part of Jensen-equation
+The article deliberately foregrounds one part of Jensen-equation
 theory: the regime in which the continuous-coefficient form needs no
-regularity assumption on the function. \ReviewDel{That emphasis is ours; Kuczma's
-monograph~\cite{Kuczma2009} is the canonical modern reference for the
-Cauchy and Jensen equations \emph{as a whole}, treating both the
-regularity catalog\,---\,which hypotheses force affineness\,---\,and the
-regularity-free structural theory.}\ReviewAdd{Kuczma's monograph~\cite{Kuczma2009} serves here only as background for the classical regularity catalog, the rational-coefficient pathology, and convex-domain variants, not as an explicit source for the precise continuous-coefficient endpoint-substitution statement isolated here.}
+regularity assumption on the function. Kuczma's monograph~\cite{Kuczma2009}
+is cited only for the classical regularity catalog, the rational-coefficient
+pathology, and convex-domain variants, not for the exact
+continuous-coefficient endpoint-substitution statement isolated here.
 The substitution that closes~\eqref{eq:star} is one of the simplest
 observations in that tradition; what justifies writing it down is the
-dictionary, the structural mechanism, and the \ReviewDel{survey}\ReviewAdd{diagnostic} of applied
+dictionary, the structural mechanism, and the diagnostic of applied
 recurrences.
 
 The classical detour through Hamel and the Polish school answered a
@@ -310,7 +296,7 @@ substitution of Section~\ref{sec:proof} is the right closure tool. The
 dictionary of Section~\ref{sec:dictionary} makes explicit which classical
 regularity hypotheses become vestigial in this transition.
 
-\ReviewDel{The pattern}\ReviewAdd{This pattern}\,---\,a continuum built into the model retiring a
+This pattern\,---\,a continuum built into the model retiring a
 classical hypothesis\,---\,has a distinguished ancestor. In exchange
 economies with an atomless continuum of traders, Aumann showed that
 convexity of preferences becomes unnecessary~\cite{Aumann1964},
@@ -365,13 +351,13 @@ $a\ge0$ and non-increasing if $a\le0$; Lipschitz with constant~$|a|$;
 absolutely continuous; and Borel-measurable, hence Lebesgue-measurable.
 \end{proof}
 
-The order of inference matters \ReviewDel{and is worth stating explicitly}\ReviewAdd{enough to state explicitly}. Under
+The order of inference matters enough to state explicitly. Under
 \eqref{eq:star}, the regularity properties of~$G$ are the
 \emph{conclusion}, not the hypothesis. Each regularity hypothesis one
 might be tempted to assume---continuity, monotonicity, boundedness,
 measurability---is automatically satisfied by any solution
 of~\eqref{eq:star}. The continuous-coefficient equation supplies its own
-regularity \ReviewDel{from within}\ReviewAdd{internally}; no external regularity hypothesis is needed.
+regularity internally; no external regularity hypothesis is needed.
 
 This is what makes the continuous-coefficient case structurally different
 from the discrete-coefficient case~\eqref{eq:J2}, where some regularity
@@ -385,12 +371,10 @@ examine the difference in detail.
 \subsection{The dictionary.}
 \label{ssec:dict-table}
 
-We place \ReviewDel{side-by-side}\ReviewAdd{side by side} the discrete-coefficient equation~\eqref{eq:J2}
-and the continuous-coefficient equation~\eqref{eq:star}, and ask \ReviewDel{which
-regularity hypotheses on~$G$ are \emph{required} to force affineness
-for each}\ReviewAdd{which regularity hypotheses on~$G$ classically suffice to force affineness, and whether any such tameness assumption is needed at all}. Table~\ref{tab:dictionary} lists these hypotheses side-by-side,
+We place side by side the discrete-coefficient equation~\eqref{eq:J2}
+and the continuous-coefficient equation~\eqref{eq:star}, and ask which regularity hypotheses on~$G$ classically suffice to force affineness, and whether any such tameness assumption is needed at all. Table~\ref{tab:dictionary} lists these hypotheses side-by-side,
 and Figure~\ref{fig:dictionary} draws the comparison as a load
-diagram: five classical hypotheses, each \ReviewDel{individually}\ReviewAdd{on its own} strong enough
+diagram: five classical hypotheses, each on its own strong enough
 to carry the conclusion for~\eqref{eq:J2}, and the same conclusion
 for~\eqref{eq:star} carried by the bare equation, every strut
 removed. The caption of Figure~\ref{fig:dictionary} records the standard historical attribution of
@@ -514,7 +498,7 @@ weight.}
 \bottomrule
 \end{tabularx}
 \caption{Regularity hypotheses on $G$. Column~2 records which hypotheses
-are classically \ReviewDel{required}\ReviewAdd{sufficient, one at a time,} to force affineness for the
+are classically sufficient, one at a time, to force affineness for the
 discrete-coefficient equation~\eqref{eq:J2}. Column~3 records their
 status under the continuous-coefficient equation~\eqref{eq:star}.
 Steinhaus's difference-set theorem~\cite{Steinhaus1920} powers the
@@ -525,7 +509,7 @@ Reem~\cite{Reem2017} and Kuczma~\cite[\S13.2]{Kuczma2009}.}
 \end{table}
 % --- end former Table 1 ---
 
-The ground line \ReviewDel{is the point of}\ReviewAdd{carries the point of} the figure. With \textbf{no
+The ground line carries the point of the figure. With \textbf{no
 hypothesis at all}, the beam falls for~\eqref{eq:J2}: there exists a
 non-affine, non-measurable, unbounded additive function
 on~$\R$---the classical Hamel-basis pathology~\cite{Hamel1905}---that
@@ -534,20 +518,19 @@ supplies a non-affine solution of~\eqref{eq:J2}. Conversely,
 Theorem~\ref{thm:main}'s endpoint substitution closes the proof at
 the level of the bare functional equation.
 
-The five struts tell \ReviewDel{a complementary story}\ReviewAdd{the complementary story}. For~\eqref{eq:J2},
+The five struts tell the complementary story. For~\eqref{eq:J2},
 \emph{some} strut is required; otherwise the Hamel pathology
 survives. For~\eqref{eq:star}, \emph{none} is required---and yet each
 is automatically satisfied by any solution
 (Corollary~\ref{cor:regularity}). Each hypothesis is, in the
-dictionary's terminology, \emph{vestigial}: \ReviewDel{classically required
-for~\eqref{eq:J2}}\ReviewAdd{classically useful as a sufficient tameness route for~\eqref{eq:J2}}, classically expected for~\eqref{eq:star}, but in
+dictionary's terminology, \emph{vestigial}: classically useful as a sufficient tameness route for~\eqref{eq:J2}, classically expected for~\eqref{eq:star}, but in
 fact unnecessary for~\eqref{eq:star}.
 
 \subsection{The structural mechanism.}
 \label{ssec:mechanism}
 
 Why does the Hamel pathology fail to apply to~\eqref{eq:star}? The
-mechanism is \ReviewDel{direct and illuminating}\ReviewAdd{simple}.
+mechanism is simple.
 
 A Hamel-basis pathological solution $G$ of Cauchy's equation on~$\R$ is
 $\Q$-linear: $G(0)=0$ and $G(qx)=q\,G(x)$ for every $q\in\Q$ and
@@ -563,16 +546,16 @@ p\,G(M)+(1-p)\,G(0) \;=\; G(p\,M).
 For a Hamel-pathological $G$ (so $G(0)=0$), \eqref{eq:star0} becomes
 $p\,G(M)=G(p\,M)$---exactly the $\R$-linearity assertion for~$G$ at the
 pair $(M,p)$. By $\Q$-linearity of~$G$, this holds for every $p\in\Q$.
-\ReviewAdd{For fixed $M>0$, if the same identity held for every $p\in[0,1]$ and $G$ were additive on $\R$, then for any real $y$ one could choose an integer $n$ with $p=|y|/(nM)\le1$; additivity and sign reversal would give $G(y)=(y/M)G(M)$, forcing $\R$-linearity.}
+For fixed $M>0$, if the same identity held for every $p\in[0,1]$ and $G$ were additive on $\R$, then for any real $y$ one could choose an integer $n$ with $p=|y|/(nM)\le1$; additivity and sign reversal would give $G(y)=(y/M)G(M)$, forcing $\R$-linearity.
 By the failure of $\R$-linearity, it \emph{fails} at some irrational~$p$.
 So the Hamel-pathological $G$ satisfies~\eqref{eq:JQ} (every rational
 coefficient is OK) but violates~\eqref{eq:star} at every irrational~$p$
 where the $\R$-linearity defect appears.
 
-The structural point \ReviewDel{is}\ReviewAdd{fits in} one sentence:
+The structural point fits in one sentence:
 
 \begin{quote}
-\textbf{The Hamel pathology \ReviewDel{lives at}\ReviewAdd{survives the rational tests but is exposed by} irrational $p$; the
+\textbf{The Hamel pathology survives the rational tests but is exposed by irrational $p$; the
 continuous-coefficient equation~\eqref{eq:star} forecloses on it there.}
 \end{quote}
 
@@ -639,8 +622,8 @@ Figure~\ref{fig:mechanism} draws both halves of that sentence.
 \draw[very thick] (10.701,1.55) -- (10.701,1.06);
 \fill (10.701,1.06) circle (1.5pt);
 \node[align=center] at (9.5,0.45)
-  {\scriptsize an irrational $p$ (\ReviewDel{here }$1/\sqrt{2}$\ReviewAdd{schematic marker}): \eqref{eq:star} tests here too,\\[-1pt]
-   \scriptsize \ReviewDel{and the pathology dies}\ReviewAdd{and some such test exposes any non-$\R$-linear defect} (Section~\ref{ssec:mechanism})};
+  {\scriptsize an irrational $p$ ($1/\sqrt{2}$schematic marker): \eqref{eq:star} tests here too,\\[-1pt]
+   \scriptsize and some such test exposes any non-$\R$-linear defect (Section~\ref{ssec:mechanism})};
 \draw[->,black!60] (9.95,0.78) -- (10.62,1.0);
 \end{tikzpicture}%
 }
@@ -651,8 +634,7 @@ $(M,G(M))$\,---\,one weight per point, the chord forced everywhere.
 (b)~The weight axis on which the two equations live. The rational comb
 is where~\eqref{eq:JQ} tests the identity, and a $\Q$-linear Hamel
 pathology passes every test on the comb. The continuous-coefficient
-equation~\eqref{eq:star} also tests the irrational weights, where \ReviewDel{the
-$\R$-linearity defect must show itself}\ReviewAdd{some test must expose any failure of $\R$-linearity}, and forecloses on the
+equation~\eqref{eq:star} also tests the irrational weights, where some test must expose any failure of $\R$-linearity, and forecloses on the
 pathology there.}
 \label{fig:mechanism}
 \end{figure}
@@ -664,7 +646,7 @@ irrational~$p$, once it became clear\,---\,after Hamel's 1905
 construction\,---\,that the rational-coefficient version of the
 equation does not by itself force affineness. With the
 continuous-coefficient version, the irrational-coefficient constraint
-is \emph{available}, and the \ReviewDel{entire dictionary collapses}\ReviewAdd{regularity dictionary no longer has load to bear}.
+is \emph{available}, and the regularity dictionary no longer has load to bear.
 
 %% =============================================================================
 \section{Variants and limits.}
@@ -694,7 +676,7 @@ p\,G(M)+(1-p)\,G(0) \;=\; G(p\,M) \;=\; G(v),
 so $G(v)=G(0)+p\bigl(G(M)-G(0)\bigr)=G(0)+\bigl(G(M)-G(0)\bigr)v/M$.
 \end{proof}
 
-Theorem~\ref{thm:weak} is \ReviewDel{\emph{in principle}}\ReviewAdd{logically} weaker than
+Theorem~\ref{thm:weak} is logically weaker than
 Theorem~\ref{thm:main}: the one-configuration hypothesis does not a priori imply
 the full~\eqref{eq:star}. Under the conclusion (affineness) both hold;
 in practice an author who derives~\eqref{eq:star} from a richer setup
@@ -704,8 +686,7 @@ full force. The narrower Theorem~\ref{thm:weak} is the right reference
 when one wants to know exactly how much of the equation the proof
 actually consumes.
 
-Two further variations sharpen \ReviewDel{the picture of how little input the
-conclusion needs, and of what survives when}\ReviewAdd{both points: how little input the conclusion needs, and what survives when} the full hypothesis is cut
+Two further variations sharpen both points: how little input the conclusion needs, and what survives when the full hypothesis is cut
 down.
 
 \begin{remark}[Irrational weights alone suffice]\label{rem:irrational}
@@ -726,7 +707,7 @@ respectively (the first is irrational because
 $(2\sqrt3-\sqrt6)^2=18-12\sqrt2$ is). Since $p\,u_1+(1-p)\,u_2=v$, the hypothesis at the
 triple $(u_1,u_2,p)$ together with the already-established values
 $G(u_i)=L(u_i)$ gives $G(v)=p\,L(u_1)+(1-p)\,L(u_2)=L(v)$, because $L$
-is affine. The Hamel pathology \ReviewDel{lives at}\ReviewAdd{is exposed by} irrational weights
+is affine. The Hamel pathology is exposed by irrational weights
 (Section~\ref{ssec:mechanism}); it is fitting that irrational weights
 alone suffice to exclude it.
 \end{remark}
@@ -753,7 +734,7 @@ evaluate there to the same number, $G(m_i)$.
 is consumed by the calibration setting of
 Section~\ref{ssec:vestigial}: a surrogate score on $[0,1]$ that
 aggregates \emph{exactly} on each of $[0,\tfrac12]$ and $[\tfrac12,1]$
-is necessarily piecewise affine\,---\,\ReviewDel{the tent shape}\ReviewAdd{a tent-shaped profile once the endpoint and scale normalizations are fixed}\,---\,with
+is necessarily piecewise affine\,---\,a tent-shaped profile once the endpoint and scale normalizations are fixed\,---\,with
 nothing assumed at the kink or anywhere else.
 
 \subsection{Convex domains in higher dimensions.}
@@ -764,7 +745,7 @@ space.
 
 \begin{theorem}\label{thm:higher}
 Let $V$ be a real vector space (not restricted to finite dimensions), let
-$C\subseteq V$ be a \ReviewAdd{nonempty} convex set, and let $G\colon C\to\R$ satisfy
+$C\subseteq V$ be a nonempty convex set, and let $G\colon C\to\R$ satisfy
 \[
 p\,G(x_1)+(1-p)\,G(x_2) \;=\;
 G\bigl(p\,x_1+(1-p)\,x_2\bigr) \qquad (x_1,x_2\in C,\ p\in[0,1]).
@@ -799,7 +780,7 @@ well defined: if $\lambda v=\mu w$ with $v,w\in D$, scale by $t>0$
 small enough that $t\lambda,t\mu\le1$; then $t\lambda v=t\mu w\in D$
 (since $0\in D$ and $D$ is convex, $sD\subseteq D$ for $s\in[0,1]$),
 and two applications of (i) give $\lambda A(v)=\mu A(w)$. The same
-scaling device\ReviewAdd{, choosing in the additivity step $t>0$ small enough that $t(\lambda+\mu)\le1$,} upgrades (ii) to additivity of $\hat A$ on all
+scaling device, choosing in the additivity step $t>0$ small enough that $t(\lambda+\mu)\le1$, upgrades (ii) to additivity of $\hat A$ on all
 of~$D^{\ast}$, and (i) to $\hat A(cu)=c\,\hat A(u)$ for every real
 $c>0$ and $u\in D^{\ast}$. Finally,
 $\mathrm{span}(C-C)=D^{\ast}-D^{\ast}$; for $u=v-w$ with
@@ -812,7 +793,7 @@ satisfies the hypothesis.
 
 The structurally essential step is the one-dimensional endpoint substitution
 of Theorem~\ref{thm:main}. The higher-dimensional lifting is
-\ReviewDel{bookkeeping}\ReviewAdd{largely bookkeeping} (compare the regularity-laden treatments of the Jensen
+largely bookkeeping (compare the regularity-laden treatments of the Jensen
 equation on convex domains in Kuczma~\cite[\S13.2]{Kuczma2009} and
 Acz\'el--Dhombres~\cite{AczelDhombres1989}).
 
@@ -820,7 +801,7 @@ Acz\'el--Dhombres~\cite{AczelDhombres1989}).
 \label{ssec:JQ-pathology}
 
 The strengthening from rational to continuous coefficients
-in~\eqref{eq:star} \ReviewDel{is doing}\ReviewAdd{does} genuine work: the rational-coefficient
+in~\eqref{eq:star} does genuine work: the rational-coefficient
 version~\eqref{eq:JQ} retains the Hamel pathology.
 
 \begin{proposition}[Folklore; cf.~{\cite[\S\S5.2 and~13.2]{Kuczma2009}}]%
@@ -872,7 +853,7 @@ $\Q\cap[0,1]$ would satisfy $A(0)=0$ and $A(q)=0$ for all rational
 $q$---forcing $A\equiv0$, contradicting $G(h)=1$.
 \end{proof}
 
-Proposition~\ref{prop:JQ-pathology} \ReviewDel{sharpens}\ReviewAdd{makes sharp} the dictionary:
+Proposition~\ref{prop:JQ-pathology} makes sharp the dictionary:
 \eqref{eq:JQ} on $[0,1]$ admits non-affine solutions; only the
 strengthening to the continuous-coefficient~\eqref{eq:star} retires the
 regularity-hypothesis requirement.
@@ -889,12 +870,12 @@ pathology survives. A derivation in an applied field that pushes
 Jensen's inequality to equality therefore lands on one side or the
 other of a sharp line, and which side it lands on decides whether a
 regularity hypothesis is doing real work. The purpose of this section
-is to \ReviewDel{draw that line precisely and to walk it}\ReviewAdd{draw that line and show how to use it}. The conclusion is not
+is to draw that line and show how to use it. The conclusion is not
 that applied authors habitually carry unnecessary hypotheses; it is
-\ReviewDel{subtler}\ReviewAdd{more precise} and, we think, more useful: the saturated-Jensen identity
+more precise and, we think, more useful: the saturated-Jensen identity
 arises from at least four structurally different sources, only one of
 which is the regularity-free situation of Theorem~\ref{thm:main}, and
-the four are \ReviewDel{easy to mistake for one another}\ReviewAdd{easily mistaken for one another}.
+the four are easily mistaken for one another.
 
 \subsection{Four sources of a saturated identity, and the questions that separate them.}
 \label{ssec:diagnostic}
@@ -903,10 +884,10 @@ A saturated Jensen identity
 \[
 p\,G(u_1)+(1-p)\,G(u_2)\;=\;G\bigl(p\,u_1+(1-p)\,u_2\bigr)
 \]
-is, \ReviewDel{before anything else,}\ReviewAdd{first of all,} a \emph{family} of assertions indexed by the
+is, first of all, a \emph{family} of assertions indexed by the
 weight~$p$. Its mathematical content is precisely the set of weights
 for which the surrounding derivation actually licenses the assertion.
-\ReviewDel{Four sources recur.}\ReviewAdd{Four recurring sources are worth separating.}
+Four recurring sources are worth separating.
 
 The first is \textbf{finite mixing}. If the only primitive in the
 model is a binary mixture\,---\,combine two objects in some
@@ -948,13 +929,13 @@ licenses~\eqref{eq:star} at every real~$p$, irrationals included.
 Only now does Theorem~\ref{thm:main} apply, and only now is a
 regularity hypothesis on~$G$ vestigial.
 
-This yields \ReviewDel{an ordered diagnostic}\ReviewAdd{a simple ordered diagnostic}. The \emph{zeroth} question is
+This yields a simple ordered diagnostic. The \emph{zeroth} question is
 logically prior to the four sources: \emph{does a real-valued solution
 of the identity provably exist?} Theorem~\ref{thm:main} takes a
 function as input and reports its form; it cannot conjure the
 function, and an axiom system whose representation theorem fails (the
 expected-utility example below) fails here, before any weight is
-examined. Once that \ReviewDel{gate}\ReviewAdd{threshold question} is cleared, the question that separates the
+examined. Once that threshold question is cleared, the question that separates the
 four sources is: \emph{does the derivation assert the identity at
 every real weight because the weights form a genuine continuum in the
 structure\,---\,or does it merely reach the rational weights, lean on
@@ -967,8 +948,7 @@ for instance, assert a strictly stronger identity with a theory of its
 own\,---\,but the four sources cover the derivations we have
 encountered.
 
-The trap, then, is \textbf{misclassification}, and it runs \ReviewDel{in both
-directions}\ReviewAdd{both ways}. A derivation of one of the first three kinds can be
+The trap, then, is \textbf{misclassification}, and it runs both ways. A derivation of one of the first three kinds can be
 mistaken for the fourth, so that an author drops a hypothesis that was
 in fact indispensable. Conversely\,---\,and this is the rarer and more
 seductive error\,---\,a derivation of the fourth kind can be mistaken
@@ -980,8 +960,7 @@ on provenance (Section~\ref{sec:conclusion}).
 \subsection{Where the hypotheses are load-bearing.}
 \label{ssec:load-bearing}
 
-We begin on the side of the line where the classical hypotheses \ReviewDel{earn
-their keep}\ReviewAdd{do real work}\,---\,which, perhaps against first intuition, is where most
+We begin on the side of the line where the classical hypotheses do real work\,---\,which, perhaps against first intuition, is where most
 of the familiar ``saturated Jensen'' derivations live.
 
 \paragraph{Expected-utility representation (a continuum that is only apparent).}
@@ -997,7 +976,7 @@ and these conditions are jointly necessary and sufficient (see
 also~\cite{Fishburn1970, Kreps1988}). It is tempting to read the
 displayed identity as~\eqref{eq:star} and to offer
 Theorem~\ref{thm:main} as a continuity-free substitute for the
-Archimedean axiom. \ReviewDel{The temptation should be resisted.}\ReviewAdd{That reading is too quick.} The
+Archimedean axiom. That reading is too quick. The
 independence axiom is a condition on the \emph{preference relation};
 although it is stated for every real mixing weight, it does not by
 itself deliver a cardinal functional equation for a real-valued~$U$.
@@ -1013,9 +992,8 @@ Theorem~\ref{thm:main} cannot replace the Archimedean axiom because
 Theorem~\ref{thm:main} \emph{presupposes} a real-valued solution
 of~\eqref{eq:star}, and the Archimedean axiom is exactly what is
 needed to produce one. In the language of
-Section~\ref{ssec:diagnostic}, this failure is not \ReviewDel{a deficit of
-weights}\ReviewAdd{about a shortage of weights}\,---\,independence is stated at every real $p$\,---\,but a
-failure at the \ReviewDel{zeroth gate}\ReviewAdd{zeroth threshold}: there is no real-valued unknown for the
+Section~\ref{ssec:diagnostic}, this failure is not about a shortage of weights\,---\,independence is stated at every real $p$\,---\,but a
+failure at the zeroth threshold: there is no real-valued unknown for the
 equation to constrain. The Archimedean axiom is load-bearing one step
 \emph{before} the dictionary is even consulted.
 
@@ -1037,8 +1015,7 @@ binary entropy $f(x)=-x\log_2 x-(1-x)\log_2(1-x)$, which is strictly
 equation of information is a relative of Cauchy's equation. In its
 \emph{binary} ($n=2$) form it admits Hamel-type non-measurable
 solutions unless a regularity hypothesis intervenes~\cite{AczelDaroczy1975},
-and the hypotheses used to exclude them \ReviewDel{are \emph{exactly the five
-struts of Figure~\ref{fig:dictionary}}}\ReviewAdd{belong to the same regularity families represented by the five struts of Figure~\ref{fig:dictionary}}. Faddeev assumed continuity of
+and the hypotheses used to exclude them belong to the same regularity families represented by the five struts of Figure~\ref{fig:dictionary}. Faddeev assumed continuity of
 $f$ outright~\cite{Faddeev1957} (a clean modern statement is
 in~\cite{BaezFritzLeinster2011}); the requirement was then weakened
 one hypothesis at a time: to integrability (Tverberg~\cite{Tverberg1958}),
@@ -1051,7 +1028,7 @@ equation is a Cauchy relative at rational mixing weights with a
 non-affine target, and every strut in Figure~\ref{fig:dictionary}(a)
 is genuinely needed.
 
-There is \ReviewDel{a striking complement}\ReviewAdd{an instructive complement}, recorded in Acz\'el and
+There is an instructive complement, recorded in Acz\'el and
 Dar\'oczy~\cite{AczelDaroczy1975}: Fischer~(1972) proved that for any
 \emph{single} fixed $n>2$, the same family of grouping equations
 characterizes the Shannon entropy \emph{without any regularity
@@ -1065,7 +1042,7 @@ instance of the mechanism this paper diagnoses. We record the $n=2$
 case as the load-bearing example in the mirror table below.
 
 \paragraph{Linear opinion pools (boundedness from the codomain).}
-A third mechanism is worth naming briefly, because it too is \ReviewDel{easily}\ReviewAdd{readily}
+A third mechanism is worth naming briefly, because it too is readily
 mistaken for~\eqref{eq:star}. If several experts' probability
 assignments are aggregated by a rule that commutes with
 marginalization, the rule must be a weighted average\,---\,a linear
@@ -1083,7 +1060,7 @@ than by a continuum of weights.
 \subsection{Where the hypotheses are vestigial.}
 \label{ssec:vestigial}
 
-Now \ReviewDel{the other side of the line}\ReviewAdd{we cross the line}, where the continuum of weights is
+Now we cross the line, where the continuum of weights is
 real and Theorem~\ref{thm:main} does its work.
 
 \paragraph{Surrogate calibration on the resolution axis.}
@@ -1095,7 +1072,7 @@ The posterior probability profile is the $\mathcal{F}_0$-measurable
 random variable $\eta:=\E[Y\mid\mathcal{F}_0]=\Pr(Y=1\mid\mathcal{F}_0)\in[0,1]$.
 For an action space~$\mathcal{A}$ and a loss function~$\ell\colon\mathcal{A}\times\{0,1\}\to\R$,
 the \emph{conditional Bayes risk} at posterior value~$u\in[0,1]$ is
-\ReviewDel{$H(u):=\inf_{a\in\mathcal{A}}\E[\ell(a,Y)\mid \eta=u]$}\ReviewAdd{$H(u):=\inf_{a\in\mathcal{A}}\bigl((1-u)\ell(a,0)+u\ell(a,1)\bigr)$}; the function $H$ is
+$H(u):=\inf_{a\in\mathcal{A}}\bigl((1-u)\ell(a,0)+u\ell(a,1)\bigr)$; the function $H$ is
 variously called the Bayes envelope, the generalized entropy, or the
 uncertainty function of the associated
 score~\cite{Savage1971,DeGrootFienberg1983,GrunwaldDawid2004,GneitingRaftery2007,ReidWilliamson2011}.
@@ -1132,7 +1109,7 @@ classical chain \emph{assumes} concavity of~$G$, and the empirical
 theory adds measurability or smoothness besides.
 
 The dictionary's contribution is the converse direction, and it needs
-\ReviewDel{none of that}\ReviewAdd{none of those assumptions}.
+none of those assumptions.
 
 \begin{proposition}[Resolution-blind uncertainty functions are affine]
 \label{prop:resolution}
@@ -1168,7 +1145,7 @@ $\E[G(\eta_{\mathcal{G}})]=G(\E[\eta_{\mathcal{G}}])=G(\E[\eta])$.
 \end{proof}
 
 A concrete instance is already in the published record, and it shows the
-dictionary \ReviewDel{doing work the original framework leaves implicit}\ReviewAdd{separating clauses that the original framework states together}. Reid and
+dictionary separating clauses that the original framework states together. Reid and
 Williamson~\cite{ReidWilliamson2011} build their integral representation of
 proper losses on a condition they call \emph{fairness}: the partial losses
 $\eta\mapsto\ell(0,\eta)$ and $\eta\mapsto\ell(1,\eta)$ are respectively
@@ -1194,8 +1171,8 @@ the other is load-bearing for a reason that has nothing to do
 with~\eqref{eq:star}\,---\,and conflating the two is exactly the misreading
 Section~\ref{ssec:diagnostic} is built to prevent.
 
-This is the \ReviewDel{seductive}\ReviewAdd{tempting} misclassification of
-Section~\ref{ssec:diagnostic} \ReviewDel{in the flesh}\ReviewAdd{in miniature}: the saturated identity
+This is the tempting misclassification of
+Section~\ref{ssec:diagnostic} in miniature: the saturated identity
 looks like a Cauchy problem and invites a defensive boundedness or
 measurability hypothesis on~$G$, but the continuum of cell masses
 makes it genuine~\eqref{eq:star} and the hypothesis vestigial.
@@ -1206,8 +1183,7 @@ Corollary~\ref{cor:piecewise}: a surrogate that aggregates exactly on
 each cell of a fixed benchmark partition of the probability axis is
 affine on each cell, with continuity at the knots for free. For the
 canonical benchmark $\{[0,\tfrac12],[\tfrac12,1]\}$ the resulting
-shape is \ReviewDel{the tent\,---\,and the tent is not merely an example.
-The tent is not an example chosen for convenience; it is forced, and its}\ReviewAdd{piecewise affine; with the usual $0$--$1$ endpoint and scale normalizations, this becomes the familiar symmetric tent, whose}
+shape is piecewise affine; with the usual $0$--$1$ endpoint and scale normalizations, this becomes the familiar symmetric tent, whose
 probabilistic content is fixed by a classical computation. For the
 cost-weighted loss $\ell_c$\,---\,the cheapest misclassification primitive,
 which charges $c$ for a false positive and $1-c$ for a false
@@ -1221,10 +1197,9 @@ Setting $c=\tfrac12$ and recalling $2\ell_{1/2}=\ell^{0\text{-}1}$ returns the
 symmetric envelope $\min(u,1-u)$; the apexed tents $T_\theta$ of the elementary
 scores~\cite{Schervish1989,EGJK2016} are these same $L_\theta$ up to the
 $0$--$1$ normalization. What our Corollary~\ref{cor:piecewise} adds is the
-\emph{converse}: piecewise saturation on the benchmark cells pins \ReviewDel{exactly the
-tent shape}\ReviewAdd{the piecewise-affine shape; the endpoint and scale normalizations then select the tent}, with affineness on each cell and continuity at the apex obtained
+\emph{converse}: piecewise saturation on the benchmark cells pins the piecewise-affine shape; the endpoint and scale normalizations then select the tent, with affineness on each cell and continuity at the apex obtained
 for free and no regularity assumed. The mixture representation is equally
-concrete. \ReviewDel{Every}\ReviewAdd{Under the usual binary proper-score representation, every suitably normalized} proper score's uncertainty function $G$ is recovered from the
+concrete. Under the usual binary proper-score representation, every suitably normalized proper score's uncertainty function $G$ is recovered from the
 tents by integrating against the curvature of the Bayes risk
 itself\,---\,Reid and Williamson's weight
 function~\cite[Thm~16]{ReidWilliamson2011} is $w(c)=-L''(c)\ge0$, so
@@ -1234,7 +1209,7 @@ G\;=\;\int_0^1 T_\theta\,d\nu(\theta),
 \]
 identifying the abstract mixing measure $d\nu$ on the extreme rays with the
 (distributional) second-derivative measure of~$G$. The uniform mixture
-$\int_0^1 T_\theta\,d\theta = u(1-u)$ \ReviewAdd{with this normalization} is then the Brier entropy, the case
+$\int_0^1 T_\theta\,d\theta = u(1-u)$ with this normalization is then the Brier entropy, the case
 $w\equiv\mathrm{const}$. The tents are the extreme rays of the cone of
 uncertainty functions; Theorem~\ref{thm:main} explains why exactness selects
 them, and~\cite[Thms~14,~16]{ReidWilliamson2011} say what they are. In learning-theoretic language,
@@ -1269,7 +1244,7 @@ both halves.
   \draw (\cx+0.06,0.55) rectangle (\cx+0.40,1.60);
 }
 \fill[black!55] (0.10,0.06) rectangle (0.26,0.22);
-\node[anchor=west] at (0.32,0.14) {\scriptsize concave $G$: $U_G$ \ReviewDel{falls}\ReviewAdd{is nonincreasing} (resolution gained)};
+\node[anchor=west] at (0.32,0.14) {\scriptsize concave $G$: $U_G$ is nonincreasing (resolution gained)};
 \draw (0.10,-0.36) rectangle (0.26,-0.20);
 \node[anchor=west] at (0.32,-0.28) {\scriptsize affine $G$: flat\,---\,resolution-blind (Prop.~\ref{prop:resolution})};
 % ---------------- divider ----------------
@@ -1292,7 +1267,7 @@ both halves.
 % Brier mixture
 \draw[dash pattern=on 2.4pt off 2pt, domain=0:1, smooth, variable=\t]
   plot ({6.80+5.6*\t},{0.55+5.2*\t*(1-\t)});
-\node at (11.62,1.12) {\scriptsize $u(1-u)=\int_0^1\!T_\theta\,d\theta$ \ReviewAdd{(chosen norm.)}};
+\node at (11.62,1.12) {\scriptsize $u(1-u)=\int_0^1\!T_\theta\,d\theta$ (chosen norm.)};
 % bold tent
 \draw[very thick] (6.80,0.55) -- (9.60,3.15) -- (12.40,0.55);
 \node at (9.60,3.42) {\scriptsize $T_{1/2}(u)=\min(u,1-u)$: the $0$--$1$ Bayes envelope};
@@ -1310,18 +1285,17 @@ whose profile is flat\,---\,resolution-blind at every two-cell
 comparison\,---\,are the affine ones, with no regularity assumed.
 (b)~The tent $T_{1/2}(u)=\min(u,1-u)$ is the $0$--$1$ Bayes envelope;
 the tents $T_\theta$ are the uncertainty functions of the elementary
-scores~\cite{Schervish1989,EGJK2016}, and \ReviewDel{every admissible
-uncertainty function is a mixture}\ReviewAdd{the usual binary proper-score representation writes suitably normalized uncertainty functions as mixtures} $\int_0^1 T_\theta\,d\nu(\theta)$;
-the dashed curve is the Brier entropy $u(1-u)$, the uniform mixture \ReviewAdd{under the chosen tent normalization}.
+scores~\cite{Schervish1989,EGJK2016}, and the usual binary proper-score representation writes suitably normalized uncertainty functions as mixtures $\int_0^1 T_\theta\,d\nu(\theta)$;
+the dashed curve is the Brier entropy $u(1-u)$, the uniform mixture under the chosen tent normalization.
 Exactness on each cell of the benchmark partition
 $\{[0,\tfrac12],[\tfrac12,1]\}$ forces affineness on each cell
-(Corollary~\ref{cor:piecewise}): \ReviewDel{the tent shape}\ReviewAdd{a piecewise-affine tent shape, with the familiar symmetric tent selected by endpoint and scale normalizations}, pinned with nothing
+(Corollary~\ref{cor:piecewise}): a piecewise-affine tent shape, with the familiar symmetric tent selected by endpoint and scale normalizations, pinned with nothing
 assumed at the kink.}
 \label{fig:resolution}
 \end{figure}
 
 \paragraph{Two readings.}
-\ReviewDel{The construction travels.}\ReviewAdd{The same reading travels.} In probabilistic graphical models, a clique
+The same reading travels. In probabilistic graphical models, a clique
 tree is \emph{calibrated} when neighboring cliques agree on their
 sepset marginals~\cite{KollerFriedman2009}; this cellwise agreement
 is the piecewise identity above, asserted over the sepset partition,
@@ -1332,8 +1306,7 @@ $U_{T_{1/2}}(\sigma(R))$ is the smallest misclassification error
 achievable from the representation\,---\,its error floor.
 Proposition~\ref{prop:resolution} then says that the only uncertainty
 functions blind to the choice of representation are the affine ones:
-\ReviewDel{any genuinely concave~$G$ certifies, through a strict drop of~$U_G$,
-that the representation gained resolution}\ReviewAdd{a genuinely concave~$G$ can certify a resolution gain through a strict drop of~$U_G$, provided the refinement crosses a segment on which $G$ is strictly concave}.
+a genuinely concave~$G$ can certify a resolution gain through a strict drop of~$U_G$, provided the refinement crosses a segment on which $G$ is strictly concave.
 
 \paragraph{The thin line, in miniature.}
 Replace the atomless space by a single fair coin\,---\,build the
@@ -1346,7 +1319,7 @@ throughout is that $G$ \emph{commutes with expectation} over
 two-point laws\,---\,we say the family is
 \emph{expectation-exact}\,---\,rather than ``mean-preserving,'' a
 term that already names mean-preserving spreads in economics.} The
-\ReviewDel{whole of}\ReviewAdd{main contrast of} Sections~\ref{sec:dictionary} and~\ref{sec:recurrence} is
+main contrast of Sections~\ref{sec:dictionary} and~\ref{sec:recurrence} is
 visible in the gap between an atomless measure and a coin.
 
 \paragraph{Mixture-affine assignments on quantum states.}
@@ -1376,7 +1349,7 @@ more. Gleason-type theorems work on the \emph{measurement} side: a
 frame function on effects is \emph{finitely} additive over
 coarse-grainings of measurements (where grouping disjoint measurement
 outcomes corresponds to operator addition, $E_1 + E_2 \le I$), and
-coarse-graining is \ReviewDel{finite/rational mixing}\ReviewAdd{a finite-additivity operation rather than a direct continuum of real convex mixtures}\,---\,the first source.
+coarse-graining is a finite-additivity operation rather than a direct continuum of real convex mixtures\,---\,the first source.
 Finite additivity yields homogeneity only over the nonnegative
 rationals, and the rational-to-real step must then be purchased with
 a regularity hypothesis: nonnegativity in Gleason's original
@@ -1394,8 +1367,7 @@ preparation tests the identity directly at every real weight
 $p\in[0,1]$ via the classical randomizer; measurement coarse-graining
 tests it only through additivity, leaving room for dense Hamel-basis
 oscillations unless boundedness or positivity intervenes. The dictionary
-predicts \ReviewDel{exactly where each route must spend a regularity hypothesis, and the
-derivations cited above spend it exactly there}\ReviewAdd{which route needs a rational-to-real bridge, and the derivations cited above supply such a bridge through positivity, boundedness, or continuity-type hypotheses}.
+predicts which route needs a rational-to-real bridge, and the derivations cited above supply such a bridge through positivity, boundedness, or continuity-type hypotheses.
 
 \subsection{The dictionary, mirrored.}
 \label{ssec:mirror}
@@ -1422,23 +1394,23 @@ the content of the section.
 \textbf{Under a saturated~\eqref{eq:star} on an atomless space} \\
 \midrule
 \textbf{Continuity}
-  & \ReviewDel{\textbf{Required}}\ReviewAdd{\textbf{Load-bearing}} (Faddeev~\cite{Faddeev1957}).
+  & \textbf{Load-bearing} (Faddeev~\cite{Faddeev1957}).
   & \textbf{Vestigial}\,---\,a conclusion (Corollary~\ref{cor:regularity}). \\
 \midrule
 \textbf{Measurability}
-  & \ReviewDel{\textbf{Required}}\ReviewAdd{\textbf{Load-bearing}} (Lee~\cite{Lee1964}).
+  & \textbf{Load-bearing} (Lee~\cite{Lee1964}).
   & \textbf{Vestigial}\,---\,same. \\
 \midrule
 \textbf{Monotonicity}
-  & \ReviewDel{\textbf{Required}}\ReviewAdd{\textbf{Load-bearing}} (Kendall~\cite{Kendall1964}, Borges~\cite{Borges1967}).
+  & \textbf{Load-bearing} (Kendall~\cite{Kendall1964}, Borges~\cite{Borges1967}).
   & \textbf{Vestigial}\,---\,same. \\
 \midrule
 \textbf{Boundedness on a set of positive measure}
-  & \ReviewDel{\textbf{Required}}\ReviewAdd{\textbf{Load-bearing}} (Diderrich~\cite{Diderrich1975}).
+  & \textbf{Load-bearing} (Diderrich~\cite{Diderrich1975}).
   & \textbf{Vestigial}\,---\,same. \\
 \midrule
 \textbf{Boundedness on the interval}
-  & \ReviewDel{\textbf{Required}}\ReviewAdd{\textbf{Load-bearing}} (a fortiori).
+  & \textbf{Load-bearing} (a fortiori).
   & \textbf{Vestigial}\,---\,same. \\
 \midrule
 \textbf{None}
@@ -1447,7 +1419,7 @@ the content of the section.
 \bottomrule
 \end{tabularx}
 \caption{The dictionary of Figure~\ref{fig:dictionary}, mirrored. The
-same five hypotheses \ReviewDel{are indispensable}\ReviewAdd{serve as load-bearing regularity routes} for the \emph{binary} ($n{=}2$)
+same five hypotheses serve as load-bearing regularity routes for the \emph{binary} ($n{=}2$)
 fundamental equation of information (Cauchy relative at rational weights;
 unique regular solution is the concave Shannon entropy), and vestigial
 when a continuum of weights makes the operative equation the
@@ -1459,15 +1431,14 @@ showed no regularity is needed (see \S\ref{ssec:load-bearing}).}
 \subsection{The lesson.}
 \label{ssec:lesson}
 
-The recurrence worth articulating is \ReviewDel{not a habit of carrying
-unnecessary hypotheses; it is}\ReviewAdd{less a habit of carrying unnecessary hypotheses than} the ease of misreading which of the
+The recurrence worth articulating is less a habit of carrying unnecessary hypotheses than the ease of misreading which of the
 four sources one is in. Saturated Jensen is produced by finite
 mixing, by additivity into a bounded codomain, by Cauchy relatives
 with non-affine targets, and by genuine continua of real weights,
-and only the last retires the regularity hypotheses. A \ReviewDel{zeroth gate}\ReviewAdd{zeroth threshold}
+and only the last retires the regularity hypotheses. A zeroth threshold
 precedes them all: absent an existence axiom there is no real-valued
 unknown, and the question of weights never arises. The diagnostic
-of Section~\ref{ssec:diagnostic} is offered as \ReviewDel{the means of telling}\ReviewAdd{a way to tell}
+of Section~\ref{ssec:diagnostic} is offered as a way to tell
 them apart; the mirrored dictionary of Section~\ref{ssec:mirror} is
 the warning that the same five classical hypotheses appear on both
 sides. An author who has internalized the Cauchy--Hamel toolkit is
@@ -1482,9 +1453,9 @@ how this paper began.
 Theorem~\ref{thm:main} is, mathematically, one line. The dictionary of
 Section~\ref{sec:dictionary} is a table. The structural
 argument of Section~\ref{ssec:mechanism} is one sentence: \emph{the
-Hamel pathology \ReviewDel{lives at}\ReviewAdd{survives rational tests and is exposed by irrational}~$p$; the continuous-coefficient
+Hamel pathology survives rational tests and is exposed by irrational~$p$; the continuous-coefficient
 equation~\eqref{eq:star} forecloses on it there.} Why does this material
-deserve an article in the \textsc{Monthly}\ReviewAdd{ as an expository matter}?
+deserve an article in the \textsc{Monthly} as an expository matter?
 
 Two reasons. First, the classical detour through Hamel and the Polish
 school produced \emph{foundational} results of classical
@@ -1515,19 +1486,18 @@ single literature.
 
 The endpoint substitution itself is the kind of one-line proof that, once
 seen, is hard to unsee\,---\,but that nonetheless takes some scaffolding to
-make visible. \ReviewDel{The present paper is the scaffolding.}\ReviewAdd{That scaffolding is the paper's expository purpose.}
+make visible. That scaffolding is the paper's expository purpose.
 
 \subsection*{A note on provenance.}
 
 The present observation reached the author through an unconventional
-route: a \ReviewDel{\emph{formalization project}}\ReviewAdd{formalization project} on a separate topic, in which the
+route: a formalization project on a separate topic, in which the
 lemma\,``$G$ satisfies~\eqref{eq:star} on $[0,M]$ implies $G$ is
 affine'' was initially stated with a defensive boundedness hypothesis
 on~$G$, in deference to the Cauchy--Hamel literature. When the formal
 proof was written out, the boundedness hypothesis turned out to be
 unused: the endpoint substitution closed the proof on its own.
-A literature search then \ReviewDel{confirmed that the substitution technique is
-folklore:}\ReviewAdd{placed the substitution technique in its folklore context:} Acz\'el's \cite[\S2.1.4]{Aczel1966} proves a dyadic precursor
+A literature search then placed the substitution technique in its folklore context: Acz\'el's \cite[\S2.1.4]{Aczel1966} proves a dyadic precursor
 under a continuity hypothesis. The precise continuous-coefficient
 regularity-free statement of Theorem~\ref{thm:main}, while elementary,
 does not appear in this exact form in the standard references the
@@ -1536,7 +1506,7 @@ to the author's own satisfaction, why the boundedness hypothesis had
 felt necessary in the first place, and to articulate the contrast
 between the discrete- and continuous-coefficient cases as a dictionary.
 The lesson is
-\ReviewDel{general}\ReviewAdd{broader}: a defensive regularity hypothesis is not free, and a
+broader: a defensive regularity hypothesis is not free, and a
 formalization project occasionally surfaces such hypotheses precisely
 because the formal system requires every clause of the statement to be
 used.

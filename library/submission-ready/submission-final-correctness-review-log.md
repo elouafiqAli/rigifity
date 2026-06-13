@@ -24,3 +24,7 @@ Review focus:
 - Reviewed and marked diagram/caption correctness: Figure 1 now shows five removed strut slots; Figure 2 now treats the irrational marker as schematic; Figure 3 now states normalization and mixture assumptions more carefully.
 - Compiled `manuscript-review-combined.tex` twice and generated `manuscript-review-combined.pdf` (26 pages) using a temporary local `maa-monthly.sty` compatibility shim because the official style was unavailable to local `pdflatex`.
 - Removed the temporary local `maa-monthly.sty` shim and auxiliary TeX build files after PDF generation.
+- Generated clean accepted copies `manuscript-accepted.tex` and `cover-letter-accepted.tex` from the combined marked review files by applying insertions, dropping deletions, and removing review-only preamble markup.
+- Further shortened the two manuscript passages previously flagged as too dense: the explicit-dictionary contribution bullet and the Kuczma-sourcing sentence.
+- Recorded the retained versus omitted material for those two cuts in `accepted-briefening-note.md`.
+- Compiled `manuscript-accepted.tex` twice and `cover-letter-accepted.tex` once, producing clean accepted PDFs without red/blue review markup.
