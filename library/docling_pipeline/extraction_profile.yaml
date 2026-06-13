@@ -1,0 +1,30 @@
+pipeline:
+  engine: docling-cli
+  mode: vlm
+  vlm_model_preset: granite_docling
+  hf_reference_model: ibm-granite/granite-docling-258M
+
+modal:
+  app_name: rigifity-library-docling
+  gpu: A100-80GB
+  concurrency_limit: 64
+  cpu: 8
+  memory_mb: 32768
+  timeout_seconds: 3600
+
+docling:
+  outputs:
+    - md
+    - json
+    - doctags
+    - text
+  device: cuda
+  page_batch_size: 16
+  num_threads: 8
+  document_timeout_seconds: 1800
+
+storage:
+  source_root: library
+  sink_root: library/extracted
+  docs_subdir: docs
+  manifest_file: manifest.jsonl
