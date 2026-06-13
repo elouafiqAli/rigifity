@@ -1,0 +1,1519 @@
+Aequat. Math.
+c⃝ Springer International Publishing 2017
+DOI 10.1007/s00010-016-0463-6 Aequationes Mathematicae
+Remarks on the Cauchy functional equation and variations of it
+Daniel Reem
+Abstract. This paper examines various aspects related to the Cauchy functional equation
+f(x + y)= f(x)+ f(y), a fundamental equation in the theory of functional equations. In
+particular, it considers its solvability and its stability relative to subsets of multi-dimensional
+Euclidean spaces and tori. Several new types of regularity conditions are introduced, such
+as one in which a complex exponent of the unknown function is locally measurable. An
+initial value approach to analyzing this equation is considered too and it yields a few by-
+products, such as the existence of a non-constant real function having an uncountable set
+of periods which are linearly independent over the rationals. The analysis is extended to
+related equations such as the Jensen equation, the multiplicative Cauchy equation, and the
+Pexider equation. The paper also includes a rather comprehensive survey of the history of
+the Cauchy equation.
+Mathematics Subject Classiﬁcation. 39B52, 43A22, 39B22, 39B05, 26B99, 22B99.
+Keywords. Complex exponent, Initial value, Locally measurable, Periodic, Regularity
+condition, Restricted domain, Stability, The Cauchy functional equation.
+1. Introduction
+1.1. History
+A well-known and fundamental equation in the theory of functional equations
+is the Cauchy functional equation
+f(x + y)= f(x)+ f(y). (1)
+This equation (as well as its three sisters f(x + y)= f(x)f(y), f(xy)=
+f(x)+ f(y), f(xy)= f(x)f(y)), was introduced by Cauchy in his book [19,p .
+103] from 1821. Cauchy rigorously analyzed ( 1) under the assumptions that
+Part of this work was done while the author was at the National Institute of Pure and
+Applied Mathematics (IMPA), Rio de Janeiro, Brazil, and at the Institute of Mathematical
+and Computer Sciences (ICMC), University of S˜ao Paulo, S˜ao Carlos, Brazil.
+
+
+D. Reem AEM
+the unknown functionf is a continuous function fromR to R and the variables
+x and y can be arbitrary real numbers. (Gauss [ 42, p. 212] also considered a
+certain version of (1) in his book from 1809, but the consideration was neither
+rigorous nor very explicit; see also [1, pp. 47, 106–109]. Going back even fur-
+ther, to 1794, one can ﬁnd in the book of Legendre [71], in the section devoted
+to the consideration of ratios of areas of rectangles, both a use and an analysis
+of (1), but they are also neither rigorous nor explicit; see also [3, pp. 369–370].)
+Cauchy’s equation (1) has many applications inside the theory of functional
+equations and in other mathematical and scientiﬁc ﬁelds including geometry,
+real and complex analysis, probability, functional analysis, dynamical systems,
+partial diﬀerential equations, classical and statistical mechanics, and econom-
+ics. It is therefore nothing but natural that it has attracted the attention of
+many authors for a long period of time. Formulating this fact in more romantic
+terms [63, p. 2], Kannappan wrote: “Researchers fell in love with these equa-
+tions [Cauchy’s equation (1) and its sisters mentioned above], and the romance
+will continue and will result in many more interesting results”.
+A common path of investigation of (1) is to impose various types of “reg-
+ularity” conditions on the unknown function. It turns out that in the speciﬁc
+case where f : R → R, each of these conditions implies the existence of some
+c ∈ R such that f(x)= cx for all x ∈ R, and this fact has been proved in
+various ways. For instance, Cauchy [19, pp. 103–106] assumed that f is con-
+tinuous, Darboux showed that f can be assumed to be either monotone [ 28]
+or bounded on an interval [29], Fr´echet [39], Blumberg [15], Banach [13], Sier-
+pi´nski [96,97], Kac [61], Alexiewicz–Orlicz [6], and Figiel [35] assumed thatf is
+Lebesgue measurable, Kormes [65] assumed thatf is bounded on a measurable
+set of positive measure, Ostrowski [81] and Kestelman [64] assumed that f is
+bounded from one side on a measurable set of positive measure, and Mehdi
+[74] assumed that f is bounded above on a second category Baire set. On the
+other hand, in 1905 Hamel [47] investigated (1) without any further condition
+on f. By using the Hamel basis, which was introduced for this purpose, he
+showed that there are nonlinear solutions to (1) and he found all of them (see
+also Remark 3.4 below).
+The functional equation (1) has been generalized or modiﬁed in many other
+directions. A typical path in this spirit is to take the domain and range of f
+to be groups of a certain kind, e.g., (locally compact) Polish groups, and to
+prove that if f satisﬁes a certain kind of measurability assumption (say Baire,
+Haar, or Christensen), and maybe additional assumptions, then it must be
+continuous (and, depending on the setting, possibly linear [3, pp. 36–38]). See,
+among others, Banach [14, p. 23], Pettis [85], Hewitt–Ross [49, p. 346], Monroe
+[77], Figiel [35], Itzkowitz [55], Baker [12], Brzdek [18], Christensen [21], Gajda
+[40], Grosse-Erdmann [45], J´arai–Sz´ekelyhidi [57], Neeb [80], and Rosendal [91].
+In some of these generalizations the form of the functional equation is more
+general than ( 1) (Remark: the terminology used in some of the references
+
+Remarks on the Cauchy functional equation
+mentioned above and below is sometimes diﬀerent from that used here, and,
+in particular, instead of speaking on the Cauchy functional equation, from
+time to time one speaks on homomorphism or additive functions; below we
+will sometimes also call solutions of (1) “additive functions”).
+A diﬀerent path is to impose assumptions diﬀerent from measurability, e.g.,
+algebraic ones. See the book of Dales [ 25] for an extensive discussion on this
+issue. Yet another path of generalization/modiﬁcation is to change the domain
+of deﬁnition of f so that it will no longer have a necessarily nice algebraic
+structure but rather it will merely be a certain subset of the original domain,
+e.g., an orthant, a convex set, a complement of a measure zero set, and so
+forth. A variation of this is to change the domain of validity of the equation,
+for instance, to assume that f satisﬁes (1) only for pairs (x, y) belonging to a
+subset of R
+2n, e.g., a manifold (and f may be deﬁned on the whole space or
+on a subset of it). In both cases one may conclude the existence of nonlinear
+solutions to ( 1) (even under “strong” regularity conditions) or that (in the
+case where f is assumed to be deﬁned on the whole space) f must satisfy
+(1) for all possible pairs ( x, y). For a very partial list of related works see
+Pisot–Schoenberg [87], Acz´el–Erd¨os [4], Jurkat [60], de Bruijn [30], Zdun [105],
+Kuczma [66], Dhombres–Ger [32], Dhombres [31], Forti [37], Matkowski [73],
+Sablik [93], Szabo [99], Choczewski et al. [20], Alsina and Garc Roig [7], Ger–
+Sikorska [44], Skof [98], Paneah [82,83], Shalit [94,95], Laohakosol–Pimsert [70]
+and the references therein.
+More information related to (1), including many additional references, can
+be found, for instance, in the books of Acz´ el [1], Acz´el–Dhombres [3] (both
+books also mention applications of ( 1) in various scientiﬁc areas), Czerwik
+[24] (the book contains also a treatment of the set valued version of Cauchy’s
+equation), Einchorn [ 33] (for applications in economics), J´arai [56] (various
+regularity conditions), Kannappan [63], Kuczma [68], and the surveys of Kan-
+nappan [62] and Wilansky [ 103]. See also Sect. 10 below regarding a short
+survey and several references related to stability in the context of the Cauchy
+equation.
+1.2. Contribution and paper layout
+This paper examines various aspects related to ( 1), including its solvability
+and its stability under new kinds of assumptions, and presents new methods
+to analyze it. The ﬁrst result that is proved (Sect. 2 below) is the following:
+given n ∈ N,i f f : R
+n → R satisﬁes (1) for every x, y ∈ Rn and if a com-
+plex exponent of f is locally measurable, that is, eif is Lebesgue measurable
+on a certain open ball (and hence on a certain non-degenerate and compact
+hypercube contained in that ball), then f must be linear, namely, there exists
+c ∈ Rn such that f(x)= c · x for all x ∈ Rn (here, of course, c · x denotes
+
+D. Reem AEM
+the inner product between the vectors c =( ck)n
+k=1 and x =( xk)n
+k=1,t h a ti s ,
+c · x := ∑ n
+k=1 ckxk). This regularity condition is strictly weaker than mea-
+surability (Remark 2.2 below) and although it seems to be new, traces of it
+can be detected in the paper of Kac [ 61] (Remark 2.3 below). In Sect. 3 the
+same result is proved using a diﬀerent approach by considering (1) as an initial
+value problem and utilizing periodicity properties which arise naturally. Two
+by-products of this approach are the observation that there exist nonlinear
+solutions of ( 1) having an uncountable dense set of periods which are (the
+periods) linearly independent over the rationals (Remark 3.4 below) and the
+observation that any solution to (1) deﬁned on a multidimensional topological
+(ﬂat) torus must vanish identically (Sect. 4 below). The previous analysis is
+extended to other settings: to Jensen’s equation (Sect.5 below), to Cauchy’s e-
+quation on restricted domains satisfying a certain abstract algebraic condition
+and related conditions (Sect. 6 below), to the multiplicative Cauchy equation
+(Sect. 7 below), to an alternative version of Cauchy’s equation (Sect.8 below),
+to Pexider’s equation (Sect.9 below), and to the stability of Cauchy’s equation
+(Sect. 10 below). We conclude the paper in Sect.11 with a few remarks regard-
+ing possible additional extensions, such as to a setting in which the regularity
+condition is abstract (Remark 11.3 below). The paper also has “ Appendix”
+which contains proofs of several assertions.
+2. The case where eif is locally measurable, Rn
+This section contains the main theorem of the paper (Theorem 2.1 below), as
+well as several remarks related to it (Remarks 2.2, 2.3 below).
+Theorem 2.1. If f : Rn → R satisﬁes (1) for every x, y∈ Rn and if eif is locally
+Lebesgue measurable, then there exists some c ∈ Rn such that f(x)= c · x for
+all x ∈ Rn.
+Proof. By applying the function t ↦→ eit, t ∈ R on both sides of ( 1)w eh a v e
+eif (x+y) = eif (x)eif (y) for all x, y ∈ Rn.L e tI be any hypercube on which eif
+is known to be measurable. By taking an arbitrary y ∈ Rn and x ∈ I and
+using the fact that the function x ↦→ eif (x)eif (y), x ∈ I is measurable on I,
+we see that eif is measurable on any translated copy of I. Because Rn can be
+represented as a countable union of translated copies of I, we conclude that
+eif is measurable on Rn.
+Now, from a well-known theorem about the continuity of measurable ho-
+momorphisms acting between certain groups (in particular, between a locally
+compact group and the circle group: see [49, p. 346] for an even more general
+statement), it follows that the measurable homomorphism eif is continuous.
+Since its image is obviously contained in the unit circle of the complex plane
+C, it follows thate
+if is a character (namely, a continuous homomorphism from
+
+Remarks on the Cauchy functional equation
+Rn to the unit circle in C). By a well known representation result regarding
+the character group of Rn (see, e.g., [49, pp. 366–368]) it follows that there
+exists c ∈ Rn such that
+eif (x) = eic·x, ∀x ∈ Rn. (2)
+Alternatively, one can deduce (2) without referring to the theory presented in
+[49] by using an approach based on Fourier series [90].
+Anyway, because of ( 2) there exists a function k from Rn to the set of
+integers such that f(x)= c · x +2 πk(x) for all x ∈ Rn. Since f satisﬁes (1)f o r
+every x, y∈ Rn and since (1) is linear, we conclude thatk also satisﬁes (1)f o r
+all x, y∈ Rn. It remains to show that k vanishes identically. Assume that this
+is not true, namely k(x) ̸= 0 for some ﬁxed x. Then by ( 1) (with k instead
+of f)w eh a v ek(x/m)= k(x)/m for any positive integer m. In particular this
+is true for m> 2|k(x)|, a contradiction since 0 < |k(x)/m| < 0.5 < 1 but
+k(x/m) is an integer. Thusk ≡ 0a n df(x)= c · x for each x ∈ Rn. Finally, an
+immediate veriﬁcation shows that f, having this linear form, still satisﬁes (1)
+for every x, y∈ Rn. □
+Remark 2.2. The regularity condition imposed on f is strictly weaker than
+mere measurability. Indeed, if f is Lebesgue measurable, then so is eif as a
+composition of f with the complex exponent function t ↦→ eit, t ∈ R which is
+continuous. On the other hand, even ifeif is a continuous (multiplicative) ho-
+momorphism, f itself need not be measurable as the following simple example
+shows: for each integer m let Am be a non-measurable set of [m, m+ 1), and
+let f : R → R be deﬁned by f(x): =2 πm if x ∈ Am,a n df(x): = −2π(m +1 )
+if x ∈ [m, m+1 )\Am.
+Another, perhaps more interesting example (see also Remark 10.2 below),
+is f(x): =2 π[g(x)],x ∈ R where [t] is the greatest integer not exceeding the
+real number t and g is an arbitrary nonlinear solution of (1). Indeed, eif ≡ 1
+but there can be no set of positive measure on which f is bounded, since if A
+is such a set, then also g is bounded on A and by the theorem of Kormes [65,
+Theorem I] it follows that g is linear, a contradiction. Since any measurable
+function h : R → R is bounded on some set of positive measure (simply on
+Am := {x : h(x) ∈ [m, m+1 )} for some integer m, because a measurable
+function is ﬁnite almost everywhere and hence ⋃
+m∈Z Am is, up to a set of
+measure 0, the whole space) it follows that f is not measurable.
+Remark 2.3. The regularity condition that eif is measurable has traces in the
+1937 paper of Kac [61]. Indeed, while he assumed thatf : R → R was measur-
+able, in the proof he implicitly used only the measurability ofeif . Modiﬁcations
+of Kac’s proof can be found in other places, e.g., in [3, pp. 54–56], [24, pp. 39–
+40] (in these places, however,f is from R to C and it satisﬁes the multiplicative
+Cauchy equation (8) below rather than the additive one (1) above). Anyway,
+in all of these places (including Kac’s paper) the proofs seem to be restricted
+
+D. Reem AEM
+to the one-dimensional case and it is explicitly assumed that f is measurable
+and not that eif is measurable.
+3. The initial value approach
+In this section a diﬀerent Proof of Theorem2.1 is presented. The approach is to
+consider (1) as an initial value problem. The inspiration comes from diﬀerential
+equations. The derivation is based on two lemmas. The ﬁrst (Lemma3.1 below)
+is known. For the sake of completeness and because it is not easy to ﬁnd in
+the literature a proof of this lemma for the case n> 1, a proof is provided
+in the “Appendix” section. The second lemma (Lemma 3.2 below) contains a
+key technical assertion.
+In Lemma 3.1 below (and elsewhere) we use the following terminology and
+observations. A (closed) hyper-parallelepiped spanned by some basis is the
+set I := {u0 + ∑ n
+k=1 tkuk :( tk)n
+k=1 ∈ [0,1]n} where U := {u1,...,u n} is
+a given basis of Rn and u0 ∈ Rn is a given point. A right-semi-open hyper-
+parallelepiped is the set I := {u0 + ∑ n
+k=1 tkuk :( tk)n
+k=1 ∈ [0,1)n}, namely
+a hyper-parallelepiped from which the right facets have been removed. Of
+course, a (closed or right-semi-open) hypercube is a (closed or right-semi-open,
+respectively) hyper-parallelepiped spanned by an orthogonal basis, where the
+lengths of all the basis elements are equal. We say that a functionh : R
+n → C
+is U-periodic (or periodic with respect to the basisU) if it satisﬁesh(x+uk)=
+h(x)f o re a c hx ∈ Rn and each k ∈{ 1,...,n }.
+Lemma 3.1. Let I ⊂ Rn be a given (closed or semi-open) hyper-parallelepiped
+spanned by some basis U := {u1,...,u n} of Rn. Suppose that h : Rn → C is U -
+periodic. If h is Lebesgue integrable on I, then for each y ∈ Rn the translation
+hy : Rn → R deﬁned by hy(x): = h(x+y) for all x ∈ Rn is Lebesgue integrable
+on I and
+∫
+I hy(x)dx =
+∫
+I h(x)dx.
+Lemma 3.2. Let g : Rn → R. Suppose that I ⊂ Rn is a hypercube spanned by
+some basis U := {u1,...,u n}. Assume that eig is Lebesgue measurable on I
+and that g is U -periodic. If g satisﬁes ( 1) for every x, y∈ Rn, then g vanishes
+identically.
+Proof. Since g satisﬁes (1) for every x, y ∈ Rn and since eig is measurable on
+some hypercube I, we can use the same reasoning given in Sect. 2 above (the
+beginning of the ﬁrst Proof of Theorem2.1) to conclude thateig is measurable
+on Rn and hence on any hypercube contained inRn. Given any rational number
+α,l e thα : Rn → C be deﬁned byhα(x): = eig(αx) for everyx ∈ Rn. The change
+of variables formula for scaling [58, pp. 170–171] and the previous discussion
+on the measurability of eig imply that hα is measurable on Rn, and, being
+bounded, it is Lebesgue integrable over any hypercube. In particular hα is
+
+Remarks on the Cauchy functional equation
+measurable over I0 := {∑ n
+k=1 tkuk :( tk)n
+k=1 ∈ [0,1)n}. In addition, we have
+hα(x)= eiαg(x), ∀x ∈ Rn, ∀α rational (3)
+because g(αx)= αg(x) for each rational α and each x ∈ Rn (this identity is,
+of course, a well known fact which easily follows from the assumption that g
+satisﬁes (1) for every x, y∈ Rn: see [68, Theorem 5.2.1, pp. 128–129]).
+Let α> 0 be some rational satisfying
+∫
+I0
+hα(x)dx ̸= 0. It will be shown in
+a moment that such an α does exist. Since g is U-periodic, the identity ( 3)
+implies that hα is also U-periodic. This fact, the fact thatI0 is also spanned by
+U, and Lemma3.1 (with hα and I0 instead ofh and I, respectively), imply that∫
+I0
+hα(x)dx =
+∫
+I0
+hα(x + y)dx for every y ∈ Rn. But (3) and (1) imply that∫
+I0
+hα(x + y)dx =
+∫
+I0
+eiαg(x+y)dx =
+∫
+I0
+eiαg(x)eiαg(y)dx = eiαg(y) ∫
+I0
+hα(x)dx
+for all y ∈ Rn. We conclude that
+∫
+I0
+hα(x)dx = eiαg(y) ∫
+I0
+hα(x)dx for all
+y ∈ Rn. As a result of this equality and the assumption that
+∫
+I0
+hα(x)dx ̸=0i t
+follows that 1 =eiαg(y) for all y ∈ Rn. Therefore αg(y) ∈{ 2πk : k ∈ Z} for any
+y ∈ Rn. Assume for a contradiction thatαg(y0) ̸= 0 for somey0. We can write
+2πk0 = αg(y0) for some 0 ̸= k0 ∈ Z. Since k0 ̸= 0 and because g(qy0)= qg(y0)
+for each rational q,w eh a v eαg(y0/(7k0)) = α(1/(7k0))g(y0)=2 πk0/(7k0)=
+2π/7. Thus αg(y) /∈{ 2πk : k ∈ Z} for y := y0/(7k0), a contradiction. Hence
+g ≡ 0.
+It remains to prove that
+∫
+I0
+eiαg(x)dx ̸= 0 for some positive rational α.I f
+this is not true, then in particular
+∫
+I0
+eiαg(x)dx = 0 for all rationals α ∈ (0,1].
+As a result
+0=
+∫
+I0
+eiαg(x)dx =
+∫
+I0
+eig(αx)dx =
+∫
+αI0
+eig(w)dw/αn =
+∫
+αI0
+eig(w)dw
+for each rational α ∈ (0,1] by the change of variables formula for scaling.
+Therefore, given y ∈ Rn and a rational number α ∈ (0,1], we have
+∫
+y+αI0
+eig(x)dx =
+∫
+αI0
+eig(z+y)dz = eig(y)
+∫
+αI0
+eig(z)dz =0 .
+It follows in particular that
+∫
+S eig(x)dx = 0 whenever S is a dyadic copy of
+I0, namely, S is obtained from I0 by scaling it by 2−m for some nonnegative
+integer m and translating it by a vector of the form y = ∑ n
+k=1(mk/2m)uk,
+mk ∈ Z. The above is true even if we remove from, or add to, these dyadic
+copies of I0 several parts of their (measure 0) boundaries. It is well-known that
+any nonempty open setS of Rn is a countable union of pairwise disjoint dyadic
+copies of I0, namely S = ∪∞
+m=1Sm where Sm is a dyadic copy of I0 for each
+m ∈ N,a n dSm ∩Sp = ∅ whenever m ̸= p (see [92, p. 50]; the proof given there
+is for I0 =[ 0,1)n, namely U is the canonical basis, but the same proof holds for
+an arbitrary hypercube, or, more generally, an arbitrary hyper-parallelepiped,
+simply by representing the vectors in R
+n using the given basis U). This fact,
+
+D. Reem AEM
+combined with the countable additivity of the integral, implies that for each
+nonempty open set S we have
+∫
+S eig(w)dw = ∑ ∞
+m=1
+∫
+Sm
+eig(w) = ∑ ∞
+m=1 0=0 .
+Now, given a measurable subset S ̸= ∅ of I0, a simple consequence of the
+(upper) regularity of the Lebesgue measure μ (see [58, Property M9, p. 50])
+implies that there exists a decreasing sequence (Um)∞
+m=1 of open subsets of Rn
+satisfying S ⊆ Um and μ(Um\S) < 1/m for each m ∈ N.F o re a c hA ⊆ Rn
+let 1A be the characteristic function of A, namely 1A(x): =1i f x ∈ A and
+1A(x) := 0 otherwise. It must be that lim m→∞ 1Um (x)=1 S(x)f o re a c hx/∈
+(∩∞
+m=1Um)\S. Indeed, if x ∈ S, then both sides are equal to 1 since 1Um (x)=
+1S(x) = 1, and if x/∈∩ ∞
+m=1Um, then x/∈ Um0 for some m0 ∈ N,s o x/∈ Um
+for all m>m 0 because (Um)∞
+m=1 is decreasing. This fact and the inclusion
+S ⊆ Um for all m ∈ N imply that both sides of lim m→∞ 1Um (x)=1 S(x)
+equal 0. But (∩∞
+m=1Um)\S is a measurable subset satisfyingμ((∩∞
+m=1Um)\S) ≤
+μ(Um\S) < 1/m for each m ∈ N.T h u sμ((∩∞
+m=1Um)\S) = 0. It follows that
+limm→∞ 1Um (x)=1 S(x) and hence limm→∞(1Um (x)eig(x))=1 S(x)eig(x) for
+almost all x ∈ Rn. Since (Um)∞
+m=1 is a decreasing sequence of subsets which
+contain S,w eh a v e1S(x)= |1S(x)eig(x)|≤| 1Um (x)eig(x)| =1 Um (x) ≤ 1U1 (x)
+for all x ∈ Rn and all m ∈ N. Since 1U1 is Lebesgue integrable on Rn (because
+μ(U1) ≤ μ(U1\S)+ μ(S) < 1+ μ(I0) < ∞), we can conclude the following
+equality from the dominated convergence theorem and the fact established
+earlier that the integral ofe
+ig vanishes on every nonempty open subset ofRn:
+∫
+S
+eig(w)dw =
+∫
+Rn
+1S(w)eig(w)dw = lim
+m→∞
+∫
+Rn
+1Um eig(w)dw
+= lim
+m→∞
+∫
+Um
+eig(w)dw =0 .
+Because S was an arbitrary measurable subset of I0 we can conclude that
+eig(w) = 0 for almost every w ∈ I0 (see, e.g., [ 69, p. 105]). On the other
+hand, we obviously have |eig(w)| =1f o re v e r yw ∈ I0 since the range of g is
+R. This contradiction shows the existence of a positive rational α such that∫
+I0
+eiαg(x)dx ̸= 0, as claimed. □
+In Lemma 3.2 above instead of a hypercube we can take any
+hyper-parallelepiped spanned by some basis (the proof is the same), but we
+have found no real value in working with a general basis since any
+hyper-parallelepiped contains a hypercube and we are interested only in the
+local measurability of eig. On the other hand, in the abstract regularity con-
+dition mentioned in Remark 11.3 below, we preferred to use a more general
+statement using a general basis.
+Proof of Theorem 2.1. Let I be a hypercube on which eif is measurable and
+suppose that U := {u1,...,u n} is the (orthogonal) basis of Rn which spans
+I. Consider the n × n matrix whose k-th raw is uk, k ∈{ 1,...,n }. This
+
+Remarks on the Cauchy functional equation
+matrix is invertible since {u1,...,u n} is a basis. Hence there exists a unique
+c =( ck)n
+k=1 ∈ Rn which satisﬁes the linear system
+uk · c = f(uk),k ∈{ 1,...,n }. (4)
+One solution to (1)i s g1 := f and another one is the linear function g2(x): =
+c · x, x ∈ Rn. Moreover, by the choice of c we have g1(uk)= g2(uk) for all
+k ∈{ 1,...,n }. This fact and the linearity of ( 1) imply that g := g1 − g2
+satisﬁes the following initial value problem
+g(x + y)= g(x)+ g(y) ∀x, y∈ Rn, (5a)
+g(uk)=0 ,k =1 ,...,n . (5b)
+We claim that (5)h a sg ≡ 0 as its unique solution in the class of functions
+g : Rn → R having the property that eig is measurable on I. Once we prove
+this claim we can conclude that g1 = g2 because g := g1 − g2 solves (5)a n di t
+satisﬁes eig(x) = eif (x)e−ic·x for all x ∈ Rn, namely it is a multiplication of two
+functions which are measurable on I and hence it is also measurable on I.T o
+see that the above mentioned claim holds, we observe that the zero function
+obviously solves (5) and it belongs to the considered class of functions. On the
+other hand, given any solutiong to (5) in the considered class of functions, we
+have g(x + u
+k)= g(x)+ g(uk)= g(x) for all x ∈ Rn and all k ∈{ 1,...,n },
+that is, g is U-periodic. Since eig is measurable on I we can use Lemma 3.2 to
+deduce that indeed g ≡ 0, i.e., we also have uniqueness, as required. □
+Remark 3.3. Under the stronger assumption that f : Rn → R satisﬁes (1)f o r
+every x, y ∈ Rn and is locally integrable, the approach used in this section
+allows one to give a simple proof that f must be linear. Indeed, since f is
+locally integrable, there exists a hypercube I on which f is integrable. Let
+U := {u1,...,u n} be the basis which spans I. The linearity of (1) implies, as
+in the second Proof of Theorem2.1 given above, that it is enough to show that
+g ≡ 0 is the unique solution to (5) in the class of functions which are integrable
+on I. By substituting y := uk in (1) we see that g(x + uk)= g(x) + 0 for all
+x ∈ Rn and all k ∈{ 1,...,n }, i.e., g is U-periodic. Since we assume that g is
+integrable on I, its periodicity implies (by Lemma 3.1) that it is integrable on
+any translated copy of I.N o w ,b yﬁ x i n gy ∈ Rn in (1) and integrating over I
+with respect to x, we see that
+∫
+I
+g(x + y)dx =
+∫
+I
+g(x)dx + g(y)
+∫
+I
+dx.
+But
+∫
+I g(x + y)dx =
+∫
+I g(x)dx according to Lemma 3.1. Hence g(y)μ(I)=0
+for each y ∈ R,t h a ti s ,g ≡ 0.
+Remark 3.4. The nonlinear solutions of (1) are examples of exotic functions,
+not only because they are not measurable (or, as Theorem 2.1 shows, even a
+complex exponent of them cannot be measurable), but, for instance, because
+
+D. Reem AEM
+their graphs are dense in R2 [3, p. 14], [ 47,103]. (But see, e.g., [ 59,103]f o r
+“nice” properties that some of them satisfy.) The approach presented in this
+section suggests an idea for creating functions which are even more exotic.
+Indeed, assume for simplicity that f : R → R and let H := {x
+γ : γ ∈ Γ}
+be a Hamel basis, that is, a basis of R where R is considered as a vector
+space over the ﬁeld of rationals Q. It is well-known that the cardinality of H
+is the continuum cardinality, that is, the same as the cardinality of R (see
+[68, Theorem 4.2.3, p. 82]). As is well-known, and was observed by Hamel
+[47]( s e ea l s o[1, pp. 35–36], [ 3, pp. 18–19]), the general solution f : R →
+R which satisﬁes ( 1) for all x, y ∈ R is obtained by associating with each
+γ ∈ Γ an arbitrary yγ ∈ R, setting f(xγ): = yγ, and extending f to R in a
+linear manner (that is, given y ∈ R, since y = ∑ m
+k=1 qkxγk for some m ∈ N,
+q1,...,q m ∈ Q,a n dxγ1 ,...,x γm ∈ H, we deﬁne f(y): = ∑ m
+k=1 qkyγk ). Now
+ﬁx an arbitrary nonempty ﬁnite or countable set J of basis elements, deﬁne
+f(xγ) to be any nonzero real number for all γ ∈ J, deﬁne f(xγ): =0f o r
+the other basis elements xγ,γ /∈ J, and extend f to R in a linear manner
+as explained above (in particular, when card(J)= ℵ0, then there are at least
+2ℵ0 =c a r d (R) such functions f). The exotic property that f has is that it is
+a non-constant solution to ( 1) which has a set of linearly independent (over
+Q) periods whose cardinality is card( R). Indeed, the equality f(xγ)=0f o r
+each γ ∈ Γ\J implies that f(x + xγ)= f(x)+ f(xγ)= f(x)f o re a c hx ∈ R,
+i.e., xγ is a period of f for every γ ∈ Γ\J, and it remains to observe that
+card(Γ\J) = card(Γ) = card(H) = card(R).
+Actually, it is possible to make the set of periods off to be dense inR (this,
+in particular, will also show thatf is so-called microperiodic [68, p. 332], that
+is, it has arbitrarily small positive periods). Indeed, since the set of periods off
+coincides with the Hamel basis that we ﬁxed in the beginning, it is suﬃcient to
+show that there exists a Hamel basis which is dense inR and then to deﬁne f
+with respect to that basis as done above. The existence of a dense Hamel basis
+is known (the main arguments below are based on ideas of Zoltan Boros [16]):
+roughly speaking, one starts with an arbitrary Hamel basisH and then rescales
+its elements by appropriate rational coeﬃcients so the resulting basis will be
+dense. More precisely, one ﬁrst observes using the Cantor–Schroeder–Bernstein
+theorem that the cardinality of the set K := {(a, b): a, b ∈ R,a<b } of all
+bounded and open intervals in R is at most card(R
+2) = card(R) and at least
+card(R), and hence it is card( R). Therefore there exists a bijection ψ from
+K to H. Now, given I ∈ K , since ψ(I) ∈ H we have ψ(I) ̸= 0 because
+the elements of a Hamel basis do not vanish. Since for all x ∈ R, x ̸=0t h e
+set {qx : q ∈ Q\{0}} is dense in R, it follows that {qψ(I): q ∈ Q\{0}}
+is dense in R. From this result and the fact that I is an open interval it
+follows that there exists a rational number qI such that qIψ(I) ∈ I. Denote
+˜H := {qIψ(I): I ∈ K }. Then ˜H is a weighted rescaling of H by non-zero
+rationals and hence ˜H is also a Hamel basis. Since from the construction of ˜H
+
+Remarks on the Cauchy functional equation
+for all I ∈ K we can ﬁnd an element of ˜H which belongs to I, it follows that
+˜H is dense in R, as required.
+4. The case where eif is a measurable, topological torus
+Now f is assumed to be a real function deﬁned on the n-dimensional topo-
+logical (ﬂat) torus Tn := Rn/Zn and having the property that eif is (Haar)
+measurable. We need the following known lemma which is a variation of Lem-
+ma 3.1. For the sake of completeness and since it is not very easy to ﬁnd a
+full proof of this Lemma in the literature, we decided to include a proof in the
+“Appendix” section.
+Lemma 4.1. Given any y ∈ T
+n and h : Tn → C,i f h ∈ L1(Tn), then the
+translation function hy(x): = h(x + y), x ∈ Tn is (Haar) integrable and we
+have
+∫
+Tn hy(x)dμ(x)=
+∫
+Tn h(x)dμ(x).
+Theorem 4.2. Given an additive homomorphism f from the ﬁnite dimensional
+topological torus Tn to R,i f eif is (Haar) measurable, then f ≡ 0.
+Proof. The proof is almost word for word as in the Proof of Lemma 3.2. Here
+we use the periodicity of f with respect to the basis which spans the torus,
+and Lemma 4.1 instead of Lemma 3.1. We note that we need the change of
+variables formula for scaling only for small enough (at most 1) positive rational
+α, and in this case this formula is true for the topological torus. □
+5. Jensen’s equation
+This is the functional equation
+f
+( x + y
+2
+)
+= f(x)+ f(y)
+2 (6)
+where x and y belong to, say, Rn or a subset of Rn and f is a real-valued
+function. See [1, pp. 43–48], [3, pp. 242–243], [68, pp. 351–354] for more details
+and related references. The next theorem extends [ 1, Theorem 1, p. 46], [ 3,
+Proposition 3, p. 243], [68, Theorem 13.2.3, p. 354].
+Theorem 5.1. Let S be a convex subset of Rn and assume that its interior is
+nonempty. Suppose that f : S → R satisﬁes (6) for all (x, y) ∈ S2.I f eif is
+measurable on S, then there exist c ∈ Rn and b ∈ R such that f(x)= c · x + b
+for each x ∈ S.
+Proof. Because S is convex, ( x + y)/2 ∈ S,s o( 1) is well deﬁned. By [ 68,
+Theorem 13.2.1, p. 353] there exist a function g : Rn → R satisfying (1)
+for every x, y ∈ Rn and a constant b ∈ R such that f(x)= g(x)+ b for
+
+D. Reem AEM
+all x ∈ S. Since eif is measurable on S and the interior of S is nonempty,
+eif is measurable on a hypercube contained in S. Therefore eig = e−ibeif
+is measurable on this hypercube, and by Theorem 2.1 there exists c ∈ Rn
+such that g(x)= c · x for each x ∈ Rn.T h u sf(x)= c · x + b for each
+x ∈ S, and an immediate check shows that this function does satisfy ( 6)f o r
+all (x, y) ∈ S2. □
+6. Cauchy’s equation on restricted domains
+Now we consider the Cauchy functional equation ( 1) assuming f is a real-
+valued function deﬁned on a subset ofRn (and hence (x, y)s h o u l db e l o n gt oa
+subset of R2n). Sometimes (1) with these additional conditions is also referred
+to as “the conditional Cauchy equation” or “the restricted Cauchy equation”.
+More details about this (quite studied) issue can be found in [ 1, pp. 44–49],
+[3, pp. 12, 18, 73, 84–92], [31], [68, pp. 369–374].
+In what follows we will derive a few theorems. The ﬁrst one extends [ 3,
+Corollary 9, p. 18] in which S =[ 0,∞). It is based on a certain deﬁnition (see
+Remark 6.4 below for related examples) and several lemmas (the ﬁrst lemma
+generalizes the discussion in [3, p. 12] and is also related to [2]).
+Deﬁnition 6.1. Let (G,+) be a group and let S ⊆ G.
+(a) S is said to subtractively span G if G = S − S := {s − t :( s, t) ∈ S
+2}.
+(b) S is said to strongly subtractively span G if for all x1,x 2 ∈ G there exist
+s1,s 2,t 1,t 2 ∈ S such that xi = si −ti, i =1 ,2 and such that s1 +s2 ∈ S,
+t1 + t2 ∈ S.
+Lemma 6.2. Let (G,+) and (H, +) be two commutative groups. Suppose that
+S ⊆ G strongly subtractively spans G.L e t S + S := {a + b :( a, b) ∈ S2}.L e t
+A ⊆ G satisfy S ∪ (S + S) ⊆ A.I f f : A → H satisﬁes
+f(x + y)= f(x)+ f(y), ∀(x, y) ∈ S2, (7)
+then there exists an additive homomorphism F : G → H which coincides with
+f on S.
+Proof. Since S strongly subtractively spans G it subtractively spans it as an
+immediate veriﬁcation shows. Hence, givenx ∈ G, there exists (s, t) ∈ S2 such
+that x = s − t. Deﬁne
+F(x): = f(s) − f(t).
+To see thatF is well deﬁned, suppose that we also havex = s′−t′for another
+pair (s′,t′) ∈ S2. Then s+t′= s′+t and f(s)+ f(t′)= f(s+t′)= f(s′+t)=
+f(s′)+ f(t) because of (7). It follows thatf(s)−f(t)= f(s′)−f(t′) and hence
+F is indeed well deﬁned. To see thatF coincides withf on S let x ∈ S be given.
+As explained above, because S subtractively spans G there exists (s, t) ∈ S2
+such that x = s − t.B y( 7) it follows that f(s)= f(x + t)= f(x)+ f(t).
+
+Remarks on the Cauchy functional equation
+This and the deﬁnition of F imply the equality F(x)= f(s) − f(t)= f(x).
+Finally, to see thatF is additive let (x1,x 2) ∈ G2 be arbitrary. SinceS strongly
+subtractively spans G there exist s1,s 2,t 1,t 2,∈ S which satisfy the relations
+x1 = s1 −t1, x2 = s2 −t2, s1 +s2 ∈ S, t1 +t2 ∈ S. This and the commutativity
+of G imply that x1 + x2 =( s1 + s2) − (t1 + t2) ∈ S − S. This, the deﬁnition
+of F, the commutativity of H, and (7) imply the required assertion:
+F(x1+x2)= f(s1 +s2)−f(t1+t2)= f(s1)−f(t1)+f(s2)−f(t2)= F(x1)+F(x2).
+□
+Theorem 6.3. Suppose that S ⊆ Rn strongly subtractively spans Rn.L e t A ⊆
+Rn satisfy S ∪ (S + S) ⊆ A.L e t f : A → R and assume that f satisﬁes (7).I f
+S contains a hypercube I on which eif is measurable, then there exists c ∈ Rn
+such that f(x)= c · x for each x ∈ S.
+Proof. By Lemma 6.2 there exists an additive function F : Rn → R satisfying
+F(x)= f(x) for all x ∈ S. Since F is additive and eiF = eif is measurable on
+I, it follows from Theorem 2.1 that there exists c ∈ Rn such that F(x)= c · x
+for all x ∈ Rn. The assertion follows since f(x)= F(x) for all x ∈ S. □
+Remark 6.4. Examples of subsets S of Rn which strongly subtractively span
+Rn and contain a hypercube are orthants (with or without the boundary),
+halfspaces, and any set containing a subset which strongly subtractively spans
+Rn and has a nonempty interior. In addition, any semigroup S ⊆ Rn (that is,
+S + S ⊆ S) which subtractively spans Rn strongly subtractively spans Rn.I n
+particular, S := ⋃ ∞
+m=1[2m,3m] strongly subtractively spans R. There are also
+examples of subsets S with a nonempty interior which strongly subtractively
+span Rn but are not semigroups. A simple example is a translated copy of
+an orthant by a vector which does not belong to the orthant. But there are
+more exotic examples such as S := ⋃ ∞
+m=1 Sm where Sm := [10m,5 · 10m)n
+for each m ∈ N (because given x, y ∈ Rn, let 2 ≤ m ∈ N be such that
+∥x∥+ ∥y∥ < 10m−1;l e tpm := (2 · 10m)n
+k=1 be the vector whose components
+are 2·10m; then x =( pm +x)−pm ∈ Sm −Sm, y =( pm +y)−pm ∈ Sm −Sm,
+and x + y =( 2pm + x + y) − 2pm ∈ Sm − Sm as claimed).
+The same reasoning of the Proof as in Theorem 6.3 can be used for easily
+extending it much further, as shown in the next theorem.
+Theorem 6.5. Let S ⊆ Rn.L e t A ⊆ Rn satisfy S ∪ (S + S) ⊆ A. Suppose that
+f : A → R satisﬁes (7). Suppose also that S contains a hypercube I.I f eif is
+measurable on I and if there exists a (not necessarily unique) additive function
+F : Rn → R such that F(x)= f(x) for all x ∈ S, then there exists c ∈ Rn
+such that f(x)= c · x for each x ∈ S.
+Now the theory developed in the literature can be used, so for instance, we
+may take S to be any interval inR having 0 in its closure [68, Theorem 13.5.2,
+
+D. Reem AEM
+p. 368] and A := S + S. We can also take S to be a multidimensional ball
+having the origin as its center [68, Corollary 13.6.3, p. 373] (and A := S + S)
+but this actually follows from the next theorem (which generalizes the case of
+a continuous additive function deﬁned on a compact interval [1, pp. 45–46]).
+Theorem 6.6. Let S ⊆ Rn be a convex subset having a nonempty interior. Let
+A ⊆ Rn satisfy S ∪ (S + S) ⊆ A. Suppose that f : A → R satisﬁes (7).I f eif
+is measurable on S, then there exists c ∈ Rn such that f(x)= c · x for each
+x ∈ S.
+Proof. Let u ∈ S + S be arbitrary. Then u = s + t for some s, t∈ S and hence
+u/2=( s + t)/2 ∈ S because S is convex. By putting x = y = u/2i n( 7)
+it follows that f(u)/2= f(u/2) for all u ∈ S + S. In particular this is true
+for u := x + y where x, y ∈ S are given. Thus f((x + y)/2) = f(x + y)/2=
+(f(x)+ f(y))/2 where the last equality follows from (7). Hence f satisﬁes the
+Jensen equation (6) for all (x, y) ∈ S2, and from Theorem 5.1 it follows that
+there exist c ∈ Rn and b ∈ R such that f(x)= c · x + b for each x ∈ S.B y
+plugging this expression in (7) it follows that b =0 . □
+7. The multiplicative Cauchy equation
+This is the functional equation
+f(x + y)= f(x)f(y) (8)
+where the pairs (x, y)b e l o n gt oas u b s e to fR2n and f is a real-valued function.
+See [1, pp. 37–39], [3, pp. 28–29], [68, pp. 343–344, 349–350] for related details
+and related references. An obvious solution to (8)i s f ≡ 0. As is well known,
+when the whole space is considered, if f(x0) = 0 at some point x0 ∈ Rn, then
+f(x)= f(x−x0)f(x0)=0f o re a c hx ∈ Rn. Since in additionf(x)=( f(x/2))2
+for each x ∈ Rn, it follows that when f is not the constant zero function, then
+f(x) > 0 for all x. However, when the pairs (x, y) belong only to a subset of
+R2n, then it is not clear why a solution to (8) must be positive. Hence, in the
+next theorem (which extends [1, Theorem 1, pp. 38–39], [3, Theorem 5, p. 29],
+[68, Theorem 13.1.4, p. 349], [68, Theorem 13.1.7, p. 350]) the positivity of f
+is assumed in advance.
+Theorem 7.1. Let S ⊆ Rn.L e t A ⊆ Rn satisfy S ∪ (S + S) ⊆ A. Suppose that
+f : A → R is a positive function satisfying (8) for all (x, y) ∈ S2. Assume that
+either S is a convex subset having a nonempty interior and fi is measurable
+on S, or that S strongly subtractively spans Rn and it contains a hypercube I
+on which fi is measurable. Then there exists c ∈ Rn such that f(x)= ec·x for
+each x ∈ S.
+Proof. Since f is positive, the functiong : A → R deﬁned by g := ln(f) is well-
+deﬁned on A and by taking logarithm on (8) we see that g is additive. Since
+
+Remarks on the Cauchy functional equation
+fi =e x p (iln(f)) = eig is assumed to be measurable on eitherS or I, Theorem
+6.6 or 6.3 respectively imply the existence of c ∈ Rn such that g(x)= c · x for
+each x ∈ Rn and hence f(x)= ec·x for all x ∈ S. This f indeed satisﬁes (8)
+and the assertion follows. □
+8. An alternative Cauchy equation
+This is the functional equation
+(f(x + y))2 =( f(x)+ f(y))2 (9)
+where x, y ∈ Rn are arbitrary and f is a real-valued function. It seems to
+appear ﬁrst in the context of certain problems related to physics [ 51]. See
+[36,50,67], [68, pp. 380–382] for more details and related references. Obviously,
+any solution to the Cauchy functional equation (1) solves (9), but the converse
+is less trivial because at least at ﬁrst glance one may only deduce the relation
+f(x+y)= ±(f(x)+f(y)) (where the sign depends on the pair (x, y)). However,
+as it follows from [68, Theorem 13.9.2, p. 382], any solution to (9) deﬁned on
+a semigroup S of Rn must be additive. This, Theorem 6.3 and Remark 6.4,
+imply the following theorem.
+Theorem 8.1. Suppose that S is a semigroup of Rn which subtractively spans
+Rn. Assume that f : S → R satisﬁes (9) for every x, y ∈ S. If there exists a
+hypercube I ⊂ S on which eif is measurable, then there exist c ∈ Rn such that
+f(x)= c · x for each x ∈ S.
+9. Pexider’s equation
+This is a functional equation generalizing the Cauchy functional equation and
+involving three unknown functions:
+f(x + y)= g(x)+ h(y) (10)
+where (x, y) belongs to R2n or a subset ofR2n and f,g,a n dh are all real-valued
+functions. See [1, pp. 141–142], [3, pp. 42–43], [68, pp. 355–363], [86] for more
+details and additional references.
+The next theorem extends well-known results regarding the solvability of
+(10) (see, e.g., [1, Corollary, p. 142], [68, Theorem 13.3.9, p. 363]).
+Theorem 9.1. Let S ⊆ Rn be a semigroup satisfying 0 ∈ S. Assume that
+f : S → R, g : S → R, h : S → R satisfy (10) for all (x, y) ∈ S2. Suppose that
+S subtractively spans Rn and it contains a hypercube I on which a complex
+exponent of one of the given functions is measurable. Then there exist c ∈ Rn
+and constants a, b ∈ R such that f(x)= c · x + a + b, g(x)= c · x + a,a n d
+h(x)= c · x + b for all x ∈ S.
+
+D. Reem AEM
+Proof. Let a := g(0), b := h(0) and let p : S → R be deﬁned by p(x): =
+f(x) − a − b for all x ∈ S. An immediate veriﬁcation shows that f(x)=
+p(x)+ a + b, g(x)= p(x)+ a, h(x)= p(x)+ b for all x ∈ S and that p is
+additive. Since a complex exponent of one of the functionsf, g,o r h is assumed
+to be measurable on a certain hypercube, the above expressions imply that
+e
+ip is measurable on this hypercube. Since a semigroup which subtractively
+spans a commutative group actually strongly subtractively spans it (this is an
+immediate consequence of Deﬁnition 6.1) and since S + S ⊆ S, Theorem 6.3
+(with A := S) implies that there exists c ∈ Rn such that p(x)= c · x for each
+x ∈ S. The assertion follows after easily checking that the obtained triplet
+(f,g,h ) does solve (10). □
+10. Stability
+Consider the following approximate version of (1):
+|f(x + y) − f(x) − f(y)|≤ ϵ (11)
+for all x, y ∈ Rn where f is a real-valued function. Here ϵis a given positive
+number. A function f : Rn → R satisfying (11) is called an approximate-
+ly additive function or an ϵ-additive function. Inequality (11) is a perturbed
+version of (1) and one may be interested in knowing whether any ϵ-additive
+function is a small perturbation of a pure additive function. This issue, which
+was raised by Ulam in 1940 [52, p. 222], [102, p. 64] (and traces of it can be
+found in the 1925 book of P´ olya and Szeg¨o[ 88, Problem 99, p. 17]), is, in
+some sense, related to the question of the stability of solutions to diﬀerential
+equations. Anyhow, it was proved by Hyers [52] that the answer to the above
+question is positive: there exists a unique function g : Rn → R satisfying (1)
+and |f(x) − g(x)|≤ ϵfor all x ∈ Rn. The additive function g satisﬁes
+g(x) = lim
+m→∞
+f(mx)
+m (12)
+for allx ∈ Rn (a proof can be found in [68, p. 484]; the more common expression
+is g(x) = limm→∞ f(2mx)/2m). As a matter of fact, Hyers proved his theorem
+for functions acting between Banach spaces. As is well-known, and follows e.g.,
+from the proof of [68, Theorem 17.1.1, pp. 483–484] (which is a minor variation
+of Hyers’ proof), the above holds whenever f : S → X satisﬁes (11) for all
+x, y∈ S where X is a Banach space and S is a semigroup.
+The issue of stability of functional equations (and in particular, of the
+Cauchy functional equation) and various problems related to it have become
+quite popular during the last decades. This is somewhat illustrated in the
+following very short (and semi random) list of related works: [ 8–11,17,22,
+26,41,43,44,72,75,76,78,79,84,89,101]. A few reviews related to the issue of
+stability are [38,53,54,100]. Here we will concentrate only on extending [ 68,
+
+Remarks on the Cauchy functional equation
+Theorem 17.1.2, p. 485], saying that under familiar regularity conditions (e.g.,
+f is measurable or bounded above on a set of positive measure) the associated
+additive function g must be continuous. In a sense, this result is related to the
+stability notion involving integrability conditions mentioned in [5,34] because
+of the measurability condition which is involved. However, the results and
+proofs mentioned there (in particular, the stability condition onf) are diﬀerent
+from the one given below and also the setting is diﬀerent (the functions are
+from the positive real line to itself).
+Theorem 10.1. Let S ⊆ R
+n be a semigroup which subtractively spans Rn and
+contains a hypercube I.I f f : S → R satisﬁes (11) for all x, y ∈ S and if
+there exists an inﬁnite sequence (mk)∞
+k=1 of natural numbers such that each of
+the functions hk : S → C deﬁned by hk(x): = eif (mkx)/mk for every x ∈ S is
+measurable on I, then there exists c ∈ Rn such that |f(x) − c · x|≤ ϵ for all
+x ∈ S.
+Proof. As mentioned near ( 12), there exists an additive function g : S →
+R satisfying |f(x) − g(x)|≤ ϵ for all x ∈ S.F r o m(12)w eh a v eg(x)=
+limk→∞ f(mkx)/mk for all k ∈ N and x ∈ S.O fc o u r s e ,f(mx) is well-deﬁned
+for all x ∈ S and m ∈ N because S + S ⊆ S. By the continuity of the
+exponential function we have
+h(x): =e x p (ig(x)) = lim
+k→∞
+exp(if(mkx)/mk) = lim
+k→∞
+hk(x)
+for all x ∈ S. Thus the restriction of h to I is a pointwise limit of measur-
+able functions and hence measurable [92, p. 15]. Since g satisﬁes (1) for every
+x, y ∈ S and since a semigroup which subtractively spans a commutative
+group actually strongly subtractively spans it (as follows from Deﬁnition6.1),
+we conclude from Theorem 6.3 (with A := S and g instead of f) the existence
+of c ∈ Rn such that g(x)= c · x for all x ∈ S and the assertion follows. □
+Remark 10.2. If f is locally measurable, thenx ↦→ eif (mx)/m is locally measur-
+able for all m ∈ N and hence the condition on the functions hk from Theorem
+10.1 is satisﬁed and therefore g is measurable. On the other hand, if we only
+know that eif is measurable, then it is not necessarily true that g is measur-
+able. Indeed, consider as in Remark 2.2 the function f(x): =2 π[g(x)], x ∈ R
+where g is an arbitrary nonlinear solution of (1). Then eif is even continuous
+since it equals the constant function 1. Since |t − [t]|≤ 1 for all t ∈ R we
+have |f(x) − (2π)g(x)|≤ 2π for each x ∈ R. This inequality, the triangle in-
+equality, and the additivity of g, imply that f satisﬁes (11) for every x, y∈ R
+with ϵ:= 6π. Since 2πg satisﬁes (1) for every x, y ∈ R,H y e r s ’t h e o r e mi m -
+plies that this is the unique additive function which ϵ-approximates f and
+a l s ot h a t2πg(x) = lim m→∞ f(mx)/m for all x ∈ R (this limit can also be
+computed directly). But g is non-measurable. We can actually say more: al-
+though eif is measurable, Theorem10.1 implies that among the inﬁnitely many
+
+D. Reem AEM
+functions hm(x): = eif (mx)/m, x ∈ Rn, m ∈ N, only ﬁnitely many of them can
+be measurable.
+11. Concluding remarks
+We conclude this paper with the following remarks.
+Remark 11.1. Systems of equations: Theorem 2.1 and other results regarding
+variations of the Cauchy equation (1) can be generalized to systems of equa-
+tions. For instance, given somef : Rn → Rm satisfying (1) for all x, y∈ Rn,i f
+f =( f1,...,f m)a n deifk is (locally) measurable for eachk ∈{ 1,...,m }, then
+there exists an m × n matrix C having real entries such that f(x)= Cx for
+all x ∈ Rn. This is a simple consequence of Theorem2.1, because fk : Rn → R
+satisﬁes (1) for every x, y∈ Rn and each k.
+Remark 11.2. Inﬁnite dimensional spaces: It is interesting whether it is pos-
+sible to generalize the results of this paper to inﬁnite dimensional spaces on
+which a measure can be deﬁned, e.g., the ones described in [27], [46, pp. 154–
+160], [48, pp. 157–166], [104].
+Remark 11.3. An abstract regularity condition: An examination of the proof of
+Theorem 2.1 using the initial value approach presented in Sect.3 suggests that
+the regularity condition can be further generalized by replacing the measure
+theoretic aspect in it by a more abstract one. In what follows, we say that a
+triplet (A, B, F) has the periodic integral property if the following conditions
+hold:
+(i) A is a set of real functions deﬁned on R
+n;
+(ii) B is a set of functions from Rn to C and B contains {eig : g ∈ A};
+(iii) F : B → C is a functional;
+(iv) For all β ∈ C satisfying |β| = 1 and for all h ∈ B,w eh a v eβh ∈ B and
+F(βh)= βF (h);
+(v) The functions x ↦→ c · x are in A for all c ∈ Rn;
+(vi) The set A is closed under addition and under multiplication by positive
+rationals;
+(vii) There exists a basis {u1,...,u n} of Rn such that for allg ∈ A satisfying
+the relation g(x + uk)= g(x) for all x ∈ Rn and k ∈{ 1,...,n },t h e
+function gy deﬁned by gy(x): = g(x + y)f o re a c hx ∈ Rn is in A for
+each y ∈ Rn and we have F(eigy )= F(eig);
+(viii) For each g ∈ A there exists some rational α> 0 such that F(eiαg) ̸=0 .
+As follows from Sect. 3, an example of such a triplet ( A, B, F)i s A := {f :
+Rn → R : eif is measurable}, B := {eig : g ∈ A}, F(v): =
+∫
+I v(x)dx for all
+v ∈ A, where I ⊂ Rn is an arbitrary hypercube which is spanned by the basis
+{u1,...,u n}.
+
+Remarks on the Cauchy functional equation
+Suppose now that we are given such a triplet ( A, B, F) satisfying the pe-
+riodic integral property. We claim that in this case, if f ∈ A and if f satisﬁes
+(1) for every x, y∈ Rn, then there exists c ∈ Rn such that f(x)= c·x for each
+x ∈ Rn. Indeed, the proof is almost word for word the proof given in Sect. 3,
+where there are two main diﬀerences. First, in Lemma 3.2 we need to follow
+only the ﬁrst two paragraphs. Second, after applying the function t ↦→ eiαt,
+t ∈ R on (5a) (where α is the positive rational number from Property (vii-
+i) above) we apply the functional F on both sides of the resulting equation
+eiαg(x+y) = eiαg(x)eiαg(y) and use Property (vii) above instead of applying the
+integral operator G(v): =
+∫
+I0
+v(x)dx on this equation (where I0 is a hyper-
+parallelepiped spanned by the basis {u1,...,u n} and deﬁned in the proof of
+Lemma 3.2, near (3), and v is an arbitrary function which is integrable over
+I0) and using Lemma 3.1, as done there.
+It is very interesting to ﬁnd a triplet ( A, B, F) satisfying the periodic in-
+tegral property so that A ̸= {f : Rn → R : eif is measurable} and F is
+not an integral operator (that is, F does not coincide with v ↦→
+∫
+I0
+v(x)dx
+or a minor modiﬁcation of this operator) or to show that this is impossi-
+ble. It is of considerable interest to ﬁnd at least one triplet ( A, B, F) satis-
+fying the periodic integral property in an inﬁnite dimensional setting or to
+show that no such triplet can exist. We may also try to replace F by a fam-
+ily of functions F
+j : B → C. Anyway, because there are nonlinear solution-
+st o( 1), these solutions cannot belong to A. Thus no matter what A and
+F are, A cannot be the set of all real functions. A corresponding modiﬁca-
+tion of is written in the previous lines and paragraphs holds for the topo-
+logical torus. Finally, it will be valuable to combine the above mentioned
+abstract regularity condition with some existing theories of regularity con-
+ditions of functional equations, such as the ones surveyed and developed in
+[56,57].
+Acknowledgements
+I would like to use this opportunity to thank several people for either helpful
+remarks and/or for reading the paper and/or for sending me copies of some pa-
+pers, especially to Orr Shalit, Eytan Paldi, Tadeusz Figiel, Roman Ger, Maciej
+Sablik, Zoltan Boros, and Jolanta Olko. I also thank the referee for valuable
+remarks. Parts of this work were done in various years when I was associated
+with various institutes: The Technion—Israel Institute of Technology, Haifa,
+Israel (2010, 2016), IMPA—The National Institute of Pure and Applied Math-
+ematics, Rio de Janeiro, Brazil (2013), ICMC—Institute of Mathematical and
+Computer Sciences, University of S˜ao Paulo, S˜ao Carlos, Brazil (2014–2015),
+and it is an opportunity for me to thank the Gurwin Foundation, a special
+
+D. Reem AEM
+postdoc fellowship from IMPA (“P´os-doutorado de Excelˆencia”), and FAPE-
+SP.
+Appendix
+Proof of Lemma 3.1. The proof is not conceptually diﬃcult but it is somewhat
+technical. The main ideas behind it are illustrated in Fig.1 below. For the sake
+of convenience, the proof is divided into steps. In what followsy ∈ Rn is ﬁxed.
+Step 0 It is suﬃcient to assume that I is right semi-open because the (right)
+facets of I (i.e., the sets Ij := {u0 +uj +∑
+k∈{1,...,n}\{j} tkuk : tk ∈ [0,1] ∀k ∈
+{1,...,n }\{j}} where j ∈{ 1,...,n }) are of measure 0 and hence adding them
+to or removing them from I contributes nothing to the considered integrals.
+Moreover, it suﬃces to assume that u0 = 0, because if we know that the
+assertion holds for u0 = 0 (equivalently, with the integration done overI(0) :=
+{∑ n
+k=1 tkuk :( tk)n
+k=1 ∈ [0,1)n}) and arbitrary y, then a few applications
+of this assertion (below: ﬁrst with y + u0 and second with u0, both instead
+of y) together with a few applications of the change of variables formula for
+translations, imply the desired conclusion:
+∫
+I
+hy(x)dx =
+∫
+I
+h(x + y)dx =
+∫
+I(0)+u0
+h(x + y)dx =
+∫
+I(0)
+h(w + u0 + y)dw
+=
+∫
+I(0)
+hu0+y(w)dw =
+∫
+I(0)
+h(w)dw =
+∫
+I(0)
+hu0 (w)dw
+=
+∫
+I(0)
+h(w + u0)dw =
+∫
+I(0)+u0
+h(x)dx =
+∫
+I
+h(x)dx.
+Step 1 Since U is a basis, we have y = ∑ n
+k=1 ykuk where yk ∈ R for each k ∈
+{1,...,n } are uniquely determined. Givenz ∈ Iy := I+y,w eh a v ez = x+y for
+some x ∈ I. We can writex = ∑ n
+k=1 xkuk and z = ∑ n
+k=1 zkuk where (because
+u0 = 0 by our assumption) xk ∈ [0,1] and zk ∈ R are uniquely determined for
+all k ∈{ 1,...,n }. Suppose ﬁrst that yk ∈ [0,1) for each k ∈{ 1,...,n }.T h e
+general case is a simple consequence of this special case (Step 9 below).
+Step 2 Since zk = xk + yk, it follows that zk ∈ [0,2) and hence either
+zk ∈ [0,1) or zk ∈ [1,2) for all k ∈{ 1,...,n }. Consider the greatest inte-
+ger function [ ·]: R → Z which assigns to each t ∈ R the greatest integer
+[t] not exceeding t. In particular, [ t] = 0 when t ∈ [0,1) and [ t] = 1 when
+t ∈ [1,2). Deﬁne φ : Iy →{ 0,1}n by φ(z): =( [ zk])n
+k=1 for every z ∈ Iy,
+and here we used the coordinates of z with respect to the basis U.F o re a c h
+s ∈{ 0,1}n let Rs := φ−1(s). Since φ is a measurable function, Rs is mea-
+surable for every s ∈{ 0,1}n. In fact, each Rs is a right semi-open hyper-
+parallelepiped, possibly empty (if yk = 0 for some k ∈{ 1,...,n }, then Rs = ∅
+for all s ∈{ 0,1}n whose k-th component is 1). For instance, if n = 2, then
+
+Remarks on the Cauchy functional equation
+I
+I
+R(0,0)=R(0,0)
+R(1,1) R(0,1)
+R(1,0)
+R(1,1)
+R(1,0)' 
+' ' 
+' 
+u1 axis 
+u2 axis 
+y
+R(0,1)
+Figure 1. A schematic description of the Proof of Lemma
+3.1 for n = 2. Both Iy and I are decomposed into union-
+s of disjoint sub-parallelepipeds: Iy = ∪s∈{0,1}n Rs and I =
+∪s∈{0,1}n R′
+s.T h eU-periodicity ofh and the change of variable
+formula for translations imply that
+∫
+Rs
+h(z)dz =
+∫
+R′
+s
+h(x)dx
+for all s ∈{ 0,1}n. Hence (using the additivity of the integral)∫
+I hy(x)dx =
+∫
+Iy
+h(z)dz =
+∫
+I h(x)dx
+R(0,0) = {z1u1 + z2u2 : z1 ∈ [y1,1),z 2 ∈ [y2,1)}, R(0,1) = {z1u1 + z2u2 : z1 ∈
+[y1,1),z 2 ∈ [1,1+ y2)}, R(1,0) = {z1u1 + z2u2 : z1 ∈ [1,1+ y1),z 2 ∈ [y2,1)},
+R(1,1) = {z1u1 + z2u2 : z1 ∈ [1,1+ y1),z 2 ∈ [1,1+ y2)}. See Fig. 1.
+Step 3 The above construction implies thatIy = ∪s∈{0,1}n Rs and Rs ∩Rp = ∅
+whenever s ̸= p, s, p ∈{ 0,1}n. Now we associate with each Rs a certain
+translated copy of it which we denote byR′
+s. The correspondence is as follows:
+given s ∈{ 0,1}n,l e tR′
+s := Rs − s · U where s · U := ∑ n
+k=1 skuk ∈ Rn.I nt h e
+next steps we will see that the sets R′
+s form a disjoint decomposition of I.
+Step 4 We ﬁrst show that R′
+s is contained in I for each s ∈{ 0,1}n. Indeed,
+given x ∈ R′
+s we have x = z − s · U for some z ∈ Rs. By the deﬁnition of
+Rs we have [zk]= sk for all k ∈{ 1,...,n }. Fix an index k ∈{ 1,...,n }.I f
+sk = 0, then according to the deﬁnition of [·]w eh a v ezk ∈ [0,1). By comparing
+coordinates with respect to the basis U we see that xk = zk − sk = zk ∈ [0,1).
+If sk = 1, then according to the deﬁnition of [·]w eh a v ezk ∈ [1,2). Thus again
+xk = zk − sk ∈ [0,1). Because k was arbitrary we conclude that indeed x ∈ I.
+Step 5 Here we show that R′
+s ∩ R′
+p = ∅ whenever s, p∈{ 0,1}n, s ̸= p. Indeed,
+suppose for a contradiction that there existsx ∈ R′
+s∩R′
+p for two diﬀerent points
+p and s in {0,1}n. Since s ̸= p there exists an index k ∈{ 1,...,n } such that
+sk ̸= pk. Because x ∈ R′
+s we havex = z−s·U for some z ∈ Rs. Because x ∈ R′
+p
+we have x =˜z − p · U for some ˜z ∈ Rp. In particular zk − sk = xk =˜zk − pk.
+By the deﬁnition of Rs and Rp we have [zk]= sk and [˜zk]= pk. Suppose ﬁrst
+that sk = 0. Then xk = zk −0. In addition, because z ∈ Rs ⊆ Iy there is v ∈ I
+
+D. Reem AEM
+such that z = v +y. Since v ∈ I, we can writev = ∑ n
+j=1 vjuj where vj ∈ [0,1)
+for all j ∈{ 1...,n }. Hence vk ≥ 0a n d
+xk = zk = vk + yk ≥ yk. (13)
+Now, since pk ̸= sk we have pk = 1. This and the fact that ˜z ∈ Rp imply,
+according to the deﬁnition of [ ·], that ˜zk ∈ [1,2). In addition, because ˜z ∈
+Rp ⊆ Iy there is ˜v ∈ I such that ˜z =˜v + y. Since ˜v ∈ I, we can write
+˜v = ∑ n
+j=1 ˜vjuj where ˜vj ∈ [0,1) for each j ∈{ 1,...,n }.T h u s˜vk < 1a n d
+˜zk < 1+ yk. Hence xk =˜zk − pk < 1+ yk − 1= yk. This is a contradiction to
+(13). The case sk = 1, namely pk = 0, is treated similarly and yields a similar
+contradiction. We conclude that R′
+s ∩ R′
+p = ∅, as claimed.
+Step 6 Here we show that ∪s∈{0,1}n R′
+s = I. Indeed, ∪s∈{0,1}n R′
+s ⊆ I by Step
+4. On the other hand, let x ∈ I be arbitrary. Then xk ∈ [0,1) for all k ∈
+{1,...,n }. Deﬁne s = s(x) ∈{ 0,1}n as follows: given k ∈{ 1,...,n },i f xk ∈
+[0,yk), then sk := 1. If xk ∈ [yk,1), then sk := 0. We claim thatx ∈ R′
+s. Since
+R′
+s = Rs −s·U it suﬃces to prove thatx+s·U ∈ Rs. To see this we recall that
+by the deﬁnition of Rs and of [·] (Step 2) we need to show that [xk + sk]= sk
+for each k ∈{ 1,...,n }. Indeed, given k ∈{ 1,...,n },i f xk ∈ [0,yk), then
+sk = 1 and hence 1≤ xk + sk <y k +1 < 2, so the deﬁnition of [·] implies that
+[xk + sk]=1= sk.I f xk ∈ [yk,1), then sk = 0. Hence xk + sk ∈ [yk,1) ⊆ [0,1)
+and therefore [xk + sk]=0= sk again.
+Step 7 A useful observation: h(z)= h(z − s · U) for all z ∈ Rn. Indeed, this
+is just an immediate consequence of the periodicity of h with respect to the
+basis U.
+Step 8 Here we show that the desired integrals are equal when yk ∈ [0,1)
+for each k ∈{ 1,...,n }. First we observe that since h is deﬁned on Rn and
+integrable on I, the function 1 Ih is integrable on Rn. Hence the change of
+variables formula for translations [ 58, p. 171] (applied to Re( h) and Im( h)
+and hence to h =R e (h)+ iIm(h)) implies that given w ∈ Rn the function
+x ↦→ 1I(x − w)h(x − w), x ∈ Rn, is integrable on Rn.L e tw = ∑ n
+k=1 mkuk
+where mk is an integer for all k ∈{ 1...,n }. The periodicity of h with respect
+to U implies that h(z − w)= h(z) for all z ∈ Rn. Hence by the change of
+variables formula for translations∫
+I
+h(x)dx =
+∫
+Rn
+1I(x)h(x)dx =
+∫
+Rn
+1I(z − w)h(z − w)dz
+=
+∫
+Iw
+h(z − w)dz =
+∫
+Iw
+h(z)dz.
+Therefore h is integrable (in particular, measurable) over any translated copy
+of I where the translation vector is a linear combination of the elements in
+U with integer coeﬃcients. Since Rn can be represented as a countable union
+of translated copies of I it follows that h is measurable on Rn and (because
+
+Remarks on the Cauchy functional equation
+of the additivity of the integral) integrable on any measurable subset of Rn
+contained in a ﬁnite union of translated copies of I. Because Iy is a measur-
+able set contained in the union ⋃
+s∈{0,1}n (I + s · U)o f2 n translated copies
+of I, it follows that h is integrable on Iy. Now, by combining this with the
+previous steps, with the additivity of the integral, with the periodicity of h
+with respect to U, and with the change of variables formula for translations,
+we have∫
+I
+hy(x)dx =
+∫
+I
+h(x + y)dx =
+∫
+Iy
+h(z)dz =
+∫
+⋃
+s∈{0,1}n Rs
+h(z)dz
+=
+∑
+s∈{0,1}n
+∫
+Rs
+h(z)dz =
+∑
+s∈{0,1}n
+∫
+Rs
+h(z − s · U)dz
+=
+∑
+s∈{0,1}n
+∫
+Rs−s·U
+h(v)dv
+=
+∑
+s∈{0,1}n
+∫
+R′
+s
+h(v)dv =
+∫
+I
+h(v)dv =
+∫
+I
+h(x)dx.
+Step 9 Here we ﬁnish the proof by considering the case of an arbitraryy ∈ Rn.
+Using the greatest integer function we can writey = ∑ n
+k=1 ykuk = ∑ n
+k=1([yk]+
+ˆyk)uk, where ˆyk = yk − [yk] ∈ [0,1) for all k ∈{ 1,...,n }. Hence, by denoting
+ˆy := ∑ n
+k=1 ˆykuk and [y]: = ∑ n
+k=1[yk]uk and using the fact that h is periodic
+with respect to the basis U we have h(x + y)= h(x +ˆy +[ y]) = h(x +ˆy)
+for each x ∈ Rn.T h u shy = hˆy and hence, from Step 8 (with ˆy instead of
+y), we conclude that hy is integrable over I and
+∫
+I hy(x)dx =
+∫
+I hˆy(x)dx =∫
+I h(x)dx. □
+Proof of Lemma 4.1. Suppose ﬁrst that h is a characteristic function of some
+measurable subset S of Tn, namely h =1 S.G i v e nx ∈ Tn we have x + y ∈
+S if and only if x ∈ S − y := {s − y : s ∈ S} for each x ∈ Tn.T h u s
+hy(x)= h(x + y)=1 S(x + y)=1 S−y(x) for all x ∈ Tn. Therefore hy is
+measurable and
+∫
+Tn hy(x)dμ(x)=
+∫
+Tn 1S−y(x)dμ(x)= μ(S −y). This equality
+and the fact that the Haar measure μ is invariant under translations [23,p .
+285] imply that μ(S − y)= μ(S)=
+∫
+Tn 1S(x)dμ(x)=
+∫
+Tn h(x)dμ(x). Hence∫
+Tn hy(x)dμ(x)=
+∫
+Tn h(x)dμ(x).
+Suppose now that h is a simple real valued function, namely, there
+exists m ∈ N, mutually disjoint measurable subsets S1,...,S m of Tn,a n d
+real numbers β1,...,β m such that h = ∑ m
+k=1 βk1Sk . From the previous para-
+graph h(x + y)= ∑ m
+k=1 βk1Sk (x + y)= ∑ m
+k=1 βk1Sk−y(x) for all x, y ∈ Tn.
+Hence for every y ∈ Tn the function hy is a ﬁnite sum of measurable functions
+and therefore it is measurable. Moreover, the linearity of the integral and its
+translation invariance with respect to characteristic functions established in
+the previous paragraph imply the desired equality:
+
+D. Reem AEM
+∫
+Tn
+hy(x)dμ(x)=
+m∑
+k=1
+βk
+∫
+Tn
+1Sk (x + y)dμ(x)=
+m∑
+k=1
+βk
+∫
+Tn
+1Sk (x)dμ(x)
+=
+∫
+Tn
+( m∑
+k=1
+βk1Sk (x)
+)
+dμ(x)=
+∫
+Tn
+h(x)dμ(x).
+Now assume that h is an arbitrary nonnegative measurable function. The con-
+struction of the abstract Lebesgue integral (in particular, the construction of
+the Haar integral) [ 23, Chapter 2] shows that there exists an increasing se-
+quence (hk)∞
+k=1 of nonnegative simple functions which converges pointwise to
+h. Hence the sequence ( hk(x + y))∞
+k=1 of nonnegative numbers increases to
+h(x+y) for all x, y∈ Tn, i.e., for eachy ∈ Tn the function hy is the increasing
+limit of the sequence (hk,y)∞
+k=1 of nonnegative and measurable functions (here
+hk,y(x): =( hk)y(x)= hk(x + y) for all x, y ∈ Tn and all k ∈ N). Thus hy
+is measurable. These facts, together with the monotone convergence theorem
+and the translation invariance of the integral of simple functions established
+earlier, all imply that for each y ∈ Tn
+∫
+Tn
+h(x)dμ(x) = lim
+k→∞
+∫
+Tn
+hk(x)dμ(x) = lim
+k→∞
+∫
+Tn
+hk,y(x)dμ(x)
+=
+∫
+Tn
+hy(x)dμ(x).
+Finally, let h ∈ L1(Tn) be arbitrary. Then h =R e (h)+ iIm(h)=( R e (h)+ −
+Re(h)−)+ i(Im(h)+ − Im(h)−) where, as usual, g+ := max{0,g } and g− :=
+−min{0,g } for each functiong : Tn → R and Re(h)+,Re(h)−,Im(h)+,Im(h)−
+are all nonnegative and integrable over Tn. By what was established in the
+previous paragraph and the linearity of the integral we conclude that hy is
+measurable and
+∫
+Tn hy(x)dμ(x)=
+∫
+Tn h(x)dμ(x) for all y ∈ Tn. □
+An examination of the proof of Lemma 4.1 given above shows that it can
+be generalized almost word for word to any locally compact topological group
+(instead of Tn).
+References
+[1] Acz´el, J.: Lectures on Functional Equations and Their Applications. Academic Press
+Inc., New York (1966)
+[2] Acz´e l ,J . ,B a k e r ,J . A . ,D j o k o v i ´c, D.ˇZ., Kannappan, P., Rad´o, F.: Extensions of certain
+homomorphisms of subsemigroups to homomorphisms of groups. Aequationes Math.
+6, 263–271 (1971)
+[3] Acz´el, J., Dhombres, J.: Functional Equations in Several Variables. Cambridge Uni-
+versity Press, Cambridge (1989)
+[4] Acz´el, J., Erd¨os, P.: The non-existence of a Hamel-basis and the general solution of
+Cauchy’s functional equation for non-negative numbers. Publ. Math. Debr.12, 253–263
+(1965)
+
+Remarks on the Cauchy functional equation
+[5] Alexander, J.R., Blair, C.E., Rubel, L.A.: Approximate versions of Cauchy’s functional
+equation. Ill. J. Math. 39, 278–287 (1995)
+[6] Alexiewicz, A., Orlicz, W.: Remarque sur l’´equation fonctionelle f(x+y)= f(x)+f(y).
+Fund. Math. 33, 314–315 (1945)
+[7] Alsina, C., Garc´ıa Roig, J.-L.: On a conditional Cauchy equation on rhombuses. In:
+Rassias, J.M. (ed.) Functional Analysis, Approximation Theory and Numerical Anal-
+ysis, pp. 5–7. World Scientiﬁc Publishing, River Edge, NJ (1994)
+[8] Aoki, T.: On the stability of the linear transformation in Banach spaces. J. Math. Soc.
+Jpn. 2, 64–66 (1950)
+[9] Arriola, L.M., Beyer, W.A.: Stability of the Cauchy functional equation over p-adic
+ﬁelds. Real Anal. Exchange 31, 125–132 (2005/2006)
+[10] Badora, R.: Note on the superstability of the Cauchy functional equation. Publ. Math.
+Debr. 57, 421–424 (2000)
+[11] Badora, R., Ger, R., P´ales, Z.: Additive selections and the stability of the Cauchy
+functional equation. ANZIAM J. 44, 323–337 (2003)
+[12] Baker, J.A.: Regularity properties of functional equations. Aequationes Math. 6, 243–
+248 (1971)
+[13] Banach, S.: Sur l’´equation fonctionnelle f(x+y)= f(x)+f(y). Fund. Math.1, 123–124
+(1920)
+[14] Banach, S.: Th´eorie des op´erations lin´eaires. Monographie Mat. PWN, Warsaw (1932)
+[15] Blumberg, H.: On convex functions. Trans. Am. Math. Soc. 20, 40–44 (1919)
+[16] Boros, Z.: Personal communication (2015)
+[17] Bourgin, D.G.: Classes of transformations and bordering transformations. Bull. Am.
+Math. Soc. 57, 223–237 (1951)
+[18] Brzdek, J.: Continuity of measurable homomorphisms. Bull. Aust. Math. Soc.78, 171–
+176 (2008)
+[19] Cauchy, A.L.: Cours d‘analyse de l‘Ecole Polytechnique, I Partie: Analyse alg´ebrique.
+De l’Imprimerie Royale, Paris (1821)
+[20] Choczewski, B., Corovei, I., Rusu, C.: Cauchy’s equation on the graph of an involution.
+Math. Pannon. 5, 197–202 (1994)
+[21] Christensen, J.P.R.: Borel structures in groups and semigroups. Math. Scand.28, 124–
+128 (1971)
+[22] Chung, J.Y.: Stability of a conditional Cauchy equation. Aequationes Math. 83, 313–
+320 (2012)
+[23] Cohn, D.L.: Measure Theory. Birkh¨auser Advanced Text, 2nd edn. Birkh¨auser, New
+York, NY (2013)
+[24] Czerwik, S.: Functional Equations and Inequalities in Several Variables. World Scien-
+tiﬁc Publishing Co., Inc, River Edge, NJ (2002)
+[25] Dales, H.G.: Banach Algebras and Automatic Continuity. London Mathematical Soci-
+ety Monographs, vol. 24. New Series. The Clarendon Press, Oxford University Press,
+New York (2000)
+[26] Dales, H.G., Moslehian, M.S.: Stability of mappings on multi-normed spaces. Glasg.
+Math. J. 49, 321–332 (2007)
+[27] Dao-Xing, X.: Measure and Integration Theory on Inﬁnite-Dimensional Spaces: Ab-
+stract Harmonic Analysis. Academic Press, New York (1972)
+[28] Darboux, G.: Sur la composition des forces en statique. Bull. Sci. Math. 9, 281–288
+(1875)
+[29] Darboux, G.: Sur le th´eor`eme fondamental de la g´eom´etrie projective. Math. Ann. 17,
+55–61 (1880)
+[30] de Bruijn, N.: On almost additive functions. Colloq. Math. 15, 59–63 (1966)
+[31] Dhombres, J.: Some Aspects of Functional Equations. Chulalongkorn University De-
+partment of Mathematics, Bangkok. With a Thai preface by Wirun Bu nsambat´ ı,
+Lecture Notes (1979)
+
+D. Reem AEM
+[32] Dhombres, J.G., Ger, R.: Conditional Cauchy equations. Glas. Mat. Ser. III 13, 39–62
+(1978)
+[33] Eichhorn, W.: Functional equations in economics. In: Applied Mathematics and Com-
+putation, vol. 11. Addison-Wesley Publishing Co., Reading, MA (1978)
+[34] Elliott, P.D.T.A.: Cauchy’s functional equation in the mean. Adv. Math. 51, 253–257
+(1984)
+[35] Figiel, T.: O rownaniu funkcyjnymf(x+y)= f(x)+ f(y). Wiadomo´sci Matematyczne
+11, 15–18 (1969)
+[36] Fischer, P., Musz´ely, G.: On some new generalizations of the functional equation of
+Cauchy. Canad. Math. Bull. 10, 197–205 (1967)
+[37] Forti, G.L.: On some conditional Cauchy equations on thin sets. Boll. Un. Mat. Ital.
+B 2, 391–402 (1983)
+[38] Forti, G.L.: Hyers-Ulam stability of functional equations in several variables. Aequa-
+tiones Math. 50, 143–190 (1995)
+[39] Fr´echet, M.: Pri la funkcia ekvaciof(x+y)= f(x)+ f(y). Enseign. Math. 15, 390–393
+(1913)
+[40] Gajda, Z.: Christensen measurable solutions of generalized Cauchy functional equa-
+tions. Aequationes Math. 31, 147–158 (1986)
+[41] Gajda, Z.: On stability of the Cauchy equation on semigroups. Aequationes Math. 36,
+76–79 (1988)
+[42] Gauss, C.F.: Theoria motus corporum coelestium. Perthes-Besser, Hamburg (1809).
+(also in: Werke, Vol. VII, 240-44. Teubner, Leipzig, 1906 )
+[43] Ger, R.: Superstability is not natural. Rocznik Nauk.-Dydakt. WSP w Krakowie, Prace
+Mat. 159, 109–123 (1993)
+[44] Ger, R., Sikorska, J.: On the Cauchy equation on spheres. Ann. Math. Sil. 11, 89–99
+(1997)
+[45] Grosse-Erdmann, K.-G.: Regularity properties of functional equations and inequalities.
+Aequationes Math. 37, 233–251 (1989)
+[46] Halmos, P.R.: Measure Theory. Springer, New York (1974)
+[47] Hamel, G.: Eine Basis aller Zahlen und die unstetigen L¨ osungen der Funktionalgle-
+ichung f(x + y)= f(x)+ f(y). Math. Ann. 60, 459–462 (1905)
+[48] Henstock, R.: The General Theory of Integration. Oxford University Press, New York
+(1991)
+[49] Hewitt, E., Ross, K.A.: Abstract harmonic analysis. Vol. I: Structure of Topological
+Groups, Integration Theory, Group Representations. In: Die Grundlehren der mathe-
+matischen Wissenschaften, Bd. 115. Academic Press, New York (1963)
+[50] Hossz´u, M.: Egy alternativ f¨uggv´enyegyenletr¨ol. Mat. Lapok 14, 98–102 (1963)
+[51] Hossz´u, M.: ´ eszrev´etelek a relativit´ aselm´eleti id¨ ofogalom reichenbach-f´ ele
+´ertelmez´es´ehez. NME Magyarnyelv¨uK ¨ozlem´enyi Miskolc, pp. 223–233 (1964)
+[52] Hyers, D.H.: On the stability of the linear functional equation. Proc. Natl. Acad. Sci.
+USA (PNAS) 27, 222–224 (1941)
+[53] Hyers, D.H., Isac, G., Rassias, T.M.: Stability of functional equations in several vari-
+ables. Progress in Nonlinear Diﬀerential Equations and their Applications, vol. 34.
+Birkh¨auser Boston Inc., Boston, MA (1998)
+[54] Hyers, D.H., Rassias, T.M.: Approximate homomorphisms. Aequationes Math. 44(2–
+3), 125–153 (1992)
+[55] Itzkowitz, G.L.: Measurability and continuity for a functional equation on a topological
+group. Aequationes Math. 7, 194–198 (1971)
+[56] J´arai, A.: Regularity properties of functional equations in several variables. Advances
+in Mathematics, vol. 8. Springer, New York (2005)
+[57] J´arai, A., Sz´ekelyhidi, L.: Regularization and general methods in the theory of func-
+tional equations. Aequationes Math. 52, 10–29 (1996)
+[58] Jones, F.: Lebesgue Integration on Euclidean Space, revised edn. Jones and Bartlett
+Publishers, Sudbury, MA (2001)
+
+Remarks on the Cauchy functional equation
+[59] Jones, F.B.: Connected and disconnected plane sets and the functional equationf(x+
+y)= f(x)+ f(y). Bull. Am. Math. Soc. 48, 115–120 (1942)
+[60] Jurkat, W.B.: On Cauchy’s functional equation. Proc. Am. Math. Soc. 16, 683–686
+(1965)
+[61] Kac, M.: Une remarque sur les ´ equations fonctionnelles. Comment. Math. Helv. 9,
+170–171 (1937)
+[62] Kannappan, P.: Cauchy equations and some of their applications. In: Topics in Math-
+ematical Analysis. Series in pure mathematics, vol. 11, pp. 518–538. World Scientiﬁc
+Publishing, Teaneck, NJ (1989)
+[63] Kannappan, P.: Functional Equations and Inequalities with Applications. Springer
+Monographs in Mathematics. Springer, New York (2009)
+[64] Kestelman, H.: On the functional equation f(x + y)= f(x)+ f(y). Fund. Math. 34,
+144–147 (1947)
+[65] Kormes, M.: On the functional equation f(x+y)= f(x)+ f(y). Bull. Am. Math. Soc.
+32, 689–693 (1926)
+[66] Kuczma, M.: Cauchy’s functional equation on a restricted domain. Colloq. Math. 28,
+313–315 (1973)
+[67] Kuczma, M.: Functional equations on restricted domains. Aequationes Math.18, 1–34
+(1978)
+[68] Kuczma, M.: An Introduction to the Theory of Functional Equations and Inequalities:
+Cauchy’s Equation and Jensen’s Inequality, 2nd edn. Birkh¨auser, Basel (2009). (Edited
+and with a preface by A. Gil´ anyi)
+[69] Kurtz, D.S., Swartz, C.W.: Theories of Integration: The Integrals of Riemann,
+Lebesgue, Henstock-Kurzweil, and Mcshane. World Scientiﬁc, River Edge, NJ (2004)
+[70] Laohakosol, V., Pimsert, W.: A universal Cauchy functional equation over the positive
+reals. J. Math. Anal. Appl. 375, 777–789 (2011)
+[71] Legendre, A.M.: Elements de geometrie. Didot, Paris (1794)
+[72] Maligranda, L.: A result of Tosio Aoki about a generalization of Hyers-Ulam stability
+of additive functions - a question of priority. Aequationes Math. 75, 289–296 (2008)
+[73] Matkowski, J.: Cauchy functional equation on a restricted domain and commuting
+functions. In: Liedl, R., Reich, L., Targonski, G. (eds.) Iteration Theory and Its Func-
+tional Equations. Lecture Notes in Mathematics, vol. 1163, pp. 101–106. Springer,
+Berlin (1985)
+[74] Mehdi, M.R.: On convex functions. J. Lond. Math. Soc. 39, 321–326 (1964)
+[75] Mihet, D., Radu, V.: On the stability of the additive Cauchy functional equation in
+random normed spaces. J. Math. Anal. Appl. 343
+, 567–572 (2008)
+[76] Mirmostafaee, A.K., Moslehian, M.S.: Stability of additive mappings in non-
+archimedean fuzzy normed spaces. Fuzzy Sets Syst. 160, 1643–1652 (2009)
+[77] Monroe, I.: On the generalized Cauchy equation. Canad. J. Math.19, 1314–1318 (1967)
+[78] Moslehian, M.S., Rassias, T.M.: Stability of functional equations in non-Archimedean
+spaces. Appl. Anal. Discrete Math. 1, 325–334 (2007)
+[79] Najati, A., Rahimi, A.: A ﬁxed point approach to the stability of a generalized Cauchy
+functional equation. Banach J. Math. Anal. 2, 105–112 (2008)
+[80] Neeb, K.-H.: On a theorem of S. Banach. J. Lie Theory 8, 293–300 (1997)
+[81] Ostrowski, A.: ¨Uber die Funktionalalgleichung der Exponentialfunktion und verwandte
+Funktionalgleichungen. Jber. Deutsch. Math. Verein 38, 54–62 (1929)
+[82] Paneah, B.: On the overdeterminedness of some functional equations. Discret. Contin.
+Dyn. Syst. Ser. A (DCDS-A), 10, 497–505 (2004)
+[83] Paneah, B.: On the general theory of the Cauchy type functional equations with ap-
+plications in analysis. Aequationes Math. 74, 119–157 (2007)
+[84] Paneah, B.: A new approach to the stability of linear functional operators. Aequationes
+Math. 78, 45–61 (2009)
+[85] Pettis, B.J.: On continuity and openness of homomorphisms in topological groups.
+Ann. Math. 52, 293–308 (1950)
+
+D. Reem AEM
+[86] Pexider, J.V.: Notiz ¨uber Funcktionaltheoreme. Monatsh. Math. Phys. 14, 293–301
+(1903)
+[87] Pisot, C., Schoenberg, I.J.: Arithmetic problems concerning Cauchy’s functional equa-
+tion. Ill. J. Math. 8, 40–56 (1964)
+[88] P´olya, G., Szeg¨o, G.: Aufgaben und Lehrs¨atze aus der Analysis I. Springer, Berlin
+(1925). (English title: Problems and theorems in analysis I )
+[89] Rassias, T.M.: On the stability of the linear mapping in Banach spaces. Proc. Am.
+Math. Soc. 72, 297–300 (1978)
+[90] Reem, D.: Character analysis using Fourier series. Am. Math. Mon. 119, 245–246
+(2012). arXiv:1104.1201 [math.HO] (2011)
+[91] Rosendal, C.: Automatic continuity of group homomorphisms. Bull. Symb. Logic 15,
+184–214 (2009)
+[92] Rudin, W.: Real and Complex Analysis, 3rd edn. McGraw-Hill, New York (1987).
+(second printing)
+[93] Sablik, M.: Some remarks on Cauchy equation on a curve. Demonstr. Math. 23, 477–
+490 (1990)
+[94] Shalit, O. M.: Guided Dynamical Systems and Applications to Functional and Partial
+Diﬀerential Equations. Master’s thesis, The Technion—Israel Institute of Technology
+(2005). arXiv:math/0511638 [math.DS]
+[95] Shalit, O.M.: Conjugacy of P-conﬁgurations and nonlinear solutions to a certain con-
+ditional Cauchy equation. Banach J. Math. Anal. 3, 28–35 (2009)
+[96] Sierpi´nski, W.: Sur l’´equation fonctionnelle f(x + y)= f(x)+ f(y). Fund. Math. 1,
+116–122 (1920)
+[97] Sierpi´nski, W.: Sur les functions convexes measurable. Fund. Math.1, 125–129 (1920)
+[98] Skof, F.: A remark about solutions of functional equations on bounded restricted do-
+main. Atti Accad. Sci. Torino Cl. Sci. Fis. Mat. Natur. 138, 17–26 (2004)
+[99] Szab´o, G.: A conditional Cauchy equation on normed spaces. Publ. Math. Debr. 42,
+265–271 (1993)
+[100] Sz´ekelyhidi, L.: Ulam’s problem, Hyers’s solution—and to where they led. In: Rassias,
+T. (ed.) Functional Equations and Inequalities. Mathematics and Its Applications, vol.
+518, pp. 259–285. Kluwer Academic Publishers, Dordrecht (2000)
+[101] Tabor, J., Tabor, J.: Stability of the Cauchy equation almost everywhere. Aequationes
+Math. 75, 308–313 (2008)
+[102] Ulam, S. M.: A collection of mathematical problems. In: Interscience Tracts in Pure
+and Applied Mathematics, no. 8. Interscience Publishers, New York (1960)
+[103] Wilansky, A.: Additive functions. In: May, K. (ed.) Lectures on Calculus, pp. 97–124.
+Holden-Day, San Francisco (1967)
+[104] Yamasaki, Y.: Measures on Inﬁnite Dimensional Spaces. World Scientiﬁc, Singapore
+(1985)
+[105] Zdun, M.: On the uniqueness of solutions of the functional equation φ(x + f
+(x)) =
+φ(x)+ φ(f(x)). Aequationes Math. 8, 229–232 (1972)
+Daniel Reem
+Department of Mathematics
+The Technion - Israel Institute of Technology
+3200003 Haifa
+Israel
+e-mail: dream@tx.technion.ac.il
+Received: July 25, 2016
+Revised: December 14, 2016

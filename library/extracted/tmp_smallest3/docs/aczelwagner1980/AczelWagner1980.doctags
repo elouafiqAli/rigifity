@@ -1,0 +1,153 @@
+<doctag><page_header><loc_140><loc_30><loc_210><loc_40>SIAM J. A.G. DESC. METH. Vol. I, No. 3, September 1980</page_header>
+<page_header><loc_331><loc_31><loc_457><loc_41>© 1980 Society for Industrial and Applied Mathematics 0196-5212/80/0103-000? $01.00/0</page_header>
+<section_header_level_1><loc_156><loc_55><loc_440><loc_63>A CHARACTERIZATION OF WEIGHTED ARITHMETIC MEANS*</section_header_level_1>
+<text><loc_245><loc_68><loc_351><loc_75>J. ACZÉL? AND C. WAGNER?</text>
+<text><loc_140><loc_79><loc_456><loc_92>Abstract. We prove, among other things, that the set of weighted arithmetic means is identical with the set of functions f: R" -> R satisfying</text>
+<text><loc_154><loc_94><loc_274><loc_101>(i) min {x} = f(x1, x2, · · · , x) = max {x}</text>
+<text><loc_140><loc_103><loc_152><loc_109>(ii)</text>
+<text><loc_157><loc_103><loc_168><loc_109>for</text>
+<text><loc_173><loc_103><loc_182><loc_109>k =</text>
+<text><loc_186><loc_103><loc_196><loc_109>2, 3:</text>
+<text><loc_200><loc_103><loc_208><loc_109>x1</text>
+<text><loc_212><loc_103><loc_220><loc_109>=</text>
+<text><loc_223><loc_103><loc_231><loc_109>x</text>
+<text><loc_235><loc_103><loc_245><loc_109>= s</text>
+<text><loc_248><loc_103><loc_252><loc_109>(</text>
+<text><loc_255><loc_103><loc_264><loc_109>j =</text>
+<text><loc_267><loc_103><loc_273><loc_109>1,</text>
+<text><loc_277><loc_103><loc_284><loc_109>2,</text>
+<text><loc_287><loc_103><loc_293><loc_109>·</text>
+<text><loc_297><loc_103><loc_304><loc_109>·</text>
+<text><loc_307><loc_103><loc_313><loc_109>·</text>
+<text><loc_316><loc_103><loc_323><loc_109>·</text>
+<text><loc_327><loc_103><loc_334><loc_109>·</text>
+<text><loc_337><loc_103><loc_343><loc_109>·</text>
+<text><loc_347><loc_103><loc_353><loc_109>·</text>
+<text><loc_357><loc_103><loc_364><loc_109>·</text>
+<text><loc_367><loc_103><loc_373><loc_109>·</text>
+<text><loc_376><loc_103><loc_384><loc_109>·</text>
+<text><loc_387><loc_103><loc_393><loc_109>·</text>
+<text><loc_396><loc_103><loc_403><loc_109>·</text>
+<text><loc_407><loc_103><loc_413><loc_109>·</text>
+<text><loc_416><loc_103><loc_423><loc_109>·</text>
+<text><loc_427><loc_103><loc_433><loc_109>·</text>
+<text><loc_436><loc_103><loc_443><loc_109>·</text>
+<text><loc_446><loc_103><loc_452><loc_109>·</text>
+<text><loc_155><loc_121><loc_352><loc_130>We call a function f: R" -> R an averaging function if</text>
+<text><loc_155><loc_134><loc_162><loc_140>(1)</text>
+<text><loc_229><loc_134><loc_366><loc_141>min {x} = f(x1, x2, · · · , x) = max {x} ,</text>
+<text><loc_138><loc_145><loc_456><loc_185>and a weighted arithmetic mean if f(x1, x2, · · · , x) = w1x1 + w2x2 + · · · + w.xn, where 0 = w, = 1 and w1 + w2 + · · · + w.n = 1. It is easy to check that among the familiar averaging functions (weighted arithmetic, geometric, and harmonic means, weighted medians) weighted arithmetic means uniquely enjoy, for all k = 1, what we shall call the k-allocation property:</text>
+<text><loc_137><loc_185><loc_456><loc_202>For all s 2 R, if (x1) is a k x n matrix with x1 + x2 + · · · + xk = s for 1 = j = n, then f(x11, x12, · · · , x1n) + f(x21, x22, · · · , x2n) + · · · + f(x1k, x2k, · · · , xn) = s.</text>
+<text><loc_137><loc_202><loc_456><loc_225>We prove in this note that the k-allocation property assumed only for k = 2 and k = 3, characterizes weighted arithmetic means in the set of all averaging functions. In fact, we obtain the following more general result:</text>
+<text><loc_137><loc_225><loc_456><loc_262>THEOREM. The function f: R" -> R satisfies the k-allocation property for k = 2 and k = 3 and is continuous at a point or bounded from one side on an (n-dimensional) interval or just on a set of positive measure if and only if there exist real numbers w1, w2, · · · , wn with w1 + w2 + · · · + wn = 1 such that f(x1, x2, · · · , xn) = w1x1 + w2x2 + · · · + w.xn.</text>
+<text><loc_136><loc_262><loc_453><loc_277>Proof. To postulate the k-allocation property for k = 2, 3 is equivalent to assuming that, for all s 2 R,</text>
+<text><loc_136><loc_281><loc_142><loc_288>(2)</text>
+<text><loc_137><loc_292><loc_152><loc_299>and</text>
+<text><loc_136><loc_303><loc_152><loc_310>(3)</text>
+<text><loc_155><loc_281><loc_165><loc_288>f(x1,</text>
+<text><loc_168><loc_281><loc_175><loc_288>x2,</text>
+<text><loc_178><loc_281><loc_183><loc_288>·</text>
+<text><loc_186><loc_281><loc_193><loc_288>·</text>
+<text><loc_196><loc_281><loc_204><loc_288>xn</text>
+<text><loc_207><loc_281><loc_213><loc_288>+</text>
+<text><loc_216><loc_281><loc_223><loc_288>f(</text>
+<text><loc_226><loc_281><loc_233><loc_288>s</text>
+<text><loc_236><loc_281><loc_243><loc_288>x1,</text>
+<text><loc_246><loc_281><loc_253><loc_288>s</text>
+<text><loc_256><loc_281><loc_263><loc_288>x2,</text>
+<text><loc_266><loc_281><loc_273><loc_288>·</text>
+<text><loc_276><loc_281><loc_283><loc_288>·</text>
+<text><loc_286><loc_281><loc_293><loc_288>s</text>
+<text><loc_296><loc_281><loc_303><loc_288>x</text>
+<text><loc_306><loc_281><loc_313><loc_288>n</text>
+<text><loc_316><loc_281><loc_323><loc_288>= s</text>
+<text><loc_136><loc_292><loc_152><loc_299>and</text>
+<text><loc_136><loc_303><loc_152><loc_310>(3)</text>
+<text><loc_155><loc_303><loc_163><loc_310>f(x1,</text>
+<text><loc_166><loc_303><loc_173><loc_310>x2,</text>
+<text><loc_176><loc_303><loc_183><loc_310>·</text>
+<text><loc_186><loc_303><loc_193><loc_310>·</text>
+<text><loc_196><loc_303><loc_203><loc_310>x</text>
+<text><loc_206><loc_303><loc_213><loc_310>n</text>
+<text><loc_216><loc_303><loc_223><loc_310>+</text>
+<text><loc_226><loc_303><loc_233><loc_310>f(</text>
+<text><loc_236><loc_303><loc_243><loc_310>y</text>
+<text><loc_246><loc_303><loc_253><loc_310>1,</text>
+<text><loc_256><loc_303><loc_263><loc_310>y2,</text>
+<text><loc_266><loc_303><loc_273><loc_310>·</text>
+<text><loc_276><loc_303><loc_283><loc_310>·</text>
+<text><loc_286><loc_303><loc_293><loc_310>y</text>
+<text><loc_296><loc_303><loc_303><loc_310>n</text>
+<text><loc_306><loc_303><loc_313><loc_310>+</text>
+<text><loc_316><loc_303><loc_323><loc_310>f(</text>
+<text><loc_326><loc_303><loc_333><loc_310>s</text>
+<text><loc_336><loc_303><loc_343><loc_310>x</text>
+<text><loc_346><loc_303><loc_353><loc_310>1</text>
+<text><loc_356><loc_303><loc_363><loc_310>y</text>
+<text><loc_366><loc_303><loc_373><loc_310>1,</text>
+<text><loc_376><loc_303><loc_383><loc_310>s</text>
+<text><loc_386><loc_303><loc_393><loc_310>x</text>
+<text><loc_396><loc_303><loc_403><loc_310>y</text>
+<text><loc_406><loc_303><loc_413><loc_310>n</text>
+<text><loc_416><loc_303><loc_423><loc_310>= s.</text>
+<text><loc_136><loc_315><loc_254><loc_323>Setting s = x1 in (2), and writing</text>
+<text><loc_136><loc_327><loc_142><loc_334>(4)</text>
+<text><loc_154><loc_327><loc_162><loc_334>f(0,</text>
+<text><loc_166><loc_327><loc_173><loc_334>u</text>
+<text><loc_176><loc_327><loc_183><loc_334>2,</text>
+<text><loc_186><loc_327><loc_193><loc_334>·</text>
+<text><loc_196><loc_327><loc_203><loc_334>·</text>
+<text><loc_206><loc_327><loc_213><loc_334>u</text>
+<text><loc_216><loc_327><loc_223><loc_334>n</text>
+<text><loc_226><loc_327><loc_233><loc_334>=</text>
+<text><loc_236><loc_327><loc_243><loc_334>g</text>
+<text><loc_246><loc_327><loc_253><loc_334>u</text>
+<text><loc_256><loc_327><loc_263><loc_334>2,</text>
+<text><loc_266><loc_327><loc_273><loc_334>·</text>
+<text><loc_276><loc_327><loc_283><loc_334>·</text>
+<text><loc_286><loc_327><loc_293><loc_334>u</text>
+<text><loc_296><loc_327><loc_303><loc_334>n</text>
+<text><loc_306><loc_327><loc_313><loc_334>=</text>
+<text><loc_316><loc_327><loc_323><loc_334>g</text>
+<text><loc_326><loc_327><loc_333><loc_334>u</text>
+<text><loc_336><loc_327><loc_343><loc_334>2,</text>
+<text><loc_346><loc_327><loc_353><loc_334>·</text>
+<text><loc_356><loc_327><loc_363><loc_334>·</text>
+<text><loc_366><loc_327><loc_373><loc_334>u</text>
+<text><loc_376><loc_327><loc_383><loc_334>n</text>
+<text><loc_386><loc_327><loc_393><loc_334>=</text>
+<text><loc_396><loc_327><loc_403><loc_334>g</text>
+<text><loc_406><loc_327><loc_413><loc_334>u</text>
+<text><loc_416><loc_327><loc_423><loc_334>2,</text>
+<text><loc_426><loc_327><loc_433><loc_334>·</text>
+<text><loc_436><loc_327><loc_443><loc_334>·</text>
+<text><loc_447><loc_327><loc_453><loc_334>·</text>
+<text><loc_155><loc_359><loc_450><loc_368>Setting s = x1 + y1 in (3), and writing u = x1 - x1 and v = y1 - y1 (2=j=n), it</text>
+<footnote><loc_147><loc_390><loc_273><loc_396>* Received by the editors August 8, 1979.</footnote>
+<footnote><loc_133><loc_396><loc_450><loc_414>† UniversitØ Graz and University of Waterloo, Ontario, Canada. The work of this author was supported in part by a leave Fellowship of the Social Science and Humanities Research Council of Canada under Grant 451-790424.</footnote>
+<footnote><loc_133><loc_414><loc_450><loc_433>† Center for Advanced Study in the Behavioral Sciences and University of Tennessee, Knoxville, Tennessee 37916. The work of this author was supported in part by the National Science Foundation under Grant BNS 76-22943 A 02, the Andrew W. Mellon Foundation, and the University of Tennessee.</footnote>
+<page_footer><loc_286><loc_437><loc_298><loc_442>259</page_footer>
+<page_break>
+<page_header><loc_150><loc_30><loc_166><loc_38>260</page_header>
+<page_header><loc_258><loc_31><loc_360><loc_37>J. ACZÉL AND C. WAGNER</page_header>
+<text><loc_150><loc_45><loc_258><loc_53>follows from (4) and (5) that</text>
+<formula><loc_200><loc_57><loc_416><loc_65>g ( u _ { 2 } , \cdots , u _ { n } ) + g ( v _ { 1 } , \cdots , v _ { n } ) - g ( u _ { 2 } + v _ { 2 } , \cdots , u _ { n } + v _ { n } ) = 0 ,</formula>
+<text><loc_150><loc_69><loc_164><loc_76>i.e.,</text>
+<formula><loc_150><loc_80><loc_410><loc_88>( 6 ) \quad g ( u _ { 2 } + v _ { 2 } , \cdots , u _ { n } + v _ { n } ) = g ( u _ { 2 } , \cdots , u _ { n } ) + g ( v _ { 2 } , \cdots , v _ { n } ) .</formula>
+<text><loc_149><loc_92><loc_466><loc_108>By [2] and [1, pp. 215-16 and p. 32], the general solution of (6), continuous at a point or bounded from one side on an interval or on a set of positive measure, is</text>
+<formula><loc_150><loc_112><loc_370><loc_120>( 7 ) \quad g ( u _ { 2 } , \cdots , u _ { n } ) = a _ { 2 } u _ { 2 } + \cdots + a _ { n } u _ { n } .</formula>
+<text><loc_149><loc_124><loc_466><loc_140>Hence the general solution of (2) and (3), under these same weak regularity conditions, is, by (5),</text>
+<formula><loc_150><loc_142><loc_413><loc_150>f ( x _ { 1 } , x _ { 2 } , \cdots , x _ { n } ) = ( 1 + a _ { 2 } + \cdots + a _ { n } ) x _ { 1 } - a _ { 2 } x _ { 2 } - \cdots - a _ { n } x _ { n }</formula>
+<formula><loc_150><loc_152><loc_364><loc_160>= w _ { 1 } x _ { 1 } + w _ { 2 } x _ { 2 } + \cdots + w _ { n } x _ { n }</formula>
+<text><loc_148><loc_166><loc_466><loc_181>with w1+w2+···+w.n = 1, as asserted. Note that, in (8), one or more of the numbers w.l may be negative.</text>
+<text><loc_148><loc_181><loc_466><loc_212>Now if f is assumed to be an averaging function, the aforementioned boundedness conditions are clearly satisfied, and setting x.l = 1 and x.l = 0 for k 4 j yields 0.l.l = 1. Thus we have as a corollary to the above theorem the following characterization of weighted arithmetic means:</text>
+<text><loc_148><loc_212><loc_465><loc_227>COROLLARY. Let f: R"->R. Then f is a weighted arithmetic mean if and only if f is an averaging function satisfying the k-allocation property for k = 2 and k = 3.</text>
+<text><loc_147><loc_227><loc_465><loc_257>Remark 1. In the statement of the above corollary the averaging function condition (1) may be replaced by a considerably weaker supposition. It is clearly sufficient, for example, that there exist some c>0 (no matter how small) such that 0.l.l = c (j = 1, 2, ···, n) implies 0.l.l(x, x2, ···, x).</text>
+<text><loc_147><loc_257><loc_465><loc_280>Remark 2. The foregoing theorems arose in connection with a study of arithmetic averaging as a method of amalgamating a set of individual opinions as to the most appropriate values of some sequence of decision variables. (See [3].)</text>
+<text><loc_146><loc_280><loc_465><loc_341>Suppose that there are k decision variables and n individuals and we denote by x.l the opinion of individual j as to the most appropriate value of variable i. In many of these problems (such as the allocation of a fixed sum of money among k competing projects) the column sums of the matrix (x.l) are required to have a common value s. If a group adopts as the consensual value of variable i the weighted arithmetic average x.l = W1.l1 + W2.l2 +···+ W.l.l the consensual values have the highly desirable property x.l + x2+···+x.k = 5. The above results assert that weighted arithmetic means are the only averaging functions with this property.</text>
+<section_header_level_1><loc_279><loc_366><loc_330><loc_372>REFERENCES</section_header_level_1>
+<unordered_list><list_item><loc_145><loc_376><loc_462><loc_383>[1] J. ACZÉL, Lectures on Functional Equations and Their Applications, Academic Press, New York, 1966.</list_item>
+<list_item><loc_145><loc_383><loc_463><loc_396>[2] A. OSTROWSKI, Mathematische Miszellen XIV. Über die Funktionalgleichung der Exponentialfunktion und verwandte Funktionalgleichungen, Jiber. Deutsch. Math. Verein, 38 (1929), pp. 54-62.</list_item>
+<list_item><loc_145><loc_396><loc_462><loc_409>[3] C. WAGNER, Consensus through respect: a model of rational group decision-making, Philos. Studies, 34 (1978), pp. 335-349.</list_item>
+</unordered_list>
+</doctag>

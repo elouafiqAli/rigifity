@@ -1,0 +1,97 @@
+## ON THE AXIOMS OF INFORMATION THEORY
+
+## By P. M. Lee
+
+Churchill College, University of Cambridge
+
+- 1. Introduction. The uniqueness of Shannon's measure of information is here proved under less restrictive conditions than previously.
+
+Let H4(p1, p2, , p4)(p3 = 1; all p's &gt; 0) be a measure of the information provided by the performance of an experiment with k possible outcomes of probabilities p1, p2, , p4 (e.f. Shannon [4] or Khinchin [3]). We assume
+
+- (i) that H4 is permutation-symmetric for k = 2, 3; i.e. H2(t, 1 - t) = H2(1 - t, t) = h(t), say, for 0  0 such that p1 + p2 = 1;
+- (ii) that h(·) is a finite real-valued Lebesgue measurable function defined on (0, 1) and that h(1) = 1 (previous authors have assumed h(·) continuous on [0, 1], see Fadeev [1], monotone on (0, 4) and on (1, 2), 1), see Kendall [2], or Lebesgue integrable on [0, 1], see Tveberg [5]);
+- (iii) that for 0  1 and p1, p2, p3 &gt; 0, p1 = 1, we have H4+1(p1, (1 - t)p1, p2, , p4) = H4(p1, , p4) + p1H2(t, 1 - t), so that H3(p1, p2, p3) = h(p1 + p2) + (p1 + p2)h(p1/p1 + p2).
+
+From (i) and (iii) we see that h(·) must satisfy the functional equations (iv) h(t) = h(1 - t),
+
+- (v) h(p1) + (1 - p1)h(p2/1 - p1) = h(p1 + p2) + (p1 + p2)h(p1/p1 + p2)
+- (vi) h(p1) + (1 - p1)h(p2/1 - p1) = h(p2) + (1 - p2)h(p1/1 - p2).
+
+We shall show under assumptions (ii), (iv), and (v) that h(t) = -t lg t - (1 - t) lg (1 - t) (lg denotes logarithm to base 2, log denoting logarithm to base e). It follows that H4 is uniquely determined for all k; in fact
+
+$$H _ { k } ( p _ { 1 } , p _ { 2 } , \cdots , p _ { k } ) = - \sum p _ { i } \log p _ { i } .$$
+
+- 2. Simple lemmas. As in Zaanen [6] (Section 36, Theorem 1 and Lemma 7), we observe that if u denotes Lebesgue measure in R1, and if f(·) is a continuously differentiable increasing function with a strictly positive derivative which maps an open interval I onto an open interval f(I), then f maps Lebesgue subsets f(Q) of f(I), and
+
+$$\mu ( \phi ( Q ) ) = \int _ { Q } \phi ^ { \prime } ( t ) \, d t .$$
+
+From this we deduce:
+
+Received 5 August 1963.
+
+<!-- image -->
+
+Logo
+
+LEMMA 1. Let J C (0, 1) be a Lebeue set of measure c. Then
+
+$$K _ { \mathfrak { s } } = \{ x / [ 1 - ( 1 - x ) y ] ; \, x \varepsilon J ]$$
+
+is a Lebesgue set for each y c [a, b] C (0, 1) and m(K) 1 (1-b)c.
+
+## 3. The fundamental lemma.
+
+LEMMA 2. Let E be a Lebesgue set of positive measure in [0, 1] which is symmetrical about the point 3. Then there exist k 2, 0  0 such that any y c [a, b] can be expressed as y 1/1 with y, 1 e E (1/k, 1-1/k) for a Lebesgue set of distinct values of 1 of measure at least c.
+
+Proo. Choose a k such that G = E N (1/k, 1-1/k) has positive measure. For any continuous function f on [0, 1] one has lim 1 1 f(yx) = f(x) uniformly in x, (as f must be uniformly continuous on [0, 1]), thus
+
+$$\lim _ { \mathfrak { v } \mathfrak { t } } \int | f ( y x ) - f ( x ) | \mu ( d x ) = 0 \colon$$
+
+Because the continuous functions are dense in L1, (Zaanen [6], Section 30, Ex. 10) this implies
+
+$$\lim _ { \mathfrak { v } \mathfrak { t } } \int | \chi _ { o } ( y x ) - \chi _ { o } ( x ) | \mu ( d x ) = 0$$
+
+(xo being the indicator of G). Hence
+
+one representation y = y/1, such that y/1-y F, but y, y E 0 (1/k, 1-1/k). Hence, by (vi),
+
+h(y) = |h(y/1-y)| = (1-y)-1h(y) + (1-y)h(y/1-y) -h(y) | 1 (1-y)-1{h(y)| + |h(y/1-y)| + |h(y)|
+
+This completes the proof.
+
+The above is now extended to become: Each measurable solution of (iv) and (vi) is bounded on every compact subset of (0, 1).
+
+Poor. Let A be the set of positive X such that h(a) - Xh(a/X) is ultimately bounded as a 0. Plainly (a) 1 A, (b) A/ C, (c) A/ C, so A is a multiplicative group. Now let J be an open interval contained in (0, 1) on which h(.) is bounded; we already know that such an interval exists. If 1-x C J, then since (vi) gives
+
+$$( 1 ) \quad h ( \alpha ) - \lambda h ( \alpha / \lambda ) = h ( 1 - \lambda ) - ( 1 - \alpha ) \dot { h } ( 1 - \lambda / 1 - \alpha )$$
+
+(0
+
+we see that A. Thus A covers a measurable set of positive measure, and so is the whole of (0, 0) (the latter remark follows on noticing that on taking logarithms we have an additive group, which thus contains its own difference set, hence a non-degenerate interval around zero (Zaanen [6], Section 10, Lemma 0)).
+
+From Equation (1) above and from (iv) it now follows that each t = 1-x E (0, 1) lies in an open interval of boundedness of h(.) so that h(.) is bounded on each compact subset of (0, 1).
+
+- 5. The uniqueness of h(.) We cannot from the argument above deduce the boundedness of h(.) on the whole of (0, 1); if we could, the desired result would follow from the work of Tveberg [5]. We can, however, adapt one of his arguments to obtain further useful information about h(.) Integration of (vi) (Zaanen [6], Section 36, Theorem 1) gives
+
+$$( \mu - \lambda ) \hbar { ( } \alpha ) = \int _ { \mu } ^ { * } h ( \gamma ) \, d \gamma + \alpha ^ { 2 } \int _ { \alpha / 1 - \lambda } ^ { \alpha / 1 - \mu } \gamma ^ { - 3 } h ( \gamma ) \, d \gamma - ( 1 - \alpha ) ^ { 2 } \int _ { \lambda / 1 - \alpha } ^ { \lambda / 1 - \mu } h ( \gamma ) \, d \gamma$$
+
+for 0
+
+We cannot, however, appeal to Fadeev's theorem [1] since that would require continuity on the closed interval [0, 1], but we can adapt the argument at the end of Kendall's paper [2] (see his Equation (12) et seq.) . The argument, which uses (v) and (vi), simplifies drastically because of continuous differentiability; it depends on putting h'(t) = E(t/1-t) to obtain E(u) + E(v) = E(w), the unique continuous solution of which is well known. Note that under (iv), (v) 0 (vi). The following has thus been proved:
+
+THEOREM 1. The only measurable solutions to (iv) and (vi) are the multiples of
+
+Shannon's function h(t) = -t lg t - (1 - t) lg (1 - t). The uniqueness of Hk for k: &gt; 2 now follows.
+
+This result is best possible in the sense that there are nonmeasurable solutions of (iv) and (vi) other than Shannon's function, for example h(t) = -tf (lg t) - (1 - t)f (lg (1 - t)) where f is a non-measurable linear function.
+
+I am greatly indebted to Professor D. G. Kendall and the referee for several helpful comments on this work leading to simpler proofs of the results of Sections 2 and 5, and to the Department of Scientific and Industrial Research for a Research Studentship.
+
+## REFERENCES
+
+- [1] Fadeev, D. K. (1956). On the concept of entropy of a finite probabilistic scheme (in Russian). Uspehi Mat. Nauk. (N.S.) 11 227-31.
+- [2] KENDALL, D. G. Functional equations in information theory. Z. für Wahrcheinlichkeits-theorie (to appear).
+- [3] KINCHIN, A. I. (1957). Mathematical Foundations of Information Theory. Dover, New York.
+- [4] SHANNON, C. E. (1948). A mathematical theory of communicatlon. Bell System Tech. J. 27 379-423 and 623-656.
+- [5] TVEBERO, H. (1958). A new derivation of the information function. Math. Scand. 6 297-8.
+- [6] ZAANEN, A. C. (1958). An Introduction to the Theory of Integration. North-Holland, Amsterdam.

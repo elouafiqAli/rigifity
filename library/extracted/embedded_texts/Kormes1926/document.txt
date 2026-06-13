@@ -1,0 +1,169 @@
+1926.] A FUNCTIONAL EQUATION 689 
+ON THE FUNCTIONAL EQUATION 
+ƒ(*+?)-ƒ(*)+ƒ(?)* 
+BY MARK KORMES 
+Fréchet,f and later BlumbergJ and Sierpinski,§ have 
+demonstrated that the solution of the functional equation 
+(1) ƒ(* + ?)-ƒ(*)+ƒ(?) 
+which is measurable, has the form A • x, where A denotes 
+a constant. In this note the following theorem is proved. 
+THEOREM I. Every solution of the functional equation (1) 
+which is bounded on a set of positive measure is of the form A • x. 
+The proof depends on a theorem of Steinhauslf which can 
+be stated as follows. 
+LEMMA. The set arising by arithmetic summation (addi­
+tion of abscissas) of a set of positive measure, contains an 
+interval.^ 
+Since ƒ(x) is bounded on a set of positive measure, f(x+y) 
+is bounded on an interval, and therefore f(x) must be of 
+the form A • x according to a theorem of Darboux. 
+THEOREM la. The statement of Theorem I remains true 
+if f(x) is bounded on a set whose interior measure is positive. 
+If the interior measure of a set A is a >0,then there exists** 
+a measurable sub-set of A whose measure is equal to a (>0). 
+* Presented to the Society October 31, 1925. 
+t M. Fréchet, L'ENSEIGNEMENT MATHÉMATIQUE, vol.15 (1913),p. 390. 
+% Blumberg, Convex functions, TRANSACTIONS OF THIS SOCIETY, vol. 20, 
+p. 41. 
+§ W. Sierpinski, FUNDAMENTA MATHEMATICAE, vol. 1, p. 116. 
+% H. Steinhaus, FUNDAMENTA MATHEMATICAE, vol. 1, p. 99*. 
+11 The proof of this lemma will be a part of a paper entitled On arith­
+metic summation of point sets. 
+** C. Carathéodory, Vorlesungen iiber Réelle Funktionen, p. 261. 
+
+690 MARK KORMES [Nov.-Dec, 
+To this subset Theorem I can be applied and thus Theorem 
+la is established. 
+Theorem I establishes a far more general condition than 
+the one given by Fréchet, Blumberg, and Sierpinski. The 
+following remarks show that this condition is incisive. 
+The condition nii(M)*>0 is essential, since there exist non-
+measurable solutions of (1) which are cohtinuous on a set jff, 
+where, for every interval 8, 
+mi(E • 8) = 0, me{H • S) = S. 
+Let B denote a hamelian basis-set of all real numbers. If b 
+is a number of B, we define a solution of the functional 
+equation (1) as follows: 
+ƒ(x) = 0, for the numbers of the set (B — b) ; 
+f(x) = l, for x = b; 
+f(x+y) =f(x) +f(y), for all real numbers. 
+In this way f(x) is completely defined. Let us denote by H 
+the set of all points where ƒ (x) = 0. If we denote by Hc the 
+set of all numbers x+c, where x assumes all values of H 
+we have then H=Hab, where the symbol == means con­
+gruent, and a is a rational number. Then we have 
+(H«h-H«'b) = 0, 
+if a^a', and 
+a 
+where K denotes the continuum. Therefore we must have, f 
+for every interval 8, 
+tm(H-ô) = 0, me(H'd) = 8. 
+* The symbol m% (M) shall signify the interior measure of M, ni* (M) 
+the exterior measure of M. 
+t For suppose nn(H • ô)>0. There must exist then a measurable 
+subset PC H so that m(P)>0. We would have w(Pa6)=w(P)>0. On 
+the other hand it can be shown easily, that then there exists a rational 
+number «i, so that m(Paib • P) —a>0, but this is impossible, since (Paib • P) 
+«0 because PC H, PaibC Haih, and (H • Haib) =0. We must have there-
+fore nti{H • ô)=0. See also M. Kormes, Treatise on basis-sets (Columbia 
+University dissertation, not yet published), Theorem VIII. 
+
+1926.] A FUNCTIONAL EQUATION 691 
+Since the function f(x) is everywhere 0 on the set Hi it 
+is bounded and continuous. 
+There exist non-measurable solutions of (1), which are 
+continuous on a perfect set P, where ra(P)=0. Let P 
+be the set of all numbers z of the form 
+Xi X2 
+To^T (10**2 + 10*01 
+(10*Xn + lO^^n-i + h 10*0 ! 
+where every xn is either 1 or 2. There cannot exist then 
+any relation of the form 
+]£ rxz\ = 0 
+x 
+between the numbers z of the set P,* where r\ denotes a 
+rational number, and in every case only a finite number of r\ 
+are different from 0. The numbers of P constitute a subset 
+of a basis-set B of all real numbers, f The existence of such 
+basis-set was demonstrated in another paper. % 
+We define now a solution of the functional equation (1) 
+in the following way: 
+f(x) =0, for all numbers of P; 
+f(x) = 1, for all numbers of B—P; 
+f(x+y) =f(x) +f(y) for all numbers of the continuum K. 
+But this defines f(x) completely, and it is clear that f(x) 
+is non-measurable and continuous on the perfect set B. 
+* M. Kormes, Treatise on basis-sets, 
+f To construct a basis-set B which has a given set P as a subset we pro­
+ceed in the following way. We well-order the continuum K in such a way 
+that the numbers of P precede all other numbers. The set (K—P) is not 
+empty, and since the set P is not the entire basis-set of i£, there must be 
+a first number at of (K—P) which cannot be represented by numbers of 
+P in a linear way. If we consider the set Pi = P+ai and reason in the same 
+way as above, we obtain a basis-set B of the continuum K, See also M. 
+Kormes, Treatise on basis^sets, 
+X M. Kormes, loc. cit. 
+
+692 MARK KORMES [Nov.-Dec, 
+From Theorem I, the Fréchet-Sierpinski theorem* can be 
+deduced immediately. 
+THEOREM II. Every solution of (1) which is measurable 
+has the form A • x. 
+In fact, suppose that f(x) is a solution of (1), and that 
+f(x) is measurable. Then there exists a perfect set P, 
+where m(P) >0, and f(x) is continuous on P. Being finite, 
+f(x) must be bounded on P, and Theorem II is a simple 
+consequence of Theorem I. 
+Theorem I can be generalized for functional equations in 
+n variables. A proof for two variables will be given below 
+and it is quite analogous for n{>2) variables. 
+THEOREM III. Every solution of the functional equation 
+(2) f{x + u, y + v) = f(x9y) + f(u,v) 
+where x, y, u> v denote real numbers, which has the property 
+that f (x, 0) is bounded on a measurable set MX1 where m(Mx) >0, 
+and that /(O, 3/) is bounded on a measurable set My, where 
+m(My) >0, has the form A • x+B • y.f 
+We have 
+ƒ(*,?)«ƒ(* + (>, 0 + y) «ƒ(*,(>)+/(0,y), 
+where f(xf 0) is the solution of the functional equation 
+f(x + u, 0) «ƒ(*,<>)+/(M), 
+and /(O, y) is the solution of the functional equation 
+/(O, y + v) -/(0,3Ï)+/(0,Ü). 
+According to Theorem I, f(xf 0) has the form A • x, where 
+A =/(l, 0) ; and /(O, y) has the form B • y, where 5«/(0, 1). 
+Therefore ƒ(#, y) has the form A -x+B • y. 
+* See second, third, and fourth footnotes on p. 689. 
+t We can assume also that tm (Mx) and nn (Mv)>0, and reason in a 
+way similar to that indicated in the proof of Theorem la. 
+
+1926.] A FUNCTIONAL EQUATION 693 
+The same reasoning holds if f(x, a) and f(b, y) are bounded 
+in Mx and Myy respectively. We have then ƒ(#, a) = 
+ƒ(*, 0) +ƒ(<), a) and ƒ(6, y) =/(0, y) +ƒ(&, 0). Hence ƒ(*, 0) 
+and jf(0, 3>) must be therefore bounded in Mz and ikfy, 
+respectively. 
+From Theorem III, the following theorem can easily be 
+obtained. 
+THEOREM IV. Every solution of the functional equation (2) 
+which is bounded on a measurable set Mxyi whose square 
+measure is m(2)(Mxy)>0, has the form A • x+B • y. 
+In order to prove this theorem let us suppose that 
+m^(Mxy) = a > 0. 
+According to a theorem of Fubini,* there must exist then a 
+straight line y = b parallel to the X-axis, and a straight line 
+x = a parallel to theF-axis, so that m(Mxa) >0 and m(Miy) >0. 
+Then f(x, a) would be bounded on the set Mxai where 
+m(Mxa)>0; and ƒ(&, ;y) would be bounded on MbV> where 
+m(Mjjy)>0. Therefore/(x, 3;) must have the form 
+A.% + B-y. 
+From Theorem IV, we may state the following theorem. 
+THEOREM Vf. Every solution of the functional equation (2) 
+which is measurable has the form A • x+B • y. 
+If ƒ(#, y) is a solution of (2) and it is measurable, then 
+there exists a perfect set P, where m(2)(P) >0, and f(x, y) 
+is measurable on P. Since f(x, y) is finite and P is closed, 
+ƒ(#, y) is bounded on P, and we can apply Theorem IV. 
+NEW YORK CITY 
+* Theorem of Fubini-Lebesgue; see de la Vallée-Poussin, Cours d'Analyse 
+Infinitésimale, vol. 2 (2d éd.), pp. 117-120. 
+t Theorem of Steinhaus-Sierpinski; see Sierpinski, loc. cit,

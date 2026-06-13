@@ -1,0 +1,753 @@
+193
+0015-9018/04/0200-0193/0 © 2004 Plenum Publishing Corporation
+Foundations of Physics, Vol. 34, No. 2, February 2004 (© 2004)
+Gleason-Type Derivations of the Quantum Probability
+Rule for Generalized Measurements
+Carlton M. Caves, 1 Christopher A. Fuchs, 2, 3 Kiran K. Manne, 1
+1 Department of Physics and Astronomy, University of New Mexico, Albuquerque, New
+Mexico 87131-1156; e-mail: renes@info.phys.unm.edu
+2 Quantum Information and Optics Research, Bell Labs, Lucent Technologies, 600-700
+Mountain Avenue, Murray Hill, New Jersey 07974.
+3 Temporary address: Communication Networks Research Institute, Dublin Institute of
+Technology, Rathmines Road, Dublin 6, Ireland.
+and Joseph M. Renes 1
+Received July 24, 2003
+We prove a Gleason-type theorem for the quantum probability rule using frame
+functions defined on positive-operator-valued measures (POVMs), as opposed to
+the restricted class of orthogonal projection-valued measures used in the original
+theorem. The advantage of this method is that it works for two-dimensional
+quantum systems (qubits) and even for vector spaces over rational fields—settings
+where the standard theorem fails. Furthermore, unlike the method necessary for
+proving the original result, the present one is rather elementary. In the case of a
+qubit, we investigate similar results for frame functions defined upon various
+restricted classes of POVMs. For the so-called trine measurements, the standard
+quantum probability rule is again recovered.
+KEY WORDS: quantum measurements; quantum probability rule; frame func-
+tions; POVM.
+1. INTRODUCTION
+Two theorems position themselves at the foundation of quantum theory:
+the Kochen–Specker theorem (1) and Gleason’s theorem. (2) The former rules
+out the possibility of predicting experimental outcomes with certainty, and
+—failing this certainty—the latter prescribes the permitted probabilistic
+descriptions. Both are pivotal to an understanding of quantum mechanics
+
+that begins with primitive notions about measurement—the subject of this
+paper.
+To adopt this perspective, imagine that for any experiment, there exist
+mathematical objects which represent the possible outcomes. Likewise,
+there exists a mathematical object the experimenter uses to describe the
+system under investigation. The minimal task of any physical theory is to
+determine what these objects are and to use them to furnish the probabil-
+ities for the various outcomes.
+Here the traditional viewpoint of physical theory is stood on its head.
+Usually the system and its properties—whatever can be said about them—
+are regarded as fundamental. Physical systems are considered objectively,
+outside the context of measurements, real or potential. Within this tradi-
+tional viewpoint the question for physics is this: What are the properties of
+physical systems, and what laws do they obey? Notoriously this leads to
+the quantum measurement problem. Having considered physical systems
+to obey quantum mechanics, what are we to make of measurements? How
+does measurement fit into the framework of quantum theory?
+In this paper we view measurements as fundamental, obviating the
+measurement problem. The main task is an operational one: How should
+measurements be described, and what predictions about their outcomes can
+be made? Properties of physical systems, e.g., position and momentum, are
+useful if they help in this task, but are ultimately secondary. Though the
+conventional measurement problem does not arise in this context, a new
+question emerges, just as daunting as the original: Why the Hilbert-space
+description of measurement outcomes?
+(3–5)
+Leaving this question aside as too ambitious for the present, we start
+by assuming the form of measurements as given by classical or quantum
+theory. In classical physics, the measurement objects are the points in a
+phase space, while in quantum physics, they are traditionally one-dimen-
+sional projectors on a Hilbert space. Classically only one measurement
+exists—a full accounting of the phase space. In quantum mechanics, on the
+other hand, any complete set of one-dimensional orthogonal projectors
+suffices.
+The description of the system can be given, in classical mechanics, by a
+phase-space point. This point is the ‘‘true’’ point—others are ‘‘false’’—so
+the outcome of a measurement can be predicted with certainty. Attempting
+such a concrete description in quantum mechanics is ruled out by the
+Kochen–Specker theorem: There is no way to assign truth and falsity to all
+the one-dimensional projectors in such a way that in any measurement
+there is only one true outcome. At this point in the development, quantum
+mechanics becomes an irreducibly probabilistic theory; the possibility of
+underlying certainties has been ruled out.
+194 Caves, Fuchs, Manne, and Renes
+
+With certainties ruled out, Gleason’s theorem delineates the allowable
+descriptions of the system, i.e., the form the probabilities can take.
+Keeping with the linear structure, every outcome probability is an inner
+product of the corresponding measurement projector and a density oper-
+ator for the system. The density operator—any convex combination of one-
+dimensional projection operators—represents the description or ‘‘state’’ of
+the system. Thus Gleason’s theorem gives a means to go from the struc-
+ture of measurements to the structure of states. It immediately implies the
+Kochen–Specker result, as there are no density operators that yield prob-
+ability distributions for all measurements that are valued only on zero and
+one.
+Neither theorem holds for two-dimensional quantum systems, so-called
+qubits, as long as the measurement objects are restricted to being one-
+dimensional projection operators. We can include this outstanding case,
+however, by widening the class of allowed measurements to include posi-
+tive-operator-valued measures ( POVMs), comprised of measurement
+operators called effects, and in so doing, we also considerably simplify the
+derivation. This generalization is the subject of this paper. Section 2
+describes how measurement outcomes in quantum mechanics are asso-
+ciated with effects. Section 3 shows that given the structure of effects, the
+usual quantum-mechanical probability rule follows simply, even for
+qubits. Section 4 investigates several specific restricted classes of mea-
+surements for qubits and what kinds of probability distributions these
+classes permit.
+It should be emphasized from the outset that this is an inherently
+noncontextual approach, meaning that a shared outcome of two distinct
+measurements has the same probability in both contexts. This fact is not a
+consequence of this approach, but rather an assumption used in its con-
+struction. In this construction a description of the measurement device and
+a description of the physical system are composed into a probability for
+each possible outcome. In defining measurements by their physical set-ups,
+this approach initially pertains to each measurement situation individually.
+The Hilbert-space formalism we are using to describe measurements takes
+a further step by associating the same measurement object with outcomes
+in different measurements. For this reason, we assume that these outcomes
+have the same probabilities, this being the noncontextual assumption. To
+abandon this assumption at the level of finding allowed probability
+assignments via Gleason’s theorem would be to ignore, wholly or partially,
+the framework provided by the vector-space structure of measurements.
+There are other, perhaps stronger arguments for noncontextuality,
+(3) but
+the argument here is a minimal one that all the authors of this paper are
+willing to accept.
+Gleason-Type Derivations of the Quantum Probability Rule 195
+
+2. EFFECT OPERATORS
+In the typical von Neumann formulation of quantum measurement
+theory, measurements are described by complete sets of orthogonal projec-
+tion operators. Here we consider quantum measurements in their full
+generality, the so-called POVMs. (6, 7) A POVM is also a complete set of
+operators resolving the identity operator, but comprised of positive oper-
+ators less than the identity. These operators, called effects, can also be
+characterized as Hermitian operators having eigenvalues in the unit inter-
+val. The set of effects in d dimensions we denote by Ed .
+That Ed is a convex set is clear. The projection operators of all ranks,
+including the zero operator 0 and the identity operator I, form the extreme
+points of Ed , a fact that we demonstrate via the following construction. For
+a given effect E, order its d eigenvalues (including zero eigenvalues) from
+smallest to largest, {l1,..., ld}. Associated with each eigenvalue lj is a one-
+dimensional projector pj onto the corresponding eigenvector; these projec-
+tors can be chosen to make up a complete, orthonormal set. Now form
+the projection operators Pk=;d
+j=k pj. Clearly P1=I and Pd=pd . These
+projectors get smaller in rank as the index gets bigger. The effect E can be
+written as the following convex combination:
+E=l1 P1+ C
+d
+m=2
+(lm− lm−1) Pm+(1− ld) 0. (1)
+The zero operator is included to make the sum of the coefficients unity
+without affectingE.
+Since every effect can be expanded as a convex combination of
+projectors, only projectors can be extreme points of Ed . To show that all
+the projectors are extreme points, we need to show that a projector P
+cannot be written as a proper convex combination of other projectors, i.e.,
+cannot be written as P=aP1+(1−a) P2 , where 0<a<1 and P1 ] P2 .
+To show this, suppose P could be so written. For any normalized vector
+|kP, we have Ok| P|kP=aOk| P1 |kP+(1−a) Ok| P2 |kP.I f |kP is in the
+null subspace of P, i.e., is orthogonal to the support of P, we have
+Ok| P|kP=0, which implies that Ok| P1 |kP=Ok| P2 |kP=0; this shows
+that the supports of P1 and P2 are contained in the support of P.I f|kP is
+in the support of P, we have Ok| P|kP=1, which implies that Ok| P1 |kP
+=Ok| P2 |kP=1; this shows that the support of P is contained in the
+supports of P1 and P2 . Together these conclusions imply that P1=P2=P,
+contradicting our assumption of a proper convex combination for P.W e
+conclude that the extreme points of Ed are the projectors of all ranks,
+including 0.
+196 Caves, Fuchs, Manne, and Renes
+
+Projection operators are a limiting case of effect operators, the latter
+being a ‘‘fuzzy’’ or ‘‘unsharp’’ version of the former by convex combina-
+tion. Similarly, the von Neumann projective measurements are a limiting
+case of POVMs.
+In two dimensions the set of effects, E2 , has an appealing geometric
+picture. Beginning with the parameterization of Hermitian operators by the
+Pauli matrices, we write the general two-dimensional effect as
+E=rI+s· s=rI+sn· s, (2)
+where n is a unit vector. The eigenvalues r±|| s||=r±s must lie in the unit
+interval, which is equivalent to the conditions 0 [r [1 and 0 [s [
+min(r,1−r) . Sinces characterizes the radius of a sphere, the full set can be
+pictured in the following way: Starting with the unit interval for r, associate
+with each point a ball of radius r for r [1/2 and of radius 1−r for
+r>1/2 . The set of two-dimensional effects is thus the intersection of two
+three-dimensional cones (i.e., two cones in four real dimensions) both
+having an opening angle of 45°, one extending up from a vertex at r=s=0
+(E=0) and the other extending down from a vertex at r=1,s=0 (E=I).
+The intersection of the boundaries of the two cones, r=s=1/2, is the
+surface of the Bloch sphere, where the effects are one-dimensional projec-
+tors. The effects on the boundary of the lower cone, r=s [1/2, are mul-
+tiples of one-dimensional projectors.
+3. THE QUANTUM PROBABILITY RULE
+The task of quantum theory is, minimally, to associate with every
+measurement a probability distribution for its outcomes. We assume this is
+done noncontextually for the reasons given above. The probability rule
+is thus a function from the set of effects to the unit interval, which is
+normalized on any subset that makes up a POVM. Such a function is
+known as a frame function . More precisely, a frame function is a function
+f: E
+d Q[0,1] that satisfies
+C
+Ej ¥ X
+f(Ej)=1 (3)
+on any subset X={Ej ¥ Ed| ;j Ej=I}. This section is devoted to proving
+the following Gleason-type theorem, which was first proved by Busch. (8)
+Theorem 1. For every frame function f: Ed Q[0,1] , there is a
+unique unit-trace positive operatorW such thatf(E)=(W,E)= tr(WE).
+Gleason-Type Derivations of the Quantum Probability Rule 197
+
+The operator W is the density operator that gives rise to the frame
+function probabilities f(E). We divide the proof of this theorem into
+several parts, each of which occupies a subsection.
+3.1. Linearity with Respect to the Nonnegative Rationals
+Every frame function is trivially additive, for consider two POVMs,
+{E1,E 2,E 3} and{E1+E2,E 3}. Clearly both are POVMs if either is, and
+the frame-function requirement immediately yields
+f(E1)+f(E2)=f(E1+E2). (4)
+From this we obtain a homogeneity property for multiplication by rational
+numbers. We can break an effect nE into m pieces to form the effect
+(n/m)E . Using the additivity property twice, we obtain
+mf 1n
+mE 2=f(nE)=nf(E) 2f 1n
+mE 2=n
+mf(E). (5)
+The functionf is thus established to be linear in the nonnegative rationals.
+We can extend to full linearity by proving continuity. Alternately, adopting
+the strategy of Busch, (8) we can demonstrate the homogeneity of f, from
+which linearity follows immediately. These two arguments are taken up in
+turn in the next two subsections.
+3.2. Continuity
+Continuity of the frame function can be established via reductio ad
+absurdum: A contradiction with the definition of a frame function arises
+iff is discontinuous. Recall the definition of continuity for metric spaces:
+f is continuous at x0 if for all E>0 , there exists a d>0 such that
+|f(x)−f(x 0)|< E for allx satisfying|x−x 0|< d. On the space of operators,
+we use the Hilbert–Schmidt inner product (A,B)= tr(A†B) and the asso-
+ciated norm|A| — `(A,A) .
+Consider first continuity at the zero operator (since f(E)=f(E+0)=
+f(E)+f(0), we know that f(0)=0). If we assume f is discontinuous at
+the zero operator, then there exists an E>0 such that for all d>0 , there
+exists an effect E satisfying |E|< d and f(E) \ E. Choose d=1/N< E,
+whereN is an integer, and let E be an effect satisfying |E|<1/N and
+f(E) \ E.N o wF=NE satisfies|F|=N|E|<1 , which implies that F is an
+effect, since the sum of the squares of its eigenvalues is less than 1. But we
+also have from additivity that f(F)=Nf(E) \NE>1 , contradicting the
+198 Caves, Fuchs, Manne, and Renes
+
+definition of a frame function. We conclude that f is continuous at the
+zero operator.
+We can easily translate the continuity at 0 to the entire set of effects.
+To prove continuity at an arbitrary effect E0 , we need to consider neigh-
+boring operatorsE and the difference E−E 0 . Diagonalizing the difference,
+we can write E−E 0=A−B , whereA is the nonnegative-eigenvalue part of
+the eigendecomposition and −B is the negative-eigenvalue part. It is clear
+thatA andB are positive operators satisfying |A|,|B| [|A−B|=|E−E 0|,
+which implies that A andB are effects ( provided |E−E 0| [1). Applying
+the frame function to the equation E+B=E0+A yieldsf(E)−f(E 0)=
+f(A)−f(B) by additivity. Invoking continuity at zero establishes that for
+every E=EŒ/2>0 , there exists a d>0 such that |A|,|B|< d Sf(A),
+f(B)< EŒ. Thus if |E−E 0|=|A−B|< d, we have |A|,|B|< d and
+|f(E)−f(E 0)|=|f(A)−f(B)| [|f(A)|+|f(B)|<2 EŒ=E. This establishes
+the continuity of f on all of Ed , which in turn shows that f is a linear
+function on Ed .
+3.3. Homogeneity
+An alternative route to linearity is to prove the homogeneity of the
+frame function. Following Busch’s proof, we first note that the frame
+function preserves order; i.e., if E1 <E 2 for any pair of measurement
+operators, then f(E1) [f(E2). This follows immediately from the defini-
+tion, for E1 <E 2 ZE2−E 1 —E3 >0 ,s o E3 is an effect. Writing E2=
+E1+E3 , which implies f(E2)=f(E1)+f(E3) by additivity, we find that
+f(E1) [f(E2) sincef(E3) \0.
+Now the pinching theorem can be used to establish the homogeneity
+of f. Consider two sequences of rational numbers sharing the same
+irrational limit a: {qi} is an increasing sequence and {pi} a decreasing
+sequence. By order preservation and linearity in the nonnegative rationals,
+we have
+q
+if(E)=f(qiE) [f(aE) [f(piE)=pif(E) (6)
+for all i. The pinching theorem shows that f(aE)=af(E), establishing
+thatf is a homogeneous and, hence, linear function.
+3.4. Linearity and the Inner Product
+Since the frame function is linear, it arises from an inner product. To
+show this, we first extend the definition of f to the entire vector space of
+Gleason-Type Derivations of the Quantum Probability Rule 199
+
+operators; then it is a trivial theorem of linear algebra to recast a linear
+function on a vector space as an inner product.
+We extend the definition of the function in the most straightforward
+fashion. Let H be an arbitrary Hermitian operator. Every such operator
+can be written as the difference of two positive operators G1 andG2 ; one
+way to do so is simply to diagonalize H and to let G1 be the positive-
+eigenvalue part and −G 2 the negative-eigenvalue part. Further, for any
+positive operator G we can find a positive number a such that aE=G for
+some effectE. Now we define f(H)=f(G1)−f(G 2)=a1f(E1)− a2f(E2).
+Though the unravelling of H is not unique, the extension is. Suppose
+H=a1E1− a2E2=a3E3− a4E4 , which implies a1E1+a4E4=a2E2+a3E3 .
+Choose b such that b \ max{aj} so that we have
+a1
+bE1+a4
+bE4=a2
+bE2+a3
+bE3. (7)
+Since every operator is now in the original domain of f, we can apply the
+frame function to find
+a1f(E1)+a4f(E4)=a2f(E2)+a3f(E3). (8)
+The extension being manifestly linear, we now have a linear function f on
+the entire space of Hermitian operators. It can be extended to all operators
+by complexification.
+To rewrite this linear function as an inner product, choose an ortho-
+normal operator basis {yj}, and write an arbitrary operator as A=
+;j yj(yj,A) . Clearly we have f(A)=;j f(yj)(yj,A) . Now define W as
+the unique solution of the d 2 equationsf(yj)=(W, yj), so that the frame
+function is f(A)=;j (W, yj)(yj,A)=(W,A) . The d 2 equations are, of
+course, nonsingular since{yj} is an orthonormal basis.
+The nonnegativity and normalization of the frame function induce
+the density operator properties of W, i.e., positivity and unit trace. Given
+an arbitrary normalized vector |kP, we have 0 [f(|kPOk|)=Ok|W| kP,
+showing that W is positive. The condition of unit trace follows from nor-
+malization:
+trW=(W,I)= 1W, C
+j
+Ej 2=C
+j
+(W,E j)=C
+j
+f(Ej)=1. (9)
+The reader should note that if we omit the extension of linearity to
+real numbers (Secs. 3.2 and 3.3), the arguments in Secs. 3.1 and 3.4 dem-
+onstrate the quantum probability rule for vector spaces over rational fields.
+200 Caves, Fuchs, Manne, and Renes
+
+This result has implications for recent discussions in the literature about
+the possibility of describing the finite precision of real-world measurements
+via vector spaces over complex numbers with rational parts (see, in partic-
+ular, Refs. 9–12 ). We do not dwell on these points, noting only that our
+result shows that rational POVMs cannot be assigned truth values, the only
+frame functions being those derived from density operators. In our view,
+given that POVMs are the preferred description of finite-precision mea-
+surements, that is all that needs to be said about finite-precision quantum
+measurements.
+4. FRAME FUNCTIONS FOR QUBITS
+The POVM version of Gleason’s theorem works even for qubits,
+unlike the original Gleason theorem, which was based on measurements
+described by one-dimensional orthogonal projectors. We now turn our
+attention specifically to qubits and investigate whether several restricted
+sets of POVMs enforce the quantum probability rule. In particular, we
+show that the quantum probability rule is necessitated by a particular
+subset of POVM measurements called trines. Other measurements are
+studied to shed light on what kinds of measurements yield the quantum
+probability rule and why.
+4.1. General Description of Restricted Sets of POVMs
+To start, recall that the two-dimensional effects are parameterized by
+four real parameters as in Eq. (2). In any of the restricted sets of mea-
+surements considered in this section, the allowed POVMS are made up of
+effects that are multiples of one-dimensional projectors, i.e., r=s [1/2
+andE=r(I+n· s), and all the effects have the same value of r. An allowed
+POVM is thus specified by a set of unit vectors that sum to the zero vector;
+if there are N outcomes in the POVM, then r=1/N. Finally, we assume
+that the allowed POVMs are rotationally invariant; i.e., they are obtained
+by applying all possible 3-dimensional rotations to any particular POVM in
+the allowed subset.
+With these assumptions, we have the following structure. For N-out-
+come POVMs, the allowed effects have the form
+E=1
+N(I+n· s), (10)
+Gleason-Type Derivations of the Quantum Probability Rule 201
+
+where n can be any unit vector. Frame functions defined on this set, i.e.,
+f 11
+N(I+n· s) 2—F(n)= C
+.
+l=0
+C
+l
+m=−l
+clmYlm(n), (11)
+are functions on the unit sphere and thus can be expanded in terms of
+spherical harmonics. In writing the spherical-harmonic expansion, we are
+assuming thatF is continuous on the unit sphere. ( Please be careful to note
+that this extra continuity assumption was not made in the full-fledged
+Gleason-type theorem of the previous section.) Properties of the spherical
+harmonics that we need in the following are the following: (i) the separa-
+tion into h and f (orn
+z andnx+iny ) dependencies,
+Ylm(nˆ)=Ylm(h, f)==(2l+1)
+4p
+(l−m)!
+(l+m)!Pm
+l (cos h)e imf=hlm(nz)(nx+iny)m,
+(12)
+wherePm
+l (x) is an associated Legendre function, and (ii) the changes under
+conjugation, reflection, and parity,
+Ylm(n)=(−1) mYg
+l, −m(n)
+=(−1) l+mYlm(p− h, f)
+=(−1) mYlm(h, f+p)
+=(−1) lYlm(−n). (13)
+Particularly useful is the form of Eq. (12) for m=l:Yll(n) 3(nx+iny)l.
+The sought-after quantum rule is
+F(n)=tr(WE)=1
+N(1+n· P), (14)
+where P=tr(Ws) is any 3-vector such that ||P|| [1. The quantum rule
+evidently contains only l=0,1 spherical harmonics, with c00=`4p/N,
+c10=`4p/3Pz/N, andc1, ± 1=`2p/3(+Px+iPy)/N.
+Now let the set of unit vectors {n1,..., nN} specify a ‘‘fiducial’’ POVM;
+the completeness property of a POVM implies that these vectors specify a
+POVM if and only if
+0= C
+n
+j=1
+nj. (15)
+202 Caves, Fuchs, Manne, and Renes
+
+Any other set, {Rnj}, where R is a three-dimensional rotation, is also a
+POVM. The frame condition is that
+1= C
+N
+j=1
+F(Rnj)=C
+l, m
+clm C
+N
+j=1
+Ylm(Rnj)
+= C
+.
+l=0
+C
+l
+m, r=−l
+clm D(l) f
+mr (R) C
+N
+j=1
+Ylr(nj) (16)
+for all rotationsR. In writing the last equality, we use
+Ylm(Rn)= C
+l
+r=−l
+Ylr(n) D(l)
+rm(R−1)= C
+l
+r=−l
+Ylr(n) D(l) f
+mr (R), (17)
+where D(l)
+mr(R) is the irreducible (unitary) matrix representation of the rota-
+tionR in the angular-momentum subspace with angular momentum l.
+We now use the fundamental orthogonality property of the irreducible
+representations of the rotation group: (13)
+FdmR D(l) f
+mr (R) D(lŒ)
+mŒrŒ(R)= 1
+2l+1 dllŒ dmmŒ drrŒ. (18)
+Here the integration is over the invariant measure dmR of the rotation
+group. Noting that D(0)
+00(R)=1, we can use this orthogonality relation to
+invert Eq. (16), obtaining the condition clm ;N
+j=1 Ylr(nj)=dl0 for all l,m,
+and r. For l=0 this is a trivial normalization constraint, satisfied by
+choosingc00=`4p/N. For l \1, we can write the condition in a more
+illuminating, equivalent form,
+clm=0 for m=−l,...,l, or (19)
+C
+N
+j=1
+Ylr(nj)=0 for r=−l,...,l . (20)
+These are necessary and sufficient conditions for a frame function F(n).
+The frame conditions (19) and (20) are a potent restriction. They say
+that if the lth harmonic is allowed in F(n), then the unit vectors for the
+fiducial POVM must satisfy the sum condition (20). The choice of fiducial
+POVM being arbitrary, the sum condition must be satisfied by the unit
+vectors for all POVMs in the restricted set under consideration. This
+extension from a fiducial POVM to all POVMs is, however, automatic: If a
+fiducial POVM satisfies the sum condition (20), then the rotation property
+Gleason-Type Derivations of the Quantum Probability Rule 203
+
+(17) of spherical harmonics guarantees that the condition is satisfied by all
+POVMs in the restricted set.
+The sum condition (20) is automatically satisfied for l=1 by virtue of
+the completeness condition (15). For higher l, if one finds a nonzero value
+of ;N
+j=1 Ylr(nj) for just one value of r and just one set of POVM vectors
+{nj}, then the lth harmonic must be absent from frame functions. On the
+other hand, if the sum condition (20) is satisfied for a fiducial POVM, then
+F(n) can contain the lth harmonic. The expansion coefficients clm cannot
+be chosen arbitrarily, of course, since F(n) must be real and nonnegative.
+Making F(n) real is trivial—simply choose cl, −m=(−1) mcg
+lm —but deli-
+neating the region of coefficients that gives rise to nonnegative functions is
+generally quite a difficult task. Nonetheless, we can conclude that the lth
+harmonic is allowed whenever the sum condition is met, for the following
+reason. Because the spherical harmonics are bounded functions, sufficiently
+small expansion coefficients clm can be combined with c00=`4p/N with-
+out makingF negative.
+The spherical harmonic Ylr(n) can be regarded as the rth component
+of a rank-l spherical tensor formed from n; it is a linear combination of the
+components of the rank- l symmetric trace-free Cartesian tensor formed
+from n. The vanishing of ;N
+j=1 Ylr(nj) simply says that the sum of these
+tensors over all the unit vectors in a POVM vanishes. Harmonics l=1 and
+l=2 illustrate what is going on. The l=1 spherical-tensor components
+Y1r(n) are linear combinations of the Cartesian components of n and thus
+always sum to zero over the unit vectors in a POVM as a consequence of
+the constraint (15). The l=2 spherical-tensor componentsY
+2r(n) are linear
+combinations of Cartesian components of the symmetric trace-free two-
+tensornknl− 1
+3 dkl . Thus ;N
+j=1 Y2r(nj)=0 if and only if
+C
+N
+j=1
+(nj)k(nj)l=N
+3 dkl; (21)
+i.e., the sum of the projectors onto the 3-vectors nˆ j is proportional to the
+3-dimensional identity operator.
+We can make another general statement. If the allowed POVMs are
+made up of pairs of (subnormalized) orthogonal projectors—i.e., − n is in
+the set of unit vectors if n is—then the parity property of the spherical
+harmonics implies that all odd harmonics are allowed in the frame func-
+tion. This, of course, is the reason that Gleason’s theorem does not hold
+for qubits if the allowed measurements are restricted to orthogonal
+projectors.
+204 Caves, Fuchs, Manne, and Renes
+
+We turn now to applying the sum condition (20) to particular sets of
+POVMs.4
+4 Our approach to proving Gleason-type theorems for restricted sets of qubit POVMs was
+inspired by Peres’s proof of the standard Gleason theorem in Sec. 7.2 of Ref. 14. The context
+there is a 3-dimensional real vector space, with measurements described by orthonormal
+triads of vectors. A frame function is a function F on unit vectors, which sums to unity on
+any orthonormal triad. Assuming F is continuous, it can be expanded in terms of spherical
+harmonics, as in Eq. (11). The quantum probability rule, F(n)=tr(W| nPOn|)=On|W| nP=
+;
+j, k Wjknjnk , has only l=0,2 harmonics. Peres’s proof proceeds by showing that the lth
+harmonic of F, i.e., ;m clmYlm(n), sums to dl0 on orthonormal triads, but his proof of this
+crucial result is flawed because the rotation-group matrix elements D(l)Œ
+mr and D(l)œ
+mr in his
+Eq. (7.18) depend on h and f. The more powerful frame conditions (19) and (20), however,
+immediately imply Peres’s result and also imply the quantum probability rule. For the triad
+n1=ex , n2=(ey− ez)/`2, n3=(ey+ez)/`2, the sum ;3
+j=1 Yll(nj) is proportional to
+1+il/2l/2 − 1, which is nonzero except for l=2, thus ruling out all harmonics except l=0,2 .
+As discussed in the text, ;3
+j=1 Y2r(nj)=0 for all r and all orthonormal triads because the
+projectors onto the vectors in an orthonormal triad sum to the 3-dimensional identity. We
+thus have that the frame function can be written as F(n)=tr(W| nPOn|) for some Hermitian
+operatorW. Nonnegativity and normalization of the frame function imply that W is positive
+with unit trace.
+4.2. Restricted Sets of POVMs
+4.2.1. Trine Measurements
+Consider first the trine measurements, three-outcome measurements
+described by three unit vectors equally spaced in a plane, which thereby
+sum to zero. We consider the sum ;3
+j=1 Yll(nj) for the particular trine
+n1=ex, n2, 3=−1
+2 ex± `3
+2
+ez. (22)
+Using Yll(n) 3(nx+iny)l, we find that the sum is proportional to
+1+(−1) l/2l−1 . This being nonzero for all l exceptl=1, we conclude that a
+frame function has no harmonics higher than l=1. To establish the precise
+form of the quantum rule, we must require that the frame function be real
+and nonnegative. Having ruled out all but harmonics l=0,1 , we can write
+the general form as F(n)=(1+n· P)/N, where P is a 3-vector required to
+be real by the reality of F(n). The nonnegativity of F(n) then requires that
+||P|| [1, leaving us with the standard quantum rule.
+4.2.2. Tetrahedral Measurements
+Now consider the tetrahedral measurements, four-outcome measure-
+ments whose unit vectors point to the vertices of a tetrahedron. Tetrahedral
+Gleason-Type Derivations of the Quantum Probability Rule 205
+
+measurements are important as the two-dimensional example of a symme-
+tric informationally complete POVM, i.e., a POVM made up of d 2 rank-one
+effects whose pairwise inner products are all the same. The statistics of an
+informationally complete POVM determine the density operator, and the
+restriction on the pairwise inner products gives symmetric informationally
+complete POVMs particularly appealing symmetry properties.
+Since the vertices of a tetrahedron satisfy
+C
+4
+j=1
+(nj)k (nj)l=4
+3 dkl, (23)
+we can conclude immediately, as discussed above, that ;4
+j=1 Y2r(nj)=0 for
+allr and all tetrahedra. This means that a frame function for a tetrahedral
+measurement can contain l=2 harmonics and thus does not necessarily
+follow from the quantum probability rule.
+To investigate the possibility of higher harmonics, consider the par-
+ticular tetrahedron
+n1=ex, n2=−1
+3 ex−2 `2
+3
+ez, n3, 4=−1
+3 ex+`2
+3
+ez± =2
+3 ey.
+(24)
+For this tetrahedron the sum ;4
+j=1 Yll(nj) is proportional to
+1+1−1
+3
+2
+l
++1−1
+3+i =2
+3
+2
+l
++1−1
+3−i =2
+3
+2
+l
+=1+(−1) l+2(`7)l cosla
+3l
+,
+(25)
+whereeia=−1/`7+i `6/7. It is not hard to verify that this quantity is
+nonzero for all l ]1,2,5 (cos2a=−5/7 and cos 5a=−121/49 `7),
+implying that a frame function cannot have any harmonics other than
+l=0,1,2,5 .
+To show that a frame function can have l=5 harmonics, rotate the
+tetrahedron (24) by−90° about they axis, obtaining
+n1=ez, n2=−1
+3 ez+2 `2
+3
+ex, n3, 4=−1
+3 ez− `2
+3
+ex± =2
+3 ey.
+(26)
+It is easy to see that for this tetrahedron, ;4
+j=1 Ylr(nj) vanishes when r is
+not a multiple of 3. For r=0 this sum is proportional to ;4
+j=1 Pl((nj)z)
+=1+3Pl(−1/3), and for r=3n ]0, it is proportional to ;4
+j=2 P3n
+l
+((nj)z)
+=3P3n
+l (−1/3). For l=5, it is easy to check that P5(−1/3)=−1/3 and
+206 Caves, Fuchs, Manne, and Renes
+
+P3
+5(−1/3)=0, so the sum condition (20) holds for l=5, and a frame
+function can containl=5 harmonics.
+4.2.3. Other Measurements
+We now apply our technique to other measurements with nice sym-
+metry properties: the five platonic solids, planar polygons of any degree,
+and the uniform POVM.
+Easiest is the case of the uniform POVM, i.e., a measurement whose
+outcomes include every direction on the Bloch sphere. There being only
+one POVM in the restricted set, the frame conditions reduce to the
+requirement that F(n) be a real, nonnegative function that integrates to
+unity on the sphere. In terms of a spherical harmonic expansion, this fixes
+c
+00=1/`4p, while the other coefficients are only restricted so as to
+provide real, nonnegative function values.
+Continuing in reverse order, consider the case when the allowed unit
+vectors lie in a plane, forming a regular polygon with N vertices. For
+a POVM with unit vectors lying in the x-y plane, it is easy to see that
+;N
+j=1 Ylr(nj) is zero unless r is a multiple of N; when r=nN, the sum is
+proportional toPnN
+l (0), which is zero (nonzero) if l+nN is odd (even). As
+a consequence, the allowed harmonics for N even are l=0 and all odd
+harmonics, and the allowed harmonics for N odd are l=0 and the odd
+harmonics such that l [N−2 . Notice that the trine is the only regular
+polygon that gives the quantum probability rule.
+The vertices of each of the five platonic solids yield a symmetric set of
+unit vectors for constructing restricted sets of POVMs. For all five, the
+projectors onto the unit vectors sum to a multiple of the 3-dimensional
+identity operator, implying that l=2 harmonics are allowed; moreover, for
+all but the tetrahedron, the unit vectors come in antipodal pairs, meaning
+that all odd harmonics are allowed. For the octahedron, by considering
+the sum ;
+j Yll(nj) over the six unit vectors that point along the x and−x
+axes and into the four quadrants in the y-z plane, one finds that all even
+Table I. Allowed Spherical Harmonics in the Frame
+Functions for POVMs Based on the Platonic Solids
+Platonic solid Allowed harmonics
+tetrahedron 0, 1, 2, 5
+octahedron 0, 2, & odds
+cube 0, 2, & odds
+dodecahedron 0, 2, 4, 8, 14, & odds
+icosahedron 0, 2, 4, 8, 14, & odds
+Gleason-Type Derivations of the Quantum Probability Rule 207
+
+harmonics except l=0,2 are ruled out. Similarly, for the cube, this same
+sum over the tetrahedron (24) and its antipodal points rules out all even
+harmonics exceptl=0,2 . For the dodecahedron and icosahedron, additional
+even harmonics are allowed, and numerical investigation using Mathematica
+shows these to be l=4,8,14 . The results for the platonic solids are sum-
+marized in Table I.
+5. CONCLUSION
+Gleason’s theorem reveals that from this ‘‘measurement first’’ point of
+view, the quantum probability rule is implicit in the structure of measure-
+ments themselves. Use of generalized measurements greatly simplifies the
+proof of Gleason’s theorem, extends its applicability, and reduces the con-
+ceptual overhead of quantum theory. Attention is thereby refocused to the
+tougher task of justifying the form of quantum measurements. (3–5)
+Investigating particular measurements and their allowable probability
+distributions complements the investigation of Kochen–Specker colorable
+sets.(15) Considering particular sets of POVMs allows us to explore the
+range of probability distributions that lie between the quantum probability
+rule and Kochen–Specker truth assignments.
+This work naturally leads to the question of whether POVMs ought to
+be considered, in some sense, more fundamental than standard projection-
+valued measures. The reason for thinking so is not just the simplicity of
+proofs. Foremost is the notion of ‘‘fuzziness’’ that effects capture, a notion
+essential for practical purposes. Secondly, in thinking of quantum mechanics
+operationally, nothing singles out projection measurements for fundamental
+status. While it’s true that effects themselves are convex combinations of
+projection operators, POVMs needn’t be convex combinations of projec-
+tion-valued measures.
+(16) Finally, POVMs are useful measurements, as
+demonstrated by their increasing use in the field of quantum informa-
+tion.(17) All these reasons point toward a fundamental role for POVMs.
+ACKNOWLEDGMENTS
+This work was supported in part by Office of Naval Research Grant
+No. N00014-00-1-0578.
+REFERENCES
+1. S. Kochen and E. P. Specker, J. Math. Mech. 17, 59 (1967).
+2. A. M. Gleason, J. Math. Mech. 6, 885 (1957).
+208 Caves, Fuchs, Manne, and Renes
+
+3. C. A. Fuchs, ‘‘Quantum mechanics as quantum information (and only a little more),’’
+quant-ph/0205039.
+4. R. J. Greechie and D. J. Foulis, Int. J. Theor. Phys. 34, 1369 (1995).
+5. G. Ludwig, Foundations of Quantum Mechanics (Springer, Berlin, 1983).
+6. K. Kraus, States, Effects, and Operations: Fundamental Notions of Quantum Theory ,
+Lecture Notes in Physics, Vol. 190 (Springer, Berlin, 1983).
+7. P. Busch, M. Grabowski, and P. Lahti, Operational Quantum Physics (Springer, Berlin,
+1995); 2nd corrected printing, 1997.
+8. P. Busch, ‘‘Resurrection of von Neumann’s no-hidden-variables theorem,’’ quant-ph/
+9909073.
+9. D. A. Meyer, Phys. Rev. Lett. 83, 3751 (1999).
+10. R. Clifton and A. Kent, Proc. Roy. Soc. London Ser. A 456, 2101 (2000).
+11. D. M. Appleby, Phys. Rev. A 65, 022105 (2002).
+12. A. Cabello, Phys. Rev. A 65, 052101 (2002).
+13. W. Tung, Group Theory in Physics ( World Scientific, Philadelphia, 1993).
+14. A. Peres, Quantum Theory: Concepts and Methods ( Kluwer Academic, Dordrecht, The
+Netherlands, 1993).
+15. A. Cabello, Phys. Rev. Lett. 90, 190401 (2003).
+16. G. M. D’Ariano and P. L. Presti, ‘‘Classical and quantum noise in measurements and
+transformations,’’ quant-ph/0301110.
+17. M. A. Nielsen and I. L. Chuang, Quantum Computation and Quantum Information
+(Cambridge University Press, Cambridge, 2000).
+Gleason-Type Derivations of the Quantum Probability Rule 209

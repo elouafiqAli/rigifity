@@ -1,0 +1,20 @@
+{
+  "source_pdf": "Lee1964.pdf",
+  "slug": "lee1964",
+  "status": "success",
+  "started_at": "2026-06-13T17:03:50.463659+00:00",
+  "finished_at": "2026-06-13T17:05:26.249415+00:00",
+  "vlm_model_preset": "granite_docling",
+  "vlm_model_repo": "ibm-granite/granite-docling-258M",
+  "docling_version": "2.102.1",
+  "gpu": "A100-80GB",
+  "page_batch_size": 8,
+  "num_threads": 4,
+  "document_timeout_s": 1800.0,
+  "artifact_hashes": {
+    "Lee1964.doctags": "d2b8b04ac9d57253a91ea002cfdc691178cd3a3f6d96c9d11d076848110e72a0",
+    "Lee1964.json": "8d902f7c3939ac8a2958213a403fa484ac10bb3a0da7156c0dee73e76980f722",
+    "Lee1964.md": "0563e478e0d5129d5938aeefae45fa2c7caf79ec25b88d4e51bc2fe9831ca929",
+    "Lee1964.txt": "de879aa5fb86188b6c426fcc5baefecc0f7d65fd676917dc0c6fd26a2303923e"
+  }
+}

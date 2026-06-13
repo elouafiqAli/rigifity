@@ -1,0 +1,430 @@
+INFORMATION AND CONTROL 29, 149-161 (1975) 
+The Role of Boundedness in Characterizing Shannon Entropy* 
+GEORGE T. DIDERRICH* 
+University of Waterloo, Department of Pure ]klathematics, 
+Waterloo, Ontario, Canada 
+This paper contains a characterization of Shannon's entropy measure 
+H(pl .... ,p~) ~ --Sqpilogpi from the following properties: recursivity, 3- 
+symmetry, normalization, andfis bounded on [0, 1], wheref(x) = H(x, 1 -- x) 
+(boundedness). Two new techniques are presented: approximation of log N by 
+rationals and iteration of the fundamental functional equation. 
+1. INTRODUCTION 
+Let ~ be the set of all finite discrete probability spaces, i.e., the elements of 
+n 
+¢ are n-tuples (Pl ,'",Pn), for n ---- 1, 2,.., where Pi >/0 and ~1 Pi = 1. 
+According to Shannon (1948), the entropy (average self-information, average 
+uncertainty, etc.) of an element (Pl .... , p~) belonging to ~ is H(p 1 ,..., p~) 
+--~Pi logpi, where log is to the base 2. Our purpose is to characterize H in 
+terms of the following axioms. Here we view H as a real-valued function 
+acting on the elements (Pl .... , p~) of ~ and, at the same time, for a fixed n 
+with the pi's (1 <~ i ~< n) varying regard H(p 1 ..... p~) as a function of n 
+variables. Ingarden and Urbanik (1962) take the same point of view of H in 
+their characterization of information without probability; moreover, their 
+q5 is a class of finite Boolean algebras. 
+AXIOM t (Recursivity). Let (pa ,..., Pn) e q~, n >~ 2, and pl + P2 > O. 
+Then 
+H(Pl ,..., P,~) : H(Pl + P~ .... , P,~) + (Pl + P2) H(Pl/(Pl + P2), P2/(Pl + P2)). 
+AXIOM II (3-Symmetry). The function H(p 1 ,P2 ,Ps) is symmetric in 
+Pl , P~ , P3 , where (Pl , P2 , P3) ~ q~. 
+* Revised version completed while the author was a Postdoctoral Fellow at the 
+University of Waterloo. 
+t Mailing address: 2973 N. Cramer St., Milwaukee, Wisconsin 53211. 
+149 
+Copyright © 1975 by Academic Press, Inc. 
+All rights of reproduction in any form reserved. 
+
+
+150 GEORGE T. DIDERRICH 
+AxIoM III (Normalization). /(½) = 1, wheref(x) -= H(x, 1 -- x), x ff [0, 1]. 
+AxIoM IV (Boundedness). f is bounded on the unit interval I, i.e., there is 
+a positive constant B such that If(x)[ ~< B for all x ~ [0, 1]. 
+We prove, without recourse to the ErdSs (1946) theorem on additive 
+functions, 
+THEOREM 1. H ( Pl ,..., p~) = -- ~, P i log p Jor ( Pl ,.", P ~) ~ ¢ iff r ecursivity, 
+3-symmetry, normalization, and boundedness hold. 
+This improves a result of Dar6czy and K~tai (1970) who assume, beside 
+Axioms I-IV, that f is nonnegative. Previous authors required stronger 
+analytic properties on f than boundedness; Faddeev (1956), continuity; 
+Tverberg (1958), Lebesgue integrability on [0, 1]; Lee (1964), Lebesgue 
+measurability on (0, 1); and Dar6czy (1964), smallness for small probabilities. 
+Also, see the survey paper, Acz61 (1970), or for a comprehensive and up to 
+date treatment see the forthcoming book, Acz61 and D ar6czy (1975). 
+The aim of characterizing entropy with as few properties as possible, aside 
+from the interest attached to the functional equation aspects (see Acz61, 1966), 
+stems from the problem of extracting a suitable concept of information, 
+intrinsically and independently from probabilistic considerations. Currently 
+many people (see for example Forte (1970) and Domotor (1970)) recognize 
+that the concept of information itself is, perhaps, a more fundamental 
+concept than probability. Theorem 1 suggests that, perhaps, algebraic 
+properties (e.g. symmetry, reeursivity) play a greater role than rather weak 
+analytic properties (e.g. boundedness and nonnegativity) in such charac- 
+terizations of information without probability. In other words, there is some 
+promise in obtaining a characterization of information with no explicit 
+probabilistic structure by relying more on algebraic properties than analytic 
+properties. However, if Theorem 1 is regarded as a problem dealing with a 
+certain type of functional equation, one would have to say that the algebraic 
+properties and analytic properties carry equal weight. 1 
+The proof of Theorem I is carried out in several stages. Only the reverse 
+implication is presented since the other implication is dear. Section 2 is 
+devoted to the determination of f on the rationals. The usual method is to 
+apply the ErdSs theorem on additive arithmetic functions. We give a new 
+proof based on a well-known number theoretic result on approximating 
+irrationals by rationals. In Section 3, another new approach is presented. The 
+fundamental functional equation is iterated and we find that f becomes 
+1 Since some regularity condition is necessary, see Lee (1964). 
+
+
+BOUNDEDNESS AND SHANNON ENTROPY 151 
+"approximately" locally Lipschitz near zero. Combining this fact with the 
+"correct" form of f on the rationals, it is shown that f is small for small 
+probabilities thus reducing the problem to Dar6czy (1969). For the sake of 
+completeness, Dar6czy's proof is given in Section 4 completing the proof of 
+the theorem. Section 5 deals with several concluding remarks. 
+Before we enter into the proof, we need to make some further comments 
+about our notation. Throughout the paper, log is to the base 2, all n-tuples 
+(Pl ,..., P~) belong to ~, obvious summation ranges are suppressed, the letter 
+B is reserved for the bound onf (Axiom IV), and again, f(x) = H(x, 1 -- x) 
+for x E [0, 1]. Furthermore, most of our terminology is borrowed from Acz61 
+and Dardczy (1975). 
+2. f ON THE RATIONALS 
+LEMMA 2.1. The functions H(p 1 .... , p~) are symmetric functions. Moreover, 
+the function f(x) = H(x, 1 -- x) for x ~ [0, 1] satisfies the fundamental functional 
+equation and boundary conditions 
+(,) 
+whenever x,y~[0,1], x+y ~< 1, 
+f(1 -- x) = f(x)(x ~ [0, 1]), H(1) = f(1) = 0, f(½) = 1. 
+Furthermore, 
+Pk... + Pk) ' (2) H(pl ,...,p~) = F, (Pl + ' +P~)f(p~ + 
+if P1 + "'" + Pk > O, for h -- 1,..., n. Ah'o, 
+H(O, P2 .... , P,) = H(P2 ,..., P,). 
+This lemma follows from recursivity, 3-symmetry, and normalization (see 
+Borges (1967), Feinstein (1958), and Aczfl and Dar6czy (1975)). 
+LEMMA 2.2 (Strong Additivity). Let A = (Pl ,..., P,~) be an n-tuple in ~. 
+Split up A into m (m >/ 1) disjoint subtuples ;~ (1 <~ k <~ m), so that in a natural 
+sense we may write A = (A1 ,..., Am). Also, for each 1 ~ k <~ m let Pk denote 
+the sum of the pi' s in the sub-tuple Ak . If PT~ > O for 1 <~ k <~ m, then 
+H(),) = H(P~ ..... I'm) + ~ P~H(AUPk). 
+
+
+152 GEORGE T. DIDERRICH 
+Remark. In later application, we shall refer to the subtuples )~ as "groups." 
+Also, one should note that this lemma is merely a disguised form of strong 
+additivity (see AczS1 and Dardezy, 1975). 
+The proof of the lemma follows from recursivity and the symmetry of 
+H(Pl ,..., Pn) (see Ash, 1967); Acz~l and Dar6ezy, 1975). 
+COROLLARY 2.1 (Additivity). Let M, N denote positive integers and put 
+$(M) = H(1/M,..., 1/M). Then 
+(~(MN) = (~(M) + 6(N), 
+~(N ~) = k4(N), and 
+~(27~) = k, where k is a nonnegative integer. 
+The proof follows directly from the strong additivity property and the 
+boundary condition of Eq. (1) in Lemma 2.1. 
+LEMMA 2.3. There is a positive constant K such that 
+I q~(N)l ~ K log N 
+for all integers N >/ 1. 
+Proof. Given a positive integer N, write N in binary form, so 
+N = 2~1 -}- ... -5 2~, 
+where m 1 > m~ > "-' > ms ) 0. Recall H(1/N,..., I/N) = q~(N). Form 
+s groups: 2 ~a of 1IN's,..., 2 ~. of 1IN's, then by strong additivity we obtain 
+q~(N) = H( 2~1 2'~) 2~m~ 
+N .... ' U +Z~, (3) 
+using q~(2~0 -= mi • Sincefis bounded by B, we obtain from (2) in Lemma 2.1 
+,..., 
+Clearly, s -- 1 ~< m 1 ~< log N and ~(2~mi)/N ~ ml • Thus, taking absolute 
+values in (3), the result is 
+I~(N)I ~(s-- 1) B+m 1 ~(logN) Bq-logN 
+or 
+r 4(N)[ ~ (B -k 1) log N. 
+The lemma follows by taking K = B -k 1. 
+
+
+BOUNDEDNESS AND SHANNON ENTROPY 153 
+Next we state a well-known result from number theory on approximating 
+irrationals by rationals. 
+LEMlVIA 2.4. Let 0 be an irrational. There is an infinite number of rationals 
+m/k (m, k are positive integers) such that 
+m 1 
+0-y- <-~-. 
+For proof see Hardy and Wright (1960), Chap. XI. 
+COROLLARY 2.2. Let N > 1 be an odd integer. Either the exponential 
+diophantine equation with a growth restriction on the remainder term, 
+N k=2 "~-¢-c~ with 
+0 < % < 2m(21/1~ -- 1), where c~ is an integer remainder term, 
+(4) 
+has an infinite number of solutions in positive integers m, h or, similarly, the 
+equation 
+2 m = N k + % with 
+(5) 
+0 < % < N1~(21/k -- 1) 
+has an infinite number of solutions in positive integers m, k. Furthermore, 
+m 2 ~ N l~ lim ~ -logN, lim~-u=lim~ 1 
+lim m ~- oo and lim k = 0% 
+(6) 
+where m, k run over an infinite set of solutions satisfying either (4) or (5). 
+Proof. Let N ) 3 be a fixed odd integer. Then log N is an irrational. 
+For, if log N = m/h, then N k = 2 m which is clearly impossible. Thus, our 
+number theoretic approximation lemma applies and we conclude that 
+[log N -- (m/h)i < ~/a~ (7) 
+has an infinite number of solutions. Hence, either 0 < log N -- (m/k) < 1/k ~ 
+or 0 < (m/k) -- log N < 1/k ~ has infinitely many solutions. Suppose, for 
+example, the latter possibility holds. Then, 0 < log 2"~/N k < Ilk, hence 
+1 < 2~*/N k < 21/~, (8) 
+has infinitely many solutions in positive integers m, k. 
+
+
+154 GEORGE T. DIDERRICH 
+Therefore, for each solution we can write 2 m = N a -}- c~, where cm is 
+a positive integer remainder term. So, 2~/N k -~ 1 -~ (c~/N ~) and substituting 
+this in (8) results in 
+0 "< c~ < Nk(21/~ -- 1), 
+which proves (5). The proof of (4) is similar; and the proof of (6) is clear from 
+(7) and (8). This concludes the proof of the lemma. 
+LEMMA 2.5, For every positive integer N we have 
+¢(N) ~-- log N. 
+Proof. Let N > 1 be a fixed odd integer. Apply the preceding corollary 
+and suppose that (4) holds, i.e., N ~ = 2 ~ + c,~ with 0 < e,~ < 2~(21/~ -- 1) 
+has infinitely many solutions in positive integers m, k. For such m, k, form 
+one group of 2% liNk's and another group of cm, 1/N~'s, then by strong 
+additivity we obtain 
+(1 1) H N~ ,..., Nk- =H Nk , Nk. +~H 2~ .... , 2~- 
+c~ 1 1 .). 
+H (. c--T 
+Using the definition off and ¢, this becomes 
+¢(N k) ~-f(cm/X ~) + (2~/g k) ¢(2 ~) + (C~n/N ~) ¢(c~). 
+But ¢(2 ~) = m and 6(N *) = k6(N), and the above equation becomes 
+2 ~ m cm ¢(c~) f(c~/Nk) -]- N~ + N~ (9) ¢(N) -- k k k 
+Clearly [f(cm/N~)]/k --~ 0 (because f is bounded), 2~/N k ~ 1, and talk --+ 
+log N. Hence, it suffices to show that (c~/Nk)(¢(c,~)/k)-+ 0 to obtain our 
+result. 
+Lemma 2.3 implies that ] 7~(c,~)] ~ K log cm, so 
+1 ] 2 ~ log 2~(21/~- 1) c,~ ¢(c~) ~ I)K N k k -~- (211k -- k 
+Simplifying the latter term gives 
+2 ~ 1 log(21/k -- 1)]. Nk K(21/~ - 1)[-~- + A 
+
+
+BOUNDEDNESS AND SHANNON ENTROPY 155 
+However, by l'Hospital's rule or by looking at series expansions, we find that 
+1/k log (2 ilk -- 1) ~ 0, as k -+ oo. Also (2:/k -- 1) ~ 0. So indeed, 
+(c.jNk)(¢(%)/k) --+ O. 
+Taking limits in (9) gives 
+¢(N) = log N. 
+If (5) in Corollary 2.4 holds, the proof is similar. If N is even, write N = 2sM 
+where M is odd, then 
+¢(N) = s + ¢(M) = log 2 ~ + log M = log N. 
+This completes the proof. 
+COROLLARY 2.3. We have 
+f(q) -- --q log q -- (l -- q) log (1 -- q) (10) 
+for all rationals q in [0, 1]. Furthermore, 
+lim f(q) = 0, (11) q-cO+ 
+for rationals q e (0, 1]. 
+The proof of (10) is an easy application of Lemma 2.5 and strong additivity; 
+clearly (11) is a direct consequence of (10). 
+3. ITERATION OF THE FUNDAMENTAL FUNCTIONAL EQUATION 
+Note. In the remainder of the paper, for x~ [0, 1], write x' as an 
+abbreviation for 1 -- x, i.e., x' = 1 -- x. 
+LEMMA 3.1. Let N >/ 3 be an integer and let u0, x 0,y0, Woe [t3, 1]. 
+Assume that u o = 1IN < xo < Yo < 1/(N- 1) = w o . Recursively define 
+uk , x~ , YT~ , w~ , for 0 ~ k <~ N -- 3 as follows: 
+~k+l = ~/c/U~; ', 
+X/C+I : XIC/YJ' (12) 
+Y~+I : y~/x~', 
+W/~+I = W/~/Wj. 
+
+
+156 GEORGE T. DIDERRICH 
+Note: w k ---- uk+i , u o -~ 1/N, w o = 1/(N- 1). Then, 
+u~ <xe <yz:<we~ 1 ~-, 
+u~' > x~' > y~' > w~', and 
+x~+ye < 1, for O<~k~N--3. 
+(13) 
+Proof. The assertion is trivial for k = 0. Proceed by induction and 
+assume that 0 ~ k < N -- 3 and u~ < xk < y~ < w~. Then 
+XI~ U k 
+xk+l--u~+l = l--y~ 1--u~ 
+(x~ -- u~) + uk(y~ -- x~) 
+(1 -- y~)(1 -- uk) 
+80 Xk+ 1 ~ ~,~+1 
+Yk 
+Yk+l -- X~+l -- 1 -- x/~ 
+X/e 
+1 -- y~ 
+(y~ -- xe)[1 -- (x~ + y~)] 
+(1 --xk)(1 --y~) 
+thus YTe+l > x/~+l , and finally 
+> 0, (14) 
+> 0, (15) 
+w~ y~ 
+Wk+l -- Y,~+I -~-- 1 -- we 1 -- x k 
+_ (w~ - y~) + w~(y~ - x~) 
+-- (1 -- we)(1 -- xe) > 0, (16) 
+whence w~+ 1 >Yk+l. This completes the inductive step and proves 
+u~ < xe < y~ < w~ for 0 ~< k ~< N -- 3; the remaining inequalities of (13) 
+are simple consequences of this. This completes the proof. 
+COROLLARY" 3.1. Under the same hypothesis as Lemma 3.1 define z~ 
+Yk -- x~ > O, for O ~ k ~ N -- 3. Then for O ~ k ~ N -- 3, 
+Yo'Yl'"'YT~' ~< u° -- N--k--1 (17) 
+u/~+l N 
+and for l <~ k <~ N-- 3, 
+• Z yo" "'" y~-l( jzo) < (uo')~. (18) 
+
+
+BOUNDEDNESS AND SHANNON ENTROPY 157 
+Proof. For Uo ~- 1/N, it is easy to verify that u~ = 1/(N -- k). Also, from 
+(12) we have uT~' = uk/uk+l. Inequality (13) implies thatyo' ... Yk' ~ Uo' "'" u~'. 
+But Uo .... u~'= (Uo/~1)(~1/~)"-(u~/~+l)= Uo/U~+~ and ~o/~+1---- 
+(N -- (k + 1))/Nwhich proves (17). 
+Now Yo .... y~._l(zk/zo) ---- (yo'Zl/Zo)"'" (y'~_~zk/zk_l) and (15) gives 
+, (zz_~_~) 1--(xk_l+y~_~) 
+Yk-1 1 -- x~_ 1 
+Hence Yo' ""Y~-l(zk/Zo) = Yl .... y~' ~ (Uo') k because (13) yields 
+u 0' ~u~' ~yk' for 1 ~k~N--3 
+which proves (18). This ends the proof of the corollary. 
+LEMMA 3.2. Let N >/ 3 be an integer. If 1/N < x o < yo < 1/(N-- 1), 
+then 
+i f(Xo) -- f(Yo)l ~ OB/x) -k I xo -- Y0 ! NB, (19) 
+where B is the bound on f. 
+Proof. The fundamental functional equation (see (1) in Lemma 2.1) is 
+f(xo) + (1 -- Xo) f(yo/(1 -- Xo) ) ----f(Yo) + (1 --yo)f(Xo/(1 --Yo)). 
+Using the notation in Lemma 3.1 and Corollary 3.1, this may be written as 
+f(Xo) -- f(Yo) = yo'[f(x~) -- f(yl)] -- zof(y~). (20) 
+More generally, after iterating n ----- N -- 3 times, (20) becomes 
+f(xo) - f(yo) = yo' ' y~'[/(x~÷~) - f(y~÷l)] 
+-- zof(Yx) -- yo'zff(y~) .... 
+-- Yo' ""Yk-1 ff(Yk+l) .... 
+-- yo' "" y~_xz~f(y~+~). (21) 
+Taking absolute values in (21), using the bound on f, and taking into account 
+(17) and (18) of Corollary 3.1, the result is 
+I f(Xo) --f(Yo)] ~ (4B/N) + zoB(1 + u o' + (Uo') 2 + ... + (uo')~). (22) 
+
+
+158 GEORGE T. DIDERRICH 
+But 
+1 + (%') + ... + (u0')" < ~ (u0') k = 1/(1 -- Uo') = 1/Uo. k=0 
+Since u o = 1/N, we obtain (19) from (22). This concludes the proof. 
+COROLLARY 3.2 (Small for Small Probabilities). 
+lim f(x) = 0. (23) x~0+ 
+Proof. Let e > 0 be given. By (11) in Corollary 2.3, we can choose N so 
+large that for any rationaly in [0, 1/(N -- 1)] we have If(Y)l < e/3. Also, we 
+can choose N large enough so that 4BIN < E/3 and fIN < e/3. Let x be any 
+irrational in (0, 1/(N-- 1)). Suppose that 1/M < x < 1/(M-- 1) where 
+M >7 N. Next choose a rationaly close enough to x so that 1/M < x <y < 
+1/(M -- 1) and I x -- y i < 1/BM2. Then 
+[f(x)l = If(x) -- f(y) + f(Y)l 
+<~ If(x)--f(Y)l-4-If(Y)]. 
+Applying Lemma 3.2 gives 
+[f(x)f ~ (4B/M) + (l/M) + rf(Y)l < ¢/3 -F ,/3 + ,/3 = ,. (24) 
+So I f(x)l < ~ for any x in [0, 1/(N -- 1)], and we are done. 
+4. DARdCZY'S PROOF 
+The functional equation, again, is 
+f(x) + (1 -- x) f(y/(1 -- x)) .= f(y) + (1 --y)f(x/(1 --y)), (25) 
+where x, y E [0, 1], x + y ~< 1, and f(x) = f(1 -- x). The symmetry of f, 
+f(x) = f(1 -- x), allows us to assume that x ~ [0, ½). Fix an irrational x in 
+(0, ½) and let q be a rational in [0, 1] such that q --~ x + (i.e., let q approach x 
+from above). We can determine y with y--+ 0 so that q = x/(1- y), 
+x + y ~ 1, andy > 0. Therefore (25) can be written 
+f(x) --f(q) = f(y) -- (1 -- x)f(y/(1 -- x)) --yf(q). (26) 
+
+
+BOUNDEDNESS AND SHANNON ENTROPY 159 
+Clearly on the right side of (26), the first two terms go to zero by Corollary 3.2 
+and the last term goes to zero because f is bounded and y -+ 0. Hence 
+lim~_~+f(q) = f(x), thus Corollary 2.5 gives 
+f(x) = --x log x -- (1 -- x) log (1 -- x). 
+Applying (2) in Lemma 2.1 finishes the proof of Theorem 1. 
+5. CONCLUDING REMARKS 
+Remark 1. In Lemma 2.4, it is worth noting that for each odd integer 
+N >/3, log N is transcendental. This is almost a direct consequence of the 
+Gelfond-Schneider theorem (see Hardy and Wright, 1960, p. 176) which 
+states: for c~,/3 algebraic, ~ different from 0 and 1, and/3 irrational, then a~ is 
+transcendental. In our case, a = 2, /3 = log N, and 2 l°g N= N; thus, if 
+log N is algebraic, then N is transcendental which is absurd. Hence log N is 
+transcendental. Consequently one can expect that log N is approximated very 
+well by rationals re~k, perhaps to an order 1/k s for some n > 2 or possibly 
+to an order with a more rapidly decreasing function of k. ~ Nonetheless, one 
+observes from the proof of Lemma 2.5 that the order 1/k 2 suffices for our 
+purposes. 
+Remark 2. The proof of ¢(N) = log N (see Lemma 2.5) was motivated 
+by the hope that for each odd integer N >/3 there are infinitely many positive 
+integers m, k such that 
+N k = 2"* + 1. (27) 
+A very simple proof of Lemma 2.5 would result if this were true. Unfor- 
+tunately, J. W. Mellcnder demonstrated that (27) has at most one solution 
+m, k for each N except when N = 3 and then there exactly two solutions. 
+Nevertheless, nay point is this: A study of exponential diophantine equations 
+(with perhaps growth restrictions on remainder terms) similar to (27) which 
+have an infinite number of solutions, is closely related to problem of approxi- 
+mating log N by rationals and, in turn, with the problem of characterizing 
+log N. 
+Remark 3. Lemma 3.2, Jf(xo) --f(Y0)[ ~< (4B/N) ~- Ix 0 -- Yo I NB if 
+1/N < x o < Yo < 1/(N- 1) and N >/3, means thatf is "approximately" 
+2 Note added in pro@ The reader will see in a future paper that a good lower 
+bound estimate of I log N -- (m/k)[, as a quantitative measure of the transcendence or 
+log N, can also be exploited. 
+
+
+160 GEORGE T. DIDERRICH 
+locally Lipschitz on (0, ½), where the error term 4B/N-+ 0 for N-~ oo. 
+Moreover, one observes that this is, in some sense, close to the actual 
+because 
+x o 
+[f(Xo)--f(Yo)[ ~lxo--Yo] log 1--x o 
+x° < log 1/N I =l°g(N-- 1) <N. log 1 -- x o 1 -- (I/N) 
+Also from the proof of Lemma 3.2 (cf. Eq. (21)), there may be some hope in 
+driving the error term Yo .... Y~'[f(x~+l)--f(Y~+l)] to zero by iterating 
+infinitely often, provided one could find a way to "control" the sequences 
+x~, Yk • Then f would become locally Lipschitz. If this could be shown, the 
+characterization proof could be completed without first determining f on the 
+rationals. One applies the methods of Tverberg (1958), Kendall (1964), or 
+Lee (1964). Also consult Acz61 (1966) for general techniques in the solution of 
+functional equations. 
+ACKNOWLEDGMENTS 
+I wish to thank John Cyranski for initially stimulating my interest in this area, 
+J. W. Mellender for kindly supplying me his finiteness proof on the previously men- 
+tioned exponential diophantine equations, and, especially, Professor J. Acz~l for his 
+encouragement and helpful suggestions. 
+RECEIVED: August 28, 1974; REVISED: February 12, 1975 
+REFERENCES 
+ACZI~L, J. (1966), "Lectures of Functional Equations and Their Applications," 
+Mathematics in Science and Engineering, No. 19, Academic Press, New York. 
+ACZ~L, J. (1970), On measures of information and their characterizations, Proc. of 
+the Meeting on Inform. Theory, Kitchener-Waterloo, Canada, University of 
+Waterloo, Waterloo. 
+Acz~L, J., AND DAR6CZY, Z. (1975), "Measures of Information and Their Charac- 
+terizations," Academic Press, New York, to appear. 
+ASH, R. (1967), "Information Theory," Interscience Tracts in Pure and Applied 
+Mathematics, No. 19, Wiley, New York. 
+BORaES, R. (1967), Zur Herleitung der Shannonschen Information, Math. Z. 96, 
+282-287. 
+DAR6CZY, Z. (1969), On the Shannon measure of information (Hungarian), Magyar 
+Tud. Akad. Fiz. Oszt. Kb'zl. 19 (1969), 9-24. English transl, in "Selected Transla- 
+tions in Mathematical Statistics and Probability," Vol. 10, pp. 193-210, Institute of 
+Mathematical Statistics, American Mathematical Society, Providence, R.I., 1972. 
+
+
+BOUNDEDNESS AND SHANNON ENTROPY 161 
+DAI16CZY, Z., AND K~TAI, I. (1970), Additive zahlentheoretische Funktionen und das 
+Mass der Information, Ann. Univ. Sci. Budapest. Ed'tv6s Sect. Math. 13, 83-88. 
+DOMOTOR, Z. (1970), Qualitative information and entropy structures, in "Informatiotl 
+and Inference" (J. Hintikka and P. Suppes, Eds.), pp. 148-194, D. Reidel, 
+Dordrecht, Holland. 
+EItD/SS, P. (1946), On the distribution function of additive functions, Ann. Math. 47, 
+1-20. 
+FADDEEV, D. K. (1956), On the concept of entropy of a finite probabilistic scheme 
+(Russian), Usephi. Mat. Nauk. I 1,227-231. 
+FEINSTEIN, A. (1958), "Foundations of Information Theory," McGraw-Hill, New 
+York/Toronto. 
+FORTE, B. (1970), Generalized measures of information and uncertainty, Proc. of the 
+Meetings on Inf. Theory, Kitchener-Waterloo, Canada, University of Waterloo, 
+Waterloo. 
+HARDY, G. H., AND WRICHT, E. M. (1960), "Introduction to the Theory of Numbers," 
+4th ed., Oxford Univ. Press, London. 
+INGARDEN, R. S., AND URBANIK, K. (1962), Information without probability, Colloquium 
+Mathematicum 9, 131-150. 
+KENDALL, D. G. (1964), Functional equations in information theory, Zeitsehr. Fiir 
+Wahrsch. und Verw. Geb. 2, 225-229. 
+LEE, P. M. (1964), On the axioms of information theory, Ann. ~/fath. Statist. 35, 
+415-418. 
+SHANNON, C. E. (1948), A mathematical theory of communication, Bell Syst. Tech. J. 
+27, 379-423, 623-656. 
+TVEm3~RC, H. (1958), A new derivation of the information function, Math. Scand. 6, 
+297-298.

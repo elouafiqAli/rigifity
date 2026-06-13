@@ -48,7 +48,8 @@ def append_manifest(manifest_path: Path, record: dict[str, Any]) -> None:
     with manifest_path.open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(record, ensure_ascii=False) + "\n")
 
-APP_NAME = "rigifity-library-docling"
+
+APP_NAME = "rigifity-library-docling-no-doctags"
 DOCLING_VERSION = "2.102.1"
 VLM_MODEL_PRESET = "granite_docling"
 VLM_MODEL_REPO = "ibm-granite/granite-docling-258M"
@@ -77,14 +78,14 @@ app = modal.App(APP_NAME)
     memory=32768,
     timeout=60 * 60,
     retries=1,
-    max_containers=64,
+    max_containers=8,
 )
 def extract_one(
     pdf_filename: str,
     pdf_bytes: bytes,
     page_batch_size: int = 16,
     num_threads: int = 8,
-    document_timeout_s: float = 1800.0,
+    document_timeout_s: float = 3600.0,
 ) -> dict[str, Any]:
     slug = slugify(pdf_filename)
     started_at = datetime.now(timezone.utc).isoformat()
@@ -96,6 +97,7 @@ def extract_one(
         output_dir = Path(tmp_dir) / "output"
         output_dir.mkdir(parents=True, exist_ok=True)
 
+        # Note: doctags export removed to avoid serialization bugs
         command = [
             "docling",
             str(source_path),
@@ -105,8 +107,6 @@ def extract_one(
             "md",
             "--to",
             "json",
-            "--to",
-            "doctags",
             "--to",
             "text",
             "--pipeline",
@@ -192,14 +192,13 @@ def run(
     run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     session_manifest_path = out_root / f"manifest-{run_id}.jsonl"
 
-    # Map invokes one GPU worker per document and scales out to account-level capacity.
     jobs = [
         (
             name,
             (LIBRARY_DIR / name).read_bytes(),
             page_batch_size,
             num_threads,
-            1800.0,
+            3600.0,
         )
         for name in pdf_names
     ]

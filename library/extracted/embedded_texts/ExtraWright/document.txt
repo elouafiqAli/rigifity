@@ -1,0 +1,4733 @@
+Gleason-type Theorems and General
+Probabilistic Theories
+Victoria J Wright
+PHD
+UNIVERSITY OF YORK
+MATHEMATICS
+SEPTEMBER 2019
+
+Abstract
+The postulates of quantum theory are rather abstract in comparison with those of
+other physical theories such as special relativity. This thesis considers two tools
+for investigating this discrepancy and makes a connection between them. The ﬁrst
+of these tools, Gleason-type theorems, illustrates the interplay between postulates
+concerning observables, states and probabilities of measurement outcomes, demon-
+strating that they need not be entirely independent. Gleason’s original and remark-
+able result applied to observables described by projection-valued measures; how-
+ever, the theorem does not hold in dimension two. Busch generalised the idea
+to observables described by positive operator measures, proving a result which
+holds for all separable Hilbert spaces. We show that Busch’s assumptions may
+be weakened without affecting the result. The manner in which we weaken the
+assumptions brings them closer to Gleason’s original treatment of projection-valued
+measures. We will then demonstrate the connection between Gleason-type theorems
+and Cauchy’s functional equation, a connection which yields an alternative proof
+of Busch’s result. The second tool we consider is the family of general probabilistic
+theories which offers a means of comparing quantum theory with reasonable alter-
+natives. We identify a general probabilistic theory which reproduces the set of non-
+local correlations achievable in quantum theory, a property often thought to be
+particular to quantum theory. Finally, we connect these two tools by determining
+the class of general probabilistic theories which admit a Gleason-type theorem.
+
+Contents
+Abstract . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+Contents . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+Declarations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+Introduction 6
+1 Preliminaries 10
+1.1 Quantum theory and Gleason-type theorems . . . . . . . . . . . . . . 10
+1.2 General probablilistic theories . . . . . . . . . . . . . . . . . . . . . . . 13
+1.2.1 States . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+1.2.2 Effects and observables . . . . . . . . . . . . . . . . . . . . . . 15
+1.2.3 Transforming GPTs . . . . . . . . . . . . . . . . . . . . . . . . . 16
+1.2.4 Cones in GPTs . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+1.2.5 The no-restriction hypothesis . . . . . . . . . . . . . . . . . . . 19
+1.2.6 Composition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+2 A Gleason-type theorem from projective-simulable measurements 22
+2.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+2.2 Known extensions of Gleason’s theorem . . . . . . . . . . . . . . . . 23
+2.2.1 Preliminaries . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+2.2.2 Gleason’s theorem . . . . . . . . . . . . . . . . . . . . . . . . . 26
+2.2.3 Gleason-type theorems . . . . . . . . . . . . . . . . . . . . . . . 26
+2.3 Assigning probabilities to mixtures of projections . . . . . . . . . . . 27
+2.3.1 Projective-simulable measurements . . . . . . . . . . . . . . . 27
+2.3.2 A Gleason-type theorem based on PSMs . . . . . . . . . . . . 30
+2.3.3 Minimal assumptions for a Gleason-type theorem . . . . . . . 32
+2.3.4 Mixtures and Boolean Algebras . . . . . . . . . . . . . . . . . 34
+2.4 Summary and discussion . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+3 Gleason-type theorems and Cauchy’s functional equation 38
+3.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+3.2 Cauchy’s functional equation on a ﬁnite interval . . . . . . . . . . . . 39
+2
+
+3.3 When Cauchy meets Gleason: additive functions on effect spaces . . 41
+3.3.1 Preliminaries . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+3.3.2 An alternative proof of Busch’s Gleason-type theorem . . . . 45
+3.4 Summary and discussion . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+4 A non-quantum GPT reproducing quantum correlations 49
+4.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49
+4.2 No-signalling principle . . . . . . . . . . . . . . . . . . . . . . . . . . . 50
+4.2.1 No-signalling and the tensor product . . . . . . . . . . . . . . 51
+4.2.2 Local behaviours . . . . . . . . . . . . . . . . . . . . . . . . . . 54
+4.2.3 Non-signalling behaviours . . . . . . . . . . . . . . . . . . . . 55
+4.2.4 Quantum behaviours . . . . . . . . . . . . . . . . . . . . . . . . 55
+4.3 Rebit pairs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 56
+4.4 Main Result . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 59
+4.5 Redit pairs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64
+4.6 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 65
+5 GPTs with and without Gleason-type theorems 66
+5.1 Noisy unrestricted-GPTs . . . . . . . . . . . . . . . . . . . . . . . . . . 67
+5.2 A Gleason-type theorem for NU GPTs . . . . . . . . . . . . . . . . . . 69
+5.2.1 A Gleason-type theorem for GPTs . . . . . . . . . . . . . . . . 69
+5.2.2 Main result . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 70
+5.3 Simplifying axioms for GPTs and Examples . . . . . . . . . . . . . . . 75
+5.3.1 Unrestricted GPTs . . . . . . . . . . . . . . . . . . . . . . . . . 75
+5.3.2 Noisy rebit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 76
+5.3.3 Spekkens Toy GPT . . . . . . . . . . . . . . . . . . . . . . . . . 77
+5.3.4 An alternative simpliﬁcation . . . . . . . . . . . . . . . . . . . 77
+5.4 Simulability . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 79
+5.5 GPT framework . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 80
+5.6 Summary and Discussion . . . . . . . . . . . . . . . . . . . . . . . . . 84
+Summary 85
+Appendices 95
+A An equivalent form of Gleason’s theorem 96
+B Proofs of Cases (ii), (iii) and (iv) of Theorem 8 98
+C Proof of linearity—Proposition 1 100
+3
+
+Acknowledgements
+I have been very fortunate to receive help and support, both moral and mathem-
+atical, from many people during my doctoral studies, and would like to thank all
+those who kept this time somewhere between enjoyable and bearable. A list of
+names may be quite cumbersome so hopefully you know who you are. In case
+you need some reassurance, if you ﬁt into any of these classes I’m referring to
+you: my family, my housemates, QuFITS attendees, fellow Eric Milner-White A
+inmates, old-coffee-room crowd, new-coffee-room (Topos) crowd, mountaineers,
+boulderers, builderers, pub-goers, and addressees of the following questions: “Pint?”,
+“Just one more?”, and “Oh dear. Can you remember where I left my bike?”.
+I would like to expressly thank my supervisor, Stefan, for, amongst other things,
+broadening my horizons on subjects including mathematics, physics, politics, liter-
+ature, English grammar, and home-made confectionery.
+Thanks everyone!
+I also gratefully acknowledge funding from the York Centre for Quantum Tech-
+nologies and the WW Smith fund.
+4
+
+Declaration
+I declare that this thesis is a presentation of original work and I am the sole author.
+This work has not previously been presented for an award at this, or any other,
+University. All sources are acknowledged as References.
+Chapters 2 and 3 have been published in:
+• Victoria J Wright and Stefan Weigert. A Gleason-type theorem for qubits
+based on mixtures of projective measurements. J. Phys. A, 52:055301, 2019,
+• Victoria J Wright and Stefan Weigert. Gleason-type theorems from Cauchy’s
+functional equation. Found. Phys., 49(6):594–606, 2019,
+respectively.
+5
+
+Introduction
+Nearly a century ago, quantum theory emerged as the culmination of the work of
+many physicists and mathematicians. Its development began with observations of
+phenomena which were not explained by classical physics. As early as 1801 Young
+[86] describes interference patterns produced by light. In 1887 Hertz [50] ﬁrst
+published his observations of the photoelectric effect: the emission of electrons by
+a material exposed to electromagnetic radiation. Further experiments [58] showed
+the number of electrons, not their energy, increases with the intensity of the incident
+radiation. The electrons’ energy increased instead with the frequency of the radia-
+tion, a conclusion difﬁcult to reconcile with the wave-like behaviour of light demon-
+strated by Young. The presence of only discrete frequencies in the spectrum of
+hydrogen [3, 76] also lacked an explanation and the term ultra-violet catastrophe
+was coined in 1911 [36] to describe the untenable prediction of classical statistical
+mechanics that electromagnetic radiation incident on a cavity of a black body would
+result in an inﬁnite amount of energy in the cavity.
+These observations prompted new theories to explain the phenomena. For
+example, Planck [73] resolved the ultraviolet catastrophe by proposing the quantis-
+ation of the energy of the electromagnetic radiation emitted by the body at a given
+frequency. Einstein [37] then proposed that this quantisation of the energy was
+an inherent property of electromagnetic radiation, with each quantum of energy
+owing to a “Lichtquant”, a quantum of light, which we now call a photon. He
+used this theory to explain the photoelectric effect, for which he received the Nobel
+prize in physics in 1921. These ideas, along with work of Bohr [14] and de Broglie
+[33] explaining the spectrum of hydrogen, were brought together 1925 and 1926
+in the matrix mechanics of Heisenberg, Born and Jordan, [48, 16, 15] and the wave
+mechanics of Schrödinger [77], which form the basis of modern quantum mechanics1.
+In 1932 von Neumann [83] put the existing quantum theory into proper math-
+ematical context via his Hilbert space framework, a rigorous mathematical frame-
+work which remains largely unaltered at the core of modern quantum theory. This
+stability owes to the great empirical success of quantum theory, which (somewhat
+inexplicably) provides accurate predictions for experiments in increasingly broad
+domains.
+1A comprehensive account of the development of quantum theory can be found in [51].
+6
+
+Despite its success, quantum theory retains many mysteries. One source of
+confusion for many physicists is the obscurity of the theory’s postulates. The post-
+ulates in many physical theories can be formulated in terms of simple, “physical”
+predictions, e.g. special relativity’s assumption that the speed of light in a vacuum
+is the same to any observer or the conservation of energy in a closed system of
+thermodynamics. The standard postulates of quantum theory, however, simply
+relate physical quantities to abstract mathematical objects, making the key physical
+consequences of the model more difﬁcult to deduce. This difﬁculty poses an obstacle
+to both philosophical endeavors, such as establishing why Nature saw ﬁt to obey
+quantum theory as opposed to any other, and to technological goals, as it obscures
+which aspects of quantum theory make it so apt for computation or information
+processing tasks.
+The goal of deriving quantum theory from physical principles has a long history,
+including the quantum logic approach of von Neumann and Birkhoff [13], the
+operational approaches of Mackey [64] and Ludwig [59, 60, 61], and more recent
+efforts employing an information theoretic angle [46, 29, 32, 24, 66]. Identifying
+such principles is hoped to isolate the fundamental properties which embody quantum
+mechanics. However, most remain unsatisﬁed by the existing efforts, none of which
+have supplanted the mathematical postulates in their position as the default formulation,
+so the search continues.
+Gleason’s theorem [40], and Gleason-type theorems (GTTs) [18, 20], represent a
+solid step towards reﬁning essential elements of the postulates of quantum theory
+by showing that some of the standard postulates may be derived from others via
+intuitive assumptions or deﬁnitions. More explicitly, a GTT allows us to recover the
+standard description of both states of a quantum system and the rule for calculating
+the probability of a measurement outcome from the measurement postulate. This
+conclusion is reached by considering probability assignments on the outcomes of
+measurements such that the probability of observing any outcome is one, and
+assuming that distinct states correspond to distinct probability assignments. A
+GTT then shows that there is a bijection between such probability assignments and
+density operators, which traditionally represent quantum states. GTTs also provide
+conﬁrmation that the form of states that is postulated in quantum theory is not
+too restrictive. They show that no further states are compatible with the standard
+formulation of quantum measurement.
+The overall objective of applying GTTs to quantum theory is to elucidate the
+essential elements in the postulates of the theory. Thus we begin by raising the
+question of whether GTTs may result from weaker assumptions. To answer this
+question we investigate which aspects of the measurement postulates are necessary
+to identify distinguishable quantum states as density operators and recover the Born
+rule for calculating the probability of an outcome of a measurement.
+Once the Hilbert space framework is established, the problems considered by
+7
+
+Gleason and Busch are simple to state 2. In ﬁnite dimensional Hilbert spaces in
+particular we will show how the problems can be cast in terms of characterising
+additive functions. Unsurprisingly, research into additive functions predates quan-
+tum theory; Cauchy [19] began the study of characterising additive functions in
+1821. We will demonstrate how GTTs can beneﬁt from this long history by using
+existing results to provide an alternative proof of Busch’s GTT.
+The pursuit of the deﬁning features of quantum theory is also assisted by the
+presence of alternative theories with which quantum theory may be compared.
+This role is often played bygeneral probabilistic theories(GPTs). GPTs are constructed
+following a framework that is motivated by operational principles [46, 9]. For
+example, it is assumed that the state of a system can be identiﬁed by the probabilities
+of some ﬁnite set of measurement outcomes to ensure that any two distinct states
+are operationally distinguishable.
+Examples of GPTs include models of ﬁnite dimensional quantum systems, some-
+times known as qudits, their classical counter-parts, such as bits and trits, along
+with a host of other theories with no (known) realisation in Nature. GPTs provide
+a broad setting within which to view quantum theory, allowing us to ask which
+attributes make it special amongst other candidate theories. The recent efforts
+to reconstruct quantum theory from physical axioms have used the operational
+assumptions of the GPT framework then supplemented them so as to single out
+quantum theory [46, 66].
+Many of the properties of quantum theory also appear or have analogs in other
+GPTs, for example non-locality [52], no cloning [9], no broadcasting [5], teleportation
+[6] and steering [80]. In the case of non-locality, some GPTs surpass quantum theory
+by predicting a superset of quantum theory’s non-local correlations. The smaller set
+of correlations achievable in quantum theory has proved difﬁcult to characterise
+in terms of physical or information theoretic principles [67]. The effort to do so
+began after it was proposed to classify theories via their predicted correlations [74].
+Would this classiﬁcation of theories leave quantum theory in a class of its own?
+We answer this question in the negative by identifying a GPT that shares a set of
+correlations with quantum theory.
+GTTs have not previously been considered in the context of GPTs. We unite our
+two themes by considering whether the existence of a GTT is a unique feature of
+quantum theory or whether they may be proven in other GPTs. We ﬁnd a GPT
+admits a GTT if and only if it is in the class ofnoisy, unrestricted GPTs. A GPT in this
+class either satisﬁes the so-called no-restriction hypothesis or a noisy version thereof.
+In Chapter 1 we review the mathematical concepts needed to state Gleason’s
+theorem before stating the theorem, along with its generalisation proved by Busch
+in 2003 [18]. We then proceed by introducing the GPT framework. Chapter 2
+answers the question of whether the assumptions of Busch’s GTT can be weakened
+2A stark contrast to the complexity of Gleason’s proof.
+8
+
+whilst preserving the result. The question is answered in the positive, identifying
+a weaker measurement postulate from which a GTT may be proved. In Chapter 3
+we demonstrate the link between GTTs and Cauchy’s functional equation, then use
+this connection to provide an alternative proof of Busch’s GTT. Chapter 4 covers,
+in-depth, an example of a GPT known as a pair of rebits. We demonstrate that in
+a simple Bell-scenario the correlations achievable by the rebit pair are identical to
+those achievable in quantum theory. In Chapter 5 we generalise the concept of a
+GTT to GPTs and identify exactly the class of GPTs for which a GTT exists. Finally,
+we conclude with a summary of the main results in the thesis.
+9
+
+Chapter 1
+Preliminaries
+1.1 Quantum theory and Gleason-type theorems
+We will now introduce the mathematical formalism used in quantum theory and
+state Gleason’s theorem, and a generalisaton of Gleason’s theorem, in this language.
+In this section we will simply describe the mathematical theorems themselves. Fur-
+ther description of the applications of these theorems to quantum theory is reserved
+for later chapters, where it can be discussed in greater detail (see Sections 2.1, 2.2,
+3.1, 3.3 and 5.2).
+A (complex) Hilbert spaceH is a complete, complex inner-product space. A separable
+Hilbert space contains a countable, dense subset, or, equivalently, admits a countable
+orthonormal basis. Given a closed subspace A ofH, the Hilbert space H may be
+decomposed into the direct sum
+H =A⊕A ⊥, (1.1)
+whereA⊥ is the closed subspace consisting of the vectors orthogonal to every
+vector inA. Thus any vector ψ∈H admits an expression as
+ψ = χ + φ, (1.2)
+for χ∈A and φ∈A ⊥, and we may deﬁne the orthogonal projection ΠA onto the
+subspaceA as
+ΠA(ψ) = χ. (1.3)
+A bounded, linear operator T :H→H is a linear map satisfying ∥Tψ∥≤ c∥ψ∥
+for all ψ∈H and some c∈ [0, ∞). The adjoint, T∗, of the operator T is the unique
+operator satisfying
+⟨χ, Tψ⟩ =⟨T∗χ, ψ⟩ , (1.4)
+for all χ, ψ∈H . The operator T is self-adjoint if T = T∗. An operator Π = ΠA for
+some subspaceA ofH is called a projection, and the set of all projections forms a
+10
+
+lattice, which we will denoteP (H). A positive operator, P≥ 0, satisﬁes
+⟨ψ, Pψ⟩≥ 0, (1.5)
+for all ψ∈H . This notion of positivity can be used to deﬁne a partial order on the
+bounded self-adjoint operators given by S≤ T if and only if T− S≥ 0.
+A positive operator has a unique positive square root. Thus we may deﬁne the
+absolute value of a bounded linear operatorT to be|T| =
+√
+T∗T. A positive operator,
+T, is trace class if its absolute value has ﬁnite trace, that is if
+Tr(|T|) < ∞, (1.6)
+where
+Tr(P) = ∑
+ψ∈B
+⟨ψ, Pψ⟩ , (1.7)
+for some, and hence any, orthonormal basis B ofH. Finally a density operator is a
+positive trace class operator with unit trace.
+Originally, Gleason’s theorem was stated in terms of measures acting on closed
+subspaces of a Hilbert spaceH. For a countable collection of mutually-orthogonal,
+closed subspaces{H1,H2, . . .}, a measure µ must assign to each subspace a non-
+negative real number such that
+µ (span (H1,H2, . . .)) = µ (H1) + µ (H2) + . . . , (1.8)
+where span() denotes the closed linear span of the spaces.
+Theorem 1 (Gleason [40]). LetH be a separable Hilbert space of dimension greater than
+two. A measure µ on the closed subspaces ofH admits an expression
+µ (A) = Tr(ρΠA) , (1.9)
+for a ﬁxed positive, trace-class operator ρ onH and any closed subspaceA ofH.
+Gleason’s theorem was generalized by Busch in 2003 [18], in order to hold
+in dimension two. Busch considered generalized probability measures on effects, as
+opposed to measures on closed subspaces of H. A effect E is a positive operator
+satisfying
+⟨ψ, Eψ⟩≤ ∥ψ∥2 . (1.10)
+Equivalently an effect E is a bounded, self-adjoint operator satisfying O ≤ E≤ I
+where O and I are the zero and identity operators, respectively, on H. We will
+denote the set of effect operators byE (H). A generalized probability measure v on
+E (H) satisﬁes
+(V1) 0 ≤ v(E)≤ 1 for all E∈E (H),
+11
+
+(V2) v(I) = 1,
+(V3) v(E) + v(F) + . . . = v(E + F + . . .) for all sequences of effects E, F, . . . such
+that E + F + . . . = I.
+Theorem 2 (Busch [18]). LetH be a separable Hilbert space. A generalized probability
+measure v onE (H) admits an expression
+v(E) = Tr(Eρ) , (1.11)
+for all E∈E (H) and some density operator ρ onH.
+Both these theorems can be restated in terms of frame functions, a term coined
+by Gleason and used more generally later [20]. In the traditional formulation of
+quantum theory an observable corresponds to a projection valued measure (PVM).
+Given a set Ω and with a σ-algebra Σ, a PVM is a map π : Σ→P (H) such that
+π (Ω) = IH and for every ψ∈H the map
+µ : Σ→ R, X↦→⟨ ψ, π (X) ψ⟩ , (1.12)
+is σ-additive and µ (∅) = 0, i.e. µ is a measure on Σ.
+The image of a partition (into parts contained in Σ) of Ω under a PVM will
+consist of a collection of mutually orthogonal projections. Consider an observable
+taking values in Ω. Measuring this observable would establish which part of some
+partition1 of Ω contained the value of that observable for the system measured, for
+instance, establishing which interval in some partition of the real line contains the
+position of a particle. The PVM maps the possible outcomes of this measurement
+to a collection of mutually orthogonal projections that sum to the identity operator,
+such that each outcome has a corresponding projection. We will sometimes refer to
+the measurement of a PVM as a projective measurement.
+A frame function on P (H) assigns probabilities to every projection in P (H)
+such that the values assigned to the projections corresponding to all the disjoint
+outcomes of any measurement sum to one. Explicitly, a frame functionf :P (H)→
+[0, 1] satisﬁes
+f (Π1) + f (Π2) + . . . = 1, (1.13)
+for any collection{Π1, Π2, . . .} of mutually orthogonal projections that sum to the
+identity.
+Gleason’s theorem can thus be restated as follows.
+Theorem 3. LetH be a separable Hilbert space of dimension greater than two. Any frame
+1The parts of the partition should not have measure zero in all of the measures described in Eq.
+(1.12). Equivalently they should not be in the preimage, π−1(0), of the zero operator.
+12
+
+function f on P (H) admits an expression
+f (Π) = Tr(Πρ) , (1.14)
+for some density operator ρ onH and any projection Π∈P (H).
+Appendix A demonstrates the equivalence of Theorems 1 and 3.
+A generalized observable in quantum theory corresponds to a positive operator
+measure (POM) (often referred to as a positive operator valued measure (POVM)). In
+parallel with a PVM, given a set Ω and with a σ-algebra Σ, a POM is a map
+E : Σ→E (H) such that E (Ω) = IH and for every ψ∈H the map
+Σ→ C, X↦→⟨ ψ, E (X) ψ⟩ , (1.15)
+is a measure. If E (Ω) = I for a countable set Ω the POM E is called discrete.
+Given a countable set Ω the image of a partition of this set under a such POM
+will be a sequence of effects that sum to the identity operator. Thus, similarly to the
+PVM case, a measurement of a POM will correspond to a collection of effects that
+sum to the identity, where each effect represents a disjoint possible outcome of the
+measurement. We will only consider discrete POMs and will often identify them
+with the set{E (x)|x∈ Ω}. The set of PVMs is the subset of POMs whose range is
+contained inP (H).
+A frame function onE (H) is, analogously, a function f :E (H)→ [0, 1] such
+that
+f (E1) + f (E2) + . . . = 1 , (1.16)
+for any sequence of effects E1, E2, . . . such that ∑j Ej = I, i.e. that form a (discrete)
+POM. Note that the deﬁnition of a frame function will be generalised in Chapter 2
+and again in Chapter 5 making the above deﬁnition a special case.
+Theorem 2 can be easily restated in terms of frame functions.
+Theorem 4. LetH be a separable Hilbert space. Any frame function onE (H) admits an
+expression
+f (E) = Tr(Eρ) , (1.17)
+for any E∈E (H) and some density operator ρ onH.
+1.2 General probablilistic theories
+The GPT framework can be used to describe a broad family of theories, of which
+quantum theory (in ﬁnite dimensional Hilbert spaces) is a member. Systems (real
+or ﬁctitious) that may be described by a GPT have the following fundamental
+property: there exists a ﬁnite set ofﬁducial measurement outcomes, the probabilities
+13
+
+of that uniquely determine the state of the system2. For example, the state of a spin-
+1/2 particle can be uniquely determined by the probabilities of the +1 outcome of
+measuring spin observables in three orthogonal directions, as demonstrated by the
+Bloch vector description.
+The GPT framework can be formulated in many different yet equivalent ways.
+We will now brieﬂy outline an intuitive formulation that is based on an operational
+derivation [66].
+1.2.1 States
+If a system has a minimal ﬁducial set consisting of d outcomes3, its state spaceS is
+given by a convex, compact set of vectors of the form
+ω =
+
+
+p1
+...
+pd
+1
+
+
+∈ Rd+1, (1.18)
+where pk ∈ [0, 1] , k = 1 . . .d, are the probabilities of the ﬁducial outcomes. The
+extra dimension of the “ambient” vector space is to simplify the description of
+measurement outcomes, which we will come to shortly. The convexity of the state
+space is derived from the assumption that if one were to prepare the system in the
+states ω and ω′ =
+(
+p′
+1, . . . ,p′
+d, 1
+)T with probabilities λ and (1− λ), respectively,
+then the probability of observing thek-th ﬁducial measurement outcome should be
+qk(λ) = λpk + (1− λ) p′
+k , λ∈ [0, 1], k = 1 . . .d , (1.19)
+and therefore this mixed state should be represented by the vector
+τ(λ) = λω + (1− λ) ω′ . (1.20)
+A state ω is extremal if it cannot be written as a (non-trivial) convex combination
+of other states. The state space is assumed to be compact since, ﬁrstly, it must be
+bounded if the entries of the vector are to be between zero and one, and secondly,
+operationally an arbitrarily good approximation of a state would be indistinguish-
+able from the state itself therefore we assume the state space is also closed in the
+topological sense. As an example, consider a classical bit which may reside in one
+of two states called “0” and “1”, or in a mixture of the two. If we know that the bit
+is in state 0 with probability p then it is in state 1 with probability (1− p); in other
+words, the number p∈ [0, 1] fully determines the state of the system. Therefore
+2The restriction to a ﬁnite set of ﬁducial measurement outcomes has been relaxed by e.g. Nuida et
+al. [69], allowing the framework to encompass quantum theory in toto.
+3Minimal meaning that there is no ﬁducial set for the system with fewer than d outcomes.
+14
+
+the outcome “The bit is in state 0.” when performing the measurement which asks
+“Is the bit in state 0 or 1?” forms a complete set of ﬁducial measurement outcomes.
+Thus, the state spaceSb of the bit can be represented by the line segment between
+(0, 1)T and (1, 1)T, as displayed in Fig. 1.2.1a. The end points of the segment
+correspond to the states 0 and 1, respectively, and their convex hull deﬁnesSb.
+1.2.2 Effects and observables
+The possible outcomes of measuring an observable in a GPT correspond to effects
+which are linear maps e : Rd+1→ R such that 0≤ e (ω)≤ 1 for all states ω∈S ;
+here e (ω) denotes the probability of observing the outcomee when a measurement
+M (with e as a possible outcome) is performed on a system in state ω. Due to the
+linearity of the map e, any effect can be uniquely expressed in the form
+e (ω) = e· ω, (1.21)
+for some vector e∈ Rd+1. We will also use the term effect to refer to the vector e
+characterizing a map e.
+The linearity of effects is motivated by the assumption that they should respect
+the mixing of states with some parameterλ∈ [0, 1]. More speciﬁcally, the following
+events should occur with the same probability:
+(i) observing the outcome e of a measurement M performed on a system in a
+mixed state ω(λ) = λω + (1− λ) ω′;
+(ii) observing the outcome e when the measurementM is performed with probab-
+ility λ on a system in stateω and with probability(1− λ) on a system prepared
+in state ω′.
+This assumption implies that the map e should satisfy
+e
+(
+λω + (1− λ) ω′)
+= λe (ω) + (1− λ) e
+(
+ω′)
+, ω, ω′∈S , (1.22)
+and is therefore anafﬁne function on the state spaceS. Any such afﬁne function can
+be extended to a linear function on the vector space Rd+1 in whichS is embedded.
+The set of all the effects corresponding to measurement outcomes in a speciﬁc
+GPT is known as its effect space denoted byE. As with the state space S, the effect
+spaceE corresponds to a convex subset of Rd+1. It necessarily contains the zero
+and unit vectors,
+0 =
+
+
+0
+...
+0
+0
+
+
+and u =
+
+
+0
+...
+0
+1
+
+
+, (1.23)
+15
+
+(a)
+ (b)
+Figure 1.2.1: The state and effect spaces of the bit GPT when formulated (a) as
+described in Sec. 1.2.1 and 1.2.2, and (b) under the transformation in Eq. (1.26).
+as well as the vector (u− e) for every e ∈ E [54], which arises automatically
+as a valid effect. We also assume that the effect space has dimension (d + 1) as
+otherwise the model would contain states which give identical probabilities for all
+effects in the effect space, making them indistinguishable (and hence operationally
+equivalent). Note that ad-dimensional state space comes with a(d + 1)-dimensional
+effect space. Extremal effects are effects that cannot be written as a (non-trivial)
+convex combination of other effects.
+Observables are given by ordered sets of elements of the effect space that sum
+to the unit effect u, with each effect in the set corresponding to a different possible
+outcome when measuring the observable. Such sets will be denoted with double
+square brackets, De = Je, u− eK, for example. We will assume throughout (except
+in Sec. 5.4) that any ﬁnite set of effects summing to the unit effect u in a GPT
+corresponds to an observable.
+The effect spaceEb of the classical bit with state spaceSb is given by the parallel-
+ogram depicted in Fig. 1.2.1a. The two-outcome measurement B determining “Is
+the bit in state 0 or 1?” is represented by
+B =
+t(
+−1
+1
+)
+,
+(
+1
+0
+)|
+. (1.24)
+1.2.3 Transforming GPTs
+When considering a speciﬁc GPT it is sometimes useful to linearly transform its
+state and effect spaces. The Bloch vector description of a qubit is an example of such
+a transformed system, since the components of the state vector do not necessarily
+take values in the range [0, 1].
+Any linear transformation that preserves the inner product between states and
+16
+
+effects of a given GPT gives rise to an alternative representation. Suppose that we
+transform the state spaceS by an invertible (d + 1)× (d + 1) matrix M to the space
+SM≡ MS. Then we must apply the inverse transpose transformation M−T to the
+effect space,EM≡ M−TE, in order that the probablities remain invariant,
+eM· ωM =
+(
+M−Te
+)
+· (Mω) = e· ω . (1.25)
+The transformed state and effect spaces continue to be convex subsets ofRd+1, and
+they can even be thought of a convex subset of a vector space isomorphic to Rd+1.
+GPTs are often presented in this way (cf. [8, 54] and references therein).
+The standard formulation of quantum theory in ﬁnite dimensions is an example
+of representing the state and effects spaces of a theory as subsets of a vector space
+isomorphic to Rd+1. Quantum states are represented by density operators on Cd
+which form a convex subset of the real vector space of Hermitian operators on Cd,
+which is isomorphic to Rd2
+. Quantum effects can also be embedded in this space
+with e (ω) = Tr(eω) for an operator e satisfying 0≤⟨ ψ|eψ⟩≤⟨ ψ|ψ⟩ for all vectors
+|ψ⟩∈ Cd. Using this representation is virtually essential for characterising the state
+and effect spaces of quantum systems for which d > 2 as identifying a geometrical
+description of these sets (with states in the form of Eq. (1.18)) is a highly non-trivial
+task (see e.g. [41, 12]).
+As an explicit example, let us transform the GPT description of a classical bit
+with state spaceSb by the matrix
+M =
+(
+2 −1
+0 1
+)
+. (1.26)
+The new state space, SB ≡ MSb, is now the convex hull of the images of the
+extremal states 0 and 1 (previously located at (0, 1)T and (1, 1)T, respectively), i.e.
+SB = Conv
+{(
+−1
+1
+)
+,
+(
+1
+1
+)}
+. (1.27)
+Similarly, the effect space, EB ≡ M−TEb, is given by the convex hull of the zero
+effect 0, the unit effect 1 and two other extremal effects,
+EB = Conv
+{(
+0
+0
+)
+,
+(
+1
+0
+)
+, 1
+2
+(
+−1
+1
+)
+, 1
+2
+(
+1
+1
+)}
+, (1.28)
+as pictured in Fig. 1.2.1b.
+17
+
+1.2.4 Cones in GPTs
+The notion of a positive cone is useful when studying the properties of state and
+effects space of a GPT. A positive cone is a subset of Rd+1 that contains all non-
+negative linear combinations of its elements. Positive cones may, for example, be
+generated from convex subsets of real vector spaces:
+Deﬁnition 1. The positive cone A + of a convex subset A of a real vector space is the
+set of vectors
+A+ ={xa|x≥ 0, a∈ A} . (1.29)
+Positive cones also arise from considering the space dual to a subset of vectors
+in an inner product space.
+Deﬁnition 2. The dual cone A∗ of a subset A of a real inner product space V is the
+positive cone
+A∗ ={b∈ V|⟨a, b⟩≥ 0 for all a∈ A} . (1.30)
+Fig. (1.2.2a) illustrates, for a classical bit, the dual coneS∗
+B of the state spaceSB.
+It is easy to see that, in general, the effect spaceE of a GPT must be contained within
+the dual cone S∗ of the state space in order that the effects assign non-negative
+probabilities to every state in the state space.
+The following lemma describes a simple but important property of effect spaces
+related to the fact that the elements of its dual cone effectively span the ambient
+space.
+Lemma 1. For any effect spaceE and any vector c∈ Rd+1, we have c = a− b for some
+a, b∈E +.
+Proof. Firstly, the interior ofE + is non-empty sinceE is convex and spans Rd+1. Let
+e be an interior point ofE +. As e is an interior point ofE +, we have that e + εc∈E +
+for some ε > 0 and we may take a = (e + εc) /ε and b = e/ε.
+Two further lemmata, which we will need later on, establish relations between
+positive cones and their dual cones.
+Lemma 2. Let A be a compact, convex subset of Rd+1, then A∗∗ = A+.
+Proof. This result is a consequence of the hyperplane separation theorem and has
+been shown as Theorem 14.1 in [75], for example.
+Lemma 3. For a compact and convex subset A⊂ Rd+1, we have A∗ = (A+)∗.
+Proof. By Deﬁnition 2, a vector b is in the dual cone A∗ of A if and only if b· a≥ 0
+for all a∈ A. Equivalently, we may require x (b· a) = b· (xa)≥ 0 for all vectors a
+in the set A and x≥ 0, which holds if and only if b∈ A+.
+18
+
+(a)
+ (b)
+Figure 1.2.2: The state and effect spaces,SB andEB (the horizontal line and the grey
+square respectively), of the bit GPT with (a) the dual cone,S∗
+B (hatched area), of the
+state space, and (b) the intersection of the cones S∗
+B and u−S∗
+B which forms the
+effect spaceEB since the bit is an unrestricted GPT (see Section 1.2.5).
+1.2.5 The no-restriction hypothesis
+A particularly close relationship between the state and effect spaces exists in GPTs
+that satisfy the no-restriction hypothesis [23, 54], i.e. GPTs whose effect space consists
+of all linear maps e : Rd+1→ R such that 0≤ e (ω)≤ 1 for all ω∈S . In such an
+unrestricted theory the state space uniquely deﬁnes the effect space, and vice versa,
+via the following maps. The effect space of an unrestricted GPT with state spaceS
+is given by
+E (S) =
+{
+e∈ Rd+1|0≤ e· ω≤ 1, for all ω∈S
+}
+=S∗∩ (u−S∗) , (1.31)
+where u−S∗ ={u− e|e∈S ∗}. The classical bit is an example of an unrestricted
+GPT. The conesS∗ and (u−S∗) as well as their intersection are illustrated in Fig.
+1.2.2b.
+Conversely, if an unrestricted GPT has an effect space E then its state space is
+given by:
+W (E ) =
+{
+ω∈ Rd+1|e· ω≥ 0 for all e∈E and ω· u = 1
+}
+=E∗∩ 1d+1, (1.32)
+where 1d+1 =
+{
+ω∈ Rd+1|u· ω = 1
+}
+; we will omit the subscript d + 1 whenever
+the dimension is clear from the context. We have introduced the maps E and W in
+the context of unrestricted GPTs but they are well-deﬁned for the state and effect
+space of any GPT. The maps will play an important role in the derivation of our
+main result (cf. Sec. 5.2).
+19
+
+1.2.6 Composition
+Composite systems and their properties will only be considered in Chapter 4. Here
+we will give a basic outline of how composite systems are modelled in the GPT
+framework, with explanatory examples being reserved for Chapter 4.
+Consider two systems, A and B, modelled by GPTs with state spaces SA and
+SB of dimension dA and dB, respectively. Denote the composition of those systems
+by AB. Traditionally, in the GPT framework, the state space SAB of the composite
+system AB would be embedded in RdA+1⊗ RdB+1 ∼= R(dA+1)(dB+1), and must at
+least contain the vectors ωA⊗ ωB for every ωA∈S A and ωB∈S B. In order to
+model the composite system by a GPT we know that the effect space EAB of AB
+must also be embedded in R(dA+1)(dB+1), and similarly we require that it at least
+contains the vectors eA⊗ eB for every eA∈E A and eB∈E B. As in quantum theory,
+the vector ωA⊗ ωB represents the product state of AB when system A is in state
+ωA and system B is in state ωB and there is no entanglement between the systems.
+Measurement of an observable
+r
+e1
+A⊗ e1
+B, e1
+A⊗ e2
+B, . . . ,e2
+A⊗ e1
+B, e2
+A⊗ e2
+B, . . .
+z
+, (1.33)
+can be performed by locally measuring the observable
+q
+e1
+A, e2
+A, . . .
+y
+on system A
+and the observable
+q
+e1
+B, e2
+B, . . .
+y
+on system B.
+This construction ensures that the model has a property known as local tomo-
+graphy. A model is locally tomographic if the state of the system can be uniquely
+identiﬁed by the statistics of local measurements alone. This property can be ded-
+uced from the following observation. There exists bases
+{
+ej
+A|1≤ j≤ dA + 1
+}
+of
+RdA+1 and
+{
+ej
+B|1≤ j≤ dB + 1
+}
+of RdB+1 consisting of vectors inEA andEB, respect-
+ively, thus there exists a basis ofR(dA+1)(dB+1) consisting entirely of product effects,
+namely {
+ej
+A⊗ ek
+B∈E AB|1≤ j≤ dA + 1, 1≤ k≤ dB + 1
+}
+. (1.34)
+Since these product effects span the effect space their statistics uniquely identify
+any state in the state space, i.e. they can be used to perform state tomography.
+The tensor product structure also ensures the model is non-signalling meaning
+the statistics of local measurements performed on a subsystem are independent
+of measurements made on any other subsystem. This requirement is described
+further in Section 4.2.
+Given two GPTs with state spacesSA andSB, two special cases of the state space
+of the composite model are known as the minimal and maximal tensor product
+[52]. The state space given by the minimal tensor product, SA⊗minSB, contains
+only separable states, i.e. convex combinations of states ωA⊗ ωB for ωA ∈ SA
+and ωB∈S B. The corresponding effect space under the no-restriction hypothesis,
+E (SA⊗minSB), would then be the largest possible effect space for a GPT of the
+20
+
+composite system. Conversely, the state space SA⊗maxSB is given by W
+(
+E min
+AB
+)
+,
+whereE min
+AB is the smallest possible effect space, given by the convex hull of the
+effects eA⊗ eB for eA∈E A and eB∈E B.
+The GPT framework can be made more general in order to include theories
+that are not locally tomographic. A model for a pair of rebits is the quintessential
+example of a non locally-tomographic model [21], and is described in Section 4.3.
+To allow for such a model the framework now only requires that the composite state
+spaceSAB be embedded in a vector space of the form
+(
+RdA+1⊗ RdB+1)
+⊕ RNH ,
+where⊕ denotes the direct sum. The “extra part” RNH is referred to as the non-
+holistic part of the state space. The product state of ωA∈S A and ωB∈S B must
+still be contained inSAB but now is described by a vector(ωA⊗ ωB)⊕ 0. Similarly,
+the effect space,EAB is embedded in
+(
+RdA+1⊗ RdB+1)
+⊕ RNH . Outcomes of local
+observables on systems A and B associated with effects eA and eB, respectively, are
+associated with the the outcome of a joint observable on the joint system represented
+by the effect (eA⊗ eB)⊕ 0, which must be contained withinEAB. This description
+of a composite system can be derived from the principles of no-signalling and local
+independence [47], which is a weaker requirement than local tomography. We will
+give such a derivation in Section 4.2, after the no-signalling principle has been
+introduced in greater detail.
+21
+
+Chapter 2
+A Gleason-type theorem from
+projective-simulable
+measurements
+2.1 Introduction
+Formulations of quantum theory typically introduce at least three postulates to
+deﬁne quantum states and observables on the one hand, and to explain how they
+give rise to measurable quantities such as expectation values on the other. One way
+to set up the necessary machinery (cf. [83], for example) consists of postulating that
+(i) the states of a quantum system correspond to density operators on a separable,
+complex Hilbert spaceH; (ii) measurements of quantum observables are associated
+with collections of mutually orthogonal projection operators acting on the spaceH;
+(iii) the probabilities of measurement outcomes are given by Born’s rule.1 In 1957,
+Gleason [40] proved Theorem 1 and showed that, assuming the second postulate,
+the other two can be seen as a consequence of a quantum state’s most fundamental
+purpose, that is to assign probabilities to all measurement outcomes in a consistent
+way.
+There is, however, a ﬂy in the ointment: Gleason’s result only holds for Hilbert
+spaces with dimension greater than two. In a two-dimensional space, the require-
+ment of consistency places no restriction on the probabilities that may be assigned
+to non-orthogonal projections. The resulting surfeit of consistent probability assign-
+ments is then too large to be identiﬁed with the set of density operators on C2.
+Hence the question: what modiﬁcation of the assumptions would be sufﬁcient
+to recover the probabilistic structure characteristic of quantum theory in a two-
+1Normally, these axioms are supplemented by a measurement postulate identifying the post-
+measurement state once a speciﬁc outcome has been obtained, by a dynamical law, and by a rule how
+to describe composite quantum systems. Substantially different axiomatic formulations of quantum
+theory have been proposed in e.g. [46, 66].
+22
+
+dimensional Hilbert space?
+Enter Gleason-type theorems, which are designed to ﬁll this gap. In 2003, the
+Born rule for Hilbert spaces of dimension two (or greater) was shown [18, 20]
+to follow from extending Gleason’s idea from PVMs to the more general class of
+POMs, see Theorem 2.
+The set of POMs encompasses all quantum measurements, with PVMs being
+only a small subset thereof. It is, therefore, natural to ask whether there are sets
+“between” PVMs and POMs from which it is possible to derive a Gleason-type
+theorem. A ﬁrst step into this direction was made in 2006 whenthree-outcome POMs
+were shown to be sufﬁcient for this purpose in the spaces Cd, with d≥ 2 [42]. Our
+contribution will take this reduction even further. We will show that it is possible to
+derive a Gleason-type theorem in any ﬁnite dimension upon extending Gleason’s
+probability assignments from PVMs to their convex combinations. The resulting
+projective-simulable measurements [71] represent a particularly simple subset of POMs.
+In Section 2.2, we set up our notation and express Gleason’s theorem in a form
+that is suitable for direct comparison with Gleason-type theorems. Section 2.3
+describes projective-simulable POMs in order to derive a Gleason-type theorem
+based on assumptions weaker than those currently known. In the ﬁnal section, we
+summarize and discuss our results.
+2.2 Known extensions of Gleason’s theorem
+In this section we review Gleason’s theorem and express it in a form that will allow
+for easy comparison with later variants, including our main result. Let us introduce
+a number of relevant concepts and establish our notation.
+2.2.1 Preliminaries
+LetH be a ﬁnite dimensional Hilbert space. We denote the set of all effects on the
+space Cd byE (Cd)≡E d.
+It is instructive to visualize the effect space of a qubit. The Pauli operatorsσx, σy
+and σz with the identity I form a basis of Hermitian operators acting on C2. Hence,
+any qubit effect takes the form
+E = a I +bσx + cσy + dσz∈E 2 , (2.1)
+where the range of the four parametersa, . . . ,d∈ R, is restricted by the requirement
+that the operator E must satisfy O≤ E≤ I.
+Fig. 2.2.1 illustrates three-dimensional cross sections of the four-dimensional
+effect space obtained upon suppressing they-component in (2.1). The points on the
+circle in the xz-plane correspond to rank-1 projection operators and are, in addition
+23
+
+Figure 2.2.1: Three-dimensional cross section of the four-dimensional qubit effect
+space, illustrating a generic two-outcome measurement DE in (2.12), characterized
+by the effect E.
+to O and I, the only extremal effects in the sense that they cannot be obtained as
+convex combinations of other effects.
+We now turn to the description of measurement outcomes. A fundamental
+assumption in quantum theory is that the outcome of any measurement performed
+on a quantum system can be associated with some effect E∈E d [56]. We only need
+to consider measurements of discrete POMs with ﬁnite range, which we describe
+by ordered sequences of effects (mirroring the GPT notation described in Section
+1.2.2)
+M = JE1, E2, . . . ,EnK , n∈ N , (2.2)
+where n
+∑
+j=1
+Ej = I . (2.3)
+We say the effect Ej is associated with the j-th outcome of the measurement. It is
+useful to note that measurements with n outcomes M = JE1, E2, . . . ,EnK are an n-
+tuple of elements of the Hermitian operators on Cd. The Hermitian operators on
+Cd form a real vector space of dimension d2. Thus measurements with n-outcomes
+can be thought of as vectors in the Cartesian product of n copies of Cd. Hence, real
+linear combinations of measurements are well-deﬁned from a mathematical point
+of view, though only convex combinations necessarily correspond to POMs.
+Next, we introduce the concept of a measurement set M =
+{
+Mj, j∈ J
+}
+, for
+some (possibly uncountable) indexing set J, simply consisting of a collection of
+selected measurements Mj. The set M is said to deﬁne a particular measurement
+scenario if we consider (only) the measurements contained in M to be realisable.
+The measurement set PVMd in a Hilbert space of dimension d≥ 2, for example,
+24
+
+collects all projective measurements; it thus consists of all measurements of the
+form JΠ1, Π2, . . .K, with at most d distinct projection operators Πj on Cd, i.e. effects
+satisfying Π2
+j = Πj. The set PVMd deﬁnes the von Neumann measurement scenario.
+The effect spaceE (M)⊆E d consists of all effects that occur in the measurement
+set M 2. In a given scenario, not every effect deﬁned on the space H necessarily
+represents a measurement outcome, thus the set E (M) may be a proper subset
+of all effects on the space H. For example, in the von Neumann scenario the
+effect spaceE (PVMd) consists solely of projection operators. The largest possible
+measurement set on a Hilbert space with dimension d is given by POMd, with
+the only requirement on a measurement M = JE1, E2, . . . ,EnK∈ POMd being that
+the effects Ej satisfy Eq. (2.3), so that indeed E (POMd) = Ed. In other words,
+every effect will occur in some measurement in a scenario that considers all POMs
+to be realisable. In general, POMs may have inﬁnitely many outcomes. For our
+considerations, however, those with only ﬁnitely many outcomes will be sufﬁcient.
+After these preliminaries, we are ready to describe the role of a quantum state in
+a measurement scenario: it should map each effect E∈E (M) in the corresponding
+effect space to a probability in such a way that the probabilities of all the outcomes
+in each measurement M∈ M sum to one. Such a map is known as a frame function
+[20].
+Deﬁnition 3. LetE (M) be the effect space associated with the measurement setM.
+A frame function f in this measurement scenario is a map f :E (M)→ [0, 1] such
+that
+∑
+Ej∈M
+f
+(
+Ej
+)
+= 1, (2.4)
+for all measurements M in the set M.
+We will say that the frame function f respects the measurement set M if it consist-
+ently assigns probabilities to all effects present in the measurement scenario deﬁned
+by the set M. Structurally, frame functions resemble probability measures that
+quantify the size of disjoint subsets of a sample space, say, with a relation similar
+to (2.4) expressing normalization. Deﬁnition 3 is a generalised deﬁnition of a frame
+function compared to those in Section 1.1, which correspond to frame functions
+respecting measurements of all PVMs and discrete POMs.
+As discussed by Caves et al. [20], this approach is intrinsically non-contextual.
+When associating outcomes from distinct measurements with the same mathe-
+matical object, we are prescribing that they must occur with the same probability
+for a system in a given state, regardless of context, i.e. which measurements are
+being performed (see also [11]).
+2The term effect space is used to reﬂect terminology in the GPT framework. However, for someM,
+E (M) will have little structure and may even be a singleton.
+25
+
+2.2.2 Gleason’s theorem
+Gleason’s theorem conveys a limitation of the form that frame functions may take
+in a Hilbert space of dimension larger than two. Using the concepts just introduced,
+Theorem 1 can be expressed as follows for ﬁnite dimensional Hilbert spaces.
+Theorem 5. Any frame function f respecting the measurement set M = PVMd, d≥ 3,
+admits an expression
+f (E) = Tr(Eρ) , (2.5)
+for some density operator ρ onH, and all effects E∈E (PVMd).
+If two measurements share an effect we will say—following Gleason—that they
+intertwine. In Hilbert spaces of dimension greater than two the value of a frame
+function on any two projections is related through measurements that intertwine.
+This relationship then paves the way for Gleason’s theorem. In contrast, projective
+measurements on C2 do not intertwine which means that a frame function may
+assign probabilities freely to any two non-orthogonal projections. This freedom
+allows for frame functions that do not derive from the trace rule, such as Eq. (2.27)
+in Section 2.3.3 below. If, however, one considers POMs, measurements also inter-
+twine in dimension two. The consequences of this fact will be seen in the next
+section.
+2.2.3 Gleason-type theorems
+Let us now turn to Gleason-type theorems, the main topic of this chapter. They are
+variants of Theorem 5 based on measurement sets M different from PVMd. The
+resulting, larger effect spacesE (M) allow one to extend Gleason’s theorem to the
+case of a qubit and to derive the result (2.5) in a simpler way.
+The ﬁrst Gleason-type theorem, Theorem 2 proved by Busch [18], tells us about
+frame functions on the measurement set M = POMd. This is the most general
+measurement scenario containing all possible POMs, and hence has the largest
+possible effect space, E (POMd) = Ed. In the language of measurement sets we
+can restate the ﬁnite dimensional case of Theorem 2 as follows.
+Theorem 6. Any frame function f respecting the measurement set M = POMd, d≥ 2,
+admits an expression
+f (E) = Tr(Eρ) , (2.6)
+for some density operator ρ onH, and all effects E∈E (POMd) =Ed.
+The assumptions of this theorem are indeed stronger than those of Theorem
+5 because probabilities are assigned to all effects, not just collections of mutually
+orthogonal projections in the space Cd. Busch required that generalised probability
+measures v :Ed→ [0, 1] would need to satisfy the constraints v(E1 + E2 + . . .) =
+26
+
+v(E1) + v(E2) + . . ., for any sequence of effects that may occur in a POM with any
+number of outcomes, i.e. E1 + E2 + . . .≤ I. This condition is easily shown to be
+equivalent to the assumptions in Theorem 6.
+The proof of Theorem 6 differs conceptually from the one given by Gleason. The
+additivity of frame functions with respect to any two effectsE1 and E2 occurring in
+a single measurement M,
+f (E1 + E2) = f (E1) + f (E2) , (2.7)
+forces the frame function to be homogeneous for rational numbers, i.e. f (qE) =
+q f (E), q∈ Q. Combining additivity with positivity, f (E)≥ 0, a frame function
+is, furthermore, seen to be homogeneous for real numbers, f (αE) = α f (E), α∈ R,
+and hence is necessarily linear. Extending this expression linearly from effects to
+arbitrary Hermitian operators is consistent only with frame functions given by the
+trace expression (2.6). The proof also works in separable Hilbert spaces of inﬁnite
+dimension.
+An alternative proof of Busch’s Gleason-type theorem was given by Caves et al.
+[20]. Instead of showing that frame functions must be homogeneous, Caves et al.
+establish their continuity, ﬁrst at the effect O, and then for all effects. This property
+implies, of course, that frame functions must be linear functions of effects.
+Revisiting Gleason’s theorem, Granström [42] proceeds along the lines of Busch
+and Caves et al. when rephrasing the proof. Interestingly, she only uses POMs with
+at most three outcomes: the measurement set is given by M = 3POM d where any
+M = JE1, E2, E3K∈ 3POM d (2.8)
+is a collection of at most three effects. Granström’s observation is important since
+her derivation is based on a considerably smaller measurement set than the one
+required for the earlier Gleason-type theorems.
+The following section shows an even smaller measurement set is sufﬁcient to
+derive a Gleason-type theorem in dimensions d≥ 2. The reduction is not only
+quantitative but also represents a conceptual simpliﬁcation since only POMs arising
+from classical mixtures of projective measurements, known as projective-simulable
+measurements, will be required.
+2.3 Assigning probabilities to mixtures of projections
+2.3.1 Projective-simulable measurements
+Projective-simulable measurements (PSMs) are speciﬁc POMs that can be realized by
+performing projective measurements and combining them with classical protocols
+[71]. The relevant classical procedures are given by probabilistically mixing project-
+27
+
+ive measurements and post-processing of measurement outcomes. Hence, the exp-
+erimental implementation of projective-simulable—or simulable, for brevity—meas-
+urements is not more challenging than that of projective measurements. In the
+following, we will suppress any post-processing since it can always be eliminated
+by working with suitable mixtures of measurements (see Lemma 1 in [71]). It is
+important to note that not all POMs are simulable [71]; thus they represent a proper,
+non-trivial subset of all POMs 3. In dimension d we will denote this set by PSMd.
+We will now introduce some two- and three-outcome measurements of a qubit
+that are projective-simulable. These are the only measurements necessary to derive
+the Gleason-type theorem of Section 2.3.2 when d = 2. To begin, any (non-trivial)
+projective qubit measurement with two outcomes takes the form M = JΠ+, Π−K,
+with projections Π+ and Π−≡ I−Π+ on orthogonal one-dimensional subspaces of
+the space C2. For example, on a spin- 1
+2 particle the measurements implemented by
+a Stern-Gerlach apparatus oriented along thex- or the z- axis would be represented
+by
+Mx = 1
+2 JI +σx, I−σxK and Mz = 1
+2 JI +σz, I−σzK , (2.9)
+respectively. Now imagine a device that performs Mx with probability p∈ [0, 1]
+and Mz with probability (1− p). The statistics produced by this apparatus are, in
+general, no longer described described by a PVM but by a POM, namely by
+Mxz(p) = pMx + (1− p) Mz . (2.10)
+Consequently, the POM
+Mxz(p) = 1
+2 JI +pσx + (1− p) σz, I−pσx− (1− p) σzK (2.11)
+is projective-simulable since only a probabilistic mixture of projective measurements
+is required to implement it. Mixing the simulable measurementMxz(p) with another
+projective or simulable measurement would result in yet another simulable measure-
+ment.
+Clearly, this procedure can be lifted to a Hilbert space with dimensiond: mixing
+any pair of projective or simulable measurementsM and M′ with the same number
+of outcomes, say, produces another simulable measurement represented byL(p) =
+pM + (1− p)M′. In low dimension such as d = 2 and d = 3, the set of n-outcome
+POMs that can be reached in this way has been characterized in terms of semi-
+deﬁnite programs [71].
+In our context, the following result for POMs with two outcomes will be import-
+ant.
+3An example of a POM that is not simulable is given later in Eq. (2.19), which can be checked via
+the semi-deﬁnite program given in [71].
+28
+
+Lemma 4. LetH be a Hilbert space with ﬁnite dimension d. For any effect E ∈E d the
+two-outcome POM
+DE = JE, I−EK (2.12)
+is projective-simulable, i.e. DE∈ PSMd.
+Proof. Let E∈E d be an effect with eigenvalues λj∈ [0, 1], j = 1 . . .d, labeled in
+ascending order, i.e. λj≤ λj+1. Being a Hermitian operator, the spectral theorem
+implies that the effect E can be written as a linear combination
+E =
+d
+∑
+j=1
+λjΠj , (2.13)
+where Πj∈E d are rank-1 projections onto mutually orthogonal subspaces of H.
+Deﬁning the projections Qk = ∑d
+j=k Πj and letting pk = (λk− λk−1)≥ 0 for k =
+1 . . .d, where λ0≡ 0, we may rewrite Eq. (2.13) as
+E =
+d
+∑
+k=1
+(λk− λk−1) Qk =
+d
+∑
+k=1
+pkQk . (2.14)
+This expression for the effect E can be found in [20].
+Next, consider the (d + 1) projective measurements Pj =
+q
+Qj, I−Qj
+y
+, j =
+0 . . .d, where Q0 = O. The choice p0 = (1− λd) ensures that the (d + 1) non-
+negative numbers pj correspond to probabilities, and satisfy∑d
+j=0 pj = 1. A mixture
+of measurements, in which Pj is performed with probability pj, then simulates the
+desired POM in (2.12) since we have
+d
+∑
+j=0
+pjPj =
+t
+d
+∑
+j=0
+pjQj,
+d
+∑
+j=0
+pj
+(
+I−Qj
+)
+|
+=
+t
+d
+∑
+j=1
+pjQj, I−
+d
+∑
+j=1
+pjQj
+|
+= JE, I−EK ,
+(2.15)
+which completes the proof.
+Observe that the effect E in Lemma 4 is arbitrary, which implies that the effect
+space of PSMd, denotedE (PSMd), is equal toEd.
+Any simulable two-outcome measurement such as DE can be used to deﬁne
+simulable three-outcome measurements viaJO, E, I−EK or JE, O, I−EK, for example,
+simply by including the effect O associated with an outcome that will never occur.
+This observation allows us to easily introduce further simulable three-outcome
+measurements as probabilistic mixtures.
+Lemma 5. LetH be a Hilbert space with ﬁnite dimension d. For any effects E and E ′ the
+three-outcome POMs
+TE =
+s E
+2 , E
+2 , I−E
+{
+and TE,E′ =
+s E
+2 , E′
+2 , I− (E + E′)
+2
+{
+(2.16)
+29
+
+are projective-simulable, i.e. TE and TE,E′∈ PSMd.
+Proof. The measurement TE can be obtained from an equal mixture of two three-
+outcome measurements,
+TE = 1
+2 JE, O, I−EK + 1
+2 JO, E, I−EK , (2.17)
+each of which is a padded copy of the simulable two-outcome measurement PE. A
+slight modiﬁcation of this argument shows that the measurementTE,E′ corresponds
+to an equal probabilistic mixture of two simple simulable three-outcome measure-
+ments, viz.,
+TE,E′ = 1
+2 JE, O, I−EK + 1
+2
+q
+O, E′, I−E′y
+. (2.18)
+Finally, we would like to point out that in dimension d = 2, the measurement
+set 3PSM2, which consists of all three-outcome simulable POMs, is strictly smaller
+than 3POM2, the set of all POMs with three outcomes, despite both measurement
+sets being eight parameter families. For example, the three-outcome POM
+E = 1
+3
+t
+I +σx, I−1
+2 σx +
+√
+3
+2 σz, I−1
+2 σx−
+√
+3
+2 σz
+|
+(2.19)
+is not projective-simulable, which can be veriﬁed via the semi-deﬁnite program
+provided in [71].
+2.3.2 A Gleason-type theorem based on PSMs
+We will now state and prove our main result, a Gleason-type theorem derived from
+projective-simulable measurements.
+Theorem 7 (Projective-simulable measurements). Any frame function f respecting the
+measurement set M = PSMd, d≥ 2, admits an expression
+f (E) = Tr(Eρ) , (2.20)
+for some density operator ρ onH, and all effects E∈E (PSMd) =Ed .
+To prove this theorem, we will show that consistently assigning probabilities
+to projective-simulable measurements entails a probability assignment consistent
+with all POMs. In other words, a frame function f respecting the measurement
+set PSMd necessarily respects the measurement set POMd, at which point we can
+invoke Theorem 9.
+Proof. In a ﬁrst step, we show that the probability assignments to the effects E and
+E/2, for any E ∈ Ed, are not independent. According to Lemmas 4 and 5, the
+30
+
+measurements DE = JE, I−EK and TE = JE/2, E/2, I−EK are projective-simulable.
+By the deﬁnition of a frame function f given in (2.4), the probabilities assigned to
+the outcomes of these two measurements sum to one,
+f (E) + f (I−E) = 1 = f
+( E
+2
+)
++ f
+( E
+2
+)
++ f (I−E) . (2.21)
+Hence, for any effect E∈E d, we must have
+f
+( E
+2
+)
+= 1
+2 f (E) . (2.22)
+Next, we show that the frame function must be additive for any two effects
+E, E′ ∈ Ed such that E + E′ ∈ Ed. Using Lemma 4 again we ﬁnd that the two-
+outcome measurement
+D 1
+2 (E+E′) =
+s1
+2
+(
+E + E′)
+, I−1
+2
+(
+E + E′){
+(2.23)
+is simulable with projective measurements. Assigning probabilities to the outcomes
+of the measurements D 1
+2 (E+E′) and TE,E′ deﬁned in Eq. (2.16) is only consistent if
+the constraint
+f
+(1
+2
+(
+E + E′))
+= f
+(1
+2 E
+)
++ f
+(1
+2 E′
+)
+, (2.24)
+is satisﬁed. Due to the (limited) homogeneity of the frame function stated in Eq.
+(2.22), we conclude that it must be additive,
+f
+(
+E + E′)
+= f (E) + f
+(
+E′)
+, (2.25)
+on all effects E and E′ such that E + E′∈E d.
+Now consider any n-outcome measurement M = JE1, E2, . . . ,EnK on Cd, for
+n∈ N. Using (2.25) repeatedly and recalling the normalization (2.3) of effects, we
+ﬁnd by induction that
+n
+∑
+j=1
+f
+(
+Ej
+)
+= f (E1 + E2) +
+n
+∑
+j=3
+f
+(
+Ej
+)
+= . . . = f
+(
+n
+∑
+j=1
+Ej
+)
+= f (I) = 1 . (2.26)
+Hence, any frame function f respecting PSMd is seen to respect the measurement
+set POMd, consisting of all POMs. Therefore, by Theorem 9, the frame function
+must take the form f (E) = Tr(Eρ), for some density operator ρ onH, and all
+effects E∈E d, which is the content of Theorem 7.
+The theorem just proved provides a weakening of the assumptions made by
+Busch and Caves et al. in Theorem 9: since the set of measurements considered
+is smaller, fewer restrictions are put on potential frame functions—but exactly the
+same functions are recovered.
+31
+
+2.3.3 Minimal assumptions for a Gleason-type theorem
+We now address the problem of identifying the smallest measurement set in dimen-
+sion two from which a Gleason-type theorem maybe be derived. Recall that Glea-
+son’s theorem does not hold in dimension two; frame functions that respectPVM2
+but do not stem from a density operator (cf. Eq. (2.5)) are easy to construct. For
+instance, assign probabilities to all rank-1 projections—corresponding to the points
+of the Bloch sphere—according to the rule
+g (Π) =
+
+
+
+0 if Π =|0⟩⟨ 0| ,
+1 if Π =|1⟩⟨ 1| , Π∈E (PVM2)
+1
+2 otherwise ,
+(2.27)
+in addition to g(O) = 0 and g(I) = 1. Then, for each projective measurement
+P = JΠ, I−ΠK we ﬁnd that the constraint (2.4) on frame functions is satisﬁed,
+g(Π) + g(I−Π) = 1 . (2.28)
+Other probability assignments not admitting the desired trace form can be found in
+[43], for example. These constructions succeed since, for d = 2, each projection Π
+occurs only in one condition of the form (2.28) i.e. there are no intertwined measure-
+ments.
+Similarly, frame functions deﬁned on the measurements set 2POM2, the four-
+parameter family of POMs forC2 with at most two outcomes, do not yield a Gleason-
+type theorem. Extending the domain of the function g in (2.27) to all effects in E2
+results in a frame function that respects2POM2 but is not of the desired form. Thus,
+measurements with three or more outcomes are a necessity in a set from which a
+Gleason-type theorem may be proved. Theorem 7 considers one such case, namely
+the set of projective-simulable measurements PSM2 having 2POM2 as a proper
+subset.
+Could the measurement set PSM2 be the smallest sufﬁcient set? Looking back
+at the proof of Theorem 7 given in the previous subsection, it becomes clear that
+only elements of PSMd with at most three outcomes, or those contained in the
+set 3PSM d, are necessary for the result to hold. Furthermore, not all elements of
+the measurement set 3PSM2 have been used. While all two-outcome POMs PE∈
+2POM2 feature, the only simulable three-outcome POMs required are of the form
+TE or TE,E′, deﬁned in (2.16). However, not all three-outcome simulable POMs fall
+into one of these categories. For example, the three-outcome POM
+T′ = 1
+4 JI +σz, I+σx, 2 I− (σz + σx)K , (2.29)
+is simulable but doesnot have the form of eitherTE or TE,E′. Thus, we have actually
+32
+
+Figure 2.3.1: Supersets and subsets of the set 3PSM′
+2 (grey) given in (2.30), the
+smallest measurement set known to entail a Gleason-type theorem for a qubit: it
+strictly contains the set 2POM2 of all two-outcome POMs (cf. Eq. (2.31)) and
+is strictly contained by the set 3PSM2 of all simulable three-outcome POMs; for
+clarity, the index 2 has been dropped from all measurements sets.
+shown a result slightly stronger than Theorem 7 since, ford = 2, we can replace the
+measurement set M on which frame functions need to be deﬁned by
+3PSM′
+2 = 2POM2∪
+{
+TE, TE,E′|E, E′∈E d such that E + E′∈E d
+}
+, (2.30)
+which is a proper subset of the measurement set3PSM2≡ 3POM2∩ PSM2, i.e. all
+simulable measurements with three outcomes.
+We conclude the discussion of “minimal” measurement sets by summarizing
+the relationship between the sets sufﬁcient to derive a Gleason-type theorem for a
+qubit,
+3PSM′
+2⊂ (3POM2∩ PSM2)⊂ 3POM2⊂ POM2. (2.31)
+Fig. 2.3.1 also depicts the insufﬁcient subsets of two-outcome projections 2PVM2
+and two-outcome POMs denoted by 2POM2.
+It is not excluded that measurement sets contained within (or partly overlapping
+with) 3PSM′
+2 exist that would still entail a Gleason-type theorem for qubits. In
+[20] frame functions respecting the single measurement (2.19) have been shown to
+admit an expression as in Eq. (2.5), but the result depends the assumption that the
+frame functions be continuous on the set of all effects inE2. Hence this result does
+not constitute a Gleason-type theorem under our speciﬁcation.
+33
+
+2.3.4 Mixtures and Boolean Algebras
+We now consider how Theorem 7 can be interpreted in view of Hall’s discussion
+[43] of Busch’s Gleason-type theorem, i.e. Theorem 9. Hall reviews the reasons that
+led Gleason (following the work of von Neumann and Birkhoff [13] and Mackey
+[63]) to consider frame functions that respect the measurement setPVMd consisting
+of projective measurements. Namely, a collection of mutually orthogonal projections
+forms a Boolean algebra4 (see, e.g., [34] page 1928), akin to the events in a sample
+space in classical probability theory. The “AND” operation of the Boolean algebra
+consist of taking the product of two projections, however, since the projections
+are all orthogonal this product is always zero for two distinct projections. These
+projections are therefore natural candidates to represent disjoint outcomes of an
+experiment. General collections of effects that sum to the identity, on the other
+hand, do not form a Boolean algebra (see [57], for example); therefore, a similar
+justiﬁcation for considering the measurement set POMd cannot be given.
+This reasoning also applies to the setting of Theorem 7 since the measurement
+set PSMd (or the subset 3PSM′
+2) contains operators other than projections. Never-
+theless, the fact that these measurement sets are made from simulable measurements
+lends some support to motivating the additivity of frame functions.
+Gleason’s original argument does not work for a qubit because the constraints
+(2.4) on frame functions, which result from the measurement set PVM2, are too
+weak. If one wishes to derive Born’s rule in the spaceC2, it is necessary to consider
+measurement sets larger thanPVM2, thereby invalidating the link between measure-
+ments and Boolean algebras. A particularly simple modiﬁcation of the measurement
+set consists of including convex combinations of the original projective measure-
+ments in PVM2. If one interprets these convex combinations as classical mixtures of
+projective measurements then one does not make statements about other genuinely
+quantum mechanical measurements which would lie beyond those of PVM2.
+Let us now make explicit all assumptions that are needed so that our main
+result, Theorem 7, may be used to recover the standard description of states and
+outcome probabilities of quantum theory. Importantly, similar—if not stronger—
+assumptions must be made in order to achieve the same goal using the Gleason-
+type theorems by Busch and Caves at al.
+The ﬁrst assumption is that there exist projective measurements, i.e. measure-
+ments whose outcomes may be represented by mutually orthogonal projections
+on a Hilbert space. Secondly, we assume that it is possible to perform classical
+mixtures of measurements, that is to say, given a pair of measurements M and
+M′ then there exists a procedure in which M is performed with probability p and
+M′ with probability (1− p) for any p∈ [0, 1]. These assumptions alone are not
+sufﬁcient to restrict states to being represented by density operators.
+4Also known as a Boolean lattice.
+34
+
+Probability of outcome 1 Probability of outcome 2
+Mx, Mr, Ms 1/2 1/2
+Mz 0 1
+Table 2.1: The probabilities of the outcomes of measurements Mx and Mz in Eq.
+(2.9) as well as Mr and Ms in Eq. (2.33) arising from the probability assignment in
+Eq. (2.27).
+To uncover the additional assumption that is needed to implement our Gleason-
+type theorem let us consider the procedure just described in the case of a qubit. For
+example, we may consider an equal mixture Mxz(1/2) of the measurements
+Mx = Jx+, x−K and Mz = Jz+, z−K , (2.32)
+from Eq. (2.9) and a mixture Mrs(p+) of
+Mr = Jr+, r−K r± = 1
+2
+(
+I±1
+2
+(
+σx +
+√
+3σz
+))
+,
+Ms = Js+, s−K s± = 1
+2
+(
+I±1
+2
+(
+σx−
+√
+3σz
+))
+,
+(2.33)
+with probabilities p± =
+(
+1± 1/
+√
+3
+)
+/2, respectively. Now let us work out the
+probabilities of the ﬁrst outcomes of the measurements Mxz(1/2) and Mrs(p+)
+resulting from the probability assignments given in Eq. (2.27). Using the values
+given in Table 2.1, we ﬁnd that for the mixture Mxz(1/2), in which measurements
+Mx and Mz are performed with equal probability, outcome one is obtained with
+probability
+1
+2 g (x+) + 1
+2 g (z+) = 1
+4 , (2.34)
+while the ﬁrst outcome of Mrs(p+) occurs with probability
+1
+2
+(
+1 + 1√
+3
+)
+g (r+) + 1
+2
+(
+1− 1√
+3
+)
+g (s+) = 1
+2 . (2.35)
+Not surprisingly, different mixtures of different projective measurements, which
+correspond to unassociated processes with well-deﬁned outcome probabilities, may
+result in different outcome probabilities.
+According to quantum theory, however, the two mixtures just considered necess-
+arily give rise to the same outcome probabilities for any qubit state and thus may
+both be represented by the same pair of effects, namely
+1
+2 (Mx + Mz) = p+Mr + p−Ms = Jm, I−mK≡ Dm (2.36)
+with the effect
+m = 1
+2
+(
+I +1
+2 (σx + σz)
+)
+, (2.37)
+35
+
+Figure 2.3.2: Example of an effect that represents an outcome stemming from
+two different mixing procedures: the effect m occurs as the ﬁrst outcome of both
+(Mx + Mz) /2 and p+Mr + p−Ms; straight dashed (green) and dotted (blue) lines
+connect the pairs of effects in the same measurement, and the straight solid lines
+represent the effects that may be formed by mixing the effects they connect.
+as illustrated in Fig. 2.3.2.
+Thus we see that to excludeg(Π) of (2.27) as a valid frame function, it is sufﬁcient
+to assume that a mixture of projective measurements{M1, M2, . . .}, with probabilities
+{p1, p2, . . .}, is associated with the convex combination
+(p1M1 + p2M2 + . . .) . (2.38)
+The ensuing assignment of effects fromE (POMd) to represent outcomes of mixtures
+is our third assumption and results in a theory with effect spaceEd and measurement
+set PSMd. When combining this requirement with Theorem 7, frame-function
+arguments become sufﬁciently strong to imply Born’s rule and the standard density-
+operator formalism of quantum theory in the space Cd.
+2.4 Summary and discussion
+This chapter improves on Gleason-type theorems which aim to extend Gleason’s
+result to Hilbert spaces of dimension d = 2. The goal is to recover Born’s rule and
+the representation of quantum states as density operators as a product of consistent
+probability assignments to measurement outcomes. Our main result, given by
+Theorem 7, shows that any consistent assignment of probabilities to the outcomes
+of projective-simulable measurements, or the measurement set PSMd, must be
+associated with a density operator in the desired way. Moreover, we show that
+a smaller set of measurements 3PSM′
+d, deﬁned in Eq. (2.30), also has this property.
+Our result improves upon existing Gleason-type theorems which are based
+either on probability assignments to POMs with any number of outcomes (which
+constitute the set POMd, see [18, 20]) or those with at most three outcomes (which
+36
+
+constitute the set 3POM d, see [42]). The measurement set we consider, 3PSM′
+d, is a
+strict subset of 3POM d. Fig. 2.3.1 summarizes the relationship between the sets of
+measurements.
+In addition to these quantitative improvements, Theorem 7 also provides new
+qualitative insights. Projective-simulable measurements are conceptually simpler
+than arbitrary POMs because they are just classical mixtures of projective measure-
+ments, with an equal level of experimental feasibility. Due to the limitation to
+simulable measurements, our Gleason-type theorem resembles Gleason’s original
+theorem more strongly than its predecessors. Furthermore, in Section 2.3.4 we
+add an explicit assumption to the setting of Gleason’s original theorem in order
+to extend the result to dimension two. This assumption consists of identifying
+those measurements that, whilst arising from different mixtures, are known to be
+indistinguishable in ordinary quantum theory.
+Future work will show whether the subset3PSM′
+2 of projective-simulable meas-
+urements, on which the proof of Theorem 7 relies, is the smallest possible set from
+which a Gleason-type theorem may be derived in dimension d = 2. We cannot
+exclude that the frame functions respecting 3PSM′
+2 are still overdetermined in the
+sense that other sets not containing all of 3PSM′
+2 may also entail a Gleason-type
+theorem for a qubit.
+37
+
+Chapter 3
+Gleason-type theorems and
+Cauchy’s functional equation
+3.1 Introduction
+As discussed in the previous sections, Gleason’s theorem shows that quantum
+states must correspond to density operators if they are to consistently assign probab-
+ilities to the outcomes of measurements of PVMs in Hilbert spaces of dimension
+three or larger via a frame function.
+For a ﬁnite dimensional Hilbert space (with dimension greater than two) Gleason’s
+result can be equivalently stated in terms of ﬁnitely additive functions. Explicitly,
+a function f :P (H)→ [0, 1] satisfying
+f (Π1) + f (Π2) = f (Π1 + Π2) , (3.1)
+for orthogonal projections Π1, Π2∈P (H) necessarily admits an expression
+f (·) = Tr(ρ·) , (3.2)
+for some positive operator ρ onH1.
+Similarly, the ﬁnitely additive functions onE (H) can be used to restate Theorem
+2 for ﬁnite dimensional Hilbert spaces. Any function f :E (H)→ [0, 1] satisfying
+f (E1) + f (E2) = f (E1 + E2) , (3.3)
+for effects E1, E2∈E (H) such that
+E1 + E2∈E (H) , (3.4)
+also admits an expression of the form given in Eq. (3.2). The effects E1 and E2 are
+1Later Christensen [26] showed the result holds for all separable Hilbert spaces
+38
+
+said to coexist since the condition in Eq. (3.4) implies that they occur in a single
+POM. Theorem 7 shows that this result also follows from weaker assumptions: it is
+sufﬁcient to require Eq. (3.3) hold only for effectsE1 and E2 that coexist in projective-
+simulable measurements obtained by mixing projective measurements [84].
+Finitely additive functions were ﬁrst given serious consideration in 1821 when
+Cauchy [19] attempted to identﬁy all the real-valued functions f satisfying
+f (x) + f (y) = f (x + y) , (3.5)
+for real variables x, y∈ R. In addition to the obvious linear solutions, non-linear
+solutions to Cauchy’s functional equation are known to exist [44]. However, the
+non-linear functions f satisfying Eq. (3.5) cannot be Lebesgue measurable [4],
+continuous at a single point [30] or bounded on any set of positive measure [55].
+Similar results also hold for Cauchy’s functional equation with arguments more
+general than real numbers, reviewed in [1], for example.
+Recalling that the Hermitian operators onCd form a real vector space, it becomes
+clear that the GTTs described above can be viewed as results about the solutions
+of Cauchy’s functional equation for vector-valued arguments: additive functions on
+subsets of a real vector space, subject to some additional constraints, are necessarily
+linear. Taking advantage of this connection, we use results regarding Cauchy’s
+functional equation to present an alternative proof of Busch’s GTT (Theorem 2) in
+all ﬁnite dimensions. In the terminology of the previous chapter, this GTT respects
+the measurement setPOMd, i.e. we consider all discrete POMs consisting of a ﬁnite
+set of effects.
+In Section 2, we spell out four conditions that single out linear solutions to
+Cauchy’s functional equation deﬁned on a ﬁnite interval of the real line. The
+main result of this chapter—an alternative method to derive Busch’s Gleason-type
+theorem—is presented in Section 3. We conclude with a summary and a discussion
+of the results in Section 4.
+3.2 Cauchy’s functional equation on a ﬁnite interval
+In 1821 Cauchy [19] showed that a continuous function over the real numbers satis-
+fying Eq. (3.5) is necessarily linear. It is important to note, however, that relaxing
+the continuity restriction does allow for non-linear solutions [44], as pathological as
+they may be.2 Other conditions known to ensure linearity of an additive function
+include Lebesgue measurability [4], positivity on small numbers [31] or continuity
+at a single point [30]. We begin by proving a related result, in which the domain of
+the function is restricted to an interval, as opposed to the entire real line.
+2The existence of non-linear solutions depends on the existence of Hamel bases and, thus, on the
+axiom of choice.
+39
+
+Theorem 8. Let a > 0 and f : [0, a]→ R be a function that satisﬁes
+f (x) + f (y) = f (x + y) , (3.6)
+for all x, y∈ [0, a] such that (x + y)∈ [0, a]. The function f is necessarily linear, i.e.
+f (x) = f (a)
+a x , (3.7)
+if it satisﬁes any of the following four conditions:
+(i) f (x)≤ b for some b≥ 0 and all x∈ [0, a];
+(ii) f (x)≥ c for some c≤ 0 and all x∈ [0, a];
+(iii) f is continuous at zero;
+(iv) f is Lebesgue-measurable.
+Theorem 8 says that non-linear solutions of Eq. (3.6) cannot be bounded from
+below or above, continuous at zero or Lebesgue measurable. We will now prove the
+linearity of f for Case (i). The proofs for the remaining cases are given in Appendix
+B.
+Proof. We will extend f to a ﬁnitely additive function on the full real line. For any
+real number x∈ [0, a], Eq. (3.6) implies that
+f (x) = f
+( n
+n x
+)
+= n f
+( 1
+n x
+)
+, (3.8)
+where n is a positive integer. If we choose an integerm∈ N with m/n∈ [0, a], then
+we have
+f
+( m
+n x
+)
+= m f
+( 1
+n x
+)
+= m
+n f (x) . (3.9)
+We will now extend f to all non-negative real numbers as follows. For x > a deﬁne
+f (x) = n f
+( x
+n
+)
+, (3.10)
+for natural n > x/a. This extension is well-deﬁned since for a pair of natural
+numbers m and n both greater than x/a we have by (3.8)
+f
+( x
+mn
+)
+= 1
+m f
+( x
+n
+)
+= 1
+n f
+( x
+m
+)
+, (3.11)
+which gives
+m f
+( x
+m
+)
+= n f
+( x
+n
+)
+. (3.12)
+40
+
+This extension is also ﬁnitely additive since for any non-negative x and y we have
+f (x) + f (y) = n f
+( x
+n
+)
++ n f
+( y
+n
+)
+= n f
+( x + y
+n
+)
+= f (x + y) ,
+(3.13)
+for sufﬁciently large n∈ N such that (x + y)/n∈ [0, a].
+We may now extend f to the full real line by deﬁning f (x) =− f (−x) for x < 0.
+We will show that this function is ﬁnitely additive on the real line by considering
+the following three cases.
+If x < 0 and y < 0 we have
+f (x) + f (y) =− f (−x)− f (−y)
+=− f (−x− y)
+= f (x + y) .
+(3.14)
+If x≥ 0, y < 0 and x + y < 0 we have
+f (x) + f (y) = f (x)− f (−y− x + x)
+= f (x)− f (−y− x)− f (x)
+= f (x + y) .
+(3.15)
+If x≥ 0, y < 0 and x + y≥ 0 we have
+f (x) + f (y) = f (x + y− y)− f (−y)
+= f (x + y) + f (−y)− f (−y) .
+(3.16)
+Thus we have shown that f may be extended to a ﬁnitely additive function on
+R which is bounded above on the interval[0, a]. Ostrowski [70] and Kestelman [55]
+showed that ﬁnitely additive functions on the real line that are bounded above on
+a set of positive measure are necessarily linear. Therefore our extended function is
+linear, and its restriction back to the interval [0, a] satisﬁes f (x) = f (a) f (x)/a.
+3.3 When Cauchy meets Gleason: additive functions on effect
+spaces
+We will provide an alternative proof of Busch’s GTT, Theorem 2, for ﬁnite dimensional
+Hilbert spaces by showing
+Theorem 9. LetEd be the space of effects on Cd and Id be the identity operator on Cd. Any
+41
+
+function f :Ed→ [0, 1] satisfying
+f (Id) = 1 , (3.17)
+and
+f (E1) + f (E2) = f (E1 + E2) , (3.18)
+for all E1, E2∈E d such that (E1 + E2)∈E d, admits an expression
+f (E) = Tr(Eρ) , (3.19)
+for some density operator ρ, and all effects E∈E d.
+For a ﬁnite dimensional Hilbert space requirements (3.17) and (3.18) are equiv-
+alent to the requirement in Eq. (1.16), thus the functions in Theorem 9 are frame
+functions. Busch uses the positivity of the frame function f to directly establish its
+homogeneity whereas Caves et al. derive homogeneity by showing that the frame
+function f must be continuous at the zero operator. These arguments seem to run
+in parallel with Cases (ii) and (iii) of Theorem 8 presented in the previous section.
+In Section 3.3.2, we will give an alternative proof of Theorem 9 that can be based
+on any of the four cases of Theorem 8.
+3.3.1 Preliminaries
+To begin, let us introduce a number of useful concepts and establish a suitable
+notation. Throughout this section we will make use of the fact that the Hermitian
+operators on Cd constitute a real vector space of dimension d2, which we will
+denote by Hd. We may therefore employ the standard inner product ⟨A, B⟩ =
+Tr(AB), for Hermitian operators A and B, in our reasoning as well as the norm∥·∥
+that it induces.
+A discrete POM on Cd is described by its range, i.e. by a sequence of effects
+JE1, E2, . . .K that sum to the identity operator on Cd. A minimal informationally-com-
+plete (MIC) POMM on Cd consists of exactly d2 linearly independent effects,M =
+JM1, . . . ,Md2K. Hence, MIC-POMs constitute bases of the vector space of Hermitian
+operators, and it is known that they exist in all ﬁnite dimensions [22].
+Next, we introduce so-called “augmented” bases of the space Hd which are
+built around sets of d projections
+{|e1⟩⟨ e1| , . . . ,|ed⟩⟨ ed|} , (3.20)
+where the vectors{|e1⟩ , . . .|ed⟩} form an orthonormal basis of Cd.
+Deﬁnition 4. An augmented basis of the Hermitian operators on Cd is a set of d2
+linearly independent rank-one effectsB ={B1, . . . ,Bd2} satisfying
+42
+
+(i) Bj = c|ej⟩⟨ ej| for 1 ≤ j ≤ d, with 0 < c < 1 and an orthonormal basis
+{|e1⟩ , . . .|ed⟩} of Cd;
+(ii) ∑d2
+j=1 Bj∈E d .
+Given any orthonormal basis {|e1⟩ , . . . ,|ed⟩} of Cd, we can construct an aug-
+mented basis for the space of operators acting on it. First, complete thed projections
+Πj =|ej⟩⟨ ej| , j = 1 . . .d , (3.21)
+into a basis {Π1, . . . ,Πd2} of the Hermitian operators on Cd, by adding d(d− 1)
+further rank-one projections; this is always possible [22]. The sum
+G =
+d2
+∑
+j=1
+Πj , (3.22)
+is necessarily a positive operator. The relation Tr(G) = d2 implies that G must have
+at least one eigenvalue larger than 1. If Γ > 1 is the largest eigenvalue of G, then
+G/Γ is an effect since it is a positive operator with eigenvalues less than or equal to
+one. Deﬁning
+Bj = Πj/Γ , j = 1 . . .d2 , (3.23)
+the setB ={B1, . . . ,Bd2} turns into an augmented basis. One can show thatB can
+never correspond to a POM. Nevertheless, the effects Bj coexist, in the sense that
+they can occur in one single POM, for example JB1, . . . ,Bd2, I−G/ΓK.
+Given an effect, one can always represent it as a positive linear combination of
+elements in a suitable augmented basis.
+Lemma 6. For any effect E∈E d there exists an augmented basisB such that E is in the
+positive cone ofB.
+Proof. By the spectral theorem we may write
+E =
+d
+∑
+j=1
+λj|ej⟩⟨ ej| , λj∈ [0, 1] , (3.24)
+for an orthonormal basis
+{
+|ej⟩ , 1≤ j≤ d
+}
+of Cd. TakeB to be an augmented basis
+with
+Bj = c|ej⟩⟨ ej| , (3.25)
+for 1≤ j≤ d and some c∈ (0, 1). Then we may express E as the linear combination
+E =
+d2
+∑
+j=1
+ejBj , (3.26)
+43
+
+Figure 3.3.1: Sketch of the construction of the open ballBγ (Eδ) of dimension d2; the
+positive conesC (M) (solid border) andC (B) (dotted border) intersect in the cone
+C(B)∩C (M) (shaded cone); the intersection entirely contains the d2-dimensional
+ball Bγ (Eδ) around Eδ (solid circle) sitting inside the ball Bε (Id /d) of radius ε
+around Id /d (dashed circle); the distance between Eδ and Id /d (solid line) is given
+in Eq. (3.30).
+with non-negative coefﬁcients
+ej =
+
+
+
+1
+c λj j = 1 . . .d ,
+0 j = (d + 1) . . .d2 ,
+(3.27)
+showing that the positive cone of the basisB indeed contains the effect E.
+Finally, we need to establish that the intersection of the positive cones associated
+with an augmented basis and a MIC-POM, respectively, has dimension d2.
+Lemma 7. LetB ={B1, . . . ,Bd2} be an augmented basis and M = JM1, . . . ,Md2K a
+MIC-POM on Cd. The effects in the intersectionC(B)∩C (M) of the positive cones ofB
+andM span the real vector space Hd of Hermitian operators on Cd.
+Proof. Since the effects in a POM sum to the identity, we have
+1
+d Id =
+d2
+∑
+j=1
+1
+d Mj . (3.28)
+With each of the coefﬁcients in the unique decomposition on the right-hand side
+being ﬁnite and positive (as opposed to non-negative), the effect I d /d is seen to be
+an interior point of the positive cone C (M). At the same time, the effect I d /d is
+located on the boundary of the coneC(B) since its expansion in an augmented basis
+has only d non-zero terms. Let us deﬁne the operator
+44
+
+Eδ = 1
+d Id +δ
+d2
+∑
+j=d+1
+Bj = 1
+cd
+d
+∑
+j=1
+Bj + δ
+d2
+∑
+j=d+1
+Bj , (3.29)
+which, for any positive δ > 0, is an interior point of the cone C (B): each of the
+positive coefﬁcients in its unique decomposition in terms of the augmented basis
+B is non-zero; we have used Property 1 of Deﬁnition 4 to express the identity I d in
+terms of the basis B. For sufﬁciently small values of δ, the operator Eδ is also an
+interior point of the open ball Bε (Id /d) with radius ε about the point Id/d since
+Eδ− 1
+d Id
+ = δ
+
+d2
+∑
+j=d+1
+Bj
+ < ε (3.30)
+holds whenever
+0 < δ < ε
+
+d2
+∑
+j=d+1
+Bj
+
+−1
+. (3.31)
+Being an interior point of both the positive conesC (B) andC (M), the operator Eδ
+is at the center of an open ball Bγ (Eδ), located entirely in the intersectionC(B)∩
+C(M) (cf. Fig. 3.3.1). Since the ball Bγ (Eδ) has dimension d2, the effects contained
+in it must indeed span the real vector space Hd of Hermitian operators.
+Combining Theorem 8 with Lemmata 6 and 7 will allow us to present a new
+proof of Busch’s Gleason-type theorem.
+3.3.2 An alternative proof of Busch’s Gleason-type theorem
+Recalling that the trace of the product of two Hermitian operators constitutes an
+inner product on the vector space of Hermitian operators,Hd, Theorem 9 essentially
+states that the frame function f acting on an effect can be written as the inner
+product of that effect with a ﬁxed density operator. To underline the connection
+with the inner product we adopt the following notation. LetA ={A1, . . . ,Ad2} be
+a basis for the Hermitian operators on Cd. We describe the effect E by the “effect
+vector” e = (e1, . . . ,ed2)T∈ Rd2
+, given by its expansion coefﬁcients in this basis,
+E =
+d2
+∑
+j=1
+ejAj≡ e· A , (3.32)
+where A is an operator-valued vector with d2 components. Theorem 9 now states
+that the frame function is given by a scalar product,
+f (E) = e· c , (3.33)
+between the effect vector e and a ﬁxed vector c∈ Rd2
+. Let us determine the relation
+between the density matrix ρ in (3.19) in the theorem and the vector c in (3.33).
+45
+
+Consider any orthonormal basisW ={W1, . . . ,Wd2} of the Hermitian operators on
+Cd and let e′∈ Rd2
+be the vector such that E = e′· W. Then we may write
+f (E) = e· c = e′· c′ = Tr
+(
+d2
+∑
+j=1
+e′
+jWj
+d2
+∑
+k=1
+c′
+kWk
+)
+= Tr
+(
+E
+d2
+∑
+j=1
+c′
+jWj
+)
+;
+(3.34)
+here c′∈ Rd2
+is a ﬁxed vector given by c′ = C−Tc and C−T is the inverse transpose
+of the change-of-basis matrixC between the basesA andW, i.e. the matrix satisfying
+Ch = h′ for all Hermitian operatorsH = h· A = h′· W. By the deﬁnition of a frame
+function the operator
+ρ≡
+d2
+∑
+j=1
+c′
+jWj =
+d2
+∑
+j=1
+(
+C−T
+)
+jk
+ckWj (3.35)
+must be positive semi-deﬁnite (since f is positive) and have unit trace (due to Eq.
+(3.17)) i.e. be a density operator.
+We will now prove that a frame function always admits an expression as in Eq.
+(3.33).
+Proof. By Lemma 6, there exists an augmented basis B = {B1, . . . ,Bd2} for any
+E∈E d such that
+E = e· B≡
+d2
+∑
+j=1
+ejBj , (3.36)
+with coefﬁcients ej≥ 0, as in Eq. (3.32).
+For each value j∈
+{
+1, . . . ,d2}
+, we write the restriction of the frame function f
+to the set of effects of the form xBj, for x∈ R, as
+f
+(
+xBj
+)
+= Fj (x) , (3.37)
+where Fj :
+[
+0, aj
+]
+→ [0, 1] and aj = max
+{
+x|xBj∈E d
+}
+. By Eq. (5.3) we have that Fj
+satisﬁes Cauchy’s functional equation, i.e. Fj (x + y) = Fj (x) + Fj (y). Due to the
+assumption in Theorem 9 that f :Ed→ [0, 1], each Fj must satisfy Condition (i) of
+Theorem 8 which implies
+f
+(
+xBj
+)
+= Fj (x) = Fj (1) x = f
+(
+Bj
+)
+x . (3.38)
+Thus we ﬁnd
+f (E) =
+d2
+∑
+j=1
+f
+(
+ejBj
+)
+=
+d2
+∑
+j=1
+ej f
+(
+Bj
+)
+= e· fB , (3.39)
+where the j-th component of fB ∈ Rd2
+is given by f
+(
+Bj
+)
+, by repeatedly using
+46
+
+additivity and Eq. (3.38). Note that Eq. (3.39) is not yet in the desired form of
+Eq. (3.33) since the vector fB depends on the basisB and thus the effect E.
+LetM = JM1, . . . ,Md2K be a MIC-POM on Cd. Since the elements of M are a
+basis for the space Hd, the Hermitian operators on Cd, we have for any E∈E d
+E = e′′· M , (3.40)
+for coefﬁcients e′′
+j ∈ R some of which may be negative. There exists a ﬁxed change-
+of-basis matrix D such that
+De = e′′ , (3.41)
+for all E∈E d. Now we have
+f (E) = e· fB
+= (De)·
+(
+D−TfB
+)
+= e′′·
+(
+D−TfB
+)
+.
+(3.42)
+Any effect G in the intersection of the positive cones C (B) andC (M) can be
+expressed in two ways,
+G = g· B = g′′· M , (3.43)
+where both effect vectors g and g′′ have only non-negative components. Eqs. (3.39)
+and (3.42) imply that
+g′′· fM = f (G) = g′′·
+(
+D−TfB
+)
+. (3.44)
+Since by Lemma 7, there are d2 linearly independent effects G in the intersection
+C (M)∩C (B), we conclude that
+D−TfB = fM . (3.45)
+Combining this equality with Eq. (3.42) we ﬁnd, for a ﬁxed MIC-POM M =
+JM1, . . . ,Md2K and any effect E∈E Cd, that the frame function f takes the form
+f (E) = e′′· fM . (3.46)
+Here fM≡ c is a ﬁxed vector since it does not depend on E.
+Note that Eq. (3.38) may also be found using the other three cases of Theorem
+8. For Case (ii), we observe that each of the functions Fj, j = 1 . . .d2, is non-negative
+by deﬁnition. Alternatively, each function Fj can be shown to be continuous at zero
+(Case (iii)) using the following argument which is similar to the one given in [22].
+Assume Fj is not continuous at zero. Then there exists a number ε > 0 such that for
+47
+
+all δ > 0 we have
+Fj (x0) > ε , (3.47)
+for some 0 < x0 < δ < 1. For any given ε choose δ = 1/n < ε, there is a value of
+x0 < δ such that Fj (x0) > ε. However, the inequality nx0 < 1, leads to
+Fj (nx0) = nFj (x0) > nε > 1 , (3.48)
+contradicting the the existence of an upper bound of one on values of Fj. Finally,
+each of the functions Fj is Lebesgue measurable (Case (iv)) which follows from the
+monotonicity of the function.
+3.4 Summary and discussion
+We are aware of two papers linking Gleason’s theorem and Cauchy’s functional
+equation. Cooke et al. [28] used Cauchy’s functional equation to demonstrate the
+necessity of the boundedness of frame functions in proving Gleason’s theorem.
+Dvureˇ censkij [35] introduced frame functions deﬁned on effect algebras but did
+not proceed to derive a Gleason-type theorem in the context of quantum theory.
+In this chapter, we have exploited the fact that additive functions are central
+to both Gleason-type theorems and Cauchy’s functional equation. Gleason-type
+theorems are based on the assumption that states assign probabilities to measure-
+ment outcomes via additive functions, orframe functions, on the effect space. Linear-
+ity of the frame functions has been shown to follow from positivity and other
+assumptions that are well-known in the context of Cauchy’s functional equation.
+Altogether, the result obtained here amounts to an alternative proof of the extension
+of Gleason’s theorem to dimension two given by Busch [18] and Caves et al. [22].
+The strongest known GTT proved in Chap. 2, Theorem 7, can be rephrased in
+parallel to Theorem 9 but only requiring Eq. (5.3) be valid for effects E1 and E2 that
+coexist in a projective-simulable POM [71]. Since the proof of Theorem 7 relies on
+Theorem 9 (or equivalently Theorem 2), the alternative proof presented in Section
+3.3.2 also gives rise to a new proof of the strongest existing Gleason-type theorem.
+We have not been able to exploit the structural similarity between the require-
+ments on frame functions and on the solutions of Cauchy’s functional equation
+in order to yield a new proof of Gleason’s original theorem. Additivity of frame
+functions deﬁned on projections instead of effects does not provide us with the
+type of continuous parameters that are necessary for the argument developed here.
+It remains an intriguing open question whether such a proof does exist.
+48
+
+Chapter 4
+A non-quantum GPT reproducing
+quantum correlations
+4.1 Introduction
+One of the most surprising and initially controversial features of quantum theory
+was non-locality, i.e. the prediction that the outcomes of spacelike separated experi-
+ments can exhibit correlations that cannot be explained by the existence of a local
+common cause. This prediction seems very unnatural to us classically minded
+human beings, and, as a result, the possibility of observing non-local correlations
+has been experimentally veriﬁed many times and with sufﬁcient paranoia to ensure
+the correlations do not arise from any “loop-holes” in the experimental procedure
+[49, 39, 78].
+The non-local correlations of quantum theory do not clash with the tenets special
+relativity, as they do not allow for superluminal signalling between experimenters;
+the marginal statistics from one party’s experiments can never depend on another
+party’s choice of which quantum measurements to perform. Curiously, however,
+quantum theory does not allow for all conceivable non-signalling correlations [74,
+10]. This observation raises the question of whether there is something special
+about the correlations achievable by quantum theory; whether there is some prin-
+ciple one would be able to violate if it were possible to achieve so-called super-
+quantum correlations. This question has been answered in parts [82, 17, 72, 68, 2],
+however no exact characterisation of the set of quantum correlations in terms of
+physical or information-theoretic principles has been established.
+In this chapter, we present an example of a GPT that would achieve exactly the
+correlations predicted by quantum theory in a given scenario, and is not a part of
+quantum theory nor is it locally quantum1. In doing so, this GPT is the ﬁrst of its
+kind known to the author to be discovered. Thus the model presents a useful tool
+for understanding the relationship between a set of correlations and the properties
+1A model is locally quantum if it’s subsystems are part of quantum theory.
+49
+
+of a model that can produce that set.
+The GPT in question is a model for a pair of rebits. A rebit is a GPT with a disc
+state space, which can be considered as the intersection of the σx, σz plane with
+the Bloch ball which represents the state space of a qubit. The model for a pair of
+rebits we will consider consists of taking the maximal tensor product of two rebits.
+This model was considered by Janotta et al. [52] as the limit case of GPTs with
+state spaces given by n-sided regular polygons 2. Janotta et al. identiﬁed that the
+model could not violate Tsirelson’s bound of the CHSH inequality but left open the
+question of characterising the full set of correlations predicted by the model.
+In Section 4.2 we deﬁne the no-signalling principle, show how it leads to the
+description of the composition of systems in Section 1.2 and look at three sets of
+non-signalling correlations. Section 4.3 describes the GPT we will be considering
+and contrasts it with a similar model with which it should not be confused. Section
+4.4 gives our main result and ﬁnally Section 4.6 provides a summary.
+4.2 No-signalling principle
+Consider the following scenario: two parties, Alice and Bob, each have a black box
+that they give an input x, y∈{0, 1}, respectively. Upon receiving the input the
+boxes immediately produce an output a, b∈{0, 1}, respectively. Alice and Bob
+may input their choices x and y in a spacelike separated manner. This scenario is
+known as a 2222 Bell scenario, reﬂecting the number of possible inputs and outputs
+of each party, and it represents the most well studied and understood setting for
+investigating non-local correlations.
+The behaviour of a pair of boxes can be uniquely described by the vector q =
+(p (ab|xy)) ∈ R16 for a, b, x, y ∈ {0, 1}, where p (ab|xy) denotes the probability
+of Alice observing output a and Bob output b when Alice and Bob gave inputs x
+and y, respectively. If the elements of this vector are to correspond to probability
+distributions they must satisfy
+∑
+a,b∈{0,1}
+p (ab|xy) = 1, for all x, y. (4.1)
+Assuming that super-luminal signalling is impossible our considerations may
+be limited to pairs of boxes that are non-signalling. The non-signalling conditions
+for any two party scenario can be expressed as
+∑
+b
+p (ab|xy) = ∑
+b
+p
+(
+ab|xy′)
+, for all a, x, y, y′ (4.2)
+∑
+a
+p (ab|xy) = ∑
+a
+p
+(
+ab|x′y
+)
+, for all b, x, x′, y. (4.3)
+2Note that in this paper the model was not referred to as a rebit.
+50
+
+The constraints (4.1) , (4.2) and (4.3) leave eight of the elements of the vector q
+redundant. We now describe a pair of non-signalling boxes by the vector p∈ R8
+consisting of the remaining eight elements and call p the behaviour of the boxes.
+An analogous reduction in dimension exists for scenarios with higher numbers
+of inputs and outputs in which case the space of non-signalling behaviours has
+dimension 2 (t− 1) n + (t− 1)2 n2, where n and t are the number of inputs and
+outputs, respectively, of each party [81].
+4.2.1 No-signalling and the tensor product
+As mentioned in Section 1.2.6, the GPT framework ensures that GPTs may only
+produce non-signalling correlations. In a general two-party scenario, the non-
+signalling constraints are described by Eqs. (4.2) and (4.3) where a, b, x and y may
+take values between zero and M, N, X and Y respectively. Let the measurements of
+the ﬁrst party be described by
+q
+e0|x, . . . ,eM|x
+y
+and the second by
+r
+f 0|y, . . . ,f N|y
+z
+,
+where ea|x∈ RdA+1 and f b|y∈ RdB+1. Note that some of these effects may be the
+zero effect. Then for a bipartite system in state ω we have
+N
+∑
+b=0
+p (ab|xy) =
+N
+∑
+b=0
+(
+ea|x⊗ f b|y
+)
+⊕ 0· ω
+=
+(
+ea|x⊗ u
+)
+⊕ 0· ω
+=
+N
+∑
+b=0
+(
+ea|x⊗ f b|y′
+)
+⊕ 0· ω
+=
+N
+∑
+b=0
+p
+(
+ab|xy′)
+,
+(4.4)
+where 0 ∈ RNH is in the non-holistic part of the state space (see Section 1.2.6).
+Similarly, the framework ensures that Eq. (4.3) is satisﬁed.
+Conversely, one can see via the following argument that if we require our GPT
+to be non-signalling, and have a property known as local independence [47], then
+we must be able to model a composite GPT in the manner described in Section 1.2.6.
+Local independence says that, given a bipartite system each with a set of ﬁducual
+outcomes, all the pairs of ﬁducial outcomes, one from each subsystem, are able to
+form part of a ﬁducial outcome set for the joint system. Local tomography, a much
+stronger requirement, on the other hand requires that these pairs form a full set of
+ﬁducial outcomes for the joint system.
+Consider two systems, A and B, modelled by GPTs with state spacesSA andSB,
+and effect spacesEA andEB embedded in the vector spaces VA and VB respectively.
+Let the state and effect spaces of the compostion of these two systems be embedded
+in the vector space VAB. For brevity in the remainder of this section we will denote
+the dimensions of VA, VB and VAB by dA, dB and dAB respectively (as opposed to
+dA + 1 etc. as they have been denoted previously).
+51
+
+Given effects e and f from systems A and B respectively, let h (e, f ) be the
+vector in VAB representing obtaining the outcomes represented by e and f when
+we perform local measurements on the systems A and B respectively. The no-
+signalling principle then dictates that the map h satisﬁes
+N
+∑
+b=0
+h
+(
+ea|x, f b|y
+)
+· ω =
+N
+∑
+b=0
+h
+(
+ea|x, f b|y′
+)
+· ω, (4.5)
+for any measurements
+q
+e0|x, . . . ,eM|x
+y
+and
+r
+f 0|y, . . . ,f N|y
+z
+. Thus we ﬁnd
+n
+∑
+j=0
+h
+(
+e, f j
+)
+· ω = h (e, u)· ω , (4.6)
+for all effects e∈E A, measurements
+q
+f 0, . . . ,f n
+y
+and states ω∈S AB. Since SAB
+spans VAB we have
+n
+∑
+j=0
+h
+(
+e, f j
+)
+= h (e, u) , (4.7)
+and it follows that for any e∈EA and f 1 and f 2 such that f 1 + f 2∈E B, h satisﬁes
+h (e, f 1 + f 2) = h (e, f 1) + h (e, f 2) . (4.8)
+By symmetry of all the conditions, h is also additive in the ﬁrst argument. We may
+now use an argument similar to proving the linearity of generalised probability
+measures given in [18] to ﬁnd that h extends to a bilinear mapping on VA× VB.
+Firstly, note that for 0≤ α≤ 1
+α f = α f + (1− α) 0∈E B (4.9)
+by the convexity ofEB. For n∈ N by Eq. (4.8) we have
+h (e, f ) = h
+(
+e, n
+n f
+)
+= h
+(
+e, 1
+n f + . . .+ 1
+n f
+)
+= nh
+(
+e, 1
+n f
+)
+, (4.10)
+for any e∈EA. Let m∈ N and m≤ n, it follows from Eqs. (4.8) and (4.10) that
+h
+(
+e, m
+n f
+)
+= h
+(
+e, 1
+n f + . . .+ 1
+n f
+)
+= mh
+(
+e, 1
+n f
+)
+= m
+n h (e, f ) . (4.11)
+Note that
+h(e, 0B) = 0AB , (4.12)
+where 0B and 0AB are the zero vectors in VB and VAB respectively since
+h(e, f + 0B) = h(e, f ) + h(e, 0B) . (4.13)
+52
+
+For 0 < α < 1 consider a sequence of rational numbers (pj)j∈N satisfying 0≤ pj≤
+α. Then we have
+h(e, α f )− pjh(e, f )
+ =
+h(e, α f )− h(e, pj f )
+
+=
+h(e, α f− pj f + pj f )− h(e, pj f )
+
+=
+h(e, α f− pj f ) + h(e, pj f )− h(e, pj f )
+
+=
+h(e, (α− pj) f )
+ .
+(4.14)
+Taking the limit j→ ∞ and using Eq. (4.12) gives h(e, α f ) = αh(e, f ). Now we
+extend h fromEA×E B toEA×E +
+B as follows. By deﬁnition if g∈E +
+B then g = β f
+for some f∈E B and β≥ 1. Deﬁne
+h(e, g) = βh(e, f ) . (4.15)
+The extension is well-deﬁned since if g = β f = β′ f′ for f , f′∈E B and β≥ β′, then
+we have
+h(e, f ) = h
+(
+e, β′
+β f′
+)
+= β′
+β h
+(
+e, f′)
+, (4.16)
+and h(e, g) = βh(e, f ) = β′h(e, f′).
+Finally, Theorem 1, which we will prove in Chapter 5, shows that for anyg∈ VB
+there exists f 1, f 2∈E +
+B such that g = f 1− f 2. We can use this result to extend h to
+EA× VB, via the formula h(e, g) = h(e, f 1)− h(e, f 2). Again this extension is well
+deﬁned since if g = f 1− f 2 = f′
+1− f′
+2 then we have f 1 + f′
+2 = f′
+1 + f 2, which gives
+h(e, f 1 + f′
+1) = h(e, f 2 + f′
+2)
+= h(e, f 1) + h(e, f′
+1) = h(e, f 2) + h(e, f′
+2) .
+(4.17)
+Hence h(e, g) = h(e, f 1)− h(e, f 2) = h(e, f′
+1)− h(e, f′
+2).
+By symmetry, h can also be extended to a linear map in the ﬁrst argument
+when the second argument is ﬁxed. Combining these extensions h can be extended
+to a bilinear map out of VA× VB. The universal property of the tensor product,
+illustrated in Fig. 4.2.1, implies that h = M◦ ϕ where ϕ is the tensor product and
+M is a linear map.
+Local tomography would imply thatdAB = dAdB, however we will only assume
+that dAB≥ dAdB derived from a weaker assumption of local independence. Local
+independence implies that, given a set of linearly independent effects from each
+subsystem,{e1, . . . ,edA} and
+{
+f 1, . . . ,f dB
+}
+, the dAdB of pairs (ej, f k) should be
+mapped by h to linearly independent effects the joint GPT. This assumption means
+the map M must have rank dAdB and the image of VA⊗ VB will span a dAdB
+dimensional subspace. Therefore we can ﬁnd an invertible linear transformation
+N : VAB→ (VA⊗ VB)⊕ VC such that N (M (e⊗ f )) = (e⊗ f )⊕ 0 to transform our
+GPT in the manner described in Section 1.2.3.
+53
+
+Figure 4.2.1: Commutative diagram describing the universal property of the tensor
+product. The maps h and ϕ are bilinear, whereas the map M is linear.
+We have established the effect space of the joint system (after the transformation
+N) is embedded in (VA⊗ VB)⊕ VC, therefore the state space is also embedded in
+this space. Let h′ :SA×S B→ (VA⊗ VB)⊕ VC map a pair of states ωA∈S A and
+ωB∈S B to the vector h′ (ωA, ωB) which represents the state of AB when system A
+is in state ωA and B in state ωB. Then our GPT for the joint system should satisfy
+(e⊗ f )⊕ 0· h′ (ωA, ωB) = (e· ωA) ( f· ωB) , (4.18)
+for all e∈E A, f ∈E B, ωA∈S A and ωB∈S B, i.e. the probability of observing
+outcomes e and f of a local measurements of A and B in states ωA and ωB respect-
+ively, should be equal to the product of the probabilities of those two events.
+Since (EA⊗E B)⊕ 0 spans the subspace (VA⊗ VB)⊕ 0, from Eq. (4.18) we ﬁnd
+h′ (ωA, ωB) = (ωA⊗ ωB)⊕ c where c∈ VC.
+Finally, we may transform this GPT again by applying an invertible linear map
+L to the state space such that L ((ωA⊗ ωB)⊕ c) = (ωA⊗ ωB)⊕ 0, and applying
+L−T to the effect space which preserves the product effects, i.e.L−T ((e⊗ f )⊕ 0) =
+(e⊗ f )⊕ 0. The resulting GPT for the composite system is in the form described in
+Section 1.2.6.
+4.2.2 Local behaviours
+In the following three subsections we will introduce three sets of the behaviours:
+local, quantum and non-signalling, with many of the results ﬁrst established by
+Tsirelson [81]. We say a pair of boxes can be described by a local theory if correlations
+between the outcomes can be accounted for by past factors that have inﬂuenced the
+boxes, such as having access to a shared sequence of bits. Formally, if we describe
+these past factors by a parameter λ, then then a pair of local boxes must satisfy
+p (ab|xy) = ∑
+λ
+p (λ) p (a|x, λ) p (b|y, λ) . (4.19)
+Without loss of generality we can consider λ to be random bits that Alice and Bob
+share and use to determine their outcomes.
+54
+
+The behaviours of pairs of local boxes must satisfy the 16 non-negativity conditions
+p (ab|xy)≥ 0, (4.20)
+the CHSH inequality
+E (00) + E (01) + E (10)− E (11)≤ 2, (4.21)
+where E (xy) = p (a = b|xy)− p (a̸= b|xy), and the seven other symmetries of the
+CHSH inequality. These conditions deﬁne the polytope L of all local behaviours
+which has 16 vertices. The vertices ofL are all the behaviours in which each input
+yields an output deterministically.
+4.2.3 Non-signalling behaviours
+A given behaviour p∈ R8 satisﬁes (4.1) and (4.2) by construction. In order to be
+non-signalling, the only further conditions a behaviour need satisfy are the non-
+negativity conditions given by (4.20). These constraints correspond to 16 linear
+inequalities in R8 and form the facets of the polytope NS consisting of all non-
+signalling behaviours. In other words, the behaviour (in the 2222 scenario) of any
+pair of non-signalling boxes can be described by a point in the eight dimensional
+polytopeNS .
+The polytopeNS has 24 vertices consisting of the 16 local deterministic behav-
+iours and eight non-local behaviours. The eight non-local vertices correspond to
+the PR-box [74] and its relabelings, where the PR-box behaves as follows:
+p (ab|xy) =
+
+
+
+1
+2 if a + b = xy mod 2
+0 otherwise.
+(4.22)
+These eight behaviours, respectively, correspond to the maximal violations of the
+eight symmetries of the CHSH inequality achievable by a pair of non-signalling
+boxes. The PR-box violates the CHSH inequality with a value of four.
+4.2.4 Quantum behaviours
+Now we consider the special case where inside both parties’ boxes is a quantum
+system and quantum measurement device. Alice’s and Bob’s inputs correspond to
+performing one of two possible measurements on their systems and their outputs
+are the outcomes of these measurements. We must be able to write the elements of
+a behaviour of such a pair of boxes in the form
+p (ab|xy) = Tr
+(
+Ma|x⊗ Mb|yρ
+)
+, (4.23)
+55
+
+Figure 4.2.2: Illustration of the nesting of the sets of correlationsNS ,Q andL. The
+red line A represents a Bell inequality. The green point B and blue point C represent
+the quantum and non-signalling behaviours, respectively, that maximally violate
+the inequality A.
+for some density matrix ρ acting on the Hilbert space H =H1⊗H 2 and POMsq
+Ma|x
+y
+a and
+r
+Mb|y
+z
+b
+inH1 andH2, respectively. We will call such a behaviour a
+quantum behaviour. Conveniently, all quantum behaviours, in the 2222 scenario, can
+be achieved using a system of two qubits [27, 65].
+Quantum correlations obey the no-signalling principle, hence any quantum
+behaviour must be contained withinNS . However, it is well known [74] that the
+converse is not true i.e. not all non-signalling behaviours are quantum behaviours,
+i.e. the set of all quantum behaviours, Q, is a strict subset of NS . Similarly, it
+is possible to express any local behaviour in the form (4.23), but not all quantum
+behaviours are local, thereforeL is a strict subset ofQ. The nesting of the three set
+of correlations described so far is illustrated in Fig. 4.2.2.
+The maximal violation achievable by a quantum behaviour of the CHSH inequal-
+ity is 2
+√
+2, known as Tsirelson’s bound.
+4.3 Rebit pairs
+In this section we will consider a GPT known as a real-bit or rebit. For the purposes
+of this chapter, it will be convenient to describe the state and effect spaces of the
+rebit, in analogy with those of a qubit, in terms of subsets of 2 × 2 Hermitian
+matrices. The qubit state space may be represented by operators in the Bloch ball,
+i.e. those of the form
+56
+
+Figure 4.3.1: Illustration of the rebit state space ΩR (grey disc) and effect spaceER.
+1
+2
+
+I +
+
+
+x
+y
+z
+
+· σ
+
+ , (4.24)
+where σ denotes the vector of Pauli matrices
+(
+σx, σy, σz
+)T and
+(x, y, z)T≤ 1.
+Rebit states may be represented in the Bloch disc – the intersection of the Bloch
+ball with the σx, σz-plane.
+The rebit state space is embedded in the vector space of 2× 2 symmetric matrices,
+Sym2
+3, which has a basis
+{I, σx, σz} . (4.25)
+The rebit state space, ΩR, is the convex subset of Sym 2 in which the elements are
+density matrices. We will refer to density matrices with exclusively real elements
+as real density matrices. The rebit state space consists of matrices of the form
+1
+2
+
+I +
+
+
+x
+0
+z
+
+· σ
+
+ , (4.26)
+relative to the basis (4.25) and can be represented by the Bloch disc.
+Assuming the no-restriction hypothesis, the effect space of the rebit is then
+ER ={E∈ Sym2| 0≤ Tr(Eρ)≤ 1, for all ρ∈ ΩR} , (4.27)
+and is illustrated in Fig. 4.3.1. Note that the sets of extremal states and effects 4
+coincide.
+The GPT framework does not uniquely prescribe the model for a composite
+3Sym is the subspace of the 2× 2 Hermitian matrices (in which we embed the qubit state space)
+that contains matrices with exclusively real elements.
+4Apart from the unit and zero effects.
+57
+
+system. In the following sections we will consider a model for a pair of rebits
+described in [52]. We are not considering the model described, e.g. by Caves et al.
+[21], therefore we will begin by comparing these two possibilities.
+The state space of two qubits consists of the 4 × 4 density matrices. Caves et
+al. accordingly take the state space of two rebits to be ΩC
+R2, the set of 4 × 4 real
+density matrices. This appears to be the natural choice however, as Caves et al.
+[21] highlight, the resulting model has some unfamiliar properties. The origin of
+these properties becomes clear when observing the underlying vector spaces of the
+model. If one assumes local tomography, the joint state space would be embedded
+in Sym2⊗ Sym2 which has basis
+{I⊗ I, I ⊗σx, I ⊗σz,
+σx⊗ I, σx⊗ σx, σx⊗ σz,
+σz⊗ I, σz⊗ σx, σz⊗ σz}.
+(4.28)
+However, in order to embed the 4× 4 real density matrices in this space one would
+require a tenth basis element. This tenth element occurs since the tensor product
+of two anti-symmetric matrices is also symmetric. The space of anti-symmetric
+2× 2 matrices is only one dimensional and is spanned by iσy. The addition of the
+symmetric matrix
+iσy⊗ iσy =−σy⊗ σy, (4.29)
+to the basis (4.28) results in a basis of the space of 4× 4 symmetric matrices
+Sym4
+∼= (Sym2⊗ Sym2)⊕ span
+(
+σy⊗ σy
+)
+, (4.30)
+in which we may embed the set of 4× 4 real density matrices.
+As before the effect space is given by
+E
+(
+ΩC
+R2
+)
+=
+{
+E∈ (Sym2⊗ Sym2)′| 0≤ Tr(Eρ)≤ 1, for all ρ∈ ΩC
+R2
+}
+, (4.31)
+Note that in addition to satisfying the condition Tr (E1⊗ E2ρ)≥ 0, a state ρ∈ ΩC
+R2
+is also positive semideﬁnite hence we have
+Tr(Eρ)≥ 0, (4.32)
+for any positive semideﬁnite matrix E∈ (Sym2⊗ Sym2)′. Consequently the effect
+spaceE
+(
+ΩC
+R2
+)
+contains both product and entangled effects.
+It can be seen intuitively that the Caves model is not locally tomographic. There
+are no σy components in states of Caves rebits, and therefore no measurements
+on single Caves-rebits can detect σy components. Consequently using only local
+measurement statistics it is impossible to determine the coefﬁcient of the σy⊗ σy
+58
+
+component in a state of a pair of Caves rebits. For example the two states
+ρ1 =1
+2
+(
+I⊗ I−1
+2
+(
+σx⊗ σx + σy⊗ σy + σz⊗ σz
+))
+ρ2 =1
+2
+(
+I⊗ I−1
+2 (σx⊗ σx + σz⊗ σz)
+)
+,
+are both valid states in the Caves model of a two rebit system but are indistinguish-
+able using only local measurements.
+Finally, we note that the state space ΩC
+R2 is a subset of the state space of two
+qubits and the effect space ER is a subset of the effect space of a single qubit. In
+other words, a system of two Caves rebits may only reside in states given by two-
+qubit density matrices and we can only measure qubit POMs on the individual
+rebits. Therefore any correlations resulting from a pair of Caves rebits may also be
+produced by a pair of qubits. However, the validity of the converse statement is
+unknown.
+We will consider an alternative model for a pair of rebits as considered by
+Janotta et al. [52]. In the Janotta model the state space of a pair of rebits is taken to
+be the full maximal tensor productΩR⊗max ΩR and the effect space, required by the
+no-restriction hypothesis, comprises all the convex combinations of product effects
+e⊗ e′ for e, e′∈E R. Janotta et al. show that this model is capable of violating the
+CHSH inequality with a value of 2
+√
+2, but leave open the question of characterising
+the full set of correlations achievable in the model. For example, the state
+ρJ = 1
+4 (I⊗ I +σx⊗ σx + σz⊗ σz) , (4.33)
+has eigenvalues{3/2,±1/2} so is not a valid state in the Caves model. However
+the state ρJ satisﬁes the Tr (E1⊗ E2ρJ)≥ 0 for all rebit effects E1 and E2, therefore
+is contained in the state space of the Janotta rebit pair, and can produce quantum
+violations of the CHSH inequality.
+4.4 Main Result
+Janotta et al. show that the maximum violation of the CHSH inequality achievable
+by the rebit pair is equal to the quantum violation of 2
+√
+2. However, the question
+of whether this model reproduces exactly the set of quantum correlations is left
+open. We will now answer this question in the afﬁrmative by showing that the set
+of correlations achievable in this model is exactly the quantum set in the 2222 Bell
+scenario.
+A result by Barnum et al [7] shows that the set of correlations produced in a two
+party scenario by a GPT consisting of the maximal tensor product of a pair qudits
+is exactly that produced by a quantum theoretical qudit pair. This GPT is described
+59
+
+as locally quantum, since its subsystems are qudits and therefore part of quantum
+theory. First we will show via a modiﬁcation of the result of Barnum et al. [7] that
+any rebit pair correlation (in a two party scenario) can be achieved by a qubit pair.
+Theorem 10. Let p be a behaviour in which
+p (ab|xy) = Tr
+(
+Ra|x
+A ⊗ Rb|y
+B ω
+)
+(4.34)
+for a two rebit state ω and single rebit measurements
+r
+Ra|x
+A
+z
+a
+and
+r
+Rb|y
+B
+z
+b
+. There exists a
+two qubit state ρ and qubit measurements
+r
+Qa|x
+A
+z
+a
+and
+r
+Qb|y
+B
+z
+b
+such that
+p (ab|xy) = Tr
+(
+Qa|x
+A ⊗ Qb|y
+B ρ
+)
+, (4.35)
+where a, b, x, y∈{0, 1}, i.e. p∈Q .
+The essence of the proof given by Barnum et al. [7] is to express any “POPT
+state” (in our case a two rebit state) as a map acting on a density operator in such
+a way that if the action of this map is transferred onto the effects then they will
+remain qubit effects. To understand the properties of this map we require two
+deﬁnitions.
+Deﬁnition 5. LetB (H) denote the bounded, linear operators on a complex Hilbert
+spaceH. A linear map, L :B (HA)→B (HB), is said to be positive if L (M)≥ 0
+for allB (HA)∋ M≥ 0 and unital if L (IA) = IB, where I A and IB are the identity
+operators onHA andHB, respectively.
+Let L be a positive and unital linear operator on B
+(
+C2)
+and
+q
+Qj
+y
+j be a qubit
+POM. The set
+q
+L
+(
+Qj
+)y
+j is also a qubit POM, i.e. a set of positive operators on C2
+that sum to the identity, since
+I = ∑
+j
+Qj
+⇒ L (I) = I = ∑
+j
+L
+(
+Qj
+)
+. (4.36)
+Proof of Theorem 10. Using the Choi-Jamiolkowski isomorphism [25] we may express
+any state, ω, of a rebit pair as
+ω = (I⊗W ω)
+[
+Φ+]
+, (4.37)
+where Φ+ = 1
+2 ∑j,k=0,1|j⟩⟨ k|⊗| j⟩⟨ k| andWω is the linear map
+Wω(·) = 2 TrA
+((
+(·)T⊗ I
+)
+ω
+)
+,
+60
+
+onB
+(
+C2)
+. The operator ω satisﬁes
+Tr(QA⊗ QBω) = Tr(Π (QA)⊗ Π(QB)ω)≥ 0,
+for any qubit effects QA and QB, where
+Π (Q) = Π
+(
+a I +bσx + cσy + dσz
+)
+= a I +bσx + dσz,
+is the orthogonal projection of Q into the symmetric subspace of the Hermitian
+operators on C2. We then see thatWω must be positive as follows. We have
+0≤ Tr
+(
+QA⊗ QB (I⊗W ω)
+[
+Φ+])
+= Tr
+(
+QA⊗ QB
+1
+2 ∑
+j,k=0,1
+|j⟩⟨ k|⊗W ω [|j⟩⟨ k|]
+)
+=1
+2 ∑
+j,k=0,1
+Tr(QA|j⟩⟨ k|) Tr(QBWω [|j⟩⟨ k|])
+=1
+2 ∑
+j,k=0,1
+⟨j| (QA)T|k⟩ Tr(QBWω [|j⟩⟨ k|])
+=1
+2 Tr
+(
+QBWω
+[
+∑
+j,k=0,1
+|j⟩⟨ j| (QA)T|k⟩⟨ k|
+])
+=1
+2 Tr
+(
+QBWω
+[
+(QA)T
+])
+.
+Now the arbitrary qubit effect QB may be any rank-one projection. Thus it follows
+thatWω
+[
+(QA)T
+]
+≥ 0 for any qubit effectQT
+A (note that the set of transposed effects
+is equal to the effect space). Any positive operator M on C2 satisﬁes M = aQ for
+a≥ 0 and a qubit effect Q. Hence Wω [M] = aWω [Q]≥ 0, i.e. Wω is a positive,
+linear map.
+An element of a behaviour of a rebit pair is given by Tr(RA⊗ RBω), for a some
+rebit effects RA and RB. We can now express this probability in terms of the qubit
+pair state Φ+ by moving the action ofWω onto the effects as follows:
+Tr(RA⊗ RBω) = Tr
+(
+RA⊗ RB (I⊗W ω)
+[
+Φ+])
+= Tr
+(
+(I⊗W∗
+ω) [RA⊗ RB]
+(
+Φ+))
+= 1
+2 Tr
+(
+∑
+j,k=0,1
+RA|j⟩⟨ k|⊗W ∗
+ω [RB]|j⟩⟨ k|
+)
+= 1
+2 ∑
+j,k=0,1
+⟨k| RA|j⟩⟨ k|W∗
+ω [RB]|j⟩
+= 1
+2 ∑
+j,k=0,1
+⟨j| RT
+A|k⟩⟨ k|W∗
+ω [RB]|j⟩ ,
+61
+
+and using ∑k|k⟩⟨ k| = I gives
+= 1
+2 Tr
+(
+RT
+AW∗
+ω [RB]
+)
+= 1
+2 Tr
+(
+Wω
+[
+RT
+A
+]
+RB
+)
+= Tr
+(
+W T
+ω
+[
+RT
+A
+]
+⊗ RBΦ+
+)
+,
+whereW∗
+ω is the adjoint ofWω andW T
+ω (·) = (Wω (·))T. If Wω is unital then by
+Eq. (4.36) we have that
+{
+Qa|x
+A
+}
+a
+=
+{
+W T
+ω
+[(
+Ra|x
+A
+)T]}
+a
+,
+are both also qubit measurements. Otherwise we haveWω (I) = M where M≥ 0.
+If M is invertible then we can deﬁne the unital map
+˜Wω [·] = M− 1
+2Wω [·] M− 1
+2 . (4.38)
+We can now express a behaviour of ω as a behaviour of the two qubit state
+σM =
+(
+M
+1
+2
+)T
+⊗ I Φ+
+(
+M
+1
+2
+)T
+⊗ I, (4.39)
+as follows:
+Tr(RA⊗ RBω) = 1
+2 Tr
+(
+Wω
+[
+RT
+A
+]
+RB
+)
+= 1
+2 Tr
+(
+M
+1
+2˜Wω
+[
+RT
+A
+]
+M
+1
+2 RB
+)
+= Tr
+((
+M
+1
+2
+)T
+˜Wω
+T[
+RT
+A
+](
+M
+1
+2
+)T
+⊗ RBΦ+
+)
+= Tr
+((
+M
+1
+2
+)T
+⊗ I˜Wω
+T[
+RT
+A
+]
+⊗ RB
+(
+M
+1
+2
+)T
+⊗ I Φ+
+)
+= Tr
+(
+˜Wω
+T[
+RT
+A
+]
+⊗ RBσM
+)
+.
+Finally, if M is not invertible we may instead deﬁne
+˜Wω [·] = lim
+ε→0
+(W ε
+ω [I])− 1
+2W ε
+ω [·] (W ε
+ω [I])− 1
+2 , (4.40)
+whereW ε
+ω [·] = (1− ε)Wω [·] + εI Tr(·) is invertible for small ε, then proceed with
+the same argument.
+Now we show that converse statement also holds in the 2222 Bell scenario, i.e.
+that any qubit pair behaviour is a rebit pair behaviour. We do so by unitarily
+transforming the effects in a qubit behaviour to be rebit effects, whilst applying
+the inverse unitary to the state, then considering the projection of the state into the
+62
+
+rebit pair subspace.
+Theorem 11. Let p be a behaviour in which p (ab|xy) = Tr
+(
+Qa|x
+A ⊗ Qb|y
+B ρ
+)
+for a two
+qubit state ρ and single qubit POVMs
+r
+Qa|x
+A
+z
+a
+and
+r
+Qb|y
+B
+z
+b
+. There exists a two rebit state
+ω and rebit POVMs
+r
+Ra|x
+A
+z
+a
+and
+r
+Rb|y
+B
+z
+b
+such that p (ab|xy) = Tr
+(
+Ra|x
+A ⊗ Rb|y
+B ω
+)
+,
+where a, b, x, y∈{0, 1}, i.e.Q is contained within the set of rebit pair behaviours.
+Proof. For any two qubit effects Q0|0
+A and Q0|1
+A there exists a unitary operator UA
+such that
+UAQ0|0
+A U†
+A and UAQ0|1
+A U†
+A,
+are in the symmetric subspace. Note that
+UAQ1|0
+A U†
+A and UAQ1|1
+A U†
+A,
+will also be in the symmetric subspace since
+Q1|x
+A = I−Q0|x
+A ,
+for x∈{0, 1}. Similarly, there exists a unitary operator UB that brings the effects
+Qb|y
+B into the symmetric subspace. Letting Ra|x
+A = UAQa|x
+A U†
+A, Rb|y
+B = UBQb|y
+B U†
+B and
+ρ′ = UA⊗ UBρU†
+A⊗ U†
+B we have
+p (ab|xy) = Tr
+(
+Qa|x
+A ⊗ Qb|y
+B ρ
+)
+= Tr
+(
+Ra|x
+A ⊗ Rb|y
+B ρ′
+)
+.
+(4.41)
+We may now take the orthognal projection, ΠRR of ρ′ into the rebit pair subspace,
+i.e. the subspace spanned by the operators in (4.28), without affecting the value of
+the expression in Eq. (4.41) sinceRa|x
+A ⊗ Rb|y
+B will also necessarily be in this subspace.
+Thus, we have
+p (ab|xy) = Tr
+(
+Ra|x
+A ⊗ Rb|y
+B ΠRR
+(
+ρ′))
+. (4.42)
+It only remains to show that ΠRR (ρ′) is a rebit pair state. Since ρ′ is a two qubit
+state we have that
+Tr
+(
+RA⊗ RBρ′)
+≥ 0,
+for any rebit effects RA and RB. Thus it follows that ΠRR (ρ′) is a rebit pair state as
+Tr
+(
+RA⊗ RBρ′)
+= Tr
+(
+RA⊗ RBΠRR
+(
+ρ′))
+≥ 0.
+Theorems 10 and 11 show that the correlations of the maximal tensor product of
+a pair of rebits in the 2222 Bell scenario are exactly those of a pair of qubits. Hence,
+using the characterisation of 2222 quantum correlations as qubit pair correlations
+63
+
+[27, 65], we may conclude that the maximal tensor product of a pair of rebits can
+achieve all quantum correlations in this scenario.
+4.5 Redit pairs
+In analogy to a rebit, a redit is model with a state space consisting of d× d real
+density matrices and effect space consisting ofd× d symmetric matrices R such that
+Od≤ R≤ Id where Od and Id are the d× d zero and identity matrices respectively.
+Now consider the model for a pair of redits generated by taking the maximal
+tensor product of two redits, as we did with the rebit in the previous section. This
+model has an effect space consisting of all the convex combinations of matrices of
+the form R1⊗ R2 for redit effects R1 and R2. The state space of this redit pair is the
+subset of matrices ρ in Symd⊗ Symd such that
+Tr(R1⊗ R2ρ)≥ 0. (4.43)
+The result of Barnum et al. shows that the correlations of a redit pair are contain-
+ed inQ. However, the proof of Theorem 11 does not generalise to the redit case as
+can be seen by the following counter example.
+To use the same approach to prove that qudit pairs and maximal redit pairs
+lead to the identical sets of correlations one would require that for at least any two
+qudit effects D1 and D2 there exists a qudit unitaryUD such that both UDD1U†
+D and
+UDD2U†
+D are real matrices. However this is not the case, as can be demonstrated
+by the following counterexample. Let
+D1 = 1
+d (M⊕ Id−3) and D2 = 1
+d (N⊕ Id−3) , (4.44)
+where
+M =
+
+
+0 0 0
+0 1 0
+0 0 2
+
+ and N = 1
+2
+
+
+2 1 i
+1 2 1
+−i 1 2
+
+ , (4.45)
+In is the n× n identity matrix and⊕ denotes the direct sum. The matricesD1 and D2
+correspond to qudit effects since they have unit trace and bothM and N are positive
+semideﬁnite. Now if A and B are two real matrices then clearly Tr (w (A, B))∈ R
+for any word w (A, B) = Ar1Br2 Ar3Br4 . . .Brn for non-negative integers rj and n.
+Therefore ifUDD1U†
+D and UDD2U†
+D are real matrices then Tr
+(
+w
+(
+UDD1U†
+D, UDD2U†
+D
+))
+=
+Tr(w (D1, D2))∈ R for any word w (A, B) by the cyclic property of the trace. Let
+w (A, B) = A2B2AB. Then
+w (D1, D2) ∝ w (M, N)⊕ w (Id−3, Id−3)
+∝ w (M, N)⊕ Id−3 .
+64
+
+It follows that Tr (w (D1, D2)) ∝ Tr(w (M, N)) + d− 3. However Tr (w (M, N)) =
+1
+4 (66− i) which implies Tr(w (D1, D2)) /∈ R. Hence D1 and D2 cannot be simultan-
+eously transformed into real matrices by a single unitary matrix.
+4.6 Summary
+We have shown that the rebit pair model produced by taking the maximal tensor
+product of the rebit state spaces and assuming the no-restriction hypothesis reprod-
+uces exactly the set of quantum correlations in the 2222 Bell scenario. Thus this
+GPT represents the ﬁrst known example of a GPT which is not locally quantum
+with a quantum set of correlations. The result demonstrates that sets of quantum
+correlations in given scenarios are not necessarily unique to quantum theory or
+locally quantum theories. Thus if one was looking to single out quantum theory
+amongst other theories the requirement of producing a set of quantum correlations
+would be insufﬁcient. Supplementary conditions that would rule out the model we
+have considered in this chapter include strong self-duality 5 (although individual
+rebits satisfy this condition the composite model we have considered does not) and
+the existence of entangled effects, which are key to teleportation and entanglement
+swapping protocols. These conditions are satisﬁed, however, by the standard redit
+pair model, e.g. the Caves et al. rebit pairs described in 4.3. It would therefore be
+interesting to establish whether such models can also produce all the correlations
+of their qudit analogs, in two party scenarios.
+Conversely, if one is looking to single out the set of quantum correlations using
+properties of the underlying model, our result shows that the properties shared by
+the rebit pair and quantum theory would be insufﬁcient. These properties include
+local tomography and having a local state space satisfying strong self-duality and
+with a “continuous” set of extremal states (i.e. the extremal states are exactly the
+boundary of the state space).
+We have shown that the method of proof used does not extend to the higher
+dimensional analogs of the rebit pair, known as redit pairs. Future work would
+establish whether models of redit systems constructed with the maximal product
+always produce a set of quantum correlations, both for higher dimensional systems
+and Bell scenarios with more inputs and outputs.
+Theorems 10 and 11 also provide a characterisation of quantum correlations in
+the 2222 scenario in terms of fewer parameters than their characterisation as two
+qubit correlations. This reduction in parameters, and future results that characterise
+sets of quantum correlations in terms of redits, may therefore be useful for tasks
+involving optimisation over quantum correlations.
+5In a strongly self-dual GPT the positive cones of the state and effect space coincide. In a weakly
+self-dual GPT they are related via a bijective linear mapping [6].
+65
+
+Chapter 5
+GPTs with and without
+Gleason-type theorems
+In 1957 Mackey [63] raised the question of whether density operators represent
+the most general notion of a state that is consistent with the standard description of
+quantum observables as self-adjoint operators on separable Hilbert spaces. Gleason
+[40] responded with a proof that, upon consistently assigning probabilities to the
+outcomes of measuring such observables, every state must admit an expression
+in terms of a density operator for separable Hilbert spaces of dimension greater
+than two. In 2003 Busch [18] (and then Caves et al. [20]) generalized the idea of
+Gleason’s theorem to quantum observables represented by POMs. The resulting
+GTT was found to also hold in dimension two, due to the stronger assumptions
+being made than in Gleason’s case.
+In this chapter, we wish to explore whether Gleason-type results are special to
+quantum theory. Imagine that a theory different from quantum theory had been
+found to successfully describe Nature. Would GTTs still exist?
+To answer this question we pose it within the family of GPTs, which have
+emerged as natural generalizations of quantum theory [53, 9, 66]. The framework
+of GPTs derives from operational principles, and they encompass both quantum
+and classical models as well as a host of other theories. One of the forces driving
+the study of these alternative theories has been to identify features that single out
+quantum theory among others of comparable structure. Our study contributes to
+that fundamental quest.
+As we have seen in Section 1.1, the results of Gleason and Busch can be phrased
+in terms of frame functions which associate probabilities to the mathematical objects
+representing the possible outcomes of any measurement. The probabilities assigned
+to all disjoint outcomes of a given measurement must sum to unity. The motivation
+behind a frame function is that the probabilities of observing all the possible out-
+comes of all the observables of a system should deﬁne a unique state. If this
+were not the case, then two “different” states would be indistinguishable, both
+66
+
+practically and theoretically. Gleason and Busch’s results establish a one-to-one
+correspondence between frame functions and density operators.
+The concept of a frame function is easily generalized to GPTs which raises the
+question of whether frame functions are analogously in one-to-one correspondence
+with the vectors that represent states in such theories. We will show that the
+correspondence continues to hold if and only if the state and effect spaces of a given
+GPT satisfy the no-restriction hypothesis [23, 54], or a “noisy” version thereof. In
+other words, we show that a Gleason-type theorem can be proven for each noisy,
+unrestricted GPT. The result holds both when we consider any ﬁnite sequence of
+effects in a GPT to correspond to a measurement and if we only consider measure-
+ments that can be simulated by classical mixtures of extremal measurements1.
+Given a speciﬁc GPT such as a quantum theory or a rebit [21], the associated
+Gleason-type theorem allows one to modify the axiomatic structure of the theory:
+it is not necessary to—separately and independently—stipulate both the state space
+and observables of the theory. Our result also provides an alternative to one step of
+the derivation of the GPT framework.
+Section 5.1 introduces the class of noisy unrestricted-GPTs, building on the
+concepts introduced in Section 1.2. In Section 5.2 we deﬁne frame functions for
+GPTs and then prove Theorem 12, our main result, which shows that a GPT admits
+a GTT if and only if it is a noisy, unrestricted GPT. Section 5.3 provides a number
+of examples that demonstrate the reduction of the postulates needed to specify
+an individual GPT achieved by our main theorem . We compare, in particular,
+the relative merits of the current approach to simplifying the postulates of a GPT
+with those of using the operational assumptions of the GPT framework. In Section
+5.4 we strengthen the main result by only deﬁning frame functions on an analog
+of projective-simulable observables, a proper subset of all observables. Section 5.5
+demonstrates how the result of Section 5.4 may be used to replace one of the steps
+in deriving the GPT framework. In Section 5.6 we summarize and discuss our
+results.
+5.1 Noisy unrestricted-GPTs
+The main result of this chapter establishes a Gleason-type theorem for a class of
+GPTs which we will now introduce, namely noisy, unrestricted (NU) GPTs. Formally,
+the class of NU GPTs consists of all unrestricted GPT along with a special subset of
+restricted GPTs. The restricted GPTs are those that can be thought of as unrestricted
+GPTs in which some of the observables can only be measured with a limited efﬁc-
+iency or with some inherent noise.
+1Extremal measurements consist of only extremal effects.
+67
+
+(a)
+ (b)
+Figure 5.1.1: The state and effect spaces show restricted versions of the classical bit
+GPT. Diagram (a) shows a NU GPT whereas (b) does not.
+Deﬁnition 6. A GPT is a noisy, unrestricted GPT if its state space S and its effect
+spaceE have the property that for every vectore∈ E (S) (see Equation (1.31)) there
+exists a number p∈ (0, 1] such that the rescaled vector pe is contained in the effect
+spaceE.
+This deﬁnition implies that each NU GPT is closely related to an unrestricted
+GPT as follows: for each observable O = Je1, e2, . . .K in the unrestricted GPT there
+exists an observable
+Op = Jpe1, pe2, . . . ,u− pe1− pe2− . . .K , (5.1)
+of the NU GPT, for some p∈ (0, 1] and the two GPTs share a state space. Thus,
+measuring the observable Op of the NU GPT can be thought of as successfully
+measuring the observable O (of the associated unrestricted GPT) with probability
+p, and observing no outcome with probability (1− p), regardless of the state of
+the system. For later convenience, the case in which p = 1 for every observable
+of the unrestricted GPT is included in Deﬁnition 6; in other words, “noiseless”
+unrestricted GPTs—i.e. GPTs in which E = E (S)—are also considered to be NU
+GPTs. All other NU GPTs, however, are restricted since they violate the no-restriction
+hypothesis.
+Fig. 5.1.1 shows two modiﬁed versions of the bit GPT that violate the no-
+restriction hypothesis, one of which is a NU GPT while the other is not. Further
+examples of the three different varieties of GPTs—restricted, unrestricted and noisy,
+unrestricted— can be found in Sec. 5.3.
+We conclude this section by pointing out an alternative characterization of NU
+GPTs.
+Deﬁnition 7. The state spaceS and the effect spaceE of an NU GPT are related by
+E (S) =E +∩ (u−E +).
+68
+
+The equivalence of Deﬁnitions 6 and 7 can be seen as follows. Consider a
+GPT with state space S and effect space E. Assume the GPT satisﬁes Deﬁnition
+7 and therefore E (S) = E +∩ (u−E +). Then if e ∈ E (S), we have e ∈ E+
+hence there exists p∈ (0, 1] such that pe∈E and the GPT satisﬁes Deﬁnition 6.
+Now, conversely, assume that the GPT satisﬁes Deﬁnition 6, hence for every vector
+e ∈ E (S) there exists p ∈ (0, 1] such that pe ∈ E. This implies E (S) ⊂ E+.
+Firstly, if e∈ E (S) then u− e∈ E (S) thus e, (u− e)∈E + and we have E (S)⊆
+E +∩ (u−E +) . Secondly, if e∈E +∩ (u−E +) then 0≤ e· ω≤ 1 for all ω∈S
+therefore e∈ E (S), by the deﬁnition of E (S). Combined these two arguments
+gives E (S) =E +∩ (u−E +), and thus the GPT satisﬁes Deﬁnition 7.
+5.2 A Gleason-type theorem for NU GPTs
+5.2.1 A Gleason-type theorem for GPTs
+Gleason’s theorem was motivated by the idea that a state of a quantum system
+should be uniquely identiﬁed by the probabilities of the outcomes of any measure-
+ment performed on the system. By this reasoning every state should have a corres-
+ponding frame function, that is a probability assignment on the space of projections
+(and later, quantum effects [18]), such that the probabilities of the disjoint outcomes
+of any measurement sum to unity. In the following deﬁnition we generalise the
+concept of a frame function to all GPTs .
+Deﬁnition 8. A frame function on an effect spaceE is a map v : Rd+1→ R satisfying
+(V1) 0 ≤ v (e)≤ 1 for all e∈E
+(V2) v (e1) + v (e2) + . . . + v (en) = 1 for all sequences e1, e2, . . . ,en∈E such that
+e1 + e2 + . . .+ en = u.
+Note that considering only measurements with a ﬁnite number of possible out-
+comes is sufﬁcient for our purposes, thus (V2) is only required to hold for ﬁnite
+sequences of effects. All countable sequences of effects may be required if one
+considers inﬁnite dimensional systems, for example the inﬁnite dimensional case
+of Busch’s proof relies upon these countably inﬁnite sequences.
+In quantum theory the results of Gleason and Busch show that any frame function
+must correspond to a density operator, i.e. that there are no possible extra states
+to those we already believe to exist under the assumption that states must have a
+corresponding frame functions. We will take the analog of this idea as the deﬁnition
+of a GTT for a GPT. Namely, if a GPT has state spaceS and effect spaceE then we
+will say it admits a GTT if and only if every frame function onE can be represented
+by a state inS. Such a GTT would allow the set of all possible states of a GPT to
+follow from the effect space via the natural assumption that a state can be uniquely
+deﬁned by its propensity to take each possible value of every observable.
+69
+
+The requirement that all mathematically possible states are realised in a theory
+could be thought of as analogous to the no-restriction hypothesis, i.e. requiring that
+all effects have a corresponding measurement outcome. We will show, however,
+that the classes of GPTs that satisfy these requirements are not the same.
+We will now consider more explicitly the application of a GTT to simplifying
+the postulates of a GPT. If one lived in world where systems could be modelled
+by speciﬁc GPTs, as we do with ﬁnite-dimensional quantum systems, then one
+could write down postulates that specify these models, in analogy to the postulates
+of quantum theory. One of the simplest ways to state the postulates, and the
+method often used for quantum theory, is to describe the mathematical objects that
+represent observables and states along with the rule for calculating the probabilities
+of measurement outcomes (supplemented, of course, by postulates describing the
+time evolution and the composition of systems). In general, for some GPT effect
+spaceE and state spaceS, such postulates would take the following form:
+(O) The observables of a system correspond to sets of vectors Je1, e2, . . .K inE that
+sum to the vector u, where each vector corresponds to a possible disjoint
+outcome of measuring the observable.
+(S) The states of a system correspond to vectors inS.
+(P) The probability of obtaining outcome ej after measuring the observable
+Je1, e2, . . .K on a system in state ω∈S is given by ej· ω.
+If there exists a GTT for a GPT then the same model could be recovered by replacing
+the postulates (S) and (O) by the assumption that states are exactly frame functions
+on the effect space. Thus the GTT would achieve the same effect for the GPT as
+Gleason’s theorem (in dimensions greater than two), or Busch’s generalisation,
+does for quantum theory.
+Our result also presents an alternative step in the derivation of the GPT frame-
+work. In Section 1.2 we reviewed how the framework can be derived from operational
+principles starting with motivating the structure of state spaces in GPTs. One may,
+however, arrive at the same framework by ﬁrst motivating the structure of the effect
+space of a GPT, at which point our Gleason-type theorem may be used to recover
+the state space structure. We will describe this approach in Section 5.5.
+5.2.2 Main result
+Using this deﬁnition of a GTT our main result shows that NU GPTs are exactly the
+class of GPTs that admit GTTs. We will prove this result by ﬁrst showing that a
+frame function on a GPT effect spaceE corresponds to a vector in the setW (E ) (see
+Equation (1.32)) and then proceeding to show that W (E ) corresponds to the state
+space of the GPT if and only if the GPT is in the class of NU GPTs. The proof of the
+following proposition is based around that of the quantum case given in [18].
+70
+
+Proposition 1. LetE be an effect space of a GPT. Any frame function v on E admits an
+expression
+v (e) = e· ω, (5.2)
+for some ω∈ W (E ) and all e∈E .
+Proof. Firstly, for any ﬁnite collection of effects e1, e2, . . . ,en∈E such that e1 + e2 +
+. . .+ en∈E we have
+v (e) + v (e2) + . . .+ v (en) = v (e1 + e2 + . . .en) , (5.3)
+since, by (V2),
+n
+∑
+j=1
+v
+(
+ej
+)
++ v
+(
+u−
+n
+∑
+j=1
+ej
+)
+= v
+(
+n
+∑
+j=1
+ej
+)
++ v
+(
+u−
+n
+∑
+j=1
+ej
+)
+= 1. (5.4)
+Secondly, we will show the homogeneity of v onE, i.e. that αv (e) = v (αe) for all
+e∈E and α∈ [0, 1]. Note that αe = αe + (1− α) 0∈E by the convexity ofE. For
+n∈ N by Eq. (5.3) we have
+v (e) = v
+( n
+n e
+)
+= v
+( 1
+n e + . . .+ 1
+n e
+)
+= nv
+( 1
+n e
+)
+. (5.5)
+Let m∈ N and m≤ n, it follows from Eqs. (5.3) and (5.5) that
+v
+( m
+n e
+)
+= v
+( 1
+n e + . . .+ 1
+n e
+)
+= mv
+( 1
+n e
+)
+= m
+n v (e) . (5.6)
+Then if rational p, q∈ [0, 1] satisfy p≤ q then (q− p) e∈E which by (V1) gives
+v ((q− p) e)≥ 0. Then since
+v (qe) = v (qe− pe + pe) = v ((q− p) e) + v (pe) , (5.7)
+we have
+v (qe)− v (pe) = v ((q− p) e)≥ 0 (5.8)
+and therefore
+v (qe)≥ v (pe) . (5.9)
+Let pµ and qν be sequences of rational numbers in the interval [0, 1] that tend to α
+from below and above respectively. Then we have
+pµv (e) = v
+(
+pµe
+)
+≤ v (αe)≤ v (qνe) = qνv (e) . (5.10)
+Then taking the limit of both sequences gives the desired result
+αv (e) = v (αe) . (5.11)
+71
+
+Thirdly we will give a well-deﬁned extension of v to the positive coneE + (see
+Deﬁnition 1) such that v (a + b) = v (a) + v (b). Consider e1, e2 ∈ Esuch that
+E +∋ a = a1e1 = a2e2 for some 1 < a1 < a2. Then
+v (e2) = v
+( a1
+a2
+e1
+)
+= a1
+a2
+v (e1) , (5.12)
+hence a2v (e2) = a1v (e1) and we may uniquely deﬁne
+v (a) := a1v (e1) . (5.13)
+Consider a = aea and b = beb for ea, eb∈E and a, b > 1 and let c = a + b. Note
+that 1
+c (a + b)∈E . Then
+v (a + b) = cv
+(1
+c (a + b)
+)
+= cv
+(1
+c a
+)
++ cv
+(1
+c b
+)
+= v (a) + v (b) . (5.14)
+Thirdly we deﬁne an extension to the whole of Rd+1. Any c∈ Rd+1 outside the
+positive coneE + may be decomposed into c = a− b with a, b∈E + by Lemma 1.
+If there exists two different decompositions c = a− b = a′− b′ we have a + b′ =
+a′ + b and thus
+v
+(
+a + b′)
+= v
+(
+a′ + b
+)
+. (5.15)
+It then follows from Eq. (5.3), that v (a) + v
+(
+b′)
+= v (a′) + v (b) and hence
+v (a)− v (b) = v
+(
+a′)
+− v
+(
+b′)
+. (5.16)
+Therefore we may uniquely deﬁne
+v (c) := v (a)− v (b) . (5.17)
+Finally we have that this extension of any frame function v onE to Rd+1 is linear
+(see Appendix C), therefore the extended map admits expression as
+v (a) = a· ω, (5.18)
+for ω = ∑d+1
+j=1 v
+(
+xj
+)
+xj∈ Rd+1 where{x1, . . .xd+1} is a basis of Rd+1. Requirements
+(V1) and (V2) on the behaviour of v on the effect space E then imply that ω ∈
+W(E ).
+Proposition 1 shows that if one were to deﬁne states as frame functions on an
+effect spaceE, one would ﬁnd the state space to be W (E ). We will now prove that
+W (E ) corresponds to the state space of a GPT with effect spaceE if and only if the
+GPT is a NU GPT. In the following two lemmas we will show that W (E (S)) =S
+in all GPTs but E (W (E )) = E (S) only in NU GPTs.
+72
+
+Lemma 8. For any GPT state spaceS, we have W (E (S)) =S.
+Proof. Firstly, by the deﬁnitions of the maps W and E, we have
+W (E (S)) = (S∗∩ (u−S∗))∗∩ 1, (5.19)
+from which Lemma 3 implies
+W (E (S)) =
+(
+(S∗∩ (u−S∗))+
+)∗
+∩ 1. (5.20)
+Secondly we will show that
+(S∗∩ (u−S∗))+ =S∗. (5.21)
+We have (S∗∩ (u−S∗))+ ⊆ (S∗)+ =S∗. Conversely, we can show that S∗ ⊆
+(S∗∩ (u−S∗))+ as follows. If e∈S ∗ then xe∈S ∗ for all x≥ 0. Since u· ω = 1
+for all ω∈S , u is an internal point ofS∗. Thus there exists an open ball, B (u, ε),
+around u of radius ε inS∗ for some ε > 0. Therefore for x < ε/∥e∥ we have
+∥u− (u− xe)∥ < ε and hence u− xe∈S ∗. By deﬁnition, xe∈ (u−S∗), hence we
+have xe∈S ∗∩ (u−S∗) and e∈ (S∗∩ (u−S∗))+.
+Finally, Eqs. (5.20) and (5.21) give
+W (E (S)) =S∗∗∩ 1
+=S +∩ 1
+=
+{
+ω∈ Rd+1|ω = xω′ for some ω′∈S and ω· u = 1
+}
+,
+(5.22)
+and since ω· u = x we ﬁnd
+S +∩ 1 =S. (5.23)
+Lemma 9. Given a GPT with state and effect spacesS andE, respectively, then E(W (E )) =
+E (S) if and only if E (S) =E +∩ (u−E +).
+Proof. Firstly, by the deﬁnitions of the maps W and E, we have
+E (W (E )) = (E∗∩ 1)∗∩
+(
+u− (E∗∩ 1)∗)
+, (5.24)
+and by Lemma 3, (E∗∩ 1)∗ =
+(
+(E∗∩ 1)+
+)∗
+.
+Secondly, we will show that
+(E∗∩ 1)+ =E∗. (5.25)
+73
+
+If ω∈E ∗ then ω· u≥ 0, which gives
+1
+ω· u ω∈E ∗∩ 1, (5.26)
+therefore ω∈ (E∗∩ 1)+. Conversely, if ω∈ (E∗∩ 1)+ then xω∈ E∗ for some
+x≥ 0, hence ω∈E ∗.
+Finally, combining Eqs. (5.24) and (5.25), we have
+E (W (E )) =E∗∗∩ (u−E∗∗) =E +∩
+(
+u−E +)
+. (5.27)
+We now state and prove our main result which shows that a GPT admits a GTT
+if and only if it is a NU GPT.
+Theorem 12. LetS andE be that state and effect spaces, respectively, of a GPT. Any frame
+function v :E→ [0, 1] admits an expression v (e) = e· ω for some ω∈S if and only if
+E +∩
+(
+u−E +)
+= E (S) , (5.28)
+i.e. a GPT admits a Gleason-type theorem if and only if it is a NU GPT.
+Proof. By Lemma 1 we have v (e) = e· ω for some ω∈ W (E ), thus all that remains
+to be shown is that W (E ) =S if and only if Eq. (5.28) holds. Let W (E ) =S′.
+Firstly, assume that Eq. (5.28) holds. By Lemma 9 we have
+E
+(
+S′)
+= E (W(E )) = E (S) . (5.29)
+Now, by applying the W map to both sides of this equation and using Lemma 8,
+we ﬁnd
+W
+(
+E
+(
+S′))
+=S′ = W (E (S)) =S. (5.30)
+Secondly, assume that Eq. (5.28) does not hold, i.e.E +∩ (u−E +)̸= E (S), then by
+Lemma 9
+E
+(
+S′)
+̸= E (S) , (5.31)
+andS′̸=S.
+Note that quantum theory in ﬁnite dimensions obeys the non-restriction hypo-
+thesis and as a result can be viewed as a NU GPT. Therefore Busch’s result [18]
+in ﬁnite dimensions follows as a Corollary of Theorem 12, however the inﬁnite
+dimensional case is not treated here.
+74
+
+Figure 5.3.1: The state and effect spaces of the squit GPT.
+5.3 Simplifying axioms for GPTs and Examples
+5.3.1 Unrestricted GPTs
+Unrestricted GPTs are the most well studied class of GPTs. For example, thesquare-
+bit or squit is an unrestricted GPT. Squits are often considered in the study of non-
+local phenomena since a pair of squits can act as a PR-box, i.e. they can maximally
+violate the CHSH inequality (4.21) with a value of four. We will describe the squit
+state space,S□, as the convex hull
+S□ = Conv
+
+
+
+
+
+1
+1
+1
+
+ ,
+
+
+1
+0
+1
+
+ ,
+
+
+0
+1
+1
+
+ ,
+
+
+0
+0
+1
+
+
+
+
+
+, (5.32)
+The effect space,E□, is then the convex hull of the zero and unit effects, 0 and u,
+and four vectors:
+E□ = Conv
+
+
+
+0, u,
+
+
+0
+1
+0
+
+ ,
+
+
+1
+0
+0
+
+ ,
+
+
+−1
+0
+1
+
+ ,
+
+
+0
+−1
+1
+
+
+
+
+
+. (5.33)
+Both the state and effect space are illustrated in Fig. 5.3.1.
+Theorem 12 tells us that if Nature had presented us with systems that can be
+modelled as squits then, since the squit is an unrestricted GPT, we could postulate
+the observables of the GPT and recover the state space and probability rule by
+considering frame functions. Explicitly, in this hypothetical world, without Theorem
+12, we may have postulated the descriptions (O), (S) and (P) from Section 5.2.1,
+using the effect and state spacesE□ andS□. Using Theorem 12 we can replace (S)
+and (P) by making the assumption the states are exactly probability assignments
+on the outcomes of measurements (i.e. frame functions). The model created by this
+75
+
+Figure 5.3.2: Noisy rebit effect space
+substitution makes exactly the same predictions as the original model.
+Further examples of unrestricted GPTs that could receive analogous treatment
+to the squit via Theorem 12 include: classical bits, rebits, qubits and qudits.
+The state and effect spaces of bits and qudits are described in Section 1.2.3, and
+rebits are described in Section 4.3.
+5.3.2 Noisy rebit
+The next example we will consider, a noisy rebit, is a NU GPT that does not satisfy
+the no-restriction hypothesis. In the noisy rebit GPT we can only measure any
+extremal rebit observables Je, u− eK for
+e = 1
+2
+
+
+cos(θ)
+sin(θ)
+1
+
+ , (5.34)
+for any 0 ≤ θ < 2π with some efﬁciency p∈ (0, 1). The state space of the noisy
+rebit is that of the rebit,SR, but the effect space,ENR, is restricted to the convex hull
+of the zero and unit effects and two continuous rings of effects given by
+p
+2
+
+
+cos(θ)
+sin(θ)
+1
+
+ and p
+2
+
+
+cos(θ)
+sin(θ)
+2
+p− 1
+
+ , (5.35)
+for 0≤ θ < 2π, illustrated in Fig. 5.3.2. Theorem 12 shows that the noisy rebit also
+admits a GTT.
+76
+
+5.3.3 Spekkens Toy GPT
+Our third example, the Spekkens toy GPT, is not a NU GPT. The state space of this
+GPT,SS is given by an regular octahedron. More explicitly,SS is the convex hull
+SS = Conv
+
+
+
+
+
+±1
+0
+0
+1
+
+
+,
+
+
+0
+±1
+0
+1
+
+
+,
+
+
+0
+0
+±1
+1
+
+
+
+
+
+. (5.36)
+Under the no-restriction hypothesis the extremal effects of this GPT (excluding the
+zero and unit effects) would be the vertices of a cube. But in the Spekkens Toy
+theory they are taken to be the vertices of an octahedron inscribed inside this cube,
+as depicted in Fig. 5.3.3. The effect space is the convex hull of the zero and unit
+effects and the six extremal effects given by the vectors in Eq. (5.36) multiplied by
+a factor of a half.
+Theorem 12 tells us that this GPT does not admit a GTT therefore we cannot
+reproduce this GPT by assuming that the states of the system are exactly the frame
+functions on the effect space. In this case the frame functions correspond to the
+vectors in W (ES), a strict superset ofSS, which forms a cube aroundSS in the same
+way that E (SS) enclosesES in Fig. 5.3.3. Thus in order to recover this model one
+would have to place a restriction on which frame functions correspond to allowed
+states. This restriction can be considered analogous to relaxing the no-restriction
+hypothesis on the effect space.
+The Spekkens Toy theory [79] in its original incarnation was not a GPT, however
+the GPT we have introduced in this section (described by Hardy [45] and further
+considered by Janotta et al. [54]) reproduces its interesting features, for instance
+being local, not allowing cloning and admitting a teleportation protocol.
+5.3.4 An alternative simpliﬁcation
+Let us brieﬂy mention an alternative approach to simplifying these postulates that
+closely follows the operational assumptions of the GPT framework. Simply start
+with a modiﬁed postulate about states in a GPT:
+(S’) There exist d ﬁducial measurement outcomes of observables whose probab-
+ilities determine the state of the system. These states are restricted to being
+represented by vectors inS.
+while momentarily dropping the other two axioms, (O) and (P). The ﬁrst part of
+the postulate, the existence of d ﬁducial measurement outcomes, determines that
+the state space can be embedded in Rd and is convex, with convex combinations of
+vectors representing classical mixtures of their corresponding states. However, this
+assumption does not determine the “shape” of the state space, hence the inclusion
+77
+
+Figure 5.3.3: The projection of the Spekkens Toy theory effect space into the
+hyperplane of R4 given by ﬁxing the fourth entry of the vectors to 1/2. The cube
+represents the effect space E (SS) required by the no-restriction hypothesis and the
+octahedron the actual effect space of the Spekkens Toy theoryES.
+of the second part of the postulate restricting the state space to S. For a speciﬁc
+GPT this second part of the postulate may take a more natural sounding form such
+as stipulating that state vectors have modulus less than or equal to one. From
+(S’), using the standard operational assumption that effects must respect classical
+mixtures and the no-restriction hypothesis (see Section 1.2.5), the postulates (O)
+and (P) are recovered easily.
+We will make three comments on comparing this second approach to the ﬁrst
+approach of using Theorem 12 in order to reduce the postulates (O), (S) and (P).
+Firstly, postulating (O) does not assume that there exist d ﬁducial outcomes. This
+property comes out as a consequence in the ﬁrst approach once the states are ident-
+iﬁed as linear functionals on the effect space. Therefore (O) is not simply a stronger
+version of (S’).
+Secondly, in order to postulate the existence ofd ﬁducial measurement outcomes,
+as in done in (S’), one assumes some knowledge of all the observables of the system,
+otherwise one would not know that the two outcomes in question form a complete
+ﬁducial set. Therefore (S’) makes assumptions about both the states and observables
+of the system whereas (O) only concerns observables.
+Finally, in the second approach extra assumptions would be necessary to recon-
+struct a NU GPT that does not satisfy the no-restriction hypothesis, as one could
+not use the no-restriction hypothesis to recover (O) and (P). However, such a GPT
+does admit a GTT, as Theorem 12 shows, and hence the ﬁrst method would still be
+valid.
+78
+
+5.4 Simulability
+The deﬁnition of a frame function used in Section 5.2 is derived from the idea that
+every sequence of effects e, f , . . .∈E such that e + f + . . . = u corresponds to an
+observable in the theory. We can, however, derive the same result as in Theorem 1
+from a weaker assumption, in parallel with the Gleason-type theorem for quantum
+theory derived from only projective-simulable observables as opposed to all POMs
+which we proved in Chapter 2. As deﬁned in [38], in a GPT observables may
+be classically mixed and the outcomes post-processed in order to simulate other
+observables. For example, we may perform a measurement of
+Je1, e2, u− e1− e2K , (5.37)
+with probability 1/3 and J f , 0, u− f K with probability 2/3 to simulate
+J1/3 (e1 + 2 f ) , 1/3e2, u− 1/3 (e1 + e2 + 2 f )K , (5.38)
+then coarse-grain the ﬁrst two outcomes to simulate
+J1/3 (e1 + 2 f + e2) , u− 1/3 (e1 + e2 + 2 f )K . (5.39)
+The only post-processing necessary in our proof is adding outcomes to an observable
+that occur with probability zero, for example relabeling the observable Je, u− eK to
+simulate Je, u− e, 0K .
+Now consider only the observables that may be simulated by dichotomic extremal
+observables, i.e. those described by an extremal effect e and its complement u− e.
+For brevity we will just refer to such observables as simulable. If we deﬁne a
+simulable frame function to respect only these observables, as follows, we can still
+reproduce the result of Theorem 1.
+Deﬁnition 9. A simulable frame function on an effect spaceE is a map v : Rd+1→ R
+satisfying
+(S1) 0 ≤ v (e)≤ 1 for all e∈E
+(S2) v (e) + v (e2) + . . . + v (en) = 1 for all sequences e1, e2, . . . ,en∈E for which
+the observable [e1, e2, . . . ,en] may be simulated by dichotomic extremal observ-
+ables.
+Corollary 1. LetS andE be the state and effect spaces respectively of a NU GPT. Any
+simulable frame function v onE admits an expression
+v (e) = e·ω, (5.40)
+for some ω∈S and all e∈E .
+79
+
+Proof. Due to the convexity of the effect spaceE, we have that for any effect e∈E ,
+e = ∑j pjej for some extremal effects ej and 0≤ pj≤ 1 such that ∑j pj = 1. Thus
+we may simulate the observable
+Je, u− eK , (5.41)
+by performing a measurement of
+q
+ej, u− ej
+y
+with probability pj. Furthermore, for
+any effects e, e′∈E we may simulate the observable
+s1
+2 e, 1
+2 e′, u− 1
+2
+(
+e + e′){
+, (5.42)
+by either performing Je, 0, u− eK or J0, e′, u− e′K with equal probability. Firstly
+applying Deﬁnition 9 to Eqs. (5.41) and (5.42) with e = e′ gives
+v (e) + v (u− e) = 1 = v
+(1
+2 e
+)
++ v
+(1
+2 e
+)
++ v (u− e) , (5.43)
+and hence
+v (e/2) = v (e) /2. (5.44)
+Secondly, for any effects e, e′∈E such that e + e′∈E , the observable
+q(
+e + e′)
+/2, u−
+(
+e + e′)
+/2
+y
+(5.45)
+is simulable by Eq. (5.41). Comparing with Eq. (5.42) gives
+v
+(1
+2 e
+)
++ v
+(1
+2 e′
+)
+= v
+(1
+2
+(
+e + e′))
+, (5.46)
+and thus v (e) + v (e′) = v (e + e′) by Eq. (5.44). By induction, any simulable frame
+function v is a frame function as deﬁned in Deﬁnition 8. Thus by Theorem 12 v
+admits an expression as in Eq. (5.40).
+5.5 GPT framework
+The GPT framework is most often derived, as in Section 1.2, by considering the
+states of a system ﬁrst, followed by a treatment of observables and their measure-
+ment. However, this order may be reversed, i.e. the framework may be derived,
+using equivalent operational assumptions, by ﬁrst considering all possible measure-
+ments and their outcomes then ﬁnding the compatible mathematical description of
+states. Proceeding in this second manner the structure of effect spaces is established
+ﬁrst then Corollary 1 presents an alternative method for deriving the structure of
+state spaces, compared with the standard argument involving mixtures of measure-
+ment outcomes.
+80
+
+We begin by summarising the “measurement ﬁrst” derivation of the GPT frame-
+work in parallel with Sec. 1.2. Consider all the possible outcomes of the measure-
+ments of all the observables of a given system. We will assume that there exists
+a ﬁnite set of ﬁducial states such that any one of these outcomes, ζ, is uniquely
+determined by the probabilities of ζ being observed after a measurement (of which
+ζ is a possible outcome) is performed on the system in each of the ﬁducial states.
+In other words, for a system with d states in its ﬁducial set, an outcome may be
+identiﬁed by the vector e∈ Rd such that
+e =
+
+
+p1
+...
+pd
+
+ , (5.47)
+where pj is the probability of observing the outcome for a system in the jth ﬁducial
+state. This representation of measurement outcomes is derived from the operational
+assumption that one should be able to distinguish two distinct measurement out-
+comes by their statistics on a ﬁnite number of states, in analogy to assuming the
+possibility of distinguishing two distinct states from the probabilities of a ﬁnite
+number of measurement outcomes in the “states ﬁrst” approach.
+In line with GPT terminology we will call the set of vectors corresponding to
+outcomes in a model the effect space and the vectors within this set effects. Note
+that the effects are now simply vectors and not linear functionals. For brevity, we
+will often refer to a measurement outcome as the effect by which it is represented.
+In the bit example from Section 1.2, the ﬁducial set of states could be the “0”
+and “1” states. Thus the effect space would be a subset of R2.
+We will assume the existence of an outcome that occurs with probability one for
+any state of the system. This outcome must be represented by the effect
+u =
+
+
+1
+...
+1
+
+ . (5.48)
+Similarly, we assume the existence of an outcome that never occurs, represented
+by the effect
+0 =
+
+
+0
+...
+0
+
+ . (5.49)
+Any outcome, e, must have a compliment—the outcome “not e”—which must
+occur with probability 1− pj when the measurement of “ e or not e” is performed
+81
+
+Figure 5.5.1: The state and effect spaces SB′ (diagonal black line) and EB′ (grey
+square) respectively, of the bit GPT when formulated in the “measurement ﬁrst”
+method.
+on the jth ﬁducial state. Therefore for any effect e = (p1, . . . ,pd)T the vector
+u− e =
+
+
+1− p1
+...
+1− pd
+
+ (5.50)
+must also be in the effect space.
+Consider two measurements on the system each with a discrete set of possible
+outcomes and label the outcomes of each measurement with positive integers such
+that the ﬁrst measurement has outcomes {e1, e2, . . .} and the second {e′
+1, e′
+2, . . .}
+(if the measurement has a ﬁnite number, n, of possible outcomes the labels j for
+j > n are assigned the zero effect). If a classical mixture of these measurements is
+performed then possible outcomes of this procedure can be represented by convex
+combinations of effects. Speciﬁcally, if the ﬁrst measurement is performed with
+probability p and the second with probability 1 − p, then observing an outcome
+labeled j from this procedure must be represented by the vector pej + (1− p)e′
+j in
+order to be consistent with the ﬁducial state set. Therefore we assume the effect
+space is convex.
+Finally, since operationally an arbitrarily good approximation of an effect would
+be indistinguishable from the effect itself we assume the effect space is a closed
+subset of Rd.
+Returning to the bit example, we can build our effect space from the requirement
+of having a measurement that perfectly distinguishes “0” and “1”, and must there-
+fore have outcomes, (1, 0)T and (0, 1)T. Combined with the other requirements for
+an effect space we ﬁnd the bit effect space to be the square in Figure 5.5.1, a trans-
+formation of the bit effect space described in Section 1.2.2.
+We have arrived at the same requirements for the structure of an effect space
+as were described in Section 1.2 (a conex, compact subset of a real vector space
+82
+
+containing the zero vector, and a vector u such that u− e is in the set for every e
+in the set). We may now consider how states should be represented in the frame-
+work. We assume a state will be represented by a map ω from an outcome e to the
+probability of observing e when a measurement (of which e is a possible outcome)
+is performed on a system in state ω. From here we may derive the state space
+structure of the GPT framework using the standard operational assumptions or the
+alternative presented by Corollary 1.
+One the one hand, the standard method for deriving the structure of the state
+space is to exploit the fact that we wish for outcome probabilities to respect mixtures,
+in analogy with the reasoning behind (1.22), to ﬁnd
+ω
+(
+pe + (1− p)e′)
+= pω (e) + (1− p)ω
+(
+e′)
+, (5.51)
+for p∈ [0, 1] and all effects e, e′. Thus each map ω admits an expression
+ω(e) = e· ω, (5.52)
+for all effects e and some ω∈ W (E )∈ Rd.
+One the other hand, we have already assumed that a pair {e, u− e} form a
+measurement and have introduced the formalism for describing mixtures of meas-
+urements, therefore the simulable measurements from Section 5.4 are already inclu-
+ded in the framework. Corollary 1 then tells us that if a state ω is to assign probab-
+ilities to the possible outcomes of these measurements such that the probabilities of
+all the outcomes sum to one then
+ω(e) = e· ω, (5.53)
+for all effects e and some ω∈ W (E )∈ Rd.
+Both of these approaches lead to the conclusion that the state space of a GPT
+with effect spaceE must be a subset ofW (E ). Although the conditions are mathem-
+atically different there is no clear conceptual advantage to either argument.
+The “measurement ﬁrst” derivation of the framework highlights the existence
+of a relative of the no-restriction hypothesis, which we will call theno-state-restriction
+hypothesis: the inclusion of all ω∈ Rd satisfying e· ω and u· ω = 1 in the state
+space. Note that this is not equivalent to the no-restriction hypothesis in all cases,
+for example the noisy bit model in Figure 5.1.1a satisﬁes the no-state-restriction
+hypothesis but not the no-restriction hypothesis.
+Continuing the bit example, employing either the no-restriction or no-state-
+restriction hypothesis leads to the state space SB′, the convex hull of the points
+(0, 1)T and (1, 0)T pictured in Figure 5.5.1. The pair of state and effect spaces SB′
+andEB′ are a transformation of the state and effect spacesSB andEB in Figure 1.2.1b.
+83
+
+5.6 Summary and Discussion
+In Proposition 1 frame functions were found to be linear functionals on the effect
+space. If one considers this fact to be the main content of the Gleason-type theorems
+in quantum theory then the proposition proves a Gleason-type theorem for all
+GPTs. In this paper we have, however, taken the view that a Gleason-type theorem
+establishes a one-to-one correspondence between frame functions and states in the
+theory under consideration.
+Interpreting Gleason-type theorems in this way, Theorem 12 shows that a GPT
+admits a Gleason-type theorem if and only if it is a noisy, unrestricted GPT. The
+class of NU GPTs contains classical and quantum models amongst many others.
+Requiring that there is a state in a theory for every frame function could be consid-
+ered as an analog of the no-restriction hypothesis, which demands that there is a
+measurement outcome in the theory for every effect on the state space. However,
+we have shown that assuming the no-restriction hypothesis is more restrictive than
+requiring the existence of a GTT, since there are NU GPTs that admit a GTT but
+violate the no-restriction hypothesis.
+In Section 5.2.1 we describe how a Gleason-type theorem can be used to derive
+the state space in a given GPT from the set of observables. The three postulates (O),
+(S) and (P), which specify a given GPT, could then be reduced to (O) and combined
+with the deﬁnition of states as a frame function. This reduction is only possible
+in NU GPTs. We consider this insight to be the main result of our study. From a
+conceptual point of view, we have achieved a division of all GPTs into two mutually
+exclusive classes: those which, like quantum theory, admit a Gleason-type theorem
+and therefore predict the existence of all mathematically possible states, and those
+which do not.
+In future work we would like to establish which GPTs admit an analog of
+Gleason’s original theorem, in the sense that the frame functions would only be
+deﬁned on extremal effects. Quantum systems in dimensions greater than two
+satisfy this stronger requirement, so it may lead to a more powerful tool for disting-
+uishing between the GPTs that can and cannot be realised in nature.
+84
+
+Summary
+In this thesis we have examined two strategies for unraveling the postulates of
+quantum theory. The ﬁrst of these strategies is the use of Gleason-type theorems.
+The treatment of Gleason-type problems in the literature essentially stopped with
+Busch’s theorem in 2003 and the alternative proof offered by Caves et al. [20]. We
+have probed multiple new directions in which this idea can be taken to offer further
+insight into the foundations of quantum theory. Firstly, we questioned which are
+the minimal assumptions from which a GTT may be proven in quantum theory, and
+secondly we generalised the idea to GPTs, creating a new criterion for classifying
+theories. We also established a connection with an established area of mathematical
+research, Cauchy’s functional equation. We demonstrated the potential of this
+connection to facilitate the proofs of future GTTs by giving an alternative proof of
+Busch’s result using techniques and results from the literature on Cauchy’s function
+equation.
+Gleason-type theorems simplify the postulates of quantum theory by replacing
+the postulates describing states and probabilities of measurement outcomes in quant-
+um theory with a deﬁnition of states as frame functions. A frame function assigns
+probabilities to the outcomes of all measurements described in the measurement
+postulates of the theory. We questioned whether all POMs were necessary to restrict
+frame functions to those which may be represented by density operators in all ﬁnite
+dimensional Hilbert spaces. The main result of Chapter 2 shows that the subset of
+POMs known as projective simulable POMs is sufﬁcient for this approach to be
+successful. We have thus narrowed down the aspects a measurement postulate
+would require in order for a GTT to be used in reconstructing the theory from
+physical or operational principles.
+The set of projective simulable POMs is the subset of POMs that may be performed
+using only mixtures of measurements of PVMs. This interpretation of projective
+simulable POMs allows us to apply our GTT to setting closer to that of Gleason’s
+original result. We may apply our GTT to a postulate describing measurements of
+PVMs supplemented by a postulate describing how to represent mixtures of those
+measurements.
+We were also able to further restrict the set of projective simulable POMs to a
+set 3PSM′
+d—a strict subset of the projective simulable POMs with at most three
+85
+
+outcomes—without affecting the result. The subset of POMs with at most two
+outcomes, 2POM d⊆ 3PSM′
+d, is insufﬁcient to prove a GTT. Therefore there must
+exist a set A satisfying
+2POM d⊂ A⊆ 3PSM′
+d, (5.54)
+which is minimal for proving a GTT in the sense that removing any POM from the
+set would render it insufﬁcient to prove a GTT. In future work we would like to
+identify the set A, and also generalise Theorem 7 to separable Hilbert spaces of
+inﬁnite dimension.
+We have also shown that in ﬁnite dimensions the frame functions in the GTT
+of Busch [18] can be equivalently deﬁned as additive functions on a subset of the
+real vector space of Hermitian operators on Cd. The study of additive functions
+on real vector spaces has a long history [1]. We were able to take advantage of
+existing results on additive functions to provide an alternative proof of Busch’s
+GTT. The method did not, however, extend to providing and alternative proof of
+Gleason’s original result. The frame functions in Gleason’s theorem are deﬁned on
+the projectionsP (H) which form a lattice as opposed to a vector space, therefore
+different techniques are necessary in the proof.
+The second strategy considered in this thesis was the use of general probabilistic
+theories. GPTs are derived from operational principles, and provide a setting to
+explore possible additional principles that would single out quantum theory. Firstly,
+we assessed the potential of sets of non-local correlations to classify GPTs by looking
+for a GPT that produces a quantum set of non-local correlations. We found that a
+model for a pair of rebits previously described in [52] reproduces the set of quantum
+correlations in the 2222 Bell scenario. This model would therefore fall into the
+same class as quantum theory. The rebit pair model shares some properties with
+quantum models, such as local tomography, satisfying the no-restriction hypothesis
+and having strongly self-dual subsystems. However, the model also has some
+unfamiliar properties. The rebit pair model we have considered is formulated using
+the maximal tensor product. As a result the state space contains entanglement
+whereas the effect space does not. The model for the composite system is therefore
+not strongly self-dual.
+The identiﬁcation of this model contributes to establishing which properties
+of a model are ruled out by the requirement that a model should produce a set of
+quantum correlations as well as narrowing down which properties are necessary to
+produce quantum correlations. In further work it would be interesting to establish
+whether higher dimensional analogs of the rebit pairs also reproduce quantum
+correlations in different Bell scenarios leading to a family of models not realised
+in Nature but that do share the non-local characteristics of quantum theory.
+Finally, we explicitly characterised the class of GPTs that admit a GTT and the
+class that do not. The GPTs with a GTT are noisy, unrestricted GPTs, i.e. unrestricted
+86
+
+GPTs with the added possibility that some or all of the observables may only be
+measured subject to some random noise. The class of GPTs that do not admit a
+GTT all violate the no-restriction hypothesis and are exactly those that cannot be
+formulated as a noisy version of an unrestricted GPT.
+Admitting a GTT can be thought of as being dual to the requirement of satisfying
+the no-restriction hypothesis. The no-restriction hypothesis entails the inclusion
+of every possible effect in a GPT given a state space, whereas the existence of a
+GTT signiﬁes that all possible states are included in a GPT given an effect space.
+However, the two requirements are not equivalent, since there exist NU GPTs that
+violate the no-restriction hypothesis. In future work it would be interesting to
+establish which GPTs admit an analog of Gleason’s original theorem, i.e. identify
+the GPTs in which frame functions on extremal observables can be bijectively mapp-
+ed to states in the theory.
+87
+
+Bibliography
+[1] Joseph Aczél. Lectures on functional equations and their applications , volume 19.
+Academic press, 1966.
+[2] Jonathan Allcock, Nicolas Brunner, Noah Linden, Sandu Popescu, Paul
+Skrzypczyk, and Tamás Vértesi. Closed sets of nonlocal correlations. Phys.
+Rev. A, 80:062107, 2009.
+[3] Johann Jakob Balmer. Notiz über die Spectrallinien des Wasserstoffs. Ann.
+Phys., 261(5):80–87, 1885.
+[4] Stefan Banach. Sur l’équation fonctionnelle f (x + y) = f (x) + f (y). Fundam.
+Math., 1(1):123–124, 1920.
+[5] Howard Barnum, Jonathan Barrett, Matthew Leifer, and Alexander Wilce.
+Generalized no-broadcasting theorem. Phys. Rev. Lett., 99:240501, 2007.
+[6] Howard Barnum, Jonathan Barrett, Matthew Leifer, and Alexander Wilce.
+Teleportation in general probabilistic theories. In Proceedings of Symposia in
+Applied Mathematics, volume 71, pages 25–48, 2012.
+[7] Howard Barnum, Salman Beigi, Sergio Boixo, Matthew B Elliott, and
+Stephanie Wehner. Local quantum measurement and no-signaling imply
+quantum correlations. Phys. Rev. Lett., 104:140401, 2010.
+[8] Howard Barnum, Markus P Müller, and Cozmin Ududec. Higher-order
+interference and single-system postulates characterizing quantum theory.New
+J. Phys., 16(12):123029, 2014.
+[9] Jonathan Barrett. Information processing in generalized probabilistic theories.
+Phys. Rev. A, 75:032304, 2007.
+[10] Jonathan Barrett, Noah Linden, Serge Massar, Stefano Pironio, Sandu Popescu,
+and David Roberts. Nonlocal correlations as an information-theoretic
+resource. Phys. Rev. A, 71:022101, 2005.
+[11] John S Bell. On the problem on hidden variables in quantum mechanics. Rev.
+Mod. Phys., 38:447, 1966.
+88
+
+[12] Ingemar Bengtsson and Karol ˙Zyczkowski. Geometry of quantum states: an
+introduction to quantum entanglement. Cambridge University Press, 2017.
+[13] Garrett Birkhoff and John von Neumann. The logic of quantum mechanics.
+Ann. Math., 37(4):823–843, 1936.
+[14] Niels Bohr. On the constitution of atoms and molecules. Philos. Mag. ,
+26(151):1–25, 476–502, 857–875, 1913.
+[15] M. Born, W. Heisenberg, and P . Jordan. Zur Quantenmechanik. II. Z. Phys.,
+1926.
+[16] Max Born and Pascual Jordan. Zur quantenmechanik. Z. Phys., 34(1):858–888,
+1925.
+[17] Gilles Brassard, Harry Buhrman, Noah Linden, André Allan Méthot, Alain
+Tapp, and Falk Unger. Limit on nonlocality in any world in which
+communication complexity is not trivial. Phys. Rev. Lett., 96(25):250401, 2006.
+[18] Paul Busch. Quantum states and generalized observables: a simple proof of
+Gleason’s theorem.Phys. Rev. Lett., 91:120403, 2003.
+[19] Augustin LB Cauchy. Cours d’analyse de l’École Royale Polytechnique. Debure,
+1821.
+[20] Carlton M Caves, Christopher A Fuchs, Kiran K Manne, and Joseph M Renes.
+Gleason-type derivations of the quantum probability rule for generalized
+measurements. Found. Phys., 34:193–209, 2004.
+[21] Carlton M Caves, Christopher A Fuchs, and Pranaw Rungta. Entanglement of
+formation of an arbitrary state of two rebits. Found. Phys. Lett., 14(3):199–212,
+2001.
+[22] Carlton M Caves, Christopher A Fuchs, and Rüdiger Schack. Unknown
+quantum states: the quantum de Finetti representation. J. Math. Phys. ,
+43(9):4537–4559, 2002.
+[23] Giulio Chiribella, Giacomo Mauro D’Ariano, and Paolo Perinotti. Probabilistic
+theories with puriﬁcation. Phys. Rev. A, 81:062348, 2010.
+[24] Giulio Chiribella, Giacomo Mauro D’Ariano, and Paolo Perinotti.
+Informational derivation of quantum theory. Phys. Rev. A , 84(1):012311,
+2011.
+[25] Man-Duen Choi. Completely positive linear maps on complex matrices. Linear
+Algebra Its Appl., 10(3):285–290, 1975.
+89
+
+[26] Erik Christensen. Measures on projections and physical states. Commun. Math.
+Phys., 86(4):529–538, 1982.
+[27] B. S. Cirel’son. Quantum generalizations of Bell’s inequality.Lett. Math. Phys.,
+4(2):93–100, 1980.
+[28] Roger Cooke, Michael Keane, and William Moran. An elementary proof of
+Gleason’s theorem.Math. Proc. Cambridge Philos. Soc., 98(1):117–128, 1985.
+[29] Borivoje Dakic and Caslav Brukner. Quantum theory and beyond: Is
+entanglement special? arXiv preprint arXiv:0911.0695, 2009.
+[30] Gaston Darboux. Sur la composition des forces en statique. Bull. Sci. Math.
+Astr., 9:281–288, 1875.
+[31] Gaston Darboux. Sur le théorème fondamental de la géométrie projective.
+Math. Ann., 17(1):55–61, 1880.
+[32] Giacomo Mauro D’Ariano. Probabilistic theories: What is special about
+quantum mechanics? In Alisa Bokulich and Gregg Jaeger, editors, Philosophy
+of quantum information and entanglement , chapter 2, pages 85–126. Cambridge
+University Press, 2010.
+[33] Louis de Broglie. A tentative theory of light quanta. Philos. Mag., 47(278):446–
+458, 1924.
+[34] Nelson Dunford and Jacob Schwartz. Linear Operators, Part III: Spectral
+Operators. Wiley-Interscience, New York, 1971.
+[35] Anatolij Dvureˇ censkij. Gleason’s theorem and Cauchy’s functional equation.
+Int. J. Theor. Phys., 35(12):2687–2695, 1996.
+[36] Paul Ehrenfest. Welche Züge der Lichtquantenhypothese spielen in der
+Theorie der Wärmestrahlung eine wesentliche Rolle? Ann. Phys., 341(11):91–
+118, 1911.
+[37] Albert Einstein. Zur Theorie der Lichterzeugung und Lichtabsorption. Ann.
+Phys., 325(6):199–206, 1906.
+[38] Sergey N Filippov, Teiko Heinosaari, and Leevi Leppäjärvi. Simulability of
+observables in general probabilistic theories. Phys. Rev. A, 97:062102, 2018.
+[39] Marissa Giustina, Marijn A M Versteegh, Sören Wengerowsky, Johannes
+Handsteiner, Armin Hochrainer, Kevin Phelan, Fabian Steinlechner, Johannes
+Koﬂer, Jan-Åke Larsson, Carlos Abellán, Waldimar Amaya, Valerio Pruneri,
+Morgan W Mitchell, Jörn Beyer, Thomas Gerrits, Adriana E Lita, Lynden K
+Shalm, Sae Woo Nam, Thomas Scheidl, Rupert Ursin, Bernhard Wittmann,
+90
+
+and Anton Zeilinger. Signiﬁcant-loophole-free test of Bell’s theorem with
+entangled photons. Phys. Rev. Lett., 115:250401, 2015.
+[40] Andrew M Gleason. Measures on the closed subspaces of a Hilbert space. J.
+Math. Mech., 6:885, 1957.
+[41] Sandeep K Goyal, B Neethi Simon, Rajeev Singh, and Sudhavathani Simon.
+Geometry of the generalized Bloch sphere for qutrits.J. Phys. A, 49(16):165203,
+2016.
+[42] Helena Granström. Gleason’s theorem. Master’s thesis, Stockholm University,
+Stockholm, Sweden, 2006. http://kof.physto.se/theses/helena-master.pdf.
+[43] Michael JW Hall. Comment on "Gleason-type theorem for projective
+measurements, including qubits" by F. De Zela. arXiv preprint
+arXiv:1611.00613, 2016.
+[44] Georg Hamel. Eine Basis aller Zahlen und die unstetigen Lösungen der
+Funktionalgleichung: f (x + y) = f (x) + f (y). Math. Ann., 60(3):459–462, 1905.
+[45] Lucien Hardy. Disentangling nonlocality and teleportation. arXiv preprint
+quant-ph/9906123, 1999.
+[46] Lucien Hardy. Quantum theory from ﬁve reasonable axioms. arXiv preprint
+quant-ph/0101012, 308, 2001.
+[47] Lucien Hardy and William K Wootters. Limited holism and real-vector-space
+quantum theory. Found. Phys., 42(3):454–473, 2012.
+[48] Werner Heisenberg. Über quantentheoretische Umdeutung kinematischer
+und mechanischer Beziehungen. Z. Phys., 33(1):879–893, 1925.
+[49] Bas Hensen, Hannes Bernien, Anaïs E Dréau, Andreas Reiserer, Norbert
+Kalb, Machiel S Blok, Just Ruitenberg, Raymond FL Vermeulen, Raymond N
+Schouten, Carlos Abellán, et al. Loophole-free Bell inequality violation using
+electron spins separated by 1.3 kilometres. Nature, 526(7575):682, 2015.
+[50] Heinrich Hertz. Ueber einen Einﬂuss des ultravioletten Lichtes auf die
+electrische Entladung. Ann. Phys., 267(8):983–1000, 1887.
+[51] Max Jammer. The conceptual development of quantum mechanics . McGraw-Hill
+New York, 1966.
+[52] Peter Janotta, Christian Gogolin, Jonathan Barrett, and Nicolas Brunner.
+Limits on nonlocal correlations from the structure of the local state space.New
+J. Phys., 13(6):063024, 2011.
+91
+
+[53] Peter Janotta and Haye Hinrichsen. Generalized probability theories: what
+determines the structure of quantum theory? J. Phys. A, 47:323001, 2014.
+[54] Peter Janotta and Raymond Lal. Generalized probabilistic theories without
+the no-restriction hypothesis. Phys. Rev. A, 87:052131, 2013.
+[55] Hyman Kestelman. On the functional equation f (x + y) = f (x) + f (y).
+Fundam. Math., 1(34):144–147, 1947.
+[56] Karl Kraus. States, effects and operations: fundamental notions of quantum theory .
+Springer, 1983.
+[57] Pekka J Lahti and Maciej J M ˛ aczy ´ nski. Partial order of quantum effects. J.
+Math. Phys., 36(4):1673–1680, 1995.
+[58] Philipp Lenard. Ueber die lichtelektrische Wirkung. Ann. Phys., 313(5):149–
+198, 1902.
+[59] Günther Ludwig. Attempt of an axiomatic foundation of quantum mechanics
+and more general theories, ii. Commun. Math. Phys., 4(5):331–348, 1967.
+[60] Günther Ludwig. Foundations of quantum mechanics I . Texts and monographs
+in physics. Springer-Verlag, 1983.
+[61] Günther Ludwig. Foundations of quantum mechanics II. Texts and monographs
+in physics. Springer-Verlag, 1985.
+[62] Nikolai Lusin. Sur les propriétés des fonctions mesurables. Comptes Rendus
+Acad. Sci., 154(25):1688–1690, 1912.
+[63] George W Mackey. Quantum mechanics and Hilbert space. Am. Math. Mon.,
+64:45–57, 1957.
+[64] George W Mackey. Mathematical Foundations of Quantum Mechanics. Addison-
+Wesley, 1963.
+[65] Lluís Masanes. Extremal quantum correlations for N parties with two
+dichotomic observables per site. arXiv preprint quant-ph/0512100, 2005.
+[66] Lluís Masanes and Markus P Müller. A derivation of quantum theory from
+physical requirements. New J. Phys., 13:063001, 2011.
+[67] Miguel Navascués, Yelena Guryanova, Matty J Hoban, and Antonio Acín.
+Almost quantum correlations. Nat. Commun., 6:6288, 2015.
+[68] Miguel Navascués and Harald Wunderlich. A glance beyond the quantum
+model. Proc. Royal Soc. Lond. A, 466(2115):881–890, 2009.
+92
+
+[69] Koji Nuida, Gen Kimura, and Takayuki Miyadera. Optimal observables for
+minimum-error state discrimination in general probabilistic theories. J. Math.
+Phys., 51(9):093505, 2010.
+[70] Alexander Ostrowski. Mathematische Miszellen. xiv. über die
+Funktionalgleichung der Exponentialfunktion und verwandte
+Funktionalgleichungen. Jahresber. DMV, 38:54–62, 1929.
+[71] Michał Oszmaniec, Leonardo Guerini, Peter Wittek, and Antonio Acín.
+Simulating positive-operator-valued measures with projective measurements.
+Phys. Rev. Lett., 119(19):190501, 2017.
+[72] Marcin Pawłowski, Tomasz Paterek, Dagomir Kaszlikowski, Valerio Scarani,
+Andreas Winter, and Marek ˙Zukowski. Information causality as a physical
+principle. Nature, 461(7267):1101, 2009.
+[73] Max Planck. Über irreversible Strahlungsvorgänge. Ann. Phys, 306(1):69–122,
+1900.
+[74] Sandu Popescu and Daniel Rohrlich. Quantum nonlocality as an axiom.
+Found. Phys., 24(3):379–385, 1994.
+[75] R Tyrrell Rockafellar. Convex analysis. Princeton University Press, 1970.
+[76] Johannes Robert Rydberg. Recherches sur la constitution des spectres
+d’émission des éléments chimiques. K. Sven. vetensk.akad. handl., 23(11), 1890.
+[77] Erwin Schrödinger. Quantisierung als Eigenwertproblem. Ann. Phys. ,
+385(13):361–376,489–527,734–756, 1926.
+[78] Lynden K Shalm, Evan Meyer-Scott, Bradley G Christensen, Peter Bierhorst,
+Michael A Wayne, Martin J Stevens, Thomas Gerrits, Scott Glancy, Deny R
+Hamel, Michael S Allman, Kevin J Coakley, Shellee D Dyer, Carson Hodge,
+Adriana E Lita, Varun B Verma, Camilla Lambrocco, Edward Tortorici, Alan L
+Migdall, Yanbao Zhang, Daniel R Kumor, William H Farr, Francesco Marsili,
+Matthew D Shaw, Jeffrey A Stern, Carlos Abellán, Waldimar Amaya, Valerio
+Pruneri, Thomas Jennewein, Morgan W Mitchell, Paul G Kwiat, Joshua C
+Bienfang, Richard P Mirin, Emanuel Knill, and Sae Woo Nam. Strong
+loophole-free test of local realism. Phys. Rev. Lett., 115:250402, 2015.
+[79] Robert W Spekkens. Evidence for the epistemic view of quantum states: A toy
+theory. Phys. Rev. A, 75(3):032110, 2007.
+[80] Neil Stevens and Paul Busch. Steering, incompatibility, and Bell-inequality
+violations in a class of probabilistic theories. Phys. Rev. A, 89:022123, 2014.
+93
+
+[81] Boris S Tsirelson. Some results and problems on quantum Bell-type
+inequalities. Hadronic J. Suppl., 8(4):329–345, 1993.
+[82] Wim van Dam. Nonlocality and communication complexity . PhD thesis,
+University of Oxford, 1999.
+[83] John von Neumann. Mathematical Foundations of Quantum Mechanics. Princeton
+University Press, 1955.
+[84] Victoria J Wright and Stefan Weigert. A Gleason-type theorem for qubits based
+on mixtures of projective measurements. J. Phys. A, 52:055301, 2019.
+[85] Victoria J Wright and Stefan Weigert. Gleason-type theorems from Cauchy’s
+functional equation. Found. Phys., 49(6):594–606, 2019.
+[86] Thomas Young. The Bakerian lecture: On the theory of light and colours.
+Philos. Trans. Roy. Soc. London, 92:12–48, 1802.
+94
+
+Appendices
+95
+
+Appendix A
+An equivalent form of Gleason’s
+theorem
+Theorem 3 is equivalent to Theorem 1, Gleason’s original theorem. To see this
+equivalence, ﬁrst assume that Theorem 3 holds. For any measure µ onP (H) we
+have
+µ (A) = a f (ΠA) , (A.1)
+for some frame function f , where a = µ (H). For a > 0, this frame function is
+given by f (ΠA) = 1
+a µ (A). For any collection{H1,H2, . . .} of mutually orthogonal,
+closed subspaces ofH we have
+∑
+j
+f
+(
+ΠHj
+)
+= ∑
+j
+1
+a µ
+(
+Hj
+)
+= 1 , (A.2)
+and therefore f is a valid frame function. If a = 0, Eq. (A.1) holds for any frame
+function. Then by Theorem 3 we have
+µ (A) = a Tr(ΠAρ) = Tr(ΠAaρ) . (A.3)
+Secondly, we will show that Theorem 1 implies Theorem 3. Any frame function f
+deﬁnes the following measure µ onP (H)
+f (ΠA) = µ (A) . (A.4)
+The function µ can be seen to be a measure as follows. Let {H1,H2, . . .} be a
+collection of mutually orthogonal, closed subspaces ofH. Then there exists a closed
+subspaceH⊥ orthogonal to eachHj such thatH = span
+{
+H1,H2, . . . ;H⊥}
+. For the
+projections ΠHj and Π⊥ onto these subspaces, we have, by the deﬁnition of a frame
+function, that
+∑
+j
+f
+(
+ΠHj
+)
++ f
+(
+Π⊥
+)
+= 1 = f
+(
+Πspan{H1,H2,...}
+)
++ f
+(
+Π⊥
+)
+(A.5)
+96
+
+which gives
+∑
+j
+f
+(
+ΠHj
+)
+= f
+(
+Πspan{H1,H2,...}
+)
+. (A.6)
+Thus we have
+µ (span{H1,H2, . . .}) = f
+(
+Πspan{H1,H2,...}
+)
+= ∑
+j
+µ
+(
+Hj
+)
+. (A.7)
+Finally, Eq. (A.4) and Theorem 1 imply
+f (ΠA) = µ (A) = Tr(ΠAρ) , (A.8)
+and the trace of the positive operator ρ is one since µ (H) = 1.
+97
+
+Appendix B
+Proofs of Cases (ii), (iii) and (iv) of
+Theorem 8
+It is shown that each of the conditions given in Cases (ii) to (iv) imply Theorem 8
+which states that an additive function on a particular interval must be linear.
+Proof. Case (ii): Suppose that there exists a non-linear function f satisfying Eq. (3.6)
+and Case (ii) of Theorem 8. Then the function g : [0, a]→ R deﬁned by g (x) =
+− f (x) is non-linear but satisﬁes Eq. (3.6) and g (x)≤ b and b≥ 0, with b =−c,
+contradicting Case (i).
+Proof. Case (iii): Since f is continuous at zero and f (0) = 0, as follows from Eq.
+(3.6), we have that for any ε > 0, there exists a δ > 0 such that| f (x)| < ε for all x
+satisfying|x| < δ. Let x, x0∈ [0, a] be such that|x− x0| < δ. First consider the case
+x < x0. Using additivity,
+f (x) + f (x0− x) = f (x + x0− x) = f (x0) , (B.1)
+we ﬁnd
+| f (x)− f (x0)| =| f (x0− x)| < ε . (B.2)
+On the other hand, if x > x0 we have
+f (x) = f (x− x0 + x0) = f (x− x0) + f (x0) , (B.3)
+and then
+| f (x)− f (x0)| =| f (x− x0)| < ε . (B.4)
+It follows that f is continuous on [0, a]. As in the proof for Case (i), Eqs. (3.8) and
+(3.9) show that
+f (q) = f (1) q , (B.5)
+for rational q∈ [0, a]. Therefore, if (q1, q2, . . .) is a sequence of rational numbers
+98
+
+converging to x, the function f (x) must be linear in x:
+f (x) = lim
+j→∞
+f
+(
+qj
+)
+= lim
+j→∞
+f (1) qj = f (1) x . (B.6)
+In Case (iv), where f is Lebesgue measurable, the proof of the analogous result
+for functions on the full real line by Banach [4] is easily adapted to our setting.
+Given Case (iii), it sufﬁces to prove that f is continuous at 0, i.e. that for every ε > 0
+there exists a number δ > 0 such that
+| f (h)− f (0)| =| f (h)| < ε (B.7)
+holds for all 0 < h < δ.
+Proof. Case (iv): Let a/2 < r < a. Lusin’s theorem [62] states that, for a Lebesgue
+measurable function g on an interval J of Lesbesgue measure µ (J) = m, there exists
+a compact subset of any measurem′ < m such that the restriction of g to this subset
+is continuous. Thus we may ﬁnd a compact set F⊂ [0, a] with µ (F)≥ r on which
+f is continuous. Let ε > 0 be given. Since F is compact, f is uniformly continuous
+on F and there exists a δ∈ (0, 2r− a) such that
+| f (x)− f (y)| < ε (B.8)
+is valid for two numbers x, y∈ F such that|x− y| < δ. Let h∈ (0, δ). Suppose F
+and F− h ={x− h|x∈ F} were disjoint. Then we would have
+a + h = µ ([−h, a])≥ µ (F∪ (F− h)) = µ (F) + µ (F− h)≥ 2r , (B.9)
+which contradicts h < δ < 2r− a. Taking a point x∈ F∩ (F− h) then a number
+δ∈ (0, 2r− a) can be found such that
+| f (h)| =| f (x)− f (x)− f (h)| =| f (x)− f (x + h)| < ε , (B.10)
+for h∈ (0, δ). Hence, remembering that f (0) = 0, the function f (x) is continuous
+at x = 0.
+99
+
+Appendix C
+Proof of linearity—Proposition 1
+Here we show that the extension of a frame function v described in the proof of
+Proposition 1 is linear. First we show additivity; let Rd+1∋ cj = aj− bj for aj, bj∈
+E +, then
+v (c1 + c2) = v (a1− b1 + a2− b2)
+= v (a1 + a2− (b1 + b2))
+= v (a1 + a2)− v (b1 + b2)
+= v (a1) + v (a2)− v (b1)− v (b2)
+= v (c1) + v (c2) .
+(C.1)
+Then to show homogeneity let Rd+1∋ c = a− b for a, b∈E +, ﬁrstly consider
+γ≥ 0, in which case we have
+v (γc) = v (γa− γb)
+= v (γa)− v (γb)
+= γ (v (a)− v (b))
+= γv (c) .
+(C.2)
+Secondly, consider γ < 0,
+v (γc) = v ((−γ) (−c))
+= v ((−γ) (b− a))
+= γ (v (a)− v (b))
+= γv (c) .
+(C.3)
+100

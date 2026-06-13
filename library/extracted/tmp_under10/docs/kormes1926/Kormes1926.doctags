@@ -1,0 +1,86 @@
+<doctag><page_header><loc_58><loc_62><loc_102><loc_68>1926.]</page_header>
+<page_header><loc_185><loc_62><loc_315><loc_68>A FUNCTIONAL EQUATION</page_header>
+<section_header_level_1><loc_135><loc_100><loc_364><loc_118>ON THE FUNCTIONAL EQUATION f(x+y)=f(x)+f(y)*</section_header_level_1>
+<section_header_level_1><loc_204><loc_125><loc_297><loc_131>BY MARK KORMES</section_header_level_1>
+<text><loc_58><loc_139><loc_441><loc_166>Fréchet,† and later Blumberg† and Sierpinski,§ have demonstrated that the solution of the functional equation (1)</text>
+<text><loc_58><loc_168><loc_441><loc_193>which is measurable, has the form A · x, where A denotes a constant. In this note the following theorem is proved.</text>
+<text><loc_58><loc_197><loc_441><loc_214>THEOREM I. Every solution of the functional equation (1) which is bounded on a set of positive measure is of the form A · x.</text>
+<text><loc_58><loc_221><loc_441><loc_238>The proof depends on a theorem of Steinhaus¶ which can be stated as follows.</text>
+<text><loc_58><loc_245><loc_441><loc_275>LEMMA. The set arising by arithmetic summation (addition of abscissas) of a set of positive measure, contains an interval.||</text>
+<text><loc_58><loc_280><loc_441><loc_307>Since f(x) is bounded on a set of positive measure, f(x+y) is bounded on an interval, and therefore f(x) must be of the form A · x according to a theorem of Darboux.</text>
+<text><loc_58><loc_313><loc_441><loc_330>THEOREM Ia. The statement of Theorem I remains true if f(x) is bounded on a set whose interior measure is positive.</text>
+<text><loc_58><loc_336><loc_441><loc_352>If the interior measure of a set A is a>0,then there exists** a measurable sub-set of A whose measure is equal to a (>0).</text>
+<footnote><loc_58><loc_362><loc_441><loc_393>* Presented to the Society October 31, 1925. † M. Frechet, L’Eseignement MatheMxique, vol. 15 (1913),p. 390. ‡ Blumberg, Convex functions, TRANSACTIONS OF THIS SOCIETY, vol. 20, p. 41.</footnote>
+<footnote><loc_58><loc_393><loc_441><loc_400>§ W. Sierpinski, FUNDAMENTA MATHEMATICAE, vol. 1, p. 116.</footnote>
+<footnote><loc_58><loc_400><loc_441><loc_408>¶ H. Steinhaus, FUNDAMENTA MATHEMATICAE, vol. 1, p. 99:</footnote>
+<footnote><loc_58><loc_408><loc_441><loc_422>|| The proof of this lemma will be a part of a paper entitled On arithmetic summation of point sets.</footnote>
+<footnote><loc_58><loc_422><loc_381><loc_430>** C. Carathéodory, Vorlesungen über Reelle Funktions, p. 261.</footnote>
+<page_break>
+<text><loc_75><loc_75><loc_427><loc_94>To this subset Theorem I can be applied and thus Theorem Ia is established.</text>
+<text><loc_75><loc_95><loc_427><loc_166>Theorem I establishes a far more general condition than the one given by Fréchet, Blumberg, and Sierpinski. The following remarks show that this condition is incisive. The condition m(M)*>0 is essential, since there exist nonmeasurable solutions of (1) which are continuous on a set H, where, for every interval 6,</text>
+<text><loc_75><loc_168><loc_427><loc_195>Let B denote a hamelian basis-set of all real numbers. If b is a number of B, we define a solution of the functional equation (1) as follows:</text>
+<text><loc_153><loc_197><loc_347><loc_205>f(x) = 0, for the numbers of the set</text>
+<text><loc_352><loc_197><loc_367><loc_205>(B-b);</text>
+<text><loc_153><loc_207><loc_347><loc_215>f(x) = 1, for x=b;</text>
+<text><loc_150><loc_217><loc_347><loc_225>f(x+y) = f(x) + f(y), for all real numbers.</text>
+<text><loc_75><loc_227><loc_427><loc_265>In this way f(x) is completely defined. Let us denote by H the set of all points where f(x) = 0. If we denote by H* the set of all numbers x+c, where x assumes all values of H we have then H=H*, where the symbol = means congruent, and a is a rational number. Then we have</text>
+<text><loc_207><loc_277><loc_347><loc_285>(H*·H*') = 0,</text>
+<text><loc_75><loc_294><loc_160><loc_302>if a=a', and</text>
+<text><loc_222><loc_308><loc_347><loc_317>K = 1 H* ,</text>
+<text><loc_75><loc_325><loc_427><loc_344>where K denotes the continuum. Therefore we must have, for every interval 6,</text>
+<text><loc_172><loc_348><loc_347><loc_356>m(H·6) = 0, m(H·6) = 6.</text>
+<text><loc_75><loc_365><loc_427><loc_383>The symbol m(M) shall signify the interior measure of M,m(M) the exterior measure of M.</text>
+<text><loc_75><loc_383><loc_427><loc_435>For suppose m(H·6)>0. There must exist then a measurable subset PCH so that m(P)>0. We would have m(P*)=m(P)>0. On the other hand it can be shown easily, that then there exists a rational number a, so that m(P*·P) = a>0, but this is impossible, since P*·P =0 because PCH, P*·C H, and (H·H*) = 0. We must have therefore m(H·6) = 0. See also M. Kormes, Treatise on basis-sets (Columbia University dissertation, not yet published), Theorem VIII.</text>
+<page_break>
+<page_header><loc_75><loc_61><loc_118><loc_68>1926.]</page_header>
+<page_header><loc_185><loc_61><loc_315><loc_68>A FUNCTIONAL EQUATION</page_header>
+<page_header><loc_424><loc_61><loc_428><loc_68>691</page_header>
+<text><loc_71><loc_78><loc_428><loc_95>Since the function f(x) is everywhere 0 on the set H, it is bounded and continuous.</text>
+<text><loc_71><loc_97><loc_428><loc_123>There exist non-measurable solutions of (1), which are continuous on a perfect set P, where m(P) = 0. Let P be the set of all numbers z of the form</text>
+<formula><loc_124><loc_132><loc_428><loc_155>x = \frac { x _ { 1 } } { 1 0 x _ { 1 } ! } + \frac { x _ { 2 } } { ( 1 0 x _ { 2 } + 1 0 x _ { 1 } ) ! } + \cdots \\</formula>
+<formula><loc_170><loc_157><loc_428><loc_175>+ \frac { x _ { n } } { ( 1 0 ^ { n } x _ { n } + 1 0 ^ { n - 1 } x _ { n - 1 } + \cdots + 1 0 x _ { 1 } ) ! } + \cdots ,</formula>
+<text><loc_71><loc_184><loc_428><loc_201>where every x, is either 1 or 2. There cannot exist then any relation of the form</text>
+<formula><loc_228><loc_206><loc_288><loc_222>\sum _ { \lambda } n _ { \lambda } = 0</formula>
+<text><loc_71><loc_228><loc_428><loc_270>between the numbers z of the set P, where n, denotes a rational number, and in every case only a finite number of n, are different from 0. The numbers of P constitute a subset of a basis-set B of all real numbers. The existence of such basis-set was demonstrated in another paper.</text>
+<text><loc_71><loc_272><loc_428><loc_290>We define now a solution of the functional equation (1) in the following way:</text>
+<text><loc_123><loc_294><loc_255><loc_302>f(x) = 0, for all numbers of P;</text>
+<text><loc_123><loc_304><loc_315><loc_312>f(x) = 1, for all numbers of B-P;</text>
+<text><loc_71><loc_315><loc_428><loc_339>f(x+y) = f(x)+f(y) for all numbers of the continuum K. But this defines f(x) completely, and it is clear that f(x) is non-measurable and continuous on the perfect set B.</text>
+<footnote><loc_88><loc_355><loc_250><loc_362>M. Kormes, Treatise on basis-sets.</footnote>
+<footnote><loc_71><loc_362><loc_428><loc_422>To construct a basis-set B which has a given set P as a subset we proceed in the following way. We well-order the continuum K in such a way that the numbers of P precede all other numbers. The set (K-P) is not empty, and since the set P is not the entire basis-set of K, there must be a first number a1 of (K-P) which cannot be represented by numbers of P in a linear way. If we consider the set P1-P+a1 and reason in the same way as above, we obtain a basis-set B of the continuum K. See also M. Kormes, Treatise on basis-sets.</footnote>
+<footnote><loc_88><loc_422><loc_218><loc_429>M. Kormes, loc. cit.</footnote>
+<page_break>
+<page_header><loc_95><loc_60><loc_120><loc_67>692</page_header>
+<page_header><loc_215><loc_60><loc_273><loc_67>MARK KORMES</page_header>
+<text><loc_95><loc_77><loc_413><loc_95>From Theorem I, the Fréchet-Sierpinski theorem* can be deduced immediately.</text>
+<text><loc_88><loc_102><loc_413><loc_119>THEOREM II. Every solution of (1) which is measurable has the form A-x.</text>
+<text><loc_88><loc_126><loc_413><loc_169>In fact, suppose that f(x) is a solution of (1), and that f(x) is measurable. Then there exists a perfect set P, where m(P)>0, and f(x) is continuous on P. Being finite, f(x) must be bounded on P, and Theorem II is a simple consequence of Theorem I.</text>
+<text><loc_88><loc_171><loc_413><loc_195>Theorem I can be generalized for functional equations in n variables. A proof for two variables will be given below and it is quite analogous for n(>2) variables.</text>
+<text><loc_102><loc_202><loc_413><loc_211>THEOREM III. Every solution of the functional equation</text>
+<text><loc_88><loc_218><loc_95><loc_226>(2)</text>
+<text><loc_177><loc_218><loc_363><loc_226>f(x+u,y+v) = f(x,y) + f(u,v)</text>
+<text><loc_88><loc_233><loc_413><loc_274>where x, y, u, v denote real numbers, which has the property that f(x, 0) is bounded on a measurable set M, where m(Mx)>0, and that f(0, y) is bounded on a measurable set M, where m(Mx)>0, has the form A-x+B-y.†</text>
+<text><loc_102><loc_280><loc_137><loc_287>We have</text>
+<text><loc_121><loc_293><loc_387><loc_300>f(x,y) = f(x+0, 0+y) = f(x,0) + f(0,y),</text>
+<text><loc_91><loc_307><loc_389><loc_315>where f(x, 0) is the solution of the functional equation</text>
+<text><loc_167><loc_321><loc_353><loc_329>f(x+u, 0) = f(x,0) + f(u,0),</text>
+<text><loc_91><loc_335><loc_387><loc_343>and f(0, y) is the solution of the functional equation</text>
+<text><loc_170><loc_350><loc_353><loc_358>f(0, y+v) = f(0,y) + f(0,v).</text>
+<text><loc_91><loc_366><loc_413><loc_391>According to Theorem I, f(x, 0) has the form A-x, where A=f(1, 0); and f(0, y) has the form B-y, where B=f(0, 1). Therefore f(x, y) has the form A-x+B-y.</text>
+<footnote><loc_91><loc_408><loc_413><loc_423>* See second, third, and fourth footnotes on p. 689.</footnote>
+<footnote><loc_77><loc_423><loc_413><loc_435>We can assume also that m(Mx) and m(My)>0, and reason in a way similar to that indicated in the proof of Theorem In.</footnote>
+<page_break>
+<text><loc_85><loc_128><loc_415><loc_145>From Theorem III, the following theorem can easily be obtained.</text>
+<text><loc_85><loc_150><loc_415><loc_175>THEOREM IV. Every solution of the functional equation (2) which is bounded on a measurable set Mx, whose square measure is m(2) (Mx)>0, has the form A x+B y.</text>
+<text><loc_102><loc_182><loc_380><loc_190>In order to prove this theorem let us suppose that</text>
+<formula><loc_198><loc_197><loc_415><loc_205>m ^ { ( 2 ) } ( M _ { x } ) = a > 0 .</formula>
+<text><loc_85><loc_212><loc_415><loc_270>According to a theorem of Fubini,* there must exist then a straight line y=b parallel to the X-axis, and a straight line x=a parallel to the Y-axis, so that m(Mx)>0 and m(Mx)>0. Then f(x, a) would be bounded on the set Mx, where m(Mx)>0; and f(b, y) would be bounded on Mx, where m(Mx)>0. Therefore f(x, y) must have the form</text>
+<text><loc_208><loc_276><loc_215><loc_283>A</text>
+<text><loc_221><loc_276><loc_235><loc_283>x+</text>
+<text><loc_241><loc_276><loc_255><loc_283>B.y.</text>
+<text><loc_85><loc_291><loc_405><loc_299>From Theorem IV, we may state the following theorem.</text>
+<text><loc_85><loc_305><loc_415><loc_322>THEOREM V. Every solution of the functional equation (2) which is measurable has the form A x+B y.</text>
+<text><loc_85><loc_328><loc_415><loc_363>If f(x, y) is a solution of (2) and it is measurable, then there exists a perfect set P, where m(P)>0, and f(x, y) is measurable on P. Since f(x, y) is finite and P is closed, f(x, y) is bounded on P, and we can apply Theorem IV.</text>
+<text><loc_91><loc_368><loc_183><loc_375>New York City</text>
+<text><loc_85><loc_390><loc_415><loc_416>Theorem of Fubini-Lebesgue; see de la Vallée-Pousain, Courds d'Analyse Infinitésimale, vol. 2 (2d ed.), pp. 117-120.</text>
+</doctag>

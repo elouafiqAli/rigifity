@@ -1,0 +1,41 @@
+<doctag><page_header><loc_36><loc_30><loc_186><loc_37>MATH. SCAND. 6 (1958), 297-298</page_header>
+<section_header_level_1><loc_86><loc_82><loc_412><loc_112>A NEW DERIVATION OF THE INFORMATION FUNCTION</section_header_level_1>
+<section_header_level_1><loc_195><loc_120><loc_303><loc_128>HELGE TYERBERG</section_header_level_1>
+<text><loc_63><loc_136><loc_341><loc_146>The purpose of this note is to prove the following</text>
+<text><loc_63><loc_152><loc_341><loc_161>THEOREM. Let a function, H, satisfy the conditions</text>
+<unordered_list><list_item><loc_59><loc_162><loc_447><loc_181>(i) H is defined for any set of non-negative arguments with sum 1, and it is symmetric in all arguments.</list_item>
+<list_item><loc_57><loc_182><loc_447><loc_201>(ii) H(x, x2, ..., x-n, u, v) = H(x1, x2, ..., xn) + xnH(u x, v x, n ) , whenever all terms of the equation have a meaning.</list_item>
+<list_item><loc_56><loc_202><loc_447><loc_221>(iii) H(x, 1-x) is integrable, in the sense of Lebesgue, on the interval 0 1.</list_item>
+</unordered_list>
+<text><loc_36><loc_222><loc_341><loc_232>Then H is determined up to a multiplicative constant.</text>
+<text><loc_56><loc_238><loc_447><loc_268>Weaker forms of this theorem have been proved by Fadiev [1] and Khintchine [2]. They both assume, beside conditions (i) and (ii), the continuity of H(x, 1-x). In addition, Khintchine assumes that</text>
+<formula><loc_144><loc_275><loc_349><loc_295>H ( x _ { 1 } , x _ { 2 } , \dots , x _ { n } ) \leq H \left ( \frac { 1 } { n } , \frac { 1 } { n } , \dots , \frac { 1 } { n } \right ) .</formula>
+<text><loc_56><loc_300><loc_447><loc_320>In Shannon and Weaver [3] can be found a simple derivation of the form of H, the assumptions being those of Fadiev, and further that</text>
+<formula><loc_204><loc_325><loc_294><loc_344>H \left ( \frac { 1 } { n } , \frac { 1 } { n } , \dots , \frac { 1 } { n } \right )</formula>
+<text><loc_56><loc_347><loc_217><loc_356>is an increasing function of n.</text>
+<text><loc_56><loc_357><loc_447><loc_388>If my weakening of the conditions is insignificant from an information-theoretic point of view, I do not think that it is so from a purely mathematical one.</text>
+<text><loc_56><loc_389><loc_447><loc_408>The proof of the theorem is direct, by deducing the form of H: Conditions (i) and (ii) give</text>
+<formula><loc_56><loc_412><loc_372><loc_431>( 1 ) \quad H ( x , u , v ) = H ( x , u + v ) + ( u + v ) \, H \left ( \frac { u } { u + v } , \frac { v } { u + v } \right )</formula>
+<text><loc_56><loc_437><loc_447><loc_456>H(u, x+v) + (x+v)H(x, v x+v) , v x+v ) ,</text>
+<page_break>
+<formula><loc_45><loc_31><loc_442><loc_50>1 2 8 \, \text {HEGE TVERBERG}</formula>
+<text><loc_45><loc_51><loc_437><loc_67>for 0</text>
+<formula><loc_45><loc_66><loc_377><loc_87>f ( x ) + ( 1 - x ) f \left ( \frac { u } { 1 - x } \right ) = f ( u ) + ( 1 - u ) f \left ( \frac { x } { 1 - u } \right ) .</formula>
+<text><loc_45><loc_92><loc_438><loc_119>Condition (iii) allows us to integrate (2) with respect to u between the limits 0 and 1-x, and also to perform an appropriate change of variable in two of the integrals. The result is:</text>
+<formula><loc_45><loc_123><loc_380><loc_153>( 3 ) \quad ( 1 - x ) f ( x ) + ( 1 - x ) ^ { 2 } \int _ { 0 } ^ { 1 } f ( t ) d t = \int _ { 0 } ^ { 1 - x } f ( t ) d t + x ^ { 2 } \int _ { x } ^ { 1 - 3 } f ( t ) d t \, .</formula>
+<text><loc_45><loc_155><loc_438><loc_197>Condition (iii) assures the continuity in x of all terms of this equation, except the first one, for 0</text>
+<formula><loc_45><loc_197><loc_458><loc_215>( 4 ) \, ( 1 - x ) f ^ { \prime } ( x ) - f ( x ) - 2 ( 1 - x ) \, \underset { 0 } { \overset { 1 } { \int } } f ( t ) d t = - f ( 1 - x ) + 2 x \, \underset { x } { \overset { 1 } { \int } } t ^ { - 3 } f ( t ) d t - x ^ { - 1 } f ( x ) \, .</formula>
+<text><loc_45><loc_221><loc_440><loc_255>Note that f(1-x) cancels against f(x), by condition (i). Then (4) shows the existence of f''(x), and by differentiating (4) and then eliminating (1-t-3f(t)dt, one gets</text>
+<formula><loc_45><loc_255><loc_337><loc_268>f ^ { \prime \prime } ( x ) = - 2 x ^ { - 1 } ( 1 - x ) ^ { - 1 } \int _ { 0 } ^ { 1 } f ( t ) d t \, ,</formula>
+<text><loc_45><loc_270><loc_85><loc_278>whence</text>
+<formula><loc_45><loc_280><loc_377><loc_299>f ( x ) = a x + b - 2 [ x \log x + ( 1 - x ) \log ( 1 - x ) ] \, \underset { 0 } { \overset { 1 } { \int } } f ( t ) d t \, .</formula>
+<text><loc_45><loc_304><loc_440><loc_313>Symmetry shows that a=0, and integration from 0 to 1 then gives b=0.</text>
+<text><loc_45><loc_315><loc_440><loc_345>Finally, one finds that f(0)=f(1)=0 by letting u=1-x in equation (2), and (6) is seen to yield the general form of H(x, x2). By induction and use of conditions (i) and (ii), (6) is immediately extended to</text>
+<formula><loc_45><loc_350><loc_374><loc_360>H ( x _ { 1 } , x _ { 2 } , \dots , x _ { n } ) = c \left ( x _ { 1 } \log x _ { 1 } + \dots + x _ { n } \log x _ { n } \right ) \, .</formula>
+<section_header_level_1><loc_218><loc_373><loc_285><loc_380>REFERENCES</section_header_level_1>
+<unordered_list><list_item><loc_47><loc_384><loc_441><loc_408>1. D. A. Fadiev, On the notion of entropy of a finite probability space (in Russian), Uspekhi Mat. Nauk. 11 (1956), no. 1 (67), 227-231. English translation in A. Feinstein, Foundations of information theory, New York, 1958.</list_item>
+<list_item><loc_46><loc_410><loc_441><loc_435>2. A. Ia. Khintchine, The concept of entropy in probability theory (in Russian), Uspekhi Mat. Nauk. 8 (1953), no. 3 (55), 3-20. English translation in Mathematical foundations of information theory, New York, 1958.</list_item>
+<list_item><loc_46><loc_437><loc_441><loc_452>3. C. G. Shannon and W. Weaver, The mathematical theory of communication, Urbana, III., 1949.</list_item>
+</unordered_list>
+<text><loc_59><loc_458><loc_217><loc_464>UNIVERSITY OF BERGEN, NORWAY</text>
+</doctag>

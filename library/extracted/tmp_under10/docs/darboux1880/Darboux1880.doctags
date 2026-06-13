@@ -1,0 +1,155 @@
+<doctag><text><loc_0><loc_0><loc_499><loc_499>sur le theoreme fondamental de la geometrie projective par M. G. Darboux à Paris (extrait d'une lettre à M. Kleia).</text>
+<page_break>
+<page_header><loc_225><loc_40><loc_283><loc_47>G. Dauoux</page_header>
+<text><loc_58><loc_57><loc_443><loc_120>Il suffira Øvidemment de considérer le cas où les deux séries sont composées de points sur une même droite, et où trois éléments de l'une des séries coïncident avec leurs homologues; car on peut toujours réaliser cette dernière condition en soumettant l'une des séries à une transformation homographique; on peut même supposer que les points qui coïncident avec leurs homologues sont définis par les abscisses 0, 1, 1, 1. Il résulte immédiatement de la définition de la correspondance considérée qu'à un point de l'une des séries correspond un seul point de l'autre. Soit x l'abscisse d'un point quelconque de la première série,</text>
+<text><loc_58><loc_121><loc_443><loc_145>l'abscisse du point homologue. On aura x = (x) et la fonction de devra déjà satisfaire aux trois conditions:</text>
+<text><loc_58><loc_147><loc_443><loc_160>(1) (0) = 0, (1) = 1, (0) = 0, (1) = 1, (0) = 0, (1) = 1,</text>
+<text><loc_58><loc_163><loc_443><loc_177>(Cela posé, considérons trois points, d'abscisses x1, x2, x3, formant avec le point 0 une proportion harmonique; on aura</text>
+<text><loc_58><loc_180><loc_443><loc_192>x1 + x1 = 2x2.</text>
+<text><loc_58><loc_196><loc_443><loc_210>Comme les points homologues doivent aussi former une proportion harmonique, on devra avoir en même temps</text>
+<text><loc_58><loc_212><loc_443><loc_225>φ(x1) + φ(x3) = 2φ(x2),</text>
+<text><loc_58><loc_228><loc_443><loc_241>ce qui donne une première équation fonctionnelle</text>
+<text><loc_58><loc_244><loc_443><loc_257>(2) φ(x1) + φ(x3) = 2φ(x1+x2)</text>
+<text><loc_58><loc_260><loc_443><loc_272>a laquelle devra satisfaire la fonction φ. Si je fais x3 = 0 j'ai</text>
+<text><loc_58><loc_275><loc_443><loc_288>φ(x1) = 2φ(x2)</text>
+<text><loc_58><loc_292><loc_443><loc_305>et par conséquent l'équation (2) peut s'écrire</text>
+<text><loc_58><loc_308><loc_443><loc_321>(3) φ(x1) + φ(x3) = φ(x1 + x3).</text>
+<text><loc_58><loc_324><loc_443><loc_337>On ne sait pas résoudre d'une manière générale cette équation fonctionelle, tant qu'on ne suppose rien sur la fonction φ.*)</text>
+<text><loc_58><loc_341><loc_443><loc_354>Mais il est</text>
+<text><loc_58><loc_358><loc_443><loc_371>*) L'équation fonctionnelle</text>
+<text><loc_58><loc_375><loc_443><loc_388>se rencontre dans un grand nombre de recherches de mécanique et de physique.</text>
+<text><loc_58><loc_389><loc_443><loc_402>Cauchy l'a résolue, avec plusieurs autres équations analogues, dans son analyse</text>
+<text><loc_58><loc_404><loc_443><loc_417>Algebraique, mais en supposant la fonction c'continue. Dans un article sur la composition des forces en statique (Bulletin des Sciences Mathématiques t.IX. p 281)</text>
+<text><loc_58><loc_419><loc_443><loc_432>j'ai fait la remarque, à peu près évidente, que la méthode de Cauchy s'applique encore et conduit à même résultat si l'on suppose seulement que la fonction</text>
+<text><loc_58><loc_434><loc_443><loc_447>conserve son sigue ou soit croissante dans un intervalle quelconque. Mais on peut aller plus loin et montrer que l'on aura φ(x) = Ax, A étant une constante, toutes</text>
+<text><loc_58><loc_449><loc_443><loc_462>les fois que la fonction φ(x) sera aussijettieu l'unique condition de prendre dans un intervalle quelconque des valeurs positives et négatives qui, les unes ou les</text>
+<text><loc_58><loc_464><loc_443><loc_477>autres, soient inférieures en grandeur absolue à une limite fixe. Ainsi il suffira,</text>
+<page_break>
+<page_header><loc_187><loc_38><loc_312><loc_47>Sur la géométrie projective</page_header>
+<page_header><loc_421><loc_40><loc_433><loc_49>57</page_header>
+<text><loc_69><loc_54><loc_436><loc_84>clair que nous n'avons fait usage que d'une partie de la définition générale et nous allons en effet obtenir des propriétés nouvelles de la fonction 0.</text>
+<text><loc_69><loc_84><loc_436><loc_111>Considérons les quatre points en proportion harmonique, ayant pour abscisses x1, x1, x3, On aura (4) x1 x2 = x1 2.</text>
+<text><loc_69><loc_111><loc_436><loc_131>Les abscisses des points correspondants seront 0(x1), 0(x2), 0(x3), 0(x3) ou, en vertu de l'équation (3)</text>
+<text><loc_167><loc_135><loc_336><loc_144>0(x1), 0(x2), 0(x3), 0(x3)</text>
+<text><loc_69><loc_146><loc_166><loc_155>et l'on devra avoir</text>
+<text><loc_69><loc_160><loc_80><loc_168>ou</text>
+<text><loc_69><loc_183><loc_436><loc_201>par exemple, qu' il y ait un seul intervalle dans lequel les valeurs positives de la fonction demeurent intérieures à un nombre fixe, pour que l'on ait 0(x) = Ax.</text>
+<text><loc_69><loc_202><loc_436><loc_211>En effet, de l'équation</text>
+<text><loc_69><loc_214><loc_436><loc_231>on déduit aisément que la fonction</text>
+<text><loc_69><loc_232><loc_436><loc_251>0(x) = 0(x) - 0(1)</text>
+<text><loc_69><loc_251><loc_436><loc_261>l'équation</text>
+<text><loc_69><loc_263><loc_436><loc_281>et par conséquent reprend la nice valeur pour deux valeurs de 0 qui défèrent d'une quantité commuissable quelconque.</text>
+<text><loc_69><loc_281><loc_436><loc_291>déterminé toutes les valeurs qu'elle peut acquérir dans les autres intervalles, Par</text>
+<text><loc_69><loc_301><loc_436><loc_311>on en déduira</text>
+<text><loc_69><loc_320><loc_436><loc_340>m étant un nombre commençurable, aussi grand qu'on le vent, positif ou négatif. Ansi la fonction prendra des valeurs positives ou négatives aussi grandes qu'on le voudra, et il y aura dans tout intertralle une infinité de valeurs de 0 qui feront</text>
+<text><loc_69><loc_341><loc_436><loc_351>acquérir ces valeurs inévales la fonction</text>
+<text><loc_69><loc_352><loc_436><loc_371>Par suite si les valeurs positives ou négatives de la fonction dans un intervalle quelconque doivent demeurer finies, il faudra nécessairement que l'on ait</text>
+<text><loc_69><loc_382><loc_436><loc_391>pour toute valeur de 0</text>
+<text><loc_69><loc_392><loc_436><loc_401>Au point de vue de la question qu nous occupe, la remarque précédente</text>
+<text><loc_69><loc_401><loc_436><loc_411>aurait pour conséquent ce théorème suivant:</text>
+<text><loc_69><loc_411><loc_436><loc_462>Si la correspoudance est définie par la condition qu'la trois points quelconques M, M, M' formant avec le point déterminé A une proportion harmonique, correspondent trois points N, N, N' formant avec le point déterminé B une proportion harmonique, cette correspondance est la transformation homographique, pourvu qu'il existe au moins un intervalle, ne comprenant pas de point de la première série dont l'homologue soit aussi rapproché de B qu'on le voudra.</text>
+<text><loc_69><loc_461><loc_436><loc_471></text>
+<text><loc_69><loc_471><loc_436><loc_481></text>
+<text><loc_189><loc_183><loc_436><loc_191>par exemple, qu' il y ait un seul intervalle dans lequel les valeurs positives de</text>
+<text><loc_69><loc_191><loc_436><loc_201>la fonction demeurent intérieures à un nombre fixe, pour que l'on ait 0(x) = Ax.</text>
+<text><loc_189><loc_202><loc_436><loc_211>0(x) + 0(y) = 0(x + y)</text>
+<text><loc_69><loc_214><loc_436><loc_231>on déduit aisément que la fonction</text>
+<text><loc_69><loc_232><loc_436><loc_251>0(x) = 0(x) - 0(1)</text>
+<text><loc_69><loc_251><loc_436><loc_261>l'équation</text>
+<text><loc_69><loc_263><loc_436><loc_281>et par conséquent reprend la nice valeur pour deux valeurs de 0 qui défèrent d'une quantité commuissable quelconque.</text>
+<text><loc_69><loc_281><loc_436><loc_291>déterminé toutes les valeurs qu'elle peut acquérir dans les autres intervalles, Par</text>
+<text><loc_69><loc_301><loc_436><loc_311>on en déduira</text>
+<text><loc_69><loc_320><loc_436><loc_340>m étant un nombre commençurable, aussi grand qu'on le vent, positif ou négatif. Ansi la fonction prendra des valeurs positives ou négatives aussi grandes qu'on le voudra, et il y aura dans tout intertralle une infinité de valeurs de 0 qui feront</text>
+<text><loc_69><loc_341><loc_436><loc_351>acquérir ces valeurs inévales la fonction</text>
+<text><loc_69><loc_352><loc_436><loc_371>Par suite si les valeurs positives ou négatives de la fonction dans un intervalle quelconque doivent demeurer finies, il faudra nécessairement que l'on ait</text>
+<text><loc_69><loc_382><loc_436><loc_391>pour toute valeur de 0</text>
+<text><loc_69><loc_392><loc_436><loc_401>Au point de vue de la question qu nous occupe, la remarque précédente</text>
+<text><loc_69><loc_401><loc_436><loc_411>aurait pour conséquent le théorème suivant:</text>
+<text><loc_69><loc_411><loc_436><loc_411>Si la correspoudance est définie par la condition qu'la trois points quelconques</text>
+<text><loc_69><loc_411><loc_436><loc_461>M, M, M' formant avec le point déterminé A une proportion harmonique, correspondent trois points N, N, N' formant avec le point déterminé B une proportion harmonique, cette correspondance est la transformation homographique, pourvu qu'il existe au moins un intervalle, ne comprenant pas de point de la première série dont l'homologue soit aussi rapproché de B qu'on le voudra.</text>
+<text><loc_189><loc_183><loc_436><loc_191>0(x) = 0(x) - 0(1)</text>
+<text><loc_189><loc_202><loc_436><loc_211>0(x) + 0(y) = 0(x + y)</text>
+<text><loc_69><loc_214><loc_436><loc_231>0(x) = 0(x) - 0(1)</text>
+<text><loc_69><loc_232><loc_436><loc_251>l'équation</text>
+<text><loc_69><loc_251><loc_436><loc_261>et par conséquent reprend la nice valeur pour deux valeurs de 0 qui défèrent d'une quantité commuissable quelconque.</text>
+<text><loc_69><loc_261><loc_436><loc_291>déterminé toutes les valeurs qu'elle peut acquérir dans les autres intervalles, Par suite si elle n'est pas constamment nulle, il s'on a, par exemple,</text>
+<text><loc_69><loc_301><loc_436><loc_311>on en déduira</text>
+<text><loc_69><loc_320><loc_436><loc_340>m étant un nombre commençurable, aussi grand qu'on le vent, positif ou négatif. Ansi la fonction prendra des valeurs positives ou négatives aussi grandes qu'on le voudra, et il y aura dans tout intertralle une infinité de valeurs de 0 qui feront</text>
+<text><loc_69><loc_341><loc_436><loc_351>acquérir ces valeurs inévales la fonction</text>
+<text><loc_69><loc_352><loc_436><loc_371>Par suite si les valeurs positives ou négatives de la fonction dans un intervalle quelconque doivent demeurer finies, il faudra nécessairement que l'on ait</text>
+<text><loc_69><loc_382><loc_436><loc_391>pour toute valeur de 0</text>
+<text><loc_69><loc_392><loc_436><loc_401>Au point de vue de la question qu nous occupe, la remarque précédente</text>
+<text><loc_69><loc_401><loc_436><loc_411>aurait pour conséquent le théorème suivant:</text>
+<text><loc_69><loc_411><loc_436><loc_411>Si la correspoudance est définie par la condition qu'la trois points quelconques</text>
+<text><loc_69><loc_411><loc_436><loc_461>M, M, M' formant avec le point déterminé A une proportion harmonique, correspondent trois points N, N, N' formant avec le point déterminé B une proportion harmonique, cette correspondance est la transformation homographique, pourvu qu'il existe au moins un intervalle, ne comprenant pas de point de la première série dont l'homologue soit aussi rapproché de B qu'on le voudra.</text>
+<text><loc_189><loc_183><loc_436><loc_191>0(x) = 0(x) - 0(1)</text>
+<text><loc_189><loc_202><loc_436><loc_211>0(x) + 0(y) = 0(x + y)</text>
+<text><loc_69><loc_214><loc_436><loc_231>0(x) = 0(x) - 0(1)</text>
+<text><loc_69><loc_232><loc_436><loc_251>l'équation</text>
+<text><loc_69><loc_251><loc_436><loc_261>et par conséquent reprend la nice valeur pour deux valeurs de 0 qui défèrent d'une quantité commuissable quelconque.</text>
+<text><loc_69><loc_261><loc_436><loc_291>déterminé toutes les valeurs qu'elle peut acquérir dans les autres intervalles, Par suite si elle n'est pas constamment nulle, il s'on a, par exemple,</text>
+<text><loc_69><loc_301><loc_436><loc_311>on en déduira</text>
+<text><loc_69><loc_320><loc_436><loc_340>m étant un nombre commençurable, aussi grand qu'on le vent, positif ou négatif. Ansi la fonction prendra des valeurs positives ou négatives aussi grandes qu'on le voudra, et il y aura dans tout intertralle une infinité de valeurs de 0 qui feront</text>
+<text><loc_69><loc_341><loc_436><loc_351>acquérir ces valeurs inévales la fonction</text>
+<text><loc_69><loc_352><loc_436><loc_371>par suite si les valeurs positives ou négatives de la fonction dans un intervalle quelconque doivent demeurer finies, il faudra nécessairement que l'on ait</text>
+<text><loc_69><loc_382><loc_436><loc_391>pour toute valeur de 0</text>
+<text><loc_69><loc_392><loc_436><loc_401>Au point de vue de la question qu nous occupe, la remarque précédente</text>
+<text><loc_69><loc_401><loc_436><loc_411>aurait pour conséquent le théorème suivant:</text>
+<text><loc_69><loc_411><loc_436><loc_411>Si la correspoudance est définie par la condition qu'la trois points quelconques</text>
+<text><loc_69><loc_411><loc_436><loc_461>M, M, M' formant avec le point déterminé A une proportion harmonique, correspondent trois points N, N, N' formant avec le point déterminé B une proportion harmonique, cette correspondance est la transformation homographique, pourvu qu'il existe au moins un intervalle, ne comprenant pas de point de la première série dont l'homologue soit aussi rapproché de B qu'on le voudra.</text>
+<text><loc_189><loc_183><loc_436><loc_191>0(x) = 0(x) - 0(1)</text>
+<text><loc_189><loc_202><loc_436><loc_211>0(x) + 0(y) = 0(x + y)</text>
+<text><loc_69><loc_214><loc_436><loc_231>0(x) = 0(x) - 0(1)</text>
+<text><loc_69><loc_232><loc_436><loc_251>l'équation</text>
+<text><loc_69><loc_251><loc_436><loc_261>et par conséquent reprend la nice valeur pour deux valeurs de 0 qui défèrent d'une quantité commuissable quelconque.</text>
+<text><loc_69><loc_261><loc_436><loc_291>déterminé toutes les valeurs qu'elle peut acquérir dans les autres intervalles, Par suite si elle n'est pas constamment nulle, il s'on a, par exemple,</text>
+<text><loc_69><loc_301><loc_436><loc_311>on en déduira</text>
+<text><loc_69><loc_320><loc_436><loc_340>m étant un nombre commençurable, aussi grand qu'on le vent, positif ou négatif. Ansi la fonction prendra des valeurs positives ou négatives aussi grandes qu'on le voudra, et il y aura dans tout intertralle une infinité de valeurs de 0 qui feront</text>
+<text><loc_69><loc_341><loc_436><loc_351>acquérir ces valeurs inévales la fonction</text>
+<text><loc_69><loc_352><loc_436><loc_371>par suite si les valeurs positives ou négatives de la fonction dans un intervalle quelconque doivent demeurer finies, il faudra nécessairement que l'on ait</text>
+<text><loc_69><loc_382><loc_436><loc_391>pour toute valeur de 0</text>
+<text><loc_69><loc_392><loc_436><loc_401>Au point de vue de la question qu nous occupe, la remarque précédente</text>
+<text><loc_69><loc_401><loc_436><loc_411>aurait pour conséquent le théorème suivant:</text>
+<text><loc_69><loc_411><loc_436><loc_411>Si la correspoudance est définie par la condition qu'la trois points quelconques</text>
+<text><loc_69><loc_411><loc_436><loc_461>M, M, M' formant avec le point déterminé A une proportion harmonique, correspondent trois points N, N, N' formant avec le point déterminé B une proportion harmonique, cette correspondance est la transformation homographique, pourvu qu'il existe au moins un intervalle, ne comprenant pas de point de la première série dont l'homologue soit aussi rapproché de B qu'on le voudra.</text>
+<text>loc_183>loc_436>loc_191>0(x) = 0(x) - 0(1)</text>
+<text>loc_202>loc_436>loc_211>0(x) + 0(y) = 0(x + y)</text>
+<text></text>
+<page_break>
+<text><loc_64><loc_42><loc_78><loc_50>58</text>
+<text><loc_64><loc_58><loc_78><loc_66>(5)</text>
+<text><loc_64><loc_67><loc_432><loc_100>Remarquons qu'en vertu de la relation (4), x1 et x2 sont de meme signe. Si donc l'on fait x2 = 1, on supposerai simplicitement x1 positive et l'on aura</text>
+<text><loc_64><loc_101><loc_78><loc_109>(6)</text>
+<text><loc_64><loc_111><loc_432><loc_128>Cette équation nous montre que (x) sera positive toutes les fois que x le sera.</text>
+<text><loc_64><loc_128><loc_432><loc_150>On peut considérer maintenant la recherche comme achevée, car l'égalité</text>
+<text><loc_64><loc_151><loc_432><loc_170>nous montre que la fonction sera croissante; et comme pour toutes les valeurs commensurables de x on a</text>
+<text><loc_64><loc_171><loc_432><loc_190>q(x) = xq(1) = x</text>
+<text><loc_64><loc_190><loc_429><loc_207>on peut conclure que la même expression a lieu pour les valeurs incommensurables de x.</text>
+<text><loc_64><loc_207><loc_432><loc_240>Voila donc la proposition entièrement démontrée; il est vrai que nous avons employé la géométrie métrique; mais vous n'aurez aucune peine à admettre à priori que les raisonnements qui précédent peuvent en quelque sorte être traduits dans la géométrie de position. C'est ce que je vais faire voir en peu de mots.</text>
+<text><loc_64><loc_240><loc_432><loc_299>Je commencerai par établir un lemme préliminaire. Considérons deux segments PQ, PQ divisant harmoniquement un autre segment AB. On sait que ces deux segments PQ, PQ sont compris l'un dans l'autre ou n'ont aucune partie commune. Donc si deux segments emplicit un sur l'autre, il n'existe pas de segment les divisant tous les deux harmoniquement.</text>
+<text><loc_64><loc_300><loc_432><loc_327>Je vais démontrer au contraire que si deux segments PQ, P'Q'm'emplicit pas l'un sur l'autre, il existe toujours au moins un segment les divisant harmoniquement.</text>
+<text><loc_64><loc_327><loc_432><loc_349>Supposons, pour éviter toute difficulté relative à l'infui, que les deux segments aient été rapportés sur une conique ou, si l'on veut, considérons</text>
+<text><loc_64><loc_349><loc_432><loc_450></text>
+<page_break>
+<page_header><loc_186><loc_40><loc_312><loc_48>Sur la géométrie projective.</page_header>
+<page_header><loc_420><loc_40><loc_432><loc_48>59</page_header>
+<text><loc_64><loc_55><loc_432><loc_76>P'P'QQ. Il y aura donc au moins une position de M pour laquelle µ et µ coïncideront.</text>
+<text><loc_63><loc_75><loc_432><loc_169>Nous admettons, on le voit, que si deux mobiles se meuvent sur une droite d'une manière continue, c'est-à-dire de manière à occuper toutes les positions, et que l'un, après être demeuré en arrière, finisse par dépasser l'autre, il y aura au moins une position dans laquelle ils coïncideront. Mais vous verrez facilement qu'il n'y a pas là de davantage pour la démonstration nouvelle. La proposition précédente ou des propositions auxquelles il est aisé de la ramener doivent être admises quand on a à représenter par un nombre une grandeur incommensurable et en particulier à définir la racine carrée, qui est employée dans l'équation (6) de la première démonstration.</text>
+<text><loc_63><loc_169><loc_432><loc_205>Il résulte de ce qui précède un moyen précis de reconnaitre si deux segments empiètent ou n'empiètent pas l'un sur l'autre; il suffira de chercher s'il y a un troisième segment qui les divise harmoniquement.</text>
+<text><loc_63><loc_205><loc_432><loc_377>Cela posé, considérons sur une même droite deux séries projectives de points et supposons que les trois points A, B, C de l'une des séries coïncident avec leurs homologues. Il resulte des belles recherches de MM. L'uroth et Zeuthen que vous avez exposées au tome VII des Mathematische Annalen (p. 531) que, dans tout intervalle, il y aura des points qui coïncident avec leurs homologues (ce sont les points qui, dans notre première démonstration, ont leurs abscisses rationnelles). Je dis que tout autre point x coïnciden avec son homologue x'. En effet, s'il en était autrement, nous pourrions prendre entre x et x deux points A et B, dans l'ordre (xABx), que coïncidenait avec leurs homologues. Alors les deux segments xA, Bx, n'empiètant pas l'un sur l'autre seraient divisés harmoniquement par un troisième segment et par conséquent les segments xA, Bx formés par les quatre points homologues de x, B, x' devraient être divisés harmoniquement par le segment m'n', homologue de mn. Or cela est impossible, puisque les deux segments xA, Bx, empiétant l'un sur l'autre, ne peuvent admettre aucun segment qui les divise tous les deux harmoniquement. Il est donc impossible que x' ne coïncide pas avec x et la proposition de v. Staudt se trouve établie dans toute sa généralité.</text>
+<text><loc_63><loc_377><loc_432><loc_464>Une fois le théorème fondamental établi, on peut en déduire de nombreuses conséquences. Il est aisé par exemple de reconnaitre avec v. Staudt (Geometrie der Lage § 121 -122) que l'on peut définir la correspondance projective ou homographique dans le plan ou dans l'espace par l'unique condition qu'à des points en ligne droite de l'une des figures correspondent dans l'autre des points en ligne droite. On déduit en effet facilement de cette définition et du principe fonda mental l'qu'à un point correspond un seul point, 2' qu'à une droite ponctuée correspond une droite ponctuée projectivement, 3' que si quatre</text>
+<page_break>
+<page_header><loc_49><loc_38><loc_64><loc_47>60</page_header>
+<page_header><loc_227><loc_40><loc_283><loc_47>G. Darnoux</page_header>
+<text><loc_65><loc_57><loc_442><loc_82>points d'un plan dont trois ne sont pas en ligne droite coincident avec leurs homologues, il en sera de meme de tout autre point du plan, etc.</text>
+<text><loc_65><loc_82><loc_442><loc_205>Mai, il y a une autre conséquence du théorème fondamental sur laquelle je désirerais, en terminaut, appeler votre attention. Möbius dans son beau Mémoire Die Theorie der Kreisverwendschaft in rcin geometrischer Darstellung (Abh. der K. S. Ges. d. Wissenschaft. IV.) se propose d'étudier la transformation la plus générale dans laquelle à un cercle corresponde un cercle et il arrive au fond à cette c'onclusion qu'une telle transformation équivant à l'inversion (transformation par rayons vecteurs réciproques) accompagnée de déplacements. Mais pour établir cette intéressante proposition il suppose, et il le dit expressivement (p. 535), que la correspondance des deux figures soit assujettie aux conditions de continuité. Je me propose de montrer, en m'appuyant sur ce qui précède, que ces conditions ne sont pas nécessaires.</text>
+<text><loc_65><loc_206><loc_442><loc_333>Supposons en effet que l'on veuille rechercher la transformation la plus générale dans laquelle à un cercle correspond un cercle. Il est clair d'abord qu'à un point devra correspondre un seul point. A tous les cercles passant par un point A de la première figure (C) devront correspondre tous les cercles passant par le point correspondant A' de la seconde figure (C): soumettons la première figure (C) à une inversion ayant pour pole A, ce qui donnera une figure (D) , et de même la figure (C) à une inversion ayant pour pole A', ce qui donnera une figure (D'). Les deux figures (D), (D') étant telles qu'à une droite de l'une corresponde une droite de l'autre seront en correspondance homographique. Mais cette correspondance doit être telle qu'à un cercle corresponde un cercle et il est aisé de reconnaitre que cela ne peut avoir lieu que si les deux figures sont semblables.</text>
+<text><loc_65><loc_334><loc_442><loc_443>En effet les points à l'infini de (D) ne peuvent avoir leurs homologues de (D') qu'à l'infini. Car soit m un point à l'infini de (D); si ce point avait pour homologue un point m' à distance finie, à tout cercle de (D) passant par m' devrait correspondre une courbe allant à l'infini, ce qui est impossible puisque l'homologue de ce cercle est un cercle. Donc les droites de l'infini se correspondent dans les deux figures. A un parallélogramme de la première figure correspond un parallélogramme de la seconde. Donc, comme le remarque Mobius, à un rectangle (parallélogramme inscrit dans un cercle) correspond un rectangle; à un angle droite, à un carré (rectangle à diagonales rectangulaires) correspond un carré.</text>
+<text><loc_65><loc_444><loc_442><loc_470>D'après cela soit ABCD un carré de (D) ayant pour homologue le carré A'BC'D de (D'). On peut toujours amener ces deux carrés à la coïncidence en soumettant la figure (D) à une transformation</text>
+<page_break>
+<page_header><loc_187><loc_40><loc_301><loc_47>Sur la gométrie projective.</page_header>
+<page_header><loc_422><loc_40><loc_435><loc_47>61</page_header>
+<text><loc_52><loc_55><loc_435><loc_86>homothétique et à un déplacement. Alors les deux figures homographiques ayant quatre points coïncidents seront superposables dans toute leur étendue.</text>
+<text><loc_52><loc_86><loc_435><loc_149>Ainsi la transformation cyclique de Möbius peut toujours se réaliser au moyen dune inversion [passage de (C) en (D)] suivie dune transformation homothétique et d'un déplacement [passage de (D) en (D)] et enfin dune autre inversion [passage de (D) en (C)]. On sait que toutes ces operations peuvent toujours se ramener soit à une seule inversion, soit à une transformation homothétique, précédées ou suivies d'un déplacement.</text>
+<text><loc_91><loc_155><loc_128><loc_163>Paris.</text>
+</doctag>

@@ -1,0 +1,271 @@
+B ULLETIN DES SCIENCES
+MATHÉMATIQUES ET ASTRONOMIQUES
+G. DARBOUX
+Sur la composition des forces en statique
+Bulletin des sciences mathématiques et astronomiques , tome 9
+(1875), p. 281-288
+<http://www.numdam.org/item?id=BSMA_1875__9__281_1>
+© Gauthier-Villars, 1875, tous droits réservés.
+L’accès aux archives de la revue « Bulletin des sciences mathéma-
+tiques et astronomiques » implique l’accord avec les conditions gé-
+nérales d’utilisation (http://www.numdam.org/conditions). Toute uti-
+lisation commerciale ou impression systématique est constitutive
+d’une infraction pénale. Toute copie ou impression de ce ﬁchier
+doit contenir la présente mention de copyright.
+Article numérisé dans le cadre du programme
+Numérisation de documents anciens mathématiques
+http://www.numdam.org/
+
+MÉLANGES.
+SUR IA COMPOSITION DES FORCES EN STATIQUE;
+PAU M. G. DARBOUX.
+Dans un Mémoire de 1726, qui fait partie du tome I des Com-
+mentaires de Saint-Pétersbourg, Daniel Bernoulli examine la
+démonstration par laquelle Newton et Varignon ont déduit la loi
+de la composition des forces de celle des mouvements qu'elles pro-
+duisent. Il critique cette démonstration et lui reproche, en parti-
+culier, de s'appuyer sur des vérités contingentes, c'est-à-dire em-
+pruntées à l'expérience : « Nihil in Ma demonstratione, dit-il, ut
+falsum rejicio, séd quœdam ut obscura, quœdam ut non necessario
+<vera ». Et, après un examen détaillé des objections qu'on peut
+faire, suivant lui, à la marche suivie par Newton, il passe à son
+objet principal, qui est de donner une démonstration géométrique
+de la composition des forces.
+
+%%i BULLETIN DES SCIENCES
+Sans donner une analyse complète des remarques de Bernoulli,
+on peut cependant observer que sa démonstration n'est pas aussi
+géométrique qu'il le suppose. Comme celle de Newton, elle repose
+sur des principes empruntés à l'expérience et particulièrement sur
+la notion même de résultante. Il est vrai qu'elle n'emploie pas la
+composition des mouvements} mais, en revanche, elle ne peut pas
+être étendue, sans explication nouvelle, au cas où les forces agissent
+sur un point en mouvement (1 ).
+Quoi qu'il en soit, la marche suivie par D. Bernoulli a eu de
+nombreux imitateurs. La Statique est souvent enseignée seule ou
+indépendamment de la Dynamique, et elle repose tout entière sur
+la loi de la composition des forces. Il était donc naturel de recher-
+cher une démonstration de cette loi, uniquement déduite de la con-
+sidération de l'équilibre, et c'est ce que n'ont pas manqué de faire
+de nombreux géomètres.
+Pour tout ce qui concerne la comparaison de la méthode de Ber-
+noulli avec celle de Newton, ainsi que les démonstrations analogues
+à celles de Bernoulli parues avant la Mécanique analytique, on
+pourra lire la Notice sur la loi du parallélogramme placée au com-
+mencement de la Mécanique analytique. Parmi les divers écrits
+cités par Lagrange, nous signalerons surtout le Mémoire de d'A-
+lembert, dans le tome I des Opuscules mathématiques, où la démon-
+stration, un peu longue, de Bernoulli se trouve ramenée au dernier
+degré de simplicité.
+Il est aujourd'hui peu de Recueils scientifiques où l'on ne ren-
+contre au moins une démonstration de la règle du^paraïlélogramme.
+Le premier Chapitre de la Mécanique céleste en contient une qui
+repose sur l'emploi des infiniment petits. Poisson, dans sa Méca-
+nique rationnelle en donne une autre qui conduit à une équation
+fonctionnelle. On trouve encore, dans la dernière édition de la Sta-
+(*) En supposant, en effet, la résultante trouvée en Statique, voici comment on peut
+raisonner dans le cas où le point est en mouvement : Étant données deux forces P, Q
+agissant sur un point matériel A, introduisons deux forces —P, — Q et la force R qui
+leur ferait équilibre. L'état, c'est-à-dire le mouvement du point, ne sera pas change
+Supprimons les groupes P — P, Q — Q; il reste la force R, qui peut, par conséquent,
+lemplacer les forces P, Q. Mais ce principe, qu'on peut ajouter ou supprimer sur un
+point matériel en mouvement des forces qui se feraient équilibre sur le point au repos,
+n'est au fond qu'un cas particulier de la loi de la composition des mou\ements pro-
+duits par les forces.
+
+MATHÉMATIQUES ET ASTRONOMIQUES. 283
+tique de Monge, une démonstration due à Cauchy et reproduite dans
+le tome I des Exercices de K athèmatiques, 1826. Mobius en fait
+connaître une autre, fort curieuse, dans sa Statique. Celle que
+contiennent nos Traités de Mécanique est très-simple, mais elle re-
+pose sur un principe de la statique du corps solide ; on l'attribue,
+je crois, à Ampère. Enfin, pour borner là notre énumération, citons
+encore, dans le Journal de Liouville, t. I, la démonstration de
+M. Aimé, qui se rapproche de celle de D. Bernoulli et n'offre aucun
+avantage sur celle-ci, telle qu'elle a été présentée par d'Alembert.
+Ces différentes -démonstrations reposent sur des principes qui
+leur sont communs, et sur d'autres qui sont propres à chacune
+d'elles. C'est ainsi que les unes admettent que la direction et la
+grandeur de la résultante varient d'une manière continue avec la
+grandeur et la direction des composantes \ d'autres supposent seule-
+ment que la résultante est dirigée à l'intérieur de l'angle formé par
+les composantes, etc.
+Je me suis proposé de reprendre'l'étude de cette question en la
+traitant comme un problème de pure Géométrie, ce qu'elle est au
+fond, et en tâchant de conduire la démonstration de manière à
+bien mettre en évidence quelles sont les hypothèses qu'on peut re-
+jeter et celles qu'il est nécessaire d'admettre. Je commencerai dom-
+en admettant les hypothèses communes à toutes les démonstrations
+et en me proposant le problème de Géométrie suivant :
+Etant données alignes OAj, OA2, ..., OAn, ayant leur origine
+en un point O, déterminer pour ces lignes une loi de composition
+d'après les conditions suivantes :
+I. La résultante totale, unique et déterminée, demeurera inva-
+riable quand, à quelques-unes de ces lignes, on substituera leur
+résultante partielle. Elle sera indépendante de l'ordre dans le-
+quel auront été faites les compositions partielles.
+II. Elle sera aussi indépendante de l'orientation du système dans
+l'espace, c'est-a-dire qu'elle se déplacera en formant avec les lignes
+un système invariable quand on leur imprimera un déplacement
+quelconque autour du point O.
+Dans cette manière de poser la question, il est nécessaire de bien
+prouver les points qui paraîtraient le plus évidents s'il s'agissait
+réellement de forces} la conclusion aura d'autant plus de \aleur
+qu'on aura moins admis de conditions pour l'obtenir.
+
+284 BULLETIN DES SCIENCES
+II résulte d'abord des deux hypothèses admises que la résul-
+tante OC de deux lignes égales et directement opposées est nulle.
+En effet, le système des lignes O A, OB ne change pas : i° par une
+rotation autour de AOB d'un angle quelconque ; i° par une rota-
+tion de 180 degrés autour d'un axe Ox perpendiculaire à AOB, qui
+amène O A sur OB et OB sur OA. Ces rotations ne devraient donc
+pas changer la direction de la résultante, ce qui est impossible. Il
+faut donc qu'elle soit nulle.
+Réciproquement la résultante de deux lignes OA, OB n'est nulle
+que si elles sont égales et directement opposées. Supposons, en
+effet, que deux lignes OA, OB aient une résultante nulle. Consi-
+dérons le système des trois lignes OA, OB et OB' égale et directe-
+ment opposée à OB. La résultante de ces trois lignes est OA; mais,
+comme la résultante de OA et de OB est nulle, elle est aussi OB'.
+Comme, d'après la condition I, il ne peut y avoir deux résultantes
+différentes, il faut que OB' soit égale et parallèle à OA et de môme
+sens qu'elle, c'est-à-dire qu'il faut que OA, OB soient égales et de
+sens opposée.
+En second lieu, la résultante de deux lignes OA, OB est néces-
+sairement dirigée dans leur plan, car soit OC cette résultante :
+deux lignes OA', OB' égales et opposées à OA, OB doivent avoir pour
+résultante OC' égale et opposée à OC. En effet, la résultante de
+OA, OB, OA', OB' est nulle; il faut donc qu'il en soit de môme de
+la résultante de OC et de OC' et, par conséquent, que OC et OC'
+soient égales et opposées.
+Or, si l'on fait tourner OA, OB de 180 degrés dans leur plan,
+elles viennent s'appliquer sur O A', OB' ; il faut donc que OC vienne
+s'appliquer sur son prolongement OC', ce qui exige que OC soit
+dans le plan BOA. Ainsi :
+La résultante de deux lignes est contenue dans le plan de ces
+deux lignes.
+Ce point étant admis, soient P, Q deux lignes appliquées au
+point O; adjoignons-leur une troisième ligne quelconque R non
+située dans leur plan et cherchons la résultante S de ces trois lignes.
+Soient R' la résultante de P et Q, Q' celle de P et R, P' celle de
+Q et de R. On aura S en composant soit P et P', soit Q et Q', soit
+R et R'. D'où il suit que les plans de P et P', de Q et Q', de R et R'
+doivent se couper suivant une môme droite. On aura donc, d'après
+
+MATHÉMATIQUES ET ASTRONOMIQUES. ^5
+un théorème connu relatif à l'angle trièdre,
+sinR'OP sinP'OQ sinQ'OR_
+sinR'OQ sinP'OR sinQ'OP"" *'
+sinR'OP _ sinP'OR # sinQ'OR
+sinQOR' ~~ sinP'OQ : sinQ'OP'
+Supposons OR perpendiculaire au plan POQ. Le rapport
+sinP'OR j, , , r ^ ~ 1 , ,
+——n.^r, ne depend que des forces R et (J et de leur angle qui est
+smP'OQ ri x. o -i
+supposé droit. Il est donc une fonction de R et de Q, cf (R, Q). De
+i i i -i i sin Q'OR , A r . T T»
+même le rapport semblable ^. _. .; est la même fonction de 11 et
+11 sinQ'OP
+de P. On a donc
+si_nR'OP_
+sin QOR' ~~ cp[R, P]7
+ouj en donnant à R une valeur numérique i, par exemple,
+sinR'OP
+sin QOR'
+Cette équation exprime que, si l'on porte la longueur ç(P) sur
+Pdans le sens de P ou en sens contraire, suivant que cp(P) est positif
+ou négatif, et de même <p(Q) sur Q, la résultante est en direction
+la diagonale du parallélogramme construit sur cp(P) et cj(Q).
+J'ajoute que la diagonale sera, en grandeur, égale a la fonction
+y(R') de la résultante R'.
+Soient, en effet, P, Q, R trois lignes dont la résultante soit nulle.
+Q
+sinR'OP <p(R,Q)
+Chacune sera égale et opposée à la résultante des deux autres.
+
+I
+a&6 BULLETIN DES SCIENCES
+Prenons
+OA=9(P), OB=<p(Q), OC = (p(R);
+OP sera, en direction, la diagonale du parallélogramme construit sur
+OB, OC; OR la diagonale du parallélogramme construit sur OA,
+OB. On a donc
+ODr^BE-^OC, ou OD =
+Comme R est la grandeur de la résultante des deux lignes P, Q,
+on voit que la diagonale du parallélogramme construit sur <p(P),
+cp(Q) a pour grandeur cp(R), comme nous l'avions annoncé.' De
+tout ce qui précède résulte la loi de composition suivante :
+Etant données n lignes Pt, P2,..., P„, la loi de composition la plus
+générale satisfaisant aux conditions I, 11 sera la suivante. On choi-
+sira une fonction <f(x) et l'on portera des longueurs égales à cp(Pi),
+cp(P2 ),..., <jp(P„) respectivement surP^ P2,..., P„, dans un sens dé-
+terminé par le signe de chacune de ces fonctions. On composera
+toutes ces lignes d'après les règles du polygone des forces, c'est-
+à-dire en les portant successivement les unes à la suite des autres}
+le côté qui fermera ce polygone donnera la direction de la résul-
+tante R, et il sera égal en grandeur à f(R).
+Ajoutons que, pour que R soit bien connu, il faut qu'on puisse
+le déduire sans ambiguïté de la valeur de y (R). Remarquons aussi
+que la loi de composition ne sera pas changée si, à la place de ç(.r),
+on prend niy {oc), m étant un nombre quelconque/. \
+Les deux conditions 1, II ne suffisent donc pas à nous conduire
+seules aux lois de la composition des forces. ]Nous ajouterons l'hy-
+pothèse suivante, qui est admise dans toutes les démonstrations de
+la loi du parallélogramme et sur laquelle repose la définition même
+de la grandeur d'une force.
+III. La loi de la composition des lignes doit se réduire à celle de
+l'addition algébrique pour des lignes de même direction.
+Voyons les conséquences de cette hypothèse sur la forme de la
+fonction <p(P).
+Considérons deux lignes quelconques P, Q,de même direction et
+de même sens, et d'autres lignes quelconques S, T,.... Dans le po-
+lygone des lignes résultant de la composition figurent deux côtés
+parallèles, y(P) et a>(Q). Mais, si l'on compose P, Q en une 'autre
+
+MATHÉMATIQUES ET ASTRONOMIQUES. 287
+ligne P -t- Q, les deux côtés cp(P), <jp(Q) seront remplacés par un
+seul cp(P 4- Q), qui leur sera parallèle. Comme la résultante totale
+ne doit pas être changée, il faut que Ton ait
+Ainsi cette équation fonctionnelle est la traduction de notre nou-
+velle condition III.
+On sait résoudre l'équation précédente en supposant cp(P) con-
+tinue. La fonction qu'on obtient alors est
+?(P)- «P.
+Mais nous allons montrer que, en supposant <p(P) simplement po-
+sitif, on arrive au même résultat.
+En effet, de l'équation
+on déduit que la fonction <p(x), si elle est positive, est toujours
+croissante. D'ailleurs c'est une conséquence bien connue de l'équa-
+tion fonctionnelle, que l'on a
+c'est-à-dire y(x) = «x, pour toutes les valeurs commensurables
+de x.
+La fonction étant croissante, la même formule conviendra aussi
+évidemment, sans qu'il soit nécessaire de la supposer continue, pour
+les valeurs incommensurables de x (*).
+D'après une remarque faite plus haut, on peut diviser par a et
+prendre <p(x) = x, ce qui conduit à la loi du parallélogramme.
+Ainsi, pour obtenir cette loi, il faut ajouter aux trois hypothèses
+déjà faites l'une des deux suivantes :
+IV. <p(P) est toujours positif, c'est-à-dire <p(P) et cp(Q) sont de
+même signe.
+(l) Car, soit x une incommensurable comprise entre ~ et ? on aura
+sera donc comprise entre deux grandeurs ayant pour limite ax.
+
+288 BULLETIN DES SCIENCES
+ÏVfl. <J>(P) est une fonction continue.
+Examinons la signification mécanique de ces deux hypothèi
+IV. Si CP(P) est toujours de même signe, la résultante des
+forces P, Q sera toujours dirigée dans leur angle.
+YVa. Siop(P) est continue, la direction de la résultante
+grandeur seront des fonctions continues des deux forces.
+Ainsi il faut admettre l'une ou l'autre des deux hypothese
+précèdent pour obtenir la loi connue de la composition des f
+Aucune démonstration n'échappe aux conditions que
+avons posées ici. Celle de Bernoulli modifiée par d'Ale
+paraît encore la meilleure au point de vue du moindre nomb]
+hypothèses faites, et aussi parce qu'elle n'emploie que des con
+dons planes. 11 nous semble que, en écartant des distinctions
+fait déplacées dans un enseignement, on pourrait tirer des
+qui précèdent un moyen assez simple d'obtenir en Statique
+de la composition des forces.

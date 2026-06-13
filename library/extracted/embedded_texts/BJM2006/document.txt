@@ -1,0 +1,2820 @@
+This article was downloaded by: [Universite Laval]
+On: 29 November 2014, At: 17:56
+Publisher: Taylor & Francis
+Informa Ltd Registered in England and Wales Registered Number: 1072954 Registered office: Mortimer
+House, 37-41 Mortimer Street, London W1T 3JH, UK
+Journal of the American Statistical Association
+Publication details, including instructions for authors and subscription information:
+http://www.tandfonline.com/loi/uasa20
+Convexity, Classification, and Risk Bounds
+Peter L Bartletta, Michael I Jordana & Jon D McAuliffea
+a Peter L. Bartlett is Professor and Michael I. Jordan is Professor , Department of
+Statistics and the Computer Science Division, and Jon D. McAuliffe was a Graduate
+Student , Department of Statistics, University of California, Berkeley, CA 94720, when
+this work was performed. He is now Assistant Professor, Department of Statistics,
+University of Pennsylvania, Philadelphia, PA 19104. This work was supported by National
+Science Foundation grants 0412995 and 0434383 and MURI grant DAAD 190210383 from
+the ARO. The authors thank Gilles Blanchard, Olivier Bousquet, Pascal Massart, Ron Meir,
+Shahar Mendelson, Martin Wainwright, and Bin Yu for helpful discussions.
+Published online: 01 Jan 2012.
+To cite this article: Peter L Bartlett, Michael I Jordan & Jon D McAuliffe (2006) Convexity, Classification, and Risk Bounds,
+Journal of the American Statistical Association, 101:473, 138-156, DOI: 10.1198/016214505000000907
+To link to this article:  http://dx.doi.org/10.1198/016214505000000907
+PLEASE SCROLL DOWN FOR ARTICLE
+Taylor & Francis makes every effort to ensure the accuracy of all the information (the “Content”) contained
+in the publications on our platform. However, Taylor & Francis, our agents, and our licensors make no
+representations or warranties whatsoever as to the accuracy, completeness, or suitability for any purpose of
+the Content. Any opinions and views expressed in this publication are the opinions and views of the authors,
+and are not the views of or endorsed by Taylor & Francis. The accuracy of the Content should not be relied
+upon and should be independently verified with primary sources of information. Taylor and Francis shall
+not be liable for any losses, actions, claims, proceedings, demands, costs, expenses, damages, and other
+liabilities whatsoever or howsoever caused arising directly or indirectly in connection with, in relation to or
+arising out of the use of the Content.
+This article may be used for research, teaching, and private study purposes. Any substantial or systematic
+reproduction, redistribution, reselling, loan, sub-licensing, systematic supply, or distribution in any
+form to anyone is expressly forbidden. Terms & Conditions of access and use can be found at http://
+www.tandfonline.com/page/terms-and-conditions
+
+Convexity, Classiﬁcation, and Risk Bounds
+Peter L. BARTLETT , Michael I. JORDAN , and Jon D. MCAULIFFE
+Many of the classiﬁcation algorithms developed in the machine learning literature, including the support vector machine and boosting, can
+be viewed as minimum contrast methods that minimize a convex surrogate of the 0–1 loss function. The convexity makes these algorithms
+computationally efﬁcient. The use of a surrogate, however, has statistical consequences that must be balanced against the computational
+virtues of convexity. To study these issues, we provide a general quantitative relationship between the risk as assessed using the 0–1 loss and
+the risk as assessed using any nonnegative surrogate loss function. We show that this relationship gives nontrivial upper bounds on excess
+risk under the weakest possible condition on the loss function—that it satisﬁes a pointwise form of Fisher consistency for classiﬁcation.
+The relationship is based on a simple variational transformation of the loss function that is easy to compute in many applications. We also
+present a reﬁned version of this result in the case of low noise, and show that in this case, strictly convex loss functions lead to faster rates of
+convergence of the risk than would be implied by standard uniform convergence arguments. Finally, we present applications of our results
+to the estimation of convergence rates in function classes that are scaled convex hulls of a ﬁnite-dimensional base class, with a variety of
+commonly used loss functions.
+KEY WORDS: Boosting; Convex optimization; Empirical process theory; Machine learning; Rademacher complexity; Support vector
+machine.
+1. INTRODUCTION
+Convexity has become an increasingly important theme in
+applied mathematics and engineering, having taken on a promi-
+nent role akin to that played by linearity for many decades.
+Building on the discovery of efﬁcient algorithms for linear
+programs, researchers in convex optimization theory have de-
+veloped computationally tractable methods for large classes
+of convex programs (Nesterov and Nemirovskii 1994). Many
+ﬁelds in which optimality principles form the core conceptual
+structure have been changed signiﬁcantly by the introduction of
+these new techniques (Boyd and Vandenberghe 2004).
+Convexity arises in many guises in statistics as well, no-
+tably in properties associated with the exponential family of
+distributions (Brown 1986). But only recently has the system-
+atic exploitation of the algorithmic consequences of convex-
+ity begun in statistics. One applied area in which this trend
+has been most salient is machine learning, where the focus
+has been on large-scale statistical models, for which compu-
+tational efﬁciency is an imperative. Many of the most promi-
+nent methods studied in machine learning make signiﬁcant use
+of convexity; in particular, support vector machines (Boser,
+Guyon, and Vapnik 1992; Cortes and Vapnik 1995; Cristianini
+and Shawe-Taylor 2000; Schölkopf and Smola 2002), boost-
+ing (Freund and Schapire 1997; Collins, Schapire, and Singer
+2002; Lebanon and Lafferty 2002), and variational inference
+for graphical models (Jordan, Ghahramani, Jaakkola, and Saul
+1999) are all based directly on ideas from convex optimization.
+These methods have had signiﬁcant practical successes in such
+applied areas as bioinformatics, information management, and
+signal processing (Feder et al. 2004; Joachims 2002; Schölkopf,
+Tsuda, and Vert 2003).
+If algorithms from convex optimization are to continue to
+make inroads into statistical theory and practice, we need to un-
+Peter L. Bartlett is Professor (E-mail: bartlett@stat.berkeley.edu)a n d
+Michael I. Jordan is Professor (E-mail: jordan@stat.berkeley.edu), Department
+of Statistics and the Computer Science Division, and Jon D. McAuliffe was
+a Graduate Student (E-mail: jon@stat.berkeley.edu), Department of Statistics,
+University of California, Berkeley, CA 94720, when this work was performed.
+He is now Assistant Professor, Department of Statistics, University of Pennsyl-
+vania, Philadelphia, PA 19104. This work was supported by National Science
+Foundation grants 0412995 and 0434383 and MURI grant DAAD 190210383
+from the ARO. The authors thank Gilles Blanchard, Olivier Bousquet, Pascal
+Massart, Ron Meir, Shahar Mendelson, Martin Wainwright, and Bin Yu for
+helpful discussions.
+derstand these algorithms not only from a computational stand-
+point, but also in terms of their statistical properties. What are
+the statistical consequences of choosing models and estima-
+tion procedures so as to exploit the computational advantages
+of convexity?
+In this article we study this question in the context of dis-
+criminant analysis, a topic referred to as classiﬁcation in the
+machine learning ﬁeld. We consider the setting in which a co-
+variate vector X ∈ X is to be classiﬁed according to a binary
+response Y ∈{ −1, 1}. The goal is to choose a discriminant
+function f : X → R, from a class of functions F, such that the
+sign of f(X) is an accurate prediction of Y under an unknown
+joint measure P on (X, Y). We focus on 0–1 loss; thus, let-
+ting ℓ(α) denote an indicator function that is 1 if α ≤ 0 and
+0 otherwise, we wish to choose f ∈ F that minimizes the risk
+R( f) = Eℓ(Yf(X)) = P(Y ̸= sign( f(X))).
+Given a sample D
+n = ((X1, Y1),...,( Xn, Yn)), it is natural
+to consider estimation procedures based on minimizing the
+sample average of the loss, ˆR( f) =
+1
+n
+∑ n
+i=1 ℓ(Yi f(Xi)).A si s
+well known, however, such a procedure is computationally in-
+tractable for many nontrivial classes of functions (see, e.g.,
+Arora, Babai, Stern, and Sweedyk 1997). Indeed, the loss func-
+tion ℓ(Yf(X)) is nonconvex in its (scalar) argument, and al-
+though not a proof, this suggests a source of the difﬁculty.
+Moreover, it suggests that we might base a tractable estima-
+tion procedure on minimization of a convex surrogate φ(α) for
+the loss. In particular, if F consists of functions that are lin-
+ear in a parameter vector θ, then the expectation of φ(Yf(X))
+is convex in θ (by convexity of φ and linearity of expectation).
+Given a convex parameter space, we obtain a convex program
+and can exploit the methods of convex optimization. A wide
+variety of classiﬁcation methods are based on this tactic; in par-
+ticular, Figure 1 shows the (upper-bounding) convex surrogates
+associated with the support vector machine (Cortes and Vapnik
+1995), AdaBoost (Freund and Schapire 1997), and logistic re-
+gression (Friedman, Hastie, and Tibshirani 2000). In the ma-
+chine learning literature, these convexity-based methods have
+largely displaced earlier nonconvex methods, such as neural
+networks.
+© 2006 American Statistical Association
+Journal of the American Statistical Association
+March 2006, Vol. 101, No. 473, Theory and Methods
+DOI 10.1198/016214505000000907
+138
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+Bartlett, Jordan, and McAuliffe: Convexity, Classiﬁcation, and Risk Bounds 139
+Figure 1. A Plot of the 0–1 Loss Function and Surrogates Corre-
+sponding to Various Practical Classiﬁers (
+ 0–1;
+ exponential;
+hinge;
+ logistic;
+ truncated quadratic). These functions are
+plotted as a function of the margin α = yf (x). Note that a classiﬁcation
+error is made if and only if the margin is negative; thus the 0–1 loss is
+a step function that is equal to 1 for negative values of the abscissa.
+The curve labeled “logistic” is the negative log-likelihood, or scaled de-
+viance, under a logistic regression model, “hinge” is the piecewise-linear
+loss used in the support vector machine, and “exponential” is the expo-
+nential loss used by the AdaBoost algorithm. The deviance is scaled so
+as to majorize the 0–1 loss; see Lemma 4.
+A basic statistical understanding of the convexity-based set-
+ting has begun to emerge. In particular, when appropriate
+regularization conditions are imposed, it is possible to demon-
+strate the Bayes-risk consistency of methods based on minimiz-
+ing convex surrogates for 0–1 loss. Lugosi and Vayatis (2004)
+provided such a result under the assumption that the surro-
+gate φ is differentiable, monotone and strictly convex and sat-
+isﬁes φ(0) = 1. This handles all of the cases shown in Figure 1
+except the support vector machine. Steinwart (2005) demon-
+strated consistency for the support vector machine as well, in
+a general setting where F is taken to be a reproducing kernel
+Hilbert space and φ is assumed to be continuous. Other results
+on Bayes-risk consistency have been presented by Breiman
+(2004), Jiang (2004), Mannor and Meir (2001), and Mannor,
+Meir, and Zhang (2002).
+Consistency results provide reassurance that optimizing a
+surrogate does not ultimately hinder the search for a function
+that achieves the Bayes risk, and thus allow such a search to pro-
+ceed within the scope of computationally efﬁcient algorithms.
+There is, however, an additional motivation for working with
+surrogates of 0–1 loss beyond the computational imperative.
+Minimizing the sample average of an appropriately behaved
+loss function has a regularizing effect; it is possible to obtain
+uniform upper bounds on the risk of a function that minimizes
+the empirical average of the loss φ, even for classes that are
+so rich that no such upper bounds are possible for the mini-
+mizer of the empirical average of the 0–1 loss. Indeed, a num-
+ber of such results have been obtained for function classes with
+inﬁnite Vapnik–Chervonenkis (VC) dimension (Bartlett 1998,
+Shawe-Taylor, Bartlett, Williamson, and Anthony 1998), such
+as the function classes used by AdaBoost (see, e.g., Schapire,
+Freund, Bartlett, and Lee 1998; Koltchinskii and Panchenko
+2002). These upper bounds provide guidance for model selec-
+tion and in particular help guide data-dependent choices of reg-
+ularization parameters.
+To carry this agenda further, we need to ﬁnd general quantita-
+tive relationships between the approximation and estimation er-
+rors associated with φ and those associated with 0–1 loss. This
+point was emphasized by Zhang (2004), who presented several
+examples of such relationships. Here we simplify and extend
+Zhang’s results, developing a general methodology for ﬁnding
+quantitative relationships between the risk associated with φ
+and the risk associated with 0–1 loss. In particular, let R( f) de-
+note the risk based on 0–1 loss, and let R
+∗ = inff R( f) denote
+the Bayes risk. Similarly, let Rφ( f) = Eφ(Yf(X)) be called the
+“φ-risk,” and let R∗
+φ = inff Rφ( f) denote the “optimal φ-risk.”
+We show that for all measurable f ,
+ψ
+(
+R( f) − R∗)
+≤ Rφ( f) − R∗
+φ, (1)
+for a nondecreasing functionψ :[0, 1]→[ 0,∞). Moreover, we
+present a general variational representation of ψ in terms of φ,
+and show that this function is the optimal upper bound of the
+form (1), in the sense that any other function that satisﬁes (1)
+for all measurable f is everywhere no larger than ψ.
+This result suggests that ifψ is well-behaved, then minimiza-
+tion of Rφ( f) may provide a reasonable surrogate for minimiza-
+tion of R( f). Moreover, the result provides a quantitative way
+to transfer assessments of statistical error in terms of “excess
+φ-risk,” Rφ( f) − R∗
+φ , into assessments of error in terms of “ex-
+cess risk,” R( f) − R∗.
+Although our principal goal is to understand the implica-
+tions of convexity in classiﬁcation, we do not impose a con-
+vexity assumption on φ at the outset. Indeed, whereas such
+conditions as convexity, continuity, and differentiability of φ
+are easy to verify and have natural relationships to optimization
+procedures, it is not immediately obvious how to relate such
+conditions to their statistical consequences. Thus we consider
+the weakest possible condition on φ: that it is “classiﬁcation-
+calibrated,” which is essentially a pointwise form of Fisher con-
+sistency for classiﬁcation (Lin 2004). In particular, if we deﬁne
+η(x) = P(Y = 1|X = x), then φ is classiﬁcation-calibrated if,
+for x such that η(x) ̸= 1/2, every minimizer f
+∗ of the condi-
+tional expectation E[φ(Yf∗(X))|X = x] has the same sign as the
+Bayes decision rule, sign (2η(x) − 1). We show that the upper
+bound (1) on excess risk in terms of excess φ-risk is nontriv-
+ial precisely when φ is classiﬁcation-calibrated. Obviously, no
+such bound is possible when φ is not classiﬁcation-calibrated.
+The difﬁculty of a pattern classiﬁcation problem is closely re-
+lated to the behavior of the posterior probability η(X).I nm a n y
+practical problems, it is reasonable to assume that for most X,
+η(X) is not too close to 1 /2. Mammen and Tsybakov (1999)
+introduced an elegant formulation of such an assumption, and
+Tsybakov (2004) considered the convergence rate of the risk
+of a function that minimizes empirical risk over some ﬁxed
+class F. He showed that under the assumption of low noise,
+the risk converges surprisingly quickly to the minimum over
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+140 Journal of the American Statistical Association, March 2006
+the class. If the minimum risk is nonzero, then we might expect
+a convergence rate no faster than 1 /√n. However, under Tsy-
+bakov’s assumption, the convergence rate can be as fast as 1/n.
+We show that minimizing the empirical φ-risk also leads to
+surprisingly fast convergence rates under this assumption. In
+particular, if φ is uniformly convex, then the minimizer of the
+empirical φ-risk has φ-risk that converges quickly to its optimal
+value, and the noise assumption allows an improvement in the
+relationship between excess φ-risk and excess risk.
+These results suggest a general interpretation of pattern clas-
+siﬁcation methods involving a convex contrast function. It is
+common to view the excess risk as a combination of an estima-
+tion term and an approximation term,
+R( f) − R
+∗ =
+(
+R( f) − inf
+g∈F
+R(g)
+)
++
+(
+inf
+g∈F
+R(g) − R∗
+)
+.
+However, choosing a function with risk near-minimal over a
+class F—that is, ﬁnding an f for which the estimation term
+above is close to 0—is, in a minimax setting, equivalent to the
+problem of minimizing empirical risk, and hence is computa-
+tionally infeasible for typical classes F of interest. Indeed, for
+classes typically used by boosting and kernel methods, the es-
+timation term in this expression does not converge to 0 for the
+minimizer of the empirical risk. In contrast, we can also split
+the upper bound on excess risk into an estimation term and an
+approximation term,
+ψ
+(
+R( f) − R
+∗)
+≤ Rφ( f) − R∗
+φ
+=
+(
+Rφ( f) − inf
+g∈F
+Rφ(g)
+)
++
+(
+inf
+g∈F
+Rφ(g) − R∗
+φ
+)
+.
+Often, it is possible to minimize φ-risk efﬁciently. Thus, al-
+though ﬁnding an f with near-minimal risk might be compu-
+tationally infeasible, ﬁnding an f for which this upper bound on
+risk is near-minimal can be feasible.
+The article is organized as follows. Section 2 presents basic
+deﬁnitions and a statement and proof of (1). It also introduces
+the convexity assumption, and shows how it simpliﬁes the com-
+putation of ψ. Section 3 presents a reﬁned version of our main
+result in the setting of low noise. Section 4 presents bounds on
+the rate of convergence of theφ-risk of the empirical minimizer
+for strictly convexφ, and describes applications of these results
+to convex function classes, such as those used by AdaBoost.
+It also describes simulations that illustrate the theoretical re-
+sults. Section 5 presents our conclusions. Proofs of all of our
+results are presented either in the main text or in Appendix A.
+2. RELATING EXCESS RISK TO EXCESS φ-RISK
+There are three sources of error to consider in a statistical
+analysis of classiﬁcation problems: the classical estimation er-
+ror due to ﬁnite sample size, the classical approximation error
+due to the size of the function spaceF, and an additional source
+of approximation error due to the use of a surrogate in place of
+the 0–1 loss function. It is this last source of error that is our fo-
+cus in this section. Thus, throughout this section, we work with
+population expectations and assume thatF is the set of all mea-
+surable functions. This allows us to ignore errors due to the size
+of the sample and the size of the function space, and focus on
+the error due to the use of a surrogate for the 0–1 loss function.
+We follow the tradition in the classiﬁcation literature and re-
+fer to the function φ as a loss function, because it is a function
+that is to be minimized to obtain a discriminant. More precisely,
+φ(Yf(X)) is generally referred to as a “margin-based loss func-
+tion,” where the quantity Yf(X) is known as the “margin.” (It is
+worth noting that margin-based loss functions are rather differ-
+ent from distance metrics, a point that we explore in App. B.)
+This ambiguity in the use of “loss” will not confuse; in par-
+ticular, we will be careful to distinguish the risk, which is an
+expectation over 0–1 loss, from the “ φ- r i s k , ”w h i c hi sa ne x -
+pectation over φ. Our goal in this section is to relate these two
+quantities.
+2.1 Setup
+Let (X ×{ −1, 1}, G ⊗ 2
+{−1,1}, P) be a probability space. Let
+X be the identity function on X , and let Y be the identity func-
+tion on {−1, 1}, so that P is the distribution of (X, Y); that is,
+for A ∈ G ⊗ 2{−1,1}, P((X, Y) ∈ A) = P(A).L e t PX on (X, G)
+be the marginal distribution of X, and let η : X →[ 0, 1] be a
+measurable function such that η(X) is a version of P(Y = 1|X).
+Throughout this section, f is understood as a measurable map-
+ping from X into R.
+Deﬁne the {0, 1}-risk,o rj u s trisk,o f f as
+R( f) = P
+(
+sign( f(X)) ̸= Y
+)
+,
+where sign(α) = 1f o rα> 0 and −1 otherwise. [The particular
+choice of the value of sign (0) is not important, but we need to
+ﬁx some value in {±1} for the deﬁnitions that follow.] Based on
+an iid sample Dn = ((X1, Y1),...,( Xn, Yn)), we want to choose
+a function fn with small risk.
+Deﬁne the Bayes risk , R∗ = inff R( f), where the inﬁmum
+is over all measurable f . Then any f satisfying sign( f(X)) =
+sign(η(X) − 1/2) a.s. on {η(X) ̸= 1/2} has R( f) = R∗.
+Fix a function φ :R →[ 0,∞). Deﬁne the φ-risk of f as
+Rφ( f) = Eφ(Yf(X)).
+Let F be a class of functions f : X → R.L e t fn = ˆfφ be
+a function in F that minimizes the empirical expectation of
+φ(Yf(X)),
+ˆRφ( f) = ˆEφ(Yf(X)) = 1
+n
+n∑
+i=1
+φ(Yi f(Xi)).
+Thus we treat φ as specifying a contrast function that is to be
+minimized in determining the discriminant function fn.
+2.2 Basic Conditions on the Loss Function
+Deﬁne the conditional φ-risk,
+E
+(
+φ(Yf(X))|X = x
+)
+= η(x)φ( f(x)) + (1 − η(x))φ(−f(x))
+a.e. (x).
+It is useful to think of the conditional φ-risk in terms of a
+generic conditional probability η ∈[ 0, 1] and a generic clas-
+siﬁer value α ∈ R. To express this viewpoint, we introduce the
+generic conditional φ-risk,
+Cη(α) = ηφ(α) + (1 − η)φ(−α).
+The notation suppresses the dependence onφ. The generic con-
+ditional φ-risk coincides with the conditional φ-risk of f at
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+Bartlett, Jordan, and McAuliffe: Convexity, Classiﬁcation, and Risk Bounds 141
+x ∈ X if we take η = η(x) and α = f(x). Here varying α in
+the generic formulation corresponds to varying f in the original
+formulation, for ﬁxed x. As a useful illustration for the deﬁni-
+tions that follow, consider a singleton domain X ={ x0}.M i n -
+imizing the φ-risk corresponds to choosing f(x0) to minimize
+Cη(x0)( f(x0)).
+For η ∈[ 0, 1], deﬁne the optimal conditional φ-risk,
+H(η) = inf
+α∈R
+Cη(α) = inf
+α∈R
+(
+ηφ(α) + (1 − η)φ(−α)
+)
+.
+Then the optimal φ-risk satisﬁes
+R∗
+φ := inf
+f
+Rφ( f) = EH(η(X)),
+where the inﬁmum is over measurable functions.
+If the inﬁmum in the deﬁnition of H(η) is uniquely attained
+for some α, we can deﬁne α∗ :[0, 1]→ R by
+α∗(η) = arg min
+α∈R
+Cη(α).
+In that case, we deﬁne f∗
+φ : X → R,u pt o PX-null sets, by
+f∗
+φ (x) = arg min
+α∈R
+E
+(
+φ(Yα)|X = x
+)
+= α∗(η(x))
+and then
+Rφ( f∗
+φ ) = EH(η(X)) = R∗
+φ.
+For η ∈[ 0, 1], deﬁne
+H−(η) = inf
+α:α(2η−1)≤0
+Cη(α).
+This is the optimal value of the conditional φ-risk, under the
+constraint that the sign of the argumentα disagrees with that of
+2η − 1.
+We now turn to the basic condition that we impose on φ.
+This condition generalizes the requirement that the minimizer
+of C
+η(α) (if it exists) has the correct sign. This is a minimal
+condition that can be viewed as a pointwise form of Fisher con-
+sistency for classiﬁcation.
+Deﬁnition 1. We say thatφ is classiﬁcation-calibrated if, for
+any η ̸= 1/2,
+H
+−(η) >H(η).
+Consider again a singleton domain X ={ x0}. Minimizing
+φ-risk corresponds to choosingf(x0) to minimize Cη(x0)( f(x0)).
+The classiﬁcation-calibrated condition requires that adding the
+constraint that f(x
+0) has the incorrect sign always leads to a
+strictly larger φ-risk.
+Example 1 (Exponential loss) . Consider the loss function
+φ(α) = exp(−α) used by AdaBoost. Figure 2(a) shows φ(α) ,
+φ(−α), and the generic conditionalφ-risk Cη(α) for η = .3 and
+η = .7. In this case φ is strictly convex on R, and hence Cη(α)
+is also strictly convex onR, for everyη.S o Cη is either minimal
+at a unique stationary point or attains no minimum. Indeed, if
+η = 0, then C
+η(α) → 0a s α →− ∞;i f η = 1, then Cη(α) → 0
+as α →∞ . Thus we have H(0) = H(1) = 0 for exponential
+loss. For η ∈ (0, 1), solving for the stationary point yields the
+(a) (b)
+Figure 2. Exponential Loss. (a) φ(α)(
+ ), its reﬂection φ(−α)
+(
+ ), and two different convex combinations of these functions
+[
+ C.3(α);
+ C.7(α)], for η = .3 and η = .7. Note that the minima
+of these combinations are the values H( η), and the minimizing argu-
+ments are the values α∗(η). (b) H(η)(
+ ) and α∗(η)(
+ ) plotted as
+a function of η, and the ψ-transform ψ(θ)(
+ ).
+unique minimizer
+α∗(η) = 1
+2 log
+( η
+1 − η
+)
+.
+We may then simplify the identity H(η) = Cη(α∗(η)) to obtain
+H(η) = 2
+√
+η(1 − η).
+Note that this expression is also correct for η equal to 0 or 1.
+Figure 2(b) shows the graphs of α∗ and H over the interval
+[0, 1]. It is easy to check that
+H−(η) ≡ exp(0) = 1,
+and this is strictly greater than 2 √η(1 − η) when η ̸= 1/2, so
+the exponential loss is classiﬁcation-calibrated.
+2.3 The ψ-Transform and the Relationship
+Between Excess Risks
+We begin by deﬁning a functional transform of the loss func-
+tion. Then Theorem 1 shows that this transform gives optimal
+bounds on excess risk in terms of excess φ-risk.
+Deﬁnition 2. We deﬁne the ψ-transform of a loss func-
+tion as follows. Given φ :R →[ 0,∞), deﬁne the function
+ψ :[−1, 1]→[ 0,∞) by ψ = ˜ψ
+∗∗, where
+˜ψ(θ) = H−
+( 1 + θ
+2
+)
+− H
+( 1 + θ
+2
+)
+,
+and g∗∗ :[−1, 1]→ R is the Fenchel–Legendre biconjugate of
+g :[−1, 1]→ R, which is characterized by
+epi g∗∗ = co epig.
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+142 Journal of the American Statistical Association, March 2006
+Here co S is the closure of the convex hull of the set S,
+and epi g is the epigraph of the function g, that is, the set
+{(x, t) : x ∈[ 0, 1], g(x) ≤ t}. The nonnegativity of ψ is estab-
+lished in Lemma 2, part 7.
+Recall that g is convex if and only if epi g is a convex set,
+and g is closed (epi g is a closed set) if and only if g is lower
+semicontinuous (Rockafellar 1997). By Lemma 2, part 5, ˜ψ is
+continuous, so, in fact, the closure operation in Deﬁnition 2 is
+vacuous. We thus have that ψ is simply the functional convex
+hull of ˜ψ (also known as the greatest convex minorant of ˜ψ),
+ψ = co ˜ψ.
+This is equivalent to the epigraph convex hull condition of the
+deﬁnition; that is, ψ is the largest convex lower bound on ˜ψ.
+This implies that ψ = ˜ψ if and only if ˜ψ is convex; see Exam-
+ple 9 for a loss function where ˜ψ is not convex.
+The importance of theψ-transform is shown by the following
+theorem.
+Theorem 1.
+1. For any nonnegative loss function φ, any measurable
+f : X → R, and any probability distribution on X ×{ ±1},
+ψ
+(
+R( f) − R∗)
+≤ Rφ( f) − R∗
+φ.
+2. Suppose that |X|≥ 2. For any nonnegative loss func-
+tion φ,a n yϵ> 0, and any θ ∈[ 0, 1], there is a probability
+distribution on X ×{ ±1} and a function f : X → R such
+that
+R( f) − R∗ = θ
+and
+ψ(θ) ≤ Rφ( f) − R∗
+φ ≤ ψ(θ) + ϵ.
+3. The following conditions are equivalent:
+a. φ is classiﬁcation-calibrated.
+b. For any sequence (θi) in [0, 1],
+ψ(θi) → 0 if and only if θi → 0.
+c. For every sequence of measurable functions fi :
+X → R and every probability distribution on X ×
+{±1},
+Rφ( fi) → R∗
+φ implies that R( fi) → R∗.
+Here we mention that classiﬁcation-calibration implies ψ is
+invertible on [0, 1], so in that case it is meaningful to write
+the upper bound on excess risk in Theorem 1, part 1 as
+ψ
+−1(Rφ( f) − R∗
+φ). Invertibility follows from convexity of ψ
+together with Lemma 2, parts 6, 8, and 9.
+Zhang (2004) has given a comparison theorem like parts
+1 and 3b of this theorem for convex φ that satisfy certain
+conditions. These conditions imply an assumption on the rate
+of growth (and convexity) of ˜ψ. Lugosi and Vayatis (2004)
+showed that a limiting result like part 3c holds for strictly con-
+vex, differentiable, monotonicφ. The following theorem shows
+that if φ is convex, classiﬁcation-calibration is equivalent to a
+simple derivative condition on φ at 0. Clearly, the conclusions
+of Theorem 1 hold under weaker conditions than those assumed
+by Zhang (2004) or Lugosi and Vayatis (2004). Steinwart
+(2005) has shown that if φ is continuous and classiﬁcation-
+calibrated, then R
+φ( fi) → R∗
+φ implies that R( fi) → R∗. Theo-
+rem 1 shows that we may obtain a more quantitative statement
+of the relationship between these excess risks, under weaker
+conditions.
+It is useful to note that when φ is convex, classiﬁcation-
+calibration is equivalent to a condition on the derivative of φ
+at 0, and in that case the ψ-transform takes a simpliﬁed form.
+Theorem 2.
+1. Let φ be convex. Thenφ is classiﬁcation-calibrated if and
+only if it is differentiable at 0 and φ′(0)< 0.
+2. If φ is convex and classiﬁcation-calibrated, then
+ψ(θ) = φ(0) − H
+( 1 + θ
+2
+)
+.
+In the remainder of this section we present two prelimi-
+nary lemmas and then present a proof of Theorem 1. Note
+that Section 3 presents several examples of calculations of the
+ψ-transform; some readers may want to visit that section ﬁrst
+before proceeding to the proof.
+The following elementary lemma will be useful throughout
+the article.
+Lemma 1. Suppose that g :R → R is convex and g(0) = 0.
+Then
+1. For all λ ∈[ 0, 1] and x ∈ R,
+g(λx) ≤ λg(x).
+2. For all x > 0, 0 ≤ y ≤ x,
+g( y) ≤ y
+xg(x).
+3. g(x)/x is increasing on (0,∞).
+Proof. For part 1, g(λx) = g(λx + (1 − λ)0) ≤ λg(x) +
+(1 − λ)g(0) = λg(x). To see part 2, putλ = y/x in 1. For part 3,
+rewrite part 2 as g( y)/y ≤ g(x)/x.
+Lemma 2. For any nonnegative loss functionφ, the functions
+H, H−, and ψ have the following properties:
+1. H and H− are symmetric about 1/2 and ψ is symmetric
+about 0. For all η ∈[ 0, 1],
+H(η) = H(1 − η), H−(η) = H−(1 − η),
+and
+ψ(η) = ψ(−η).
+2. H is concave and, for 0 ≤ η ≤ 1, it satisﬁes
+H(η) ≤ H
+( 1
+2
+)
+= H−
+( 1
+2
+)
+.
+3. If φ is classiﬁcation-calibrated, then H(η) < H(1/2) for
+all η ̸= 1/2.
+4. H− is concave on [0, 1/2] and on [1/2, 1], and, for
+0 ≤ η ≤ 1, it satisﬁes
+H−(η) ≥ H(η).
+5. H and H− are continuous on [0, 1].
+6. ψ and ˜ψ are continuous on [−1, 1].
+7. ψ is nonnegative and minimal at 0.
+8. ψ(0) = 0.
+9. The following statements are equivalent:
+a. φ is classiﬁcation-calibrated.
+b. ψ(θ)> 0 for all θ ∈ (0, 1].
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+Bartlett, Jordan, and McAuliffe: Convexity, Classiﬁcation, and Risk Bounds 143
+For the proof see Appendix A.
+Proof of Theorem 1. For part 1, it is straightforward to show
+that
+R( f) − R∗
+= R( f) − R(η − 1/2)
+= E
+(
+1
+[
+sign( f(X)) ̸= sign(η(X) − 1/2)
+]
+|2η(X) − 1|
+)
+,
+where 1[/Phi1] is 1 if the predicate /Phi1is true and 0 otherwise (see,
+e.g., Devroye, Györﬁ, and Lugosi 1996). We can apply Jensen’s
+inequality, because ψ is convex by deﬁnition, and the fact that
+ψ(0) = 0 (Lemma 2, part 8) to show that
+ψ
+(
+R( f) − R
+∗)
+≤ Eψ
+(
+1
+[
+sign( f(X)) ̸= sign(η(X) − 1/2)
+]
+|2η(X) − 1|
+)
+= E
+(
+1
+[
+sign( f(X)) ̸= sign(η(X) − 1/2)
+]
+ψ
+(
+|2η(X) − 1|
+))
+.
+Now, from the deﬁnition of ψ, we know that ψ(θ) ≤ ˜ψ(θ) ,s o
+we have
+ψ
+(
+R( f) − R∗)
+≤ E
+(
+1
+[
+sign( f(X)) ̸= sign(η(X) − 1/2)
+] ˜ψ
+(
+|2η(X) − 1|
+))
+= E
+(
+1
+[
+sign( f(X)) ̸= sign(η(X) − 1/2)
+]
+×
+(
+H−(η(X)) − H(η(X))
+))
+= E
+(
+1
+[
+sign( f(X)) ̸= sign(η(X) − 1/2)
+]
+×
+(
+inf
+α:α(2η(X)−1)≤0
+Cη(X)(α) − H(η(X))
+))
+≤ E
+(
+Cη(X)( f(X)) − H(η(X))
+)
+= Rφ( f) − R∗
+φ,
+where we have used the fact that for any x, and in particular
+when sign( f(x)) = sign(η(x) − 1/2),w eh a v e Cη(x)( f(x)) ≥
+H(η(x)).
+For part 2, the ﬁrst inequality is from part 1. For the second
+inequality, ﬁxϵ> 0 and θ ∈[ 0, 1]. From the deﬁnition ofψ,w e
+can choose γ,α 1,α 2 ∈[ 0, 1],f o rw h i c hθ = γα 1 + (1 − γ) α2
+and ψ(θ) ≥ γ ˜ψ(α1) + (1 − γ) ˜ψ(α2) − ϵ/2. Choose distinct
+x1, x2 ∈ X , and choose PX such that PX{x1}= γ , PX{x2}=
+1 − γ , η(x1) = (1 + α1)/2, and η(x2) = (1 + α2)/2. From
+the deﬁnition of H−, we can choose f : X → R such that
+f(x1) ≤ 0, f(x2) ≤ 0, Cη(x1)( f(x1)) ≤ H−(η(x1)) + ϵ/2, and
+Cη(x2)( f(x2)) ≤ H−(η(x2)) + ϵ/2. Then we have
+Rφ( f) − R∗
+φ
+= Eφ(Yf(X)) − infg Eφ(Yg(X))
+= γ
+(
+Cη(x1)( f(x1)) − H(η(x1))
+)
++ (1 − γ)
+(
+Cη(x2)( f(x2)) − H(η(x2))
+)
+≤ γ
+(
+H−(η(x1)) − H(η(x1))
+)
++ (1 − γ)
+(
+H−(η(x2)) − H(η(x2))
+)
++ ϵ/2
+= γ ˜ψ(α1) + (1 − γ) ˜ψ(α2) + ϵ/2
+≤ ψ(θ) + ϵ.
+Furthermore, because sign ( f(x1)) = sign( f(x2)) =− 1b u t
+η(x1),η( x2) ≥ 1/2,
+R( f) − R∗ = E|2η(X) − 1|
+= γ( 2η(x1) − 1) + (1 − γ) (2η(x2) − 1)
+= θ.
+For part 3, ﬁrst note that for any φ, ψ is continuous on [0, 1]
+and ψ(0) = 0 by Lemma 2, parts 6 and 8, and hence θi → 0
+implies that ψ(θi) → 0. Thus we can replace condition 3b by
+3b′. For any sequence (θi) in [0, 1],
+ψ(θi) → 0 implies that θi → 0.
+To see that part (3a) implies 3b ′,l e t φ be classiﬁcation-
+calibrated, and let (θi) be a sequence that does not converge
+to 0. Deﬁne c = lim supθi > 0, and pass to a subsequence with
+limθi = c. Then lim ψ(θi) = ψ(c) by continuity, and ψ(c)> 0
+by classiﬁcation-calibration (Lemma 2, part 9). Thus, for the
+original sequence (θi), we see lim supψ(θi)> 0, so we cannot
+have ψ(θi) → 0.
+To see that part 3b ′ implies 3c, suppose that Rφ( fi) → R∗
+φ .
+By part 1, ψ(R( fi) − R∗) → 0, and part 3b ′ implies that
+R( fi) → R∗.
+Finally, to see that part 3c implies part 3a, suppose that φ is
+not classiﬁcation-calibrated. By deﬁnition, we can choose η ̸=
+1/2 and a sequenceα1,α 2,... such that sign(αi(η−1/2)) =− 1
+but Cη(αi) → H(η).F i xx ∈ X and choose the probability dis-
+tribution P so that PX{x}= 1 and P(Y = 1|X = x) = η. Deﬁne
+a sequence of functions fi : X → R for which fi(x) = αi. Then
+lim R( fi)> R∗, and this is true for any inﬁnite subsequence. But
+Cη(αi) → H(η) implies that Rφ( fi) → R∗
+φ .
+2.4 Examples
+In this section we present several examples of the computa-
+tion of the ψ-transform.
+Example 2 (Exponential loss). Because φ(α) = exp(−α) is
+convex, differentiable, and decreasing, Theorem 2, part 1 im-
+plies that it is classiﬁcation-calibrated, as we have seen. We also
+noted that H(η) = 2√
+η(1 − η). From Theorem 2, part 2,
+ψ(θ) = 1 −
+√
+1 − θ2.
+Figure 2(b) shows the graph of ψ over the interval [0, 1].
+(From Lemma 2, part 1, ψ(θ) = ψ(−θ) for any ψ and any
+θ ∈[ −1, 1].)
+Example 3 (Truncated quadratic loss). Now considerφ(α) =
+(max{1−α, 0})2, as depicted together withφ(−α), C.3(α), and
+C.7(α) in Figure 3(a). This function is convex, differentiable,
+and decreasing at zero, and thus is classiﬁcation-calibrated.
+If η = 0, then it is clear that any α ∈ (−∞,−1] makes C
+η(α)
+vanish. Similarly, any α ∈[ 1,∞) makes the conditional φ-risk
+vanish when η = 1. But when 0 <η< 1, Cη is strictly convex
+with a (unique) stationary point, and solving for it yields
+α∗(η) = 2η − 1. (2)
+Note that, although α∗ is in principle undeﬁned at 0 and 1, we
+could choose to ﬁx α∗(0) =− 1 and α∗(1) = 1, which are valid
+settings. This would extend (2) to all of [0, 1].
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+144 Journal of the American Statistical Association, March 2006
+(a) (b)
+Figure 3. Truncated Quadratic Loss. (a)
+ φ(α);
+ φ(−α);
+C.3(α);
+ C.7(α). (b)
+ α∗(η);
+ H(η);
+ Ψ(θ).
+As in Example 1, we may simplify the identity H(η) =
+Cη(α∗(η)) for 0 <η< 1 to obtain
+H(η) = 4η(1 − η),
+which is also correct for η = 0 and 1, as noted. Thus,
+ψ(θ) = θ2.
+Figure 3(b) shows α∗, H, and ψ.
+Example 4 (Hinge loss) . Here we take φ(α) = max{1 −
+α, 0}, which is shown in Figure 4(a) along withφ(−α), C.3(α),
+and C.7(α).A g a i n ,φ is convex and differentiable at 0 and has
+negative derivative at 0, so it is classiﬁcation-calibrated. By di-
+rect consideration of the piecewise-linear form of C
+η(α),i ti s
+easy to see that for η = 0, each α ≤− 1 makes Cη(α) van-
+ish, just as in Example 3. The same holds for α ≥ 1 when
+η = 1. Now for η ∈ (0, 1), we see that Cη decreases strictly on
+(−∞,−1] and increases strictly on [1,∞). Thus any minima
+must lie in [−1, 1].B u t Cη is linear on [−1, 1], so the mini-
+mum must be attained at 1 for η> 1/2, −1f o r η< 1/2, and
+anywhere in [−1, 1] for η = 1/2. We have argued that
+α∗(η) = sign(η − 1/2) (3)
+for all η ∈ (0, 1) other than 1/2. Because (3) yields valid min-
+ima at 0, 1/2, and 1 as well, we could choose to extend it to the
+entire unit interval. Regardless, a simple direct veriﬁcation as in
+the previous examples shows
+H(η) = 2m i n{η, 1 − η}
+for 0 ≤ η ≤ 1, and so
+ψ(θ) =| θ|.
+We present α∗, H, and ψ in Figure 4(b).
+(a) (b)
+Figure 4. Hinge Loss. (a)
+ φ(α);
+ φ(−α);
+ C.3(α);
+C.7(α). (b)
+ α∗(η);
+ H(η);
+ Ψ(θ).
+Example 5 (Distance-weighted discrimination). Marron and
+Todd (2002) introduced the distance-weighted discrimination
+method for high-dimensional, small-sample-size problems.
+This method chooses an element of the unit ball in a repro-
+ducing kernel Hilbert space to minimize a certain criterion. It is
+straightforward to show that this criterion is an empiricalφ-risk,
+for the loss function
+φ(α) =
+
+
+
+
+
+1
+α if α ≥ γ
+1
+α
+(
+2 − α
+γ
+)
+otherwise,
+where γ is a positive constant. Note that φ is convex, differen-
+tiable, decreasing, and hence classiﬁcation-calibrated. It is easy
+to verify that
+H(η) = 1
+η(1 + 2m i n{η, 1 − η}),
+and hence
+ψ(θ) = |θ|
+γ .
+Example 6 (ARC–X4). Breiman (1999) proposed ARC–X4,
+a boosting algorithm based on the convex cost function
+φ(α) =| 1 − α|5.
+More generally, consider the function φ(α) =| 1 − α|p for
+p > 1. This is convex and has φ′(0)< 0, so it is classiﬁcation-
+calibrated. Furthermore, it is easy to verify that for η ∈ (0, 1),
+α∗(η) = η1/( p−1) − (1 − η)1/( p−1)
+η1/( p−1) + (1 − η)1/( p−1) ,
+and so
+H(η) = 2pη(1 − η)
+((1 − η)1/( p−1) + η1/( p−1))p−1
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+Bartlett, Jordan, and McAuliffe: Convexity, Classiﬁcation, and Risk Bounds 145
+and
+ψ(θ) = φ(0) − H
+( 1 − θ
+2
+)
+= 1 − 2p−1(1 − θ2)
+((1 − θ)1/( p−1) + (1 + θ)1/( p−1))p−1 .
+Example 7 (Sigmoid loss) . We conclude by examining a
+nonconvex loss function. Let φ(α) = 1 − tanh(kα) for some
+ﬁxed k > 0. Figure 5(a) depicts φ(α) with k = 1, as well as
+φ(−α), C.3(α), and C.7(α). Using the fact that tanh is an odd
+function, we can rewrite the conditional φ-risk as
+Cη(α) = 1 + (1 − 2η) tanh(kα). (4)
+From this expression, two facts are clear. First, when η = 1/2,
+every α minimizes Cη(α), because it is identically 1. Second,
+when η ̸= 1/2, Cη(α) attains no minimum, because tanh has no
+maximal or minimal value on R. Hence α∗ is not deﬁned for
+any η.
+Inspecting (4), for 0 ≤ η< 1/2 we obtain H(η) = 2η by let-
+ting α →− ∞. Analogously, when α →∞ , we get H(η) =
+2(1 − η) for 1/2 <η ≤ 1. Thus we have
+H(η) = 2m i n{η, 1 − η}, 0 ≤ η ≤ 1.
+Because H−((1 + θ)/2) ≡ φ(0) = 1, we have
+˜ψ(θ) =| θ|,
+and convexity gives ψ = ˜ψ. We present H and ψ in Fig-
+ure 5(b). Finally, the foregoing considerations imply that sig-
+moid loss is classiﬁcation-calibrated, provided that we note
+that the deﬁnition of classiﬁcation-calibration requires nothing
+when η = 1/2.
+(a) (b)
+Figure 5. Sigmoid Loss. (a)
+ φ(α);
+ φ(−α);
+ C.3(α);
+C.7(α). (b)
+ H(η);
+ Ψ(θ).
+The following example illustrates the difﬁculties with non-
+differentiability at 0, even ifφ is decreasing and strictly convex.
+Example 8. Consider
+φ(α) =
+{
+e−2α if α ≤ 0
+e−α otherwise.
+Then φ is strictly convex and decreasing, but not classiﬁcation-
+calibrated.
+To see this, note that
+ηφ(α) + (1 − η)φ(−α) =
+{
+ηe−2α + (1 − η)eα if α ≤ 0
+ηe−α + (1 − η)e2α otherwise.
+(5)
+Taking derivatives and setting to 0 shows that (5) is minimized
+on the set {α ≤ 0} at
+α = min
+(
+0, 1
+3 ln 2η
+1 − η
+)
+.
+Thus, if η< 1/2 and 2η ≥ 1 − η (i.e., 1/3 ≤ η< 1/2), then the
+optimal α is at least 0.
+2.5 Further Analysis of ψ
+It is interesting to consider what properties of convex cost
+functions determine the optimal bound ψ on excess risk in
+terms of excess φ-risk. The following lemma shows that a ﬂat-
+ter function φ leads to a better bound ψ. The measure of cur-
+vature that we consider involves the Bregman divergence of φ
+at 0. If φ is convex and classiﬁcation-calibrated, then it is dif-
+ferentiable at 0, and we can deﬁne the Bregman divergence ofφ
+at 0,
+dφ(0,α) = φ(α) −
+(
+φ(0) + αφ′(0)
+)
+.
+We consider a symmetrized, normalized version of the Breg-
+man divergence at 0, for α> 0,
+ξ(α) = dφ(0,α) + dφ(0,−α)
+−φ′(0)α .
+Because φ is convex on R, both φ and ξ are continuous, so we
+can deﬁne
+ξ−1(θ) = inf{α :ξ(α) = θ}.
+Lemma 3. For convex, classiﬁcation-calibrated φ,
+ψ(θ) ≥− φ′(0)θ
+2ξ−1
+( θ
+2
+)
+.
+Notice that a slower increase ofξ (i.e., a less curved φ)g i v e s
+better bounds on R( f) − R∗ in terms of Rφ( f) − R∗
+φ .
+2.6 General Loss Functions
+All of the classiﬁcation procedures mentioned in earlier
+sections use surrogate loss functions that either are upper
+bounds on 0–1 loss or can be transformed into upper bounds
+through a positive scaling factor. This is not a coincidence; as
+the next lemma establishes, it must be possible to scale any
+classiﬁcation-calibrated φ into such a majorant.
+Lemma 4. If φ :R →[ 0,∞) is classiﬁcation-calibrated, then
+there is a γ> 0 such that γφ( α)≥ 1[α ≤ 0] for all α ∈ R.
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+146 Journal of the American Statistical Association, March 2006
+(a) (b)
+Figure 6. The Loss Function of Example 9 (a) and the Corresponding (nonconvex) ˜ψ (b). The dotted lines depict the graphs for the two linear
+functions of which ˜ψ is a pointwise minimum.
+We have seen that for convex φ, the function ˜ψ is convex,
+and so ψ = ˜ψ. The following example shows that, in general,
+we cannot avoid computing the convex lower boundψ.
+Example 9. Consider the following (classiﬁcation-calibra-
+ted) loss function; see Figure 6(a):
+φ(α) =
+
+
+
+4i f α ≤ 0, α ̸=− 1
+3i f α =− 1
+2i f α = 1
+0i f α> 0, α ̸= 1.
+It is easy to check that
+H−(η) =
+{ min{4η, 2 + η} if η ≥ 1/2
+min{4(1 − η), 3 − η} if η< 1/2,
+and that H(η) = 4m i n{η, 1 − η}. Thus
+H−(η) − H(η) =
+{ min{8η − 4, 5η − 2} if η ≥ 1/2
+min{4 − 8η, 3 − 5η} if η< 1/2,
+so
+˜ψ(θ) = min
+{
+4θ, 1
+2(5θ + 1)
+}
+.
+This function, illustrated in Figure 6(b), is not convex; in fact,
+it is concave. Thus ψ ̸= ˜ψ.
+3. TIGHTER BOUNDS UNDER
+LOW–NOISE CONDITIONS
+Predicting the optimal class label is difﬁcult in regions where
+η(X) is close to 1 /2, because the information provided by the
+labels is most noisy there. In many practical pattern classiﬁ-
+cation problems, it is reasonable to assume that the posterior
+probability η(X) is unlikely to be very close to 1/2. Hence it is
+important to understand how pattern classiﬁcation methods per-
+form under these “low-noise” conditions. To quantify the notion
+of low noise, consider the following two properties of a prob-
+ability distribution on X ×{ ±1}, introduced by Mammen and
+Tsybakov (1999) and Tsybakov (2004):
+M
+β .F o r s o m ec and all ϵ> 0,
+Pr
+(
+0 <
+⏐⏐
+⏐
+⏐η(X) − 1
+2
+⏐⏐
+⏐
+⏐≤ ϵ
+)
+≤ cϵ
+β.
+Nα.F o r s o m ec and all measurable f : X →{ ±1},
+Pr
+(
+f(X)(η(X) − 1/2)< 0
+)
+≤ c
+(
+R( f) − R∗)α. (6)
+These conditions are equivalent.
+Lemma 5. For 0 ≤ β< ∞, a probability distribution satis-
+ﬁes Mβ iff it satisﬁes Nβ/(1+β) . Furthermore, M∞ is equivalent
+to N1, because
+Pr
+(
+0 <
+⏐⏐
+⏐
+⏐η(X) − 1
+2
+⏐⏐
+⏐
+⏐< 1
+2c
+)
+= 0( 7 )
+iff, for all measurable f : X →{ ±1},
+Pr
+(
+f(X)(η(X) − 1/2)< 0
+)
+≤ c
+(
+R( f) − R∗)
+. (8)
+In what follows, we say that P has noise exponent α ≥ 0i fi t
+satisﬁes Nα. Recall that
+R( f) − R∗ = E
+(
+1
+[
+f(X) ̸= sign(η(X) − 1/2)
+]
+|2η(X) − 1|
+)
+= E
+(
+1
+[
+f(X)(η(X) − 1/2)< 0
+]
+|2η(X) − 1|
+)
+≤ PX
+(
+f(X)(η(X) − 1/2)< 0
+)
+, (9)
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+Bartlett, Jordan, and McAuliffe: Convexity, Classiﬁcation, and Risk Bounds 147
+which implies that α ≤ 1. If α = 0, then this imposes no con-
+straint on the noise. Take c = 1 to see that every probability
+measure satisﬁes N1.
+The following theorem shows that if the probability distrib-
+ution is such that η(X) is unlikely to be close to 1 /2, then the
+bound on the excess risk in terms of the excess φ-risk is im-
+proved. In cases where ψ is strictly convex, such as the expo-
+nential, quadratic, and logistic loss functions, this implies that
+performance improves in the presence of a favorable noise ex-
+ponent, without knowledge of the noise exponent.
+Theorem 3. Suppose that P has noise exponent 0 <α ≤ 1,
+and that φ is classiﬁcation-calibrated. Then there is ac > 0 such
+that for any f : X → R,
+c
+(
+R( f) − R
+∗)αψ
+( (R( f) − R∗)1−α
+2c
+)
+≤ Rφ( f) − R∗
+φ.
+Furthermore, this never gives a worse rate than the result of
+Theorem 1, because
+(
+R( f) − R∗)αψ
+( (R( f) − R∗)1−α
+2c
+)
+≥ ψ
+( R( f) − R∗
+2c
+)
+.
+Proof. Recalling the deﬁnition of low noise in (6), ﬁx c > 0
+such that for every f : X → R,
+PX
+(
+sign( f(X)) ̸= sign(η(X) − 1/2)
+)
+≤ c
+(
+R( f) − R∗)α.
+We approximate the error integral separately over a region with
+high noise and over the remainder of the input space. Toward
+this end, ﬁx ϵ> 0 (the noise threshold), and note that
+R( f) − R∗
+= E
+(
+1
+[
+sign( f(X)) ̸= sign(η(X) − 1/2)
+]
+|2η(X) − 1|
+)
+= E
+(
+1
+[
+|2η(X) − 1| <ϵ
+]
+× 1
+[
+sign( f(X)) ̸= sign(η(X) − 1/2)
+]
+|2η(X) − 1|
+)
++ E
+(
+1
+[
+|2η(X) − 1|≥ ϵ
+]
+× 1
+[
+sign( f(X)) ̸= sign(η(X) − 1/2)
+]
+|2η(X) − 1|
+)
+≤ cϵ(R( f) − R∗)α
++ E
+(
+1
+[
+|2η(X) − 1|≥ ϵ
+]
+× 1
+[
+sign( f(X)) ̸= sign(η(X) − 1/2)
+]
+|2η(X) − 1|
+)
+.
+Now, for any x,
+1
+[
+|2η(x) − 1|≥ ϵ
+]
+|2η(x) − 1|≤ ϵ
+ψ(ϵ)ψ
+(
+|2η(x) − 1|
+)
+. (10)
+Indeed, when |2η(x)− 1| <ϵ, (10) follows from the fact thatψ
+is nonnegative (Lemma 2, parts 2, 8, and 9), and when|2η(x)−
+1|≥ ϵ, (10) follows from Lemma 1, part 2.
+Thus, using the same argument as in the proof of Theorem 1,
+R( f) − R∗
+≤ cϵ
+(
+R( f) − R∗)α
++ ϵ
+ψ(ϵ)E
+(
+1
+[
+sign( f(X)) ̸= sign(η(X) − 1/2)
+]
+× ψ
+(
+|2η(X) − 1|
+))
+≤ cϵ
+(
+R( f) − R∗)α + ϵ
+ψ(ϵ)
+(
+Rφ( f) − R∗
+φ
+)
+,
+and hence( R( f) − R∗
+ϵ − c
+(
+R( f) − R∗)α
+)
+ψ(ϵ)≤ Rφ( f) − R∗
+φ.
+Choosing
+ϵ= 1
+2c
+(
+R( f) − R∗)1−α
+and substituting gives the ﬁrst inequality. [We can assume that
+R( f) − R∗ > 0, because the inequality is trivial otherwise.]
+The second inequality follows from the fact that ψ(θ)/θ is
+nondecreasing, which we know from Lemma 1, part 3.
+4. ESTIMATION RATES
+In previous sections we showed that the excess risk,
+R( f) − R∗, can be bounded in terms of the excess φ-risk,
+Rφ( f)−R∗
+φ . In this section we give bounds on the excessφ-risk.
+Combined with our earlier results, these lead to bounds on the
+excess risk. We focus on methods that choose a function from
+ac l a s sF to minimize the empirical φ-risk,
+ˆR
+φ( f) = ˆEφ(Yf(X)) = 1
+n
+n∑
+i=1
+φ(Yi f(Xi)).
+Let ˆf denote the minimizer of the empirical φ-risk. We are
+interested in the convergence of ˆf ’s excessφ-risk, Rφ( ˆf) − R∗
+φ .
+We can split this excessφ-risk into an estimation error term and
+an approximation error term,
+Rφ( ˆf) − R∗
+φ =
+(
+Rφ( ˆf) − inf
+f∈F
+Rφ( f)
+)
++
+(
+inf
+f∈F
+Rφ( f) − R∗
+φ
+)
+.
+We focus on the ﬁrst term, the estimation error term. We assume
+throughout that some f∗ ∈ F achieves the inﬁmum,
+Rφ( f∗) = inf
+f∈F
+Rφ( f).
+The simplest way to bound Rφ( ˆf) − Rφ( f∗) is to use a uni-
+form convergence argument; if
+sup
+f∈F
+|ˆRφ( f) − Rφ( f)|≤ ϵn, (11)
+then
+Rφ( ˆf) − Rφ( f∗)
+=
+(
+Rφ( ˆf) − ˆRφ( ˆf)
+)
++
+( ˆRφ( ˆf) − ˆRφ( f∗)
+)
++
+( ˆRφ( f∗) − Rφ( f∗)
+)
+≤ 2ϵn +
+( ˆRφ( ˆf) − ˆRφ( f∗)
+)
+≤ 2ϵn,
+because ˆf minimizes ˆRφ . But this approach can give the wrong
+rate. For example, for a nontrivial class F, the expectation of
+the supremum of the empirical process in (11) can decrease no
+faster than 1/√n.B u ti f F is a small class (e.g., if it is a sub-
+set of a ﬁnite-dimensional linear class) and Rφ( f∗) = 0, then
+Rφ( ˆf) should decrease as log n/n.
+Lee, Bartlett, and Williamson (1996) showed that better rates
+than those that follow from the uniform convergence argument
+can be obtained for the quadratic loss φ(α) = (1 − α)2 if F is
+convex, even ifRφ( f∗)> 0. In particular, because the quadratic
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+148 Journal of the American Statistical Association, March 2006
+loss function is strictly convex, it is possible to bound the vari-
+ance of the excess loss (i.e., the difference between the loss of a
+function f and that of the optimalf∗) in terms of its expectation.
+Because the variance decreases as we approach the optimal f∗,
+the risk of the empirical minimizer converges more quickly to
+the optimal risk than the simple uniform convergence results
+would suggest. Mendelson (2002) improved this result and ex-
+tended it from prediction in L
+2(PX) to prediction in Lp(PX) for
+other values of p. The proof used the idea of the modulus of
+convexity of a norm. In this section we use this idea to give a
+simpler proof of a more general bound when the loss function
+satisﬁes a strict convexity condition, and we obtain risk bounds.
+The modulus of convexity of an arbitrary strictly convex
+function (rather than a norm) is a key notion in formulating
+our results. Recall that a pseudometric d on a set S satisﬁes all
+of the axioms of a metric, except that there can be a ̸= b with
+d(a, b) = 0.
+Deﬁnition 3 (Modulus of convexity) . Given a pseudomet-
+ric d deﬁned on a convex subset S of a vector space, and a
+convex function f : S → R,t h e modulus of convexity of f with
+respect to d is the function δ :[0,∞) →[ 0,∞] satisfying
+δ(ϵ)= inf
+{ f(x
+1) + f(x2)
+2 − f
+( x1 + x2
+2
+)
+:
+x1, x2 ∈ S, d(x1, x2) ≥ ϵ
+}
+.
+If δ(ϵ) >0 for all ϵ> 0, then we say that f is strictly convex
+with respect to d.
+For example, for S = R, d denoting the Euclidean distance,
+and f(α) = α2, the modulus of convexity is δ(ϵ)= ϵ2/4. For
+S =[ −a, a] and the same metric, f(α) = eα has modulus of
+convexity e−a((1 + eϵ)/2 − eϵ/2) = e−aϵ2/8 + o(ϵ2).
+We consider loss functions φ that also satisfy a Lipschitz
+condition with respect to a pseudometric d on R; we say that
+φ :R → R is Lipschitz with respect to d, with constant L,i f
+for all a, b ∈ R, |φ(a) − φ(b)|≤ L · d(a, b).
+Note that if d is a metric and φ is convex, then φ necessar-
+ily satisﬁes a Lipschitz condition on any compact subset of R
+(Rockafellar 1997).
+Assumption A. The loss function φ :R → R and the class F
+of real functions on X satisfy the following conditions. For
+some pseudometric d on R, there are constants L, c, r, and B,
+such that the following conditions obtain:
+A.1. φ is classiﬁcation-calibrated.
+A.2. φ is Lipschitz with constant L, with respect to d.
+A.3. φ is convex with modulus of convexityδ(ϵ)≥ cϵr with
+respect to d.
+A.4. F is convex.
+A.5. For all f ∈ F, x1, x2 ∈ X , and y1, y2 ∈ Y, d( y1 f(x1),
+y2 f(x2)) ≤ B.
+Deﬁne the excess loss class gF as
+gF ={ gf : f ∈ F}=
+{
+(x, y) ↦→ φ( yf(x)) − φ( yf∗(x)) : f ∈ F
+}
+,
+where f∗ = arg minf∈F Eφ(Yf(X)). Notice that functions
+in gF can take negative values, but they all have nonnegative
+expectation. We are interested in bounds on the excess φ-risk,
+Rφ( ˆf) − R∗
+φ , where ˆf is the minimizer of the empirical φ-risk.
+This is equivalent to the expectation of gˆf , where gˆf is the ele-
+ment of the loss class with minimal sample average.
+In the following theorem, we exploit the concentration of
+measure phenomenon to give a bound on the excess φ-risk.
+A standard uniform convergence argument, described at the be-
+ginning of this section, could proceed by considering the supre-
+mum of the empirical process indexed by the loss class,
+E sup{Eg − ˆEg : g ∈ g
+F}.
+This corresponds to considering the maximal deviation between
+expectations and sample averages over the loss class. Instead,
+we use an approach introduced by Bartlett and Mendelson
+(2005) (see also Massart 2000b; Koltchinskii and Panchenko
+2000; Mendelson 2002; Lugosi and Wegkamp 2004; Bartlett,
+Bousquet, and Mendelson 2005). We divide the excess loss
+class into subsets of different expectation, {g ∈ g
+F : Eg = ϵ},
+and consider the suprema of the empirical processes indexed
+by such subsets,
+ξ
+gF (ϵ)= E sup{Eg − ˆEg : g ∈ gF, Eg = ϵ}.
+(Note that the function ξgF depends on the sample size n,
+but we simplify the notation by omitting this dependence.)
+For strictly convex Lipschitz φ and convex F, the variance of
+each excess loss function is bounded in terms of its expecta-
+tion, which allows us to replace the maximal deviation over the
+whole class by the maximal deviation over a small subset of the
+class: those functions with expectationϵ
+∗
+n , where ϵ∗
+n is the ﬁxed
+point of the map ϵ↦→ ξgF (ϵ).
+Theorem 4. Suppose that the loss functionφ and the function
+class F satisfy Assumption A. Then there is a constant K such
+that, with probability at least 1 − δ, the minimizer ˆf ∈ F of the
+empirical φ-risk satisﬁes
+Rφ( ˆf) ≤ inf
+f∈F
+Rφ( f) + ϵn,
+where
+ϵn = K max
+{
+ϵ∗
+n,
+( crL2 ln(1/δ)
+n
+) 1/(2−β)
+, BL ln(1/δ)
+n
+}
+,
+ϵ∗
+n ≥ ξgF (ϵ∗
+n),
+cr =
+{
+(2c)−2/r if r ≥ 2
+(2c)−1B2−r otherwise,
+and
+β = min
+(
+1, 2
+r
+)
+.
+Thus there is a constant c′such that for any probability distri-
+bution P on X × Y with noise exponent α, with probability at
+least 1 − δ,
+c′(
+R( ˆf) − R∗)αψ
+( (R( ˆf) − R∗)1−α
+2c′
+)
+≤ ϵn + inf
+f∈F
+Rφ( f) − R∗
+φ.
+It is instructive to consider the various components of the
+classiﬁcation risk in this bound. The estimation error, ϵn,i n -
+creases as the complexity of the class F increases and de-
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+Bartlett, Jordan, and McAuliffe: Convexity, Classiﬁcation, and Risk Bounds 149
+creases as the sample size increases. The approximation error,
+inff∈F Rφ( f) − R∗
+φ , is expressed in terms of the φ-risk. It de-
+creases as the class F increases. Finally, using the convex sur-
+rogate φ in place of the 0–1 loss affects the bound through the
+rate of growth of the function of R( ˆf) − R∗ that appears on the
+left side. The rate of decrease of classiﬁcation risk improves as
+the noise exponent increases.
+Consider the impact on the bound of the modulus of con-
+vexity of the loss function. For ﬂatter loss functions, where the
+exponent of the modulus of convexity r > 2, the rate can be no
+better than n−1/(2−2/r) = n−r/(2(r−1)), which approaches n−1/2
+as r gets large. For more curved φ, with r ≤ 2, the rate can be
+as good as n−1. In contrast, we have seen that a more curved φ
+leads to a worse ψ. But, if the noise exponent isα = 1, then the
+bound is optimized by a more curved φ, with r ≥ 2.
+Shen, Tseng, Zhang, and Wong (2003) showed that fast rates
+are also possible under the low-noise assumption for a par-
+ticular nonconvex φ. In that case, however, minimization of
+empirical φ-risk requires the use of heuristics, because the
+optimization problem cannot be solved efﬁciently.
+In the remainder of this section, we present a proof of Theo-
+rem 4. This proof has two key ingredients, which we capture in
+a pair of lemmas. The ﬁrst lemma shows that if the variance of
+an excess loss function is bounded in terms of its expectation,
+then we can obtain faster rates than would be implied by the
+uniform convergence bounds. The second lemma presents sim-
+ple conditions on the loss function that ensure that this variance
+bound is satisﬁed for convex function classes.
+Lemma 6. Consider a class F of functions f : X → R with
+sup
+f∈F ∥f∥∞ ≤ B.L e t P be a probability distribution on X ,
+and suppose that there are c ≥ 1 and 0 <β ≤ 1 such that, for all
+f ∈ F,
+Ef 2(X) ≤ c(Ef)β. (12)
+Fix 0 <α ,ϵ< 1. Suppose that if some f ∈ F has ˆEf ≤ αϵ and
+Ef ≥ ϵ, then some f′∈ F has ˆEf′≤ αϵ and Ef = ϵ. Then with
+probability at least 1 − e−x,a n yf ∈ F satisﬁes
+ˆEf ≤ αϵ /equal1⇒ Ef ≤ ϵ,
+provided that
+ϵ≥ max
+{
+ϵ∗,
+( 9cKx
+(1 − α)2n
+) 1/(2−β)
+, 4KBx
+(1 − α)n
+}
+,
+where K is an absolute constant and
+ϵ∗ ≥ 6
+1 − αξF(ϵ∗).
+As an aside, notice that assuming that the distribution has
+noise exponent α can lead to a condition of the form (12). To
+see this, let f∗ be the Bayes decision rule and consider the class
+of functions {αgf : f ∈ F,α ∈[ 0, 1]}, where
+gf (x, y) = ℓ(f(x), y) − ℓ(f∗(x), y)
+and ℓis the 0–1 loss. Then the condition
+PX
+(
+f(X) ̸= f∗(X)
+)
+≤ c
+(
+Eℓ(f(X), Y) − Eℓ(f∗(X), Y)
+)α
+can be rewritten as
+Eg2
+f (X, Y) ≤ c(Egf (X, Y))α.
+Thus we can obtain a version of Tsybakov’s result for small
+function classes from Lemma 6: If the Bayes decision rulef∗ is
+in F, then the function ˆf that minimizes empirical risk has
+ˆEgˆf = ˆR( f) − ˆR( f∗) ≤ 0,
+and so with high probability hasEgˆf = R( f)−R∗ ≤ ϵunder the
+conditions of the theorem. If F is a VC class, then we haveϵ≤
+c log n/n for some constant c, which is surprisingly fast when
+R∗ > 0.
+The second ingredient in the proof of Theorem 4 is the fol-
+lowing lemma, which gives conditions that ensure a variance
+bound of the kind required for the previous lemma [condi-
+tion (12)]. For a pseudometric d on R and a probability dis-
+tribution on X , we can deﬁne a pseudometric ˜d on the set of
+uniformly bounded real functions on X ,
+˜d( f, g) =
+(
+Ed
+(
+f(X), g(X)
+)
+2)1/2.
+If d is the usual metric on R, then ˜d is the L2(P) pseudometric.
+Lemma 7. Consider a convex class F of real-valued func-
+tions deﬁned on X , a convex loss function ℓ:R → R, and a
+pseudometric d on R. Suppose that ℓ satisﬁes the following
+conditions:
+1. ℓis Lipschitz with respect to d, with constant L,
+for all a, b ∈ R, |ℓ(a) − ℓ(b)|≤ Ld(a, b).
+2. R( f) = Eℓ(f) is a strictly convex functional with respect
+to the pseudometric ˜d, with modulus of convexity ˜δ,
+˜δ(ϵ)= inf
+{ R( f) + R(g)
+2 − R
+( f + g
+2
+)
+: ˜d( f, g) ≥ ϵ
+}
+.
+Suppose that f∗ satisﬁes R( f∗) = inff∈F R( f), and deﬁne
+gf (x) = ℓ(f(x)) − ℓ(f∗(x)).
+Then
+Egf ≥ 2˜δ(˜d( f, f∗)) ≥ 2˜δ
+( √
+Eg2
+f
+L
+)
+.
+We apply the lemma to a class of functions of the form
+(x, y) ↦→ yf(x), with the loss function ℓ= φ. (The lemma can
+be trivially extended to a loss function ℓ:R × Y → R that sat-
+isﬁes a Lipschitz constraint uniformly over Y.)
+In our application, the following result implies that we can
+estimate the modulus of convexity of Rφ with respect to the
+pseudometric ˜d if we have some information about the modulus
+of convexity of φ with respect to the pseudometric d.
+Lemma 8. Suppose that a convex function ℓ:R → R has
+modulus of convexity δ with respect to a pseudometric d on R,
+and that for some ﬁxed c, r > 0, every ϵ> 0 satisﬁes
+δ(ϵ)≥ cϵr.
+Then for functions f : X → R satisfying sup x1,x2 d( f(x1),
+f(x2)) = B, the modulus of convexity ˜δ of R( f) = Eℓ(f) with
+respect to the pseudometric ˜d satisﬁes
+˜δ(ϵ)≥ crϵmax{2,r},
+where cr = c if r ≥ 2 and cr = cBr−2 otherwise.
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+150 Journal of the American Statistical Association, March 2006
+It is also possible to prove a converse result, that the mod-
+ulus of convexity of φ is at least the inﬁmum over probability
+distributions of the modulus of convexity of R. [To see this,
+we choose a probability distribution concentrated on the x ∈ X
+where f1(x) and f2(x) achieve the inﬁmum in the deﬁnition of
+the modulus of convexity.]
+Proof of Theorem 4. Consider the class {gf : f ∈ F} where,
+for each f ∈ F,
+gf (x, y) = φ( yf(x)) − φ( yf∗(x)),
+and where f∗ ∈ F minimizes Rφ( f) = Eφ(Yf(X)). Applying
+Lemma 8, we see that the functionalR( f) = Eφ( f), deﬁned for
+functions (x, y) ↦→ yf(x), has modulus of convexity
+˜δ(ϵ)≥ crϵmax{2,r},
+where cr = c if r ≥ 2 and cr = cBr−2 otherwise. From
+Lemma 7,
+Egf ≥ 2cr
+( √
+Eg2
+f
+L
+) max{2,r}
+,
+which is equivalent to
+Eg2
+f ≤ c′
+rL2(Egf )min{1,2/r}
+with
+c′
+r =
+{
+(2c)−2/r if r ≥ 2
+(2c)−1B2−r otherwise.
+To apply Lemma 6 to the class {gf : f ∈ F}, we need to check
+the condition. Suppose thatgf has ˆEgf ≤ αϵand Egf ≥ ϵ. Then,
+by the convexity of F and the continuity of φ,s o m ef′= γ f +
+(1 − γ) f∗ ∈ F,f o r0 ≤ γ ≤ 1 has Egf = ϵ. Jensen’s inequality
+shows that
+ˆEgf = ˆEφ
+(
+Y
+(
+γ f(X) + (1 − γ) f∗(X)
+))
+− ˆEφ(Yf∗(X))
+≤ γ
+( ˆEφ(Yf(x)) − ˆEφ(Yf∗(X))
+)
+≤ αϵ.
+Applying Lemma 6 we have, with probability at least 1 − e−x,
+that any gf with ˆEgf ≤ ϵ/2 also has Egf ≤ ϵ, provided that
+ϵ≥ max
+{
+ϵ∗,
+( 36c′
+rL2Kx
+n
+) 1/(2−min{1,2/r})
+, 16KBLx
+n
+}
+,
+where ϵ∗ ≥ 12ξgF (ϵ∗). In particular, if ˆf ∈ F minimizes empir-
+ical risk, then
+ˆEgˆf = ˆRφ( ˆf) − ˆRφ( f∗) ≤ 0 < ϵ
+2,
+and hence Egˆf ≤ ϵ.
+Combining with Theorem 3 shows that for some c′,
+c′(
+R( ˆf) − R∗)αψ
+( (R( ˆf) − R∗)1−α
+2c′
+)
+≤ Rφ( ˆf) − R∗
+φ
+= Rφ( ˆf) − Rφ( f∗) + Rφ( f∗) − R∗
+φ
+≤ ϵ+ Rφ( f∗) − R∗
+φ.
+4.1 Examples
+We consider four loss functions that satisfy the requirements
+for the fast convergence rates: the exponential loss function
+used in AdaBoost, the deviance function corresponding to lo-
+gistic regression, the quadratic loss function, and the truncated
+quadratic loss function; see Table 1. These functions are illus-
+trated in Figures 1 and 3. We use the pseudometric
+d
+φ(a, b) = inf
+{
+|a − α|+| β − b| :
+φ constant on (min{α,β }, max{α,β })
+}
+.
+For all functions except the truncated quadratic loss function,
+this corresponds to the standard metric onR, dφ(a, b) =| a−b|.
+In all cases, dφ(a, b) ≤| a − b|, but for the truncated quadratic,
+dφ ignores differences to the right of 1. It is easy to calculate the
+Lipschitz constant and modulus of convexity for each of these
+loss functions. These parameters are given in Table 1.
+In the following result, we consider the function class used by
+algorithms such as AdaBoost: the class of linear combinations
+of classiﬁers from a ﬁxed base class. We assume that this base
+class has ﬁnite VC dimension, and constrain the size of the class
+by restricting the ℓ
+1 norm of the linear parameters. If G is the
+VC class, then we writeF = B absconv(G) for some constantB,
+where
+B absconv(G) =
+{ m∑
+i=1
+αigi : m ∈ N,α i ∈ R, gi ∈ G,∥α∥1 = B
+}
+.
+Theorem 5. Let φ :R → R be a convex loss function. Sup-
+pose that on the interval [−B, B], φ is Lipschitz with con-
+stant LB and has modulus of convexity δ(ϵ)= aBϵ2 (both with
+respect to the pseudometric d).
+For any probability distribution P on X × Y that has noise
+exponent α, there is a constant c′ for which the following is
+true. For iid data (X1, Y1),...,( Xn, Yn),l e t ˆf ∈ F be the min-
+imizer of the empirical φ-risk, Rφ( f) = ˆEφ(Yf(X)). Suppose
+that F = B absconv(G), where G ⊆{ ±1}X has VC dimensionV
+and
+ϵ∗
+n ≥ BLB max
+{( LBaB
+B
+) 1/(V+1)
+, 1
+}
+n−(V+2)/(2(V+1)).
+Then, with probability at least 1 − δ,
+R( ˆf) ≤ R∗ + c′
+(
+ϵ∗
+n + LB(LB/(2aB) + B) ln(1/δ)
+n
++ inf
+f∈F
+Rφ( f) − R∗
+φ
+) 1/(2−α)
+.
+Table 1. Four Convex Loss Functions Deﬁned on R
+φ(α)L B δ(ϵ)
+Exponential e−α eB e−Bϵ2/8
+Logistic ln (1 + e−2α)2 e−2Bϵ2/4
+Quadratic (1 − α)2 2(B + 1) ϵ2/4
+Truncated quadratic ( max {0, 1 − α})2 2(B + 1) ϵ2/4
+NOTE: On the interval [ −B, B], each has the indicated Lipschitz constant L B and modulus of
+convexity δ(ϵ) with respect to dφ . All have a quadratic modulus of convexity.
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+Bartlett, Jordan, and McAuliffe: Convexity, Classiﬁcation, and Risk Bounds 151
+4.2 Simulations
+This section describes a set of simulations that illustrate the
+performance of the excess risk bound based on theψ-transform,
+as well as the theoretical excessφ-risk rates obtained from The-
+orem 4. We took X =[ −1, 1]10 as our covariate space, with
+PX equal to the uniform distribution on X . For the conditional
+distribution η(x), we used members of a parameterized family
+based on the logistic function,
+ηq(x) = P(Y = 1|x) = σ
+(
+C sign(x1)|x1|q)
+, q > 0,
+where σ( u) = 1/(1 + exp(−u)). Varying q results in different
+noise exponents for the conditional distribution; it is straight-
+forward to see that P
+X (0 < |2ηq(X) − 1| <ϵ )<( 4/C)1/qϵ1/q,
+so Lemma 5 implies that ηq has noise exponent 1/(q + 1).W e
+chose the constant C so that ηq(−1) = 1/4 and ηq(1) = 3/4,
+for all q.
+The margin-based loss functions in our simulations also
+came from a one-dimensional family, indexed by p > 1,
+φp(α) = ( p − 1)(2/p)p/( p−1) − 2α +| α|p.
+The leading constant ensures that φp is nonnegative for all
+α ∈[ −1, 1].F o rp > 1, φp is convex with a negative ﬁrst deriv-
+ative at 0, so Theorem 2, part 1 tells us that it is classiﬁcation-
+calibrated. Different choices of p lead to different values for
+the modulus of convexity exponent of φp, because (φ(ϵ) +
+φ(−ϵ))/2 − φ(0) = ϵp for positive ϵ.
+We took as a family of real-valued classiﬁers the convex
+hull of the coordinate functions, F = co{x ↦→ βi(x) = xi : i =
+1,..., 10}. Thus each f ∈ F has the form f(u) = λ⊤ u for
+some λ ≥ 0, λ⊤ 1 ≤ 1. We simulated datasets of several sizes n
+between 10 and 10,000, using various values of p and q, as de-
+tailed later. For each choice ofn, p, and q, we performed 25 rep-
+etitions of the following procedure. First, we generated a dataset
+according to (P
+X ,η q(x)) and found the empirical risk mini-
+mizer ˆfn over F, through a constrained convex optimization.
+Then we computed the 0–1 risk of ˆfn, approximating the rele-
+vant integral with adaptive numerical quadrature. Subtracting
+the Bayes risk for the chosen distribution (depending on q),
+also approximated using quadrature, gave us the excess 0–1 risk
+of ˆf
+n. Finally, we carried out a similar computation to determine
+the excess φ-risk of ˆfn.
+We illustrate the behavior of the upper bound on excess 0–1
+risk obtained from the ψ-transform using these simulation re-
+sults. A routine calculation along the lines of the examples in
+Section 2.3 shows that ψ(θ) = ( p − 1)(2θ/p)p/( p−1). We ap-
+peal to Theorem 1 to obtain the inequality
+( p − 1)
+( 2(R( f) − R∗)
+p
+) p/( p−1)
+≤ Rφ( f) − R∗
+φ.
+Solving this inequality for excess 0–1 risk gives an upper bound
+as a function of excess φ-risk,
+R( f) − R∗ ≤ p
+2
+( Rφ( f) − R∗
+φ
+p − 1
+) ( p−1)/p
+.
+We veriﬁed that, as expected, every excess 0–1 risk in our sim-
+ulations obeyed the upper bound determined by its correspond-
+ing excess φ-risk, across all values of p and q.
+We also used the simulations to illustrate the theoretical rates
+of convergence for excess φ-risk implied by Theorem 4. For
+the class F under consideration, the centered empirical process
+ξF(ϵ) used in the theorem can be pointwise upper-bounded
+using a local Rademacher average symmetrization, which in
+turn is bounded by the Dudley entropy integral. The derivation
+closely follows the proof of Theorem 5 (see also Bartlett et al.
+2005). These calculations reveal that a suitable upper bound
+on ϵ
+∗ in Theorem 4 is c(d/n) log(nL/d), with d = 10 the di-
+mension of F and c a universal constant. Thus, with probability
+at least 1 − e−x, we have the excess φ-risk bound
+Rφ( ˆf) − Rφ( f∗)
+≤ c max
+{( crL2x
+n
+) 1/(2−min{1,2/p})
+, BLx
+n , d
+n log
+( nL
+d
+)}
+,
+recalling that p is the modulus of convexity exponent forφp(α).
+Treating the logarithmic factor as approximately constant, we
+therefore expect a rate of order n−1 for 1 < p < 2 and of order
+n−1/(2−2/p) for p ≥ 2.
+Figure 7 presents the simulation results for p ∈{ 1.5, 2, 3.5},
+all with q = 1. Results with q ∈{ 1.5, 2, 2.5, 3} are similar, and
+indeed the theoretical rates do not vary with q. The solid lines
+are natural cubic spline ﬁts, on the log–log scale, to the sam-
+ple size and excess φ-risk from each simulation. The slope of
+each dashed line is the theoretical rate exponent implied by the
+bound: −1.0f o r p = 1.5 and 2 and −.7f o r p = 3.5. As the
+plots reveal, the agreement with theory when p = 1.5a n d2i s
+extremely good for large enough n. Although the match when
+p = 3.5 is less exact, the simulated results appear compatible
+with the theoretical rate to within the noise tolerance.
+5. CONCLUSIONS
+We have focused on the relationship between properties of
+a nonnegative margin-based loss function φ and the statistical
+performance of the classiﬁer that, based on an iid training set,
+minimizes empirical φ-risk over a class of functions. We ﬁrst
+derived a universal upper bound on the population misclassiﬁ-
+cation risk of any thresholded measurable classiﬁer in terms of
+its corresponding population φ-risk. The bound is governed by
+the ψ-transform, a convexiﬁed variational transform of φ.I ti s
+the tightest possible upper bound uniform over all probability
+distributions and measurable functions in this setting.
+Using this upper bound, we characterized the class of loss
+functions that guarantee that every φ-risk consistent classiﬁer
+sequence is also Bayes-risk consistent under any population
+distribution. Here φ-risk consistency denotes sequential con-
+vergence of population φ-risks to the smallest possible φ-risk
+of any measurable classiﬁer. The characteristic property of
+such a φ, which we term classiﬁcation-calibration, is a kind of
+pointwise Fisher consistency for the conditional φ-risk at each
+x ∈ X . The necessity of classiﬁcation-calibration is apparent;
+the sufﬁciency underscores its fundamental importance in elab-
+orating the statistical behavior of large-margin classiﬁers.
+For the special case of convex φ, which is widespread
+in practical applications, we demonstrated that classiﬁcation-
+calibration is equivalent to the existence and strict negativity of
+the ﬁrst derivative ofφ at 0, a condition that is readily veriﬁable
+in most practical examples. In addition, the convexiﬁcation step
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+152 Journal of the American Statistical Association, March 2006
+(a) (b) (c)
+Figure 7. Rate Plots for (a) p = 1.5, (b) p = 2, and (c) p = 3.5. Each panel shows simulated excess φ-risk on the log scale versus simulated
+sample size on the log scale, for the choice of p given at top. We took q= 1 in each case. Natural cubic spline ﬁts appear as solid lines. The dashed
+line depicts the slope corresponding to the theoretical rate for the chosen p. (The vertical position of the dashed line is not informative.)
+in the ψ-transform is vacuous for convex φ, which simpliﬁes
+the derivation of closed forms.
+Under the low-noise assumption of Mammen and Tsybakov
+(1999) and Tsybakov (2004), we sharpened our original upper
+bound. We found that empiricalφ-risk minimization yields con-
+vergence of φ-risk to that of the best-performing function in F
+as the sample size grows. For strictly convexφ, the convergence
+rate can be faster than that implied by standard uniform con-
+vergence arguments, depending on the strictness of convexity
+of φ and the complexity of F. Combined with the low-noise
+condition, we saw that this implies fast rates of convergence of
+the misclassiﬁcation risk to its optimal value. Simulations con-
+ﬁrm the convergence rates ofφ-risk predicted by the theory, for
+a linear class and a particular probability distribution. Simula-
+tions also show that the relationship between excess φ-risk and
+excess risk closely follows that predicted by the theory.
+Two important issues that we have not treated are the approx-
+imation error for population φ-risk relative to F, and algorith-
+mic considerations in the minimization of empirical φ-risk. In
+the setting of scaled convex hulls of a base class, some approx-
+imation results have been given by Breiman (2004), Mannor
+et al. (2002), and Lugosi and Vayatis (2004). Regarding the nu-
+merical optimization to determine ˆf , Zhang and Yu (2005) gave
+novel bounds on the convergence rate for generic forward stage-
+wise additive modeling (see also Zhang 2003). These authors
+focused on optimization of a convex risk functional over the
+entire linear hull of a base class, with regularization enforced
+by an early stopping rule.
+APPENDIX A: PROOFS
+Proof of Lemma 2
+The proof of part 1 is immediate from the deﬁnitions. For part 2,
+concavity follows because H is an inﬁmum of concave (afﬁne) func-
+tions of η. Now, because H is concave and symmetric about 1 /2,
+H(1/2) = H((1/2)η +(1/2)(1−η)) ≥ (1/2)H(η) +(1/2)H(1−η) =
+H(η). Thus H is maximal at 1/2. To see that H(1/2) = H−(1/2), note
+that α(2η − 1) ≤ 0f o ra l lα when η = 1/2.
+To prove part 3, assume that there is an η ̸= 1/2w i t h H(η) =
+H(1/2). Fix a sequence α1,α 2,... for which lim i→∞ C1/2(αi) =
+H(1/2). By the assumption,
+lim inf
+i→∞
+(
+ηφ(αi) + (1 − η)φ(−αi)
+)
+≥ H(η)
+= H(1/2) = lim
+i→∞
+φ(αi) + φ(−αi)
+2 . (A.1)
+Rearranging, we have
+(η − 1/2) lim inf
+i→∞
+(
+φ(αi) − φ(−αi)
+)
+≥ 0.
+Because H(1 − η) = H(η), the same argument shows that
+(η − 1/2) lim inf
+i→∞
+(
+φ(−αi) − φ(αi)
+)
+≥ 0.
+It follows that
+lim
+i→∞
+(
+φ(αi) − φ(−αi)
+)
+= 0,
+so that all of the expressions in (A.1) are equal. Hence, H(η) =
+limi→∞ Cη(αi) = limi→∞ Cη(−αi), which implies that H(η) =
+H−(η). Thus if H(η) = H(1/2),t h e nφ is not classiﬁcation-calibrated.
+For part 4, H− is concave on [0, 1/2] by the same argument as
+for the concavity of H. (Note that when η< 1/2, H− is an inﬁmum
+over a set of concave functions, but in this case when η> 1/2, it is
+an inﬁmum over a different set of concave functions.) The inequality
+H− ≥ H follows from the deﬁnitions.
+For part 5, ﬁrst note that the concavity of H implies that it is con-
+tinuous on the relative interior of its domain, that is, (0, 1). Thus, to
+show that H is continuous [0, 1], it sufﬁces (by symmetry) to show
+that it is left-continuous at 1. Because [0, 1] is locally simplicial in
+the sense of Rockafellar (1997), his theorem 10.2 gives lower semi-
+continuity of H at 1 (equivalently, upper semicontinuity of the convex
+function −H at 1). To see upper semicontinuity ofH at 1, ﬁx anyϵ> 0
+and choose αϵ such that φ(αϵ) ≤ H(1) + ϵ/2. Then for any η between
+1 − ϵ/(2φ(−αϵ)) and 1, we have
+H(η) ≤ Cη(αϵ) ≤ H(1) + ϵ.
+Because this is true for any ϵ, lim supη→1 H(η) ≤ H(1), which is up-
+per semicontinuity. Thus H is left-continuous at 1. The same argu-
+ment shows that H− is continuous on (0, 1/2) and (1/2, 1) and is
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+Bartlett, Jordan, and McAuliffe: Convexity, Classiﬁcation, and Risk Bounds 153
+left-continuous at 1/2 and 1. Symmetry implies that H− is continuous
+on the closed interval [0, 1]. The continuity of ˜ψ is now immediate.
+To see part 6, observe thatψ is a closed convex function with locally
+simplicial domain [−1, 1], so that its continuity follows by once again
+applying theorem 10.2 of Rockafellar (1997).
+It follows immediately from parts 2 and 4 that ˜ψ is nonnegative and
+minimal at 0. Because epi ψ is the convex hull of epi ˜ψ (i.e., the set
+of all convex combinations of points in epi ˜ψ), we see that ψ is also
+nonnegative and minimal at 0, which is part 7.
+Part 8 follows immediately from 2.
+To prove part 9, suppose ﬁrst thatφ is classiﬁcation-calibrated. Then
+for all θ ∈ (0, 1], ˜ψ(θ)> 0. But every point in epi ψ is a convex com-
+bination of points in epi ˜ψ,s oi f (θ, 0) ∈ epiψ, then we can only have
+θ = 0. Hence forθ ∈ (0, 1], points in epiψ of the form(θ, c) must have
+c > 0, and closure of ˜ψ now implies ψ(θ)> 0. For the converse, note
+that if φ is not classiﬁcation-calibrated, then someθ> 0h a s ˜ψ(θ) = 0,
+and so ψ(θ) = 0.
+Proof of Theorem 2
+Recall that a subgradient of φ at α ∈ R is any value mα ∈ R such
+that φ(x) ≥ φ(α) + mα(x − α) for all x. To prove part 1, ﬁx a convex
+function φ.
+(⇒) Because φ is convex, we can ﬁnd subgradients g1 ≥ g2 such
+that for all α,
+φ(α) ≥ g1α + φ(0)
+and
+φ(α) ≥ g2α + φ(0).
+Then we have
+ηφ(α) + (1 − η)φ(−α)
+≥ η
+(
+g1α + φ(0)
+)
++ (1 − η)
+(
+−g2α + φ(0)
+)
+=
+(
+ηg1 − (1 − η)g2
+)
+α + φ(0) (A.2)
+=
+( 1
+2(g1 − g2) + (g1 + g2)
+(
+η − 1
+2
+))
+α + φ(0). (A.3)
+Because φ is classiﬁcation-calibrated, for η> 1/2, we can express
+H(η) as infα>0[ηφ(α) + (1 − η)φ(−α)]. If (A.3) were greater than
+φ(0) for every α> 0, then it would follow that for η> 1/2, H(η) ≥
+φ(0) ≥ H(1/2), which, by Lemma 2, part 3, would be a contradiction.
+We now show that g1 > g2 implies this contradiction. Indeed, we can
+choose
+1
+2 <η< 1
+2 + g1 − g2
+2|g1 + g2|
+to show that |(η − 1/2)(g1 + g2)| <( g1 − g2)/2, so (A.3) is greater
+than φ(0) for all α> 0. Thus if φ is classiﬁcation-calibrated, then we
+must have g1 = g2, which implies that φ is differentiable at 0.
+To see that we must also have φ′(0)< 0, note that from (A.2), we
+have
+ηφ(α) + (1 − η)φ(−α) ≥ (2η − 1)φ′(0)α + φ(0).
+But for any η> 1/2a n d α> 0, if φ′(0) ≥ 0, then this expression is
+at least φ(0). Thus if φ is classiﬁcation-calibrated, then we must have
+φ′(0)< 0.
+(⇐) Suppose that φ is differentiable at 0 and has φ′(0)< 0. Then
+the function Cη(α) = ηφ(α) + (1 − η)φ(−α) has C′η(0) = (2η −
+1)φ′(0).F o r η> 1/2, this is negative. It follows from the convexity
+of φ that Cη(α) is minimized by some α∗ ∈ (0,∞]. To see this, note
+that for some α0 > 0, we have
+Cη(α0) ≤ Cη(0) + α0C′
+η(0)/2.
+But the convexity of φ, and hence of Cη, implies that for all α,
+Cη(α) ≥ Cη(0) + αC′
+η(0).
+In particular, if α ≤ α0/4, then
+Cη(α) ≥ Cη(0) + α0
+4 C′
+η(0)> Cη(0) + α0
+2 C′
+η(0) ≥ Cη(α0).
+Similarly, for η< 1/2, the optimal α is negative. This means that φ is
+classiﬁcation-calibrated.
+For the proof of part 2, note that part 1 implies that φ is differen-
+tiable at 0 and φ′(0)< 0, and so
+φ(0) ≥ H−(η)
+= inf
+α:α(η−1/2)≤0
+(
+ηφ(α) + (1 − η)φ(−α)
+)
+≥ inf
+α:α(η−1/2)≤0
+(
+η
+(
+φ(0) + φ′(0)α
+)
++ (1 − η)
+(
+φ(0) − φ′(0)α
+))
+= φ(0) + inf
+α:α(η−1/2)≤0
+(
+(2η − 1)φ′(0)α
+)
+= φ(0).
+Thus H−(η) = φ(0). The concavity of H (Lemma 2, part 2 implies
+that ˜ψ = H−(η) − H(η) = φ(0) − H(η) is convex, which implies that
+ψ = ˜ψ.
+Proof of Lemma 3
+From the convexity of φ,w eh a v e
+ψ(θ) = H
+( 1
+2
+)
+− H
+( 1 + θ
+2
+)
+= φ(0) − inf
+α>0
+( 1 + θ
+2 φ(α) + 1 − θ
+2 φ(−α)
+)
+= sup
+α>0
+(
+−θφ′(0)α + 1 + θ
+2
+(
+φ(0) − φ(α) + αφ′(0)
+)
++ 1 − θ
+2
+(
+φ(0) − φ(−α) − αφ′(0)
+))
+= sup
+α>0
+(
+−θφ′(0)α − 1 + θ
+2 dφ(0,α) − 1 − θ
+2 dφ(0,−α)
+)
+≥ sup
+α>0
+(
+−θφ′(0)α − dφ(0,α) − dφ(0,−α)
+)
+= sup
+α>0
+(θ − ξ(α))(−φ′(0)α)
+≥
+(
+θ − ξ(ξ −1(θ/2))
+)(
+−φ′(0)ξ−1(θ/2)
+)
+=− φ′(0)θ
+2ξ−1
+( θ
+2
+)
+,
+where the ﬁrst inequality used the fact that for all α ∈[ 0, 1] and all
+a, b > 0, αa + (1 − α)b ≤ a + b.
+Proof of Lemma 4
+Proceeding by contrapositive, suppose that no such γ exists. Be-
+cause φ(α) ≥ 1[α ≤ 0] on (0,∞), then we must have infα≤0 φ(α) = 0.
+But φ(α) = C1(α), and hence
+0 = inf
+α≤0
+C1(α) = H−(1) ≥ H(1) ≥ 0.
+Thus H−(1) = H(1),s o φ is not classiﬁcation-calibrated.
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+154 Journal of the American Statistical Association, March 2006
+Proof of Lemma 5
+We ﬁrst show that Nα implies Mα/(1−α). Consider the set S =
+{x :0 < |η(x) − 1/2|≤ ϵ},a n dl e tf be such that S ={ x : f(x)(η(x) −
+1/2)< 0}.T h e nNα implies that
+ϵPr(S) ≥
+∫
+S
+⏐⏐
+⏐
+⏐η(x) − 1
+2
+⏐⏐
+⏐
+⏐dP
+X(x)
+= 1
+2
+(
+R( f) − R∗)
+≥ 1
+2
+( 1
+c Pr(S)
+) 1/α
+.
+Rearranging shows that
+Pr(S) ≤ (2ϵ)α/(1−α)c1/(1−α),
+and hence the distribution satisﬁes Mα/(1−α).
+To see that Mβ implies Nβ/(1+β) ,w eﬁ x ϵ> 0a n df : X →{ ±1},
+deﬁne S ={ x : f(x)(η(x) − 1/2)< 0}, and write
+R( f) − R∗ = E
+(
+1[X ∈ S]|2η(X) − 1|
+)
+= 2
+∫
+S
+⏐⏐⏐
+⏐η(x) − 1
+2
+⏐⏐⏐
+⏐dP
+X(x)
+≥ 2ϵ
+∫
+S
+1
+[ ⏐⏐
+⏐
+⏐η(x) − 1
+2
+⏐⏐
+⏐
+⏐>ϵ
+]
+dP
+X(x)
+= 2ϵ
+(
+Pr(S) −
+∫
+S
+1
+[
+0 <
+⏐⏐
+⏐
+⏐η(x) − 1
+2
+⏐⏐
+⏐
+⏐≤ ϵ
+]
+dP
+X(x)
+)
+≥ 2ϵ
+(
+Pr(S) − cϵβ)
+.
+With ϵ= (Pr(S)/(c(1 + β)))1/β , this shows that
+R( f) − R∗ ≥ 2β
+c1/β(1 + β)(β+1)/β (Pr(S))(β+1)/β,
+and hence the distribution satisﬁes Nβ/(β+1).
+Now consider the second part of the lemma. For any measurable
+f : X →{ ±1}, (8) is equivalent to
+Pr(Af ) ≤ c
+∫
+Af
+|2η(x) − 1| dPX(x)
+⇐⇒
+∫
+Af
+1
+c dPX(x) ≤
+∫
+Af
+|2η(x) − 1| dPX(x), (A.4)
+where Af ={ x : f(x)(η(x) − 1/2)< 0}. Note that Af ranges over all
+measurable subsets of {x :|η(x)− 1/2| > 0}, so that (A.4) is true for all
+such Af iff
+Pr
+(
+0 < |2η(X) − 1| < 1
+c
+)
+= 0,
+which is (7).
+Proof of Lemma 6
+The proof of Lemma 6 uses techniques due to Bartlett and
+Mendelson (2005), which built on the work of Massart (2000b),
+Koltchinskii and Panchenko (2000), Mendelson (2002), Lugosi and
+Wegkamp (2004), and Bartlett et al. (2005). We use the following con-
+centration inequality, which is a reﬁnement, due to Rio (2001) and
+Klein (2002), of a result of Massart (2000a), following Talagrand
+(1994) and Ledoux (2001). The best estimates on the constants are
+due to Bousquet (2002).
+Lemma A.1. There is an absolute constant K for which the fol-
+lowing holds. Let G be a class of functions deﬁned on X with
+sup
+g∈G ∥g∥∞ ≤ b. Suppose that P is a probability distribution such
+that for every g ∈ G, Eg = 0. Let X1,..., Xn be independent random
+variables distributed according to P and set σ 2 = supg∈G varg.D e ﬁ n e
+Z = sup
+g∈G
+1
+n
+n∑
+i=1
+g(Xi).
+Then, for every x > 0a n de v e r yρ> 0,
+Pr
+{
+Z ≥ (1 + ρ)EZ + σ
+√
+Kx
+n + K(1 + ρ−1)bx
+n
+}
+≤ e−x.
+To prove Lemma 6, from the condition on F,w eh a v e
+Pr{∃ f ∈ F : ˆEf ≤ αϵ,Ef ≥ ϵ}
+≤ Pr{∃ f ∈ F : ˆEf ≤ αϵ,Ef = ϵ}
+= Pr
+{
+sup{Ef − ˆEf : f ∈ F, Ef = ϵ}≥ (1 − α)ϵ
+}
+.
+We bound this probability using Lemma A.1, with ρ = 1a n d G =
+{Ef − f : f ∈ F, Ef = ϵ}. This shows that
+Pr{∃ f ∈ F : ˆEf ≤ αϵ,Ef ≥ ϵ}≤ Pr{Z ≥ (1 − α)ϵ}≤ e−x,
+provided that
+2EZ ≤ (1 − α)ϵ
+3 ,
+√
+cϵβ Kx
+n ≤ (1 − α)ϵ
+3 ,
+and
+4KBx
+n ≤ (1 − α)ϵ
+3 .
+(We have used the fact that sup f∈F ∥f∥∞ ≤ B implies that
+supg∈G ∥g∥∞ ≤ 2B.) Observing that
+EZ = ξF(ϵ),
+and rearranging gives the result.
+Proof of Lemma 7
+The proof proceeds in two steps. The Lipschitz condition allows
+us to relate Eg2
+f to ˜d( f, f∗), and the modulus of convexity condition,
+together with the convexity of F, relates this to Egf .
+We have
+Eg2
+f = E
+(
+ℓ(f(X)) − ℓ(f∗(X))
+)2
+≤ E
+(
+Ld
+(
+f(X), f∗(X)
+)) 2
+= L2(˜d( f, f∗))2. (A.5)
+From the deﬁnition of the modulus of convexity,
+R( f) + R( f∗)
+2 ≥ R
+( f + f∗
+2
+)
++ ˜δ(˜d( f, f∗))
+≥ R( f∗) + ˜δ(˜d( f, f∗)),
+where the optimality of f∗ in the convex set F implies the second
+inequality. Rearranging gives
+Egf = R( f) − R( f∗) ≥ 2˜δ(˜d( f, f∗)).
+Combining with (A.5) gives the result.
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+Bartlett, Jordan, and McAuliffe: Convexity, Classiﬁcation, and Risk Bounds 155
+Proof of Lemma 8
+Fix functions f1, f2 : X → R with ˜d( f1, f2) =
+√
+Ed2( f1(X), f2(X)) ≥
+ϵ.W eh a v e
+R( f1) + R( f2)
+2 − R
+( f1 + f2
+2
+)
+= E
+( ℓ(f1(X)) + ℓ(f2(X))
+2 − ℓ
+( f1(X) + f2(X)
+2
+))
+≥ E
+(
+δ
+(
+d
+(
+f1(X), f2(X)
+)))
+≥ cEdr(
+f1(X), f2(X)
+)
+= cE
+(
+d2(
+f1(X), f2(X)
+)) r/2.
+When the function ξ(a) = ar/2 is convex (i.e., when r ≥ 2), Jensen’s
+inequality shows that
+R( f1) + R( f2)
+2 − R
+( f1 + f2
+2
+)
+≥ cϵr.
+Otherwise, we use the following convex lower bound on ξ :[0, B2]→
+[0, Br]:
+ξ(a) = ar/2 ≥ Br a
+B2 ,
+which follows from (the concave analog of ) Lemma 1, part 2. This
+implies that
+R( f1) + R( f2)
+2 − R
+( f1 + f2
+2
+)
+≥ cBr−2ϵ2.
+Proof of Theorem 5
+It is clear thatF is convex and satisﬁes the conditions of Theorem 4.
+That theorem implies that, with probability at least 1 − δ,
+(
+R( ˆf) − R∗)2−α ≤ c′
+(
+ϵn + inf
+f∈F
+Rφ( f) − R∗
+φ
+)
+,
+provided that
+ϵn ≥ K max
+{
+ϵ∗
+n, L2
+B ln(1/δ)
+2aBn , BLB ln(1/δ)
+n
+}
+,
+where ϵ∗n ≥ ξgF (ϵ∗n). It remains to prove suitable upper bounds forϵ∗n .
+By a classical symmetrization inequality (see, e.g., Van der Vaart
+and Wellner 1996), we can upper bound ξgF in terms of local
+Rademacher averages,
+ξgF (ϵ)= E sup{Egf − ˆEgf : f ∈ F, Egf = ϵ}
+≤ 2E sup
+{
+1
+n
+n∑
+i=1
+σigf (Xi, Yi) : f ∈ F, Egf = ϵ
+}
+,
+where the expectations are over the sample (X1, Y1),...,( Xn, Yn) and
+the independent uniform (Rademacher) random variables σi ∈{ ±1}.
+The Ledoux and Talagrand (1991) contraction inequality and Lemma 7
+imply that
+ξ
+gF (ϵ)≤ 4LE sup
+{
+1
+n
+n∑
+i=1
+σidφ
+(
+Yi f(Xi), Yi f∗(Xi)
+)
+: f ∈ F, Egf = ϵ
+}
+≤ 4LE sup
+{
+1
+n
+n∑
+i=1
+σidφ
+(
+Yi f(Xi), Yi f∗(Xi)
+)
+:
+f ∈ F, ˜dφ( f, f∗)2 ≤ 2aBϵ
+}
+= 4LE sup
+{
+1
+n
+n∑
+i=1
+σi f(Xi, Yi) : f ∈ Fφ, Ef 2 ≤ 2aBϵ
+}
+,
+where
+Fφ =
+{
+(x, y) ↦→ dφ
+(
+yf(x), yf∗(x)
+)
+: f ∈ F
+}
+.
+One approach to approximating these local Rademacher averages
+is through information about the rate of growth of covering numbers
+of the class. For some subset A of a pseudometric space (S, d),l e t
+N(ϵ,A, d) denote the cardinality of the smallest ϵ-cover of A,t h a t
+is, the smallest set ˆA ⊂ S for which every a ∈ A has some ˆa ∈ ˆA
+with d(a, ˆa) ≤ ϵ. Using Dudley’s entropy integral (Dudley 1999),
+Mendelson (2002) showed the following result. Suppose that F is a
+set of [−1, 1]-valued functions on X and that there are γ> 0a n d
+0 < p < 2f o rw h i c h
+sup
+P
+N
+(
+ϵ,F, L2(P)
+)
+≤ γϵ−p,
+where the supremum is over all probability distributionsP on X .T h e n
+for some constant Cγ,p (which depends only on γ and p),
+1
+n E sup
+{ n∑
+i=1
+σi f(Xi) : f ∈ F, Ef 2 ≤ ϵ
+}
+≤ Cγ,p max
+{
+n−2/(2+p), n−1/2ϵ(2−p)/4}
+.
+Because dφ(a, b) ≤| a−b|,a n yϵ-cover of{f −f∗ : f ∈ F} is anϵ-cover
+of Fφ ,s ot h a tN(ϵ,Fφ, L2(P)) ≤ N(ϵ,F, L2(P)).
+Now for the class absconv(G) with dVC(G) = d,w eh a v e
+sup
+P
+N
+(
+ϵ,absconv(G), L2(P)
+)
+≤ Cdϵ−2d/(d+2);
+(see, e.g., Van der Vaart and Wellner 1996). Applying Mendelson’s
+result shows that
+1
+n E sup
+{ n∑
+i=1
+σi f(Xi) : f ∈ B absconv(G), Ef 2 ≤ ϵ
+}
+≤ Cd max
+{
+Bn−(d+2)/(2d+2), Bd/(d+2)n−1/2ϵ1/(d+2)}
+.
+Solving for ϵ∗n ≥ ξgF (ϵ∗n) shows that it sufﬁces to choose
+ϵ∗
+n = C′
+dBLB max
+{( LBaB
+B
+) 1/(d+1)
+, 1
+}
+n−(d+2)/(2d+2)
+for some constant C′
+d that depends only on d.
+APPENDIX B: LOSS, RISK, AND DISTANCE
+We could construe Rφ as the risk under a loss function ℓφ :R ×
+{±1}→[ 0,∞) deﬁned by ℓφ( ˆy, y) = φ( ˆyy). The following result es-
+tablishes that loss functions of this form are fundamentally unlike dis-
+tance metrics.
+Lemma B.1. Suppose thatℓφ :R2 →[ 0,∞) has the formℓφ(x, y) =
+φ(xy) for some φ :R →[ 0,∞). Then the following results hold:
+1. ℓφ is not a distance metric on R.
+2. ℓφ is a pseudometric on R iff φ ≡ 0, in which case ℓφ assigns
+distance 0 to every pair of reals.
+Proof. By hypothesis, ℓφ is nonnegative and symmetric. Another
+requirement of a distance metric is deﬁniteness; for all x, y ∈ R,
+x = y ⇐⇒ ℓφ(x, y) = 0. (B.1)
+But we may write any z ∈ (0,∞) in two different ways, as √z√z
+and, for example,
+√
+2z√(1/2)z. Satisfying (B.1) requires φ(z) = 0i n
+the former case and φ(z)> 0 in the latter case, an impossibility. This
+proves part 1.
+To prove part 2, recall that a pseudometric relaxes (B.1) to the re-
+quirement
+x = y /equal1⇒ ℓφ(x, y) = 0. (B.2)
+Downloaded by [Universite Laval] at 17:56 29 November 2014 
+
+
+156 Journal of the American Statistical Association, March 2006
+Because each z ≥ 0h a st h ef o r mxy for x = y = √z, (B.2) amounts to
+the necessary condition that φ ≡ 0o n [0,∞). The ﬁnal requirement
+on ℓφ is the triangle inequality, which in terms of φ becomes
+φ(xz) ≤ φ(xy) + φ( yz) for all x, y, z ∈ R. (B.3)
+Because φ must vanish on [0,∞),t a k i n gy = 0 in (B.3) shows that
+only the zero function can (and does) satisfy the constraint.
+[Received April 2003. Revised June 2005.]
+REFERENCES
+Arora, S., Babai, L., Stern, J., and Sweedyk, Z. (1997), “The Hardness of
+Approximate Optima in Lattices, Codes, and Systems of Linear Equations,”
+Journal of Computer and System Sciences, 54, 317–331.
+Bartlett, P. L. (1998), “The Sample Complexity of Pattern Classiﬁcation With
+Neural Networks: The Size of the Weights Is More Important Than the Size
+of the Network,”IEEE Transactions on Information Theory, 44, 525–536.
+Bartlett, P. L., Bousquet, O., and Mendelson, S. (2005), “Local Rademacher
+Complexities,”The Annals of Statistics, 33, 1497–1537.
+Bartlett, P. L., and Mendelson, S. (2005), “Empirical Minimization,”Probabil-
+ity Theory and Related Fields, to appear.
+Boser, B. E., Guyon, I. M., and Vapnik, V . N. (1992), “A Training Algorithm
+for Optimal Margin Classiﬁers,” in Proceedings of the 5th Annual Workshop
+on Computational Learning Theory, New York: ACM Press, pp. 144–152.
+Bousquet, O. (2002), “A Bennett Concentration Inequality and Its Application
+to Suprema of Empirical Processes,”Comptes Rendus de l’Académie des Sci-
+ences, Série I, 334, 495–500.
+Boyd, S., and Vandenberghe, L. (2004), Convex Optimization , Cambridge,
+U.K.: Cambridge University Press.
+Breiman, L. (1999), “Prediction Games and Arcing Algorithms,”Neural Com-
+putation, 11, 1493–1517.
+(2004), “Population Theory for Boosting Ensembles,” The Annals of
+Statistics, 32, 1–11.
+Brown, L. D. (1986), Fundamentals of Statistical Exponential Families ,H a y -
+ward, CA: Institute of Mathematical Statistics.
+Collins, M., Schapire, R. E., and Singer, Y . (2002), “Logistic Regression, Ad-
+aboost and Bregman Distances,”Machine Learning, 48, 253–285.
+Cortes, C., and Vapnik, V . (1995), “Support-Vector Networks,”Machine Learn-
+ing, 20, 273–297.
+Cristianini, N., and Shawe-Taylor, J. (2000),An Introduction to Support Vector
+Methods, Cambridge, U.K.: Cambridge University Press.
+Devroye, L., Györﬁ, L., and Lugosi, G. (1996), A Probabilistic Theory of Pat-
+tern Recognition, New York: Springer-Verlag.
+Dudley, R. M. (1999), Uniform Central Limit Theorems , Cambridge, U.K.:
+Cambridge University Press.
+Feder, M., Figueiredo, M. A. T., Hero, A. O., Lee, C.-H., Loeliger, H.-A.,
+Nowak, R., Singer, A. C., and Yu, B. (2004), “Special Issue on Machine
+Learning Methods in Signal Processing,” IEEE Transactions on Signal
+Processing, 52, 2152.
+Freund, Y ., and Schapire, R. E. (1997), “A Decision-Theoretic Generalization
+of On-Line Learning and an Application to Boosting,” Journal of Computer
+and System Sciences, 55, 119–139.
+Friedman, J., Hastie, T., and Tibshirani, R. (2000), “Additive Logistic Regres-
+sion: A Statistical View of Boosting,”The Annals of Statistics, 28, 337–374.
+Jiang, W. (2004), “Process Consistency for Adaboost,”The Annals of Statistics,
+32, 13–29.
+Joachims, T. (2002),Learning to Classify Text Using Support Vector Machines,
+Dordrecht: Kluwer Academic.
+Jordan, M. I., Ghahramani, Z., Jaakkola, T. S., and Saul, L. K. (1999), “Intro-
+duction to Variational Methods for Graphical Models,” Machine Learning,
+37, 183–233.
+Klein, T. (2002), “Une Inégalité de Concentration à Gauche Pour les Proces-
+sus Empiriques” [A Left Concentration Inequality for Empirical Processes],
+Comptes Rendus de l’Académie des Sciences, Série I, 334, 501–504.
+Koltchinskii, V . I., and Panchenko, D. (2000), “Rademacher Processes and
+Bounding the Risk of Function Learning,” in High Dimensional Probabil-
+ity II, V ol. 47, eds. E. Giné, D. M. Mason, and J. A. Wellner, Boston, MA:
+Birkhäuser, pp. 443–459.
+(2002), “Empirical Margin Distributions and Bounding the General-
+ization Error of Combined Classiﬁers,” The Annals of Statistics, 30, 1–50.
+Lebanon, G., and Lafferty, J. (2002), “Boosting and Maximum Likelihood for
+Exponential Models,” in Advances in Neural Information Processing Sys-
+tems 14, eds. T. Dietterich, S. Becker, and Z. Ghahramani, Cambridge, MA:
+MIT Press, pp. 447–454.
+Ledoux, M. (2001), The Concentration of Measure Phenomenon , Providence,
+RI: American Mathematical Society.
+Ledoux, M., and Talagrand, M. (1991), Probability in Banach Spaces:
+Isoperimetry and Processes, New York: Springer-Verlag.
+Lee, W. S., Bartlett, P. L., and Williamson, R. C. (1996), “Efﬁcient Agnostic
+Learning of Neural Networks With Bounded Fan-in,” IEEE Transactions on
+Information Theory, 42, 2118–2132.
+Lin, Y . (2004), “A Note on Margin-Based Loss Functions in Classiﬁcation,”
+Statistics and Probability Letters, 68, 73–82.
+Lugosi, G., and Vayatis, N. (2004), “On the Bayes Risk Consistency of Regu-
+larized Boosting Methods,”The Annals of Statistics, 32, 30–55.
+Lugosi, G., and Wegkamp, M. (2004), “Complexity Regularization via Local-
+ized Random Penalties,”The Annals of Statistics, 32, 1679–1697.
+Mammen, E., and Tsybakov, A. B. (1999), “Smooth Discrimination Analysis,”
+The Annals of Statistics, 27, 1808–1829.
+Mannor, S., and Meir, R. (2001), “Geometric Bounds for Generalization in
+Boosting,” in Proceedings of the Fourteenth Annual Conference on Compu-
+tational Learning Theory , eds. D. Helmbold and R. Williamson, Springer-
+Verlag, pp. 461–472.
+Mannor, S., Meir, R., and Zhang, T. (2002), “The Consistency of Greedy Algo-
+rithms for Classiﬁcation,” in Proceedings of the Annual Conference on Com-
+putational Learning Theory , eds. J. Kivinen and R. Sloan, Springer-Verlag,
+pp. 319–333.
+Marron, J. S., and Todd, M. (2002), “Distance-Weighted Discrimination,” Tech-
+nical Report 1339, Cornell University, School of Operations Research and
+Industrial Engineering.
+Massart, P. (2000a), “About the Constants in Talagrand’s Concentration In-
+equality for Empirical Processes,”The Annals of Probability, 28, 863–884.
+(2000b), “Some Applications of Concentration Inequalities to Statis-
+tics,”Annales de la Faculté des Sciences de Toulouse, IX, 245–303.
+Mendelson, S. (2002), “Improving the Sample Complexity Using Global Data,”
+IEEE Transactions on Information Theory, 48, 1977–1991.
+Nesterov, Y ., and Nemirovskii, A. (1994),Interior-Point Polynomial Algorithms
+in Convex Programming, Philadelphia: SIAM Publications.
+Rio, E. (2001), “Inégalités de Concentration Pour les Processus Empiriques
+de Classes de Parties” [Concentration Inequalities for Set-Indexed Empirical
+Processes], Probability Theory and Related Fields, 119, 163–175.
+Rockafellar, R. T. (1997),Convex Analysis, Princeton, NJ: Princeton University
+Press.
+Schapire, R. E., Freund, Y ., Bartlett, P., and Lee, W. S. (1998), “Boosting the
+Margin: A New Explanation for the Effectiveness of V oting Methods,” The
+Annals of Statistics, 26, 1651–1686.
+Schölkopf, B., and Smola, A. (2002), Learning With Kernels, Cambridge, MA:
+MIT Press.
+Schölkopf, B., Tsuda, K., and Vert, J.-P. (2003), Kernel Methods in Computa-
+tional Biology, Cambridge, MA: MIT Press.
+Shawe-Taylor, J., Bartlett, P. L., Williamson, R. C., and Anthony, M. (1998),
+“Structural Risk Minimization Over Data-Dependent Hierarchies,” IEEE
+Transactions on Information Theory, 44, 1926–1940.
+Shen, X., Tseng, G. C., Zhang, X., and Wong, W. H. (2003), “On Psi-Learning,”
+Journal of the American Statistical Association, 98, 724–734.
+Steinwart, I. (2005), “Consistency of Support Vector Machines and Other Reg-
+ularized Kernel Classiﬁers,” IEEE Transactions on Information Theory , 51,
+128–142.
+Talagrand, M. (1994), “Sharper Bounds for Gaussian and Empirical Processes,”
+The Annals of Probability, 22, 28–76.
+Tsybakov, A. (2004), “Optimal Aggregation of Classiﬁers in Statistical Learn-
+ing,”The Annals of Statistics, 32, 135–166.
+Van der Vaart, A. W., and Wellner, J. A. (1996),Weak Convergence and Empir-
+ical Processes, New York: Springer-Verlag.
+Zhang, T. (2003), “Sequential Greedy Approximation for Certain Convex Opti-
+mization Problems,”IEEE Transactions on Information Theory, 49, 682–691.
+(2004), “Statistical Behavior and Consistency of Classiﬁcation Meth-
+ods Based on Convex Risk Minimization,” The Annals of Statistics , 32,
+56–85.
+Zhang, T., and Yu, B. (2005), “Boosting With Early Stopping: Convergence and
+Consistency,”The Annals of Statistics, 33, 1538–1579.
+Downloaded by [Universite Laval] at 17:56 29 November 2014

@@ -1,0 +1,59 @@
+<doctag><page_header><loc_32><loc_36><loc_171><loc_44>1956 2. инварь-фефарь</page_header>
+<page_header><loc_314><loc_36><loc_429><loc_45>m. XI, бин. 1 (67)</page_header>
+<section_header_level_1><loc_71><loc_48><loc_384><loc_57>У С Х Е Х И М А Т Е М А Т И Ч Е С К И Х Н А У К</section_header_level_1>
+<section_header_level_1><loc_42><loc_144><loc_416><loc_153>к п о н т я т н о й э н т р о п и н о к о н е ч н о й в е р е я т н о т н о й с х е м е ы</section_header_level_1>
+<section_header_level_1><loc_183><loc_157><loc_276><loc_165>Д. К. Фаддеев</section_header_level_1>
+<unordered_list><list_item><loc_30><loc_173><loc_429><loc_199>1°. Как установлено в статье А. Я. Хинчина [1], энтропия Н (p1, p2, …, p) конечной вероятностной схемы (A1, A2, …, A) может быть охарактеризована следующей системой аксиом.</list_item>
+<list_item><loc_30><loc_200><loc_429><loc_218>1. Н (p1, p2, …, p) непрерывна относительно p1, p2, …, pн в области 0</list_item>
+<list_item><loc_53><loc_218><loc_386><loc_227>2. Н (p1, p2, …, p) симметрична относительно p1, p2, …, pн.</list_item>
+<list_item><loc_53><loc_227><loc_386><loc_236>3. Н (p1, p2, …, pн, 0) = Н (p1, p2, …, pн).</list_item>
+<list_item><loc_53><loc_236><loc_425><loc_245>4. Н (q11, …, qн; 2р, …, q2н; …; qн1, …, qн) = Н (p1, p2, …, pн)+</list_item>
+</unordered_list>
+<formula><loc_30><loc_245><loc_169><loc_265>+ \sum _ { i = 1 } ^ { n } p _ { i } H \left ( \frac { q _ { i } } { p _ { i } } , \dots , \frac { q _ { i n } } { p _ { i } } \right ) ,</formula>
+<text><loc_30><loc_266><loc_46><loc_274>где</text>
+<formula><loc_134><loc_278><loc_324><loc_286>p _ { i } = q _ { i 1 } + \dots + q _ { i m } \quad ( i = 1 , \dots , n )</formula>
+<text><loc_30><loc_292><loc_366><loc_301>(эта аксиома сформулирована в статье [1] в других терминах).</text>
+<formula><loc_53><loc_301><loc_283><loc_316>5 . \, H ( p _ { 1 } , p _ { 2 } , \dots , p _ { n } ) \leq H \left ( \frac { 1 } { n } , \frac { 1 } { n } , \dots , \frac { 1 } { n } \right ) .</formula>
+<text><loc_30><loc_317><loc_429><loc_350>Этими аксиомами энтропия определяется однозначно с точностью до подолжительного множителя. Целью настоящей заметки является некоторое упрощене системы аксиом. Именно, предлагаются следующие аксномы: 1' Н (p1, 1-р) непрерывна при 0</text>
+<unordered_list><list_item><loc_52><loc_352><loc_386><loc_361>2' Н (p1, p2, …, pн) симметрична относительно p1, p2, …, pн.</list_item>
+<list_item><loc_52><loc_362><loc_386><loc_371>3' При n > 2</list_item>
+</unordered_list>
+<formula><loc_62><loc_377><loc_395><loc_392>H ( p _ { 1 } , \dots , p _ { n - 1 } ; q _ { 1 } , q _ { 2 } ) = H ( p _ { 1 } , \dots , p _ { n - 1 } , p _ { n } ) + p _ { n } H \left ( \frac { q _ { 1 } } { p _ { n } } , \frac { q _ { 2 } } { p _ { n } } \right ) .</formula>
+<text><loc_27><loc_397><loc_123><loc_405>Здесь pн=q1+q2.</text>
+<text><loc_27><loc_405><loc_429><loc_453>Разница в этих двух системах аксиом заключается в том, что, во-первых, аксиома 5 (экстремальность) заменяется требованием положительности энтропии в одной точке и, во-вторых, аксиомы 3 и 4 заменяются одной аксиомой 3', очень естественной, если рассматривать энтропию как меру неопределённости схемы. Действительно, «неопределённость» схемы</text>
+<page_footer><loc_409><loc_453><loc_425><loc_460>15*</page_footer>
+<page_break>
+<page_header><loc_77><loc_41><loc_95><loc_47>228</page_header>
+<page_header><loc_233><loc_42><loc_308><loc_48>Д.к.ФДДЕЕВ</page_header>
+<text><loc_75><loc_57><loc_470><loc_130></text>
+<page_break>
+<page_header><loc_79><loc_32><loc_380><loc_39>к понтию энтропии конечной вероятностной схемы</page_header>
+<page_header><loc_415><loc_30><loc_434><loc_40>229</page_header>
+<text><loc_39><loc_48><loc_434><loc_67>Доказательство. Нужно n раз применить лемму 5 к каждой группе аргументов, что возможно в силу снимметрии.</text>
+<text><loc_39><loc_67><loc_434><loc_100>Положив m1=m2=...=m n=m, получим, что из 2', 3' следует 4. Итак, мы установилы равносильность групп аксиом 2,3, 4 и 2', 3' 3°. Положим, следующая статье [1], F(n)=H 1 n , 1 n ,..., 1 n</text>
+<text><loc_39><loc_100><loc_432><loc_116>F (1)=0. Применял лемму 6 к случаю m1=...=m n=m, qij=1 mn, получим:</text>
+<formula><loc_173><loc_116><loc_435><loc_127>F ( m n ) = F ( m ) + F ( n )</formula>
+<text><loc_38><loc_131><loc_432><loc_155>при m>2, n>2. При n=1 или n=1 соотношение (1) тривнально. Далее, применялся лемму 5 к H (1; 1;..., 1 n ), получим:</text>
+<formula><loc_66><loc_158><loc_405><loc_175>H \left ( \frac { 1 } { n } , \frac { 1 } { n } , \dots , \frac { 1 } { n } \right ) = H \left ( \frac { 1 } { n } , \frac { 1 } { n } \right ) + \frac { n - 1 } { n } H \left ( \frac { 1 } { n - 1 } , \dots , \frac { 1 } { n - 1 } \right ) ,</formula>
+<text><loc_38><loc_176><loc_120><loc_184>откуда следует:</text>
+<formula><loc_126><loc_186><loc_340><loc_202>\eta _ { n } = H \left ( \frac { 1 } { n } , \frac { n - 1 } { n } \right ) = F ( n ) - \frac { n - 1 } { n } F ( n - 1 ) .</formula>
+<text><loc_60><loc_205><loc_197><loc_214>Лемма 7. При n=0</text>
+<formula><loc_122><loc_216><loc_342><loc_230>n _ { n } = \frac { F ( n ) } { n } \rightarrow 0 \ \ n \ \lambda _ { n } = F ( n ) - F ( n - 1 ) \rightarrow 0 .</formula>
+<text><loc_38><loc_237><loc_424><loc_264>Доказательство. В силу непрерывности H(p,1-p) при p= 1n=H 1 n , 1 n , 1 n )→H (0, 1)=0. Далее, n,n=nF(n) (n-1) F(n-1), откуда</text>
+<formula><loc_194><loc_275><loc_273><loc_293>n F ( n ) = \sum _ { k = 1 } ^ { n } k \tau _ { k }</formula>
+<text><loc_38><loc_295><loc_45><loc_301>и</text>
+<formula><loc_134><loc_307><loc_333><loc_326>\frac { F ( n ) } { n } = \frac { 1 } { n ^ { 2 } } \sum _ { k = 1 } ^ { n } k \eta _ { k } = \frac { n + 1 } { 2 n } \cdot \frac { 2 } { n ( n + 1 ) } \sum _ { k = 1 } ^ { n } k \eta _ { k } .</formula>
+<text><loc_38><loc_330><loc_432><loc_360></text>
+<page_break>
+<page_header><loc_71><loc_33><loc_88><loc_40>230</page_header>
+<page_header><loc_225><loc_33><loc_303><loc_40>J. K. 4. 4. 4.</page_header>
+<text><loc_70><loc_49><loc_470><loc_84></text>
+<page_break>
+<text><loc_36><loc_50><loc_285><loc_59>При переходе к пределу при 1 2 0 0 0 0 0 получим:</text>
+<formula><loc_193><loc_61><loc_274><loc_72>( c _ { p } - c _ { 2 } ) \log 2</formula>
+<text><loc_36><loc_74><loc_429><loc_100>что невозможно. Таким образом, для всех p' имеет место cp'  c2 при всех p'. Лемма доказана.</text>
+<text><loc_59><loc_100><loc_119><loc_109>Теорема.</text>
+<formula><loc_124><loc_112><loc_340><loc_135>H \left ( p _ { 1 } , p _ { 2 } , \dots , p _ { n } \right ) = c \sum _ { i = 1 } ^ { n } p _ { i } \log \frac { 1 } { p _ { i } } \quad ( c > 0 ) .</formula>
+<text><loc_36><loc_135><loc_429><loc_158>Доказательство. Рассмотрим случай л = 2. Пусть p = r при целых r и s.</text>
+<text><loc_36><loc_158><loc_429><loc_188></text>
+</doctag>

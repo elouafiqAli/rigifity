@@ -1,0 +1,20 @@
+{
+  "source_pdf": "Kestelman1947.pdf",
+  "slug": "kestelman1947",
+  "status": "success",
+  "started_at": "2026-06-13T16:58:49.462659+00:00",
+  "finished_at": "2026-06-13T17:01:03.709595+00:00",
+  "vlm_model_preset": "granite_docling",
+  "vlm_model_repo": "ibm-granite/granite-docling-258M",
+  "docling_version": "2.102.1",
+  "gpu": "A100-80GB",
+  "page_batch_size": 8,
+  "num_threads": 4,
+  "document_timeout_s": 1800.0,
+  "artifact_hashes": {
+    "Kestelman1947.doctags": "4ea68c93a2f28b3b7881ec145152a29b250a635650f6e3119046e08090254803",
+    "Kestelman1947.json": "5363f0090cb290c09b44d23a61380c50326c90a1dcc18852a13f062c0b4fa83e",
+    "Kestelman1947.md": "090cea4a0869b7494562eb1e98c7e7fc227385b2bbc572c284c4a2c0825fb4f6",
+    "Kestelman1947.txt": "3bd5284dd270cf4a6f8a4e18495425cfb2198d0a1a49fa9c7d8108b481f5bf09"
+  }
+}

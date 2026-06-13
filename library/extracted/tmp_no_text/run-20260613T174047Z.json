@@ -1,0 +1,9 @@
+{
+  "run_id": "20260613T174047Z",
+  "processed": 1,
+  "pattern": "Cauchy1821FR_series.pdf",
+  "output_root": "library/extracted/tmp_no_text",
+  "docling_version": "2.102.1",
+  "vlm_model_repo": "ibm-granite/granite-docling-258M",
+  "vlm_model_preset": "granite_docling"
+}

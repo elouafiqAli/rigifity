@@ -1,0 +1,387 @@
+Quantum States and Generalized Observables: A Simple Proof of Gleason’s Theorem
+P . Busch*
+Department of Mathematics, University of Hull, Hull HU6 7RX, United Kingdom
+(Received 29 May 2003; published 19 September 2003)
+A quantum state can be understood in a loose sense as a map that assigns a value to every observable.
+Formalizing this characterization of states in terms of generalized probability distributions on the set of
+effects, we obtain a simple proof of the result, analogous to Gleason’s theorem, that any quantum state is
+given by a density operator. As a corollary we obtain a von Neumann–type argument against
+noncontextual hidden variables. It follows that on an individual interpretation of quantum mechanics
+the values of effects are appropriately understood as propensities.
+DOI: 10.1103/PhysRevLett.91.120403 P ACS numbers: 03.65.Ca, 03.65.Ta, 03.67.–a
+In this Letter we characterize a notion of quantum
+states that takes into account the general representation of
+observables as positive operator valued measurements
+(POVMs). The idea of a state as an expectation value
+assignment will be extended to that of a generalized
+probability measure on the set E/.0133H /.0134of all effects, that
+is, the positive operators which can occur in the range of a
+POVM [1]. All such generalized probability measures are
+found to be of the standard form, i.e., determined by a
+density operator. This result constitutes a simpliﬁed proof
+and, at the same time, a more comprehensive variant of
+Gleason’s theorem [2]. The Letter concludes with an
+application of this result to the question of hidden vari-
+ables [3].
+In the traditional formulation of quantum mechan-
+ics in Hilbert space, states are described as density op-
+erators and observables are represented as Hermitian
+operators. Alternatively, and equivalently, experi-
+mental events and propositions are represented as or-
+thogonal projection operators, and states are deﬁned
+as generalized probability measures on the set P /.0133H /.0134
+of projections, i.e., as functions E /H21739v/.0133E/.0134with the
+properties
+/.0133P1/.01340 /.0020v/.0133E/.0134/.00201 for all E;
+/.0133P2/.0134v/.0133I/.0134/.01361;
+/.0133P3/.0134v/.0133E /.0135F /.0135... /.0134/.0136v/.0133E/.0134/.0135v/.0133F/.0134/.0135... for any sequence E;F; ... withE /.0135F /.0135... /.0020I:
+According to Gleason’s theorem [2], all states are given by
+density operators so that v/.0133E/.0134/.0136v
+/.0026/.0133E/.0134/.0136tr/.0137/.0026E/.0138, pro-
+vided that the dimension of the complex Hilbert space
+is at least 3. The duality of states and observables is thus
+characterized through the trace expression tr/.0137/.0026E/.0138, which
+in the minimal interpretation gives the probability of an
+outcome associated with E, of a measurement performed
+on a system in state /.0026.
+In quantum physics there are many experimental pro-
+cedures leading to measurements whose outcome proba-
+bilities are expectations not of projections but rather of
+effects. It is therefore natural to deﬁne a quantum state
+as a generalized probability measure not just on P /.0133H /.0134
+but on the full set of effects, E/.0133H /.0134, in such a way that
+the conditions (P1)–(P3) hold for all E;F; ... 2 E/.0133H /.0134.
+Note that while for sets of projections the condition E /.0135
+F /.0135... 2 P /.0133H /.0134is equivalent toE;F; ... being mutually
+orthogonal and thus commuting, the commutativity is no
+longer necessary for E /.0135F /.0135... /.0020I to hold if E;F; ...
+are effects. The following analog of Gleason’s theorem
+then holds.
+Theorem. Any generalized probability measure E /H21739
+v/.0133E/.0134on E/.0133H /.0134with the properties (P1)–(P3) is of the
+formv/.0133E/.0134/.0136tr/.0137/.0026E/.0138for allE, for some density operator/.0026.
+Proof . It is trivial to see that v/.0133E/.0134/.0136nv/.0133
+1
+nE/.0134for all
+positive integers. Then it follows immediately that
+v/.0133pE/.0134/.0136pv/.0133E/.0134for any rational p 2/.01370; 1/.0138. Observe also
+the additivity and the positivity entail that any general-
+ized probability measure is order preserving, E /.0020F )
+v/.0133E/.0134/.0020v/.0133F/.0134.L e t/.0011be any real number, 0 /.0020/.0011/.00201.L e t
+p
+/.0022be an increasing sequence of rational numbers in /.01370; 1/.0138
+which approaches /.0011from below and q/.0023a decreasing se-
+quence of rational numbers in /.01370; 1/.0138which approaches /.0011
+from above. It follows thatv/.0133p/.0022E/.0134/.0136p/.0022v/.0133E/.0134/.0020v/.0133/.0011E/.0134/.0020
+v/.0133q/.0023E/.0134/.0136q/.0023v/.0133E/.0134, and therefore, in the limit we have
+/.0011v/.0133E/.0134/.0020v/.0133/.0011E/.0134/.0020/.0011v/.0133E/.0134. Hence,v/.0133/.0011E/.0134/.0136/.0011v/.0133E/.0134.
+LetA be any positive bounded operator not in E/.0133H /.0134.
+W e can always writeA /.0136/.0011E, with E 2 E/.0133H /.0134and suit-
+able/.0011/.00211. [In fact, as A is bounded, there is a positive
+number /.0011such that h’jA’i/.0020/.0011for all unit vectors ’.
+This means that the operator E :/.0136/.01331=/.0011/.0134A is an effect.]
+PHYSICAL REVIEW LETTERS week ending
+19 SEPTEMBER 2003VOLUME 91, NUMBER 12
+120403-1 0031-9007 =03=91(12)=120403(4)$20.00  2003 The American Physical Society 120403-1
+
+Let E1;E 2 2 E/.0133H /.0134be such that A /.0136/.00111E1 /.0136/.00112E2.
+Assume without loss of generality that 1 /.0020/.00111 </.00112.
+Then v/.0133E2/.0134/.0136/.00111
+/.00112
+v/.0133E1/.0134, and so /.00111v/.0133E1/.0134/.0136/.00112v/.0133E2/.0134.
+Thus we can uniquely deﬁne v/.0133A/.0134/.0136/.00111v/.0133E1/.0134.
+LetA;B be positive bounded operators. Take/.0013>1 such
+that 1
+/.0013/.0133A /.0135B/.01342E/.0133H /.0134. Then we can write v/.0133A /.0135B/.0134as
+/.0013v/.01371
+/.0013/.0133A /.0135B/.0134/.0138 /.0136/.0013v/.01331
+/.0013A/.0134/.0135/.0013v/.01331
+/.0013B/.0134/.0136v/.0133A/.0134/.0135v/.0133B/.0134.
+Finally, let C be an arbitrary bounded Hermitian
+operator. Assume we have two different decomposi-
+tions C /.0136A /.0255B /.0136A
+0 /.0255B0 into a difference of positive
+operators. W e havev/.0133A/.0134/.0135v/.0133B0/.0134/.0136v/.0133B/.0134/.0135v/.0133A0/.0134and so
+v/.0133A/.0134/.0255v/.0133B/.0134/.0136v/.0133A0/.0134/.0255v/.0133B0/.0134. Thus we can uniquely de-
+ﬁne: v/.0133C/.0134:/.0136v/.0133A/.0134/.0255v/.0133B/.0134. It is now straightforward to
+verify the linearity of the map v thus extended to the
+vector space of all bounded linear Hermitian operators.
+W e have found that any generalized probability measure
+on effects extends to a unique positive linear functional
+on this vector space. If the Hilbert space H is ﬁnite
+dimensional, it is a straightforward application of ele-
+mentary linear algebra to show that any such functional is
+obtained from a density operator via the trace formula. If
+the Hilbert space is inﬁnite dimensional, it still holds true
+that these linear functionals are bounded [already as a
+consequence of (P1)–(P3) with additivity over ﬁnite col-
+lections of effects] and even normal (using the additivity
+over countable sets of effects). In fact, since C /.0020D
+implies v/.0133C/.0134/.0020v/.0133D/.0134, we have that jv/.0133C/.0134j /.0020 kCk (using
+D /.0136kCkI). This is the boundedness of v. (The symbol
+kCk denotes the norm of the bounded Hermitian operator
+C, deﬁned as the smallest number /.0013/.00210 for which
+kC’k/.0020/.0013k’k for all’ 2 H .) To show thatv is normal
+one has to verify that for any norm bounded increasing
+sequence of Hermitian operators C
+n with limit C,i t
+follows that v/.0133Cn/.0134approachesv/.0133C/.0134. To see this one uses
+the following construction to utilize the countable addi-
+tivity property P3. Take /.0011>0 large enough such that all
+Cn /.0135/.0011I/.0021O and C /.0135/.0011I/.0021O.T a k e/.0012>0 such that
+F /.0136/.0012/.0133C /.0135/.0011I/.0134/.0020I. Then the operators Fn /.0136
+/.0012/.0133Cn /.0135/.0011I/.0134and F are effects and we have that the
+increasing sequence of effects Fn approaches F.W r i t e
+E1 /.0136F1,E2 /.0136F2 /.0255F1; ... ;En /.0136Fn /.0255Fn/.02551. These op-
+eratorsEn are also effects. They satisfy E1 /.0135E2 /.0135... /.0135
+En /.0136Fn, so that E1 /.0135E2 /.0135... /.0135En /.0135... /.0136F.
+Therefore F /.0136limn!1Fn /.0136E1 /.0135E2 /.0135... /.0135En /.0135... ,
+and by (P3) we obtain v/.0133F/.0134/.0136Pv/.0133En/.0134/.0136limn!1v/.0133Fn/.0134.
+This translates into v/.0133Cn/.0134!v/.0133C/.0134. Finally, we note that
+it is well-known that any positive normal linear func-
+tional is obtained from a density operator (e.g., [4],
+Lemma 1.6.1, or see the direct elementary proof due to
+von Neumann [5,6]). /H17040
+The conclusion of our theorem is the same as that of
+Gleason’s theorem. The extreme simplicity of the proof
+in comparison to Gleason’s proof is due to the fact that
+the domain of generalized probability measures is sub-
+stantially enlarged, from the set of projections to that of
+all effects.
+The statement of the present theorem also extends to
+the case of two-dimensional Hilbert spaces where
+Gleason’s theorem fails. It is worth noting that the
+dispersion-free generalized probability measures con-
+structed on the set of projections of a two-dimensional
+Hilbert space (see, e.g., [7,8]), simply do not extend to any
+generalized probability measures on the full set of effects.
+The reason must be seen in the fact that the additivity
+requirement for v on sets of pairwise orthogonal projec-
+tions is too weak to enforce the linearity of v, considering
+that such sets of projections are mutually commutative.
+Here is a simple intuitive argument demonstrating that
+there are no linear extensions of any dispersion-free
+generalized probability measure on the projections of a
+two-dimensional Hilbert space. W e use the Poincare ´
+sphere representation of positive operators of trace 1, A /.0136
+1=2/.0133I /.0135a /.0001/.0027/.0134, where /.0027/.0136/.0133/.0027
+x;/.0027y;/.0027z/.0134, a /.0136/.0133ax;ay;az/.0134,
+with kak2 /.0136a2x /.0135a2y /.0135a2z /.00201. All projections are then
+eitherI orO orP /.01361=2/.0133I /.0135n /.0001/.0027/.0134, with knk/.01361.L e tv
+be a dispersion-free generalized probability measure on
+the projections. Any pair of mutually orthogonal projec-
+tions P;P
+0 /.0136I /.0255P will have values 1 and 0 such that
+their sum is 1. Hence there are nonorthogonal pairs P /.0136
+1=2/.0133I /.0135n /.0001/.0027/.0134,Q /.01361=2/.0133I /.0135m /.0001/.0027/.0134such that both have
+value 0. If v had a linear extension, then all the effects
+corresponding to the line segment joining n andm,E /.0136
+/.0021P/.0135/.01331 /.0255/.0021/.0134Q, with 0 /.0020/.0021/.00201, would have values
+v/.0133E/.0134/.0136/.0021v/.0133P/.0134/.0135/.01331 /.0255/.0021/.0134v/.0133Q/.0134/.01360. On the other hand,
+we can write E in its spectral decomposition E /.0136/.0022R/.0135
+/.01331 /.0255/.0022/.0134R0, where 0</.0022<1 if 0</.0021<1. Assume that
+v/.0133R/.0134/.01361,v/.0133R0/.0134/.01360, then v/.0133E/.0134/.0136/.0022/.02220, which contra-
+dicts the previous conclusion that v/.0133E/.0134/.01360. Hence there
+is no consistent linear extension of v.
+Up to this point we have restricted ourselves to the
+minimal interpretation of quantum states and observ-
+ables, according to which these entities are tools for
+calculating experimental probabilities. W e have shown
+that, given the set of effects as a representation of all
+experimental yes-no questions, any quantum state, under-
+stood as a generalized probability measure on the set of
+effects, is given in the familiar way by a density operator.
+This result entails a formalization of the well-known
+fact that quantum mechanics is an irreducibly probabil-
+istic theory: in contrast to classical probability theory,
+quantum probabilities cannot be decomposed into convex
+combinations of dispersion-free (that is, f0; 1g-valued)
+generalized probability measures.
+W e conclude with a brief outline of an application of
+the above result to interpretations of quantum mechanics
+that go beyond the scope of the minimal interpreta-
+tion. Such an interpretation will consider observables as
+representations of properties of a system and effects as
+yes-no propositions about the possible values of the ob-
+servables. The role of states will be to assign values to
+observables and effects. In a deterministic world, one
+would expect a complete state description to assign one
+PHYSICAL REVIEW LETTERS week ending
+19 SEPTEMBER 2003VOLUME 91, NUMBER 12
+120403-2 120403-2
+
+of the values 1 or 0 to each effect of a complete collection
+Ei (with PEi /.0136I), in such a way that 1 occurs exactly
+once. Thus the sum of the values for all Ei is 1.
+This consideration leads to the idea of deﬁning states
+as effect valuations, that is, as functions v:E /H21739v/.0133E/.0134
+of effects with the properties v/.0133E/.0134/.00210,a n d v/.0133E/.0134/.0135
+v/.0133F/.0134/.0135... /.01361 ifE /.0135F /.0135... /.0136I.
+It is easy to see that every effect valuation has the
+properties (P1)–(P3) of generalized probability measures,
+and conversely. Hence the above theorem entails that any
+effect valuation is of the form v/.0133E/.0134/.0136tr/.0137/.0026E/.0138for allE 2
+E/.0133H /.0134and some density operator /.0026.
+An interpretation of valuations as truth value assign-
+ments would require the numbers v/.0133E/.0134to be either 1 or 0,
+indicating the occurrence or nonoccurrence of an out-
+come associated with E. V aluations with this property
+are referred to as dispersion-free. The above theorem
+entails immediately that dispersion-free effect valuations
+which are deﬁned everywhere on E/.0133H /.0134do not exist. It
+follows that noncontextual hidden variables, understood
+as dispersion-free, globally deﬁned, valuations, are ex-
+cluded in quantum mechanics.
+The argument against noncontextual hidden variables
+thus obtained resembles formally that of von Neumann
+[5]. However, von Neumann’s problematical assumption,
+that of additivity of a valuation over arbitrary (countable)
+sets of (commuting or noncommuting) Hermitian op-
+erators [9], is here replaced by the requirement of
+additivity over (countable) sets of effects that add up to
+I. Such collections of effects constitute a POVM and
+are thus jointly measurable in a single experiment. It
+thus makes sense to consider hypothetical simultaneous
+(hidden, dispersion-free) values of such sets of effects,
+and hence also the values of sums of effects provided
+these sums are bounded by I.
+In the case of a pure state/.0026/.0136j’ih’j, the occurrence of
+valuesv
+/.0026/.0133E/.0134strictly between 0 and 1 indicates a situation
+where the property associated with E is objectively in-
+determinate; that is, its presence or absence is not just
+subjectively unknown. This interpretation is in accord
+with the propensity interpretation of probabilities, ac-
+cording to which the number v
+/.0026/.0133E/.0134gives a measure of
+the system’s objective tendency to trigger an outcome
+represented by effect E if the state is given by /.0026and a
+measurement is made of a POVM containing E [10].
+As an example,E1 andE2 /.0136I /.0255E1 could represent the
+propositions that a quantum particle is in the upper and
+lower path of an interferometer, respectively. If a pure
+state/.0026is a superposition of states /.0026
+1,/.00262 in whichE1 and
+E2 are real, respectively [i.e., v/.00261 /.0133E1/.0134/.0136v/.00262 /.0133E2/.0134/.01361],
+then there is no convex decomposition of that state in
+terms of valuations which are dispersion-free, even only
+with respect to E1;E 2. The fact that 0<v/.0026/.0133Ei/.0134< 1 is
+then an expression of the indeterminateness of the proper-
+ties E1;E 2 in the state /.0026. The most appropriate way of
+accounting for this situation seems to be to say that the
+localization of the quantum particle is extended over the
+space occupied by the two paths of the interferometer.
+The quantum particle is present, to a degree quantiﬁed by
+the number v
+/.0026/.0133Ei/.0134, in each of the two paths represented
+byEi. If forced by a measurement to decide whether to
+show up in the upper or lower path, it will do so with a
+propensity quantiﬁed by those numbers.
+A related interpretation of valuations for unsharp mea-
+surements as approximate truth values has recently been
+advocated by Breuer [11], who applied Gleason’s theorem
+to obtain a Kochen-Specker theorem [8] for unsharp spin
+observables.
+The nonexistence of dispersion-free effect valuations
+raises the interesting question whether there are subsets in
+the set of effects, with meaningful structures, on which
+such dispersion-free valuations can be deﬁned. Interesting
+constructions demonstrating a positive answer to this
+question are presented for subsets of projections in [12],
+or also for effects in [13]. Intuitively, it appears that the
+valuations of Bub [12] are deﬁned on relatively sparse sets
+of projections, but these sets do possess some structures
+that can be argued to be necessary for a consistent set of
+deﬁnite properties; by contrast, the valuations of Kent
+[13] are deﬁned on ‘‘dense’’ sets of POVMs where it is
+not obvious that these are equipped with such ‘‘logical’’
+structures. The important task remains to explore how
+far one can go in deﬁning noncontextual dispersion-free
+valuations on subsets of effects with appropriate struc-
+tures, without running into conﬂict with the modiﬁed
+Gleason theorem proven here.
+Note added. —An insightful analysis contributing to
+this aim has recently been made by Appleby [14].
+*Electronic address: p.busch@hull.ac.uk
+[1] For an introduction into the notions of effects and
+POVMs and their use in quantum measurements, see,
+e.g., the monograph of P . Busch, M. Grabowski, and
+P. L a h t i , Operational Quantum Physics (Springer,
+Berlin, 1995), 2nd corrected printing 1997. An ‘‘effect’’
+is a Hermitian operator E acting on the Hilbert space
+H which is bounded between O and I; that is, O /.0020
+E /.0020I (where A /.0020B for two operators A;B means
+h’jA’i/.0020h’jB’i for all vectors ’ 2 H ). W e are inter-
+ested only in POVMs corresponding to discrete observ-
+ables; such a POVM can simply be described as a
+resolution of the identity operator I, P
+nEn /.0136I,i nt e r m s
+of effects En 2 E/.0133H /.0134.
+[2] A. M. Gleason, J. Math. Mech. 6, 885 (1957).
+[3] An early version of this Letter (P . Busch, e-print quant-
+ph/9909073) aimed at a ‘‘resurrection’’ von Neumann’s
+infamous no-hidden variables theorem. The simpliﬁed
+proof of Gleason’s theorem on which the argument was
+based attracted considerable interest. For this reason, the
+focus of the present Letter is on this result concerning the
+most general quantum mechanical probability measures.
+PHYSICAL REVIEW LETTERS week ending
+19 SEPTEMBER 2003VOLUME 91, NUMBER 12
+120403-3 120403-3
+
+[4] E. B. Davies, Quantum Theory of Open Systems
+(Academic Press, New Y ork, 1976).
+[5] J. von Neumann, Mathematische Grundlagen der
+Quantenmechanik (Springer, Berlin, 1932).
+[6] The statement of the theorem was given without proof
+in P . Busch, P . Lahti, and P . Mittelstaedt, The
+Quantum Theory of Measurement (Springer-V erlag,
+Berlin, 1996), 2nd ed. To the author’s knowledge,
+the credit for this result is due to the late Sławek
+Bugajski, who envisaged (unpublished) it at a time
+when the relevance of effects and POVMs for quantum
+physics was not yet well established. A proof similar to
+the present one was published in the abstract mathemati-
+cal context of base norm and order unit spaces by
+E. Beltrametti and S. Bugajski, J. Math. Phys. (N.Y .)
+38, 3020 (1997).
+[7] J. Bell, Rev. Mod. Phys. 38, 447 (1966).
+[8] S. Kochen and E. P . Specker, J. Math. Mech. 17,5 9
+(1967).
+[9] For a review of early criticism of this assumption, cf.
+M. Jammer, The Philosophy of Quantum Mechanics
+(Wiley, New Y ork, 1974), Sec. 7.4. According to
+Jammer, the ﬁrst to raise this point was German phi-
+losopher of physics Grete Hermann, Abhandlungen der
+Fries’schen Schule 6, 75–152 (1935). For a more recent
+account, see N. D. Mermin, Rev. Mod. Phys. 65, 803
+(1993).
+[10] An interpretation of objective quantum probabilities (in
+pure states and for projections) in terms of propensities is
+discussed by N. Gisin, J. Math. Phys. (N.Y .) 25, 2260
+(1984). Here the term ‘‘objective’’ probability refers to
+the indeterminateness of a property whose probability is
+not 1 or 0 (in a pure state). Under appropriate conditions
+one can extend the concept of propensity to mixed states
+and POVMs, namely, in the case where the effects of the
+POVM do not commute with the density operator. A pro-
+pensity interpretation thus understood was envisaged by
+W . Heisenberg who used terms such as disposition,
+potentiality, or tendency of actualization. The use of
+the ‘‘propensity’’ interpretation of probability in the
+context of quantum mechanics was advocated by K. R.
+Popper to describe situations of indeterminacy. A dis-
+positional theory of probability was already proposed by
+C. S. Peirce who used the term ‘‘would be.’’ I am indebted
+to A. Shimony for this piece of information on the
+history of the propensity interpretation. For references,
+see M. Jammer, The Philosophy of Quantum Mechanics
+(Ref. [9]), p. 449, footnote 44.
+[11] T . Breuer, Phys. Rev. Lett. 88, 240402 (2002).
+[12] J. Bub, Interpreting the Quantum W orld (Cambridge
+University Press, Cambridge, 1997).
+[13] A. Kent, Phys. Rev. Lett. 83, 3755 (1999).
+[14] D. M. Appleby, Phys. Rev. A 65, 022105 (2002).
+PHYSICAL REVIEW LETTERS week ending
+19 SEPTEMBER 2003VOLUME 91, NUMBER 12
+120403-4 120403-4

@@ -1,0 +1,9 @@
+{
+  "run_id": "20260613T170346Z",
+  "processed": 1,
+  "pattern": "Lee1964.pdf",
+  "output_root": "library/extracted/tmp_under10",
+  "docling_version": "2.102.1",
+  "vlm_model_repo": "ibm-granite/granite-docling-258M",
+  "vlm_model_preset": "granite_docling"
+}

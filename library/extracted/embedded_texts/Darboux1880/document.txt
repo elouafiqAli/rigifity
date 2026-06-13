@@ -1,0 +1,273 @@
+Sur le thdorbme fondamental de la g6omdtrie project~ivc. 
+par 
+M. O. DARBOUX i~ Paris. 
+(Extrait d'une lettre b. M. Klein). 
+Dans deux Mgmoires insdrds aux tomes VI et VlI des Mathematische 
+Annalen vous vous ~tes occup6 incidemment de la ddmonstration que 
+v. Sta u dt a donnde du thdorbme fondamental de sa gdom6trie de position. 
+Cet gminent g~om~tre prend pour base une dgfinition partieulibre de la 
+projeetivit6 et il dit que deux sgries lingaires d'~ldments sent en relation 
+projective lorsqu% .~ quatre 6lgments de l'une des sgries en relation 
+harmonique, correspondent toujours quatre ~16ments de l'autre s6rie 
+formant aussi, et dans le mSme ordre, une suite harmonique. Lors- 
+qu'on adopte cette d(ifinition, il y a '~ gtablir le th(!orSme suivant: 
+Si deux sdries tle points pris sur une m~b~e droite sent en rclation 
+:projective, il ne peut pas y avoir pl,ts de deux points de l'une des sdrics 
+qui coincident avec leurs homologues, ou, en d'autres refines: si trois 
+dldmcnts de I'~tne des so;ties co:incident avec leurs homologues, il en sera 
+de m~me de tout autre dldment. 
+C'est de ce thdorbme que v. Staudt donne, dans sa Geometrie 
+der Lage, une ddmonstration que tout le monde avec vous s'accorde 
+'~ regarder comme ineomp]bte. Mats il me semble quesi la ddmon- 
+straiten laisse ~ ddsirer, le thdor~me lui-m~me est parfaitement exact 
+et qu'il peut ~tre 6tabli sans le seeours d'aueune hypothdse compld- 
+mentaire de la nature de celle que vous avez dnoncde au tome VII 
+p. 536 des Malhematische Annalen. 
+Je supposerai d'abord qu% laissant de cbtd [a ggomgtrie de 
+v. Staudt e~ employant les notions mdtriques, on accepte immgdia- 
+tement la reprgsentation des points par des abscisses gvaluges numgri- 
+quement. On peut alors 6tablir en route rigueur le thgorbme suNant: 
+Si deux sdries d'dldments se correspondent de telle maniOre qu'd 
+quatre dldments quelconT, ees de Z'une des sdries, formant une proportio~ 
+harmonique, correspondent quatre dldments dgalement en rapport harmoni- 
+que, la correspondance est ddfmie par cette unique proprigtd; et elle 
+cdincide avec la transformation homographique. 
+
+
+56 G. Dxsno~x. 
+II suffira dvidemment de consid6rer le cas off les deux s6ries sont 
+composges de points sur une m~me droite~ et o~l trois 514merits de 
+l'une des sgries col'ncident avec leurs homologues; car on pent toujours 
+rdaliser cette derni~re condition en soumettant l'une des sgries h une 
+transformation homographique; on peut m6me supposer que les points 
+qui coincident avec ]eurs homologues sont ddfinis par les abscisses 
+O, l, oc. II rgsulte immgdiatement de la dgfinition de la correspondance 
+considgrde qu'h un point de rune des s6ries correspond un seu[ point 
+de l'autre. Soit x l'abscisse d'un point quelconque de la premibre sdrie, 
+x' l'abscisse du point homologue. On aura x'= r et la {bnction 
+~p devra ddj~ satisfaire aux trois conditions: 
+(1) ~(o) ----- o, ~(1)= 1, ~(~) = o~. 
+Cela posd, considgrons trois points, d'abseisses xl, x2, x3, formant avee 
+le point or une proportiou harmonique; on aura 
+x~ --1- x~ = "2 x~ . 
+Comme les points homologues doivent aussi former uue proportion 
+harmonique~ on devra avoir ca m6me temps 
+~(x,) + ~(x~) = 2w(x~), 
+ce qui dotme une premiere 6quation fonctionnelle 
+(2) ~(x,) + ~(x~) = 2~ (x, +~) \ 2 / 
+h laquelle devra satisfaire ]a fonction 9~. Si je fais x~ ~ t~ j'ai 
+et par consdquent l'gquation (2) peut s'gcrire 
+(3) ~(x,) + ~(x3) ---- ~(x~ + x~). 
+On ne sait pas rdsoudre d'uae mauibre gdndrale cette (~quatiou ibnc- 
+tionelle~ tant qu'on ne suppose rien sur la [bnction r Mais il est 
+*) L'dquation fonctionnelle 
+(x) -k- ~ (y) = ~ (x q- y) 
+se rencontre darts un grand nombre de recherches de mgcanique et de physique. 
+C auchy l'a rdsoluo, avec plusieurs autres dquations analogues, dans son analyse 
+Algdbrique, mais en supposan$ la function q~ continue. Dans un article sur la 
+composition des forces en statique (zBulletin des Sciences Mathdmatiques 6. IX. p 281) 
+j'ai fair la remarque, ~ pen pros dvidente, que la mdthode de Cauchy s'applique 
+encore et conduit an m~me rdsuitat si l'on suppose seulement que la fonction 
+conserve son signe on soit croissante dans un intervalle quelconque. Mais on pent 
+aller plus loin et montrer que l'on aura r --~ Ax, A ~tant une constante, routes 
+les lois que la fonction cp(x) sera assujettie s l'unique condition de prendre duns 
+un intervalle quelcouque des valeurs positives et ndgatives qui, les unes ou les 
+ttu~res~ soient infdrieures en grandeur absolue ~ une ]imite fixe. Ainsi il suffira, 
+
+
+Sur la gdomdtrie projective 57 
+clair que nous n'avons fair usage que d'une partie de la d~finition 
+gdngrale et nous allons en eliot obtenir des proprldtds nouvelles de la 
+fonction r 
+Considdrons les quatre pohlts en proportion harmonkiue , ayant pour 
+abscisses x~, x2~ xa, --x..~. Ou aura 
+(4) x, x o = ~ 2. 
+Les abscisses des points corre~pondants seront q~(x.), r , ,p(x:~), 
+r ou, ell vertu de l'6quation (3) 
+~(x,), cp(x~), r ~(x,~) 
+et l'on devra avoir 
+~(x,) ~(x,)= [~(x~)~ 
+OU 
+par exemple, qu' il y ait un seu[ intervalle dans lequel les valeurs positives de 
+la fonction demeurent inidrieures "k un hombre fixe, pour que Pen air tp(x) -~- Ax. 
+En effet, de l'Oquation 
+(x) + ~ (y) = ~ (x q- y) 
+on ddduit aisdment que la fonction 
+V(x) = ~(x~ -- x~(1) 
+1 ~ s'annule pour routes les valeurs commensurables de x, 2 o satisfait aussi ,~ 
+l'dquatien 
+4(~c) + V(Y) = 'P(."§ 
+et par consdquent reprend la mdme wdeur pou~' deux valeurs de .c q~tt dt/]~rent 
+d'une quantitd commensurable quelconque. Elle ~rend done dims un mtervaltc 
+ddtermind toutes les valeurs qu'elle peut acqu~rir dans les autres intervallcs. Par 
+suite si elle n'est pas constamment nulle, si ['on a, par excmple, 
+(xo) ~ 0 V 
+on en ddduira 
+V (mxo) = m~p(xo) ~ o, 
+mdtant un hombre commensurable, aussi grand qu'on le veut, positif ou n4gatff. 
+Amsi la fonction prendra des valeurs positives ou ndgatives aussi grandes qu'on 
+le voudra, et il y aura dans tout intervalie une infinitd de valeurs de x qui feront 
+acqudrir ces valeurs '~ la fonction. 
+Par suite sl les valeurs positives ou ndgatives de la fonetion dans un intervalle 
+quelconque doivcnt demeurer finies~ il faudra ndccssairement que l'on air 
+V (x) = 0 
+Oll 
+~(x) = x~(l) 
+pour route valeur de x 
+Au point de vne de 1,~ question qm nous occul)e, la remarque prdcddente 
+aurait pour consdquence le thdorSme suivant: 
+Si la correspondance est ddfinie par la condition qr trois points quelconques 
+M, M'~ M'" formant avec le point ddtermmd A une proportion harmonique, corre- 
+spondent trois points N, N', N'" tormant avec le point ddtermind [3 une proportion 
+harmomque, cette correspondance est la transformation homographique, pourvu 
+qu'il existe au moins un l~tervalle, ne comprenant pas de point de la premiere 
+sdrie dent l'homologue soit aussi rapprochd de B qu'on le voudra. 
+
+
+58 G. Dxnsoux. 
+l~emarquons qu'en vertu de la relation (4), x Iet x 2 sont de mbme 
+signe. Si donc l'on fair x 2 ~ 1, on supposeni simplicitement x I positive 
+et ron aura 
+(6) = 
+Cette 4quation nous montre que ~(x) sera positive toutes les Ibis 
+que x le sera. 
+On peat considgrer maintenant la recherche eomme achevde, car 
+l'6galitg 
+(x + h) - = (h) 
+nous montre que la fonction sera croissante; et comme pour toutes 
+les valeurs commensurables de x on a 
+r = x (1) --= x 
+on peut conclure que la m~me expression a lieu pour les valeurs in- 
+commensurables de x. 
+Voils donc la proposition entibrement ddmontrde; il est vrai que 
+nous avons employd ]a ggomdtrie mgtrique; mats vous n'aurez aucune 
+peine s admettre s priori que les raisonnements qui prdc~dent peuvent 
+en quelque sorie 6tre traduits dans la gdomdtrie de position. C'est ce 
+que je vats faire voir en peu de roots. 
+Je commencerai par dtablir un lemme pr41iminaire. Considdrons 
+deux segments PQ, P'Q' divisant harmoniquement un autre segment 
+AB. On salt que ces deux segments .PQ, P'Q" sont compris l'un clans 
+l'autre ou n'ont aucune partie commune. Donc si deux segments em- 
+pibtent l'un sur l'autre, il n'existe pas de segment les divisant tousles 
+&ux harmoniquement. 
+Je vais ddmontrer au contraire que si deux segments _PQ, t )'q' 
+n'emTi~tent 2as ~'un sur t'autre, il exi~te toujours an moins un segment 
+les divisant harmoniquement. 
+Supposons, pour driver route difficult4 relative s l'infini, que les 
+.------~-~ deux segments aient 4t6 rapportds sur 
+P~ ~" une conique ou, si l'on veut, consid4rons 
+/ \ la droite comme une courbe fermde et 
+/ \ soient p, q' les conjugu4s harmoniques 
+/' ~ Jr.O de ~, Q' par rapport au segment zOQ; 
+] p, q seront dans l'arc PaQ qui ne con- 
+/ tieIlt pas le segment P' Q'. Supposons 
+,.,~ / quun point M se meuve de P en Q'; 
+"P/ * S " ~-~//x~9 on conjugu4 harmonique g par rapport 
+f au segment pQ parcourra l'arc p'aq', 
+tandis que le. conjugu4 harmonique 
+/x' du m6me point par rapport au segment P'Q" parcourra l'arc 
+
+
+Sur la g6omdtrie projective. 59 
+P'PaQQ'. I1 y aura done au moins une position de M pour laquelle 
+t~ et t~' coincideront. 
+Nous admettons, on le volt, que si deux mobiles se meuvent sur 
+une droite d'une mani~re continue, c'cst-~-dire de mani~re ~ occuper 
+routes les positions, et que l'un, apr~s 6tre demeur~ en arri~re~ finisse 
+par d6passer l'autre, il y aura au moins une position darts laquelle ils 
+coi'ncidcrout. Mats vous verrez facilement qu'il n'y a pas l'h de 
+dJi~avantage pour ]a d(hnonstration nouvelle. La proposition prdcddente 
+ou des propositions auxquelles il est ais6 de la ramener doivent ~tre 
+admises quand on a h reprdsenter par un nombre une grandeur in- 
+commensurable et en particulier ~ d6finir la racine carrde, qui est 
+employde darts l'dquation (6) de la pretni~re ddmonstration. 
+II r6sulte de ce qui prdcbde ua moyen prgcis de reconnaitre si deux 
+segments empi~tent ou n'empibtent pus Fun sur l'autre; il suffira de 
+chercher s'il y aun troisi~me segment qui les divise harmoniquement. 
+Cela pos6, considdrons sur une m6me droite deux sdries projectives 
+de points et supposons que les trois points A, B, C de l'nne des sdries 
+coincident avec leurs homologues. Il resulte des belles recherches de 
+MM. Ltiroth et Zeuthen que vous avez exposdes au tome VII des 
+Mathcmatischc Annalen (p. 531) que, darts tout intervalle, i[ y aura des 
+points qui cdineideront avec leurs homologues (ce sont les points qui, 
+dans notre premiere ddmonstration, ont leurs abscisses rationnelles). 
+Je dis que tout autre point x coincidera avec son homologue x'. En 
+effet, s'il en 6tait autrement, nous pourrions prendre entre x et ~' deux 
+points Aet B, duns l'ordre (xABx')~ que coincideraient avec leurs 
+homo]ogues. Alors les deux segments xA, Bx', n'empi~tant pus l'un 
+sur l'autre seraient divisgs harmoniquement par un troisi~me segment 
+et par consequent les segments x'A, Bx form6s par les quatre points 
+homologues de x, A, B, x' devraient ~tre divisgs harmoniquement par 
+le segment m'n', homologue de mn. Or cela est impossible, puisque 
+les deux segments x'A, .Bx, emptY,ant l'un sur l'autre~ ne peuvent 
+admettre aucun segment qui les divise tous les deux harmonlquement. 
+I1 est done impossible que x' ne coincide pas avec x et la proposition 
+de v. Staudt se trouve dtablie dans toute sa ggngralit6. 
+Une fois le thdorbme fondamental 6tabli, on peut en d(~duire de 
+nombreuses cons6quences. I1 est a~sd par exemple de reconnaitre avec 
+v. Staudt (Geometrie der Lage w [21--122) que l'on peat dgfinir 
+la correspondance projective on homographique dans le plan ou dans 
+l'espace par l'anique condition qa'~ des points en ligne droite de l'une 
+des figures correspondent dans l'autre des points en ligne droite. On 
+ddduit en effet facilement de cette ddfinition et du principe fonda- 
+mental l ~ qu'h un point correspond un seal point, 2 o qu'~ une droite 
+ponctu6e correspond une droite ponctu~e projectivement, 3" que s[ ciuatre 
+
+
+60 G. DARROVX. 
+points d'un plan dont trois ne sont pas cn ligne droite co]'ncident avec 
+leur~ homologues, il en sera de m~me de tout autre point du plan, etc. 
+Mais. il y a une autre eonsdquence du theorbme fbndamental sur 
+laquelle je ddsirerais, en terminant, appeler votre attentioH. MSbius 
+dans son beau M~moire Die Theorie dcr Krcisvcrw,ndtscha/t in rein 
+geometrischer Darstellung (Abh. der K. S. Ges. d. Wissensch. iV.) 
+se propose d'dtudier ]a transformation 1~ plus g6ndrale daas laque]le 
+hun cercle corresponde un eercle et il arrive au fond ~\ eette (~*n- 
+clusion qu'une telle transformation 6quivant ~ l'inversion (transfor- 
+mation par rayons vecteurs r~ciproques) accompagn~e de d~plaeements. 
+Mais pour 6tablir cette intdressante proposition il suppose, et il le dit 
+expressivement (p. 535), que ]a correspondance des deux figures soit 
+assujettie aux conditions de continuit6. Je me propose de montrer~ en 
+m'appuyant sur ce qui pr6c~de, que ces conditions ne sont pas 
+ndcessaires. 
+Supposons en effet que l'on veuille rechercher la transformation 
+la plus gdngrale dans laquelle .~ un cercle correspond un cercle. Il 
+est clair d'abord qu'~ un point devra correspondre un ~eul point. A 
+tons les cercles passant par un point A de la premiere figure (C) 
+devront correspondre tous ]es cerc]es passant par le point correspon- 
+dant A' de la seeonde figure (C') : soumettons la premiere figure (C) .h une 
+inversion ayant pour pole A, ce qui donnera une figure (D), et de 
+mSme la figure (C') s une inversion ayant pour pole A', ce qui donnera 
+une figure (D'). Les deux figures (D), (D') 6tant telles qu'~ une droite 
+de l'une eorresponde une droite de l'autre seront en eorrespondanee 
+homographique. Mais eette correspondanee doit ~tre telle qu'~ un 
+cerele corresponde un eercle et il est ais6 de reconnaitre que eela ne 
+peut avoir lieu que si les deux figures sont semblables. 
+En effet les points '~ l'infini de ,(D) ne peuvent avoir leurs homo- 
+logues de (D') qu'~ l'infini. Car soit m un point ~ l'infini de (D); si 
+ce point avait pour homologue un point m' ~ distance finie, ~ tout 
+cercle de (D') passant par m' devrait correspondre une courbe allant 
+b. l'infini, ee qui est impossible puisque l'bomologue de ee eercle est 
+un cercle. Done les droites de l'infini se correspondent dans les deux 
+figures. A un paralldlogramme de la premiere figure correspond un 
+parall61ogramme de la seeonde. Done, comme le remarque M6bius, 
+un rectangle (paral]dlogramme inserit dans un cercle) correspond un 
+rectangle; h un angle droit, un angle droit; ~ un carr6 (rectangle 
+9 ~ diagonales rectmJgulaires) correspond un carr6. 
+D'apr~s eela soit ABCD un cart6 de (D) ayant pour homologue 
+le carrd A'B'C'])' de (D'). On peut toujours amener ces deux carr6s 
+la coincidence en soumettant la figure (D') s une transformation 
+
+
+Sur la gdomdtrie projective. 61 
+homoth~tique et '~ un dgplaeement. Alors les deux figtu'es homo- 
+graphiques ayant quatre points coincidents seront superposables dans 
+route leur 6tendue. 
+Ainsi la transformation cyclique de M6bius peat toujours se rdaliser 
+au moyen d'une inversion [passage de (C') en (D')] suivie d'une trans- 
+formation homothdtique et d'un dgplaeement [passage de (D') en (D)] 
+et enfin d'une autre inversion [passage de (D) en (C)]. Oil salt que 
+routes ces opgrations peuvent toujours se ramener soit h une seule in- 
+version, soit ~ une transformation homoth6tique, prgc6dges ou suivies 
+d'un dgplacement. 
+Paris.

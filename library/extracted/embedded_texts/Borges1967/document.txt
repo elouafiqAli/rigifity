@@ -1,0 +1,547 @@
+Pacific Journal of
+Mathematics
+A STUDY OF MULTIV ALUED FUNCTIONS
+CARLOS JORGE DO REGO BORGES
+Vol. 23, No. 3 May 1967
+
+PACIFIC JOURNAL OF MATHEMATICS
+Vol. 23, No. 3, 1967
+A STUDY OF MULTIVALUED FUNCTIONS
+CARLOS J. R. BORGES
+The primary purpose of this study is to determine which
+topological properties of a space are preserved by multivalued
+functions. Among other results, the following are proved:
+(A) Let F: X-> Y be a perfect map from Zonto Y, with
+F(x) Φ 0 for each x e X, where X and Y are TΊ-spaces whose
+diagonals are GVsets. Then X is metrizable (stratifiable) if
+and only if Y is metrizable (stratifiable)-see Theorem 3.2.
+(B) If F: X-> Fis a multivalued F-compact quotient map
+from a separable metrizable space X onto a regular first
+countable space Y with a Gs-diagonal, then Y is separable
+metrizable (see Theorem 4.5).
+(C) Every (use-) lsc-function F from a closed subset of a
+stratifiable space X to a topological space Y admits a (use-)
+lsc-extension to all of X (see Theorem 5.2).
+Multivalued functions have been extensively studied by Kruse [6],
+Michael [7; 8], Ponomarev [12; 13; 14], Smithson [15] and Strother
+[17; 18]. Choquet [2] and Hahn [3] have also considered multivalued
+functions.
+2* Preliminary definitions and results* Because there are many
+conflicting terminologies in the theory of multivalued functions, we
+find it necessary to attempt a terminology of our own, which is a
+direct extension of the most natural and simple terminology of
+Michael [10] and includes some of Ponomarev's terminology:
+DEFINITION 2.1. For any sets X and Y, F: X—> Y is a multivalued
+function provided that, for each x e X, F(x) is a subset of Y(F(x)
+need not be a closed or nonempty set as required by Ponomarev and
+others).
+Clearly, single-valued functions are just special cases of multivalued
+functions and indeed a multivalued function from X to Y can obviously
+be thought of as a single-valued function from X to <s>f(Y)—the
+family of all subsets of Y (including the empty set).
+DEFINITION 2.2. Let f:l->7 be a multivalued function. Then
+(a) F(A) = U {F(x) \xeA} for each AcX,
+(b) F-\B) - {x e XI F{x) n B Φ 0} for each BcY (clearly F~ι
+is a multivalued function from Y to X).
+It is quite easy to construct a multivalued function F from a
+451
+
+452 CARLOS J. R. BORGES
+topological space X to a topological space Y such that F~\U) is open
+for each open UaY and yet F~\B) is not closed for each closed
+BaY and vice versa. Hence on immediately realizes that the various
+equivalent definitions of continuity of (single-valued) functions have
+to be considered separately for multivalued functions:
+DEFINITION 2.3. Let F: X—* Y be a multivalued function. Then
+we say that (the terminology of (e)—(g) was first developed by
+Ponomarev [13])
+(a) ί1 is a use-function (i.e., upper semi-continuous function)
+provided that F~\B) is closed for each closed BcF,
+(b) F is a lsc-f unction (i.e., lower semi-continuous function)
+provided that F~\V) is open for each open Fc7,
+(c) F is a continuous function provided that F is a use-function
+and a lsc-f unction,
+(d) F is a closed (open) function provided that F(B) is closed
+(open) for each closed (open) B c X,
+(e) F is F-compact (F-separable) (X-compact: X-separable)
+provided that F(x) is compact (separable) for each x e X{F~ι(y) is
+compact for each y e Y; F~\y) is separable for each y e Y),
+(f) F is F-perfect (X-perfect) provided that F is a closed, In-
+compact, use-function (F is a closed, X-compact, use-function),
+(g) F is perfect provided that F is X-perfect and Y-perfect.
+Our terminology compares with others as follows (where " = "
+means "the same as"):
+1. use = strong upper semi-continuity (Choquet [2]) = upper semi-
+continuous (Michael [7]) = continuous (Ponomarev [12]) = lower con-
+tinuous (Hahn [3]).
+2. lsc == strong lower semi-continuity (Choquet [2]) == lower semi-
+continuous (Michael [7]) = skew-continuous (Ponomarev [12]) = lower
+continuous (Hahn [3]).
+DEFINITION 2.4. Let F: X—> Y be a multivalued function. Then
+(a) The graph of F is
+grF = {(x, y)eX x Y\ye F(x) and xeX} .
+(b) The functions px: grF-^ X and pγ: grF-* Y are defined by
+, V) = x and pγ(x, y) = y
+for each (x,y)e grF.
+We now state, without proof, some straightforward results of
+crucial importance which were first observed by Ponomarev and
+Smirnov.
+
+A STUDY OF MULTIVALUED FUNCTIONS 453
+LEMMA 2.5. Let F:X-+Y be a multivalued function from X
+onto Y. Then
+(a) (F-r1-^,
+(b) F(x) = pYPxl(x) for each x e X,
+(c) F~'(y) = VxPΛy) for each yeY,
+(d) the maps px and pγ are always continuous (since they are
+restrictions of the projection maps πx\ X x Y-+X and πγ; X x Y—» Y).
+We now prove two very useful results which determine the rela-
+tionship of a multivalued map F:X—> Y and the maps px and pγ.
+The proof of the first result is essentially due to Smirnov.
+THEOREM 2.6. Let X and Y be topological spaces and F: X~* Y
+be a multivalued function. Then
+(a) F is a use-function and Y-compact if and only if the map
+φx is perfect,
+(b) F is closed and X-compact if and only if the map pγ is
+perfect,
+(c) F is perfect if and only if px and pγ are perfect.
+Proof. The proof of the "only if" part of (a) appears in the
+footnote of page 123 of Ponomarev [13]. The proof of the "if" part
+of (a) follows easily from Lemma 2.5 and Definition 2.4(a). The proof
+of (b) is the same as the proof of (a) if one considers F~γ instead of
+F. Part (c) is an immediate consequence of parts (a) and (b).
+REMARK 2.7. The appealing conjecture that px(pγ) is closed even
+though F is not F-compact (X-compact) is false: Let R be the real
+line with the usual topology, I be the closed unit interval and
+F-.R-+R be defined by F(x) = I for each XQR. Then F is not
+X-compact (F^iO) = R) and pγ is not a closed map (pγ({(x, y)\y — ex
+and x ίg 0}) = [0,1]). Furthermore, F is F-compact, continuous and
+closed.
+THEOREM 2.8. Let F: X—•> Y be a multivalued function. Then
+(a) if F is a \sc-function then px is an open map,
+(b) if F is open then pγ is open.
+Proof. It suffices to prove (a), since (b) is an immediate con-
+sequence of (a), due to Definition 2.4(b) and Lemma 2.5(a): Therefore,
+let us assume px is not open. Then there exists a closed AczgrF
+such that the set B = {x e X \ px\x) ci} = I- PxigrF - A) is not
+a closed subset of X. Let weB~ - B. Then px\w) ςέ A. Let
+(w, z)e pγ{w) — A. Since A is a closed subset of grF there exists an
+
+454 CARLOS J. R. BORGES
+open neighborhood N = U X X of (w, z) in X x F such that N Γ) A =
+0. Letting
+C = X- F~\V) - {xeX\F(x)n V= 0}
+we get that C is not a closed subset of X, since w e U~C(z e F(w) f] V),
+weUnB- and 0 ^ Uf) BaC (Suppose there exists xe(UΓ)B) - C.
+Then FcF(x) ^ 0 and thus
+0 Φ(U x V)C\ ({x} x F(x)) = (Ux V)Π Vx\x) czNf]A= 0 ,
+a contradiction). Hence F^1 is clearly not an open function (i.e., F
+is not a lsc-function), a contradiction which completes the proof.
+Finally we prove a rather interesting result (even though we
+cannot find it in the literature, it appears to be known).
+THEOREM 2.9. The relation between spaces X and Y expressed
+by "there is a perfect multivalued function F from X onto Y such
+that F(x) Φ 0 for each x e X" is an equivalence relation.
+Proof. The only difficult part of the proof involves showing that
+the composition of a F-compact use-function F: X—> Y and a Z-compact
+use-function G: Y—>Z is Z-compact; but this is an immediate con-
+sequence of Corollary 9.6 of Michael [10] (see also 7.7 (p. 60) of
+Kruse [6], Th. 1 (p. 104) of Ponomarev [12] and 21.3.4 of Hahn [3]).
+3. Preservation of topological properties* First we will prove
+necessary and sufficient conditions for the preservation of metrizability
+and stratifiability1 by multivalued functions, for which we need the
+following lemma:
+LEMMA 3.1. Let X and Y be topological spaces with G^-diagonals.2
+Then X x X has a Gδ-diagonal.
+Proof. Suppose that Un and Vn are open in X x X and Y x Y
+respectively, and Π"=i Un and |J^=i Vn are the diagonals of X x X
+and Y x Y respectively. Let
+Wn = {((α^, i/O, (a?2, y2)) I (xly x2) e Un and (x2, y2) e Vn} .
+Then Wn is open in (X x Y) x (X x Y) and (J^i Wn is the diagonal
+of (X x Y) x (X x Y).
+1 A summary of the properties of stratifiable spaces appears in the introduction
+of [1], The most relevant results about these spaces which should be mentioned
+here are (a) Every CW-complex of Whitehead is stratifiable, (b) metrizability implies
+stratifiability which implies paracompactness and perfect normality.
+2 A topological space Xhas a Gδ-diagonal if {(x, x) \ xβX] is a Gs-subset oflxl.
+
+A STUDY OF MULTIVALUED FUNCTIONS 455
+THEOREM 3.2. Let F: X-+ Y be a perfect multivalued function,
+with F(x) Φ 0 for each xeX (i.e., F~ι(Y) = X), where X and Y
+are Tλ-spaces with G-diagonals. Then X is metrizable (stratifiable)
+if and only if Y is metrizable (stratifiable).
+Proof. We will first prove the "only if" part: Let X be metrizable
+(stratifiable) and Y have a Gδ-diagonal. Then grF has a Gδ-diagonal
+(a subspace of a space with a Gδ-diagonal clearly has a Gδ-diagonal)
+and hence grF is metrizable (stratifiable) because of Theorem 8.1
+(Theorem 8.4) of [1].
+Since pγ is perfect, due to Theorem 2.6(c), we get that Y is
+metrizable (stratifiable) due to Theorem 1 of Stone [16] (Th. 3.1 of
+[1]). The "if" part follows immediately from Theorem 2.9.
+We will now turn our attention to the preservation of various
+other topological properties by multivalued maps, for which we will
+need the following definition:
+DEFINITION 3.3. Let F: X—* Y be a multivalued map. Then F
+is said to be Y-monotone (monotone) provided that each F(x) is con-
+nected (each F"\y) is connected).
+THEOREM 3.4. Let F: X~~> Y be an onto (i.e., F(x) — Y) multi-
+valued function such that F(x) Φ 0 for each x e X. Then
+(a) if F is a \sc-function, F(x) is separable for each xe X and
+X is separable then Y is separable,
+(b) if F is a Y-monotone Isc-function and X is connected then
+Y is connected.
+Proof, (a) By Lemma 2.8(a), px is an open function and hence
+grF is easily seen to be separable. Hence Y is separable (pγ is con-
+tinuous).
+(b) Clearly, it suffices to prove that grF is connected: Assume
+not. Then grF is the union of two disjoint nonempty open subsets
+U and V. Since Px is clearly monotone we get that pγ(x) Π U Φ 0
+if and only if pγ(x) c U. Hence {px(U), px(V)} is an open disjoint
+cover of X, because of Lemma 2.8(a), a contradiction.
+As pointed out by the referee, both parts of the preceding result
+become false if the hypothesis that F(x) Φ 0, for each xe X, is
+removed (Example (a). Let Z be a countably infinite discrete space,
+Y - (βZ) - Z (βZ denotes the /3-compactification of Z) and define
+F: βF-+ Y by F(x) = {x} n Y. Clearly ί7 is a perfect F-separable
+map. However, while βZ is clearly separable it is well-known that
+Y is not separable (see, for example, exercise 60(1, 2) of [4] for an
+
+456 CARLOS J. R. BORGES
+easy proof of the fact that Y has 2No mutually disjoint open subsets
+which clearly implies that Y is not separable). Example (b). Let
+X=[0,2],Y=X- {1} and define F: X-> Y by F(x) = {x} Π Y).
+As a final comment of this section, we note that the requirement
+that X and Y be completely regular in the statement of Theorem 3
+(page 127) of Ponomarev [13] is much stronger than needed, as the
+ensuing result indicates:
+THEOREM 3.5. Let X and Y be regular spaces and F: X—> Y be
+an onto perfect multivalued function. If X is paracompact (locally
+compact; countably paracompact) star-paracompact) then so is Y.
+The converse is also true if F(x) Φ 0 for each xe X.
+Proof. Since F is a use-function then F~\X) is a closed subset
+of X. Hence the "if" part follows immediately from Theorem 2.2 of
+[5] and Theorem 1 of [11], whose proofs clearly depend only on the
+fact that X and Y are regular spaces, and Theorem 2.6. The converse
+follows from Theorem 2.10.
+4* Multivalued quotient maps* Since multivalued functions
+behave very much like single-valued functions, it seems imperative
+that one consider the extension of a quotient map for single-valued
+functions to multivalued functions. In so doing, one is immediately
+compelled to consider two distinct concepts of multivalued quotient
+maps in the same manner as with the continuity of multivalued maps.
+However, it turns out that the situation is not as simple as it seems.
+Therefore, let us first prove some results which will justify our
+Definition 4.2.
+LEMMA 4.1. Let F:X—+ Y be a multivalued function and let
+X be a topological space. Then
+(a) {Ua Y\ F~ι{U) is open) is not necessarily a base for a topo-
+logy on Y.
+(b) {UdY\ F~\Y — U) is closed) is a base for a topology on Y.
+Proof. It is easily seen that
+(i) F-1(\JaeΛAa) = \JaeAF-ί(Aa)
+(ii) F~1(\JaeΛ Aa) c {JaβΛ F~\Aa), and equality does not necessarily
+hold, for any collection {Aa}aeΛ of subsets of Y.
+In order to prove (a) let X be the real line with the usual topology,
+Y the set of all real numbers, and let F: X—> Y be defined by
+= [1, 2] ,
+Fix) = Y - [1, 2] for all x Φ 1 .
+
+A STUDY OF MULTIVALUED FUNCTIONS 457
+Then F~\{y eY\y^ (3/2)}) and F~\{y eY\y ^ (3/2)}) are open sub-
+sets of X, but F~ι({ZI2}) is not an open subset of X. Hence
+{UaY\ F~ι(U) is open} is not a base for a topology on Y.
+Finally we prove (b): Let ye U f) V such that F~ι(Y - U) and
+F~\Y — V) are closed subsets of X Since
+F-\Y - VnU) = F~\{Y - U)\J(Y- V))
+= F~\Y - U) U F~\Y - V) ,
+due to (i), one easily sees that {!7c7| F~~\Y — U) is closed} is a base
+for a topology on Y, which completes the proof.
+While Lemma 4.1 dashes all hopes of developing a concept of
+"multivalued quotient topology," nonetheless one can define a multi-
+valued quotient map F;X—*Y in such a way that F is either a
+use-function or a lsc-function.
+DEFINITION 4.2. Let X and Y be topological spaces and F: X—* Y
+an onto multivalued map. Then F is said to be a us-quotient (Is-
+quotient) map provided that a subset U of Y is closed (open) if and
+only if F~\U) is a closed subset of X {F~\U) is an open subset of X).
+F is said to be a quotient map whenever F is both a us-quotient map
+and a Zs-quotient map.
+We will now study the relationship between a multivalued function
+F: X—> Y and the maps px and pYi as well as other relations.
+PROPOSITION 4.3. Let X and Y be topological spaces and F: X—> Y
+a multivalued function. Then
+(a) if px is closed and F is a πs-quotient map then pγ is a
+quotient map,
+(b) if F is a ίs-quotient map then pγ is a quotient map, and px
+is an open map,
+(c) if F is a F-compact us-quotient map then pγ is a quotient
+map, and px is a perfect map.
+Proof. Part (a) is straightforward by use of Lemma 2.5(c). Part
+(b) is straightforward by use of Lemma 2.5(c) and Theorem 2.8(a).
+Part (c) is an immediate consequence of (a) and Theorem 2.6(a).
+Now we generalize Theorem 3 and the Corollary on page 695 of
+Stone [16] to multivalued quotient maps.
+THEOREM 4.4. Let F: X—> Y be a multivalued Y-compact quotient
+map from the locally compact separable metrizable space X onto a
+Hausdorff first countable space Y with a G&-diagonal. Then Y is a
+
+458 CARLOS J. R. BORGES
+locally compact separable metrίzable space.
+Proof. By Proposition 4.3, pγ is a quotient map and px is an
+open perfect map. Hence grF is locally compact (due to Theorem 3.5),
+metrizable (due to Theorem 3.2), and separable (because px is open
+and each px\x) is separable-indeed each px\x) is compact metrizable).
+Since pγ is a quotient map, we get that Y is a locally compact
+separable metrizable space, by Theorem 3 of [16].
+Similarly one can prove the following result, by using the Corollary
+of page 695 of [16]:
+THEOREM 4.5. Let F: X—+ Y be a multivalued Y-compact quotient
+map from the separable metrizable space X onto a regular first
+countable Tγ-space Y with a G'^-diagonal. Then Y is a separable
+metrizable space.
+Finally we generalize Theorem 4 of Stone [16] to multivalued
+open maps.
+THEOREM 4.6. Let F: X —• Y be an open, Y-compact, X-separable
+continuous function from a metrizable and locally separable space X
+onto a regular T^space Y with a G^-diagonal. Then Y is metrizable
+and locally separable.
+Proof. Similar to the proof of Theorem 4.4 except that we use,
+respectively, Theorem 2.8(b), Theorem 2.8(a) and 2.6(a), and Theorem 4
+of [16].
+5* Continuous extensions* We will now generalize Theorem 4.3
+of [1] to multivalued functions. Throughout this section, we let
+CU(Y, Z)(d(Y, Z); C(Y, Z)) be the space of all use-functions (lsc-
+functions; continuous functions) from Y to Zy for any topological
+spaces Y and Z.
+Before stating our main theorem we state the following straight-
+forward but crucial result:
+LEMMA 5.1. Let F: X—> Y be a multivalued function. Then
+(a) F is a use-function if and only if for each xe X and
+neighborhood V of F(x) there exists a neighborhood U of x such that
+F(U)dV.
+(b) F is a \sc-function if and only if for each xe X and open
+VdY such that F(x) f] V Φ 0 there exists a neighborhood U of x
+such that F(z) Π V Φ 0 for each zeU.
+
+A STUDY OF MULTIVALUED FUNCTIONS 459
+THEOREM 5.2. Let X be a stratifiable space, A a closed subset
+of X and E any topological space. Then there exist mappings
+satisfying the following conditions:
+(a) each <p(f) and φ(f) is an extension of /,
+(b) range φ(f) = range/; range f(f) = range/,
+(c) Ψ(f){n) Φ 0 (Ψ(9)(%) Φ 0) for each xeX whenever f(x) Φ 0
+(g(x) Φ 0) for each xeA.
+Proof. Without further comment we will frequently use the
+terminology of Definition 4.1 of [1] and the crucial results of Lemma
+4.2 of [1], since our proof parallels that of Theorem 4.3 of [1], to a
+large extent. Let W = X — A, and let W = {x e W \ x e Uy for some
+ye A and open U containing y}. For each xeW', let
+m(x) = max {n( U,y)\y eA and x e Uy} .
+It is easily seen that each m(x) ^ n( W, x) < oo.
+Using the paracompactness of W, let 5^" be an open locally finite
+(with respect to W) cover of W such that {V~ \ Ve^" and F~ is
+the closure of V with respect to W) is a refinement of {Wx\xe W).
+For each 7G^, pick xveW such that F~c WXγ. If ίcFe Tf', pick
+aveA and open SF containing av such that a;F 6 (Sv)av and w(SF, αF) =
+m(xv); if ccFg TΓ', let av be the fixed point aoeA.
+We now define two functions g: X—> E and Λ: X—>E by
+= h(x) if x G A ,
+= U {f(dy) \xeV~} ifxeW,
+h(x) = U {fiβy) \xeV) iί xeW .
+It is easily seen that g is a use-function on ΫF (Let xeW and let V
+be a neighborhood of 0(a). Then U = W - \J {V~\Ve^ and x £ V~~}
+is a neighborhood of x, and clearly g(U) c F; indeed, for each 2e [7,
+^r(^) c g(x)). Similarly, one easily sees that h is a lsc-function on W
+(Let £ G PΓ and let ί7 be an open subset of E such that h(x) Π U Φ 0.
+By the definition of /φ) there exists some Ve^ such that
+/(αF) Π U Φ 0 and α e F. Then Λ(«) n U Φ 0 for each s G F).
+To show that g is a use-function at be A, whenever feCu(A, E),
+let 0 be any open subset of E containing /(&). Since / is a use-
+function, there exists an open neighborhood N of b such that
+f(A n N) c 0.
+Now it is not hard to see that
+
+460 CARLOS J. R. BORGES
+(a) If xe[(Nb)b - A]nV~ with Ve^ and F~ the closure of
+V with respect to W, then av e N. (A detailed proof of (a) can be
+found in the last paragraph of the proof of Theorem 4.3 of [1].)
+Consequently, g((Nb)b)czQ, due to (α), and thus g is a use-function.
+To show that h is a lsc-f unction at be A, whenever feCι(A,E),
+let 0 be any open subset of E such that f(b) Π 0 Φ 0. Since / is a
+lsc-f unction, there exists an open neighborhood N of b such that
+f(z) Π 0 Φ 0 for each z e N n A. It is easily seen that x e (Nb)b) — A
+implies h(x) Π 0Φ 0, due to (a) and the definition of h(x). Consequently,
+h(x) Π 0 Φ 0 for each xe(Nb)b, and thus h is a lsc-function.
+To complete the proof, we simply let φ(f) = g and ψ(f) = /^.
+REMARK 5.3. It is easily seen that the function g is not neces-
+sarily a lsc-function on W (Let U be any subset of E and suppose
+f(av) Π U Φ 0 for some Ve^\ Then #(x) n C^ Φ 0 for each a e F~,
+since xeF" implies /(α7) cflf(flc) by the definition of g(x). Hence
+Q~\U) = UiV-'lfMn UΦ0}
+is a closed subset of W for any subset U oΐ E (since 5^ is locally
+finite with respect to W)). Thus g is not a lsc-function, unless g~\U)
+is clopen3 for each open subset U of E. We have thus essentially
+proved the following result:
+THEOREM 5.4. Let X be a stratίfiable space, A a closed subset
+of X such that dim (X — A) = 0 (covering dimension). Then there
+exist mappings
+ψ: d(A, E) > Ct(X, E)
+θ: C{A, E) > C(X, E)
+satisfying the following
+(a) Each φ(f), ψ(f) crnd θ(f) is an extension of /,
+(b) range φ{f) = range ψ(f) = range θ(f) = range/.
+Proof. The same as the proof of Theorem 5.2 except that we
+choose the open cover ^ of X — A so that each Ve y is a clopen
+subset of X - A (see Proposition 2(b) of [9]).
+We end this section with the following two questions:
+1. Does Theorem 5.2 remain valid if X is a paracompact space?
+(We conjecture a negative answer.)
+3 A subset U of a topological space X is said to be clopen provided that U is an
+open and closed subset of X.
+
+A STUDY OF MULTIVALUED FUNCTIONS 461
+2. In Theorem 5.4, does the existence of the mapping θ imply
+that for some single-valued quotient map q from X onto X, say, q
+maps A homomorphically onto a closed subset of X, q(A) and q(X — A)
+are disjoint, and dim (q(X — A)) = 0?
+BIBLIOGRAPHY
+1. C. J. R. Borges, On stratifiable spaces, Pacific J. Math. 17 (1966), 1-16.
+2. G. Choquet, Convergences, Annales de ΓUniversite de Grenoble 23 (1947-1948), 55-
+112.
+3. H. Hahn, Reele Funktionen, Akademische Verlagsgesellschaft, Leipzig, 1932.
+4. Gillman and Gerison, Rings of Continuous Functions, Van Nostrand, 1960.
+5. M. Henriksen and J. Isbell, Some properties of compactifications, Duke Math. J.
+25 (1958), 83-105.
+6. A. H. Kruse, Introduction to the theory of block assemblages and related topics in
+topology, University of Kansas, 1956 (NSF-sponsored Technical Report).
+7. E. A. Michael, Continuous Selections I, Ann. of Math. 63 (1956), 361-382.
+8. , Continuous Selections II, Ann. of Math. 64 (1956), 562-580.
+9. f Selected selection theorems, Amer. Math. Monthly 68 (1956), 233-238.
+10. , Topologies on spaces of subsets, Trans. Amer. Math. Soc. 71 (1951), 152-
+182.
+11. K. Nagami, A note on Hausdorff spaces with the star-finite property, II, Proc.
+Japan Acad. 37 (1961), 189-192.
+12. V. I. Ponomarev, A new space of closed sets and multivalued continuous mappings
+of bicompacta, Amer. Math. Soc. Transl. (2) 38 (1964), 95-118.
+13. , Properties of topological spaces preserved under multivalued continuous
+mappings, Amer. Math. Soc. Transl. (2) 38 (1964), 119-140.
+14. 1 Qn the extension of multivalued mappings of topological spaces to their
+compactifications, Amer. Math. Soc. Transl. (2) 38 (1964), 141-158.
+15. R. E. Smithson, Some general properties of multivalued functions, Pacific J. Math.
+15 (1965), 681-703.
+16. A. H. Stone, Metrizability of decomposition spaces, Proc. Amer. Math. Soc. 7
+(1956), 690-700.
+17. W. Strother, Continuous multivalued functions, Boletin da Sociedade de S. Paulo
+10 (1958), 87-120.
+18. f On an open question concerning fixed points, Proc. Amer. Math. Soc. 4
+(1953), 988-993.
+Received September 21, 1966, and in revised form March 30, 1967. This research
+was supported by a University of California Faculty Fellowship.
+UNIVERSITY OF CALIFORNIA, DAVIS
+
+
+
+PACIFIC JOURNAL OF MATHEMATICS
+EDITORS
+H. ROYDEN
+Stanford University
+Stanford, California
+J. P. JANS
+University of Washington
+Seattle, Washington 98105
+J. DUGUNDJI
+Department of Mathematics
+Rice University
+Houston, Texas 77001
+RICHARD ARENS
+University of California
+Los Angeles, California 90024
+E. F. BECKENBACH
+ASSOCIATE EDITORS
+B. H. NEUMANN F. WOLF K. YOSIDA
+SUPPORTING INSTITUTIONS
+UNIVERSITY OF BRITISH COLUMBIA
+CALIFORNIA INSTITUTE OF TECHNOLOGY
+UNIVERSITY OF CALIFORNIA
+MONTANA STATE UNIVERSITY
+UNIVERSITY OF NEVADA
+NEW MEXICO STATE UNIVERSITY
+OREGON STATE UNIVERSITY
+UNIVERSITY OF OREGON
+OSAKA UNIVERSITY
+UNIVERSITY OF SOUTHERN CALIFORNIA
+STANFORD UNIVERSITY
+UNIVERSITY OF TOKYO
+UNIVERSITY OF UTAH
+WASHINGTON STATE UNIVERSITY
+UNIVERSITY OF WASHINGTON
+* * *
+AMERICAN MATHEMATICAL SOCIETY
+CHEVRON RESEARCH CORPORATION
+TRW SYSTEMS
+NAVAL ORDNANCE TEST STATION
+Mathematical papers intended for publication in the Pacific Journal of Mathematics should be
+typewritten (double spaced). The first paragraph or two must be capable of being used separately
+as a synopsis of the entire paper. It should not contain references to the bibliography. Manu-
+scripts may be sent to any one of the four editors. All other communications to the editors should
+be addressed to the managing editor, Richard Arens at the University of California, Los Angeles,
+California 90024.
+50 reprints per author of each article are furnished free of charge; additional copies may be
+obtained at cost in multiples of 50.
+The Pacific Journal of Mathematics is published monthly. Effective with Volume 16 the price
+per volume (3 numbers) is $8.00; single issues, $3.00. Special price for current issues to individual
+faculty members of supporting institutions and to individual members of the American Mathematical
+Society: $4.00 per volume; single issues $1.50. Back numbers are available.
+Subscriptions, orders for back numbers, and changes of address should be sent to Pacific Journal
+of Mathematics, 103 Highland Boulevard, Berkeley 8, California.
+Printed at Kokusai Bunken Insatsusha (International Academic Printing Co., Ltd.), 7-17, Fujimi
+2-chome, Chiyoda-ku, Tokyo, Japan.
+PUBLISHED BY PACIFIC JOURNAL OF MATHEMATICS, A NON-PROFIT CORPORATION
+The Supporting Institutions listed above contribute to the cost of publication of this Journal,
+but they are not owners or publishers and have no responsibility for its content or policies.
+
+Paciﬁc Journal of Mathematics
+Vol. 23, No. 3 May, 1967
+A. A. Aucoin, Diophantine systems . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 419
+Charles Ballantine, Products of positive deﬁnite matrices. I . . . . . . . . . . . . . . . . . . . . . . 427
+David Wilmot Barnette, A necessary condition for d-polyhedrality . . . . . . . . . . . . . . . 435
+James Clark Beidleman and Tae Kun Seo, Generalized Frattini subgroups of ﬁnite
+groups . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 441
+Carlos Jorge Do Rego Borges, A study of multivalued functions . . . . . . . . . . . . . . . . . . 451
+William Edwin Clark, Algebras of global dimension one with a ﬁnite ideal
+lattice . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 463
+Richard Brian Darst, On a theorem of Nikodym with applications to weak
+convergence and von Neumann algebras . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 473
+George Wesley Day, Superatomic Boolean algebras . . . . . . . . . . . . . . . . . . . . . . . . . . . . 479
+Lawrence Fearnley, Characterization of the continuous images of all
+pseudocircles. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 491
+Neil Robert Gray, Unstable points in the hyperspace of connected subsets. . . . . . . . . 515
+Franklin Haimo, Polynomials in central endomorphisms. . . . . . . . . . . . . . . . . . . . . . . . . 521
+John Sollion Hsia, Integral equivalence of vectors over local modular lattices . . . . . 527
+Jim Humphreys, Existence of Levi factors in certain algebraic groups . . . . . . . . . . . . 543
+E. Christopher Lance, Automorphisms of postliminal C∗-algebras . . . . . . . . . . . . . . . . 547
+Sibe Mardesic, Images of ordered compacta are locally peripherally metric. . . . . . . 557
+Albert W. Marshall, David William Walkup and Roger Jean-Baptiste Robert Wets,
+Order-preserving functions: Applications to majorization and order
+statistics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 569
+Wellington Ham Ow, An extremal length criterion for the parabolicity of
+Riemannian spaces. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 585
+Wellington Ham Ow, Criteria for zero capacity of ideal boundary components of
+Riemannian spaces. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 591
+J. H. Reed, Inverse limits of indecomposable continua. . . . . . . . . . . . . . . . . . . . . . . . . . . 597
+Joseph Gail Stampﬂi, Minimal range theorems for operators with thin spectra. . . . . 601
+Roy Westwick, Transformations on tensor spaces. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 613
+Howard Henry Wicke, The regular open continuous images of complete metric
+spaces . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 621
+Abraham Zaks, A note on semi-primary hereditary rings . . . . . . . . . . . . . . . . . . . . . . . . 627
+Thomas William Hungerford, Correction to: “A description of Multi (A1, · · · , An)
+by generators and relations” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 629
+Uppuluri V . Ramamohana Rao,Correction to: “On a stronger version of Wallis’
+formula” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 629
+Takesi Isiwata, Correction: “Mappings and spaces” . . . . . . . . . . . . . . . . . . . . . . . . . . . . 630
+Henry B. Mann, Josephine Mitchell and Lowell Schoenfeld, Correction to:
+“Properties of differential forms in n real variables” . . . . . . . . . . . . . . . . . . . . . . . 631
+James Calvert, Correction to: “An integral inequality with applications to the
+Dirichlet problem” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 631
+K. Srinivasacharyulu, Correction to: “Topology of some Kähler manifolds” . . . . . . . 632
+Paciﬁc Journal of Mathematics 1967 Vol. 23, No. 3

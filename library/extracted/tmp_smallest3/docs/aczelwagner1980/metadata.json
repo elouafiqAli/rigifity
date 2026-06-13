@@ -1,0 +1,20 @@
+{
+  "source_pdf": "AczelWagner1980.pdf",
+  "slug": "aczelwagner1980",
+  "status": "success",
+  "started_at": "2026-06-13T16:52:59.384797+00:00",
+  "finished_at": "2026-06-13T16:54:26.528437+00:00",
+  "vlm_model_preset": "granite_docling",
+  "vlm_model_repo": "ibm-granite/granite-docling-258M",
+  "docling_version": "2.102.1",
+  "gpu": "A100-80GB",
+  "page_batch_size": 8,
+  "num_threads": 4,
+  "document_timeout_s": 1800.0,
+  "artifact_hashes": {
+    "AczelWagner1980.doctags": "65aa1ef5a5ac2d7ceecc9bc562c89f3df823b3b90133cd3c9e08632645e2ec39",
+    "AczelWagner1980.json": "932541962289fb53aae7593ffa996385e9c06a793db40c027ecb8598e99c0376",
+    "AczelWagner1980.md": "e3fd6f1e2064031ff3db217d13a38a2c1ee73b30d6979b4424f57d3c869d5f88",
+    "AczelWagner1980.txt": "e3fd6f1e2064031ff3db217d13a38a2c1ee73b30d6979b4424f57d3c869d5f88"
+  }
+}

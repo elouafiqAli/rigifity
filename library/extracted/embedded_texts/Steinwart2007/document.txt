@@ -1,0 +1,3518 @@
+DOI: 10.1007/s00365-006-0662-3
+Constr. Approx. (2007) 26: 225–287
+CONSTRUCTIVE
+APPROXIMATION
+© 2007 Springer Science+Business Media, Inc.
+How to Compare Different Loss Functions
+and Their Risks
+Ingo Steinwart
+Abstract. Many learning problems are described by a risk functional which in turn is
+deﬁned by a loss function, and a straightforward and widely known approach to learn
+such problems is to minimize a (modiﬁed) empirical version of this risk functional.
+However, in many cases this approach suffers from substantial problems such as com-
+putational requirements in classiﬁcation or robustness concerns in regression. In order
+to resolve these issues many successful learning algorithms try to minimize a (modi-
+ﬁed) empirical risk of a surrogate loss function, instead. Of course, such a surrogate loss
+must be “reasonably related” to the original loss function since otherwise this approach
+cannot work well. For classiﬁcation good surrogate loss functions have been recently
+identiﬁed, and the relationship between the excess classiﬁcation risk and the excess
+risk of these surrogate loss functions has been exactly described. However, beyond the
+classiﬁcation problem little is known on good surrogate loss functions up to now. In
+this work we establish a general theory that provides powerful tools for comparing
+excess risks of different loss functions. We then apply this theory to several learning
+problems including (cost-sensitive) classiﬁcation, regression, density estimation, and
+density level detection.
+1. Introduction
+In many machine learning problems the learning goal is described by a loss function and
+its associated risk. A typical example of such a learning problem isbinary classiﬁcation,
+where a training set T := ((x1, y1) ,...,( xn , yn )) is given and the goal is to predict the
+label y ∈ Y :={ −1, 1} for a new, unseen input samplex ∈ X. Commonly, it is assumed
+that the samples are drawn in an i.i.d. fashion from an unknown probability measure P
+on X × Y . The simplest learning goal is then to have an almost minimal prediction error
+on average future data, i.e., to ﬁnd a function f : X → R such that
+P({(x, y) ∈ X × Y : sign f (x) ̸= y})
+is as small as possible. It is well known and obvious that writingL(y, t) := 1i f y sign t <
+0 and L(y, t) := 0 otherwise, the above probability equals the so-called classiﬁcation
+Date received: September 14, 2005. Date revised: August 15, 2006. Date accepted: September 6, 2006. Com-
+municated by Gabor Lugosi. Online publication: April 5, 2007.
+AMS classiﬁcation: Primary 68T05; 68T10, 62G08, 62G07, 62G20, 62G99.
+Key words and phrases : Statistical learning theory, Loss funtions, Surrogate loss functions, Classiﬁcation,
+Regression, Density estimation, Density level sets.
+225
+
+226 I. Steinwart
+risk
+RL ,P ( f ) :=
+∫
+X×Y
+L(y, f (x)) dP (x, y)
+and, consequently, the learning goal is then to ﬁnd a function f that (approximately)
+minimizes this risk. This form of a learning goal appears in many other learning prob-
+lems, too. Probably the best-known example of such a learning problem is real-valued
+regression, however there are many other important learning problems likecost-sensitive
+binary classiﬁcation, multiclass classiﬁcation, density estimation,o r density level detec-
+tion (see Section 4 for a rigorous deﬁnition of these learning problems) which can also
+be described by a risk functional.
+Having a learning problem of the above form, a simple and well-known learning
+approach is the empirical risk minimization (ERM) method. Basically, the idea of ERM
+is to replace the unknown true risk R
+L ,P (·) by its empirical counterpart based on the
+training set T and minimize this empirical L-risk over a suitable function class. Though
+this approach has a lot of theoretical merits, for classiﬁcation it typically leads to NP-hard
+optimization problems (see, e.g., [14]), and thus it is not computationally realizable. One
+way to resolve this issue is to use a surrogate loss function L
+2, e.g., the hinge loss as
+in support vector machines, and then to minimize the (perhaps even further modiﬁed)
+empirical L
+2-risk. Let us assume for a moment that such a learning method L learns
+the surrogate learning problem deﬁned by the loss L2, i.e., we know RL2 ,P ( fT ) →
+R∗
+L2 ,P , where fT is the function produced by the learning method L and R∗
+L2 ,P :=
+inf{RL2 ,P ( f ) | f : X → R measurable} is the smallest possible L2-risk. The ﬁrst
+question which then naturally arises is
+Question 1. Does the convergence RL2 ,P ( fT ) → R∗
+L2 ,P imply the convergence
+RL ,P ( fT ) → R∗
+L ,P ?
+If we can ﬁnd a positive answer to this question we know at least asymptotically that
+by solving the surrogate learning problem we actually also solve the learning problem
+we are interested in, and in this sense L is a suitable learning approach. However, in
+many situations we are not only interested in such an asymptotic relation, but also in a
+more quantitative statement. This leads to the second question.
+Question 2. Does there exist an increasing function ϒ :[ 0 , ∞) → [0, ∞) with
+ϒ(0) = 0, which is continuous in 0 and satisﬁes
+R
+L ,P ( f ) − R∗
+L ,P ≤ ϒ(RL2 ,P ( f ) − R∗
+L2 ,P )?
+For the binary classiﬁcation problem both questions have been intensively investi-
+gated in recent years (see, e.g., [18], [19], [37], [27], [1]), and for margin-based loss
+functions L
+2, i.e., for loss functions of the form L2(y, t) = ϕ(yt ), complete answers
+were established in [1]. However, using a surrogate loss function is a strategy that is not
+only interesting for binary classiﬁcation. Indeed, this approach also has its beneﬁts in
+the following learning problems.
+Cost-sensitive binary classiﬁcation. In cost-sensitive binary classiﬁcation the two dif-
+ferent types of errors are penalized differently. Consequently, the optimization problem
+
+How to Compare Different Loss Functions and Their Risks 227
+of a simple ERM approach remains NP-hard to solve, and thus suitable surrogate loss
+functions are desired for a computational treatment. Despite the practical importance
+of this learning problem only very little is known in view of the above questions (see
+[20] for a conjecture related to the above questions and [10] for a discussion of this
+learning problem).
+Regression. The classical loss function for regression problems is the least squares
+loss. Though this loss is mathematically rather easy to handle and the corresponding
+learning algorithms are often computational feasible, it is well known that minimizing
+an empirical risk based on the least squares loss is a method which is quite sensitive
+to outliers. Therefore, a number of more robust surrogate loss functions have been
+proposed in the last decades (see, e.g., [15], [32], [25], [9]). Up to now, the analysis
+of such regression loss functions is typically conducted in a maximum-likelihood
+fashion which relates the loss functions to density models of the (conditional) noise
+distributions. However, the maximum-likelihood approach requires knowledge about
+the marginal distribution which is usually not available and in addition, it does not
+give information regarding our two basic questions.
+Density level detection. The common performance measure of the density level de-
+tection problem is a risk functional whose loss function is deﬁned in terms of the
+unknown density (see, e.g., [12], [21], [22], [31]). Consequently, the loss function is
+unknown and cannot be used to: (a) compute a test error; (b) build a (modiﬁed) ERM
+approach; and (c) compare different solutions to the density level detection problem.
+Therefore, having a reasonable surrogate risk is essential for dealing with the density
+level detection problem.
+Density estimation. The common performance measures for the density estimation
+problem are p-norms of the difference between the unknown density and its estimate.
+Again, these performance measures are risks with respect to a loss function deﬁned by
+the unknown density and, consequently, the density estimation problem suffers from
+the same problems as the density level detection problem does.
+Obviously, the above learning problems are rather different regarding their deﬁning
+risk functionals and, in addition, the above list is by no means complete (see, e.g.,
+the recent work on multiclass classiﬁcation in [36], [30]). In order to systematically
+investigate our two questions we will therefore ﬁrst establish a very general theory that
+describes how to relate the excess risks of different loss functions. In large parts this
+general theory uniﬁes the earlier ﬁndings of [1], [27], [37], [36], but it also contains new
+results. In a second step we then demonstrate the power of this theory by applying it to
+the learning problems described above. Let us brieﬂy summarize our ﬁndings.
+• Cost-sensitive classiﬁcation. We show that a natural weighting method for margin-
+based loss functions allows us to translate the results of [1] to analogous results for
+cost-sensitive classiﬁcation. In particular, we give positive answers to Questions 1
+and 2. Moreover, we show that the natural weighting method is the only one that
+allows such positive answers.
+• Regression. We ﬁrst show that the least squares loss is essentially the only loss
+function of the form L
+2(y, t) = ψ( y − t) that can be used to ﬁnd the regression
+function. For some large classes ofsymmetric noise distributions we then character-
+ize the loss functions of the above form that allow positive answers to Questions 1
+
+228 I. Steinwart
+and 2 if the target risk is the 1-norm distance between the regression function and its
+prediction. Here it will turn out that theconvexityof L2 and related, stronger notions
+such as strict convexity and uniform convexity play a crucial role. Moreover, we
+show that for unbounded, symmetric, but otherwise unspeciﬁed noise, every loss
+function of the above form that admits a positive answer to Question 2 must grow at
+least as fast as the squared loss. Consequently, every ERM approach based on such
+loss functions for ﬁnding the regression function either learns the problem only in
+a weak sense or is sensitive to outliers. Finally, we discuss in which cases and in
+which sense approximate risk minimizers approximate the exact risk minimizer.
+• Density level detection.It was recently shown in [28] that the density level detection
+problem can be solved by learning a binary classiﬁcation problem and, in fact, the
+widely known excess mass approach (see, e.g., [12], [21], [22], [31]) implicitly
+implements the ERM of this classiﬁcation problem. We extend the considerations
+of [28] and show that there exists no surrogate loss function which allows a positive
+answer to the second question without making assumptions on the density.
+• Density estimation. A well-known heuristic (see, e.g., [13, Chap. 14.2.4]) casts the
+density estimation problem into a supervised learning problem by using additional
+samples drawn from the known reference measure. However, to our best knowl-
+edge, there is nothing known about this heuristic in view of the above questions.
+For convex loss functions we are able to give a weak positive answer to the ﬁrst
+question. Furthermore, we present a result showing that the second answer cannot
+be positively answered.
+The rest of this work is organized as follows: In Sections 2 and 3 we develop the
+general theory on excess risks. Section 4 then contains the results for the above learning
+problems. The proofs of the results of Sections 2 and 3 can be found in Section 5.
+In addition, this section contains a powerful tool ensuring the existence of measurable
+selections which is used to deal with the notoriously unpleasant measurability questions
+related to minimal risks. Finally, the Appendix contains some additional information on
+stronger notions of convexity.
+2. The General Theory
+In this section we introduce some fundamental deﬁnitions related to general cost func-
+tions of a form similar to those considered in [33]. We then develop the central tools for
+investigating surrogate cost functions and present general answers to Questions 1 and 2.
+Some of these answers are not genuinely new and have previously been found in other
+forms or less generality by other authors (see, e.g., [1], [27], [37], and [36]), and the
+proofs of these results are not that deep, either. What is new, however, is the language
+we introduce in this section which clearly describes the key quantity related to surrogate
+cost functions, namely, the calibration function deﬁned in Lemma 2.9. In particular, this
+calibration function will enable us to investigate easily the general case in this section
+and in the following section, and important examples in Section 4. Consequently, it is
+the central notion of the entire work.
+Let us begin with some notations which will be used throughout this work. To this
+end, let X be a nonempty set equipped with a σ -algebra X . Given a ﬁnite measure µ on
+
+How to Compare Different Loss Functions and Their Risks 229
+X the µ-completion Xµ of X is deﬁned by
+Xµ :={ A ∪ B : A ∈ X , ∃ N ∈ X with µ(N ) = 0 and B ⊂ N}.
+Moreover, the completion ˆX of X is deﬁned by
+ˆX :={ A ⊂ X : A ∈ Xµ for all ﬁnite measures µ on X},
+and the measurable space (X, X ) is called complete if X = ˆX . Throughout this work
+we assume that (X, X ) is complete. Moreover, Y always denotes a Polish space, i.e., a
+topological space whose topology can be described by a complete and separable metric,
+and we always equip Y with its Borel σ -algebra. In particular, recall that all open or
+closed subsets of R are Polish spaces.
+For a probability measure P on X × Y we denote the marginal distribution on X
+by P
+X . Furthermore, P(·|· ) : Y × X → [0, 1] stands for a ﬁxed regular conditional
+probability, so that we have
+∫
+X×Y
+fd P =
+∫
+X
+∫
+Y
+f (x, y) dP (y|x) dP X (x)
+for all measurable functions f : X ×Y → [0, ∞]. As usualLp (µ), p ∈ (0, ∞), denotes
+the space of all measurable functions f : X → R that are p-integrable with respect
+to the measure µ on (X, X ). Finally, throughout this section, A denotes a nonempty
+but otherwise arbitrary set which describes the parameter or function which we wish to
+estimate. Let us now begin with some fundamental deﬁnitions.
+Deﬁnition 2.1 (Cost Function). A function L : X × Y × A → [0, ∞] is called a cost
+function if L(·, ·,α ) : X × Y → [0, ∞] is measurable for all α ∈ A.
+Cost functions which play a key role in most machine learning considerations measure
+the cost of using the parameterα at the point(x, y). In general, we are interested in small
+average costs which are introduced in the following deﬁnition.
+Deﬁnition 2.2 (Risk). Let L : X × Y × A → [0, ∞] be a cost function and let P be a
+distribution on X × Y . We deﬁne the L-risk of α ∈ A by
+R
+L ,P (α) :=
+∫
+X×Y
+L(x, y,α ) dP (x, y) =
+∫
+X
+∫
+Y
+L(x, y,α ) dP (y|x) dP X (x).(1)
+Moreover, the minimal L-risk , also called the Bayes L-risk , is denoted by R∗
+L ,P :=
+infα∈A RL ,P (α).
+The risk RL ,P (α) obviously describes the average cost of using the parameter α,
+where the average is taken with respect to the distribution P. Now note that using the
+regular conditional probability P(y|x), the risk RL ,P (α) can be computed by an iterated
+integral as we have seen in (1). Since the inner integral in (1) will be of fundamental
+importance in our analysis we introduce
+
+230 I. Steinwart
+Deﬁnition 2.3 (Inner Risk). Let L : X × Y × A → [0, ∞] be a cost function and let
+Q be a distribution on Y . We deﬁne the inner L-risk of an element α ∈ A by
+CL ,Q,x (α) :=
+∫
+Y
+L(x, y,α ) dQ (y), x ∈ X.
+Furthermore, the minimal inner L-risk is denoted by C∗
+L ,Q,x := infα∈A CL ,Q,x (α).
+Note that given a distribution P on X × Y the inner risks CL ,P(·|x),x (α), x ∈ X,o f α
+can be used to compute the risk RL ,P (α) since (1) immediately gives
+RL ,P (α) =
+∫
+X
+CL ,P(·|x),x (α) dP X (x).
+Our ﬁrst goal is to establish the same relation between the minimal inner risks and the
+minimal risk. To this end, we need the following deﬁnition which will be used to ensure
+that x ↦→ C
+∗
+L ,P(·|x),x is measurable.
+Deﬁnition 2.4 (Minimizable Cost Functions). Let L : X × Y × A → [0, ∞] be a cost
+function and let P be a distribution on X × Y . We say that L is P-minimizable if for all
+ε> 0 there exists an αε ∈ A such that for all x ∈ X we have
+CL ,P(·|x),x (αε )< C∗
+L ,P(·|x),x + ε.(2)
+Note that the above deﬁnition in particular ensuresC∗
+L ,P(·|x),x < ∞ for all x ∈ X.N o w
+we can establish the following simple but important lemma which computes R∗
+L ,P with
+the help of the corresponding minimal inner risks.
+Lemma 2.5. Let P be a distribution on X × Y and let L : X × Y × A → [0, ∞] be a
+P-minimizable cost function. Then x ↦→ C∗
+L ,P(·|x),x is measurable and we have
+R∗
+L ,P =
+∫
+X
+C∗
+L ,P(·|x),x dP X (x).
+The above lemma shows that the minimal risk R∗
+L ,P can be achieved by pointwisely
+minimizing the inner risks CL ,P(·|x),x (·), x ∈ X, which—in general—will be easier than
+direct minimization of RL ,P (·). Moreover, for P-minimizable L with R∗
+L ,P < ∞ we
+have
+RL ,P (α) − R∗
+L ,P =
+∫
+X
+CL ,P(·|x),x (α) − C∗
+L ,P(·|x),x dP X (x)
+for all α ∈ A. Consequently, we can split the analysis of RL ,P (α) − R∗
+L ,P into: (a) the
+analysis of the inner excess risks CL ,P(·|x),x (α) − C∗
+L ,P(·|x),x , x ∈ X; and (b) the investi-
+gation of the integration with respect toPX . Besides technical beneﬁts, the major beneﬁt
+of this approach is that the analysis in (a) only depends on P via the conditional dis-
+tributions P(·|x) and hence we can consider the excess inner risks CL ,Q,x (α) − C∗
+L ,Q,x
+for suitable distributions Q on Y as a template for CL ,P(·|x),x (α) − C∗
+L ,P(·|x),x . The latter
+does not only reduce notations but also supports the machine learning point of view in
+which it is assumed that P, and hence P(·|x), x ∈ X, is (almost) completely unknown.
+To pursue this idea we make the following deﬁnition.
+
+How to Compare Different Loss Functions and Their Risks 231
+Deﬁnition 2.6. Let Q be a set of distributions on Y . We say that a distribution P on
+X × Y is of type Q if P(·|x) ∈ Q for all x ∈ X.
+In many machine learning problems the only information given about the distribution
+P is that it is of type Q for some “large” set of distributions Q. For example, in binary
+classiﬁcation one typically only knows that P is a distribution on X ×{ −1, 1}, i.e., that
+P is a distribution of type Q, where Q consists of all distributions on {−1, 1}.
+Before we begin with our analysis let us introduce some more notations which will
+be very useful. The sets containing the elements in A that “almost” minimize the inner
+risk at x are denoted by
+ML ,Q,x (ε) :={ α ∈ A : CL ,Q,x (α) < C∗
+L ,Q,x + ε},ε ∈ [0, ∞].
+For later use we note that we always haveML ,Q,x (0) =∅ and ML ,Q,x (ε1) ⊂ ML ,Q,x (ε2)
+for 0 ≤ ε1 ≤ ε2 ≤∞ . Furthermore, we have ML ,Q,x (ε) ̸=∅ for some ε ∈ (0, ∞]
+if and only if C∗
+L ,Q,x < ∞. In particular, for P-minimizable cost functions we have
+ML ,P(·|x),x (ε) ̸=∅ for all ε> 0 and x ∈ X. Finally, we write
+ML ,Q,x (0+) :=
+⋂
+ε>0
+ML ,Q,x (ε) ={ α ∈ A : CL ,Q,x (α) < C∗
+L ,Q,x + ε for all ε> 0}.
+Note that in the case C∗
+L ,Q,x < ∞ the set ML ,Q,x (0+) contains those elements in A that
+exactly minimize CL ,Q,x (.), while in the other case C∗
+L ,Q,x =∞ the set is empty.
+Let us now turn to the main goal of this section, namely comparing the excess risks
+of different cost functions. To this end, we ﬁrst observe that given two cost functions
+L1 : X × Y × A → [0, ∞) and L2 : X × Y × A → [0, ∞) with
+ML2 ,P(·|x),x (0+) ⊂ ML1 ,P(·|x),x (0+), x ∈ X.
+Lemma 2.5 shows that every exact minimizer α∗ ∈ A of RL2 ,P (·) is also an exact
+minimizer of RL1 ,P (·). However, exact minimizers do not necessarily exist, and even if
+they do exist it is rather unlikely that we will ﬁnd them by a learning procedure. On the
+other hand, many learning procedures guarantee ﬁnding approximate minimizers with
+high probability, and thus our overall goal is to establish properties similar to the above
+observation for approximate minimizers. Let us begin with the following deﬁnition.
+Deﬁnition 2.7 (Calibration). Let Q be a set of distributions on Y , and let L
+1 : X ×
+Y × A → [0, ∞], L2 : X × Y × A → [0, ∞] be two cost functions. We say that L2 is
+L1-calibrated with respect to Q if for all ε> 0, Q ∈ Q, and x ∈ X there exists a δ> 0
+such that
+ML2 ,Q,x (δ) ⊂ ML1 ,Q,x (ε),(3)
+i.e., if for all α ∈ A we have
+CL2 ,Q,x (α) < C∗
+L2 ,Q,x + δ ⇒ CL1 ,Q,x (α) < C∗
+L1 ,Q,x + ε.(4)
+Furthermore, we say that L2 is L1-calibrated with respect to a distribution P on X × Y
+if L2 is L1-calibrated with respect to the set {P(·|x) : x ∈ X}.
+
+232 I. Steinwart
+Obviously, L2 is L1-calibrated with respect to P if for any given accuracy ε> 0
+there exists a δ> 0 such that every α ∈ A minimizing CL2,P(·|x),x (·) up to δ minimizes
+CL1 ,P(·|x),x (·) up to the desired accuracyε. In other words,L2 is L1-calibrated with respect
+to P if and only if we have a positive answer to Question 1 for the excess inner risks.
+Before we investigate some general techniques to check for calibration we now present
+our ﬁrst main result that shows that for calibrated cost functions we often have a positive
+answer to Question 1 for the excess risks, too.
+Theorem 2.8. Let P be a distribution on X × Y and let L
+1 : X × Y × A → [0, ∞],
+L2 : X × Y × A → [0, ∞] be two P-minimizable cost functions such that R∗
+L1 ,P < ∞
+and R∗
+L2 ,P < ∞. Furthermore, assume that there exist a function b ∈ L1(PX ) and
+measurable functions δ(ε, ·) : X → (0, ∞), ε> 0, such that
+CL1 ,P(·|x),x (α) ≤ C∗
+L1 ,P(·|x),x + b(x)(5)
+and
+CL2 ,P(·|x),x (α) < C∗
+L2 ,P(·|x),x + δ(ε, x) ⇒ CL1 ,P(·|x),x (α) < C∗
+L1 ,P(·|x),x + ε(6)
+for all x ∈ X, ε> 0, and α ∈ A. Then for all ε> 0 there exists a δ> 0 such that for
+all α ∈ A we have
+RL2 ,P (α) < R∗
+L2 ,P + δ ⇒ RL1 ,P (α) < R∗
+L1 ,P + ε.(7)
+Note that (7) is equivalent to a positive answer to Question 1 and, consequently,
+Theorem 2.8 gives a sufﬁcient condition for an asymptotic relationship between different
+excess risks in the sense of this question. Moreover, condition (6) implies thatL
+2 is L1-
+calibrated with respect to P and, in fact, the only difference between this condition
+and the calibration with respect to P is the measurability of δ(ε, ·) which is necessary
+for technical reasons. However, we will see later in Theorem 3.3 that for A consisting
+of functions over X , this measurability is often automatically satisﬁed by the so-called
+calibration function deﬁned below. In addition, Theorem 3.3 shows that in this case the
+L1-calibration of L2 is also a necessary condition for (7), and hence this theorem will
+give us a complete answer to Question 1.
+In order to apply Theorem 2.8 the main difﬁculty is usually to determine numbers
+δ(ε, x)> 0 with ML2 ,P(·|x),x (δ(ε, x)) ⊂ ML1 ,P(·|x),x (ε), i.e., to ensure the calibration.
+The following lemma describes an easy yet optimal solution for this task.
+Lemma 2.9 (Calibration Function). Let Q be a distribution on Y , and let L 1 : X ×
+Y × A → [0, ∞], L2 : X × Y × A → [0, ∞] be two cost functions. Then we deﬁne the
+calibration function δmax(·, Q, x) :[ 0, ∞] → [0, ∞]o f (L1, L2) by
+δmax(ε, Q, x) :=
+{
+infα∈A\ML1 ,Q,x (ε) CL2 ,Q,x (α) − C∗
+L2 ,Q,x if C∗
+L2 ,Q,x < ∞,
+∞ if C∗
+L2 ,Q,x =∞ ,(8)
+for all ε ∈ [0, ∞]. Then for all ε ∈ [0, ∞] we have:
+(i) ML2,Q,x (δmax(ε, Q, x)) ⊂ ML1 ,Q,x (ε).
+(ii) ML2,Q,x (δ) ̸⊂ ML1 ,Q,x (ε) whenever δ>δ max(ε, Q, x).
+
+How to Compare Different Loss Functions and Their Risks 233
+In addition, if both C∗
+L1 ,Q,x < ∞ and C∗
+L2 ,Q,x < ∞, then for all α ∈ A we have
+δmax(CL1 ,Q,x (α) − C∗
+L1 ,Q,x , Q, x) ≤ CL2 ,Q,x (α) − C∗
+L2 ,Q,x .(9)
+Note that in some cases we have to distinguish between different calibration functions
+and hence we occasionally use the notation δmax,L1 ,L2 (., Q, x) := δmax(·, Q, x) for the
+calibration function δmax(·, Q, x) of (L1, L2).
+Obviously, part (i) of Lemma 2.9 states that L2 is L1-calibrated with respect to Q
+if δmax(ε, Q, x)> 0 for all x ∈ X, Q ∈ Q, and ε> 0. Moreover, part (ii) shows
+there is no real number δ larger than δmax(ε, Q, x) satisfying the calibration condition
+(3) and, consequently, L2 is L1-calibrated with respect to Q if and only if we have
+δmax(ε, Q, x)> 0 for all x ∈ X, Q ∈ Q, and ε> 0. In other words, the calibration
+function is the quantity we have to investigate when we want to check whether L2 is
+L1-calibrated or not (see, e.g., Theorems 4.18, 4.19, and 4.29 for results in this direction).
+Fortunately, it turns out that in most practical situations the computation of the cali-
+bration function is a straightforward exercise, and for the learning scenarios mentioned
+in the Introduction the corresponding results can be found in Lemmas 4.1, 4.6, 4.16, and
+4.28. Moreover, if the surrogate cost function is convex
+1 in the sense of the following
+deﬁnition, this computation is rather easy even in the general case, as we will see below.
+Deﬁnition 2.10. A cost function L : X × Y × R → [0, ∞] is called (strictly) convex
+if L(x, y, ·) : R → [0, ∞] is (strictly) convex for all x ∈ X and y ∈ Y .
+As already indicated, the calibration function for convex surrogates can be easily
+computed. This is stated in the following result.
+Lemma 2.11. Let Q be a distribution on Y and let L 1 : X × Y × R → [0, ∞]
+be a cost function such that ML1 ,Q,x (ε) is a nonempty interval for some x ∈ X and
+ε> 0. Moreover, let L 2 : X × Y × R → [0, ∞] be a convex cost function such that
+CL2,Q,x (t)< ∞ for all t ∈ R. If ML2 ,Q,x (0+) ⊂ ML1 ,Q,x (0+), then we have
+(10)
+δmax(ε, Q, x) = min{CL2 ,Q,x (sup ML1 ,Q,x (ε)), CL2 ,Q,x (inf ML1 ,Q,x (ε))}− C∗
+L2 ,Q,x ,
+where CL2 ,Q,x (±∞) :=∞ .
+In particular, if sup ML1 ,Q,x (ε) ̸∈ ML2 ,Q,x (0+) and inf ML1 ,Q,x (ε) ̸∈ ML2 ,Q,x (0+),
+then δmax(ε, Q, x)> 0.
+In the machine learning literature a cost function L2 is often considered to be a suit-
+able surrogate for L1 if the relation ML2 ,Q,x (0+) ⊂ ML1 ,Q,x (0+) holds. Of course,
+in general, this relation is not sufﬁcient for calibration. However, for many target cost
+functions the sets M
+L1 ,Q,x (ε) are intervals whose endpoints differ from the endpoints
+of ML1 ,Q,x (0+). In addition, one is often only interested in convex surrogates be-
+cause of algorithmic issues. Now note that in such cases the above lemma shows that
+M
+L2,Q,x (0+) ⊂ ML1 ,Q,x (0+) is sufﬁcient for calibration, and hence it gives the ﬁrst
+1 Basic deﬁnitions and properties regarding convexity can be found in the Appendix.
+
+234 I. Steinwart
+rigorous justiﬁcation for considering this inclusion instead of the general calibration
+question.
+Let us now investigate Question 2. To this end, observe that in some sense inequalities
+between the involved excess risks are readily available by Theorem 2.8: indeed, for
+ε> 0 let δ(ε) > 0 be a real number such that implication (7) holds for all α ∈ A.
+Furthermore, we deﬁne δ(0) := 0. For α ∈ A with ε := R
+L1 ,P (α) − R∗
+L1,P > 0 we then
+have RL2 ,P (α) − R∗
+L2 ,P ≥ δ(ε) or, in other words,
+δ(RL1 ,P (α) − R∗
+L1 ,P ) ≤ RL2 ,P (α) − R∗
+L2 ,P .(11)
+Furthermore, for α ∈ A with RL1,P (α) − R∗
+L1 ,P = 0 this inequality is satisﬁed by
+our deﬁnition δ(0) = 0 and, consequently, (11) is satisﬁed for all α ∈ A. Inverting this
+inequality then gives a positive answer to Question 2. However, the proof of Theorem 2.8
+does unfortunately not provide a constructive way to ﬁnd a value forδ(ε), and hence our
+next aim is to describe conditions onL
+1, L2, and P which will allow us to easily establish
+inequalities in many situations. To this end, we begin with the following deﬁnition.
+Deﬁnition 2.12 (Fenchel–Legendre Biconjugate). Let I ⊂ R be an interval and let
+g : I → [0, ∞] be a function. Then the Fenchel–Legendre biconjugateg∗∗ : I → [0, ∞]
+of g is the largest convex function h : I → [0, ∞] satisfying h ≤ g.
+Moreover, we use the convention g∗∗(∞) := limx→∞ g∗∗(x) for functions
+g :[ 0, ∞) → [0, ∞).
+Note that the Fenchel–Legendre biconjugate, which is a well-known tool in convex
+analysis (see, e.g., [24]), is determined by
+Epi g∗∗ = co Epig,
+where Epi g :={ (x, y) ∈ I × [0, ∞]: g(x) ≤ y} denotes the epigraph of g and co A
+denotes the convex hull of a set A.
+Now we are prepared to establish our ﬁrst inequalities between excess risks of different
+cost functions.
+Theorem 2.13. Let P be a distribution on X × Y and let L 1 : X × Y × A → [0, ∞],
+L2 : X × Y × A → [0, ∞] be two P-minimizable cost functions with R∗
+L1 ,P < ∞ and
+R∗
+L2 ,P < ∞. We write
+Bα := ess- sup
+x∈X
+CL1 ,P(·|x),x (α) − C∗
+L1 ,P(·|x),x
+for all α ∈ A. Furthermore, let δ :[ 0, ∞] → [0, ∞] be a function with δ(0) = 0 and
+ML2 ,P(·|x),x (δ(ε)) ⊂ ML1 ,P(·|x),x (ε)(12)
+for all x ∈ X and all ε ∈ [0, ∞]. Then for all α ∈ A we have
+δ∗∗
+Bα (RL1 ,P (α) − R∗
+L1 ,P ) ≤ RL2 ,P (α) − R∗
+L2 ,P ,(13)
+where δ∗∗
+Bα :[ 0, Bα] → [0, ∞] denotes the Fenchel–Legendre biconjugate of the restric-
+tion δ|[0,Bα ].
+
+How to Compare Different Loss Functions and Their Risks 235
+Remark 2.14. It is straightforward to see from the deﬁnition of the Fenchel–Legendre
+biconjugate that (13) actually holds for all convex functions ˜δ :[ 0 , Bα] → [0, ∞]
+satisfying ˜δ ≤ δ. Moreover, if the function δ in the above theorem is increasing with
+δ(ε) > 0 for allε> 0 and we haveBα < ∞, then Lemma A.6 shows that its biconjugate
+satisﬁes δ∗∗
+Bα (ε) > 0 for all ε ∈ (0, Bα]. Moreover, the biconjugate is always convex, and
+since δ∗∗
+Bα (0) = 0 it is also strictly increasing and thus injective. Consequently, if δ∗∗
+Bα is
+ﬁnite, then it has a continuous inverse, and hence we have found a positive answer to
+Question 2. However, in general, this is no longer true if B
+α =∞ , as, for example, the
+case δ(ε) = √ε, ε ≥ 0, shows (see also [34, Prop. A.5] for conditions guaranteeing
+δ∗∗ > 0).
+We will see in Theorem 2.17 that condition (12) is alsonecessary if one wants to have an
+inequality between the two excess risks that isindependent of the speciﬁc distribution P.
+Of course, from a machine learning perspective this independence is a highly desired
+property since, in general, the data-generating distributionP is assumed to be unknown.
+Finally, we will see in Section 4 that for binary classiﬁcation the inequalities established
+in Theorem 2.13 coincide with the inequalities found in [1]. Since their inequalities are
+sharp if one does not make additional assumptions on P, we see that the inequalities of
+Theorem 2.13 cannot be improved in general. However, note that under certain conditions
+on P there are substantial improvements possible, and we will present examples of such
+improvements after Theorem 3.9.
+Using the notion of uniform calibration introduced in Deﬁnition 2.15 below, Theo-
+rem 2.13 immediately gives inequalities for several surrogates for interesting learning
+scenarios. For some examples we refer to Theorem 4.3, Example 4.5, Remark 4.8, and
+Theorems 4.20 and 4.24.
+Finally, the almost trivial case of Theorem 2.13, i.e., the case of α ∈ A satisfying
+R
+L ,P (α) < ∞, is (up to measurability) also a direct consequence of the more general
+[36, Theorem 24] which in turn was inspired by a less general result of [1]. We added
+the short proof for this case for the sake of completeness.
+If the function δ in the above theorem satisﬁes δ(ε) > 0, for all ε> 0, then condition
+(12) is a uniform version of the notion of calibration. Let us describe this situation in the
+following deﬁnition.
+Deﬁnition 2.15 (Uniform Calibration). Let Q be a set of distributions on Y , and let
+L
+1 : X × Y × A → [0, ∞), L2 : X × Y × A → [0, ∞) be two cost functions. We say
+that L2 is uniformly L1-calibrated with respect to Q if for all ε> 0 there exists a δ> 0
+such that ML2 ,Q,x (δ) ⊂ ML1 ,Q,x (ε) for all Q ∈ Q and x ∈ X, i.e., if for all Q ∈ Q,
+x ∈ X, and α ∈ A we have
+CL2 ,Q,x (α) < C∗
+L2 ,Q,x + δ ⇒ CL1 ,Q,x (α) < C∗
+L1 ,Q,x + ε.
+Furthermore, we say that L2 is uniformly L1-calibrated with respect to a distribution P
+on X × Y if L2 is uniformly L1-calibrated with respect to the set {P(·|x) : x ∈ X}.
+Obviously the above deﬁnition guarantees that L1 is P-minimizable whenever L2 is
+so. Now observe that the larger the function δ satisfying (12) is, the better inequality
+
+236 I. Steinwart
+(13) becomes. Given a setQ of distributions on Y let us, consequently, consider the best
+possible candidate function, that is,
+(14)
+δmax(ε, Q) := sup{δ ≥ 0: ML2 ,Q,x (δ) ⊂ ML1 ,Q,x (ε) for all x ∈ X, Q ∈ Q},
+ε ∈ [0, ∞].
+Obviously, L2 is uniformly L1-calibrated with respect toQ if and only ifδmax(ε, Q)> 0
+for all ε> 0.
+For a given distribution P on X × Y let us write δmax(ε, P) := δmax(ε, {P(·|x) :
+x ∈ X}). Assuming that P is of type Q we then have δmax(ε, Q) ≤ δmax(ε, P) and,
+consequently, the next lemma shows that the distribution-independent functionδmax(·, Q)
+can be used in Theorem 2.13. 2 Furthermore, it provides a simple method to calculate
+δmax(·, Q).
+Lemma 2.16. Let Q be a set of distributions on Y, and let L1 : X × Y × A → [0, ∞),
+L2 : X × Y × A → [0, ∞) be two cost functions. Then for all x ∈ X and all ε> 0 we
+have
+ML2 ,Q,x (δmax(ε, Q)) ⊂ ML1 ,Q,x (ε)
+and
+δmax(ε, Q) = inf
+Q∈Q
+x∈X
+δmax(ε, Q, x).
+Theorem 2.13 states that for distributionsP of typeQ we can ﬁnd inequalities between
+the excess risks of uniformly calibrated cost functions. The following theorem shows
+that the uniform calibration is also necessary for such inequalities.
+Theorem 2.17. Let L
+1 : X × Y × A → [0, ∞), let L 2 : X × Y × A → [0, ∞)
+be two cost functions , and let Q be class of distributions on Y with C∗
+L1,Q,x < ∞ and
+C∗
+L2 ,Q,x < ∞ for all x ∈ X, Q ∈ Q. Furthermore, let δ :[ 0 , ∞] → [0, ∞] be an
+increasing function with δ(0) = 0 and δ(ε) > 0 for all ε> 0. If for all distributions P
+of type Q satisfying R∗
+L1 ,P < ∞ and R∗
+L2 ,P < ∞, and all measurable α ∈ A we have
+δ(RL1 ,P (α) − R∗
+L1,P ) ≤ RL2 ,P (α) − R∗
+L2 ,P ,
+then L 2 is uniformly L 1-calibrated with respect to Q.
+Unfortunately, it will turn out that in many situations such as regression or density
+estimation we cannot ﬁnd interesting, uniformly calibrated surrogates. In such situa-
+tions the following theorem which presents inequalities between excess risks under less
+restrictive calibration assumptions can help.
+2 In Theorem 3.6 we will see that under rather natural conditions, using δmax(·, Q) does not give worse
+inequalities than using δmax(ε, P).
+
+How to Compare Different Loss Functions and Their Risks 237
+Theorem 2.18. Let P be a distribution on X × Y and let L 1 : X × Y × A → [0, ∞),
+L2 : X × Y × A → [0, ∞) be P-minimizable cost functions . Assume that there exist
+p ∈ (0, ∞], q ≥ (p + 1)/p, and a function b : X → [0, ∞] such that
+δmax(ε, P(·|x), x) ≥ εq b(x), ε > 0, x ∈ X,(15)
+and b−1 ∈ Lp (PX ). Then for all α ∈ A we have
+RL1 ,P (α) − R∗
+L1 ,P ≤∥b−1∥1/q
+Lp (PX )(RL2 ,P (α) − R∗
+L2 ,P )1/q .
+Remark 2.19. The above conditionb−1 ∈ Lp (PX ) measures how much the calibration
+function δmax(ε, P(·|x), x) violates a uniform lower bound of the formδmax(ε, P(·|x), x)
+≥ cεq , ε ∈ [0, ∞]. Indeed, the larger we can choose p in condition (15) the more the
+shape of b is away from the critical level 0, and thus the closer condition (15) is to a
+uniform lower bound. In the extremal case p =∞ , condition (15) actually becomes a
+uniform bound, and the inequality of Theorem 2.18 equals the inequality of Theorem
+2.13.
+Finally, it is interesting to note that up to measurability considerations Theorem 2.18
+can also be derived from the more general [36, Theorem 24]. Since the direct proof is
+very easy we decided to include it for the sake of completeness.
+3. Loss Functions
+In the previous section we have not speciﬁed the hypothesis set A and how the cost
+function acts on this set. In this subsection we will now investigateloss functions which
+are cost functions where A consists of measurable functions f : X → T and the cost
+acts on this set pointwise, i.e., in the form L(x, y, f (x)). Obviously, all results of the
+previous section can be applied to such cost functions, but it will turn out in this section
+that in some cases we can actually show more. The rest of this section is organized as
+follows. In the ﬁrst subsection we will formally introduce loss functions. Then our main
+focus in this subsection is to show that under mild assumptions the conditions of the last
+section ensuring measurability of, e.g., the inner Bayes risks are automatically satisﬁed.
+In addition, we show that for loss functions Theorem 2.7 is in some sense optimal. In the
+following two subsections we then prove some additional properties of certain types of
+loss functions. Finally, we investigate in the last subsection whether and in which sense
+approximate L-risk minimizers approximate exact minimizers of the L-risk.
+3.1. Measurability Considerations for Loss Functions
+In this subsection we ﬁrst introduce loss functions and some notations related to them.
+Our main results of this subsection are then presented in Theorems 3.2 and 3.3 which
+deal mainly with measurability questions.
+Let us begin with the following fundamental deﬁnition which introduces loss functions.
+Deﬁnition 3.1 (Loss Function). Let T be a Polish space. Then a functionL : X × Y ×
+T → [0, ∞] is called a loss function if it is measurable.
+
+238 I. Steinwart
+Obviously, every loss function L is a cost function, but in general the converse is
+not true because of the stronger measurability condition loss functions have to satisfy.
+Moreover, a loss function L also induces a cost function acting on the space M(X, T )
+of all measurable functions f : X → T . Indeed, for A := M(X, T ), the mapping
+ˆL : X × Y × A → [0, ∞),
+(x, y, f ) ↦→ L(x, y, f (x)),
+is a cost function since (x, y) ↦→ L(x, y, f (x)) is measurable for all f ∈ A. Now note
+that the inner risks of L and ˆL are related by
+C
+ˆL,Q,x ( f ) =
+∫
+Y
+L(x, y, f (x)) dQ (x) = CL ,Q,x ( f (x))(16)
+and, consequently, we have C∗
+ˆL,Q,x = C∗
+L ,Q,x . In the following we are only interested in
+the excess risks of the induced cost function ˆL, and therefore we write in a slight abuse
+of notations
+RL ,P ( f ) := RˆL,P ( f ), f ∈ M(X, T )
+and, analogously, we deﬁne R∗
+L ,P := R∗
+ˆL,P . Now recall that all the major results of the
+previous section required that the involved cost functions are P-minimizable. Having
+a loss function L we consequently need to ensure that its induced cost function ˆL is
+P-minimizable. This is done in the following lemma whose main difﬁculty is to ensure
+the measurability statements.
+Theorem 3.2. Let L : X × Y × T → [0, ∞] be a loss function and let P be a
+distribution on X × Y . Then the following statements are true:
+(i) ˆL is P-minimizable if and only if C∗
+L ,P(·|x),x < ∞ and all x ∈ X .
+(ii) If we have ML ,P(·|x),x (0+) ̸=∅ for all x ∈ X then there exists a measurable
+function f ∗
+L ,P : X → T with CL ,P(·|x),x ( f ∗
+L ,P (x)) = C∗
+L ,P(·|x),x for all x ∈ X and,
+consequently, we have
+RL ,P ( f ∗
+L ,P ) = R∗
+L ,P .
+In combination with Lemma 2.5 the above theorem shows that the inner Bayes risks
+are measurable under rather general conditions, namely the completeness of (X, X ).
+Consequently, one can typically avoid measurability considerations when dealing with
+loss functions, and therefore earlier investigations on surrogate loss functions (which all
+avoided measurability considerations) are justiﬁed with hindsight.
+Now recall that the key quantity of the previous section was the calibration function.
+Since we are only interested in the excess risks of the cost functions ˆL
+1 and ˆL2 induced
+by the loss functionsL1 and L2, we need to calculate the calibration function of( ˆL1, ˆL2).
+To this end, assume ﬁrst that we have C∗
+L2 ,Q,x < ∞. Then equation (16) gives
+δmax,L1 ,L2 (ε, Q, x) = inf
+t∈T
+t̸∈ML1 ,Q,x (ε)
+CL2 ,Q,x (t) − C∗
+L2 ,Q,x = δmax, ˆL1 , ˆL2
+(ε, Q, x),
+
+How to Compare Different Loss Functions and Their Risks 239
+where in the last equality we used that f :≡ t is a measurable function with f (x) = t.
+Moreover, if C∗
+L2 ,Q,x =∞ the above observation is also true and, consequently, it
+sufﬁces to investigate the calibration function δmax,L1,L2 (ε, Q, x) when dealing with the
+pair ( ˆL1, ˆL2).
+We have already seen in part (i) of Lemma 2.9 that the calibration function satisﬁes
+condition (6), however, in order to use the calibration function in Theorem 2.8 we also
+need to know that it is measurable. The following theorem completely resolves this issue
+and, in addition, it characterizes the distributions for which implication (7) hold.
+Theorem 3.3. Let L
+1 : X × Y × T → [0, ∞], let L 2 : X × Y × T → [0, ∞] be loss
+functions, and let P be a distribution on X × Y such that R∗
+L1 ,P < ∞ and R∗
+L2 ,P < ∞.
+Then
+x ↦→ δmax(ε, P(·|x), x)
+is measurable for all ε> 0. In addition, consider the following statements:
+(i) For all ε ∈ (0, ∞] we have PX ({x ∈ X : δmax(ε, P(·|x), x) = 0}) = 0.
+(ii) For all ε ∈ (0, ∞] there is a δ> 0 such that for all measurable functions
+f : X → T we have
+RL2 ,P ( f )< R∗
+L2 ,P + δ ⇒ RL1 ,P ( f )< R∗
+L1 ,P + ε.(17)
+Then we have (ii) ⇒ (i), and the inverse implication (i) ⇒ (ii) holds if there exists a
+function b ∈ L1(PX ) satisfying (6).
+The above theorem shows that theL1-calibration isnecessary for L2 being a reasonable
+surrogate loss in the sense of Question 1. Consequently, the calibration function will be
+our major tool when investigating speciﬁc learning problems in Section 4.
+3.2. Supervised Loss Functions
+General loss functions can explicitly depend on the input variable x, and hence so do
+the derived quantities like the inner risks. However, many important loss functions are
+actually independent of x, and since the theory becomes substantially simpler for such
+losses we now brieﬂy consider them.
+Let us begin with the following deﬁnition.
+Deﬁnition 3.4 (Supervised Loss Functions). Let T be a Polish space. A function L :
+Y × T → [0, ∞] is called a supervised loss function if it is measurable.
+Formally, supervised loss functions are not loss functions, however, it is obvious that
+every supervised loss function L induces a loss function ¯L via ¯L(x, y, t) := L(y, t).I n
+the following we always identify L with ¯L. Now note that the inner risk of ¯L is
+C
+¯L,Q,x (t) =
+∫
+Y
+L(y, t) dQ (y),
+i.e., it isindependent of x. Moreover, the same is obviously true for the derived quantities
+C∗
+L ,Q,x , ML ,Q,x (ε) and, therefore, we usually use the shorter notations
+CL ,Q (t) := C¯L,Q,x (t), C∗
+L ,Q := C∗
+L ,Q,x , and ML ,Q (ε) := ML ,Q,x (ε),
+
+240 I. Steinwart
+where x ∈ X is an arbitrary element. Furthermore, note that if we have two supervised
+loss functions, then the corresponding calibration function δmax(ε, Q, x) is independent
+of x, too, and hence we analogously write δmax(ε, Q) := δmax(ε, Q, x) for some x ∈ X.
+Finally note that the often imposed conditionC∗
+¯L,Q,x < ∞ is also independent of x. This
+justiﬁes the following deﬁnition.
+Deﬁnition 3.5. Let Q be a class of distributions on Y and let L : Y × T → [0, ∞) be
+a supervised loss function. Then we write
+Q(L) :={ Q ∈ Q : C∗
+L ,Q < ∞}.
+Obviously, all theorems we have formulated for cost or loss functions also hold for
+supervised loss functions. In particular, for uniformly calibrated supervised loss func-
+tions Theorem 2.13 can be used to establish inequalities between the corresponding
+excess risks. Now note that for distributions P of type Q we always have δ
+max(ε, P) ≤
+δmax(ε, Q) and, consequently, one may think that usingδmax(ε, P) instead of δmax(ε, Q)
+leads to sharper inequalities in Theorem 2.13. The following result shows that this intu-
+ition is usually false if the set Q is not chosen overly conservative.
+Theorem 3.6. Let L
+1 : Y × T → [0, ∞], L2 : Y × T → [0, ∞] be supervised
+loss functions and let Q be a set of distributions on Y with Q = Q(L2) = Q(L1).
+Furthermore, assume that there is a distribution µ on X for which there exist mutually
+disjoint subsets A n ⊂ X, n ∈ N, with µ(An )> 0 for all n ∈ N. Then there exists a
+distribution P of type Q with PX = µ such that for all ε> 0 we have
+δmax(ε, P) = δmax(ε, Q).(18)
+3.3. Unsupervised Loss Functions
+In the previous part of the work we considered loss functions whose inner risks are
+independent of x. Formally we can also consider loss functions whose inner risks are
+independent of Q. Before we motivate such losses let us ﬁrst make a precise deﬁnition.
+Deﬁnition 3.7 (Unsupervised Loss Functions). Let T be a Polish space. A function
+L : X × T → [0, ∞] is called an unsupervised loss function if it is measurable.
+Like supervised loss functions, unsupervised loss functions are not loss functions.
+However, it is obvious that every unsupervised loss functionL induces a loss function ¯L
+via ¯L(x, y, t) := L(x, t). In the following we always identify L with ¯L. Now note that
+the inner risk of ¯L is
+C¯L,Q,x (t) = L(x, t),
+i.e., it is independent of Q. Moreover, the quantities C∗
+L ,Q,x , ML ,Q,x (ε) obviously share
+this property. In the following we thus use the shorthands
+CL ,x (t) := CL ,Q,x (t), C∗
+L ,x := C∗
+L ,Q,x , and ML ,x (ε) := ML ,Q,x (ε),
+
+How to Compare Different Loss Functions and Their Risks 241
+where Q is an arbitrary distribution. Note that these deﬁnitions in particular give
+C∗
+L ,x = inf
+t∈T
+L(x, t).(19)
+At ﬁrst glance it seems rather odd to consider unsupervised loss functions since their as-
+sociated (inner) risks CL ,P(·|x),x (·) do not depend on the conditional probabilitiesP(·|x),
+and hence they apparently do not deﬁne a reasonable learning goal. However, we will
+see later that the key idea of unsupervised loss functions is to encode the dependence
+of P(·|x) on the ﬁrst input variable x of L, so that we actually have the possibility to
+encode dependencies that are not of the form of an inner risk. This fact will be par-
+ticularly important when considering unsupervised learning goals such as density level
+detection and density estimation. In addition, unsupervised loss functions will also serve
+as a powerful technical tool when considering general questions on loss functions in,
+e.g., Subsection 3.4. In this regard the following class of unsupervised loss functions
+will turn out to be of particular interest.
+Deﬁnition 3.8 (Detection Loss Functions). Let A ⊂ X × T be a measurable subset
+and let h : X → [0, ∞) be a measurable function. Then we call L : X × T → [0, ∞)
+a detection loss function with respect to (A, h) if
+L(x, t) = 1
+A(x, t)h(x), x ∈ X, t ∈ T .
+Every detection loss function is obviously measurable and hence an unsupervised loss
+function. In addition, for x ∈ X and t ∈ T our above notations immediately show
+CL ,x (t) − C∗
+L ,x =
+{0i f A(x) :={ t′∈ T : (x, t′) ∈ A}= T ,
+1A(x, t)h(x) else.(20)
+If the detection lossL2 is uniformly L1-calibrated with respect toP, then it is straight-
+forward to establish inequalities by Theorem 2.13. However, using the speciﬁc form of
+detection losses one can often improve these inequalities, as we will discuss after the
+following rather general theorem.
+Theorem 3.9. Let L
+1 : X × T → [0, ∞) be a detection loss function with respect to
+(A, h), let L 2 : X × Y × T → [0, ∞] be a loss function, and let P be a distribution on
+X × Y with R∗
+L1 ,P < ∞, R∗
+L2 ,P < ∞. For s > 0 we write
+B(s) :={ x ∈ X : A(x) ̸= T and δmax(h(x), P(·|x), x)< sh (x)}.
+If there are constants c > 0 and α ∈ (0, ∞] with
+∫
+1B(s)hdP X ≤ (cs)α(21)
+for all s > 0, then for all measurable f : X → T we have
+RL1 ,P ( f ) − R∗
+L1 ,P ≤ 2cα/(α+1)(RL2 ,P ( f ) − R∗
+L2 ,P )α/(α+1).
+
+242 I. Steinwart
+The above theorem can be used in various settings, but for brevity’s sake we only
+refer to Remarks 3.20 and 4.4, and Theorem 4.33. Moreover, we have already indicated
+that Theorem 3.9 improves the inequalities we obtained for general target losses L
+1 in
+various cases. The following two remarks illustrate this.
+Remark 3.10. Let L1 be a detection loss withh = 1X , and assume that condition (15)
+is satisﬁed for some b : X → [0, ∞] with b−1 ∈ Lp (PX ) and q ≥ (p + 1)/p. Then
+Theorem 2.18 gives
+RL1 ,P ( f ) − R∗
+L1 ,P ≤∥b−1∥1/q
+Lp (PX )(RL2 ,P ( f ) − R∗
+L2 ,P )1/q .(22)
+However, we also have B(s) ⊂{ x ∈ X : b(x)< s}, and since b−1 ∈ Lp (PX ) implies
+PX ({x ∈ X : b(x)< s}) ≤ (∥b−1∥ps)p, we ﬁnd (21) for c :=∥b−1∥Lp (PX ) and α := p.
+Consequently, Theorem 3.9 yields
+RL1 ,P ( f ) − R∗
+L1 ,P ≤ 2∥b−1∥p/(p+1)
+Lp (PX ) (RL2 ,P ( f ) − R∗
+L2,P )p/(p+1).(23)
+Now recall that Theorem 2.18 required 1/q ≤ p/(p + 1), and therefore (23) is sharper
+than (22) whenever the excess risk RL2 ,P ( f ) − R∗
+L2 ,P is sufﬁciently small and q >
+1 + 1/p.
+Remark 3.11. Let L1 be a detection loss and let L2 be a loss that is uniformly L1-
+calibrated with respect to some class Q of distributions. If δmax(·, Q) ≥ εq for some
+q > 1 and all ε ≥ 0, then Theorem 2.13 gives
+RL1 ,P ( f ) − R∗
+L1 ,P ≤ (RL2 ,P ( f ) − R∗
+L2 ,P )1/q(24)
+for all measurable f : X → R. However, it holds that B(s) ⊂{ x ∈ X :0 < h(x)<
+s1/(q−1)} and, consequently, if we have
+PX ({x ∈ X :0 < h(x)< s}) ≤ (Cs )β(25)
+for some constants C > 0, β ∈ (0, ∞], and all s > 0, then it is easy to check that (21)
+is satisﬁed for c = C(βq−β)/(β+1) and α := (β + 1)/(q − 1). Theorem 3.9 then yields
+RL1 ,P ( f ) − R∗
+L1 ,P ≤ 2C(βq−β)/(β+q)(RL2 ,P ( f ) − R∗
+L2 ,P )(β+1)/(β+q).(26)
+Now note that we always have (β + 1)/(β + q)> 1/q, and thus (26) is sharper than
+(24) whenever the excess risk RL2 ,P ( f ) − R∗
+L2 ,P is sufﬁciently small.
+3.4. Self-Calibrated Loss Functions
+Given a loss function L and a distribution P such that an exact minimizer f ∗
+L ,P of
+RL ,P (·) exists one may ask whether, and in which sense, ε-approximate minimizers fε
+of RL ,P (·) approximate f ∗
+L ,P . The goal of this subsection is to provide some general
+answers to these questions.
+Interestingly, this question and its answers are important for both practical applications
+of learning algorithms as well as for theoretical considerations. For example, in binary
+
+How to Compare Different Loss Functions and Their Risks 243
+classiﬁcation (see the next section for a formal deﬁnition of this learning problem) one
+is often not only interested in ﬁnding a good classiﬁer f but also an estimate of the
+conditional probability P(y = 1|x). Now assume that one has obtained a classiﬁer f by
+using a learning algorithm which is L-risk consistent for a suitable surrogate L of the
+classiﬁcation loss. If the minimizer f ∗
+L ,P of this loss has a one-to-one correspondence
+to the conditional probability and we have a positive answer to the above question one
+can then use a suitable transformation of f (x) to estimate P(y = 1|x). An important
+nontrivial example of such a loss function is discussed in Example 4.5. Moreover, by
+combining the results of this subsection with (41) and Example 4.22 one can, for example,
+address the question in which sense the absolute distance loss can be used to estimate
+the (conditional) median in a regression problem. Finally, some positive insight into
+the above question can also give powerful tools to establish variance bounds which
+recently turned out to be important for establishing “fast rates” for learning algorithms
+(see Remark 4.26 for some further discussion).
+In the hope that we have convinced the reader of the importance of the above question
+we now begin with the following deﬁnition which introduces another important class of
+loss functions.
+Deﬁnition 3.12 (Template Loss). Let Q be a class of distributions on Y . Then we call
+a function L : Q × R → [0, ∞]a template loss function if for all Q-type distributions
+P on X × Y the P-instance L
+P of L deﬁned by
+L P : X × R → [0, ∞],
+(x, t) ↦→ L(P(·|x), t),(27)
+is measurable.
+Again, the main condition of the above deﬁnition is the measurability which enables
+us to interpret the P-instances of L as unsupervised loss functions. In particular, we can
+deﬁne the risk of a template loss function by the risk of its P-instance, namely,
+RL ,P ( f ) := RL P ,P ( f ) =
+∫
+X
+L(P(·|x), f (x)) dP X (x),
+where f : X → R is a measurable function. Consequently, we deﬁne the inner risks
+of a template loss L : Q × R → [0, ∞] analogously to the inner risks of unsupervised
+losses, i.e., we write
+CL ,Q (t) := L(Q, t) and C∗
+L ,Q := inf
+t′∈R
+L(Q, t′)
+for Q ∈ Q, t ∈ R. Note that the right-hand sides of these deﬁnitions have the form
+we used for unsupervised losses in the sense that no integrals occur while the left-hand
+sides have the form we obtained for supervised losses in the sense that the inner risks
+are independent of x.
+Having deﬁned the inner risks we write, as usual, M
+L ,Q (ε) :={ t ∈ R : CL ,Q (t)<
+C∗
+L ,Q + ε}, Q ∈ Q, ε> 0, for the corresponding sets of approximative minimiz-
+ers. Moreover, given a supervised surrogate loss L2 we deﬁne the calibration function
+
+244 I. Steinwart
+δmax(·, Q) :[ 0, ∞] → [0, ∞]b y
+δmax(ε, Q) := δmax,L ,L2 (ε, Q) := inf
+t∈T
+t̸∈ML ,Q (ε)
+CL2 ,Q (t) − C∗
+L2,Q ,ε ∈ [0, ∞],
+if C∗
+L2 ,Q < ∞, and by δmax(ε, Q) :=∞ otherwise. Since in the proofs of Lemmas 2.9
+and 2.16 we have not used that the inner risks are deﬁned by integrals, it is then not hard
+to see that both lemmas also hold for the above calibration function. Consequently, we
+say that L
+2 is L-calibrated with respect to Q if
+δmax(ε, Q)> 0
+for all ε> 0 and Q ∈ Q. Analogously, we say that L2 is uniformly L-calibrated with
+respect to Q if δmax(ε, Q) := infQ∈Q δmax(ε, Q)> 0 for all ε> 0. If we now consider
+a P-instance L P of L we immediately obtain
+δmax,L P ,L2 (ε, P(·|x), x) = δmax,L ,L2 (ε, P(·|x)), ε ∈ [0, ∞], x ∈ X.(28)
+In other words, the L-calibration of L2 can be investigated analogously to supervised
+losses, i.e., in terms of Q, while the resulting calibration statements can be used to
+determine the relation between the excessL2-risk and the excess risk of theunsupervised
+loss L P .
+In order to give a ﬁrst interesting example of template losses let us now turn to our
+initial question, namely the approximation properties of approximate risk minimizers.
+To this end, let L : Y × R → [0, ∞] be a supervised loss function. We write
+Q
+min(L) :={ Q : Q is a distribution on Y with ML ,Q (0+) ̸=∅ },(29)
+i.e. Qmin(L) contains the distributions on Y whose inner L-risks have at least one exact
+minimizer. Furthermore, for Q ∈ Qmin(L) and t ∈ R we deﬁne
+˘L(Q, t) := dist(t, ML ,Q (0+)) := inf
+t′∈ML ,Q (0+ )
+|t − t′|,(30)
+i.e., ˘L(Q, t) measures the distance oft to the set of elementst′∈ R minimizing CL ,Q (·).
+Now the following fundamental lemma ensures that the above quantity deﬁnes a template
+loss function.
+Lemma 3.13. Let L : Y × R → [0, ∞] be a supervised loss function . Then ˘L :
+Q
+min(L) × R → [0, ∞) deﬁned by (30) is a template loss function.
+It is almost needless to say that the main statement of the above lemma is again the
+measurability of the instances of ˘L.
+Now note that the deﬁnition of ˘L immediately gives C∗
+˘L,Q = 0 and, therefore, we have
+(31)
+M˘L,Q (ε) ={ t ∈ R : ˘L(Q, t)<ε }={ t ∈ R : ∃ t′∈ ML ,Q (0+) with |t − t′| <ε }
+for all Q ∈ Qmin(L) and ε ∈ [0, ∞]. Furthermore, we have already mentioned that
+the results of Lemma 2.9 remain true for template losses. By inequality (9) the self-
+calibration function δmax, ˘L,L (·, Q) which can be computed by
+δmax, ˘L,L (ε, Q) = inf
+t∈R
+dist(t,ML ,Q (0+ )≥ε
+CL ,Q (t) − C∗
+L ,Q
+
+How to Compare Different Loss Functions and Their Risks 245
+thus satisﬁes
+δmax, ˘L,L (dist(t, ML ,Q (0+)), Q) ≤ CL ,Q (t) − C∗
+L ,Q
+for all Q ∈ Qmin(L) and all t ∈ R. Note that if ML ,Q (0+) contains a single element t∗
+Q ,
+then the latter inequality becomes
+δmax, ˘L,L (|t − t∗
+Q|, Q) ≤ CL ,Q (t) − C∗
+L ,Q(32)
+and, consequently, the calibration function quantiﬁes how well an approximateCL ,Q (·)-
+minimizer t approximates the exact minimizert∗
+Q . This motivates the following deﬁnition.
+Deﬁnition 3.14 (Self-Calibration). Let L : Y × R → [0, ∞] be a supervised loss
+function and let Q ⊂ Qmin(L). We say that Li s (uniformly) self-calibrated with respect
+to Q,i f L is (uniformly) ˘L-calibrated with respect to Q.
+If L is a supervised convex loss function, then ML ,Q (0+) is an interval, and hence
+(31) together with the proof of Lemma 2.11 immediately gives the following result.
+Lemma 3.15 (Self-calibration of Convex Losses). Every supervised convex loss func-
+tion L : Y × R → [0, ∞) is self-calibrated with respect to Qmin(L).
+Note that we will see some examples in Section 4.3 showing that in general supervised
+convex losses are not uniformly self-calibrated. In general, we consequently cannot
+expect strong inequalities in the sense of Theorem 2.13 for the self-calibration problem.
+However, even the somewhat weak self-calibration established in Lemma 3.15 can be
+used to get interesting results for convex loss functions. This is discussed in Remark 3.18
+which is a consequence of the following proposition showing that for self-calibrated loss
+functions, approximate risk minimizers approximate the Bayes decision functions.
+Theorem 3.16. Let L : Y × R → [0, ∞) be a supervised loss function that is self-
+calibrated with respect to some Q ⊂ Q
+min(L), and let P be a distribution of Q-type
+with R∗
+L ,P < ∞. Then for all ε> 0 and ρ> 0 there exists a δ> 0 such that for all
+measurable f : X → R we have
+RL ,P ( f )< R∗
+L ,P + δ ⇒ PX ({x ∈ X : ˘L P (x, f (x)) ≥ ρ})<ε .
+Remark 3.17. In [26] a similar though technically more complicated version of the
+above theorem has already been proved for binary classiﬁcation problems.
+Remark 3.18. Let L be a convex supervised loss such that the setsML ,P(·|x),x (0+) are
+singletons. By Theorem 3.2 there then exists aPX -almost surely unique minimizerf ∗
+L ,P of
+RL ,P (·), and thus we have˘L P (x, t) =| t − f ∗
+L ,P (x)| for PX -almost all x ∈ X. Moreover,
+the assumptions of the above theorem are obviously satisﬁed and, consequently, we
+obtain f
+n → f ∗
+L ,P in probability for all sequences ( fn ) with RL ,P ( fn ) → R∗
+L ,P .I n
+other words, approximate risk minimizers approximate the unique risk minimizer f ∗
+L ,P
+in probability.
+
+246 I. Steinwart
+Of course, the approximation in probability discussed in the previous remark is a
+somewhat weak notion and therefore let us ﬁnally describe situations in which we can
+replace it by a stronger notion of approximation.
+Proposition 3.19. Let L : Y × R → [0, ∞) be a supervised loss function that is self-
+calibrated with respect to someQ ⊂ Q
+min(L), and let P be a distribution ofQ-type with
+R∗
+L ,P < ∞. Assume that there exist p ∈ (0, ∞], q > 0, and a function b : X → [0, ∞]
+with b−1 ∈ Lp (PX ) and
+δmax, ˘L P ,L (ε, P(·|x), x) ≥ εq b(x), ε > 0, x ∈ X.
+Then for all measurable f : X → R we have
+(∫
+X
+( ˘L P (x, f (x)))pq /(p+1) dP X (x)
+)(p+1)/pq
+≤∥b−1∥1/q
+Lp (PX )(RL ,P ( f ) − R∗
+L ,P )1/q .
+Remark 3.20. If RL ,P (·) has an almost surely unique minimizer f ∗
+L ,P , then Proposi-
+tion 3.19 ensures∥·∥pq /(p+1)-convergence of fn to f ∗
+L ,P whenever we haveRL ,P ( fn ) →
+R∗
+L ,P . Interestingly, if we can only ensureb−1 ∈ Lp,∞(PX ), whereLp,∞(PX ) is a Lorentz
+space (see, e.g., [3]), then the norm∥·∥pq /(p+1) in the above proposition can be replaced
+by the Lorentz-norm∥·∥pq /(p+1),∞ if we combine Theorem 3.9 with the proof of Theorem
+3.16.
+4. Examples
+In this section we apply the general theory of Section 2 to various loss functions of
+common learning scenarios such as (cost-sensitive) binary classiﬁcation, regression,
+density level detection, and density estimation.
+4.1. Standard Binary Classiﬁcation
+In this subsection we investigate surrogate loss functions for the binary classiﬁcation
+problem. Since such classiﬁcation calibrated loss functions have already been intensively
+studied by Bartlett et al. in [1], our main aim in this subsection is to brieﬂy discuss the
+relationship between their results and our general framework. In addition, the concepts
+developed in this subsection will be needed in the following subsections when dealing
+with cost-sensitive classiﬁcation and density level detection.
+Let us begin with brieﬂy recalling the standard binary classiﬁcation problem. To this
+end, let Y :={ −1, 1} and T := R throughout the subsection. Our target loss is the
+supervised loss function L
+class : Y × R → [0, ∞) deﬁned by
+Lclass(y, t) := 1(−∞,0](y sign t), y ∈ Y, t ∈ R,(33)
+where we use the convention sign 0 : = 1. For a given distribution P on X × Y an
+easy computation then shows that RLclass ,P ( f ) is the classiﬁcation risk discussed in the
+Introduction.
+
+How to Compare Different Loss Functions and Their Risks 247
+In the following,QY denotes the set of all distributions onY . We say that a supervised
+loss functionL is (uniformly) classiﬁcation calibratedif it is (uniformly)Lclass-calibrated
+with respect to QY . Furthermore, observe that any distribution Q ∈ QY can be uniquely
+described by an η ∈ [0, 1] using the identiﬁcation η = Q({1}).I f L is a supervised loss
+function we therefore use the notations
+CL ,η(t) := CL ,Q (t), C∗
+L ,η := C∗
+L ,Q ,
+ML ,η(ε) := ML ,Q (ε), and δmax(ε, η) := δmax(ε, Q)
+for t ∈ R and ε> 0. Now our ﬁrst aim is to compute MLclass ,η(ε) and δmax(ε, η).
+Lemma 4.1. Let L : Y × R → [0, ∞) be a supervised loss function . Then for all
+η ∈ [0, 1], ε> 0 we have
+δmax(ε, η) =
+{∞ if ε> |2η − 1|,
+inft∈R:(2η−1) sign t≤0 CL ,η(t) − C∗
+L ,η if ε ≤| 2η − 1|.
+Proof. For t ∈ R a well-known and easy calculation shows
+CLclass ,η(t) − C∗
+Lclass ,η =| 2η − 1|· 1(−∞,0]((2η − 1) sign t).(34)
+Now if ε> |2η − 1| we obviously have CLclass ,η(t) − C∗
+Lclass ,η <ε for all t ∈ R and
+hence we obtain MLclass ,η(ε) = R. On the other hand, for ε ≤| 2η − 1| we have
+CLclass ,η(t) − C∗
+Lclass ,η <ε if and only if (2η − 1) sign t > 0 and, hence, MLclass ,η(ε) =
+{t ∈ R : (2η − 1) sign t > 0}.
+In the following we will restrict our considerations to the following class of supervised
+loss functions used in many classiﬁcation algorithms.
+Deﬁnition 4.2. A supervised loss functionL : Y ×R → [0, ∞) is calledmargin-based
+if there exists a ϕ : R → [0, ∞) with L(y, t) = ϕ(yt ) for all y ∈ Y and all t ∈ R.
+Note that the classiﬁcation lossLclass is not margin-based, but many other loss functions
+are. For some examples we refer to Table 1. Now one of the main results on margin-based
+losses established in [1] reads as follows.
+Theorem 4.3. Let L be a margin-based loss function . Then the following are equiva-
+lent:
+(i) L is classiﬁcation calibrated.
+(ii) L is uniformly classiﬁcation calibrated.
+(iii) The function H :[ 0, 1] → [0, ∞) deﬁned by
+H (η) := inf
+t∈R:(2η−1)t≤0
+CL ,η(t) − C∗
+L ,η,η ∈ [0, 1],(35)
+satisﬁes H (η) > 0 for all η ∈ [0, 1] with η ̸= 1
+2 .
+
+248 I. Steinwart
+Table 1. Some common margin-based loss functions and the corresponding values forH (η) and δ∗∗ deﬁned
+in Theorem 4.3. All results are taken from [1] besides the ones for the least squares loss and the logistic loss.
+Name of loss function ϕ(t) for t ∈ R H (η) for η ∈ [0, 1] δ∗∗(ε) for ε ∈ (0, 1]
+Hinge loss max {0, 1 − t}| 2η − 1| ε
+Truncated least squares (max{0, 1 − t})2 (2η − 1)2 ε2
+Least squares (1 − t)2 (2η − 1)2 ε2
+Exponential loss exp (−t) 1 − 2
+√
+η(1 − η) 1 −
+√
+1 − ε2
+Sigmoid loss 1 − tanh(t) |2η − 1| ε
+Logistic loss ln (1 + e−t ) ln 2+ η ln η + (1 + ε) ln(1 + ε) + (1 − ε) ln(1 − ε)
+2(1 − η) ln(1 − η)
+Furthermore, for δ :[ 0, 1] → [0, ∞) deﬁned by δ(ε) := H ((1 + ε)/2), ε ∈ [0, 1], we
+have
+δ∗∗(ε) ≤ δ∗∗
+max(ε, QY ), ε ∈ [0, 1],(36)
+and both quantities are actually equal whenever L is continuous.
+The above theorem shows that for binary classiﬁcation, calibration coincides with
+uniform calibration and, consequently, a positive answer to Question 1 automatically
+gives a positive answer to Question 2. Moreover, in order to ﬁnd the corresponding in-
+equality, it sufﬁces to compute the functionH (or the calibration function for continuous
+surrogates). For many interesting loss functions this has already been done by Bartlett
+et al. in [1]. Their results together with the corresponding values of the function δ
+∗∗
+deﬁned in Theorem 4.3 are summarized in Table 1. Finally, recall that if L is a convex
+margin-based loss function, then it was shown in [1] thatL is classiﬁcation calibrated if
+and only if its associated ϕ is differentiable at 0 with ϕ′(0)< 0. In addition, in this case
+[1, Theorem 4] shows the simple formula
+δ∗∗
+max(ε, QY ) = ϕ(0) − C∗
+L ,(1+ε)/2,ε ∈ [0, 1].
+Remark 4.4. It is interesting to note that equation (34) can be used to describe the
+classiﬁcation loss by a detection loss function. Indeed, if for a given distribution P on
+X × Y we write
+L P (x, t) :=| 2η(x) − 1|· 1(−∞,0]((2η(x) − 1) sign t), x ∈ X, t ∈ R,
+then L P : X × R → [0, ∞) is a detection loss with h(x) =| 2η(x) − 1|, x ∈ X, and
+(34) states
+CLclass ,η(x)(t) − C∗
+Lclass ,η(x) = CL P ,x (t) − C∗
+L P ,x
+for all x ∈ X, t ∈ R. Furthermore, condition (25) is then a weaker version of Tsybakov
+noise assumption in the sense of [29], and the resulting inequality of Theorem 3.9
+essentially coincides with that of [1, Theorem 10]. In this regard it is also interesting to
+note that the function δ
+∗∗(ε) for the logistic loss (see Table 1) behaves likeε2, so that for
+this loss the inequality of Theorem 3.9 can be substantially simpliﬁed.
+
+How to Compare Different Loss Functions and Their Risks 249
+Sometimes, practical classiﬁcation problems do not only require a small classiﬁcation
+risk but also an estimate of the conditional probability η(x) = P(y = 1|x), x ∈ X.I f
+we have a margin-based loss function L for which there is a one-to-one transformation
+between the sets of minimizers ML ,η(0+) and η, then it seems natural to use self-
+calibration properties of L to investigate whether suitably transformed approximate
+L-risk minimizers approximate η. This approach is discussed in the following example.
+Example 4.5 (Estimating the Conditional Probabilities with the Logistic Loss). Let
+Llogist be the logistic loss deﬁned by ϕ(t) = ln(1 + e−t ), t ∈ R. Then it is well-known
+that
+MLlogist ,η(0+) =
+{
+ln
+( η
+1 − η
+)}
+,η ∈ (0, 1).
+In other words, if tη denotes the element contained in MLlogist ,η(0+), then we have
+η = 1/(1 + e−tη ). Consequently, if t approximately minimizes CLlogist ,η(·), then it is
+close to tη by Lemma 3.15 and hence 1 /(1 + e−t ) can serve as an estimate of η.H o w -
+ever, investigating the quality of this estimate by the self-calibration function of Llogist
+causes some technical problems since Llogist is only self-calibrated with respect to the
+distributions Q ∈ QY with Q({1}) ̸= 0, 1. Consequently, we now assess the qual-
+ity of the above estimate directly. To this end, we deﬁne L : QY × R → [0, ∞) by
+L(η, t) :=| η − 1/(1 + e−t )|, η ∈ [0, 1], t ∈ R. Then L is a template loss function
+which measures the distance betweenη and its estimate in the sense of the above discus-
+sion. Let us compute the calibration function of(L , Llogist). To this end, we ﬁrst observe
+that C∗
+L ,η = 0 for all η ∈ [0, 1], and hence we have ML ,η(ε) ={ t ∈ R : L(η, t)<ε }.
+Consequently, for Cη(t) := CLlogist ,η(t) − C∗
+Llogist,η Lemma 2.11 gives
+δmax,L ,Llogist (ε, η) = min
+{
+Cη
+(
+ln
+( η − ε
+1 − η + ε
+)
++
+)
+, Cη
+(
+− ln
+(1 − η − ε
+η + ε
+)
++
+)}
+,
+where we use the convention(x)+ := max{0, x}, x ∈ R, and Cη(±∞) :=∞ . From this
+we can easily concludeδmax,L ,Llogist (ε, η) = δmax,L ,Llogist (ε, 1− η) for all ε ≥ 0, η ∈ [0, 1].
+Moreover, for ﬁxed ε ∈ (0, 1
+2 ) and ε<η< 1 − ε, some calculations show
+η ln η
+η − ε + (1 − η) ln 1 − η
+1 − η + ε ≤ η ln η
+η + ε + (1 − η) ln 1 − η
+1 − η − ε
+if and only if η ≥ 1
+2 and, consequently, for η ∈ [0, 1
+2 ]w eﬁ n d
+δmax,L ,Llogist (ε, η) =
+
+
+
+η ln η
+η + ε + (1 − η) ln 1 − η
+1 − η − ε if ε< 1 − η,
+∞ otherwise.
+In order to investigate whether Llogist is L-calibrated with respect to QY let us now
+ﬁnd a simple lower bound of the above calibration function. To this end, let h(η) :=
+η ln(η/(η + ε)). Then its derivative satisﬁes
+h′(η) = ln η
+η + ε + ε
+η + ε = ln
+(
+1 − ε
+η + ε
+)
++ ε
+η + ε ≤− ε
+η + ε + ε
+η + ε = 0,
+
+250 I. Steinwart
+and hence we ﬁnd η ln(η/(η + ε)) ≥ 1
+2 ln(1/(1 + 2ε)) for all η ∈ [0, 1
+2 ], ε ≥ 0. Anal-
+ogously, we obtain (1 − η) ln((1 − η)/(1 − η − ε)) ≥ ln(1/(1 − ε)) for η ∈ [0, 1
+2 ],
+ε ∈ [0, 1 − η). Both estimates together then yield
+δmax,L ,Llogist (ε, η) ≥ 1
+2 ln 1
+1 + 2ε + ln 1
+1 − ε ≥ ε2
+for all η ∈ [0, 1
+2 ], ε ∈ [0, 1−η). From this we can easily conclude thatLlogist is uniformly
+L-calibrated with respect to QY with δmax,L ,Llogist (ε, QY ) ≥ ε2 for all ε ≥ 0. If we now
+consider the squared version L2 of L, then we obviously have δmax,L2 ,Llogist (ε, QY ) =
+δmax,L ,Llogist (√ε, QY ) ≥ ε for all ε ≥ 0. For measurable f : X → R Theorem 2.13
+consequently gives
+(∫
+X
+⏐⏐
+⏐
+⏐η(x) − 1
+1 + e− f (x)
+⏐⏐
+⏐
+⏐
+2
+dP X (x)
+)1/2
+≤
+√
+RLlogist ,P ( f ) − R∗
+Llogist ,P ,
+i.e., we can assess the quality of the estimate 1/(1 + e− f (x)) in terms of the ∥·∥2-norm.
+4.2. Cost-Sensitive Binary Classiﬁcation
+In this section we investigate surrogate loss functions for a simple class of cost-sensitive
+binary classiﬁcation problems (see [10] for a deﬁnition of general cost-sensitive binary
+classiﬁcation). Unlike in standard binary classiﬁcation, in the considered cost-sensitive
+binary classiﬁcation scenario the two types of errors are assigned different costs. To
+make this precise, letα ∈ (0, 1) be a real number andY :={ −1, 1}. Then our target loss
+is the supervised loss function L
+α-class : Y × R → [0, ∞) deﬁned by
+Lα-class(y, t) :=
+
+
+
+1 − α if y = 1 and t < 0,
+α if y =− 1 and t ≥ 0,
+0 otherwise .
+(37)
+Obviously Lα-class is a supervised loss function and we have 2 L1/2-class = Lclass.A si n
+the standard case we begin by computing the calibration function.
+Lemma 4.6. Let L : Y × R → [0, ∞) be a supervised loss function . Then for all
+α ∈ (0, 1), η ∈ [0, 1] and all ε> 0 we have
+δmax(ε, η) =
+{
+∞ if ε> |η − α|,
+inft∈R:(η−α) sign t≤0 CL ,η(t) − C∗
+L ,η if ε ≤| η − α|.
+Proof. A simple calculation shows CLα-class ,η(t) − C∗
+Lα-class ,η =| η − a|· 1(−∞,0]((η −
+α) sign t), and thus the assertion follows as in the proof of Lemma 4.1.
+Using a weighted version of the standard binary classiﬁcation loss is a somewhat
+old idea in machine learning (see, e.g., [10]). In the following we will focus on the
+question whether weighted versions of margin-based losses can serve as a surrogate for
+
+How to Compare Different Loss Functions and Their Risks 251
+the cost-sensitive loss deﬁned by (37). To this end, letL be a margin-based loss function
+with corresponding function ϕ : R → [0, ∞).F o rα ∈ (0, 1) we deﬁne the α-weighted
+version L α of L by
+Lα (y, t) :=
+{
+(1 − α)ϕ(t) if y = 1,
+αϕ(−t) if y =− 1,
+where t ∈ R. Moreover, when considering these weighted versions, we frequently use
+the quantities
+wα (η) := (1 − α)η + α(1 − η) and ϑα (η) := (1 − α)η
+(1 − α)η + α(1 − η)
+which are deﬁned for all η ∈ [0, 1]. Now we can characterize when weighted versions
+of margin-based loss functions are Lα-class-calibrated.
+Theorem 4.7. For a margin-based loss L and α ∈ (0, 1) the following statements are
+equivalent:
+(i) Lα is uniformly L α-class-calibrated with respect to QY .
+(ii) Lα is L α-class-calibrated with respect to QY .
+(iii) L is classiﬁcation calibrated.
+(iv) The function Hα :[ 0, 1] → [0, ∞) deﬁned by
+Hα (η) := inf
+t∈R:(η−α)t≤0
+CLα ,η(t) − C∗
+Lα ,η,η ∈ [0, 1],
+satisﬁes Hα (η) > 0 for all η ∈ [0, 1] with η ̸= α.
+Furthermore, if one of the statements is true and H is deﬁned by (35), then we have
+Hα (η) = wα (η)H (ϑα (η)).(38)
+Proof. Some easy calculations show 2 ϑα (η) − 1 = (η − α)/((1 − α)η + α(1 − η))
+and |η − α|≤| 2ϑα (η) − 1|. Now let δmax(ε, η) be deﬁned with respect to Lclass and L,
+and let δmax,α (ε, η) be deﬁned with respect to Lα-class and Lα. Then for ε ≤| η − α| our
+preliminary considerations yield
+δmax,α (ε, η)= inf
+t∈R
+(η−α) sign t≤0
+CLα ,η(t)−C∗
+Lα ,η = wα (η) inf
+t∈R
+(2ϑα (η)−1) sign t≤0
+CL ,ϑα (η)(t)−C∗
+L ,ϑα (η)
+= wα (η)δmax(ε, ϑα (η)).
+From this we immediately obtain the equivalence of (ii) and (iii). Furthermore,(i) ⇒ (ii)
+is trivial, and(iii) ⇒ (i) follows fromδmax,α (ε, η) = wα (η)δmax(ε, ϑα (η)) ≥ min{α, 1−
+α}δmax(ε, ϑα (η)) and Theorem 4.3. Now, if L is classiﬁcation calibrated, (iii) of Theo-
+rem 4.3 yields
+CLα ,η(0) = wα (η)CL ,ϑα (η)(0)>w α (η)C∗
+L ,ϑα (η) = C∗
+Lα ,η,
+and hence Lemma 4.6 together with (ii) impliesHα (η) > 0 for all η ̸= α. Conversely, if
+(iv) holds, then we have δmax,α (ε, η) ≥ Hα (η) > 0 for η ̸= α and 0 <ε ≤| η − α|, and
+hence La is Lclass-calibrated with respect to QY . Finally, the proof of (38) is analogous
+to the proof of δmax,α (ε, η) = wα (η)δmax(ε, ϑα (η)).
+
+252 I. Steinwart
+Remark 4.8. The above results can be used to obtain inequalities between the excess
+risks of Lα-class and α-weighted versions of margin-based, classiﬁcation calibrated loss
+functions. In order to ﬁnd such inequalities let us write
+δα (ε) := inf
+η∈[0,1]
+|η−α|≥ε
+Hα (η),
+where αmax := max{α, 1 − α} and ε ∈ [0,α max]. For ε ∈ [0,α max] Lemma 4.6 then
+yields
+inf
+Q∈QY
+δmax(ε, Q) = inf
+η∈[0,1]
+|η−α|≥ε
+inf
+t∈R
+(η−α) sign t≤0
+CLα ,η(t) − C∗
+Lα ,η ≥ inf
+η∈[0,1]
+|η−α|≥ε
+Hα (η)
+and, consequently, we have
+δ∗∗
+α (ε) ≤ δ∗∗
+max(ε, QY ).
+Moreover, it is obvious that for continuousL we even have equality in the above formula.
+Furthermore, for some loss functions we already know H (η), η ∈ [0, 1], and hence the
+computation of δ∗∗
+α (ε) is straightforward. The corresponding results are summarized in
+Table 2.
+Up to now we have only considered α-weighted versions of classiﬁcation calibrated
+loss functions to get Lα-class-calibrated loss functions. We ﬁnally show that this is in
+some sense the only choice.
+Proposition 4.9. Let α, β ∈ (0, 1), let L be a margin-based classiﬁcation calibrated
+loss function, and let Lβ be its β-weighted version. Then L β is L α-class-calibrated if and
+only if β = α.
+Proof. We have already seenLα is Lα-class-calibrated and, therefore, let us now assume
+α ̸= β. Without loss of generality we only consider the case β>α . Then for a ﬁxed
+Table 2. The functions H, Hα, and δ∗∗
+α for some common margin-based losses. For the exponential loss we
+used the abbreviation Aε := √(α − ε)(1 − α + ε), ε ≥ 0. Furthermore, we omitted the logistic loss because
+the corresponding formulas are too long to ﬁt into the table. Note that for the hinge loss and the sigmoid loss
+the function δ
+∗∗
+α is actually independent of α.
+Name of loss function H (η) Hα (η) δ ∗∗
+α (ε)
+Hinge loss |2η − 1|| η − α| ε
+Truncated least squares (2η − 1)2 (η − α)2
+α + η − 2αη
+ε2
+2α(1 − α) + ε(1 − 2α)
+Least squares (2η − 1)2 (η − α)2
+α + η − 2αη
+ε2
+2α(1 − α) + ε(1 − 2α)
+Exponential loss 1 − 2
+√
+η(1 − η) α + η − 2αη + 2A0
+√
+η(1 − η) 2A0(A0 − Aε ) + ε(2α − 1)
+Sigmoid loss |2η − 1|| η − α| ε
+
+How to Compare Different Loss Functions and Their Risks 253
+η ∈ (α, β) an easy computation showsϑβ (η) < 1
+2 and, hence, forε> 0 with ε ≤| η− α|
+we obtain
+δmax(ε, η) = inf
+(n−α) sign t≤0
+CLα ,η(t) − C∗
+Lα ,η = wβ (η) inf
+t<0
+CL ,ϑβ (η)(t) − C∗
+L ,ϑβ (η).(39)
+Furthermore, since L is classiﬁcation calibrated we have inft≥0 CL ,ϑβ (η)(t)−C∗
+L ,ϑβ (η) > 0,
+and since inf t∈R CL ,ϑβ (η)(t) − C∗
+L ,ϑβ (η) = 0 we ﬁnd inf t<0 CL ,ϑβ (η)(t) − C∗
+L ,ϑβ (η) = 0.
+Together with (39) this shows that Lβ is not Lα-class-calibrated.
+Remark 4.10. Note that the above proposition in particular shows that anα-weighted
+version of a classiﬁcation calibrated margin-based loss function is classiﬁcation cali-
+brated (in the sense of the previous subsection) if and only if α =
+1
+2 . In other words,
+changing the weights produces a loss function which is not classiﬁcation calibrated, and
+hence this often used heuristic for unbalanced data sets may lead to systematical errors.
+4.3. Regression
+In this subsection we investigate the use of surrogate loss functions for regression
+problems. Recall that the general goal in regression is to predict real-valued outputs,
+i.e., the label space Y is either the entire real line R or an interval. The most com-
+monly used loss function for regression is the least squares loss L
+lsquares deﬁned by
+Llsquares(y, t) := (y − t)2. However, this loss is known to be sensitive against outliers,
+and hence one of our goals is to identifyLlsquares-calibrated loss functions. Furthermore,
+we investigate the problem of ﬁnding the mean for symmetric noise distributions and dis-
+cuss self-calibration for a class of loss functions often employed in regression problems.
+Let us begin by introducing this type of loss function.
+Deﬁnition 4.11. Let L : R × R → [0, ∞) be a supervised loss function. We say that
+L is:
+(i) distance-based if there is a ψ : R → [0, ∞) with ψ(0) = 0 and L(y, t) =
+ψ( y − t) for all y, t ∈ R;
+(ii) symmetric if L is distance-based and its associatedψ satisﬁes ψ(r ) = ψ(−r ) for
+all r ∈ R.
+Obviously, the least squares loss and, more generally, the L
+p-loss functions, p > 0,
+deﬁned by |y − t|p are symmetric. Moreover, the logistic loss for regression, Huber’s
+loss, and the ε-insensitive loss are further examples of symmetric loss functions (see
+also Table 3).
+The following deﬁnition introduces some important notions for distance-based loss
+functions.
+Deﬁnition 4.12. Let p > 0 and let L : R × R → [0, ∞) be a distance-based loss
+function with associated ψ : R → [0, ∞). We say that L is:
+(i) ( strictly, uniformly) convex if ψ is (strictly, uniformly) convex;
+(ii) of growth type p if there are c1, c2 > 0 with c1r p ≤ ψ(r ) ≤ c2r p for all
+sufﬁciently large r;
+(iii) locally Lipschitz continuous if for all a > 0 the restriction ψ|[−a,a] is Lipschitz
+continuous.
+
+254 I. Steinwart
+For our analysis we also need some notions related to distributions onR. To this end,
+let Q be a distribution on Y := R with ﬁnite ﬁrst moment, i.e., |Q|1 := Ey∼Q|y| < ∞.
+Then the mean of Q is
+EQ :=
+∫
+Y
+ydQ (y).
+We call Q symmetric around some center c ∈ R,i f Q(c + A) = Q(c − A) for all
+measurable A ⊂ [0, ∞). It is not hard to see that the mean EQ is the only center
+whenever |Q|1 < ∞. Furthermore, we say thatQ is symmetric if it is symmetric around
+some c ∈ R. Obviously, Q is symmetric around c if and only if its centered version
+Q(c) deﬁned by Q(c)(A) := Q(c + A), A ⊂ R measurable, is centered around 0. In the
+following we denote the set of distributions with ﬁrst ﬁnite moment by QR, and the set
+of distributions with support contained in the bounded interval I by QI . Moreover, we
+write
+Qbounded :=
+⋃
+M>0
+Q[−M,M]
+for the set of distributions with bounded support. Clearly, we have QI ⊂ Qbounded ⊂
+QR for all bounded intervals I , and if L is a continuous, distance-based loss function
+we actually have Qbounded ⊂ QR(L). Moreover, we denote the set of all symmetric
+distributions with ﬁrst ﬁnite moment by Qsym. Finally, the sets QI,sym for I ⊂ R being
+bounded intervals, and Qbounded,sym are deﬁned in the obvious way.
+Our ﬁrst goal is to identify distance-based, Llsquares-calibrated loss functions L.T o
+this end, recall
+MLlsquares ,Q (0+) ={ EQ}
+for all Q ∈ Q(Llsquares) and, consequently, if L is an Llsquares-calibrated loss function,
+then we must have ML ,Q (0+) ⊂{ EQ} for all Q ∈ Q(L). This observation motivates
+the following two propositions in which we investigate the setsML ,Q (0+) for distance-
+based loss functions.
+Proposition 4.13. Let L be a convex , distance-based loss function whose associated
+ψ satisﬁes limr→±∞ ψ(r ) =∞ , and let Q ∈ QR with CL ,Q (t)< ∞ for all t ∈ R.
+Then ML ,Q (0+) is a compact, nonempty interval. Moreover, if ψ is strictly convex, then
+ML ,Q (0+) contains exactly one element.
+Proof. Our ﬁrst goal is to show that limt→±∞ CL ,Q (t) =∞ . To this end, let (tn ) ⊂ R
+be a sequence with tn →− ∞ and B > 0. Since limr→±∞ ψ(r ) =∞ there then exists
+an r0 > 0 such that ψ(r ) ≥ 2B for all r ∈ R with |r|≥ r0. Since Q(R) = 1 there is also
+an M > 0 with Q([−M, M]) ≥ 1
+2 . Finally, there exists ann0 ≥ 1 with tn ≤− M −r0 for
+all n ≥ n0.F o ry ∈ [−M, M] this yields y − tn ≥ r0, and hence we ﬁndψ( y − tn ) ≥ 2B
+for all n ≥ n0. From this we easily ﬁnd
+CL ,Q (tn ) ≥
+∫
+[−M,M]
+ψ( y − tn ) dQ (y) ≥ 2BQ ([−M, M]) = B,
+i.e., we have shown CL ,Q (tn ) →∞ . Analogously, we can show lim t→∞ CL ,Q (t) =
+∞ and, consequently, we have lim t→±∞ CL ,Q (t) =∞ . Furthermore, the convexity of
+ψ implies that t ↦→ CL ,Q (t) is convex and hence it is continuous by the assumption
+CL ,Q (t)< ∞, t ∈ R. Now the assertions follow.
+
+How to Compare Different Loss Functions and Their Risks 255
+Note that for distributions Q ∈ Qbounded we automatically have CL ,Q (t)< ∞ for all
+t ∈ R. Furthermore, if L is of some growth type p, then we have CL ,Q (t)< ∞ for all
+t ∈ R and all Q ∈ QR(L). Consequently, the above proposition gives ML ,Q (0+) ̸=∅
+in both cases.
+The following proposition comparesML ,Q (0+) with the meanEQ. Note that a similar
+result was independently found by A. Caponnetto in [6].
+Proposition 4.14. Let M > 0, and let L be a distance-based, locally Lipschitz contin-
+uous loss function with associated ψ. Then we have:
+(i) If EQ ∈ ML ,Q (0+) for all Q ∈ Q[−M,M],sym, then L is symmetric .
+(ii) If EQ ∈ ML ,Q (0+) for all Q ∈ Qbounded, then there exists a constant c ≥ 0 with
+L = cL lsquares.
+Proof. Recall that the fundamental theorem of calculus for Lebesgue integrals shows
+that the derivative ψ′ is (Lebesgue)-almost surely deﬁned and integrable on every
+bounded interval.
+(i) Let us ﬁx a y ∈ [−M, M] such that ψ is differentiable at y and −y. We deﬁne
+Q := 1
+2 δ{−y} + 1
+2 δ{y}. Then we have Q ∈ Qsym with EQ = 0, and CL ,Q (t) = 1
+2 ψ(−y −
+t) + 1
+2 ψ( y − t). Therefore the derivative of CL ,Q (·) exists at 0 and can be computed by
+C′
+L ,Q (0) =− 1
+2 ψ′(−y) − 1
+2 ψ′(y). Furthermore, our assumption shows that CL ,Q (·) has
+a minimum at 0, and hence we have 0 = C′
+L ,Q (0), i.e., ψ′(−y) =− ψ′(y). According
+to our preliminary remark, this equality holds for almost ally, and thus the fundamental
+theorem of calculus for Lebesgue integrals shows that for all y0 ∈ R we have
+ψ( y0) = ψ(0) +
+∫ y0
+0
+ψ′(t) dt = ψ(0) −
+∫ y0
+0
+ψ′(−t) dt = ψ(0) −
+∫ 0
+−y0
+ψ′(t) dt
+= ψ(−y0).
+(ii) Let y ̸= 0 and α> 0 be real numbers such that ψ is differentiable at y, −y, and
+αy. We deﬁne Q := (α/(1 + α))δ{0} + (1/(1 + α))δ{(1+α)y}, so that we obtain EQ = y
+and CL ,Q (t) = (α/(1 + α))ψ(−t)+ (1/(1 + α))ψ( y+ αy−t) for all t ∈ R. This shows
+that the derivative of CL ,Q (·) exists at y and can be computed by
+C′
+L ,Q (y) =− α
+1 + α ψ′(−y) − 1
+1 + α ψ′(αy) = α
+1 + α ψ′(y) − 1
+1 + α ψ′(αy),
+where in the last step we used (i). Again, our assumptiony ∈ ML ,Q (0+) gives C′
+L ,Q (y) =
+0 and hence we ﬁnd αψ′(y) = ψ′(αy). Obviously, the latter holds for almost all α> 0
+and thus we obtain
+ψ(ty ) = ψ(0) +
+∫ t
+0
+ψ′(sy )yd s =
+∫ t
+0
+sψ′(y)yd s = ψ′(y)
+2y (ty )2
+for all t > 0. From this we easily obtain the assertion.
+
+256 I. Steinwart
+The above proposition shows that there are only trivial distance-based surrogates
+for the least squares loss if one is interested in the entire class Q(Llsquares) ={ Q ∈
+QR : Ey∼Q y2 < ∞}. Furthermore, it shows that the least squares loss is essentially
+the only distance-based loss function whose minimizer is the mean for all distribu-
+tions in Q(L
+lsquares), i.e., if we are actually interested in ﬁnding the regression function
+x ↦→ EP (Y|x), and we just know Ex∼PX Ey∼P(·|x) y2 < ∞, then the least squares loss
+is the only distance-based loss for this task. 3 However, if we cannot ensure this tail
+assumption but know that the conditional distributions P(·|x) are symmetric, then the
+above proposition suggests that we may actually have alternatives to the least squares
+loss. In order to investigate this conjecture systematically, we ﬁrst need a target loss
+function that describes the goal of ﬁnding the mean. To this end, let us consider the
+template loss L
+mean : QR × R → [0, ∞) deﬁned by
+Lmean(Q, t) :=| EQ − t|, t ∈ R, Q ∈ QR.
+Note that this indeed deﬁnes a template loss since given a distribution P on X × R of
+QR-type it is easy to see that(x, t) ↦→ Lmean(P(·|x), t) =| EP (Y|x) − t| is measurable.
+Moreover, we have
+L2
+mean(Q, t) = (EQ − t)2 = CLlsquares ,Q (t) − C∗
+Llsquares ,Q
+for all Q ∈ Q(Llsquares) and t ∈ R. Since the minimalLmean-risks equal 0, i.e.,C∗
+Lmean ,Q =
+0, we consequently have MLmean ,Q (√ε) = MLlsquares ,Q (ε) for all ε> 0, and from this we
+obtain
+δmax,Lmean,L (√ε, Q) = δmax,Llsquares ,L (ε, Q)(40)
+for all distance-based losses L, all Q ∈ Q(Llsquares)∩ Q(L), and all ε ∈ [0, ∞]. In other
+words, by considering Lmean-calibration we simultaneously obtain results on Llsquares-
+calibration. Furthermore, ift ↦→ CL ,Q (t) has aunique minimum atEQ, then we obviously
+have Lmean(Q, t) = ˘L(Q, t) for all t ∈ R and, consequently, we obtain
+δmax,Lmean ,L (ε, Q) = δmax, ˘L,L (ε, Q), ε ∈ [0, ∞].(41)
+In other words, by considering theLmean-calibration of L we will also gain some insight
+into the self-calibration properties of L.
+Now, the following key lemma presents an alternative way to compute the inner risks
+CL ,Q (·) when both L and Q are symmetric.
+3 The result in [6] shows that any convex loss function L : R × R → [0, ∞) satisfying EQ ∈ ML ,Q (0+)
+for all Q ∈ Qbounded must be of the form L(y, t) = c · (y − t)2 + h(y), (y, t) ∈ R2, where h : R → R is
+a suitable function. Consequently, other loss functions (e.g., Bregman divergences) for estimating the mean
+cannot be convex and hence may lead to algorithmic problems. Whether such problems can be resolved by
+estimating a suitable transformation of the mean is, as far as we know, open, and because of space constraints
+we do not further investigate this highly interesting question.
+
+How to Compare Different Loss Functions and Their Risks 257
+Lemma 4.15. Let L be a symmetric loss function with associated ψ, and let Q ∈
+Qsym(L). For t ∈ R we then have
+CL ,Q (EQ + t) = CL ,Q (EQ − t)(42)
+= 1
+2
+∫
+R
+ψ( y − EQ − t) + ψ( y − EQ + t) dQ (y).
+In addition, if L is convex we haveCL ,Q (EQ) = C∗
+L ,Q , and if L is actually strictly convex
+we also have CL ,Q (EQ + t)> C∗
+L ,Q for all t ̸= 0.
+Proof. Let us ﬁx a Q ∈ Qsym(L) and write m := EQ. The symmetry of Q(m) and ψ
+then yields
+CL ,Q (m+t)=
+∫
+R
+ψ( y−t) dQ (m)(y)=
+∫
+R
+ψ(−y−t) dQ (m)(y) =
+∫
+R
+ψ( y+t) dQ (m)(y)
+= CL ,Q (m − t).
+Since this givesCL ,Q (m + t) = 1
+2 (CL ,Q (m + t)+CL ,Q (m − t)) we also obtain the second
+equation. Furthermore, if ψ is convex we can easily conclude
+CL ,Q (m + t) = 1
+2
+∫
+R
+(ψ( y − t) + ψ( y + t)) dQ (m)(y) ≥
+∫
+R
+ψ( y) dQ (m)(y)
+= CL ,Q (m)
+for all t ∈ R. This shows the second assertion. The third assertion can be shown analo-
+gously.
+With the help of the above lemma we can derive a simple formula for the calibration
+function δmax,Lmean ,L (ε, Q) if L is convex.
+Lemma 4.16. Let L be a symmetric, convex loss function and let Q ∈ Qsym(L). Then
+we have
+δmax,Lmean ,L (ε, Q) = CL ,Q (EQ + ε) − C∗
+L ,Q ,ε ≥ 0.(43)
+In particular, ε ↦→ δmax,Lmean ,L (ε, Q) is convex.
+Proof. Obviously, we have MLmean,Q (ε) = (EQ − ε, EQ + ε). Since this set is open,
+it is easy to see that the continuity assumption in Lemma 4.15 is superﬂuous and hence
+the assertion follows by Lemmas 2.11 and 4.15.
+Our next result is a rather technical lemma which will be used at various times to
+establish upper bounds on δmax(ε, Q). For its formulation we need the set
+Q∗
+sym :={ Q ∈ Qsym : Q(EQ + (−ρ,ρ)) > 0 for all ρ> 0}
+
+258 I. Steinwart
+which contains all symmetric distributions that do not vanish around their means. More-
+over, we also need the sets Q∗
+I,sym := QI ∩ Q∗
+sym for I being a bounded interval, and
+Q∗
+bounded,sym := Qbounded ∩ Q∗
+sym. Now the result reads as follows.
+Lemma 4.17. Let L be a symmetric , continuous loss function with associated ψ. As-
+sume that there exist δ0 ∈ R, s1, s2 ∈ R, s1 ̸= s2, and an ε0 > 0 such that for all
+ε ∈ [0,ε 0] we have
+ψ(s1 + ε) + ψ(s2 + ε)
+2 − ψ
+(s1 + s2
+2 + ε
+)
+≤ δ0.(44)
+Then for M :=| (s1 + s2)/2|+ ε0 and all δ> 0 there exists a Lebesgue-absolutely
+continuous Q ∈ Q∗
+[−M,M],sym(L) with EQ = 0 such that for t := (s2 − s1)/2 we have
+CL ,Q (t) − CL ,Q (0) ≤ δ0 + δ.
+Furthermore, there exists a Lebesgue-absolutely continuous Q ∈ Q[−M,M],sym(L) with
+EQ = 0 and
+CL ,Q (t) − CL ,Q (0) ≤ δ0.
+Proof. We write y0 := (s1 + s2)/2. Furthermore, if y0 = 0w el e t Q be the uniform
+distribution µ[−ε0 ,ε0] on [−ε0,ε 0]. Otherwise, we deﬁne
+Q := αµ[−|y0 /2|,|y0 /2|] + 1 − α
+2 µ[−y0−ε0 ,−y0] + 1 − α
+2 µ[y0 ,y0+ε0],
+where α ∈ (0, 1) is a real number satisfying
+sup
+y∈[−|y0 /2|,|y0 /2|]
+⏐⏐
+⏐
+⏐
+ψ( y − t) + ψ( y + t)
+2 − ψ( y)
+⏐⏐
+⏐
+⏐≤ δ
+α .
+Now, in the case y0 ̸= 0 this construction yields EQ = 0 and
+CL ,Q (t) − CL ,Q (0)
+=
+∫
+R
+ψ( y − t) + ψ( y + t)
+2 − ψ( y) dQ (y)
+= α
+∫
+[−|y0 /2|,|y0 /2|]
+ψ( y − t) + ψ( y + t)
+2 − ψ( y) dµ[−|y0 /2|,|y0 /2|](y)
++ (1 − α)
+∫
+[y0 ,y0+ε0]
+ψ( y − t) + ψ( y + t)
+2 − ψ( y) dµ[y0 ,y0+ε0](y)
+≤ δ+(1 −α)
+∫
+[0,ε0]
+ψ(s1+ε)+ψ(s2+ε)
+2 −ψ
+(s1+s2
+2 +ε
+)
+dµ[0,ε0](ε)
+≤ δ0 + δ.
+Furthermore, the case y0 = 0 can be shown analogously, and the last assertion follows
+if we repeat the above construction with α = 0.
+
+How to Compare Different Loss Functions and Their Risks 259
+With the above preparations we can ﬁnally establish our ﬁrst main result that charac-
+terizes loss functions L that are Lmean-calibrated with respect to Q∗
+sym(L).
+Theorem 4.18. Let L be a symmetric , continuous loss function . Then the following
+statements are equivalent:
+(i) Li sL mean-calibrated with respect to Q∗
+sym(L).
+(ii) L is convex and its associated function ψ has its only minimum at 0.
+Proof. (ii) ⇒ (i) Assume that L is not Lmean-calibrated with respect to Q∗
+sym(L).B y
+Lemma 4.16 there then exist a Q ∈ Q∗
+sym(L) and a t ̸= 0 with CL ,Q (m + t) = C∗
+L ,Q ,
+where m := EQ. Using CL ,Q (m) = C∗
+L ,Q , which we know from Lemma 4.15, then yields
+∫
+R
+ψ( y − t) + ψ( y + t)
+2 − ψ( y) dQ (m)(y) = CL ,Q (m + t) − CL ,Q (m) = 0,
+and hence the convexity ofψ shows (ψ( y − m − t) + ψ( y − m + t))/2−ψ( y−m) = 0
+for Q-almost all y ∈ R. The continuity of ψ and the assumption Q(m + (−ρ,ρ)) > 0
+for all ρ> 0, then guarantee that (ψ( y − m − t) + ψ( y − m + t))/2 − ψ( y − m) = 0
+holds for y := m. However, by the symmetry of ψ this implies ψ(t) = ψ(0) which
+violates our assumption on ψ.
+(i) ⇒ (ii) Assume that ψ is not convex. Then Lemma A.1 shows that there exist
+s1, s2 ∈ R with (ψ(s1) + ψ(s2))/2 − ψ((s1 + s2)/2)< 0. With the continuity of ψ we
+then ﬁnd (44) for some suitable δ0 < 0 and ε0 > 0 and, consequently, Lemma 4.17
+gives a Q ∈ Q∗
+[−M,M],sym(L) and a t ̸= 0 with EQ = 0 and CL ,Q (t)< CL ,Q (0).N o w
+observe that since ψ is continuous and Q has bounded support, the map t ↦→ CL ,Q (t)
+is continuous on R. Let (tn ) ⊂ R be a sequence with CL ,Q (tn ) → C∗
+L ,Q for n →∞ .
+Now, our previous considerations showed CL ,Q (0) ̸= C∗
+L ,Q and hence (tn ) is eventually
+bounded away from 0, i.e., there exist an ε> 0 and an n0 ∈ N such that |tn|≥ ε for all
+n ≥ n0. This gives
+δmax(ε, Q) = inf
+t′̸∈(−ε,ε)
+CL ,Q (t) − C∗
+L ,Q ≤ CL ,Q (tn ) − C∗
+L ,Q
+for alln ≥ n0.F o rn →∞ we hence ﬁndδmax(ε, Q) = 0 and, consequently,L is convex.
+Finally, assume that there exists at ̸= 0 withψ(t) = ψ(0). Then we ﬁndCL ,Q (t) = C∗
+L ,Q
+for the distribution Q deﬁned by Q({0}) = 1, and hence we obtain δmax(t, Q) = 0b y
+Lemma 4.16.
+The following theorem considers calibration with respect to the larger class Qsym.
+Theorem 4.19. Let L be a symmetric , continuous loss function . Then the following
+statements are equivalent:
+(i) Li sL mean-calibrated with respect to Qsym(L).
+(ii) L is strictly convex.
+Proof. If L is strictly convex then Lemmas 4.15 and 4.16 show thatL is Lmean-calibrated
+with respect to Qsym(L). Conversely, if L is Lmean-calibrated with respect to Qsym(L),
+
+260 I. Steinwart
+then Theorem 4.18 shows that L is convex. Let us suppose that its associated ψ : R →
+[0, ∞) is not strictly convex. Then there exists r1, r2 ∈ R with r1 ̸= r2 and
+ψ( 1
+2 r1 + 1
+2 r2) = 1
+2 ψ(r1) + 1
+2 ψ(r2).
+From this and Lemma A.1 we easily ﬁnd (44) for δ0 = 0 and some suitable s1 ̸=
+s2 and ε0 > 0. Lemma 4.17 then gives a t0 ̸= 0 and a Q ∈ Q[−M,M],sym(L) with
+CL ,Q (EQ + t0) = C∗
+L ,Q and, hence, Lemma 4.16 shows that L is not Lmean-calibrated
+with respect to Qsym(L).
+Our next aim is to estimate the function ε ↦→ δmax(ε, Q) for some classes Q ⊂ Qsym.
+To this end, we deﬁne the modulus of convexity of a function f : I → R, where I is an
+interval, by
+δf (ε) := inf
+{ f (x1) + f (x2)
+2 − f
+(x1 + x2
+2
+)
+: x1, x2 ∈ I with |x1 − x2|≥ ε
+}
+,
+ε> 0.
+In addition we say thatf is uniformly convexif δf (ε) > 0 for allε> 0. Some properties of
+the modulus of convexity and uniformly convex functions can be found in the Appendix.
+With the help of the modulus of convexity we can now formulate the following theorem
+that estimates δmax(ε, Q) and characterizes uniform calibration.
+Theorem 4.20. Let L be a symmetric , convex loss function with associated ψ. Then
+we have:
+(i) For all M > 0, ε> 0, and all Q with Q∗
+[−M,M],sym ⊂ Q ⊂ Q[−M,M],sym we have
+δψ|[−(2M+ε),2M+ε] (2ε) ≤ δmax(ε, Q) ≤ δψ|[−M/2,M/2] (2ε).(45)
+Consequently, the following statements are equivalent:
+(a) L is uniformly L mean-calibrated with respect to Q∗
+[−M,M],sym for all M > 0.
+(b) L is uniformly L mean-calibrated with respect to Q[−M,M],sym for all M > 0.
+(c) The function ψ is strictly convex.
+(ii) For all ε> 0 we have
+δψ (2ε) = δmax(ε, Qsym(L)) = δmax(ε, Q∗
+bounded,sym(L)).(46)
+Consequently, the following statements are equivalent:
+(a) L is uniformly L mean-calibrated with respect to Qsym(L).
+(b) L is uniformly L mean-calibrated with respect to Q∗
+bounded,sym(L).
+(c) The function ψ is uniformly convex.
+Proof. (i) For Q ∈ Q[−M,M],sym we have EQ ∈ [−M, M], and hence we ﬁnd
+δmax(ε, Q) =
+∫
+[−M,M]
+ψ( y − EQ − ε) + ψ( y − EQ + ε)
+2 − ψ( y − EQ) dQ (y)
+≥ δψ|[−(2M+ε),2M+ε] (2ε)
+
+How to Compare Different Loss Functions and Their Risks 261
+by Lemmas 4.15 and 4.16. This shows the ﬁrst inequality. To prove the second inequality
+let n ≥ 1. Then there exist s1, s2 ∈ [−M/2, M/2] with s1 − s2 ≥ 2ε and
+ψ(s1) + ψ(s2)
+2 − ψ
+(s1 + s2
+2
+)
+<δ ψ|[−M/2,M/2] (2ε) + 1
+n =: δ0.
+By the continuity of ψ there thus exists an ε0 ∈ (0, M] such that (44) is satisﬁed for δ0
+and, consequently, Lemma 4.17 gives a Q ∈ Q∗
+[−M,M],sym with EQ = 0 and with
+CL ,Q (t) − C∗
+L ,Q ≤ δψ|[−M/2,M/2] (2ε) + 2
+n
+for t := (s1 − s2)/2. Since t ≥ ε we also have δmax(ε, Q) ≤ CL ,Q (t) − C∗
+L ,Q , and hence
+we ﬁnd
+δmax(ε, Q∗
+[−M,M],sym) ≤ δmax(ε, Q) ≤ δψ|[−M/2,M/2] (2ε) + 2
+n .
+Since this holds for all n ≥ 1 the second inequality follows. Finally, Lemma A.1 shows
+that ψ is strictly convex if and only if δψ|[−B,B] (ε) > 0 for all B,ε > 0, and hence the
+characterization follows.
+(ii) Analogously to the proof of the ﬁrst inequality in (45) we ﬁnd δψ (2ε) ≤
+δmax(ε, Qsym(L)) for all ε> 0. Furthermore, by the second inequality in (45), we obtain
+δmax(ε, Q∗
+bounded,sym(L)) ≤ δψ (2ε) for all ε> 0, and hence (46) is proved. Finally, the
+characterization is a consequence of (46).
+Remark 4.21. The above theorem shows that the modulus of convexity completely
+determines whether a loss function is uniformly Lmean-calibrated with respect Qsym(L)
+or Q∗
+bounded,sym(L). Unfortunately, Lemma A.3 shows that for all distance-based loss
+functions of growth type p < 2w eh a v e δψ (ε) = 0 for all ε> 0. In particular,
+Lipschitz continuous, distance-based losses which are of special interest for robust re-
+gression methods (see, e.g., [8]) are not uniformly calibrated with respect to Q
+sym(L)
+or Q∗
+bounded,sym(L) and, consequently, we cannot establish strong relations between the
+excess L-risks and RLmean ,P (·) in the sense of Question 2.
+On the other hand, note that symmetric, strictly convex losses L are Lmean-calibrated
+with respect to Qsym(L), and hence we can show analogously to Theorem 3.16 that
+fn → E(Y|·) in probability, whenever RL ,P ( fn ) → R∗
+L ,P and P is of type Qsym(L).
+In addition, if we restrict our considerations to Q[−M,M],sym or Q∗
+[−M,M],sym then every
+strictly convex loss becomes uniformlyLmean-calibrated and, in this case,δψ|[−B,B] (·), B >
+0, can be used to describe the corresponding calibration function. For some important
+losses we have listed the behavior of δ
+ψ|[−B,B] (·) in Table 3. Furthermore, Lemma A.3
+establishes a formula for the modulus of convexity which often helps to bound the
+modulus.
+In Theorem 4.18 we have seen that for Q ∈ Q
+∗
+sym(L) we may have δmax(ε, Q)> 0,
+ε> 0, even if L is not strictly convex. The key reason for this possibility was the
+assumption that Q has some mass around its center. Now recall that in the proof of the
+upper bounds of Theorem 4.20 we used the fact that for generalQ ∈ Q∗
+sym this mass can
+
+262 I. Steinwart
+Table 3. Some invariant loss functions and corresponding upper and lower bounds ofδψ|[−B,B] (ε),0 <ε ≤ B,
+for the restriction ψ|[−B,B] of ψ to [−B, B] for B > 0. The asymptotic behavior for the Lp-loss, 1 < p < 2,
+is computed in Example A.4. For the Lp-loss, p ≥ 2, and Huber’s loss the lower bounds can be found by
+Clarkson’s inequality, and the upper bounds were found by ﬁnding suitablex1, x2 ∈ [B, B]. The calculations
+for the logistic loss can be found in Example A.5.
+Loss function ψ(t) Lower bound of δψ|[−B,B] Upper bound of δψ|[−B,B]
+L1-loss |t| 00
+Lp-loss, p ∈ (1, 2) |t|p p(p − 1)
+8 B p−2ε2 p
+8(p − 1)2 B p−2ε2
+Lp-loss, p ∈ [2, ∞) |t|p
+(ε
+2
+)p (ε
+2
+)p
+Logistic loss −ln 4et
+(1 + et )2
+eε/2 − 1
+2eε/2 ln eB + eε
+eB + eε/2
+eε/2 − 1
+eε/2 ln eB + eε
+eB + eε/2
+Huber’s loss,c > 0
+t2
+2 if |t|≤ c
+c|t|− c2
+2 else
+ε2
+8 if B ≤ c
+0 else
+ε2
+8 if B ≤ c
+0 else
+be arbitrarily small. However, if we enforce lower bounds on this mass the construction
+of this proof no longer works. Instead, it turns out that we can establish lower bounds
+on δ
+max(ε, Q) as the following example illustrates.
+Example 4.22. Let L be the distance-based loss function whose associatedψ is ψ(t) =
+|t|, t ∈ R. Then for all Q ∈ Qsym(L), m := EQ, and all ε> 0w eh a v e
+δmax(ε, Q) =
+∫ ε
+0
+Q(m)((−s, s)) ds .
+To see this we ﬁrst observe that for t ≥ 0 and y ∈ R an easy calculation shows
+ψ( y − t) − ψ( y) =
+
+
+
+t if y ≤ 0,
+t − 2y if y ∈ (0, t),
+−t if y ≥ t.
+Consequently, the symmetry of Q(m) yields
+CL ,Q (m + t) − C∗
+L ,Q = tQ (m)((−∞, 0]) + tQ (m)((0, t))
+− 2
+∫
+0<y<t
+ydQ (m)(y) − tQ (m)([t, ∞))
+= tQ (m)((−t, t)) − 2
+∫
+0≤y<t
+ydQ (m)(y)
+=
+∫ t
+0
+Q(m)((−t, t)) − Q(m)((−t, −s] ∪ [s, t)) ds
+=
+∫ t
+0
+Q(m)((−s, s)) ds .
+
+How to Compare Different Loss Functions and Their Risks 263
+From this we easily ﬁnd the assertion by Lemma 4.16.
+Remark 4.23. The above results show that using distance-based loss functions for
+regression problems requires some care: for example, let us suppose that the primary
+goal of the regression problem is to ﬁnd the regression function. If we only know that
+the noise distributions have ﬁnite variances (and expect that these distributions are rather
+asymmetric), then the least squares loss is the only reasonable distance-based choice
+by Proposition 4.14. However, if we know that the noise is (almost) symmetric, then,
+e.g., symmetric, strictly convex, and Lipschitz continuous losses like the logistic loss
+can be a reasonable alternative. In addition, if we are conﬁdent that the noise is rather
+concentrated around its mean, e.g., in the form ofQ
+(m)((−s, s)) > cQ sq for small s > 0,
+then even convex loss functions like the absolute distance loss considered in the previous
+example can be a good choice. Finally, if we additionally expect that the data set contains
+extreme outliers then the logistic loss or the absolute distance loss may actually be the
+better choice than the least squares loss. However, recall that such a decision only makes
+sense under an (almost) symmetric behavior of the noise distribution.
+When we introduced the template loss L
+mean we also discussed its relation to self-
+calibration issues. Therefore, let us ﬁnally investigate in which sense convex, distance-
+based loss functions are self-calibrated.
+Theorem 4.24. Let L be a distance-based , convex loss function whose associated ψ
+satisﬁes lim
+t→±∞ ψ(t) =∞ . Then we have:
+(i) L is self-calibrated with respect to Qbounded.
+(ii) If L is of some growth type p≥ 1 then L is self-calibrated with respect toQR(L).
+(iii) If L is strictly convex, then L is uniformly self-calibrated with respect toQ[−M,M]
+for all M > 0, and we have
+δmax, ˘L,L (ε, Q[−M,M]) ≥ 2δψ|[−(2M+ε),2M+ε] (ε), ε > 0, M > 0.(47)
+(iv) If L is uniformly convex , then L is uniformly self-calibrated with respect to
+Qbounded and we have
+δmax, ˘L,L (ε, Qbounded) ≥ 2δψ (ε), ε > 0.(48)
+(v) If L is uniformly convex and of some growth type p ≥ 2, then L is uniformly
+self-calibrated with respect to QR(L) and we have
+δmax, ˘L,L (ε, QR(L)) ≥ 2δψ (ε), ε > 0.(49)
+Proof. (i) Proposition 4.13 shows Qbounded ⊂ Qmin(L), and hence Lemma 3.15 im-
+plies (i).
+(ii) The results in [8] together with Proposition 4.13 showQR(L) ⊂ Qmin(L). Again,
+the assertion then follows from Lemma 3.15.
+(iii) Let us ﬁx a Q ∈ Q[−M,M]. By Proposition 4.13 we then know that there exists a
+t∗
+Q ∈ R with ML ,Q (0+) ={ t∗
+Q} and, consequently, (10) reduces to
+δmax, ˘L,L (ε, Q) = min{CL ,Q (t∗
+Q − ε) − C∗
+L ,Q , CL ,Q (t∗
+Q + ε) − C∗
+L ,Q}.(50)
+
+264 I. Steinwart
+Let us now assume thatt∗
+Q > M. Then we havey−t∗
+Q ≤ y−M ≤ 0 for ally ∈ [−M, M].
+Since ψ is convex and has a minimum at 0 it is decreasing on(−∞, 0] and hence we ﬁnd
+ψ( y−M) ≤ ψ( y−t∗
+Q ) for ally ∈ [−M, M]. This directly impliesCL ,Q (M) ≤ CL ,Q (t∗
+Q ),
+and hence our assumption t∗
+Q > M cannot be true. Since we can analogously show
+t∗
+Q ≥− M,w eh a v et∗
+Q ∈ [−M, M]. Moreover, for t ∈ [−M − ε, M + ε]w eh a v e
+CL ,Q (t) + C∗
+L ,Q
+2 =
+∫
+[−M,M]
+ψ( y − t) + ψ( y − t∗
+Q )
+2 dQ (y)(51)
+≥
+∫
+[−M,M]
+ψ
+(
+y −
+t + t∗
+Q
+2
+)
++ δψ|[−(2M+ε),2M+ε] (|t − t∗
+Q|) dQ (y)
+= CL ,Q
+(t + t∗
+Q
+2
+)
++ δψ|[−(2M+ε),2M+ε] (|t − t∗
+Q|)
+≥ C∗
+L ,Q + δψ|[−(2M+ε),2M+ε] (|t − t∗
+Q|),
+and thus we ﬁnd (47) by combining (50) with (51) and t∗
+Q ∈ [−M, M].
+(iv) Inequality (47) immediately implies (48).
+(v) The proof of inequality (49) is analogous to the proof of (47).
+Remark 4.25. The above theorem shows that for convex, distance-based losses L,
+approximate L-risk minimizers approximate the Bayes decision functions in the sense of
+Theorem 3.16, i.e., in probability. In particular, note that the absolute distance loss can be
+used to estimate the median (multi)-function in this weak sense. Moreover, Example 4.22
+together with Theorem 2.17 shows that in order to estimate the median function in a
+stronger sense one needs assumptions on the concentration of the noise distributions.
+The reason for this observation is the fact that for symmetric, convex losses L whose
+associated ψ have a unique minimum at 0 the stronger convexity assumptions in (iii)–
+(v) are also necessary for uniform self-calibration. To see the latter observe that for
+such L, Theorem 4.18 shows the L
+mean-calibration with respect to Q∗
+sym(L), and from
+Lemma 4.16 we may thus conclude that CL ,Q (·) has a unique minimum at EQ for all
+Q ∈ Q∗
+sym(L). Equation (41) then shows
+δmax,Lmean ,L (ε, Q) = δmax, ˘L,L (ε, Q), ε ∈ [0, ∞], Q ∈ Q∗
+sym(L).(52)
+Now assume, e.g., that L is uniformly self-calibrated with respect to Q[−M,M] for all
+M > 0. Then it is also uniformly self-calibrated with respect to Q∗
+[−M,M],sym, and thus
+(52) shows that L is Lmean-calibrated with respect to Q∗
+[−M,M],sym. By Theorem 4.20 we
+then see that L is strictly convex.
+Remark 4.26. Inequalities for excess risks resulting from Theorem 4.24 can be used
+to establish variance bounds which are important for bounding the estimation error
+by Talagrand’s inequality. Indeed, if, e.g., L is a strictly convex loss function, then its
+corresponding ψ is locally Lipschitz continuous and hence (32) can be used to ﬁnd an
+“inner” version of a variance bound. This approach was somewhat implicitly taken in,
+e.g., [1], [4] in order to derive variance bounds for margin-based losses but, of course, it
+also works for distance-based losses. However, it sometimes provides too loose bounds
+
+How to Compare Different Loss Functions and Their Risks 265
+as, e.g., the hinge loss shows. Indeed, this loss fails to be uniformly self-calibrated not
+only for η → 1
+2 but also for η → 0 and η → 1. In order to establish variance bounds
+using the self-calibration, we consequently need not only to ensure a noise assumption
+in the sense of Tsybakov, but also a similar assumption ensuring that the set where η
+is either close to 0 or 1 is small. However, the assumption for η close to 0 and 1 is
+superﬂuous as the variance bound established in [29, Lemma 6.1] shows. One may ask
+whether variance bounds can also be directly established using our general framework
+and a (template) loss which reﬂects the variance bounds one is interested in. Some
+preliminary considerations we have already made in this direction are promising but due
+to space constraints we do not go into further detail.
+4.4. Density Level Detection
+In this subsection we show how the developed theory can be used to investigate the density
+level detection (DLD) problem. To this end, let us ﬁrst recall that in this unsupervised
+learning problem we have aknown probability measureµ on X and the goal is to estimate
+a level set {g >ρ } or {g ≥ ρ} of an unknown function g : X → [0, ∞) satisfying
+∥g∥
+L1 (µ) = 1. The only information to achieve this goal is given to us by a data set
+T := (x1,..., xn ) of n samples drawn independently from the probability measure gµ.
+Typically, an estimate of a level set is of the form { f > 0}, where f : X → R is a
+measurable function. In order to assess the quality of such an estimate one can use the
+loss function L
+DLD : X × R → [0, ∞] deﬁned by
+LDLD(x, t) := 1(−∞,0)((g(x) − ρ) sign t), x ∈ X, t ∈ R.(53)
+Note that this loss function penalizes predictionst if either t ≥ 0 and g(x)<ρ ,o r t < 0
+and g(x)>ρ , whereas it completely ignorest if g(x) = ρ. In a slight abuse of notations
+we now write
+RLDLD,µ( f ) :=
+∫
+X
+LDLD(x, f (x)) dµ(x),
+where f : X →R is a measurable function. Obviously, this deﬁnition givesRLDLD ,µ( f )=
+RLDLD,P ( f ) for every Polish space Y and every distribution P on X × Y with PX = µ.
+Moreover, note that if we additionally assumeµ({g = ρ}) = 0, as is usually done in the
+literature,4 we obtain the better known expression
+RLDLD,µ( f ) = µ({g ≥ ρ}△{ f ≥ 0}).
+Now note that unlike for the supervised loss functions we cannot compute L DLD(x, t),
+since g is unknown to us, and consequently for training sets of the formT = (x1,..., xn )∈
+Xn we cannot use, e.g., an ERM based on LDLD simply because we cannot compute
+the empirical risk. To overcome this problem a framework was developed in [28] that
+translates the DLD problem to a binary classiﬁcation problem. The key idea of this
+framework was the following deﬁnition.
+4 We could have gone this path, too. However, we will see that technically it is a bit more convenient to
+ignore the set {g = ρ} rather than to assume that it (essentially) does not exist.
+
+266 I. Steinwart
+Deﬁnition 4.27. Let µ be a distribution on X and Y :={ − 1, 1}. Furthermore, let
+g : X → [0, ∞] be a measurable function with ∥g∥L1 (µ) = 1. For ρ> 0 we deﬁne the
+distribution P := gµ ⊖ ρ µ by
+PX := g + ρ
+1 + ρ µ,
+P(y = 1|x) := g(x)
+g(x) + ρ , x ∈ X.
+Note that the distributionP := gµ⊖ ρ µ describes a binary classiﬁcation problem and,
+consequently, one could ask in which way the classiﬁcation risk RLclass ,P (·) is related to
+RLDLD ,µ(·). It turned out in [28] that there is indeed a close relationship between the two
+quantities. The goal in this subsection is to extend the considerations of [28] using our
+general theory. To this end, we writeY :={ −1, 1} throughout this section. Furthermore,
+we always identify a distributionQ ∈ Q
+Y by η ∈ [0, 1] via the relationshipη := Q({1}).
+Now let us deﬁne ¯LDLD :[ 0, 1] × R → [0, ∞]b y
+¯LDLD(η, t) := (1 − η)1(−∞,0)((2η − 1) sign t).(54)
+Using the identiﬁcation η = Q({1}) we can then think of ¯LDLD as a template loss.
+Furthermore, for P = gµ ⊖ ρ µ the P-instance ¯LDLD,P of ¯LDLD is
+¯LDLD,P (x, t) = (1 − η(x))1(−∞,0)((2η(x) − 1) sign t)
+= ρ
+g(x) + ρ 1(−∞,0)((g(x) − ρ) sign t),
+where η(x) := P(y = 1|x) = g(x)/(g(x) + ρ). With this equation we then ﬁnd
+RLDLD,µ( f ) =
+∫
+X
+LDLD(x, f (x)) 1 + ρ
+g(x) + ρ dP X (x) = 1 + ρ
+ρ R¯LDLD,P ,P ( f )(55)
+for all measurable f : X → R. Consequently, suitable supervised surrogates for the
+DLD problem are exactly the losses that are (uniformly) ¯LDLD-calibrated. In order to
+identify the latter losses let us ﬁrst compute the corresponding calibration functions.
+Lemma 4.28. Let L : Y × R → [0, ∞] be a supervised loss function . Then for all
+η ∈ [0, 1] and ε ∈ (0, ∞] we have
+δmax, ¯LDLD,L (ε, η) =
+{
+∞ if ε> 1 − η,
+inft∈R:(2η−1) sign t<0 CL ,η(t) − C∗
+L ,η if ε ≤ 1 − η.
+Proof. A simple calculation shows C∗
+¯LDLD ,η = 0 and, consequently, we obtain
+M¯LDLD,η(ε) = R if ε> 1 − η, and M¯LDLD,η(ε) ={ t ∈ R : (2η − 1) sign t ≥ 0}
+otherwise. From this we immediately ﬁnd the assertion.
+With the help of the above lemma we now obtain the ﬁrst main result which compares
+classiﬁcation calibration with ¯LDLD-calibration.
+
+How to Compare Different Loss Functions and Their Risks 267
+Theorem 4.29. Let L : Y × R → [0, ∞] be a supervised loss function , η ∈ [0, 1],
+and 0 ≤ ε ≤ min{1 − η, |2η − 1|}. Then we have
+δmax, ¯LDLD,L (ε, η) ≥ δmax,Lclass ,L (ε, η),
+and, consequently, Li s ¯LDLD-calibrated if L is classiﬁcation calibrated . Moreover, if
+L is continuous , then the above inequality becomes an equality and L is classiﬁcation
+calibrated if and only if L is ¯LDLD-calibrated.
+Proof. Combining Lemma 4.1 with Lemma 4.28 yields
+δmax, ¯LDLD ,L (ε, η) = inf
+t∈R:
+(2η−1) sign t<0
+CL ,η(t) − C∗
+L ,η ≥ inf
+t∈R:
+(2η−1) sign t≤0
+CL ,η(t) − C∗
+L ,η
+= δmax,Lclass ,L (ε, η).
+Moreover, for continuous L the assertion can be found using the continuity of t ↦→
+CL ,η(t).
+By the results on classiﬁcation calibrated, margin-based loss functions in [1] we
+immediately obtain a variety of ¯LDLD-calibrated losses. Furthermore, the P-instances of
+¯LDLD are bounded loss functions and therefore Theorem 2.8 yields
+RL ,P ( fn ) → R∗
+L ,P ⇒ RLDLD,µ( fn ) → 0,
+whenever P = gµ ⊖ ρ µ and L is classiﬁcation calibrated. In addition, for L := Lclass
+the proof of [28, Theorem 4] shows that the converse implication is also true.
+Our next goal is to identify the uniformly ¯LDLD-calibrated losses. The following the-
+orem gives a complete, though rather disappointing solution.
+Theorem 4.30 (No Uniform DLD Calibration). There exists no supervised loss func-
+tion L : Y × R → [0, ∞] that is uniformly ¯LDLD-calibrated with respect to both
+{Q ∈ QY : Q({1}) ∈ [0, 1
+2 )} and {Q ∈ QY : Q({1}) ∈ (1
+2 , 3
+4 ]}.
+Proof. Let L : Y ×R → [0, ∞] be a supervised loss function. Forη ∈ [0, 1] we deﬁne
+h+(η) = inf
+t<0
+CL ,η(t),
+h−(η) = inf
+t≥0
+CL ,η(t).
+Then the functions h+ :[ 0, 1] → [0, ∞) and h− :[ 0, 1] → [0, ∞) can be deﬁned by
+suprema taken over afﬁne linear functions in η ∈ R, and since h+ and h− are also ﬁnite
+for η ∈ [0, 1], we see that h+ and h− are continuous at every η ∈ [0, 1]. Moreover, we
+have C∗
+L ,η = min{h+(η), h−(η)} for all η ∈ [0, 1], and hence C∗
+L ,η is continuous in η.
+Let us ﬁrst consider the case C∗
+L ,1/2 = h+(1/2). To this end, we ﬁrst observe that there
+exists a sequence (tn ) ⊂ (−∞, 0) with
+h+(1
+2 + 1/n) ≤ CL ,1/2+1/n (tn ) ≤ h+(1
+2 + 1/n) + 1/n(56)
+
+268 I. Steinwart
+for all n ≥ 1. Moreover, our assumption C∗
+L ,1/2 = h+(1
+2 ) yields
+|CL ,1/2+1/n (tn ) − C∗
+L ,1/2+1/n|
+≤| CL ,1/2+1/n (tn ) − h+(1
+2 + 1/n)|+| h+(1
+2 + 1/n) − h+(1
+2 )|
++| C∗
+L ,1/2 − C∗
+L ,1/2+1/n|
+for all n ≥ 1. By (56) and the continuity of h+ and η ↦→ C∗
+L ,η we hence ﬁnd
+lim
+n→∞
+|CL ,1/2+1/n (tn ) − C∗
+L ,1/2+1/n|= 0.
+For Q :={ Q ∈ QY : Q({1}) ∈ (1
+2 , 3
+4 ]} Lemma 4.28, the deﬁnition h+, and (56) then
+yield
+δmax, ¯LDLD,L (ε, Q) = inf
+η∈(1/2,3/4]
+h+(η) − C∗
+L ,η ≤ inf
+n≥1
+CL ,1/2+1/n (tn ) − C∗
+L ,1/2+1/n = 0.
+Consequently, L is not uniformly ¯LDLD-calibrated with respect to Q. Finally, in the case
+C∗
+L ,1/2,x = h−(1
+2 ) we can analogously show thatL is not uniformly ¯LDLD-calibrated with
+respect to {Q ∈ QY : Q({1}) ∈ [0, 1
+2 )}.
+Obviously the above theorem shows that there exists no uniformly ¯LDLD-calibrated,
+supervised loss function. Now recall that Theorem 2.17 showed that uniform calibration
+is necessary to establish inequalities between excess risks if essentially no assumptions
+on the data-generating distribution are imposed.
+5 Together with Theorem 4.30 we con-
+sequently see that it is impossible to ﬁnd a supervised loss L : Y × R → [0, ∞] and an
+increasing function δ :[ 0, ∞] → [0, ∞] with δ(0) = 0 and δ(ε) > 0, ε> 0, such that
+δ(RLDLD ,µ( f )) ≤ RL ,P ( f ) − R∗
+L ,P(57)
+holds for all µ, g, ρ, f , and P := gµ ⊖ ρ µ. However, in the DLD learning scenario
+we actually know µ and ρ and hence the question remains whether for certain ﬁxed µ
+and ρ there exists a nontrivial functionδ satisfying (57). In order to answer this question
+(negatively) we need the following elementary lemma.
+Lemma 4.31. Let η ∈ [0, 1) and ρ> 0. Furthermore, let X be a measurable space
+and let µ be a distribution on X such that there exists measurable A ⊂ X with 0 <
+µ(A)< min{1,( 1 − η)/ηρ}. Then g : X → [0, ∞) deﬁned by
+g(x) := ηρ
+1 − η 1A(x) + 1 − η − ηρ µ(A)
+(1 − η)(1 − µ(A))1X\A(x)(58)
+is a density, i.e., ∥g∥L1 (µ) = 1.
+5 Formally, the result only holds for loss functions,not template losses. However, it is quite straightforward
+to see that the proof of Theorem 2.17 can be easily modiﬁed to establish an analogous result for instances of
+template losses.
+
+How to Compare Different Loss Functions and Their Risks 269
+Proof. Since µ(A) ≤ (1 − η)/ηρ we have 1− η− ηρ µ(A) ≥ 0 and hence we actually
+have g(x) ≥ 0 for all x ∈ X. Moreover, an easy calculation shows
+∫
+X
+gd µ = ηρ
+1 − η µ(A) + 1 − η − ηρ µ(A)
+(1 − η)(1 − µ(A)) µ(X\A) = 1.
+With the help of the above lemma we can now show that there exists no nontrivial
+function δ satisfying (57) even if we ﬁx µ and ρ.
+Theorem 4.32 (No General DLD Calibration Inequality). Let X be a measurable space
+and let µ be a distribution on X such that for all r∈ [0, 1] there exists a measurable A⊂
+X with µ(A) = r. Furthermore, let ρ> 0, Y :={ −1, 1}, and let L : Y ×R → [0, ∞) be
+a supervised loss function. Then there exists no increasing functionδ :[ 0, ∞] → [0, ∞]
+with δ(0) = 0 and δ(ε) > 0 for ε> 0 such that for all measurable g : X → [0, ∞)
+with ∥g∥L1 (µ) = 1 and all measurable f : X → R we have
+δ(RLDLD ,µ( f )) ≤ RL ,P ( f ) − R∗
+L ,P ,
+where P := gµ ⊖ ρ µ and L DLD(x, t) := 1(−∞,0)((g(x) − ρ) sign t) for x ∈ X and
+t ∈ R.
+Proof. Theorem 4.30 shows that L is not uniformly ¯LDLD-calibrated with respect to
+both {Q ∈ QY : Q({1}) ∈ [0, 1
+2 )} and {Q ∈ QY : Q({1}) ∈ (1
+2 , 3
+4 ]}. For brevity’s
+sake we only consider the case where L is not uniformly ¯LDLD-calibrated with respect
+to {Q ∈ QY : Q({1}) ∈ [0, 1
+2 )}. Let us now assume that there exists a function δ in the
+sense of the theorem. We deﬁne ˜δ(ε) := δ(((1 + ρ)/ρ)ε) , ε ≥ 0. By (55) we then have
+˜δ(R¯LDLD,P ,P ( f )) ≤ RL ,P ( f ) − R∗
+L ,P(59)
+for all measurable f : X → R and all P in the above sense. Let us ﬁx an η ∈ [0, 1).B y
+Lemma 4.31 there then exists a density g : X → [0, ∞) with
+µ
+({
+x ∈ X : η = g(x)
+g(x) + ρ
+})
+> 0.(60)
+We deﬁne P := gµ ⊖ ρ µ. Then (59), together with Theorem 3.3 and PX =
+((g + ρ)/(1 + ρ))µ, shows
+µ({x ∈ X : δmax, ¯LDLD,P ,L (ε, P(·|x), x) = 0}) = 0,ε > 0.
+Now recall that the calibration function for a P-instance of a template loss can be
+calculated by (28). In our case, this formula yields
+δmax, ¯LDLD,P ,L (ε, P(·|x), x) = δmax, ¯LDLD,L (ε, P(·|x)), ε > 0, x ∈ X.
+Identifying P(·|x) with P(y = 1|x) = g(x)/(g(x) + ρ) and using (60) we then obtain
+δmax, ¯LDLD,L (ε, η) > 0 for all ε> 0. Since Lemma 4.28 shows that the latter also holds
+for η = 1 we have shown that L is ¯LDLD-calibrated.
+
+270 I. Steinwart
+Let us now ﬁx a measurable subsetA ⊂ X with µ(A) = 1
+2 min{1, 1/ρ}. Furthermore,
+f o raﬁ x e dη ∈ [0, 1
+2 ) we have µ(A)< 1/ρ ≤ (1 − η)/(ηρ) and hence g deﬁned by
+(58) is a density. Again we write P := gµ ⊖ ρ µ and, in addition, we ﬁx an ε> 0 with
+ε ≤ 1 − η. Since L is DLD calibrated there then exists a ˆδ ∈ (0,ε ) such that
+CL ,ˆη,x (s)< C∗
+L ,ˆη,x + ˆδ ⇒ C¯LDLD ,ˆη,x (s)<ε ,
+where ˆη := P(y = 1|x) = g(x)/(g(x) + ρ) for some x ∈ X\A. In addition, L(y, t)<
+∞ implies C∗
+L ,ˆη,x < ∞ and hence there exists an s ∈ R with CL ,ˆη,x (s)< C∗
+L ,ˆη,x + ˆδ.
+Moreover, since ε ≤ 1 − η the deﬁnition of ¯LDLD shows that this s actually satisﬁes
+C¯LDLD ,ˆη,x (s) = 0. For arbitrary t ∈ R we now deﬁne
+f := t1A + s1X\A.
+Since P(y = 1|x) = g(x)/(g(x) + ρ) = η for x ∈ A our construction then yields
+RL ,P ( f ) − R∗
+L ,P ≤ µ(A)(CL ,η(t) − C∗
+L ,η) + (1 − µ(A))ˆδ ≤ CL ,η(t) − C∗
+L ,η + ε
+and
+R¯LDLD,P ,P ( f ) = µ(A)C¯LDLD,η(t) = cρ (C¯LDLD ,η(t) − C∗
+¯LDLD ,η),
+where cρ := 1
+2 min{1, 1/ρ}. Combining these estimates with (59) we ﬁnd
+˜δ(cρ (C¯LDLD,η(t) − C∗
+¯LDLD,η)) ≤ CL ,η(t) − C∗
+L ,η + ε
+for all η ∈ [0, 1
+2 ), ε> 0, and t ∈ R. From the latter and Lemma 2.9 it is easy to conclude
+that L is uniformly ¯LDLD-calibrated with respect to {Q ∈ QY : Q({1}) ∈ [0, 1
+2 )}.
+However, this contradicts our initial assumption.
+Recall that the key idea of the proof of Theorem 4.30 was to choose η arbitrarily
+close to 1
+2 . By ﬁnding densities g that are close to the critical level ρ on a sufﬁciently
+large set this idea was then used to prove Theorem 4.32. On the other hand, if we only
+consider densities g that are bounded away from the level ρ, then the corresponding
+η(x) = g(x)/(g(x) + ρ), x ∈ X, is bounded away from the critical level
+1
+2 , and thus the
+arguments of Theorems 4.30 and 4.32 do not work. This observation has been implicitly
+used for the inequalities established in [28, Theorem 10]. Moreover, using Theorem 3.9
+we can actually improve these inequalities slightly. Due to space constraints we only
+mention the result and omit the proof.
+Theorem 4.33 (DLD Calibration Inequalities for Certain Densities). Let µ be a distri-
+bution on X , let g : X → [0, ∞] be a measurable function with ∥g∥
+L1 (µ) = 1, and let
+ρ> 0. Then for P := gµ ⊖ ρ µ the following statements hold:
+(i) If there exist constants c > 0 and β ∈ (0, ∞] with
+µ({x ∈ X :0 < |g − ρ| < s}) ≤ (cs)β(61)
+for all s > 0, then for all measurable f : X → R we have
+RLDLD ,µ( f ) ≤ 2((1 + ρ)c)β/(1+β) (RLclass ,P ( f ) − R∗
+Lclass ,P )β/(1+β) .
+
+How to Compare Different Loss Functions and Their Risks 271
+(ii) If there exist constants c > 0 and p ∈ (1, ∞] with
+µ({x ∈ X : |g − ρ|≥ s−1}) ≤ (cs)p(62)
+for all s > 0, then for all measurable f : X → R we have
+RLclass ,P ( f ) − R∗
+Lclass ,P ≤ 2
+( p
+p − 1
+)1/p c
+1 + ρ (RLDLD,µ( f ))(p−1)/p .
+Note that condition (62) is equivalent to saying|g− ρ|∈ Lp,∞(µ) with ∥g− ρ∥p,∞ ≤
+c. Consequently, if we actually haveg ∈ Lp (µ), then (62) is satisﬁed for c =∥ g∥p + ρ.
+Moreover, the latter condition is almost sharp since |g − ρ|∈ Lp,∞(µ) conversely
+implies g ∈ Lp−ε (µ) for all sufﬁciently small ε> 0.
+4.5. Density Estimation
+In this last subsection we apply the developed theory to the density estimation problem.
+To this end, let us ﬁrst recall that in this unsupervised learning problem we have a data-
+generating distribution on X which is of the form gµ, where µ is a known distribution
+and g is an unknown density. The learning goal is then to estimate g. Let us assume
+that we have an estimate f of this density. Then the quality of this estimate is usually
+measured by
+RLg ,µ( f ) :=
+∫
+X
+| f (x) − g(x)| dµ(x) =∥ f − g∥L1 (µ),
+or if g ∈ Lp (µ) is known, by R¯Lg,p ,µ( f ) :=∥ f − g∥Lp (µ). Obviously, the above
+performance measure RLg ,µ(·) is a risk with respect to the unsupervised loss function
+(x, t) ↦→| t−g(x)|. However, as for the DLD problem, this loss function is not accessible
+to us since we do not know g. Consequently, if we want to assess the quality of an
+estimate, we need a surrogate risk, i.e., a surrogate loss function. In order to ﬁnd such a
+surrogate, recall that a well-known heuristic for the density estimation problem is based
+on using additional samples drawn from µ (see, e.g., [13, Chap. 14.2.4]). Let us now
+brieﬂy describe and analyze this approach. To do this we deﬁne P := gµ ⊖
+1 µ on
+X × Y , Y :={ −1, 1}, i.e., P is the joint distribution of the original, positively labeled
+samples drawn from gµ, and the artiﬁcial, negatively labeled samples drawn from µ.
+As usual, we identify the conditional probability P(·|x) with η(x), via the relation
+P(y = 1|x) = η(x), so that we have
+η(x) = g(x)
+1 + g(x) and g(x) = η(x)
+1 − η(x) .
+Moreover, we need the following deﬁnition.
+Deﬁnition 4.34. Let L : Y × R → [0, ∞) be a supervised loss function such that for
+all η ∈ [0, 1) the set ML ,η(0+) of exact minimizers contains a single element, denoted
+by m(η). Then L is called a density estimation loss function if the map m :[ 0 , 1) →
+M :={ m(η) : η ∈ [0, 1)} deﬁned by η ↦→ m(η) is a bijection and M is a Polish space.6
+6 This is only a technical assumption which is satisﬁed for all commonly used surrogates.
+
+272 I. Steinwart
+Let us now assume that we have a density estimation loss function L with associated
+map m :[ 0, 1) → M. Given a t ∈ M one can then interpret m−1(t) as an estimate of η,
+and therefore the template loss
+˜L(η, t) := 2(1 − η)
+⏐⏐
+⏐
+⏐
+m
+−1(t)
+1 − m−1(t) − η
+1 − η
+⏐⏐
+⏐
+⏐
+measures the quality of the estimate m
+−1(t)/(1 − m−1(t)) for g. Moreover, for measur-
+able f : X → M an easy calculation shows
+R˜L,P ( f ) =
+∫
+X
+2(1 − η(x))
+⏐⏐
+⏐
+⏐
+m
+−1( f (x))
+1 − m−1( f (x)) − η(x)
+1 − η(x)
+⏐⏐
+⏐
+⏐dP
+X (x)
+=
+∫
+X
+⏐⏐
+⏐
+⏐
+m
+−1( f (x))
+1 − m−1( f (x)) − g(x)
+⏐⏐
+⏐
+⏐dµ(x),
+i.e., we have R
+˜L,P ( f ) = RLg ,µ(m−1( f )/(1 − m−1( f ))). Consequently, it sufﬁces to
+investigates surrogates for the template loss ˜L. Let us begin with a negative result.
+Theorem 4.35. There exists no uniformly ˜L-calibrated density estimation loss func-
+tion L .
+Proof. Let us ﬁx η ∈ [0, 1) and ε> 0. Then we have (2η + ε)/(2 + ε) ∈ [0, 1) and,
+consequently,tη := m((2η + ε)/(2 + ε)) is well deﬁned. In addition, an easy calculation
+shows ˜L(η, tη) = ε and hence we obtain
+δmax, ˜L,L (ε, η) = inf
+t∈M: ˜L(η,t)≥ε
+CL ,η(t) − C∗
+L ,η ≤ CL ,η(tη) − C∗
+L ,η.
+Moreover, we have
+CL ,η(tη) = ηL(1, tη) + (1 − η)L(−1, tη)
+= 2η + ε
+2 + ε L(1, tη) +
+(
+1 − 2η + ε
+2 + ε
+)
+L(−1, tη)
++ ε(η − 1)
+2 + ε L(1, tη) + ε(1 − η)
+2 + ε L(−1, tη)
+= C∗
+L ,(2η+ε)/(2+ε) + ε
+2 + ε CL ,η(tη) − ε
+2 + ε CL ,1(tη),
+and, consequently, we obtain
+CL ,η(tη) = 2 + ε
+2 C∗
+L ,(2η+ε)/(2+ε) − ε
+2 CL ,1(tη) ≤ 2 + ε
+2 C∗
+L ,(2η+ε)/(2+ε) − ε
+2 C∗
+L ,1.
+Together with our estimate on the calibration function this yields
+δmax, ˜L,L (ε, η) ≤ 2 + ε
+2 C∗
+L ,(2η+ε)/(2+ε) − ε
+2 C∗
+L ,1 − C∗
+L ,η.
+Now recall that we have already seen in the proof of Theorem 4.30 that η ↦→ C∗
+L ,η is
+continuous on [0, 1] and hence we ﬁnd lim η→1 δmax, ˜L,L (ε, η) = 0. From this we easily
+infer the assertion.
+
+How to Compare Different Loss Functions and Their Risks 273
+Remark 4.36. At ﬁrst glance one is tempted to conclude from Theorems 4.35 and 2.17
+that there cannot exist a general inequality between the riskRLg ,µ(m−1( f )/(1−m−1( f )))
+and an excess surrogate risk RL ,P ( f ) − R∗
+L ,P . However, in the case of density es-
+timation, we are actually not interested in all distributions P on X × Y , but only in
+distributions of the form gµ ⊖ 1 µ with g being a density with respect to µ, and there-
+fore Theorem 2.17 does not apply directly. Nevertheless, Theorem 4.35 can be used to
+show that no density estimation loss function L allows a general inequality between
+RLg ,µ(m−1( f )/(1 − m−1( f ))) and its excess risk RL ,P ( f ) − R∗
+L ,P . To see this, let
+X :={ 1, 2}, let µ be a distribution on X, and let g : X → [0, ∞) be a density
+with g(2) = 0. Note that µ is uniquely determined by µ1 := µ({1}), and since g is
+a density with respect to µ we have g1 := g(1) = 1/µ1. Using our standard nota-
+tions this yields η1 := η(1) ≥ 1
+2 and η(2) = 0. Now note that for f : X → R with
+m−1( f (2)) = 0 = g(2) we have
+RL ,P ( f ) − R∗
+L ,P =
+CL ,η1 ( f1) − C∗
+L ,η1
+2η1
+≤ CL ,η1 ( f1) − C∗
+L ,η1 ,
+where f1 := f (1). Moreover, for such f we also have
+RLg ,µ
+( m−1( f )
+1 − m−1( f )
+)
+= 1 − η1
+η1
+·
+⏐⏐
+⏐
+⏐
+m
+−1( f1)
+1 − m−1( f1) − η1
+1 − η1
+⏐⏐
+⏐
+⏐=
+˜L(η
+1, f1)
+2η1
+.
+Now assume that we have a function δ :[ 0 , ∞] → [0, ∞] and an inequality in the
+sense of Theorem 2.17. Then this inequality in particular holds for f : X → R with
+m−1( f (2)) = 0, and hence we ﬁnd
+δ
+( ˜L(η1, f1)
+2
+)
+≤ δ
+( ˜L(η1, f1)
+2η1
+)
+= δ
+(
+RLg ,µ
+( m−1( f )
+1 − m−1( f )
+))
+≤ RL ,P ( f ) − R∗
+L ,P
+≤ CL ,η1 ( f1) − C∗
+L ,η1 .
+Since this inequality holds for all η1 ∈ [1
+2 , 1) and all f1 ∈ R, we easily see that L is
+uniformly ˜L-calibrated with respect to {η : 1
+2 ≤ η< 1}. However, we have seen in (the
+proof of) Theorem 4.35 that this uniform calibration is impossible and, consequently, no
+general inequalities are possible in the above sense.
+After these disappointing results let us ﬁnally present a positive result for convex loss
+functions.
+Theorem 4.37. Let L : Y ×
+R → [0, ∞) be a density estimation loss function which
+is convex in its second argument. Then L is ˜L-calibrated.
+Proof. Repeating the proof of [26, Lemma 20] we see that the map m :[ 0, 1) → M
+is monotone, and since it is also invertible, it must be strictly monotone. Moreover, we
+obviously have M
+L ,η(0+) ⊂ M˜L,η(0+). Using Lemma 2.11 and the ideas of its proof
+we then obtain the assertion.
+
+274 I. Steinwart
+Remark 4.38. Let L : Y × R → [0, ∞) be a density estimation loss function that is
+˜L-calibrated. Repeating the proof of Theorem 3.16 we then see that
+m−1( fn )
+1 − m−1( fn ) → g in probability,
+whenever fn : X → M is a sequence of measurable functions with RL ,P ( fn ) → R∗
+L ,P .
+In particular, every universally L-risk consistent method is also universally consistent
+in the above weak form of the density estimation problem. Moreover, if g is a bounded
+density, then it is not hard to derive consistency with respect toRLg ,µ(·). Finally, we like
+to mention that additional results can be obtained by computing the calibration function
+δ
+max, ˜L,L (·, ·) for speciﬁc L, but because of space constraints we omit the details.
+5. Proofs for the Results of Sections 2 and 3
+Proof of Lemma 2.5. For n ∈ N let us ﬁx an αn ∈ A that satisﬁes (2) for ε := 1/n.
+Then for all x ∈ X we have
+C∗
+L ,P(·|x),x = inf
+α∈A
+CL ,P(·|x),x (α) = inf
+n∈N
+CL ,P(·|x),x (αn ),
+and hence x ↦→ C∗
+L ,P(·|x),x is measurable. Furthermore, for all n ≥ 1w eh a v e
+R∗
+L ,P ≤
+∫
+X
+CL ,P(·|x),x (αn ) dP X (x) ≤
+∫
+X
+C∗
+L ,P(·|x),x dP X (x) + 1
+n
+≤ inf
+α∈A
+∫
+X
+CL ,P(·|x),x (α) dP X (x) + 1
+n
+≤ R∗
+L ,P + 1
+n ,
+and hence we obtain the second assertion if we let n →∞ .
+Proof of Theorem 2.8. For brevity’s sake we write C1,x (α) := CL1 ,P(·|x),x (α) −
+C∗
+L1 ,P(·|x),x and C2,x (α) := CL2 ,P(·|x),x (α) − C∗
+L2 ,P(·|x),x for x ∈ X, α ∈ A. Further-
+more, let us ﬁx an ε> 0 and write h(x) := δ(ε, x), x ∈ X. Then for all x ∈ X, and all
+α ∈ A with C1,x (α) ≥ ε,w eh a v eC2,x (α) ≥ h(x), and hence we obtain
+RL2 ,P (α) − R∗
+L2 ,P =
+∫
+X
+C2,x (α) dP X (x) ≥
+∫
+C1,x (α)≥ε
+h(x) dP X (x)
+for all α ∈ A. Furthermore, since h(x)> 0 holds for all x ∈ X, the measure ν := bPX
+is absolutely continuous with respect to µ := hP X and, consequently, there exists a
+δ> 0 such that ν( A) ≤ ε for all measurable A ⊂ X with µ(A) ≤ δ.F o rα ∈ A with
+RL2 ,P (α) − R∗
+L2 ,P ≤ δ and A :={ x ∈ X : C1,x (α) ≥ ε} the above considerations thus
+
+How to Compare Different Loss Functions and Their Risks 275
+show
+RL1,P (α) − R∗
+L1,P =
+∫
+C1,x (α)≥ε
+C1,x (α) dP X (x) +
+∫
+C1,x (α)<ε
+C1,x (α) dP X (x)
+≤
+∫
+A
+b(x) dP X (x) + ε
+≤ 2ε.
+From this we easily get the assertion.
+Proof of Lemma 2.9. Let us ﬁrst assumeC∗
+L2 ,Q,x =∞ . Then we haveδmax(ε, Q, x) =
+∞ and hence (ii) is trivially satisﬁed. Furthermore, we haveML2,Q,x (δmax(ε, Q, x)) =∅ ,
+and hence we obtain (i). Let us now assume C∗
+L2 ,Q,x < ∞. Then for α ∈
+ML2,Q,x (δmax(ε, Q, x)) we have
+CL2 ,Q,x (α) − C∗
+L2 ,Q,x <δ max(ε, Q, x) = inf
+α′∈A
+α′̸∈ML1 ,Q,x (ε)
+CL2,Q,x (α′) − C∗
+L2 ,Q,x ,
+which shows α ∈ ML1 ,Q,x (ε). For the proof of the second assertion let us ﬁx a δ with
+δ>δ max(ε, Q, x). By deﬁnition this means
+inf
+α∈A
+α̸∈ML1,Q,x (ε)
+CL2 ,Q,x (α) − C∗
+L2 ,Q,x = δmax(ε, Q, x)<δ ,
+and hence there exists an α ∈ ML2 ,Q,x (δ) with α ̸∈ ML1 ,Q,x (ε). Finally, in order
+to establish (9) let us ﬁx an α ∈ A. Then for ε := CL1,Q,x (α) − C∗
+L1 ,Q,x we have
+α ̸∈ ML1 ,Q,x (ε) which implies α ̸∈ ML2 ,Q,x (δmax(ε, Q, x)) by (i). Since the latter
+means
+CL2 ,Q,x (α) ≥ C∗
+L2 ,Q,x + δmax(ε, Q, x) = C∗
+L2 ,Q,x + δmax(CL1 ,Q,x (α) − C∗
+L1 ,Q,x , Q, x)
+we obtain the assertion.
+Proof of Lemma 2.11. Since ML1 ,Q,x (ε) is an interval and CL2 ,Q,x (.) : R → [0, ∞)
+is continuous we obtain
+δmax(ε, Q, x) = min
+{
+inf
+α≤inf ML1,Q,x (ε)
+CL2 ,Q,x (α), inf
+α≥sup ML1 ,Q,x (ε)
+CL2 ,Q,x (α)
+}
+− C∗
+L2,Q,x .
+Moreover, forα ∈ R with α ̸∈ ML1 ,Q,x (ε) we haveα ̸∈ ML1 ,Q,x (0+) and, consequently,
+we ﬁnd α ̸∈ ML2 ,Q,x (0+). Now, it is easy to check that the mapα ↦→ CL2 ,Q,x (α) is convex
+and, consequently, is strictly decreasing on(−∞, inf ML2 ,Q,x (0+)] and strictly increas-
+ing on [sup ML2 ,Q,x (0+), ∞). Combining all observations we obtain the assertion.
+Proof of Theorem 2.13. Let us use the shorthands C1,x (α) and C2,x (α) deﬁned in the
+proof of Theorem 2.8. Assumption (12) together with Lemma 2.9 and R∗
+L1 ,P < ∞,
+R∗
+L2 ,P < ∞ then gives
+δ(C1,x (α)) ≤ C2,x (α)(63)
+
+276 I. Steinwart
+for all x ∈ ˜X and all α ∈ A.F o r α ∈ A with RL1 ,P (α) < ∞, Jensen’s inequality,
+together with the deﬁnition of Bα, δ∗∗
+Bα (·) ≤ δ(·), and (63), now yields
+δ∗∗
+Bα (RL1 ,P (α) − R∗
+L1 ,P ) ≤
+∫
+X
+δ∗∗
+Bα (C1,x (α)) dP X (x) ≤
+∫
+X
+C2,x (α) dP X (x)
+= RL2 ,P (α) − R∗
+L2 ,P .
+Finally, for α ∈ A with RL1 ,P (α) =∞ we have Bα =∞ .I f δ∗∗
+∞ (∞) = 0 there is
+nothing to prove, and hence let us assume δ∗∗
+∞ (∞)> 0. Then observe that because of
+0 = δ(0) = δ∗∗
+∞ (0) and its convexity the functionδ∗∗ is increasing. Consequently, if there
+is a t0 > 0 with δ∗∗
+∞ (t0) =∞ we obviously have t ≤ c1δ∗∗
+∞ (t) + c2 for c1 := 1, c2 := t0
+and all t ∈ [0, ∞]. On the other hand, ifδ∗∗ is ﬁnite on [0, ∞), then there exists at0 ≥ 0
+and a c0 > 0 such that the (Lebesgue)-almost surely deﬁned derivative of δ∗∗
+∞ satisﬁes
+(δ∗∗
+∞ )′(t) ≥ c0 for almost all t ≥ t0. By Lebesgue’s version of the fundamental theorem
+of calculus (see, e.g., the Theorems 26–28 in Chapter X of [11] or Theorems 271, 269,
+and 274 in [16]) we then also ﬁnd constants c
+1, c2 ∈ (0, ∞) with t ≤ c1δ∗∗
+∞ (t) + c2 for
+all t ∈ [0, ∞]. In both cases, (63) consequently yields
+∞=
+∫
+X
+C1,x (α) dP X (x) ≤ c1
+∫
+X
+δ∗∗
+∞ (C1,x (α)) dP X (x) + c2
+≤ c1(RL2 ,P (α) − R∗
+L2 ,P ) + c2,
+and hence we have RL2 ,P (α) − R∗
+L2 ,P =∞ . This shows the assertion.
+Proof of Lemma 2.16. In order to show the ﬁrst assertion we ﬁx an ε> 0. If
+δmax(ε, Q) = 0 there is nothing to prove and hence we assume δmax(ε, Q)> 0 with-
+out loss of generality. Then there exists a strictly positive sequence (δn ) with δn ↗
+δmax(ε, Q) for n →∞ , and ML2 ,Q,x (δn ) ⊂ ML1 ,Q,x (ε) for all n ∈ N. Now let us
+ﬁx an α ∈ ML2 ,Q,x (δmax(ε, Q)). Then we have CL2 ,Q,x (α) − C∗
+L2,Q,x <δ max(ε, Q) and
+hence there exists an n ∈ N with CL2,Q,x (α) − C∗
+L2 ,Q,x <δ n. Obviously, this implies
+α ∈ ML2 ,Q,x (δn ) ⊂ ML1 ,Q,x (ε), i.e., we have shown the ﬁrst assertion.
+In order to prove the second assertion we writeδ(ε) := infx∈X δmax(ε, Q, x) for ε> 0.
+Since δ(ε) ≤ δmax(ε, Q, x) for all x ∈ X, Q ∈ Q, and ε> 0, we then obtain
+ML2 ,Q,x (δ(ε)) ⊂ ML2 ,Q,x (δmax(ε, Q, x)) ⊂ ML1 ,Q,x (ε).
+This shows δ(ε) ≤ δmax(ε, Q). In order to prove the converse inequality let us as-
+sume δ(ε) < δ max(ε, Q) for some ε> 0. Then there exist Q ∈ Q and x ∈ X with
+δmax(ε, Q, x)<δ max(ε). However, the already proved ﬁrst assertion shows
+ML2,Q,x (δmax(ε, Q)) ⊂ ML1 ,Q,x (ε), and hence we ﬁnd a contradiction by (ii) in
+Lemma 2.9.
+Proof of Theorem 2.17. Let us ﬁx an x ∈ X and a Q ∈ Q. Furthermore, let P be the
+distribution on X ×Y with PX = δ{x}, where δ{x} is the Dirac measure inx, and P(·|x) =
+
+How to Compare Different Loss Functions and Their Risks 277
+Q. Then P is of type Q and we have RLi ,P (α) = CLi ,Q,x (α) and R∗
+Li ,P = C∗
+Li ,Q,x < ∞
+for i = 1, 2 and all measurable α ∈ A. Consequently, our assumption yields
+δ(CL1 ,Q,x (α) − C∗
+L1 ,Q,x ) ≤ CL2,Q,x (α) − C∗
+L2 ,Q,x
+for all α ∈ A. Now let ε> 0 and α ∈ ML2 ,Q,x (δ(ε)). Then we have CL2,Q,x (α) −
+C∗
+L2,Q,x < δ(ε) and hence the above inequality yields δ(CL1 ,Q,x (α) − C∗
+L1 ,Q,x )<δ ( ε ) .
+Since δ is monotonically increasing the latter shows CL1 ,Q,x (α) − C∗
+L1 ,Q,x <ε , i.e., we
+have foundML2,Q,x (δ(ε)) ⊂ ML1 ,Q,x (ε). Lemma 2.9 then showsδ(ε) ≤ δmax(ε, Q, x),
+and hence L2 is uniformly L1-calibrated with respect to Q.
+Proof of Theorem 2.18. Let us use the shorthands C1,x (α) and C2,x (α) deﬁned in the
+proof of Theorem 2.8. Then our assumption on δmax(ε, x) together with (9) yields
+(C2,x (α))q b(x) ≤ C1,x (α) for all x ∈ X, α ∈ A, and hence using H¨ older’s inequal-
+ity with r deﬁned by q = 1/r + 1g i v e s
+RL1,P (α) − R∗
+L1 ,P ≤
+(∫
+X
+(b(x))−1/q (C1,x (α))1/q dP X (x)
+)q/q
+≤
+(∫
+X
+b−r dP X
+)1/(qr ) (∫
+X
+C1,x (α) dP X (x)
+)1/q
+.
+Since p ≥ r we then ﬁnd the assertion.
+For the proof of Theorem 3.2 we need a method for ﬁnding measurable selections
+from multi-valued maps of speciﬁc forms. We begin with some basics: LetX, Y , and Z
+be measurable spaces, let h : X × Z → Y and A ⊂ Y be measurable, and let
+F : X → 2Z ,
+x ↦→{ z ∈ Z : h(x, z) ∈ A}.(64)
+Furthermore, we write
+Dom F :={ x ∈ X : F(x) ̸=∅ },
+Gr F :={ (x, z) ∈ X × Z : z ∈ F(x)},
+F−1(B) :={ x ∈ X : F(x) ∩ B ̸=∅ }, B ⊂ Z .
+Note that we have Dom F = F−1(Z ) and Gr F ={ (x, z) ∈ X × Z : h(x, z) ∈ A},s o
+that in particular Gr F is measurable. Furthermore, if πX : X × Z → X denotes the
+projection onto X, then we have
+Dom F ={ x ∈ X : ∃z ∈ Z with h(x, z) ∈ A}= πX ({(x, z) ∈ X × Z : h(x, z) ∈ A})
+= πX (Gr F).
+Now the following result provides a sufﬁcient condition under which DomF is measur-
+able and F admits measurable selections.
+
+278 I. Steinwart
+Lemma 5.1. Let (X, X ) be a complete measurable space , let Z be a Polish space
+equipped with its Borel σ -algebra, and let Y be a measurable space . Furthermore, let
+h : X × Z → Y be a measurable map , let A ⊂ Y be measurable , and let F : X → 2Z
+be deﬁned by (64). Then the following are true:
+(i) Dom F is measurable.
+(ii) There exists a sequence of measurable functions f n : X → Z such that for all
+x ∈ Dom F the set { fn (x) : n ∈ N} is dense in F (x).
+(iii) Let ϕ : X × Z → [0, ∞] be measurable and let ψ : X → [0, ∞] be deﬁned by
+ψ(x) := inf
+z∈F(x)
+ϕ(x, z), x ∈ X.(65)
+Then ψ is measurable. Furthermore, for all n ≥ 1 there exists a measurable fn :
+X → Z such that for all x ∈ Dom F we have f n (x) ∈ F(x) and ϕ(x, fn (x)) ≤
+ψ(x) + 1/n, and consequently
+ψ(x) = inf
+n∈N
+ϕ(x, fn (x)).
+In addition, if the inﬁmum in(65) is attained for all x ∈ Dom X, then there exists
+a measurable function f : X → Z with ψ(x) = ϕ(x, f (x)) for all x ∈ Dom F.
+Proof. (i) Let us ﬁrst recall that the so-called projection theorem [7, Theorem III.23,
+p. 75] ensures πX (B) ∈ X for all B ∈ X ⊗ B(Z ). Now the assertion follows directly
+from Dom F = πX (Gr F) and the projection theorem.
+(ii) Let ˜X be the trace σ -algebra of X on Dom F. Then it is easy to see that ˜X is a
+complete σ -algebra. Furthermore, F| Dom F : Dom F → 2Z obviously maps Dom F to
+nonempty subsets of Z and, in addition, we have
+Gr(F| Dom F ) ={ (x, z) ∈ Dom F × Z : z ∈ F(x)}= Gr F ∩ (Dom F × Z ),
+and hence Gr(F| Dom F ) is measurable. Now Aumann’s selection theorem in the form of
+[7, Theorem III.22, p. 74] gives a sequence of˜X -measurable functions ˜fn : Dom F → T
+such that{ fn (x) : n ∈ N} is dense in F(x) for all x ∈ Dom F. Extending these functions
+to measurable functions fn : X → T gives the assertion.
+(iii) The measurability follows from [7, Lemma III.39, p. 86]. Furthermore, on the
+measurable set {x ∈ X : ψ(x) =∞ } there is nothing to prove and hence we may
+restrict our considerations to Dom F ∩{ x ∈ X : ψ(x)< ∞} equipped with the trace
+σ -algebra of X . Then the existence of fn is shown in [7, p. 87]. Finally, the existence of
+a measurable f : X → Z is shown in [7, p. 86].
+Proof of Theorem 3.2. First note that the measurability of (x, t) ↦→ CL ,P(·|x),x (t) can
+be shown using standard arguments.
+(i) If C∗
+L ,P(·|x),x =∞ for some x ∈ X, then (2) cannot be true for this x, and hence
+ˆL is not P-minimizable. To see the converse implication observe that the multivalued
+map F : X → 2T , deﬁned by F(x) := T for all x ∈ X, is obviously of the form (64)
+for arbitrary measurable h and A := T . We write ϕ(x, t) := CL ,P(·|x),x (t) for all x ∈ X,
+
+How to Compare Different Loss Functions and Their Risks 279
+t ∈ T , so that ϕ : X × T → [0, ∞] is measurable. Then we have
+C∗
+L ,P(·|x),x = inf
+t∈F(X )
+ϕ(x, t)(66)
+for all x ∈ X and, consequently, Lemma 5.1 shows that for all n ≥ 1 there exists a
+measurable function fn : X → T with
+CL ,P(·|x),x ( fn (x)) = ϕ(x, fn (x)) ≤ C∗
+L ,P(·|x),x + 1/n < C∗
+L ,P(·|x),x + 2/n
+for all x ∈ Dom F = X. From this we easily conclude that ˆL is P-minimizable.
+(ii) This assertion also follows from Lemma 5.1 since ML ,P(·|x),x (0+) ̸=∅ for all
+x ∈ X ensures that the inﬁmum in (66) is attained for all x ∈ X.
+Proof of Theorem 3.3. Without loss of generality we may assumeC∗
+Li ,P(·|x),x < ∞ for
+all x ∈ X and i = 1, 2. To show the measurability of x ↦→ δmax(ε, P(·|x), x) we equip
+[0, ∞] with the Borel σ -algebra, write A := [ε, ∞], and deﬁne h : X × T → [0, ∞]b y
+h(x, t) := CL1,P(·|x),x (t) − C∗
+L1 ,P(·|x),x ,( x, t) ∈ X × T .
+Then h is measurable and forF : X → 2T deﬁned by (64) we haveT \ML1 ,P(·|x),x (ε) =
+F(x) for all x ∈ X. Furthermore, ϕ : X × T → [0, ∞] deﬁned by
+ϕ(x, t) := CL2 ,P(·|x),x (t) − C∗
+L2 ,P(·|x),x ,( x, t) ∈ X × T ,
+is also measurable. For all x ∈ X our construction yields
+δmax(ε, P(·|x), x) = inf
+t∈F(x)
+ϕ(x, t)
+and, consequently, we obtain the measurability ofx ↦→ δmax(ε, P(·|x), x) by Lemma 5.1.
+Let us now assume that there exists an ε> 0 such that B :={ x ∈ X : δmax(ε, x) =
+0} satisﬁes PX (B)> 0. With the above notations we obviously have B ⊂ Dom F.
+Moreover, for all n ≥ 1, Lemma 5.1 gives us a measurable function f (1)
+n : X → T with
+CL2 ,P(·|x),x ( f (1)
+n (x)) − C∗
+L2 ,P(·|x),x ≤ 1
+n and CL1 ,P(·|x),x ( f (1)
+n ) − C∗
+L1 ,P(·|x),x ≥ ε
+for all x ∈ B. Furthermore, since L2 is P-minimizable there also exist measurable
+functions f (2)
+n : X → T with
+CL2 ,P(·|x),x ( f (2)
+n (x)) − C∗
+L2 ,P(·|x),x ≤ 1
+n
+for allx ∈ X. We deﬁne fn : X → T by fn (x) := f (1)
+n (x) if x ∈ B, and fn (x) := f (2)
+n (x)
+otherwise. Then fn is measurable and our construction yields both limn→∞ RL2,P ( fn ) =
+R∗
+L2 ,P and
+RL1 ,P ( f ) − R∗
+L1 ,P ≥
+∫
+B
+CL1 ,P(·|x),x (t) − C∗
+L1 ,P(·|x),x dP X (x) ≥ εPX (B).
+From this we easily obtain the assertion.
+
+280 I. Steinwart
+Proof of Theorem 3.6. Since δmax(·, Q) is monotonously increasing, the set
+U :={ ε> 0: δmax(·, Q) not continuous in ε}
+is at most countable, and hence there exists a sequence(εn ) with {εn : n ∈ N}= U ∪{r ∈
+Q : r > 0}. Then for all n, m ≥ 1 there exists a distribution Qn,m ∈ Q with
+1
+m + δmax(εn , Q)>δ max(εn , Qn,m ) = inf
+t∈T
+t̸∈ML1 ,Qn,m (εn )
+CL2 ,Qn,m (t) − C∗
+L2 ,Qn,m .
+Therefore for all n, m ≥ 1 there exist tn,m ∈ T with tn,m ̸∈ ML1 ,Qn,m (εn ) and
+CL2 ,Qn,m (tn,m ) − C∗
+L2 ,Qn,m <δ max(εn , Q) + 1
+m .
+Now, let An,m ⊂ X, m ≥ 1, n ≥ 1, be according to our assumption. Note that without
+loss of generality we can additionally assumeX = ⋃
+n,m An,m . Consequently, forx ∈ X
+there exists a unique (nx , mx ) ∈ N × N with x ∈ Anx ,mx . Furthermore, let P be the
+distribution on X × Y which is deﬁned by the conditions PX = µ and P(·|x) = Qnx ,mx ,
+x ∈ X. Now let us ﬁx an n ≥ 1. Then for all x ∈ ⋃
+m An,m our construction gives
+tn,mx ̸∈ ML1 ,P(·|x),x (εn ), and hence we obtain
+δmax(εn , P) ≤ CL2 ,Qn,mx (tn,mx ) − C∗
+L2 ,Qn,mx
+<δ max(εn , Q) + 1
+mx
+.
+Minimizing over x ∈ ⋃
+m An,m then gives δmax(εn , P) ≤ δmax(εn , Q) for all n ∈ N
+and, consequently, we have δmax(εn , P) = δmax(εn , Q) for all n ∈ N. In particular, this
+shows δmax(ε, P) = δmax(ε, Q) for all ε ∈ U. Now let ε> 0 with ε ̸∈ U. Then there
+exists a subsequence (εnk ) of (εn ) with εnk ↘ ε for k →∞ . This gives δmax(εnk , P) =
+δmax(εnk , Q) → δmax(ε, Q), and hence we have
+δmax(ε, Q) ≥ inf
+k≥1
+δmax(εnk , P) ≥ inf
+ε′≥ε
+δmax(ε′, P) = δmax(ε, P)
+by the monotonicity of δmax(·, P). From this we easily obtain (18).
+Proof of Theorem 3.9. To shorten notations we write
+C1,x ( f ) := CL1 ,P(·|x),x ( f (x)) − C∗
+L1 ,P(·|x),x
+and
+C2,x ( f ) := CL2 ,P(·|x),x ( f (x)) − C∗
+L2 ,P(·|x),x
+for x ∈ X and measurable f : X → T . Furthermore, for s > 0 we write
+C(s) :={ x ∈ X : A(x) ̸= T and δmax(h(x), P(·|x), x) ≥ sh (x)}.
+
+How to Compare Different Loss Functions and Their Risks 281
+By (9) and (20) we then obtain
+RL1 ,P ( f ) − R∗
+L1 ,P =
+∫
+B(s)
+1A(x, f (x))h(x) dP X (x) +
+∫
+C(s)
+1A(x, f (x))h(x) dP X (x)
+≤
+∫
+1B(s)hdP X
++ s−1
+∫
+C(s)
+δmax(h(x), P(·|x), x)1A(x, f (x)) dP X (x)
+≤ (cs )α + s−1
+∫
+C(s)
+δmax(C1,x ( f ), P(·|x), x) dP X (x)
+≤ (cs )α + s−1(RL2 ,P ( f ) − R∗
+L2,P ).
+For α< ∞, the assertion then follows by setting s := (αcα )−1/(α+1)(RL2 ,P ( f ) −
+R∗
+L2 ,P )1/(α+1) and using α−α/(α+1) + α1/(α+1) ≤ 2.
+Furthermore, for α =∞ the assertion follows by setting s−1 := 2c.
+Proof of Lemma 3.13. Let P be a distribution on X × Y with P(·|x) ∈ Qmin(L) for
+all x ∈ X. We write ¯X := X × R and Z := R. Furthermore, for ¯x = (x, t) ∈ ¯X and
+t′∈ Z we deﬁne
+h(¯x, t′) := CL ,P(·|x)(t′) − C∗
+L ,P(·|x),
+F(¯x) :={ t′∈ R : h(¯x, t′) = 0},
+and
+ϕ( ¯x, t′) :=| t − t′|.
+For the P-instance ˘L P of ˘L we then have
+˘L P (x, t) = inf
+t′∈ML ,P(·|x) (0+)
+|t − t′|= inf
+t′∈F(¯x)
+ϕ( ¯x, t′)
+and, consequently, we obtain the assertion by part (iii) of Lemma 5.1.
+Proof of Theorem 3.16. For a ﬁxed ρ> 0 we write Aρ ={ (Q, t) ∈ Q × R :
+˘L(Q, t) ≥ ρ}. By Lemma 3.13 we then see that ¯L := 1Aρ deﬁnes a template loss
+function, whose P-instance ¯L P is a detection loss with h = 1X . Furthermore, we have
+M¯L,Q (ε) ={ t ∈ R : ˘L(Q, t)<ρ }= M˘L,Q (ρ) for all ε> 0 and Q ∈ Q, and thus we
+ﬁnd
+δmax, ¯L,L (ε, Q) = δmax, ˘L,L (ρ, Q)> 0.
+In other words, L is ¯L-calibrated with respect to Q.F o rε> 0, Theorem 3.3 thus gives
+a δ> 0 such that for f : X → R with RL ,P ( f )< R∗
+L ,P + δ we have
+PX ({x ∈ X : ˘L P (x, f (x)) ≥ ρ}) = R¯L P ,P ( f ) − R∗
+¯L P ,P <ε .
+
+282 I. Steinwart
+Proof of Proposition 3.19. We write α := pq /(p + 1) and ¯L := ˘Lα. Then ¯L is a
+template loss function by Lemma 3.13, and since M˘L,Q (ε) ={ t ∈ R : ˘L(Q, t)<ε }
+we easily ﬁnd
+δmax, ¯L,L (ε, Q) = δmax, ˘L,L (ε1/α , Q), ε > 0, Q ∈ Q.
+Furthermore, we obviously have q/α ≥ (p + 1)/p and R∗
+˘L,P = 0 and, therefore,
+Theorem 2.18 yields
+∥x ↦→ ˘L P (x, f (x))∥α
+α = R¯L P ,P ( f ) − R∗
+¯L P ,P
+≤∥ b−1∥α/q
+p (RL ,P ( f ) − R∗
+L ,P )α/q .
+Appendix
+In this Appendix we discuss some simple properties of convex functions. Recall that a
+function f : I → R on an interval I ⊂ R is called convex if for all x1, x2 ∈ I and all
+α ∈ [0, 1] we have
+f (αx1 + (1 − α)x2) ≤ α f (x1) + (1 − α) f (x2).
+Furthermore, it is called strictly convex if this inequality is strict for all x1, x2 ∈ I with
+x1 ̸= x2, and all α ∈ (0, 1). Obviously, every strictly convex function is also convex.
+Furthermore, it is well known that convex functions f : I → R are continuous on
+the interior of I . The following lemma describes some less trivial relations between the
+different notions of convexity.
+Lemma A.1. Let f : I → R be a function. Then we have:
+(i) If f is convex and satisﬁes f (α0x1 + (1 − α0)x2) = α0 f (x1) + (1 − α0) f (x2)
+for some x1, x2 ∈ I , α0 ∈ [0, 1], then actually for all α ∈ [0, 1] we have
+f (αx1 + (1 − α)x2) = α f (x1) + (1 − α) f (x2).(67)
+(ii) If f is continuous , then f is convex if and only if for all x 1, x2 ∈ I we have
+f
+(x1 + x2
+2
+)
+≤ 1
+2 f (x1) + 1
+2 f (x2).(68)
+(iii) If f is continuous , then f is strictly convex if and only if for all x 1, x2 ∈ I with
+x1 ̸= x2 we have
+f
+(x1 + x2
+2
+)
+< 1
+2 f (x1) + 1
+2 f (x2).(69)
+(iv) If f is uniformly convex and continuous , then it is strictly convex. Conversely, if
+I is compact and f is strictly convex and continuous, then it is actually uniformly
+convex.
+
+How to Compare Different Loss Functions and Their Risks 283
+Proof. (i) This assertion can be shown using elementary calculations.
+(ii) This follows from [2, Theorems 8 and 10].
+(iii) If (69) holds, then we have already seen that f is convex. Consequently, if f was
+not strictly convex we would have (67). However, by (i) we could then assume α
+0 = 1
+2
+which would give a contradiction.
+(iv) The ﬁrst assertion follows from (iii) and the second assertion is trivial.
+Our next aim is to investigate the modulus of convexity. Although this concept, in
+an equivalent formulation, has already been introduced in 1966 (see [23], [17]), almost
+nothing that is useful for us seems to be known (see, however, [5], [35] and the refer-
+ences therein for some general information on the modulus). Therefore, we present the
+following two lemmas which provide some ways to simplify the computation of δ
+f (ε).
+Lemma A.2. Let ∅ ̸= I ⊂ R be an interval and let f : I → R be strictly convex.
+Then for all ε> 0 we have
+δf (2ε) = inf
+{ f (x − ε) + f (x + ε)
+2 − f (x) : x satisﬁes x − ε ∈ I and x + ε ∈ I
+}
+.
+Proof. For ﬁxedx1 ∈ I we deﬁnehx1 : I → [0, ∞) by hx1 (x2) := ( f (x1) + f (x2))/2−
+f ((x1 + x2)/2), x2 ∈ I . The fundamental theorem of calculus for Lebesgue integrals
+then shows that the derivative h′
+x1 (x2) exists for almost all x2, and an easy calculation
+shows h′
+x1 (x2) = f ′(x2)/2 − 1
+2 f ′((x1 + x2)/2) for such x2. Furthermore, since f is
+strictly convex and hx1 has a unique minimum at x1, we obtain h′
+x1 (x2)< 0i f x2 < x1,
+and h′
+x1 (x2)> 0i f x2 > x1. The fundamental theorem of calculus for Lebesgue integrals
+then shows that hx1 is strictly decreasing on (−∞, x1) ∩ I , and strictly increasing on
+(x1, ∞) ∩ I , and thus we have
+δf (2ε) = min
+
+
+ inf
+x1∈I
+x1−2ε∈I
+hx1 (x1 − 2ε), inf
+x1∈I
+x1+2ε∈I
+hx1 (x1 + 2ε)
+
+
+ = inf
+x1+ε∈I
+x1−ε∈I
+hx1−ε (x1 + ε),
+where in the last step we used hx1−ε (x1 + ε) = hx1+ε (x1 − ε).
+With the help of the following lemma we can often estimate the modulus of convexity.
+Lemma A.3. Let I ⊂ R be a symmetric interval, i.e., x ∈ I implies −x ∈ I . Then for
+all strictly convex, symmetric f : I → [0, ∞) and all ε> 0 we have
+δf (2ε) = inf
+x≥0
+x+ε∈I
+f (x − ε) + f (x + ε)
+2 − f (x) = 1
+2 inf
+x≥0
+x+ε∈I
+∫ x+ε
+x
+( f ′(t) − f ′(t − ε)) dt .
+Furthermore, if I = R, then for all x ≥ 12ε we have
+f (x) ≥ 2δf (2ε)x2
+ε2 .
+
+284 I. Steinwart
+Proof. The ﬁrst equation follows from Lemma A.2 and the symmetry assumptions.
+Furthermore, by the fundamental theorem of calculus for Lebesgue integrals we obtain
+f (x + ε) + f (x − ε) = 2 f (x) +
+∫ x+ε
+x
+( f ′(t) − f ′(t − ε)) dt ,(70)
+and hence the second equation follows. Finally, in order to show the last assertion we
+ﬁrst observe that f has a minimum at 0, and hence we havef ′(t) ≥ 0 for allt ≥ 0 where
+the derivative exists. We writeb := 2δf (2ε), and xn := 2εn for n ≥ 1. These deﬁnitions
+together with (70) yield real numbers tn ∈ [xn , xn + ε], n ≥ 1, that satisfy
+b ≤
+∫ xn+ε
+xn
+( f ′(t) − f ′(t − ε)) dt ≤ ε( f ′(tn ) − f ′(tn − ε)),
+i.e., we obtain f ′(tn ) ≥ f ′(tn − ε) + b/ε for all n ≥ 1. Furthermore, we have tn − ε ≥
+xn − ε = xn−1 + ε ≥ tn−1 and hence f ′(tn − ε) ≥ f ′(tn−1), n ≥ 2. By induction we
+thus ﬁnd f ′(tn+1) ≥ f ′(t1)+ bn/ε ≥ bn/ε for all n ≥ 1. Now let t ≥ 6ε such that f ′(t)
+exists. Then there is an n ≥ 3 with 2εn ≤ t < 2ε(n + 1), and hence we get
+f ′(t) ≥ f ′(tn−1) ≥ b(n − 2)
+ε > b(x − 6ε)
+2ε2 .
+Consequently, for x ≥ 12ε the fundamental theorem of calculus for Lebesgue integrals
+gives
+f (x) = f (6ε) +
+∫ x
+6ε
+f ′(t) dt ≥ b
+2ε2
+∫ x
+6ε
+(t − 6ε) dt = b(x − 6ε)2
+4ε2 ≥ bx 2
+ε2 .
+Example A.4. We write I := [−B, B], and for 0 < p < 2 we deﬁne ψ : I → [0, ∞]
+by ψ(t) :=| t|p, t ∈ I . Then for all ε ∈ [0, B]w eh a v e
+p(p − 1)
+2 B p−2ε2 ≤ δψ (2ε) ≤ p
+2(p − 1)2 B p−2ε2.
+To see this let t ∈ [0, 1] and a ∈ (0, 1). Then we have (1 − 0)a = 1 − a0 and
+−a(1 − t)a−1 ≤− a, and thus we obtain (1 − t)a ≤ 1 − at by the fundamental theorem
+of calculus. For s := 1/t we hence ﬁnd (1 − 1/s)a ≤ 1 − a/s which is equivalent to
+(s − 1)a ≤ sa − asa−1. Since in additionsa−1 ≤ (s − 1)a−1 implies sa − sa−1 ≤ (s − 1)a
+we have
+asa−1 ≤ sa − (s − 1)a ≤ sa−1(71)
+for all 0 < a < 1 and all s ≥ 1. Now an easy calculation shows
+ψ′(t) − ψ′(t − ε) = p
+{
+t p−1 − (t − ε)p−1 if t ≥ ε,
+t p−1 + (ε − t)p−1 if 0 ≤ t ≤ ε.
+Furthermore, for s := t/ε ≥ 1w eh a v eψ′(t) − ψ′(t − ε) = εp−1(s p−1 − (s − 1)p−1),
+and thus our preliminary considerations give
+(p − 1)εt p−2 = (p − 1)εp−1s p−2 ≤ ψ′(t) − ψ′(t − ε) ≤ εp−1s p−2 = εt p−2.
+From this we can easily prove the assertion using basic calculations.
+
+How to Compare Different Loss Functions and Their Risks 285
+Example A.5. We write I := [−B, B] and deﬁne ψ : I → [0, ∞]b y ψ(t) :=
+−ln(4et (1 + et )−2), t ∈ I . Then for all ε ∈ [0, B]w eh a v e
+eε − 1
+2eε ln eB + e2ε
+eB + eε ≤ δψ (2ε) ≤ eε − 1
+eε ln eB + e2ε
+eB + eε .
+Indeed, an easy calculation showsψ′(t) = (et − 1)/(et + 1) for all t ∈ I , and hence we
+obtain
+ψ′(t) − ψ′(t − ε) = et − 1
+et + 1 − et − eε
+et + eε = 2et (eε − 1)
+(et + 1)(et + eε )
+for all t ∈ [0, B], ε ∈ [0, B]. Consequently, we have
+eε − 1
+et + eε ≤ ψ′(t) − ψ′(t − ε) ≤ 2 eε − 1
+et + eε
+for all t ∈ [0, B], ε ∈ [0, B]. Furthermore, for ε> 0 an easy calculation gives
+inf
+x∈[0,B−ε]
+∫ x+ε
+x
+eε − 1
+et + eε dt =
+∫ B
+B−ε
+eε − 1
+et + eε dt = eε − 1
+eε (t − ln(et + eε ))
+⏐⏐
+⏐
+⏐
+B
+t=B−ε
+= eε − 1
+eε ln eB + e2ε
+eB + eε .
+From this we easily ﬁnd the assertion.
+The following two lemmas establish important properties of the Fenchel–Legendre
+biconjugate operation ∗∗. We begin with
+Lemma A.6. Let B > 0 and let δ :[ 0 , B] → [0, ∞) be a monotone increasing
+function with δ(0) = 0 and δ(ε) > 0 for all ε ∈ (0, B]. Then for all ε ∈ (0, B] we have
+δ∗∗(ε) > 0.
+Proof. Let us assume that there exists a 0 <ε ≤ B with δ∗∗(ε) = 0. Then we have
+(ε, 0) ∈ Epi δ∗∗ = co Epiδ, and hence there exists a sequence (εn , yn ) ∈ co Epiδ with
+εn → ε and yn → 0. Furthermore, we have co Epi δ ⊂ R2, and hence Carath´eodory’s
+theorem (see, e.g., [24, p. 55]) guarantees that for all n ≥ 1 there exist εn,1,ε n,2,ε n,3 ∈
+[0, B], yn,1, yn,2, yn,3 ∈ [0, ∞), and αn,1,α n,2,α n,3 ∈ [0, 1] with
+εn = αn,1εn,1 + αn,2εn,2 + αn,3εn,3,
+yn = αn,1 yn,1 + αn,2 yn,2 + αn,3 yn,3,
+1 = αn,1 + αn,2 + αn,3,
+yn,i ≥ δ(εn,i ), i = 1,..., 3.
+In addition, we may assume εn,1 ≤ εn,2 ≤ εn,3 without loss of generality. Since this
+yields εn = αn,1εn,1 + αn,2εn,2 + αn,3εn,3 ≤ εn,3 we ﬁnd yn,3 ≥ δ(εn,3) ≥ δ(εn ) ≥
+δ(ε/2)> 0 for large n. Recalling yn → 0 we thus obtain αn,3 → 0 which implies both
+αn,1 + αn,2 → 1 and αn,1εn,1 + αn,2εn,2 → ε. However, the latter convergence gives
+
+286 I. Steinwart
+ε/2 ≤ αn,1εn,1 + αn,2εn,2 ≤ (αn,1 + αn,2)εn,2 for large n, and hence we have εn,2 ≥ ε/4
+for large n. Again this shows yn,2 ≥ δ(εn,2) ≥ δ(ε/4)> 0 for large n, and thus we
+ﬁnd αn,2 → 0. Obviously, this yields both αn,1 → 1 and αn,1εn,1 → ε, and hence we
+obtain εn,1 ≥ ε/4 for large n. Finally, this gives yn,1 ≥ δ(εn,1) ≥ δ(ε/4)> 0 for large
+n and therefore we ﬁnd αn,1 → 0 which contradicts the already found convergence
+αn,1 → 1.
+Lemma A.7. Let B > 0 and let δ :[ 0 , B] → [0, ∞) be a continuous function with
+δ(0) = 0. We deﬁne ˜δ :[ 0, B] → [0, ∞) by ˜δ(ε) := infε′≥ε δ(ε), ε ∈ [0, B]. Then ˜δ is
+monotonously increasing, and for all ε ∈ [0, B] we have
+δ∗∗(ε) = ˜δ∗∗(ε).
+In addition, if δ(ε) > 0 for all ε ∈ (0, B], then ˜δ(ε) > 0 for all ε ∈ (0, B].
+Proof. The ﬁrst assertion is trivial and the third assertion directly follows from the
+continuity of δ. Therefore, it remains to show
+co Epiδ = co Epi ˜δ(72)
+since this equation immediately yields δ∗∗ = ˜δ∗∗. To establish (72) we ﬁrst observe that
+˜δ(ε) ≤ δ(ε) for all ε ∈ [0, B] and hence we have co Epi δ ⊂ co Epi ˜δ. To prove the
+converse inclusion observe that it sufﬁces to show(ε, ˜δ(ε)) ∈ co Epiδ for all ε ∈ [0, B].
+Furthermore, we have ˜δ(0) = 0 = δ(0) and ˜δ(B) = δ( B) and hence we can restrict our
+considerations to pairs (ε, δ(ε)) for ε ∈ (0, B). Therefore let us ﬁx an ε ∈ (0, B).B y
+the deﬁnition of ˜δ we then ﬁnd an ε+ ∈ [ε, B] with δ(ε+) = ˜δ(ε). Furthermore, we have
+δ(0) ≤ ˜δ(ε) ≤ δ(ε) and hence the intermediate value theorem applied to the continuous
+function δ g i v e su sa nε− ∈ [0,ε ] with δ(ε−) = ˜δ(ε). Now, there exists an α ∈ [0, 1]
+with ε = αε+ + (1 − α)ε− and since our previous considerations showed
+˜δ(ε) = α˜δ(ε) + (1 − α)˜δ(ε) = αδ(ε+) + (1 − α)δ(ε−)
+we obtain (ε, ˜δ(ε)) ∈ co Epiδ.
+References
+[1] P. L. B ARTLETT,M .I .J ORDAN,J .D .M CAULIFFE (2006): Convexity, classiﬁcation, and risk bounds .
+J. Amer. Statist. Assoc., 101:138–156.
+[2] F. A. B EHRINGER (1992): Convexity is equivalent to midpoint convexity combined with strict quasicon-
+vexity. Optimization, 24:219–228.
+[3] C. B ENNETT,R .S HARPLEY (1988): Interpolation of Operators. Boston: Academic Press.
+[4] G. B LANCHARD,O .BOUSQUET,P .MASSART (2004): Statistical performance of support vector machines.
+Ann. Statist. Submitted.
+[5] D. B UTNARIU,A .N .IUSEM (2000): Totally Convex Functions for Fixed Points Computation and Inﬁnite
+Dimensional Optimization. Dordrecht: Kluwer Academic.
+[6] A. C APONNETTO (2005): A note on the role of squared loss in regression . Technical
+Report. Massachusetts Institute of Technology. http://cbcl.mit.edu/projects/cbcl/
+publications/ps/caponnetto-squareloss-6-05.pdf.
+[7] C. C ASTAING,M .VALADIER (1977): Convex Analysis and Measurable Multifunctions. Berlin: Springer-
+Verlag.
+[8] A. C HRISTMANN,I .S TEINW ART (2005): Consistency and robustness of kernel-based regression .
+Bernoulli. To appear.http://www.c3.lanl.gov/~ingo/publications/ann-04b.pdf.
+
+How to Compare Different Loss Functions and Their Risks 287
+[9] O. D EKEL,S .SHALEV-SHW ARTZ,Y .SINGER (2005): Smooth ε-insensitive regression by loss symmetriza-
+tion. J. Mach. Learn. Res., 6:711–741.
+[10] C. E LKAN (2001): The foundations of cost-sensitive learning. In: Proceedings of the Seventeenth Inter-
+national Joint Conference on Artiﬁcial Intelligence (IJCAI’01), pp. 973–978.
+[11] L. M. G RA VES(1956): The Theory of Functions of Real Variables. New York: McGraw-Hill.
+[12] J. A. H ARTIGAN (1987): Estimation of a convex density contour in two dimensions . J. Amer. Statist.
+Assoc., 82:267–270.
+[13] T. H ASTIE,R .T IBSHIRANI,J .F RIEDMAN (2001): The Elements of Statistical Learning. New York:
+Springer-Verlag.
+[14] K.-U. H ¨OFFGEN, H.-U. S IMON (1992): Robust trainability of single neurons . In: Proceedings of the
+Computational Learning Theory (COLT) Conference, pp. 428–438.
+[15] P. J. H UBER (1964): Robust estimation of a location parameter. Ann. Math. Statist., 35:73–101.
+[16] H. K ESTELMAN (1960): Modern Theories of Integration. New York: Dover.
+[17] E. S. L EVITIN,B .T .P OLY AK(1966): Convergence of minimizing sequences in conditional extremum
+problems. Soviet Math. Dokl., 7:764–767.
+[18] Y . L IN (2002): Support vector machines and the Bayes rule in classiﬁcation. Data Min. Knowl. Discov.,
+6:259–275.
+[19] Y . L IN (2004): A note on margin-based loss functions in classiﬁcation. Statist. Probab. Lett., 68:73–82.
+[20] Y . L IN,Y .LEE,G .WAHBA (2002): Support vector machines for classiﬁcation in nonstandard situations.
+Mach. Learn., 46:191–202.
+[21] D. W. M ¨ULLER,G .SAWITZKI (1991): Excess mass estimates and tests for multimodality. J. Amer. Statist.
+Assoc., 86:738–746.
+[22] W. P OLONIK (1995): Measuring mass concentrations and estimating density contour clusters—An excess
+mass aproach. Ann. Statist., 23:855–881.
+[23] B. T. P OLY AK(1966): Existence theorems and convergence of minimizing sequences for extremal prob-
+lems with constraints. Soviet Math. Dokl., 7:72–75.
+[24] R. T. R OCKAFELLAR, R. J.-B. WETS (1998): Variational Analysis. New York: Springer-Verlag.
+[25] A. S MOLA,B .S CH ¨OLKOPF, K.-R. M¨ULLER (1998): Convex cost functions for support vector regression.
+In: L. Niklasson, M. Bod´ en, and T. Ziemke, eds., Proceedings of the International Conference on
+Artiﬁcial Neural Networks. Perspectives in Neural Computing, pp. 99–104. Berlin: Springer-Verlag.
+[26] I. S TEINW ART(2003): Sparseness of support vector machines. J. Mach. Learn. Res., 4:1071–1105.
+[27] I. S TEINW ART(2005): Consistency of support vector machines and other regularized kernel machines.
+IEEE Trans. Inform. Theory, 51:128–142.
+[28] I. S TEINW ART,D .H USH,C .S COVEL (2005): A classiﬁcation framework for anomaly detection. J. Mach.
+Learn. Res., 6:211–232.
+[29] I. S TEINW ART,C .S COVEL (2006): Fast rates for support vector machines using Gaussian kernels. Ann.
+Statist. Accepted.http://www.c3.lanl.gov/~ingo/publications/ann-04a.pdf.
+[30] A. T EW ARI,P .L .B ARTLETT (2005): On the consistency of multiclass classiﬁcation methods . In: Pro-
+ceedings of the 18th Annual Conference on Learning Theory (COLT 2005), pp. 143–157. New York:
+Springer.
+[31] A. B. T
+SYBAKOV (1997): On nonparametric estimation of density level sets. Ann. Statist., 25:948–969.
+[32] V . N. V APNIK (1995): The Nature of Statistical Learning Theory. New York: Springer-Verlag.
+[33] V . N. V APNIK (1998): Statistical Learning Theory. New York: Wiley.
+[34] C. Z ˘ALINESCU (1983): On uniformly convex functions. J. Math. Anal. Appl., 95:344–374.
+[35] C. Z ˘ALINESCU (2002): Convex Analysis in General Vector Spaces. Singapore: World Scientiﬁc.
+[36] T. Z HANG (2004): Statistical analysis of some multi-category large margin classiﬁcation methods .
+J. Mach. Learn. Res., 5:1225–1251.
+[37] T. Z HANG (2004): Statistical behaviour and consistency of classiﬁcation methods based on convex risk
+minimization. Ann. Statist., 32:56–134.
+I. Steinwart
+Informatics Group, CCS-3
+MSB 256
+Los Alamos National Laboratory
+Los Alamos, NM 87545
+USA
+ingo@lanl.gov
