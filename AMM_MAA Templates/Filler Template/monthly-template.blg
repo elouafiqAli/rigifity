@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: monthly-template.aux
+Reallocating 'name_of_file' (item size: 1) to 22 items.
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+The style file: vancouver.bst
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Database file #1: MonthlyReferences.bib
+Warning--empty author in hypertension
+Warning--empty author in outreach
+You've used 6 entries,
+            3403 wiz_defined-function locations,
+            714 strings with 5766 characters,
+and the built_in function-call counts, 8433 in all, are:
+= -- 836
+> -- 98
+< -- 82
++ -- 65
+- -- 20
+* -- 602
+:= -- 918
+add.period$ -- 21
+call.type$ -- 6
+change.case$ -- 0
+chr.to.int$ -- 180
+cite$ -- 8
+duplicate$ -- 823
+empty$ -- 842
+format.name$ -- 18
+if$ -- 1952
+int.to.chr$ -- 0
+int.to.str$ -- 6
+missing$ -- 58
+newline$ -- 31
+num.names$ -- 5
+pop$ -- 175
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 73
+stack$ -- 0
+substring$ -- 1284
+swap$ -- 162
+text.length$ -- 36
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 54
+width$ -- 7
+write$ -- 68
+(There were 2 warnings)

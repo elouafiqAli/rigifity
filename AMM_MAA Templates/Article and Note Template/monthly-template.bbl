@@ -1,0 +1,62 @@
+\begin{thebibliography}{10}
+
+\bibitem{american}
+Mathematical Association of America [homepage on the Internet]. Washington DC:
+  The Association; 2024 [updated 2024 Jan 23; cited 2024 Jan 12].
+\newblock Publications. Available from:
+  \url{https://maa.org/press/periodicals}.
+
+\bibitem{lawrence}
+Lawrence J.
+\newblock A Catalog of Special Plane Curves.
+\newblock Mineola: Dover Publications; 2014.
+
+\bibitem{proofs}
+Nelsen R.
+\newblock Proofs Without Words II: More Exercises in Visual Thinking. vol.~14
+  of Classroom Resource Materials.
+\newblock Washington DC: Mathematical Association of America; 2000.
+
+\bibitem{graphs}
+Chartrand G, Lesniak L, Zhang P.
+\newblock Graphs and Digraphs.
+\newblock 5th ed. New York (NY): Chapman \& Hall/CRC Press; 2011.
+
+\bibitem{Helmer}
+Aslaksen H, Kirfel C.
+\newblock Integration by Riemann Triangles.
+\newblock Math Mag. 2024;97(1):4-22.
+
+\bibitem{euler}
+Euler L.
+\newblock Solutio problematis ad geometriam situs pertinentis.
+\newblock Commentarii academiae scientiarum Petropolitanae. 1741;8:128-40.
+
+\bibitem{compendium}
+Hardy G, Littlewood J, P\'olya G.
+\newblock Inequalities.
+\newblock Cambridge: Cambridge University Press; 1934.
+
+\bibitem{BNV07}
+Blackburn S, Neumann P, Venkataraman G.
+\newblock Enumeration of finite groups.
+\newblock Cambridge: Cambridge University Press; 2007.
+
+\bibitem{CW11}
+Campbell H, Wehlau D.
+\newblock Modular invariant theory, Encyclopaedia of Mathematical Sciences.
+  vol. 139.
+\newblock Berlin: Springer-Verlag; 2011.
+
+\bibitem{CCZ21}
+Chang H, Chen Y, Zhang R.
+\newblock A generalization on derivations of Lie algebras.
+\newblock Electron Res Arch. 2021;29(3):2457-73.
+
+\bibitem{CCSW19}
+Campbell H, Chuai J, Shank R, Wehlau D.
+\newblock Representations of elementary abelian $p$-groups and finite subgroups
+  of fields.
+\newblock J Pure Appl Algebra. 2019;223(5):2015-35.
+
+\end{thebibliography}
