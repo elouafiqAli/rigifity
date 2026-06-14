@@ -42,25 +42,25 @@ A promise and a warning. The promise: if you read this until the catechism is au
 
 ## Notation, fixed once
 
-| Symbol | Reading | |
-|---|---|---|
-| $\eta \in [0,1]$ | posterior probability that the label is $1$ | "how sure we are it's positive" |
-| $\hat\eta \in [0,1]$ | an estimate / prediction of $\eta$ | |
-| $Y \in \{0,1\}$ | the true binary label | |
-| $c \in [0,1]$ | a cost parameter (false-positive cost) | the tent's "dial" |
-| $\ell(y,\hat\eta)$ | loss when truth is $y$ and we said $\hat\eta$ | |
-| $L(\eta,\hat\eta)$ | conditional (pointwise) risk $=\mathbb E_{Y\sim\eta}\ell(Y,\hat\eta)$ | |
-| $L(\eta)$ | pointwise **Bayes risk** $=\inf_{\hat\eta}L(\eta,\hat\eta)$ — concave | "uncertainty function" |
-| $\ell_c$ | cost-weighted misclassification loss | the **primitive** |
-| $L_c(\eta)$ | Bayes risk of $\ell_c$ — the **tent** | $\min\{(1-\eta)c,(1-c)\eta\}$ |
-| $B(\eta,\hat\eta)$ | regret $=L(\eta,\hat\eta)-L(\eta)\ge 0$ | a Bregman divergence |
-| $B_c(\eta,\hat\eta)$ | cost-weighted regret | |
-| $w(c)$ | mixing weight $=-L''(c)\ge 0$ | "curvature is mass" |
-| $T_\theta$ | apexed tent, manuscript normalization $=2L_\theta$ | mind the **2** |
-| $\llbracket P\rrbracket$ | $1$ if $P$ true, else $0$ (Iverson bracket) | |
-| $a\wedge b,\ a\vee b$ | $\min(a,b)$, $\max(a,b)$ | |
-| $\Delta L$ | statistical information $=L(\pi)-L(\eta\text{-averaged})$ | DeGroot |
-| $(\star)$ | the continuous-coefficient Jensen equation | the rigidity engine |
+| Symbol                   | Reading                                                               |                                 |
+| ------------------------ | --------------------------------------------------------------------- | ------------------------------- |
+| $\eta \in [0,1]$         | posterior probability that the label is $1$                           | "how sure we are it's positive" |
+| $\hat\eta \in [0,1]$     | an estimate / prediction of $\eta$                                    |                                 |
+| $Y \in \{0,1\}$          | the true binary label                                                 |                                 |
+| $c \in [0,1]$            | a cost parameter (false-positive cost)                                | the tent's "dial"               |
+| $\ell(y,\hat\eta)$       | loss when truth is $y$ and we said $\hat\eta$                         |                                 |
+| $L(\eta,\hat\eta)$       | conditional (pointwise) risk $=\mathbb E_{Y\sim\eta}\ell(Y,\hat\eta)$ |                                 |
+| $L(\eta)$                | pointwise **Bayes risk** $=\inf_{\hat\eta}L(\eta,\hat\eta)$ — concave | "uncertainty function"          |
+| $\ell_c$                 | cost-weighted misclassification loss                                  | the **primitive**               |
+| $L_c(\eta)$              | Bayes risk of $\ell_c$ — the **tent**                                 | $\min\{(1-\eta)c,(1-c)\eta\}$   |
+| $B(\eta,\hat\eta)$       | regret $=L(\eta,\hat\eta)-L(\eta)\ge 0$                               | a Bregman divergence            |
+| $B_c(\eta,\hat\eta)$     | cost-weighted regret                                                  |                                 |
+| $w(c)$                   | mixing weight $=-L''(c)\ge 0$                                         | "curvature is mass"             |
+| $T_\theta$               | apexed tent, manuscript normalization $=2L_\theta$                    | mind the **2**                  |
+| $\llbracket P\rrbracket$ | $1$ if $P$ true, else $0$ (Iverson bracket)                           |                                 |
+| $a\wedge b,\ a\vee b$    | $\min(a,b)$, $\max(a,b)$                                              |                                 |
+| $\Delta L$               | statistical information $=L(\pi)-L(\eta\text{-averaged})$             | DeGroot                         |
+| $(\star)$                | the continuous-coefficient Jensen equation                            | the rigidity engine             |
 
 **The single most important convention, stated now and repeated whenever it bites:** Reid–Williamson's tent is $L_c=\min\{(1-\eta)c,(1-c)\eta\}$ (apex height $c(1-c)$), while the manuscript's normalized tent is $T_\theta = 2L_\theta$ (apex height $2\theta(1-\theta)$). The factor of two is exactly the relation $2\ell_{1/2}=\ell^{0\text{-}1}$. *Write down your normalization before you write your mixing measure.* This sentence will save you from the single most common error in the subject.
 

@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 485.50390243530273
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "efb4ba2236dfc407",
@@ -185,17 +186,24 @@
   },
   "active": "53546313cdfd6d89",
   "lastOpenFiles": [
+    "submission/amm-monthly/2026-06-14/source/cover-letter.pdf",
+    "submission/amm-monthly/2026-06-14/source/cover-letter.out",
+    "submission/amm-monthly/2026-06-14/source/cover-letter.aux",
+    "submission/amm-monthly/2026-06-14/source/cover-letter.log",
+    "submission/amm-monthly/2026-06-14/pdf/title_page_MAA_form_June2026_AliElouafiq",
+    "submission/amm-monthly/title_page_MAA_form_June2026_AliElouafiq",
+    "submission/amm-monthly/Title page for The American Mathematical Monthly.pdf",
+    "submission/amm-monthly/2026-06-14/assets/figures/resolution/resolution.eps",
+    "submission/amm-monthly/2026-06-14/assets/figures/mechanism/mechanism.eps",
+    "submission/amm-monthly/2026-06-14/assets/figures/dictionary/dictionary.eps",
+    "submission/amm-monthly/2026-06-14/assets/figures/resolution/resolution.pdf",
+    "submission/amm-monthly/2026-06-14/instructions.md",
+    "submission/instructions.md",
+    "submission/amm-monthly/2026-06-14/guidelines/maa-author-instructions.md",
+    "submission/amm-monthly/2026-06-14/assets/final_table.md",
+    "submission/amm-monthly/2026-06-14/README.md",
+    "AMM_MAA Templates/final_table.md",
     "library/submission-ready/accepted-briefening-note.md",
-    "library/submission-ready/cover-letter-accepted.pdf",
-    "library/submission-ready/cover-letter-accepted.out",
-    "library/submission-ready/cover-letter-accepted.aux",
-    "library/submission-ready/cover-letter-accepted.log",
-    "library/submission-ready/manuscript-accepted.pdf",
-    "library/submission-ready/manuscript-accepted.aux",
-    "library/submission-ready/manuscript-accepted.log",
-    "library/submission-ready/maa-monthly.sty",
-    "library/submission-ready/cover-letter-accepted.tex",
-    "library/submission-ready/manuscript-accepted.tex",
     "library/submission-ready/submission-final-correctness-review-log.md",
     "library/submission-ready/submission-logic-review-log.md",
     "library/submission-ready/submission-readiness-review-log.md",
@@ -213,13 +221,6 @@
     "library/extracted/tmp_under10/docs/busch2003/Busch2003.md",
     "library/extracted/tmp_under10/docs/kestelman1947/Kestelman1947.md",
     "library/extracted/tmp_smallest3/docs/kendall1964/Kendall1964.md",
-    "library/extracted/tmp_smallest3/docs/aczelwagner1980/AczelWagner1980.md",
-    "PI-reference-todo.md",
-    "library/docling_pipeline/planning/02-commit-plan.md",
-    "library/docling_pipeline/planning/00-strategy.md",
-    "library/docling_pipeline/planning/01-review-gates.md",
-    "library/README.md",
-    "library/docling_pipeline/README.md",
-    "satellites/o3-maa/add/review.md"
+    "library/extracted/tmp_smallest3/docs/aczelwagner1980/AczelWagner1980.md"
   ]
 }
