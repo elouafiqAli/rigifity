@@ -12,6 +12,7 @@ This folder contains a ready-to-submit package for The American Mathematical Mon
 - `pdf/cover-letter.pdf`: compiled cover letter PDF.
 - `guidelines/maa-author-instructions.md`: local Monthly author instructions mirror.
 - `guidelines/README-Author-Instructions.pdf`: template guideline PDF.
+- `instructions.md`: anonymization and MAA figure-spec directives used for package generation.
 - `assets/final_table.md`: supporting reference table used during drafting.
 - `logs/`: optional build logs.
 

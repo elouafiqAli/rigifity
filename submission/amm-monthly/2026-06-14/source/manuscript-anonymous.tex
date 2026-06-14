@@ -1,9 +1,8 @@
 %% =============================================================================
-%% manuscript.tex — The American Mathematical Monthly (WITH author details)
+%% manuscript-anonymous.tex — The American Mathematical Monthly (anonymous)
 %% Title:    The Continuous-Coefficient Jensen Equation:
 %%           How Real Mixing Weights Retire Regularity
-%% Companion anonymous file: manuscript-anon.tex (title block removed; no
-%% author identity anywhere, including comments).
+%% Anonymous companion source for double-blind submission.
 %% Date:     2026-06-11  (review-panel revision)
 %%
 %% Compilation (TeX Live): run pdflatex twice. The references are a
@@ -35,6 +34,8 @@
 \usepackage{array}              % extended column specifiers in tables
 \usepackage{tabularx}           % X column type for proportional-width tables
 \usepackage{tikz}               % figures (load diagram, mechanism, resolution axis)
+%% MAA graphic baseline: keep line art readable in print conversion.
+\tikzset{every picture/.style={line width=0.5pt}}
 
 %% --- Theorem environments (following the Monthly template exactly) ---
 \theoremstyle{plain}
@@ -1463,31 +1464,7 @@ formalization project occasionally surfaces such hypotheses precisely
 because the formal system requires every clause of the statement to be
 used.
 
-%% =============================================================================
-%% Backmatter: Acknowledgments, Disclosure, Funding
-%% Note: "Acknowledgments" (American English, no extra 'e').
-%% =============================================================================
-\section*{Acknowledgments.}
-
-\textbf{AI Assistance Disclosure.} A proprietary neuro-symbolic AI research
-harness incorporating adversarial search through Program Synthesis was used during
-exploratory theorem-discovery and formalization activities. The system employed
-Claude Opus 3.7 and Lean 4 in identifying an initial observation, denoted~\eqref{eq:star}, that
-motivated subsequent investigation. The development, interpretation,
-mathematical analysis, and presentation of the results were carried out by the
 author. Claude Fable 5 was additionally used for proofreading, editorial
-review, and formatting assistance. The author takes full responsibility for the
-correctness, originality, and content of the manuscript.
-
-\section*{Disclosure statement.}
-
-The author reports there are no competing interests to declare.
-
-\section*{Funding.}
-
-This research received no specific grant from any funding agency in the
-public, commercial, or not-for-profit sectors.
-
 %% =============================================================================
 %% Bibliography -- Monthly house style (Taylor & Francis era):
 %%   alphabetical order, bracketed-number labels, entries of the form
